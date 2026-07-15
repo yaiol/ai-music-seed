@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Palette (all color tokens) comes from the shared canonical ./lib/tokens.css,
+   imported first in index.jsx. Only app-specific, non-token styles live here.
+   NEVER redeclare a palette token — edit .common/css/tokens.css and re-sync. */
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+/* .app-root (root frame) + .app-scroll (scroll region) come from the shared chrome.css. */
+
+/* Header bar + button chrome is provided by the shared ./lib/chrome.css (imported in index.jsx). */
+
+/* ─── Workspace ───────────────────────────────────────────────────────── */
+/* amsd is a "dialog app" — its whole main view is a dialog-style form, so the
+   main surface is the dialog background (not the generic --bg body surface).
+   Pairs with .dlg-form on .seed-panel (field styling). See the workspace-wide
+   "kill --bg" goal: every main view resolves to a named semantic surface. */
+.workspace {
+  padding: 16px 20px;
+  background: var(--dlg-bgd);
+}
+
+/* ─── Seed generator panel ────────────────────────────────────────────── */
+/* Two-column split: chord progression (left) | everything else (right). */
+/* min-height:100% makes the panel claim the full height of the scroll area (which is
+   itself window-height minus the header), so the chord column can fill the window. */
+.seed-panel {
+  max-width: 1100px;
+  min-height: 100%;
+  display: flex; flex-direction: row; align-items: stretch; gap: 24px;
+}
+.seed-col { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.seed-col-chords { flex: 0 0 40%; }
+.seed-col-rest   { flex: 1 1 60%; }
+/* The chord field fills the window height (panel stretches to the scroll area); the
+   textarea grows to take all of it and the hint below stays pinned at the bottom. */
+.seed-field-grow { flex: 1; }
+.seed-field-grow .textarea { flex: 1; min-height: 0; resize: none; }
+/* Stack the two columns on narrow windows. */
+@media (max-width: 720px) {
+  .seed-panel { flex-direction: column; }
+  .seed-col-chords, .seed-col-rest { flex: none; }
+  .seed-field-grow .textarea { min-height: 140px; }
+}
+.seed-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+/* Field hints use the shared .dlg-hint (ui-app.css §9). */
+/* Chord textarea + all form fields use the shared .textarea / .input /
+   .select (./lib/dialog.css); only the chord textarea keeps a mono font inline. */
+.seed-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+}
+.seed-field-wide { grid-column: span 2; }
+/* Force a field onto a new grid row (starts back at column 1). */
+.seed-field-break { grid-column-start: 1; }
+.seed-row { display: flex; gap: 8px; align-items: center; }
+.seed-row .input { flex: 1; }
+.seed-row .btn { flex-shrink: 0; }
+/* Live projection of the seed about to be rendered */
+.seed-summary {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px;
+  background: var(--bg-row); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 14px;
+}
+.seed-summary-stat { display: flex; align-items: baseline; gap: 8px; }
+.seed-summary-label {
+  font-size: 11px; letter-spacing: .5px; text-transform: uppercase;
+  font-weight: 600; color: var(--text-mute);
+}
+.seed-summary-value { font-size: 14px; font-weight: 600; color: var(--text); }
+.seed-summary-warn { color: var(--warn); font-size: 12px; }
+
+.seed-actions { display: flex; align-items: center; gap: 14px; }
+.seed-error { color: var(--danger); font-size: 13px; }
+.seed-result {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px;
+}
+.seed-result-head {
+  font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  font-weight: 700; color: var(--ok);
+}
+.seed-result-file {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-row); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 10px;
+  color: var(--text); cursor: pointer; text-align: left;
+  font-size: 12px; transition: background .12s, border-color .12s;
+}
+.seed-result-file:hover { background: var(--bg-hov); border-color: var(--border-strong); }
+.seed-result-file span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* The file-drop overlay (.drop-overlay) is the shared catalog look in ui-app.css,
+   rendered by the shared useFileDrop hook (./lib/ui-fx-filedrop). */
+
+/* Dialog (modal) chrome is provided by the shared ./lib/dialog.css (imported in index.jsx). */
+

@@ -1,0 +1,104 @@
+{
+  "name": "ai-music-seed",
+  "productName": "AI Music Seed",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Generate chord-progression harmonic seeds (WAV/MIDI) to constrain AI music generators like Suno",
+  "private": true,
+  "author": "yaiol",
+  "main": "electron/main.mjs",
+  "homepage": "./",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaiol/ai-music-seed.git"
+  },
+  "devPort": 3006,
+  "storagePrefix": "amsd",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "electron": "electron .",
+    "electron:dev": "concurrently \"npm start\" \"wait-on http://localhost:3006 && electron .\"",
+    "dist": "npm run build && electron-builder --win --x64",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:linux": "npm run build && electron-builder --linux"
+  },
+  "dependencies": {
+    "@breezystack/lamejs": "^1.2.7",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.3",
+    "concurrently": "^10.0.3",
+    "electron": "^42.5.0",
+    "electron-builder": "^26.15.3",
+    "electron-is-dev": "^3.0.1",
+    "lucide-react": "^1.21.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "vite": "^8.1.0",
+    "wait-on": "^9.0.10"
+  },
+  "build": {
+    "appId": "com.yaiol.ai-music-seed.app",
+    "productName": "AI Music Seed",
+    "extends": null,
+    "extraMetadata": {
+      "main": "electron/main.mjs"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "fileAssociations": [
+      {
+        "ext": "yams",
+        "name": "AI Music Seed",
+        "description": "AI Music Seed file",
+        "role": "Editor",
+        "icon": "public/ext-yams"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/app.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/app.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "public/app.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "menuCategory": "yaiol",
+      "shortcutName": "AI Music Seed",
+      "uninstallDisplayName": "yaiol AI Music Seed"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "yaiol",
+        "repo": "ai-music-seed"
+      }
+    ]
+  }
+}
