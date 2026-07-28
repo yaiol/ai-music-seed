@@ -49,7 +49,7 @@ A React front-end (Create React App) talks to an Electron + Express back-end ove
 
 | Layer | What it does |
 |---|---|
-| React UI (`src/`) | Tabbed multi-document shell (`App`) around one seed-generator form per tab (`SeedPanel`) - progression, BPM, bars, time signature, loops, texture, audio format + bitrate, output name. A seed is saved as a `.yams`; rendering writes the audio + MIDI into that file's folder. |
+| React UI (`src/`) | Tabbed multi-document shell (`App`) around one seed-generator form per tab (`SeedPanel`) - name, progression, BPM, bars, time signature, loops, texture, audio format + bitrate, output template. A seed is saved as a `.yams`; rendering writes the audio + MIDI into that file's folder. |
 | Seed engine (`src/lib/seed-engine.js`) | Pure JS, runs in the renderer. Synthesises raw PCM by plain math, then encodes either a 16-bit mono WAV or a mono MP3 (via lamejs), and writes a type-0 MIDI. |
 | Express back-end (`electron/main.mjs`) | Local HTTP API on a dynamic port (from 4000). Saves/loads `.yams` files via native dialogs, writes the rendered audio + MIDI to disk (into the seed's `.yams` folder), and reveals files in the OS file manager. |
 
@@ -66,11 +66,12 @@ The seed engine started as a JS port of a Python prototype (`chord-seed.py`); th
 | `--loops` | number | `loops` |
 | `--style` | select (pad / arp / drone / marker) | `style` |
 | `--format` | select (mp3 / wav) + bitrate | `format`, `mp3Bitrate` |
-| `--name` | text (blank -> default template) | save filename |
+| `--name` | **Output** — text (a token template) | save filename |
+| *(none)* | **Name** — text, above every other field | `name` (metadata; feeds `{name}`) |
 
 The prototype's `--outdir` flag has no form control: the output folder is the folder the seed's `.yams` lives in, so a seed must be **saved** before it can render (the Render button is disabled until then).
 
-**Output-name tokens.** The name field accepts tokens resolved at render time: `{chords}` (a base name from the chord letters), `{style}`, `{bpm}`, `{loops}`. A blank name uses the default template **`{chords}-{style}-{bpm}`**.
+**Name vs Output — two different things.** *Name* is what the seed is called; *Output* is what the rendered files are called. Output is a template resolved at render time: `{name}` (the seed name, file-name-sanitised, falling back to `{chords}` when the seed is unnamed), `{chords}` (a base name from the **first 8** chords — capped so a full song chart can't produce a 200-character filename), `{style}`, `{bpm}`, `{loops}`. A new seed starts at **`{name}-{style}-{bpm}`**, and that is also what a `.yams` without an `output` field falls back to — the field is never blank-with-hidden-behaviour.
 
 **Timing — line = bar.** The progression is read line by line: each non-blank line is one timing unit of `bars` bars, and the chords on that line **split it evenly** (four chords on a line = a beat each in 4/4; a chord alone on a line holds the whole bar). `[Section]` headers, blank lines and `|` bar marks are stripped, so a chord chart pastes in almost verbatim. `parseLines` → `planEvents` build the timed event list, shared by `generateSeed` (render) and `analyzeSeed` (the render-free size/duration projection shown live under the form).
 

@@ -329,9 +329,14 @@ function planEvents(progression, barQuarters, bars, bpm) {
 
 // ─── Public API ──────────────────────────────────────────────────────────────
 
-// A safe default output filename from the progression (alphanumerics only).
+// How many chords the {chords} token keeps. A full song chart holds hundreds of
+// symbols; without a cap the derived file name runs to several hundred characters.
+const NAME_CHORDS = 8;
+
+// A safe default output filename from the progression: the first NAME_CHORDS chord
+// symbols, alphanumerics only ([Section] tags and | marks already dropped by parseLines).
 export function defaultName(progression) {
-  return (String(progression).replace(/[^a-zA-Z0-9]/g, '') || 'seed');
+  return (parseLines(progression).flat().slice(0, NAME_CHORDS).join('').replace(/[^a-zA-Z0-9]/g, '') || 'seed');
 }
 
 /**

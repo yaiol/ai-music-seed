@@ -49,6 +49,11 @@ const GITHUB_URL = `https://github.com/yaiol/${pkg.name}`;
 const basename = (p) => (p || '').replace(/.*[\\/]/, '');
 const dirname  = (p) => (p || '').replace(/[\\/][^\\/]*$/, '');
 
+// The Output template a seed starts with, and what a .yams without an `output` field
+// falls back to. It is a real template the user can see and edit — there is no
+// implicit "(auto)" mode behind a blank field.
+const DEFAULT_OUTPUT = '{name}-{style}-{bpm}';
+
 function makeSeed(overrides = {}) {
   return {
     id: crypto.randomUUID(),
@@ -56,10 +61,11 @@ function makeSeed(overrides = {}) {
     fileName: '',     // tab label — basename(filePath), or the Untitled placeholder
     unsaved: false,   // edited since the last save / load / open
     // form fields (mirror the .yams payload)
+    name: '',                 // the seed's own name (feeds the {name} output token)
     progression: 'Am C G Dm',
     bpm: 80, bars: 1, sig: '4/4', loops: 4,
     style: 'pad', format: 'mp3', mp3Bitrate: 192,
-    name: '',
+    output: DEFAULT_OUTPUT,   // the rendered file's base name (a token template)
     // transient (never persisted)
     result: null, error: '',
     ...overrides,
@@ -69,6 +75,13 @@ function makeSeed(overrides = {}) {
 // Map a parsed .yams object onto a fresh seed doc (field-by-field with guards so a
 // partial or future file never throws). The chord text lives under `chords` in the
 // file; the engine's field is `progression`.
+//
+// ⚠ CLAUDE: schema v1 had ONE `name` field, and it meant the OUTPUT file name. v2 split
+// it in two — `name` (the seed's own name) + `output` (the file-name template) — so a v1
+// file's `name` must migrate to `output`, never to `name`. A file is legacy only when it
+// carries no `output` AND declares version < 2; a hand-written .yams with no version at
+// all is read as current (its `name` is the seed's name), which is the safe default now
+// that every Save writes v2.
 function seedFromFile(s, filePath = null) {
   const seed = makeSeed({ filePath, fileName: basename(filePath) });
   if (typeof s.chords === 'string') seed.progression = s.chords;
@@ -79,40 +92,47 @@ function seedFromFile(s, filePath = null) {
   if (s.style      != null) seed.style      = s.style;
   if (s.format     != null) seed.format     = s.format;
   if (s.mp3Bitrate != null) seed.mp3Bitrate = Number(s.mp3Bitrate);
-  if (typeof s.name === 'string') seed.name = s.name;
+  const legacy = typeof s.output !== 'string' && Number(s.version) < 2;
+  if (typeof s.output === 'string') seed.output = s.output || DEFAULT_OUTPUT;
+  else if (legacy && s.name) seed.output = String(s.name);
+  if (!legacy && typeof s.name === 'string') seed.name = s.name;
   return seed;
 }
 
 // The .yams payload — every on-screen field, so a seed reopens + re-renders
 // identically. Written by Save / Save As (the .yams is the seed's primary file).
 const buildSeed = (s) => ({
-  version: 1,
+  version: 2,
   name: s.name,
   chords: s.progression,
   bpm: Number(s.bpm), bars: Number(s.bars), sig: s.sig, loops: Number(s.loops),
   style: s.style, format: s.format, mp3Bitrate: Number(s.mp3Bitrate),
+  output: s.output,
 });
 
-// The {chords} token — a safe base name derived from the chord names (the same
-// value the old "auto from chords" produced).
+// The {chords} token — a safe base name derived from the chord names (capped at the
+// engine's first-NAME_CHORDS chords, so a whole song chart can't name the file).
 const chordsToken = (s) => defaultName(s.progression);
 
-// The default output name when the Output name field is left blank.
-const DEFAULT_NAME = '{chords}-{style}-{bpm}';
+// The {name} token — the seed's name, stripped of characters no file system accepts.
+// A nameless seed falls back to the chord-derived base, so the default template can
+// never resolve to a headless "-arp-80".
+const nameToken = (s) => (s.name || '').replace(/[<>:"/\\|?*\x00-\x1f]/g, '').trim() || chordsToken(s);
 
-// Resolve the name tokens against a seed: {chords} → the chord-derived base,
-// {style} → the style key, {bpm} → the BPM, {loops} → the loop count. The raw name
-// (tokens kept) is what lives in the .yams, so re-rendering after a change renames
-// the file.
+// Resolve the output tokens against a seed: {name} → the seed name, {chords} → the
+// chord-derived base, {style} → the style key, {bpm} → the BPM, {loops} → the loop
+// count. The raw template (tokens kept) is what lives in the .yams, so re-rendering
+// after a parameter change renames the file.
 const resolveName = (s, raw) => raw
+  .replace(/\{name\}/g,   nameToken(s))
   .replace(/\{chords\}/g, chordsToken(s))
   .replace(/\{style\}/g,  s.style)
   .replace(/\{bpm\}/g,    String(s.bpm))
   .replace(/\{loops\}/g,  String(s.loops));
 
-// The output file base name — the Output name field (blank → the default template),
+// The output file base name — the Output template (emptied by hand → the default),
 // with tokens resolved; falls back to the bare chord name if that yields nothing.
-const computeFileName = (s) => resolveName(s, (s.name || '').trim() || DEFAULT_NAME).trim() || chordsToken(s);
+const computeFileName = (s) => resolveName(s, (s.output || '').trim() || DEFAULT_OUTPUT).trim() || chordsToken(s);
 
 const toB64 = (u8) => {
   let s = ''; const chunk = 0x8000;
@@ -173,9 +193,9 @@ export default function App() {
   });
 
   // Open a parsed .yams: focus an already-open tab bound to the same path (refreshing
-  // it from the file), else add a new tab. A dropped file carries no OS path, so it
-  // always opens as a fresh untitled tab. Used by the header Load button, drag-and-drop,
+  // it from the file), else add a new tab. Used by the header Load button, drag-and-drop,
   // and the OS file association — the single entry point for "a .yams became available".
+  // A tab only ever opens untitled when the caller has no path at all (never in Electron).
   const openSeedFile = (s, path = null) => setSeeds(prev => {
     if (path) {
       const existing = prev.find(x => x.filePath === path);
@@ -318,15 +338,20 @@ export default function App() {
     }
   };
 
-  // Load a .yams from a dropped File — the JSON content is already in hand (read via
-  // FileReader), so it opens as a new untitled tab (a dropped file carries no OS path).
+  // Load a .yams from a dropped File. The JSON content comes from FileReader, and the OS
+  // path from the preload's webUtils bridge — Electron strips File.path in the renderer,
+  // so without that bridge a dropped seed would open as an untitled tab that can neither
+  // Save nor Render. With a path in hand the drop behaves exactly like the Load button
+  // (named tab, re-drop focuses the tab already bound to that file).
   const loadFromFile = (file) => {
+    let osPath = null;
+    try { osPath = window.electronAPI?.getFilePath?.(file) || null; } catch { /* no bridge (browser dev) */ }
     const reader = new FileReader();
     reader.onload = (ev) => {
       try {
         const seed = JSON.parse(ev.target.result);
         if (!seed || typeof seed !== 'object') throw new Error('invalid');
-        openSeedFile(seed, null);
+        openSeedFile(seed, osPath);
       } catch (e) {
         if (active) updateSeed(active.id, { error: `${t('msgSeedLoadFailed')}: ${e.message}` }, false);
       }
@@ -502,7 +527,7 @@ const fmtSize = (bytes) => {
 // (App) owns the seed array, the file actions (render / save / load), and the busy
 // flag. This panel is pure presentation + the live projection summary.
 function SeedPanel({ t, seed, busy, busyMsg, onField, onRender, onReveal }) {
-  const { progression, bpm, bars, sig, loops, style, format, mp3Bitrate, name, filePath, error, result } = seed;
+  const { progression, bpm, bars, sig, loops, style, format, mp3Bitrate, name, output, filePath, error, result } = seed;
 
   // Live projection of what the current form will render - chord count, total
   // duration, estimated file size, and any unparseable chord. Recomputed as the
@@ -539,6 +564,14 @@ function SeedPanel({ t, seed, busy, busyMsg, onField, onRender, onReveal }) {
 
       {/* ── Right column: all the rest (parameters, output, summary, actions) ── */}
       <div className="seed-col seed-col-rest">
+      {/* Name — the seed's own name, above every other field. Feeds the {name} token
+          the default Output template is built from. */}
+      <div className="seed-field">
+        <label className="dlg-field-label">{t('lblSeedName')}</label>
+        <input className="input" type="text"
+               value={name} onChange={e => onField({ name: e.target.value })} />
+      </div>
+
       {/* Numeric / select parameters */}
       <div className="seed-grid">
         <div className="seed-field">
@@ -586,14 +619,14 @@ function SeedPanel({ t, seed, busy, busyMsg, onField, onRender, onReveal }) {
         </div>
       </div>
 
-      {/* Output name — own full-width row. Tokens {chords}, {style}, {bpm} and {loops} in the
-          name are replaced with the current form values at render time (see resolveName()).
-          Blank → the DEFAULT_NAME template ({chords}-{style}-{bpm}). */}
+      {/* Output — own full-width row. The rendered file's base name: tokens {name}, {chords},
+          {style}, {bpm} and {loops} are replaced with the current form values at render time
+          (see resolveName()). Emptied by hand → the DEFAULT_OUTPUT template. */}
       <div className="seed-field">
-        <label className="dlg-field-label">{t('lblSeedName')}</label>
+        <label className="dlg-field-label">{t('lblSeedOutput')}</label>
         <input className="input" type="text"
-               value={name} placeholder={t('plhSeedName')} onChange={e => onField({ name: e.target.value })} />
-        <span className="hint">{t('hntSeedName')}</span>
+               value={output} onChange={e => onField({ output: e.target.value })} />
+        <span className="hint">{t('hntSeedOutput')}</span>
       </div>
 
       {/* Live projection - what this form will render before you click */}
