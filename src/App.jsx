@@ -7,7 +7,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Settings, HelpCircle, Sun, Moon, X, ScrollText, FolderOpen, Music, AudioWaveform, Save, SavePlus, FilePlus } from 'lucide-react';
 import pkg from '../package.json';
-import { useT, LANGUAGES } from './i18n';
+import { useT, LANGUAGES } from './i18n-gen';
 import { checkForUpdate } from './lib/update-check';
 import { UpdateBanner } from './lib/ui-update-banner';
 import { AppHeader } from './lib/ui-header';

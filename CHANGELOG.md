@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 — 2026-08-17
+
+- Start up faster by loading only the active language's translations, instead of carrying all 52 in the initial bundle
+- Generate the per-language translation chunks at build time (src/i18n-gen/, git-ignored)
+- Add opt-in main-process startup timing, silent unless YAIOL_STARTUP_LOG is set
+
 ## 1.0.1 — 2026-07-28
 
 - Add a Name field to every seed — the seed's own name, above the other fields
