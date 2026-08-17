@@ -1,7 +1,7 @@
 {
   "name": "ai-music-seed",
   "productName": "AI Music Seed",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "description": "Generate chord-progression harmonic seeds (WAV/MIDI) to constrain AI music generators like Suno",
   "private": true,
@@ -15,9 +15,9 @@
   "devPort": 3006,
   "storagePrefix": "amsd",
   "scripts": {
-    "prestart": "node ../../.common/i18n/i18n-split.mjs .",
+    "prestart": "node scripts/i18n-split.mjs .",
     "start": "vite",
-    "prebuild": "node ../../.common/i18n/i18n-split.mjs .",
+    "prebuild": "node scripts/i18n-split.mjs .",
     "build": "vite build",
     "electron": "electron .",
     "electron:dev": "concurrently \"npm start\" \"wait-on http://localhost:3006 && electron .\"",

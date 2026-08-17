@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 — 2026-08-17
+
+- Fix the release build failing on GitHub — the pre-build step reached outside the repository for the translation splitter, which exists only in the local workspace
+- Ship the translation splitter inside the repository as scripts/i18n-split.mjs, so a clone builds with npm alone
+
 ## 1.0.2 — 2026-08-17
 
 - Start up faster by loading only the active language's translations, instead of carrying all 52 in the initial bundle
