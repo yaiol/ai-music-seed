@@ -3,7 +3,8 @@
 // WHY
 //   src/i18n.js holds every UI string in every language in ONE object. A static import puts
 //   all ~50 languages in the entry chunk, so every user parses 50 translations to read one.
-//   This emits src/i18n-gen/<lang>.js (one module per language) plus src/i18n-gen/index.js
+//   This emits src/i18n-gen/en.js + src/i18n-gen/lang/<lang>.js (one module per language) plus
+//   src/i18n-gen/index.js
 //   (the same public API: LANGUAGES, useT, getT — plus loadLang). English is bundled eagerly
 //   because it is the fallback; every other language is fetched on demand.
 //
@@ -84,8 +85,23 @@ function splitApp(mainDir, label) {
   fs.rmSync(outDir, { recursive: true, force: true });      // no stale language files
   fs.mkdirSync(outDir, { recursive: true });
 
+  // ⚠ CLAUDE: EN sits at the root, every other language in `lang/`, and that split is what keeps
+  // the bundler quiet — both halves matter:
+  //   • the dynamic import must not target its OWN directory. `import(\`./${k}.js\`)` makes Vite
+  //     warn "Variable imports cannot import their own directory" and give up analyzing it, so the
+  //     chunks it should emit become a runtime gamble. Pointing at a SUBdirectory (`./lang/…`) is
+  //     the documented fix.
+  //   • EN must not live in that subdirectory. It is ALSO imported statically (it is the eager
+  //     fallback), and a module that is both statically and dynamically imported triggers
+  //     INEFFECTIVE_DYNAMIC_IMPORT — rollup keeps it in the entry chunk, which is correct here but
+  //     reported as a defect on every build. Out of `lang/`, the two imports can't overlap.
+  // Runtime is unaffected: loadLang('en') returns early (LOADED starts with en), so nothing ever
+  // asks for `lang/en.js`.
+  const langDir = path.join(outDir, "lang");
+  fs.mkdirSync(langDir, { recursive: true });
   for (const k of keys) {
-    fs.writeFileSync(path.join(outDir, `${k}.js`), `${HEADER}export default {\n${langs[k].join("\n")}\n};\n`, "utf8");
+    const dir = k === "en" ? outDir : langDir;
+    fs.writeFileSync(path.join(dir, `${k}.js`), `${HEADER}export default {\n${langs[k].join("\n")}\n};\n`, "utf8");
   }
 
   // Everything else the source exported must keep working, verbatim.
@@ -111,7 +127,7 @@ const base = en;
 export async function loadLang(key) {
   if (!key || LOADED[key]) return;
   try {
-    LOADED[key] = (await import(\`./\${key}.js\`)).default;
+    LOADED[key] = (await import(\`./lang/\${key}.js\`)).default;
   } catch {
     // Unknown or removed language — English stays in place, nothing to do.
   }
