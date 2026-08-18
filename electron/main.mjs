@@ -1,4 +1,4 @@
-// app-icon tag for icons-cockpit (do not remove): data-icon="yaiol:ai-music-seed" -> res/icons/custom/apps/ai-music-seed.svg
+// data-icon="yaiol:ai-music-seed"
 process.noDeprecation = true;
 import { app, BrowserWindow, Menu, dialog, shell } from "electron";
 import path from "path";
