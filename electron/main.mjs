@@ -14,6 +14,9 @@ mark("electron boot + module imports");
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const isDev = !app.isPackaged;
+
+if (process.env.YAIOL_DEV) app.userAgentFallback = `${app.userAgentFallback} yaiol-dev`;
+
 const DEV_PORT = pkg.devPort;
 const APP_NAME = pkg.productName;
 
