@@ -93,7 +93,8 @@
       "createStartMenuShortcut": true,
       "menuCategory": "yaiol",
       "shortcutName": "AI Music Seed",
-      "uninstallDisplayName": "yaiol AI Music Seed"
+      "uninstallDisplayName": "yaiol AI Music Seed",
+      "artifactName": "${productName} Setup ${buildVersion}.${ext}"
     },
     "publish": [
       {
@@ -101,6 +102,7 @@
         "owner": "yaiol",
         "repo": "ai-music-seed"
       }
-    ]
+    ],
+    "buildNumber": "1"
   }
 }
