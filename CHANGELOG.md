@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.4 — 2026-08-23
+
+- The Load dialog reopens in the folder you last used instead of starting in Downloads, and remembers it across restarts
+- The help button and the update banner's What's new / Download links open the page in the app's own language, instead of falling back to English for every language beyond English, French, Spanish and German
+- Emit the per-language translation chunks into `src/i18n-gen/lang/` (English stays at the root, as the eagerly bundled fallback), which clears the bundler's variable-import and ineffective-dynamic-import warnings
+- Update the dev toolchain — Electron 42 → 43, Vite 8.1 → 8.2, lucide-react 1.21 → 1.33, plus patch bumps to React, @vitejs/plugin-react, concurrently and wait-on
+- Rename `vite.config.js` to `vite.config.mjs` — the package declares no `type: module`, so the ESM config has to announce itself by extension
+
 ## 1.0.3 — 2026-08-17
 
 - Fix the release build failing on GitHub — the pre-build step reached outside the repository for the translation splitter, which exists only in the local workspace

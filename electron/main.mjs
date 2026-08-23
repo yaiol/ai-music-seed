@@ -8,6 +8,7 @@ import express from "express";
 import { fileURLToPath } from "node:url";
 import pkg from "../package.json" with { type: "json" };
 import { mark, dumpStartupTiming } from "./startup-timing.mjs";
+import { lastDir, rememberDir } from "./dialog-memory.mjs";
 mark("electron boot + module imports");
 
 // ESM has no __dirname - derive it from import.meta.url.
@@ -92,10 +93,12 @@ function startServer(callback) {
   api.post("/load-seed", async (req, res) => {
     const result = await dialog.showOpenDialog(mainWindow, {
       title: (req.body && req.body.title) || "Open seed",
+      defaultPath: lastDir("load-seed"),
       properties: ["openFile"],
       filters: [{ name: (req.body && req.body.filterName) || "AI Music Seed", extensions: ["yams"] }],
     });
     if (result.canceled || !result.filePaths.length) return res.json({ canceled: true });
+    rememberDir("load-seed", result.filePaths[0]);
     try {
       const seed = JSON.parse(fs.readFileSync(result.filePaths[0], "utf8"));
       res.json({ seed, path: result.filePaths[0] });
