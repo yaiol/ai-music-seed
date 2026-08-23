@@ -8,7 +8,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Settings, HelpCircle, Sun, Moon, X, ScrollText, FolderOpen, Music, AudioWaveform, Save, SavePlus, FilePlus } from 'lucide-react';
 import pkg from '../package.json';
 import { useT, LANGUAGES } from './i18n-gen';
-import { checkForUpdate } from './lib/update-check';
+import { checkForUpdate, getUrl } from './lib/update-check';
 import { UpdateBanner } from './lib/ui-update-banner';
 import { AppHeader } from './lib/ui-header';
 import { NumberField } from './lib/ui-ctl-numberfield';
@@ -32,11 +32,6 @@ const LS_THEME    = `${STORAGE_PREFIX}-theme`;
 const DEFAULT_LANG  = 'en';
 const DEFAULT_THEME = 'light';
 
-// Help page URL - the id comes from package.json `name` (the canonical app id =
-// folder = apps.yaiol.com slug); /en/ is the source default. At runtime the lang
-// segment is swapped to the current UI language; the help site falls back to EN for
-// languages it doesn't publish, so any code is safe to send.
-const HELP_URL = `https://apps.yaiol.com/en/p/${pkg.name}/help/`;
 // GitHub source - owner is constant (yaiol); repo name is the app id (pkg.name).
 const GITHUB_URL = `https://github.com/yaiol/${pkg.name}`;
 
@@ -426,7 +421,7 @@ export default function App() {
           </button>
           <button
             className="btn icon"
-            onClick={() => window.open(HELP_URL.replace('/en/p/', `/${lang.replace(/_/g, '-')}/p/`), '_blank')}
+            onClick={() => window.open(getUrl(pkg.name, lang.replace(/_/g, '-'), 'help'), '_blank')}
             title={t('tipHdrHelp')}
             aria-label={t('tipHdrHelp')}
           >
