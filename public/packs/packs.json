@@ -1,0 +1,743 @@
+{
+  "format": 1,
+  "packs": [
+    {
+      "name": "strings-bassguitar",
+      "label": "Bass Guitar",
+      "family": "Strings (Plucked)",
+      "role": "bass",
+      "collection": "Project16",
+      "instrument": "Bass Guitar",
+      "articulation": null
+    },
+    {
+      "name": "woodwinds-bassoon-stac",
+      "label": "Bassoon (Staccato)",
+      "family": "Winds (Wood)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Bassoon",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "woodwinds-bassoon-sus",
+      "label": "Bassoon (Sustained)",
+      "family": "Winds (Wood)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Bassoon",
+      "articulation": "Sustained"
+    },
+    {
+      "name": "woodwinds-bassoon-vib",
+      "label": "Bassoon (Vibrato)",
+      "family": "Winds (Wood)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Bassoon",
+      "articulation": "Vibrato"
+    },
+    {
+      "name": "keys-celesta",
+      "label": "Celesta",
+      "family": "Keys",
+      "role": "both",
+      "collection": "pjcohen",
+      "instrument": "Celesta",
+      "articulation": null
+    },
+    {
+      "name": "strings-cellosection-pizzt",
+      "label": "Cellos (Pizzicato)",
+      "family": "Strings (Bowed)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Cellos",
+      "articulation": "Pizzicato"
+    },
+    {
+      "name": "strings-cellosection-spic",
+      "label": "Cellos (Spiccato)",
+      "family": "Strings (Bowed)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Cellos",
+      "articulation": "Spiccato"
+    },
+    {
+      "name": "strings-cellosection-susvib",
+      "label": "Cellos (Sustained Vibrato)",
+      "family": "Strings (Bowed)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Cellos",
+      "articulation": "Sustained Vibrato"
+    },
+    {
+      "name": "strings-cellosection-trem",
+      "label": "Cellos (Tremolo)",
+      "family": "Strings (Bowed)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Cellos",
+      "articulation": "Tremolo"
+    },
+    {
+      "name": "percussion-chimes",
+      "label": "Chimes",
+      "family": "Percussion (Tuned)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Chimes",
+      "articulation": null
+    },
+    {
+      "name": "voices-choiraaahs-medium",
+      "label": "Choir Aaaah's (Medium)",
+      "family": "Voices",
+      "role": "both",
+      "collection": "Signature Sounds",
+      "instrument": "Choir Aaaah's",
+      "articulation": "Medium"
+    },
+    {
+      "name": "voices-choiraaahs-processed",
+      "label": "Choir Aaaah's (Processed)",
+      "family": "Voices",
+      "role": "both",
+      "collection": "Signature Sounds",
+      "instrument": "Choir Aaaah's",
+      "articulation": "Processed"
+    },
+    {
+      "name": "voices-choiraaahs-stabs",
+      "label": "Choir Aaaah's (Stabs)",
+      "family": "Voices",
+      "role": "both",
+      "collection": "Signature Sounds",
+      "instrument": "Choir Aaaah's",
+      "articulation": "Stabs"
+    },
+    {
+      "name": "voices-choiraaahs-sweeps",
+      "label": "Choir Aaaah's (Sweeps)",
+      "family": "Voices",
+      "role": "both",
+      "collection": "Signature Sounds",
+      "instrument": "Choir Aaaah's",
+      "articulation": "Sweeps"
+    },
+    {
+      "name": "woodwinds-clarinet-stac",
+      "label": "Clarinet (Staccato)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Clarinet",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "woodwinds-clarinet-suslong",
+      "label": "Clarinet (Sustained Long)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Clarinet",
+      "articulation": "Sustained Long"
+    },
+    {
+      "name": "strings-solocontrabass-pizz",
+      "label": "Double Bass (Pizzicato)",
+      "family": "Strings (Bowed)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Double Bass",
+      "articulation": "Pizzicato"
+    },
+    {
+      "name": "strings-solocontrabass-spic",
+      "label": "Double Bass (Spiccato)",
+      "family": "Strings (Bowed)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Double Bass",
+      "articulation": "Spiccato"
+    },
+    {
+      "name": "strings-solocontrabass-susnv",
+      "label": "Double Bass (Sustained Non-Vibrato)",
+      "family": "Strings (Bowed)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Double Bass",
+      "articulation": "Sustained Non-Vibrato"
+    },
+    {
+      "name": "strings-solocontrabass-susvib",
+      "label": "Double Bass (Sustained Vibrato)",
+      "family": "Strings (Bowed)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Double Bass",
+      "articulation": "Sustained Vibrato"
+    },
+    {
+      "name": "strings-solocontrabass-trem",
+      "label": "Double Bass (Tremolo)",
+      "family": "Strings (Bowed)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Double Bass",
+      "articulation": "Tremolo"
+    },
+    {
+      "name": "woodwinds-flute-expvib",
+      "label": "Flute (Expressive Vibrato)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Flute",
+      "articulation": "Expressive Vibrato"
+    },
+    {
+      "name": "woodwinds-flute-stac",
+      "label": "Flute (Staccato)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Flute",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "woodwinds-flute-susnv",
+      "label": "Flute (Sustained Non-Vibrato)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Flute",
+      "articulation": "Sustained Non-Vibrato"
+    },
+    {
+      "name": "woodwinds-flute-susvib",
+      "label": "Flute (Sustained Vibrato)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Flute",
+      "articulation": "Sustained Vibrato"
+    },
+    {
+      "name": "percussion-glass-freepats",
+      "label": "Glass",
+      "family": "Percussion (Tuned)",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Glass",
+      "articulation": null
+    },
+    {
+      "name": "strings-guitar-nylon",
+      "label": "Guitar (Nylon String)",
+      "family": "Strings (Plucked)",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Guitar",
+      "articulation": "Nylon String"
+    },
+    {
+      "name": "percussion-hang-freepats",
+      "label": "Hang (D minor)",
+      "family": "Percussion (Tuned)",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Hang (D minor)",
+      "articulation": null
+    },
+    {
+      "name": "strings-harp",
+      "label": "Harp",
+      "family": "Strings (Plucked)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Harp",
+      "articulation": null
+    },
+    {
+      "name": "brass-fhorn-mute",
+      "label": "Horn (Mute)",
+      "family": "Winds (Brass)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Horn",
+      "articulation": "Mute"
+    },
+    {
+      "name": "brass-fhorn-stac",
+      "label": "Horn (Staccato)",
+      "family": "Winds (Brass)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Horn",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "brass-fhorn-sus",
+      "label": "Horn (Sustained)",
+      "family": "Winds (Brass)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Horn",
+      "articulation": "Sustained"
+    },
+    {
+      "name": "percussion-marimba",
+      "label": "Marimba I",
+      "family": "Percussion (Tuned)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Marimba I",
+      "articulation": null
+    },
+    {
+      "name": "percussion-marimba-freesound",
+      "label": "Marimba II",
+      "family": "Percussion (Tuned)",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Marimba II",
+      "articulation": null
+    },
+    {
+      "name": "woodwinds-oboe-stacc",
+      "label": "Oboe (Staccato)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Oboe",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "woodwinds-oboe-sus",
+      "label": "Oboe (Sustained)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Oboe",
+      "articulation": "Sustained"
+    },
+    {
+      "name": "woodwinds-oboe-vib",
+      "label": "Oboe (Vibrato)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Oboe",
+      "articulation": "Vibrato"
+    },
+    {
+      "name": "brass-oldtrombone-buzz",
+      "label": "Old Trombone (Buzz)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Old Trombone",
+      "articulation": "Buzz"
+    },
+    {
+      "name": "brass-oldtrombone-fall",
+      "label": "Old Trombone (Fall)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Old Trombone",
+      "articulation": "Fall"
+    },
+    {
+      "name": "brass-oldtrombone-short",
+      "label": "Old Trombone (Short)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Old Trombone",
+      "articulation": "Short"
+    },
+    {
+      "name": "brass-oldtrombone-sustain",
+      "label": "Old Trombone (Sustained)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Old Trombone",
+      "articulation": "Sustained"
+    },
+    {
+      "name": "brass-oldtrombone-vibrato",
+      "label": "Old Trombone (Vibrato)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Old Trombone",
+      "articulation": "Vibrato"
+    },
+    {
+      "name": "keys-organ-loud-pedal",
+      "label": "Organ (Loud Pedal)",
+      "family": "Keys",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Organ",
+      "articulation": "Loud Pedal"
+    },
+    {
+      "name": "keys-organ-loud",
+      "label": "Organ (Loud)",
+      "family": "Keys",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Organ",
+      "articulation": "Loud"
+    },
+    {
+      "name": "keys-organ-quiet-pedal",
+      "label": "Organ (Quiet Pedal)",
+      "family": "Keys",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Organ",
+      "articulation": "Quiet Pedal"
+    },
+    {
+      "name": "keys-organ-quiet",
+      "label": "Organ (Quiet)",
+      "family": "Keys",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Organ",
+      "articulation": "Quiet"
+    },
+    {
+      "name": "woodwinds-piccolo-stac",
+      "label": "Piccolo (Staccato)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Piccolo",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "woodwinds-piccolo-sus",
+      "label": "Piccolo (Sustained)",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Piccolo",
+      "articulation": "Sustained"
+    },
+    {
+      "name": "woodwinds-recorder",
+      "label": "Recorder",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Recorder",
+      "articulation": null
+    },
+    {
+      "name": "keys-rhodes-markii",
+      "label": "Rhodes Mark II",
+      "family": "Keys",
+      "role": "both",
+      "collection": "Tim Kahn",
+      "instrument": "Rhodes Mark II",
+      "articulation": null
+    },
+    {
+      "name": "strings-rickenbacker-fingered",
+      "label": "Rickenbacker Bass (Fingered)",
+      "family": "Strings (Plucked)",
+      "role": "bass",
+      "collection": "Project16",
+      "instrument": "Rickenbacker Bass",
+      "articulation": "Fingered"
+    },
+    {
+      "name": "percussion-timpani",
+      "label": "Timpani (Hits)",
+      "family": "Percussion (Tuned)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Timpani",
+      "articulation": "Hits"
+    },
+    {
+      "name": "percussion-timpani-rolls",
+      "label": "Timpani (Rolls)",
+      "family": "Percussion (Tuned)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Timpani",
+      "articulation": "Rolls"
+    },
+    {
+      "name": "brass-tenortrombone-stac",
+      "label": "Trombone (Staccato)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Trombone",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "brass-tenortrombone-sus",
+      "label": "Trombone (Sustained)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Trombone",
+      "articulation": "Sustained"
+    },
+    {
+      "name": "brass-tenortrombone-vib",
+      "label": "Trombone (Vibrato)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Trombone",
+      "articulation": "Vibrato"
+    },
+    {
+      "name": "brass-trumpet-harmonm-sus",
+      "label": "Trumpet (Harmon Mute)",
+      "family": "Winds (Brass)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Trumpet",
+      "articulation": "Harmon Mute"
+    },
+    {
+      "name": "brass-trumpet-stac",
+      "label": "Trumpet (Staccato)",
+      "family": "Winds (Brass)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Trumpet",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "brass-trumpet-straightm-sus",
+      "label": "Trumpet (Straight Mute)",
+      "family": "Winds (Brass)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Trumpet",
+      "articulation": "Straight Mute"
+    },
+    {
+      "name": "brass-trumpet-susvib",
+      "label": "Trumpet (Sustained Vibrato)",
+      "family": "Winds (Brass)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Trumpet",
+      "articulation": "Sustained Vibrato"
+    },
+    {
+      "name": "brass-trumpet-sus",
+      "label": "Trumpet (Sustained)",
+      "family": "Winds (Brass)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Trumpet",
+      "articulation": "Sustained"
+    },
+    {
+      "name": "brass-tuba-stac",
+      "label": "Tuba (Staccato)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Tuba",
+      "articulation": "Staccato"
+    },
+    {
+      "name": "brass-tuba-sus",
+      "label": "Tuba (Sustained)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Tuba",
+      "articulation": "Sustained"
+    },
+    {
+      "name": "percussion-tubularbells-freepats",
+      "label": "Tubular Bells",
+      "family": "Percussion (Tuned)",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Tubular Bells",
+      "articulation": null
+    },
+    {
+      "name": "strings-ukulele",
+      "label": "Ukulele",
+      "family": "Strings (Plucked)",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Ukulele",
+      "articulation": null
+    },
+    {
+      "name": "strings-uprightbass",
+      "label": "Upright Bass",
+      "family": "Strings (Plucked)",
+      "role": "bass",
+      "collection": "pjcohen",
+      "instrument": "Upright Bass",
+      "articulation": null
+    },
+    {
+      "name": "keys-uprightnr1",
+      "label": "Upright Piano",
+      "family": "Keys",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Upright Piano",
+      "articulation": null
+    },
+    {
+      "name": "keys-uprightpiano",
+      "label": "Upright Piano 2",
+      "family": "Keys",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Upright Piano 2",
+      "articulation": null
+    },
+    {
+      "name": "strings-violasection-pizz",
+      "label": "Violas (Pizzicato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violas",
+      "articulation": "Pizzicato"
+    },
+    {
+      "name": "strings-violasection-spic",
+      "label": "Violas (Spiccato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violas",
+      "articulation": "Spiccato"
+    },
+    {
+      "name": "strings-violasection-susvib",
+      "label": "Violas (Sustained Vibrato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violas",
+      "articulation": "Sustained Vibrato"
+    },
+    {
+      "name": "strings-violasection-trem",
+      "label": "Violas (Tremolo)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violas",
+      "articulation": "Tremolo"
+    },
+    {
+      "name": "strings-soloviolin-arcovib",
+      "label": "Violin (Arco Vibrato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violin",
+      "articulation": "Arco Vibrato"
+    },
+    {
+      "name": "strings-soloviolin-pizz",
+      "label": "Violin (Pizzicato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violin",
+      "articulation": "Pizzicato"
+    },
+    {
+      "name": "strings-soloviolin-spic",
+      "label": "Violin (Spiccato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violin",
+      "articulation": "Spiccato"
+    },
+    {
+      "name": "strings-soloviolin-trem",
+      "label": "Violin (Tremolo)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violin",
+      "articulation": "Tremolo"
+    },
+    {
+      "name": "strings-violinsection-pizz",
+      "label": "Violins (Pizzicato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violins",
+      "articulation": "Pizzicato"
+    },
+    {
+      "name": "strings-violinsection-spic",
+      "label": "Violins (Spiccato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violins",
+      "articulation": "Spiccato"
+    },
+    {
+      "name": "strings-violinsection-susvib",
+      "label": "Violins (Sustained Vibrato)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violins",
+      "articulation": "Sustained Vibrato"
+    },
+    {
+      "name": "strings-violinsection-trem",
+      "label": "Violins (Tremolo)",
+      "family": "Strings (Bowed)",
+      "role": "treble",
+      "collection": "VSCO",
+      "instrument": "Violins",
+      "articulation": "Tremolo"
+    },
+    {
+      "name": "keys-wurlitzer",
+      "label": "Wurlitzer 200A",
+      "family": "Keys",
+      "role": "both",
+      "collection": "OldBassMan",
+      "instrument": "Wurlitzer 200A",
+      "articulation": null
+    },
+    {
+      "name": "percussion-xylo-freepats",
+      "label": "Xylophone",
+      "family": "Percussion (Tuned)",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Xylophone",
+      "articulation": null
+    }
+  ]
+}

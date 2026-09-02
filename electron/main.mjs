@@ -70,6 +70,44 @@ function startServer(callback) {
 
   api.get("/version", (_req, res) => res.json({ version: app.getVersion() }));
 
+  // The bundled SoundFont, streamed to the renderer (which parses it and decodes
+  // the samples it needs). It ships in public/ -> dist/, so in a packaged build
+  // it lives inside the asar; fs reads straight through that.
+  // ⚠ CLAUDE: this is an endpoint rather than a fetch of a relative URL because
+  // the packaged renderer loads over file://, where fetch of a sibling file is
+  // blocked by Chromium. It works in dev and breaks only once installed.
+  // Compiled sample packs, served the same way and for the same reason as the
+  // SoundFont: the packaged renderer runs on file://, where fetching a sibling
+  // file is blocked. `/packs` is the index, `/pack/<name>/<file>` a member.
+  const packsDir = () => path.join(__dirname, isDev ? "../public" : "../dist", "packs");
+
+  api.get("/packs", (_req, res) => {
+    const index = path.join(packsDir(), "packs.json");
+    if (!fs.existsSync(index)) return res.json({ format: 1, packs: [] });
+    res.type("application/json").send(fs.readFileSync(index));
+  });
+
+  api.get("/pack/:name/:file", (req, res) => {
+    // ⚠ Both segments are path-checked: they arrive from the renderer, but an
+    // endpoint that joins user-supplied text onto a directory is a traversal
+    // waiting to happen. Names are [A-Za-z0-9-] and files [A-Za-z0-9-.] only.
+    const { name, file } = req.params;
+    if (!/^[A-Za-z0-9-]+$/.test(name) || !/^[A-Za-z0-9][A-Za-z0-9.-]*$/.test(file) || file.includes("..")) {
+      return res.status(400).json({ error: "bad pack path" });
+    }
+    const full = path.join(packsDir(), name, file);
+    if (!full.startsWith(packsDir()) || !fs.existsSync(full)) return res.status(404).json({ error: "not found" });
+    res.type(file.endsWith(".json") ? "application/json" : "application/octet-stream");
+    fs.createReadStream(full).pipe(res);
+  });
+
+  api.get("/soundfont", (_req, res) => {
+    const file = path.join(__dirname, isDev ? "../public" : "../dist", "soundfont", "FluidR3Mono_GM.sf3");
+    if (!fs.existsSync(file)) return res.status(404).json({ error: "soundfont not found" });
+    res.type("application/octet-stream");
+    fs.createReadStream(file).pipe(res);
+  });
+
   // Write the rendered seed's audio + MIDI to <dir>/<name>.{wav|mp3,mid}. `dir` is the
   // folder of the seed's saved .yams (the renderer derives it from the file path); a
   // seed must be saved before it can render, so there is no separate output-folder pick.

@@ -1,0 +1,72 @@
+{
+  "name": "brass-oldtrombone-buzz",
+  "label": "Old Trombone (Buzz)",
+  "format": 1,
+  "layer": "v1",
+  "zones": [
+    {
+      "file": "29.ogg",
+      "root": 29,
+      "lokey": 0,
+      "hikey": 30,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "31.ogg",
+      "root": 31,
+      "lokey": 31,
+      "hikey": 32,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "33.ogg",
+      "root": 33,
+      "lokey": 33,
+      "hikey": 34,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "36.ogg",
+      "root": 36,
+      "lokey": 35,
+      "hikey": 37,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "38.ogg",
+      "root": 38,
+      "lokey": 38,
+      "hikey": 39,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "41.ogg",
+      "root": 41,
+      "lokey": 40,
+      "hikey": 42,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "43.ogg",
+      "root": 43,
+      "lokey": 43,
+      "hikey": 44,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "45.ogg",
+      "root": 45,
+      "lokey": 45,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

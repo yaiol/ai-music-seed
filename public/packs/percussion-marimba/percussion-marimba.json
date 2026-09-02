@@ -1,0 +1,89 @@
+{
+  "name": "percussion-marimba",
+  "label": "Marimba I",
+  "format": 1,
+  "layer": "loud",
+  "tuneCents": -10,
+  "zones": [
+    {
+      "file": "41.ogg",
+      "root": 41,
+      "lokey": 0,
+      "hikey": 44,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "48.ogg",
+      "root": 48,
+      "lokey": 45,
+      "hikey": 51,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "54.ogg",
+      "root": 54,
+      "lokey": 52,
+      "hikey": 56,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "59.ogg",
+      "root": 59,
+      "lokey": 57,
+      "hikey": 62,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "65.ogg",
+      "root": 65,
+      "lokey": 63,
+      "hikey": 68,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 69,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "78.ogg",
+      "root": 78,
+      "lokey": 76,
+      "hikey": 80,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "83.ogg",
+      "root": 83,
+      "lokey": 81,
+      "hikey": 86,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "89.ogg",
+      "root": 89,
+      "lokey": 87,
+      "hikey": 92,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "96.ogg",
+      "root": 96,
+      "lokey": 93,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

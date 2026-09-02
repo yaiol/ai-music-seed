@@ -32,14 +32,15 @@ body {
 /* Two-column split: chord progression (left) | everything else (right). */
 /* min-height:100% makes the panel claim the full height of the scroll area (which is
    itself window-height minus the header), so the chord column can fill the window. */
+/* No max-width: the panel is a compact-instrument surface and uses the whole
+   window — screen space is the scarce resource (2026-08-30). */
 .seed-panel {
-  max-width: 1100px;
   min-height: 100%;
   display: flex; flex-direction: row; align-items: stretch; gap: 24px;
 }
 .seed-col { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
-.seed-col-chords { flex: 0 0 40%; }
-.seed-col-rest   { flex: 1 1 60%; }
+.seed-col-chords { flex: 0 0 18%; min-width: 170px; }
+.seed-col-rest   { flex: 1 1 82%; }
 /* The chord field fills the window height (panel stretches to the scroll area); the
    textarea grows to take all of it and the hint below stays pinned at the bottom. */
 .seed-field-grow { flex: 1; }
@@ -54,15 +55,90 @@ body {
 /* Field hints use the shared .dlg-hint (ui-app.css §9). */
 /* Chord textarea + all form fields use the shared .textarea / .input /
    .select (./lib/dialog.css); only the chord textarea keeps a mono font inline. */
+/* Four CONTENT-SIZED columns + a flexible filler: ordinary fields stay compact
+   on the left instead of stretching across the full-width panel; only a
+   .seed-field-full row (the instrument line) spans the filler and takes the
+   whole width. */
 .seed-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  display: grid; grid-template-columns: repeat(4, max-content) 1fr; gap: 14px;
 }
 .seed-field-wide { grid-column: span 2; }
 /* Force a field onto a new grid row (starts back at column 1). */
 .seed-field-break { grid-column-start: 1; }
+/* ⚠ wide + break TOGETHER need the explicit form: `grid-column: span 2` puts
+   the span on the START line, and break's `grid-column-start: 1` then replaces
+   it — silently collapsing the field to ONE column (Instrument rendered a
+   third the width of Bass). Start at 1 AND span 2, stated fully. */
+.seed-field-wide.seed-field-break { grid-column: 1 / span 2; }
 .seed-row { display: flex; gap: 8px; align-items: center; }
 .seed-row .input { flex: 1; }
 .seed-row .btn { flex-shrink: 0; }
+/* The two-part instrument picker: the FAMILY select sizes to its content and
+   the instrument Combobox (.input, flex: 1) takes the rest of the row — the
+   dialog context's `.select { width: 100% }` would otherwise let the select
+   hog the row and squeeze the instrument to an unreadable stub.
+   ⚠ CLAUDE: `select.select` (element + class) is load-bearing — the dialog
+   rule `.dlg-form .select` has the same 0,2,0 specificity as `.seed-row
+   .select` and wins on load order, so a class-only selector here silently
+   loses and the select swallows the whole row again. */
+.seed-row select.select { width: auto; flex-shrink: 0; }
+/* The instrument line — 8 controls on one full-width row: per lane (treble,
+   bass) a Volume knob, an Octave knob, the family select and the instrument
+   Combobox. Lanes split the row; each lane's picker flexes, knobs stay fixed. */
+.seed-field-full { grid-column: 1 / -1; }
+.seed-instrument-line { display: flex; gap: 16px; }
+/* Each lane is a HARD half of the line: flex-basis 0 (not auto) so content
+   width can't unbalance them, min-width 0 so the half can actually shrink. */
+.seed-lane { display: flex; flex-direction: column; gap: 6px; flex: 1 1 0; min-width: 0; }
+/* Centered, not flex-end: the knob column is label/body/value, and centering
+   puts its BODY (the middle element) on the same axis as the 30px buttons. */
+.seed-lane .seed-row { align-items: center; }
+/* The params block (BPM / bars / time sig) — FOUR equal columns, fields fill
+   their cells (the 4th stays spare). A grid, not the lane's knob-centered
+   flex row, so labels top-align and nothing is content-sized. */
+.seed-params { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+/* The Combobox rides inside its OWN flex cell (.seed-combo) rather than being
+   a flex item itself: the catalog's `.input { width: 100% }` is then exactly
+   right (100% of the cell), instead of poisoning the row's flex basis — which
+   is what collapsed the picker to zero width. */
+.seed-combo { flex: 1 1 0; min-width: 60px; display: flex; }
+.seed-combo .input { width: 100%; min-width: 0; }
+/* Family icon + instrument picker WELDED as one control — the catalog's
+   .barh-grp (header-bar weld: the group carries the frame, children lose
+   theirs). The combobox input sits one level deeper (inside its flex cell,
+   .seed-combo), so the weld's border-strip is extended to it here. */
+.seed-row .seed-picker-weld { flex: 1 1 0; min-width: 90px; }
+.seed-picker-weld .seed-combo { min-width: 0; }
+.seed-picker-weld .seed-combo .input { border: none; border-radius: 0; height: 100%; }
+/* The selected instrument's articulation buttons — a compact opt-btn row under
+   the picker (catalog .btn.small.opt-btn; only the row's LAYOUT differs from
+   the standard opt-btns: compact, right-aligned under the control, no
+   stretch-to-fill). */
+.seed-artics { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.seed-artics .opt-btn { flex: 0 0 auto; }
+
+/* The sound line: reverb + master filters + the Play button, one compact row —
+   the controls sit together on the left, never spread across the screen.
+   Centered so a Knob's BODY (its middle element) shares the axis of the other
+   30px controls; the labelled fields get a bottom pad equal to their label
+   band so their CONTROLS (not their boxes) land on that same axis. */
+.seed-mix-line { display: flex; gap: 14px; align-items: center; }
+.seed-mix-line > .seed-field { padding-bottom: 21px; }
+/* The keyboard — Chord Player's piano strip. A piano's white/black is intrinsic
+   (theme-invariant, like a fretboard's wood); the lit states are the lane
+   colours: treble = accent, bass = its own green so a mixed chord reads. */
+.kbd { position: relative; display: flex; height: 64px; margin-top: 10px;
+       border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.kbd-key { padding: 0; outline: none; border: none; cursor: pointer; }
+.kbd-key.white { flex: 1; background: #fbfbfb; border-left: 1px solid #d5d7dc; }
+.kbd-key.white:first-child { border-left: none; }
+.kbd-key.white:hover { background: #eceef2; }
+.kbd-key.black { position: absolute; top: 0; width: 1.6%; height: 60%;
+                 background: #23252b; border-radius: 0 0 3px 3px;
+                 transform: translateX(-50%); z-index: 1; }
+.kbd-key.black:hover { background: #3a3d46; }
+.kbd-key.white.on-treble, .kbd-key.black.on-treble { background: var(--accent); }
+.kbd-key.white.on-bass, .kbd-key.black.on-bass { background: #1e9e63; }
 /* Live projection of the seed about to be rendered */
 .seed-summary {
   display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px;

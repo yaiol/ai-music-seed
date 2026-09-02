@@ -1,0 +1,104 @@
+{
+  "name": "brass-oldtrombone-vibrato",
+  "label": "Old Trombone (Vibrato)",
+  "format": 1,
+  "layer": "v1",
+  "zones": [
+    {
+      "file": "34.ogg",
+      "root": 34,
+      "lokey": 0,
+      "hikey": 35,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "36.ogg",
+      "root": 36,
+      "lokey": 36,
+      "hikey": 37,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "38.ogg",
+      "root": 38,
+      "lokey": 38,
+      "hikey": 38,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "39.ogg",
+      "root": 39,
+      "lokey": 39,
+      "hikey": 40,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "41.ogg",
+      "root": 41,
+      "lokey": 41,
+      "hikey": 42,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "43.ogg",
+      "root": 43,
+      "lokey": 43,
+      "hikey": 44,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "45.ogg",
+      "root": 45,
+      "lokey": 45,
+      "hikey": 45,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "46.ogg",
+      "root": 46,
+      "lokey": 46,
+      "hikey": 47,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "48.ogg",
+      "root": 48,
+      "lokey": 48,
+      "hikey": 49,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "50.ogg",
+      "root": 50,
+      "lokey": 50,
+      "hikey": 50,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "51.ogg",
+      "root": 51,
+      "lokey": 51,
+      "hikey": 52,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "53.ogg",
+      "root": 53,
+      "lokey": 53,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

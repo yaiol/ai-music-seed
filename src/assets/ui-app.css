@@ -344,6 +344,41 @@
   width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
 }
 
+/* Knob — the ONE compact instrument-style value control (ui-ctl-knob.jsx):
+   label on top, round drag body (up = increase), editable value underneath.
+   Colour flows from the container's surface tokens; the tick's ROTATION is the
+   value and arrives as an inline transform from the component (state, not
+   geometry). */
+.knob { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 56px; flex-shrink: 0; }
+/* Deliberately NOT the standard field-label look: lowercase, plain text
+   colour, bold — a knob's caption reads like an instrument marking, not a
+   form label. */
+.knob-label {
+  font-size: 11px; font-weight: 700; color: var(--text);
+  text-transform: lowercase; white-space: nowrap;
+}
+.knob-body {
+  width: 30px; height: 30px; border-radius: 50%;   /* the CONTROL height — same as .btn/.btn.icon */
+  border: 1px solid var(--border); background-color: var(--s-inp, transparent);
+  cursor: ns-resize; position: relative; padding: 0; outline: none;
+  touch-action: none;                     /* the drag IS the gesture — never scroll */
+}
+.knob-body:hover { border-color: var(--text-dim); }
+.knob-body:focus-visible { border-color: var(--accent); }
+.knob-tick {
+  position: absolute; left: 50%; top: 3px;
+  width: 2px; height: 8px; margin-left: -1px; border-radius: 1px;
+  background: var(--accent);
+  transform-origin: 1px 12px;             /* the body's centre, so the tick orbits it */
+}
+.knob-value {
+  width: 100%; border: none; background: transparent; color: var(--text);
+  font-size: 11px; text-align: center; outline: none; padding: 0; font-family: inherit;
+}
+.knob-value:focus { color: var(--accent); }
+.knob.disabled { opacity: .45; }
+.knob.disabled .knob-body { cursor: default; }
+
 /* Hint — the ONE muted description text (under a label/control, a section note, a status line).
    Prose, so it inherits Inter (never JetBrains Mono). Used on ANY surface (dialog, bar, panel).
    Add `.mono` ONLY for code-like content (a filename, a token, a timecode) — never a sentence. */

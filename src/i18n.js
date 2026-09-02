@@ -47,18 +47,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Time signature",
     lblSeedLoops:                           "Loops",
     lblSeedStyle:                           "Style",
-    optSeedStylePad:                        "Pad: block chords",
-    optSeedStyleArp:                        "Arp: fingerpicked",
-    optSeedStyleDrone:                      "Drone: sustained bed",
-    optSeedStyleMarker:                     "Marker: chord stabs",
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpeggios",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "reverb",
+    lblSeedInstrument:                      "Treble",
+    lblSeedBassInstrument:                  "Bass",
+    optSeedBassInstrumentSame:              "Same as instrument",
+    plhSeedInstrumentFilter:                "Type to filter…",
+    optSeedInstrumentFamilyAll:             "All",
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "Volume",
+    lblSeedKnobOctave:                      "Octave",
+    lblSeedKnobTune:                        "Tune",
+    tipSeedMute:                            "Mute",
+    tipSeedUnmute:                          "Unmute",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Dry: no room",
+    optSeedReverbRoom:                      "Room: small and close",
+    optSeedReverbChamber:                   "Chamber: medium, warm",
+    optSeedReverbHall:                      "Hall: large and open",
+    optSeedReverbChurch:                    "Church: very large, long tail",
+    lblSeedReverbAmount:                    "Reverb amount",
+    lblSeedHighpass:                        "Highpass (Hz)",
+    lblSeedLowpass:                         "Lowpass (Hz)",
+    optSeedInstrumentSine:                  "Sine: built-in synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Name",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Base name of the rendered files. Tokens replaced at render: {name}, {chords} (the first 8 chords), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Base name of the rendered files. Tokens replaced at render: {name}, {chords} (the first 8 chords), {style}, {instrument}, {instrument-treble}, {instrument-bass}, {bpm}, {loops}, {reverb-type}, {reverb-amount}, {highpass}, {lowpass}.",
     btnSeedRender:                          "Render seed",
+    btnSeedPlay:                            "Play",
+    btnSeedStop:                            "Stop",
+    msgSeedPlayFailed:                      "Playback failed",
     hntSeedRenderNeedsSave:                 "Save the seed to a .yams file first — the audio is rendered next to it.",
     tipSeedLoad:                            "Load seed",
     ttlSeedLoad:                            "Open a seed file",
@@ -77,6 +114,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Render failed",
     lblSeedResult:                          "Saved",
     hntSeedResult:                          "Upload the audio seed to Suno (Cover). It follows the harmony it hears, not chord names you type.",
+    msgSeedBusyInstrument:                  "Loading instrument…",
     msgSeedBusyRender:                      "Rendering audio…",
     msgSeedBusySave:                        "Saving…",
     lblSeedSummaryChords:                   "Chords",
@@ -127,18 +165,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Signature rythmique",
     lblSeedLoops:                           "Boucles",
     lblSeedStyle:                           "Style",
-    optSeedStylePad:                        "Pad : accords plaqués",
-    optSeedStyleArp:                        "Arp: aux doigts",
-    optSeedStyleDrone:                      "Drone: fond continu",
-    optSeedStyleMarker:                     "Marqueur: accords secs",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to fr
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to fr
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to fr
+    optSeedStylePad:                        "Pad", // TODO: translate to fr
+    optSeedStyleDrone:                      "Drone", // TODO: translate to fr
+    optSeedStyleMarker:                     "Marker", // TODO: translate to fr
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to fr
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to fr
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to fr
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to fr
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to fr
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to fr
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to fr
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to fr
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to fr
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to fr
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to fr
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to fr
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to fr
+    tabSeedRender:                          "Render", // TODO: translate to fr
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to fr
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to fr
+    lblSeedKnobTune:                        "Tune", // TODO: translate to fr
+    tipSeedMute:                            "Mute", // TODO: translate to fr
+    tipSeedUnmute:                          "Unmute", // TODO: translate to fr
+    lblSeedReverb:                          "Reverb", // TODO: translate to fr
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to fr
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to fr
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to fr
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to fr
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to fr
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to fr
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to fr
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to fr
+    optSeedInstrumentSine:                  "Sinusoïde : synthé intégré",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Débit MP3",
     lblSeedName:                            "Nom",
     lblSeedOutput:                          "Sortie",
-    hntSeedOutput:                          "Nom de base des fichiers rendus. Jetons remplacés au rendu : {name}, {chords} (les 8 premiers accords), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nom de base des fichiers rendus. Jetons remplacés au rendu : {name}, {chords} (les 8 premiers accords), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Rendre la source",
+    btnSeedPlay:                            "Jouer",
+    btnSeedStop:                            "Arrêter",
+    msgSeedPlayFailed:                      "Échec de la lecture",
     hntSeedRenderNeedsSave:                 "Enregistrez la graine dans un fichier .yams d'abord — l'audio est rendu à côté.",
     tipSeedLoad:                            "Charger la graine",
     ttlSeedLoad:                            "Ouvrir un fichier de graine",
@@ -157,6 +232,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Échec du rendu",
     lblSeedResult:                          "Enregistré",
     hntSeedResult:                          "Téléchargez la graine audio sur Suno (Cover). Il suit l'harmonie qu'il entend, pas les noms d'accords que vous tapez.",
+    msgSeedBusyInstrument:                  "Chargement de l'instrument…",
     msgSeedBusyRender:                      "Rendu audio…",
     msgSeedBusySave:                        "Enregistrement…",
     lblSeedSummaryChords:                   "Accords",
@@ -206,18 +282,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktart",
     lblSeedLoops:                           "Schleifen",
     lblSeedStyle:                           "Stil",
-    optSeedStylePad:                        "Pad: Blockakkorde",
-    optSeedStyleArp:                        "Arp: gezupft",
-    optSeedStyleDrone:                      "Drone: anhaltender Klangteppich",
-    optSeedStyleMarker:                     "Marker: Akkord-Stöße",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to de
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to de
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to de
+    optSeedStylePad:                        "Pad", // TODO: translate to de
+    optSeedStyleDrone:                      "Drone", // TODO: translate to de
+    optSeedStyleMarker:                     "Marker", // TODO: translate to de
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to de
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to de
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to de
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to de
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to de
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to de
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to de
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to de
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to de
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to de
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to de
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to de
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to de
+    tabSeedRender:                          "Render", // TODO: translate to de
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to de
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to de
+    lblSeedKnobTune:                        "Tune", // TODO: translate to de
+    tipSeedMute:                            "Mute", // TODO: translate to de
+    tipSeedUnmute:                          "Unmute", // TODO: translate to de
+    lblSeedReverb:                          "Reverb", // TODO: translate to de
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to de
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to de
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to de
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to de
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to de
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to de
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to de
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to de
+    optSeedInstrumentSine:                  "Sinus: eingebauter Synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3-Bitrate",
     lblSeedName:                            "Name",
     lblSeedOutput:                          "Ausgabe",
-    hntSeedOutput:                          "Basisname der gerenderten Dateien. Token, die beim Rendern ersetzt werden: {name}, {chords} (die ersten 8 Akkorde), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Basisname der gerenderten Dateien. Token, die beim Rendern ersetzt werden: {name}, {chords} (die ersten 8 Akkorde), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Seed rendern",
+    btnSeedPlay:                            "Abspielen",
+    btnSeedStop:                            "Stoppen",
+    msgSeedPlayFailed:                      "Wiedergabe fehlgeschlagen",
     hntSeedRenderNeedsSave:                 "Speichern Sie den Seed zuerst in einer .yams-Datei — die Audioausgabe wird daneben gerendert.",
     tipSeedLoad:                            "Seed laden",
     ttlSeedLoad:                            "Seed-Datei öffnen",
@@ -236,6 +349,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Rendern fehlgeschlagen",
     lblSeedResult:                          "Gespeichert",
     hntSeedResult:                          "Laden Sie den Audio-Seed zu Suno (Cover) hoch. Es folgt der Harmonie, die es hört, nicht den Akkordnamen, die Sie eingeben.",
+    msgSeedBusyInstrument:                  "Instrument wird geladen…",
     msgSeedBusyRender:                      "Audio wird gerendert…",
     msgSeedBusySave:                        "Speichern…",
     lblSeedSummaryChords:                   "Akkorde",
@@ -285,18 +399,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Compás",
     lblSeedLoops:                           "Bucles",
     lblSeedStyle:                           "Estilo",
-    optSeedStylePad:                        "Pad: acordes en bloque",
-    optSeedStyleArp:                        "Arp: punteado con dedos",
-    optSeedStyleDrone:                      "Dron: base sostenida",
-    optSeedStyleMarker:                     "Marcador: golpes de acordes",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to es
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to es
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to es
+    optSeedStylePad:                        "Pad", // TODO: translate to es
+    optSeedStyleDrone:                      "Drone", // TODO: translate to es
+    optSeedStyleMarker:                     "Marker", // TODO: translate to es
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to es
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to es
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to es
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to es
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to es
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to es
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to es
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to es
+    lblSeedInstrument:                      "Instrumento",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to es
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to es
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to es
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to es
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to es
+    tabSeedRender:                          "Render", // TODO: translate to es
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to es
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to es
+    lblSeedKnobTune:                        "Tune", // TODO: translate to es
+    tipSeedMute:                            "Mute", // TODO: translate to es
+    tipSeedUnmute:                          "Unmute", // TODO: translate to es
+    lblSeedReverb:                          "Reverb", // TODO: translate to es
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to es
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to es
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to es
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to es
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to es
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to es
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to es
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to es
+    optSeedInstrumentSine:                  "Seno: sintetizador integrado",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nombre",
     lblSeedOutput:                          "Salida",
-    hntSeedOutput:                          "Nombre base de los archivos renderizados. Tokens reemplazados al renderizar: {name}, {chords} (los primeros 8 acordes), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nombre base de los archivos renderizados. Tokens reemplazados al renderizar: {name}, {chords} (los primeros 8 acordes), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderizar semilla",
+    btnSeedPlay:                            "Reproducir",
+    btnSeedStop:                            "Detener",
+    msgSeedPlayFailed:                      "Fallo de reproducción",
     hntSeedRenderNeedsSave:                 "Guarde la semilla en un archivo .yams primero — el audio se renderiza junto a él.",
     tipSeedLoad:                            "Cargar semilla",
     ttlSeedLoad:                            "Abrir un archivo de semilla",
@@ -315,6 +466,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Error al renderizar",
     lblSeedResult:                          "Guardado",
     hntSeedResult:                          "Sube la semilla de audio a Suno (Cover). Sigue la armonía que escucha, no los nombres de acordes que escribes.",
+    msgSeedBusyInstrument:                  "Cargando instrumento…",
     msgSeedBusyRender:                      "Renderizando audio…",
     msgSeedBusySave:                        "Guardando…",
     lblSeedSummaryChords:                   "Acordes",
@@ -364,18 +516,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Compasso",
     lblSeedLoops:                           "Loops",
     lblSeedStyle:                           "Estilo",
-    optSeedStylePad:                        "Pad: acordes em bloco",
-    optSeedStyleArp:                        "Arp: dedilhado",
-    optSeedStyleDrone:                      "Drone: base sustentada",
-    optSeedStyleMarker:                     "Marcador: acordes marcados",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to pt_BR
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to pt_BR
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to pt_BR
+    optSeedStylePad:                        "Pad", // TODO: translate to pt_BR
+    optSeedStyleDrone:                      "Drone", // TODO: translate to pt_BR
+    optSeedStyleMarker:                     "Marker", // TODO: translate to pt_BR
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to pt_BR
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to pt_BR
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to pt_BR
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to pt_BR
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to pt_BR
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to pt_BR
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to pt_BR
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to pt_BR
+    lblSeedInstrument:                      "Instrumento",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to pt_BR
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to pt_BR
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to pt_BR
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to pt_BR
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to pt_BR
+    tabSeedRender:                          "Render", // TODO: translate to pt_BR
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to pt_BR
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to pt_BR
+    lblSeedKnobTune:                        "Tune", // TODO: translate to pt_BR
+    tipSeedMute:                            "Mute", // TODO: translate to pt_BR
+    tipSeedUnmute:                          "Unmute", // TODO: translate to pt_BR
+    lblSeedReverb:                          "Reverb", // TODO: translate to pt_BR
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to pt_BR
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to pt_BR
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to pt_BR
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to pt_BR
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to pt_BR
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to pt_BR
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to pt_BR
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to pt_BR
+    optSeedInstrumentSine:                  "Seno: sintetizador integrado",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nome",
     lblSeedOutput:                          "Saída",
-    hntSeedOutput:                          "Nome base dos arquivos renderizados. Tokens substituídos na renderização: {name}, {chords} (os 8 primeiros acordes), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nome base dos arquivos renderizados. Tokens substituídos na renderização: {name}, {chords} (os 8 primeiros acordes), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderizar semente",
+    btnSeedPlay:                            "Reproduzir",
+    btnSeedStop:                            "Parar",
+    msgSeedPlayFailed:                      "Falha na reprodução",
     hntSeedRenderNeedsSave:                 "Salve a semente em um arquivo .yams primeiro — o áudio é renderizado ao lado dele.",
     tipSeedLoad:                            "Carregar semente",
     ttlSeedLoad:                            "Abrir um arquivo de semente",
@@ -394,6 +583,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Falha ao renderizar",
     lblSeedResult:                          "Salvo",
     hntSeedResult:                          "Envie a semente de áudio para o Suno (Cover). Ele segue a harmonia que ouve, não os nomes de acordes que você digita.",
+    msgSeedBusyInstrument:                  "Carregando instrumento…",
     msgSeedBusyRender:                      "Renderizando áudio…",
     msgSeedBusySave:                        "Salvando…",
     lblSeedSummaryChords:                   "Acordes",
@@ -443,18 +633,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Compasso",
     lblSeedLoops:                           "Laços",
     lblSeedStyle:                           "Estilo",
-    optSeedStylePad:                        "Pad: acordes em bloco",
-    optSeedStyleArp:                        "Arp: dedilhado",
-    optSeedStyleDrone:                      "Drone: base sustentada",
-    optSeedStyleMarker:                     "Marcador: acordes marcados",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to pt_PT
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to pt_PT
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to pt_PT
+    optSeedStylePad:                        "Pad", // TODO: translate to pt_PT
+    optSeedStyleDrone:                      "Drone", // TODO: translate to pt_PT
+    optSeedStyleMarker:                     "Marker", // TODO: translate to pt_PT
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to pt_PT
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to pt_PT
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to pt_PT
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to pt_PT
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to pt_PT
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to pt_PT
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to pt_PT
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to pt_PT
+    lblSeedInstrument:                      "Instrumento",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to pt_PT
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to pt_PT
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to pt_PT
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to pt_PT
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to pt_PT
+    tabSeedRender:                          "Render", // TODO: translate to pt_PT
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to pt_PT
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to pt_PT
+    lblSeedKnobTune:                        "Tune", // TODO: translate to pt_PT
+    tipSeedMute:                            "Mute", // TODO: translate to pt_PT
+    tipSeedUnmute:                          "Unmute", // TODO: translate to pt_PT
+    lblSeedReverb:                          "Reverb", // TODO: translate to pt_PT
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to pt_PT
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to pt_PT
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to pt_PT
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to pt_PT
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to pt_PT
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to pt_PT
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to pt_PT
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to pt_PT
+    optSeedInstrumentSine:                  "Seno: sintetizador integrado",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nome",
     lblSeedOutput:                          "Saída",
-    hntSeedOutput:                          "Nome base dos ficheiros renderizados. Tokens substituídos na renderização: {name}, {chords} (os 8 primeiros acordes), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nome base dos ficheiros renderizados. Tokens substituídos na renderização: {name}, {chords} (os 8 primeiros acordes), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderizar semente",
+    btnSeedPlay:                            "Reproduzir",
+    btnSeedStop:                            "Parar",
+    msgSeedPlayFailed:                      "Falha na reprodução",
     hntSeedRenderNeedsSave:                 "Guarde a semente num ficheiro .yams primeiro — o áudio é renderizado ao lado.",
     tipSeedLoad:                            "Carregar semente",
     ttlSeedLoad:                            "Abrir um ficheiro de semente",
@@ -473,6 +700,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Falha na renderização",
     lblSeedResult:                          "Guardado",
     hntSeedResult:                          "Carregue a semente de áudio para o Suno (Cover). Segue a harmonia que ouve, não os nomes de acordes que digita.",
+    msgSeedBusyInstrument:                  "A carregar instrumento…",
     msgSeedBusyRender:                      "A renderizar áudio…",
     msgSeedBusySave:                        "A guardar…",
     lblSeedSummaryChords:                   "Acordes",
@@ -522,18 +750,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Indicazione di tempo",
     lblSeedLoops:                           "Loop",
     lblSeedStyle:                           "Stile",
-    optSeedStylePad:                        "Pad: accordi a blocco",
-    optSeedStyleArp:                        "Arp: pizzicato",
-    optSeedStyleDrone:                      "Drone: base sostenuta",
-    optSeedStyleMarker:                     "Marcatore: accordi secchi",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to it
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to it
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to it
+    optSeedStylePad:                        "Pad", // TODO: translate to it
+    optSeedStyleDrone:                      "Drone", // TODO: translate to it
+    optSeedStyleMarker:                     "Marker", // TODO: translate to it
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to it
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to it
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to it
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to it
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to it
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to it
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to it
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to it
+    lblSeedInstrument:                      "Strumento",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to it
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to it
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to it
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to it
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to it
+    tabSeedRender:                          "Render", // TODO: translate to it
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to it
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to it
+    lblSeedKnobTune:                        "Tune", // TODO: translate to it
+    tipSeedMute:                            "Mute", // TODO: translate to it
+    tipSeedUnmute:                          "Unmute", // TODO: translate to it
+    lblSeedReverb:                          "Reverb", // TODO: translate to it
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to it
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to it
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to it
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to it
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to it
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to it
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to it
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to it
+    optSeedInstrumentSine:                  "Onda sinusoidale: synth integrato",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nome",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Nome base dei file renderizzati. Token sostituiti al rendering: {name}, {chords} (i primi 8 accordi), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nome base dei file renderizzati. Token sostituiti al rendering: {name}, {chords} (i primi 8 accordi), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderizza seed",
+    btnSeedPlay:                            "Riproduci",
+    btnSeedStop:                            "Ferma",
+    msgSeedPlayFailed:                      "Riproduzione fallita",
     hntSeedRenderNeedsSave:                 "Salva il seed in un file .yams prima — l'audio viene renderizzato accanto ad esso.",
     tipSeedLoad:                            "Carica seed",
     ttlSeedLoad:                            "Apri file seed",
@@ -552,6 +817,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Rendering fallito",
     lblSeedResult:                          "Salvato",
     hntSeedResult:                          "Carica il seed audio su Suno (Cover). Segue l'armonia che sente, non i nomi degli accordi che digiti.",
+    msgSeedBusyInstrument:                  "Caricamento strumento…",
     msgSeedBusyRender:                      "Rendering audio…",
     msgSeedBusySave:                        "Salvataggio…",
     lblSeedSummaryChords:                   "Accordi",
@@ -601,18 +867,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Maatsoort",
     lblSeedLoops:                           "Herhalingen",
     lblSeedStyle:                           "Stijl",
-    optSeedStylePad:                        "Pad: blokakkoorden",
-    optSeedStyleArp:                        "Arp: getokkeld",
-    optSeedStyleDrone:                      "Drone: aanhoudende basis",
-    optSeedStyleMarker:                     "Marker: akkoordstoten",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to nl
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to nl
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to nl
+    optSeedStylePad:                        "Pad", // TODO: translate to nl
+    optSeedStyleDrone:                      "Drone", // TODO: translate to nl
+    optSeedStyleMarker:                     "Marker", // TODO: translate to nl
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to nl
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to nl
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to nl
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to nl
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to nl
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to nl
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to nl
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to nl
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to nl
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to nl
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to nl
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to nl
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to nl
+    tabSeedRender:                          "Render", // TODO: translate to nl
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to nl
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to nl
+    lblSeedKnobTune:                        "Tune", // TODO: translate to nl
+    tipSeedMute:                            "Mute", // TODO: translate to nl
+    tipSeedUnmute:                          "Unmute", // TODO: translate to nl
+    lblSeedReverb:                          "Reverb", // TODO: translate to nl
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to nl
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to nl
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to nl
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to nl
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to nl
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to nl
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to nl
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to nl
+    optSeedInstrumentSine:                  "Sinus: ingebouwde synth",
     lblSeedFormat:                          "Formaat",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3-bitrate",
     lblSeedName:                            "Naam",
     lblSeedOutput:                          "Uitvoer",
-    hntSeedOutput:                          "Basisnaam van de gerenderde bestanden. Tokens vervangen bij renderen: {name}, {chords} (de eerste 8 akkoorden), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Basisnaam van de gerenderde bestanden. Tokens vervangen bij renderen: {name}, {chords} (de eerste 8 akkoorden), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Seed renderen",
+    btnSeedPlay:                            "Afspelen",
+    btnSeedStop:                            "Stoppen",
+    msgSeedPlayFailed:                      "Afspelen mislukt",
     hntSeedRenderNeedsSave:                 "Sla de seed eerst op in een .yams-bestand — de audio wordt ernaast gerenderd.",
     tipSeedLoad:                            "Seed laden",
     ttlSeedLoad:                            "Seed-bestand openen",
@@ -631,6 +934,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Renderafbeelding mislukt",
     lblSeedResult:                          "Opgeslagen",
     hntSeedResult:                          "Upload de audio-seed naar Suno (Cover). Het volgt de harmonie die het hoort, niet de akkoordnamen die je typt.",
+    msgSeedBusyInstrument:                  "Instrument laden…",
     msgSeedBusyRender:                      "Audio renderen…",
     msgSeedBusySave:                        "Opslaan…",
     lblSeedSummaryChords:                   "Akkoorden",
@@ -680,18 +984,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Размер",
     lblSeedLoops:                           "Петли",
     lblSeedStyle:                           "Стиль",
-    optSeedStylePad:                        "Пэд: блочные аккорды",
-    optSeedStyleArp:                        "Арп: перебор",
-    optSeedStyleDrone:                      "Дрон: непрерывный фон",
-    optSeedStyleMarker:                     "Маркер: аккордовые удары",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ru
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ru
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ru
+    optSeedStylePad:                        "Pad", // TODO: translate to ru
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ru
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ru
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ru
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ru
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ru
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ru
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ru
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ru
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ru
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ru
+    lblSeedInstrument:                      "Инструмент",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ru
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ru
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ru
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ru
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ru
+    tabSeedRender:                          "Render", // TODO: translate to ru
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ru
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ru
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ru
+    tipSeedMute:                            "Mute", // TODO: translate to ru
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ru
+    lblSeedReverb:                          "Reverb", // TODO: translate to ru
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ru
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ru
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ru
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ru
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ru
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ru
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ru
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ru
+    optSeedInstrumentSine:                  "Синус: встроенный синтезатор",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Битрейт MP3",
     lblSeedName:                            "Имя",
     lblSeedOutput:                          "Вывод",
-    hntSeedOutput:                          "Базовое имя для рендеренных файлов. Токены, заменяемые при рендеринге: {name}, {chords} (первые 8 аккордов), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Базовое имя рендеренных файлов. Токены, заменяемые при рендеринге: {name}, {chords} (первые 8 аккордов), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Рендерить сид",
+    btnSeedPlay:                            "Воспроизвести",
+    btnSeedStop:                            "Стоп",
+    msgSeedPlayFailed:                      "Сбой воспроизведения",
     hntSeedRenderNeedsSave:                 "Сначала сохраните сид в файл .yams — аудио будет отрендерено рядом с ним.",
     tipSeedLoad:                            "Загрузить сид",
     ttlSeedLoad:                            "Открыть файл сида",
@@ -710,6 +1051,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Ошибка рендеринга",
     lblSeedResult:                          "Сохранено",
     hntSeedResult:                          "Загрузите аудио-исходник в Suno (Cover). Он следует гармонии, которую слышит, а не названиям аккордов, которые вы вводите.",
+    msgSeedBusyInstrument:                  "Загрузка инструмента…",
     msgSeedBusyRender:                      "Рендеринг аудио…",
     msgSeedBusySave:                        "Сохранение…",
     lblSeedSummaryChords:                   "Аккорды",
@@ -759,18 +1101,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Розмір",
     lblSeedLoops:                           "Петлі",
     lblSeedStyle:                           "Стиль",
-    optSeedStylePad:                        "Пед: блокові акорди",
-    optSeedStyleArp:                        "Арп: перебір",
-    optSeedStyleDrone:                      "Дрон: тривалий фон",
-    optSeedStyleMarker:                     "Маркер: акордові удари",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to uk
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to uk
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to uk
+    optSeedStylePad:                        "Pad", // TODO: translate to uk
+    optSeedStyleDrone:                      "Drone", // TODO: translate to uk
+    optSeedStyleMarker:                     "Marker", // TODO: translate to uk
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to uk
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to uk
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to uk
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to uk
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to uk
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to uk
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to uk
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to uk
+    lblSeedInstrument:                      "Інструмент",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to uk
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to uk
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to uk
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to uk
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to uk
+    tabSeedRender:                          "Render", // TODO: translate to uk
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to uk
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to uk
+    lblSeedKnobTune:                        "Tune", // TODO: translate to uk
+    tipSeedMute:                            "Mute", // TODO: translate to uk
+    tipSeedUnmute:                          "Unmute", // TODO: translate to uk
+    lblSeedReverb:                          "Reverb", // TODO: translate to uk
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to uk
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to uk
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to uk
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to uk
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to uk
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to uk
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to uk
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to uk
+    optSeedInstrumentSine:                  "Синус: вбудований синтезатор",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Бітрейт MP3",
     lblSeedName:                            "Назва",
     lblSeedOutput:                          "Вивід",
-    hntSeedOutput:                          "Базова назва для відрендерених файлів. Токени, що замінюються під час рендерингу: {name}, {chords} (перші 8 акордів), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Базова назва відрендерених файлів. Токени, що замінюються при рендерингу: {name}, {chords} (перші 8 акордів), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Рендерити сід",
+    btnSeedPlay:                            "Відтворити",
+    btnSeedStop:                            "Зупинити",
+    msgSeedPlayFailed:                      "Помилка відтворення",
     hntSeedRenderNeedsSave:                 "Спершу збережіть сід у файл .yams — аудіо буде відрендерено поруч із ним.",
     tipSeedLoad:                            "Завантажити сід",
     ttlSeedLoad:                            "Відкрити файл сіда",
@@ -789,6 +1168,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Помилка рендерингу",
     lblSeedResult:                          "Збережено",
     hntSeedResult:                          "Завантажте аудіо-затравку в Suno (Cover). Він слідує гармонії, яку чує, а не назвам акордів, які ви вводите.",
+    msgSeedBusyInstrument:                  "Завантаження інструменту…",
     msgSeedBusyRender:                      "Рендеринг аудіо…",
     msgSeedBusySave:                        "Збереження…",
     lblSeedSummaryChords:                   "Акорди",
@@ -838,18 +1218,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Metrum",
     lblSeedLoops:                           "Pętle",
     lblSeedStyle:                           "Styl",
-    optSeedStylePad:                        "Pad: akordy blokowe",
-    optSeedStyleArp:                        "Arp: palcowanie",
-    optSeedStyleDrone:                      "Dron: ciągłe tło",
-    optSeedStyleMarker:                     "Marker: uderzenia akordów",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to pl
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to pl
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to pl
+    optSeedStylePad:                        "Pad", // TODO: translate to pl
+    optSeedStyleDrone:                      "Drone", // TODO: translate to pl
+    optSeedStyleMarker:                     "Marker", // TODO: translate to pl
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to pl
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to pl
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to pl
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to pl
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to pl
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to pl
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to pl
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to pl
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to pl
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to pl
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to pl
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to pl
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to pl
+    tabSeedRender:                          "Render", // TODO: translate to pl
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to pl
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to pl
+    lblSeedKnobTune:                        "Tune", // TODO: translate to pl
+    tipSeedMute:                            "Mute", // TODO: translate to pl
+    tipSeedUnmute:                          "Unmute", // TODO: translate to pl
+    lblSeedReverb:                          "Reverb", // TODO: translate to pl
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to pl
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to pl
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to pl
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to pl
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to pl
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to pl
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to pl
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to pl
+    optSeedInstrumentSine:                  "Sinus: wbudowany syntezator",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nazwa",
     lblSeedOutput:                          "Wyjście",
-    hntSeedOutput:                          "Nazwa bazowa renderowanych plików. Tokeny zastępowane podczas renderowania: {name}, {chords} (pierwsze 8 akordów), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nazwa bazowa renderowanych plików. Tokeny zastępowane podczas renderowania: {name}, {chords} (pierwsze 8 akordów), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderuj seed",
+    btnSeedPlay:                            "Odtwórz",
+    btnSeedStop:                            "Zatrzymaj",
+    msgSeedPlayFailed:                      "Odtwarzanie nie powiodło się",
     hntSeedRenderNeedsSave:                 "Najpierw zapisz seed do pliku .yams — dźwięk zostanie wyrenderowany obok niego.",
     tipSeedLoad:                            "Wczytaj seed",
     ttlSeedLoad:                            "Otwórz plik seed",
@@ -868,6 +1285,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Renderowanie nie powiodło się",
     lblSeedResult:                          "Zapisano",
     hntSeedResult:                          "Prześlij ziarno audio do Suno (Cover). Podąża za harmonią, którą słyszy, a nie nazwami akordów, które wpisujesz.",
+    msgSeedBusyInstrument:                  "Ładowanie instrumentu…",
     msgSeedBusyRender:                      "Renderowanie audio…",
     msgSeedBusySave:                        "Zapisywanie…",
     lblSeedSummaryChords:                   "Akordy",
@@ -917,18 +1335,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Măsură",
     lblSeedLoops:                           "Bucle",
     lblSeedStyle:                           "Stil",
-    optSeedStylePad:                        "Pad: acorduri în bloc",
-    optSeedStyleArp:                        "Arp: ciupit cu degetele",
-    optSeedStyleDrone:                      "Dronă: fundal susținut",
-    optSeedStyleMarker:                     "Marcator: acorduri percutante",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ro
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ro
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ro
+    optSeedStylePad:                        "Pad", // TODO: translate to ro
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ro
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ro
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ro
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ro
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ro
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ro
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ro
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ro
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ro
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ro
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ro
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ro
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ro
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ro
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ro
+    tabSeedRender:                          "Render", // TODO: translate to ro
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ro
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ro
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ro
+    tipSeedMute:                            "Mute", // TODO: translate to ro
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ro
+    lblSeedReverb:                          "Reverb", // TODO: translate to ro
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ro
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ro
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ro
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ro
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ro
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ro
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ro
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ro
+    optSeedInstrumentSine:                  "Sinus: sintetizator încorporat",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nume",
     lblSeedOutput:                          "Ieșire",
-    hntSeedOutput:                          "Numele de bază al fișierelor redate. Tokenuri înlocuite la redare: {name}, {chords} (primele 8 acorduri), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Numele de bază al fișierelor redate. Tokenuri înlocuite la redare: {name}, {chords} (primele 8 acorduri), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Randează seed-ul",
+    btnSeedPlay:                            "Redare",
+    btnSeedStop:                            "Oprește",
+    msgSeedPlayFailed:                      "Redare eșuată",
     hntSeedRenderNeedsSave:                 "Salvați seed-ul într-un fișier .yams mai întâi — sunetul este redat lângă el.",
     tipSeedLoad:                            "Încarcă seed",
     ttlSeedLoad:                            "Deschide fișier seed",
@@ -947,6 +1402,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Randare eșuată",
     lblSeedResult:                          "Salvat",
     hntSeedResult:                          "Încarcă seed-ul audio pe Suno (Cover). Urmează armonia pe care o aude, nu numele acordurilor pe care le tastezi.",
+    msgSeedBusyInstrument:                  "Se încarcă instrumentul…",
     msgSeedBusyRender:                      "Randare audio…",
     msgSeedBusySave:                        "Se salvează…",
     lblSeedSummaryChords:                   "Acorduri",
@@ -996,18 +1452,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktart",
     lblSeedLoops:                           "Loopar",
     lblSeedStyle:                           "Stil",
-    optSeedStylePad:                        "Pad: blockackord",
-    optSeedStyleArp:                        "Arp: fingerplockat",
-    optSeedStyleDrone:                      "Drönare: ihållande botten",
-    optSeedStyleMarker:                     "Markör: ackordstötar",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sv
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sv
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sv
+    optSeedStylePad:                        "Pad", // TODO: translate to sv
+    optSeedStyleDrone:                      "Drone", // TODO: translate to sv
+    optSeedStyleMarker:                     "Marker", // TODO: translate to sv
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sv
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sv
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sv
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sv
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sv
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sv
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sv
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to sv
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to sv
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sv
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sv
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sv
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to sv
+    tabSeedRender:                          "Render", // TODO: translate to sv
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to sv
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to sv
+    lblSeedKnobTune:                        "Tune", // TODO: translate to sv
+    tipSeedMute:                            "Mute", // TODO: translate to sv
+    tipSeedUnmute:                          "Unmute", // TODO: translate to sv
+    lblSeedReverb:                          "Reverb", // TODO: translate to sv
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sv
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sv
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sv
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sv
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sv
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sv
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sv
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sv
+    optSeedInstrumentSine:                  "Sinus: inbyggd synt",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3-bitrate",
     lblSeedName:                            "Namn",
     lblSeedOutput:                          "Utdata",
-    hntSeedOutput:                          "Basnamn för de renderade filerna. Token ersätts vid rendering: {name}, {chords} (de första 8 ackorden), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Basnamn för de renderade filerna. Token som ersätts vid rendering: {name}, {chords} (de första 8 ackorden), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Rendera seed",
+    btnSeedPlay:                            "Spela upp",
+    btnSeedStop:                            "Stoppa",
+    msgSeedPlayFailed:                      "Uppspelning misslyckades",
     hntSeedRenderNeedsSave:                 "Spara seedet till en .yams-fil först — ljudet renderas bredvid den.",
     tipSeedLoad:                            "Ladda seed",
     ttlSeedLoad:                            "Öppna seed-fil",
@@ -1026,6 +1519,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Renderingsfel",
     lblSeedResult:                          "Sparat",
     hntSeedResult:                          "Ladda upp ljudfröet till Suno (Cover). Den följer harmonin den hör, inte ackordnamnen du skriver.",
+    msgSeedBusyInstrument:                  "Laddar instrument…",
     msgSeedBusyRender:                      "Renderar ljud…",
     msgSeedBusySave:                        "Sparar…",
     lblSeedSummaryChords:                   "Ackord",
@@ -1075,18 +1569,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktart",
     lblSeedLoops:                           "Looper",
     lblSeedStyle:                           "Stil",
-    optSeedStylePad:                        "Pad: blokkakkorder",
-    optSeedStyleArp:                        "Arp: fingerplukket",
-    optSeedStyleDrone:                      "Drone: vedvarende bunn",
-    optSeedStyleMarker:                     "Markør: akkordstøt",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to nb
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to nb
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to nb
+    optSeedStylePad:                        "Pad", // TODO: translate to nb
+    optSeedStyleDrone:                      "Drone", // TODO: translate to nb
+    optSeedStyleMarker:                     "Marker", // TODO: translate to nb
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to nb
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to nb
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to nb
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to nb
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to nb
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to nb
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to nb
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to nb
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to nb
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to nb
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to nb
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to nb
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to nb
+    tabSeedRender:                          "Render", // TODO: translate to nb
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to nb
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to nb
+    lblSeedKnobTune:                        "Tune", // TODO: translate to nb
+    tipSeedMute:                            "Mute", // TODO: translate to nb
+    tipSeedUnmute:                          "Unmute", // TODO: translate to nb
+    lblSeedReverb:                          "Reverb", // TODO: translate to nb
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to nb
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to nb
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to nb
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to nb
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to nb
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to nb
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to nb
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to nb
+    optSeedInstrumentSine:                  "Sinus: innebygd synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3-bitrate",
     lblSeedName:                            "Navn",
     lblSeedOutput:                          "Utdata",
-    hntSeedOutput:                          "Basisnavn for de renderte filene. Tokens erstattes ved rendering: {name}, {chords} (de første 8 akkordene), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Grunnnavn for de renderte filene. Tokens som erstattes ved rendering: {name}, {chords} (de første 8 akkordene), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Rendrer seed",
+    btnSeedPlay:                            "Spill av",
+    btnSeedStop:                            "Stopp",
+    msgSeedPlayFailed:                      "Avspilling mislyktes",
     hntSeedRenderNeedsSave:                 "Lagre seedet til en .yams-fil først — lyden gjengis ved siden av den.",
     tipSeedLoad:                            "Last inn seed",
     ttlSeedLoad:                            "Åpne seed-fil",
@@ -1105,6 +1636,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Gjengivelse mislyktes",
     lblSeedResult:                          "Lagret",
     hntSeedResult:                          "Last opp lydfrøet til Suno (Cover). Den følger harmonien den hører, ikke akkordnavnene du skriver.",
+    msgSeedBusyInstrument:                  "Laster instrument…",
     msgSeedBusyRender:                      "Rendrer lyd…",
     msgSeedBusySave:                        "Lagrer…",
     lblSeedSummaryChords:                   "Akkorder",
@@ -1154,18 +1686,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Zaman işareti",
     lblSeedLoops:                           "Döngüler",
     lblSeedStyle:                           "Stil",
-    optSeedStylePad:                        "Pad: blok akorlar",
-    optSeedStyleArp:                        "Arp: parmakla çalınan",
-    optSeedStyleDrone:                      "Drone: sürekli zemin",
-    optSeedStyleMarker:                     "İşaretçi: akor vuruşları",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to tr
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to tr
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to tr
+    optSeedStylePad:                        "Pad", // TODO: translate to tr
+    optSeedStyleDrone:                      "Drone", // TODO: translate to tr
+    optSeedStyleMarker:                     "Marker", // TODO: translate to tr
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to tr
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to tr
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to tr
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to tr
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to tr
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to tr
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to tr
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to tr
+    lblSeedInstrument:                      "Enstrüman",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to tr
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to tr
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to tr
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to tr
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to tr
+    tabSeedRender:                          "Render", // TODO: translate to tr
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to tr
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to tr
+    lblSeedKnobTune:                        "Tune", // TODO: translate to tr
+    tipSeedMute:                            "Mute", // TODO: translate to tr
+    tipSeedUnmute:                          "Unmute", // TODO: translate to tr
+    lblSeedReverb:                          "Reverb", // TODO: translate to tr
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to tr
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to tr
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to tr
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to tr
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to tr
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to tr
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to tr
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to tr
+    optSeedInstrumentSine:                  "Sinüs: dahili sentezleyici",
     lblSeedFormat:                          "Biçim",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bit hızı",
     lblSeedName:                            "Ad",
     lblSeedOutput:                          "Çıktı",
-    hntSeedOutput:                          "Oluşturulan dosyaların temel adı. Oluşturma sırasında değiştirilen belirteçler: {name}, {chords} (ilk 8 akor), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Oluşturulan dosyaların temel adı. Oluşturma sırasında değiştirilen belirteçler: {name}, {chords} (ilk 8 akor), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Seed'i oluştur",
+    btnSeedPlay:                            "Oynat",
+    btnSeedStop:                            "Durdur",
+    msgSeedPlayFailed:                      "Oynatma başarısız",
     hntSeedRenderNeedsSave:                 "Çekirdeği önce bir .yams dosyasına kaydedin — ses onun yanında oluşturulur.",
     tipSeedLoad:                            "Seed yükle",
     ttlSeedLoad:                            "Seed dosyasını aç",
@@ -1184,6 +1753,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Oluşturma başarısız",
     lblSeedResult:                          "Kaydedildi",
     hntSeedResult:                          "Ses tohumunu Suno'ya (Cover) yükleyin. Yazdığınız akor adlarına değil, duyduğu harmoniye uyar.",
+    msgSeedBusyInstrument:                  "Enstrüman yükleniyor…",
     msgSeedBusyRender:                      "Ses işleniyor…",
     msgSeedBusySave:                        "Kaydediliyor…",
     lblSeedSummaryChords:                   "Akorlar",
@@ -1233,18 +1803,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktna oznaka",
     lblSeedLoops:                           "Petlje",
     lblSeedStyle:                           "Stil",
-    optSeedStylePad:                        "Pad: blok akordi",
-    optSeedStyleArp:                        "Arp: prstima svirano",
-    optSeedStyleDrone:                      "Dron: kontinuirana podloga",
-    optSeedStyleMarker:                     "Marker: akordni ubodi",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to hr
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to hr
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to hr
+    optSeedStylePad:                        "Pad", // TODO: translate to hr
+    optSeedStyleDrone:                      "Drone", // TODO: translate to hr
+    optSeedStyleMarker:                     "Marker", // TODO: translate to hr
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to hr
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to hr
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to hr
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to hr
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to hr
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to hr
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to hr
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to hr
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to hr
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to hr
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to hr
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to hr
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to hr
+    tabSeedRender:                          "Render", // TODO: translate to hr
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to hr
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to hr
+    lblSeedKnobTune:                        "Tune", // TODO: translate to hr
+    tipSeedMute:                            "Mute", // TODO: translate to hr
+    tipSeedUnmute:                          "Unmute", // TODO: translate to hr
+    lblSeedReverb:                          "Reverb", // TODO: translate to hr
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to hr
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to hr
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to hr
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to hr
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to hr
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to hr
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to hr
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to hr
+    optSeedInstrumentSine:                  "Sinus: ugrađeni sintisajzer",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Naziv",
     lblSeedOutput:                          "Izlaz",
-    hntSeedOutput:                          "Osnovni naziv renderiranih datoteka. Tokeni zamijenjeni pri renderiranju: {name}, {chords} (prvih 8 akorda), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Osnovni naziv renderiranih datoteka. Tokeni zamijenjeni pri renderiranju: {name}, {chords} (prvih 8 akorda), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderiraj sjeme",
+    btnSeedPlay:                            "Reproduciraj",
+    btnSeedStop:                            "Zaustavi",
+    msgSeedPlayFailed:                      "Reprodukcija neuspješna",
     hntSeedRenderNeedsSave:                 "Prvo spremite seed u .yams datoteku — zvuk se renderira pored nje.",
     tipSeedLoad:                            "Učitaj seed",
     ttlSeedLoad:                            "Otvori seed datoteku",
@@ -1263,6 +1870,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Renderiranje neuspješno",
     lblSeedResult:                          "Spremljeno",
     hntSeedResult:                          "Učitajte audio sjeme u Suno (Cover). Slijedi harmoniju koju čuje, a ne nazive akorda koje upisujete.",
+    msgSeedBusyInstrument:                  "Učitavanje instrumenta…",
     msgSeedBusyRender:                      "Renderiranje zvuka…",
     msgSeedBusySave:                        "Spremanje…",
     lblSeedSummaryChords:                   "Akordi",
@@ -1312,18 +1920,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Μέτρο",
     lblSeedLoops:                           "Βρόχοι",
     lblSeedStyle:                           "Στυλ",
-    optSeedStylePad:                        "Pad: συγχορδίες μπλοκ",
-    optSeedStyleArp:                        "Αρπ: με δάχτυλα",
-    optSeedStyleDrone:                      "Ντρόουν: συνεχής βάση",
-    optSeedStyleMarker:                     "Σημείο: κοφτά ακόρντα",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to el
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to el
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to el
+    optSeedStylePad:                        "Pad", // TODO: translate to el
+    optSeedStyleDrone:                      "Drone", // TODO: translate to el
+    optSeedStyleMarker:                     "Marker", // TODO: translate to el
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to el
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to el
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to el
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to el
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to el
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to el
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to el
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to el
+    lblSeedInstrument:                      "Όργανο",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to el
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to el
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to el
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to el
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to el
+    tabSeedRender:                          "Render", // TODO: translate to el
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to el
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to el
+    lblSeedKnobTune:                        "Tune", // TODO: translate to el
+    tipSeedMute:                            "Mute", // TODO: translate to el
+    tipSeedUnmute:                          "Unmute", // TODO: translate to el
+    lblSeedReverb:                          "Reverb", // TODO: translate to el
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to el
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to el
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to el
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to el
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to el
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to el
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to el
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to el
+    optSeedInstrumentSine:                  "Ημίτονο: ενσωματωμένος συνθεσάιζερ",
     lblSeedFormat:                          "Μορφή",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Όνομα",
     lblSeedOutput:                          "Έξοδος",
-    hntSeedOutput:                          "Βασικό όνομα των αποδοθέντων αρχείων. Διακριτικά που αντικαθίστανται κατά την απόδοση: {name}, {chords} (οι πρώτες 8 συγχορδίες), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Βασικό όνομα των αποδοθέντων αρχείων. Διακριτικά που αντικαθίστανται κατά την απόδοση: {name}, {chords} (τα πρώτα 8 ακόρντα), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Απόδοση seed",
+    btnSeedPlay:                            "Αναπαραγωγή",
+    btnSeedStop:                            "Διακοπή",
+    msgSeedPlayFailed:                      "Αποτυχία αναπαραγωγής",
     hntSeedRenderNeedsSave:                 "Αποθηκεύστε το seed σε ένα αρχείο .yams πρώτα — ο ήχος αποδίδεται δίπλα του.",
     tipSeedLoad:                            "Φόρτωση seed",
     ttlSeedLoad:                            "Άνοιγμα αρχείου seed",
@@ -1342,6 +1987,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Αποτυχία απόδοσης",
     lblSeedResult:                          "Αποθηκεύτηκε",
     hntSeedResult:                          "Ανεβάστε το ηχητικό seed στο Suno (Cover). Ακολουθεί την αρμονία που ακούει, όχι τα ονόματα συγχορδιών που πληκτρολογείτε.",
+    msgSeedBusyInstrument:                  "Φόρτωση οργάνου…",
     msgSeedBusyRender:                      "Απόδοση ήχου…",
     msgSeedBusySave:                        "Αποθήκευση…",
     lblSeedSummaryChords:                   "Συγχορδίες",
@@ -1391,18 +2037,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "חתימת זמן",
     lblSeedLoops:                           "לולאות",
     lblSeedStyle:                           "סגנון",
-    optSeedStylePad:                        "פד: אקורדי בלוק",
-    optSeedStyleArp:                        "ארפ: פריטה באצבעות",
-    optSeedStyleDrone:                      "דרון: רקע מתמשך",
-    optSeedStyleMarker:                     "סמן: דקירות אקורדים",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to he
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to he
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to he
+    optSeedStylePad:                        "Pad", // TODO: translate to he
+    optSeedStyleDrone:                      "Drone", // TODO: translate to he
+    optSeedStyleMarker:                     "Marker", // TODO: translate to he
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to he
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to he
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to he
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to he
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to he
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to he
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to he
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to he
+    lblSeedInstrument:                      "כלי נגינה",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to he
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to he
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to he
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to he
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to he
+    tabSeedRender:                          "Render", // TODO: translate to he
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to he
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to he
+    lblSeedKnobTune:                        "Tune", // TODO: translate to he
+    tipSeedMute:                            "Mute", // TODO: translate to he
+    tipSeedUnmute:                          "Unmute", // TODO: translate to he
+    lblSeedReverb:                          "Reverb", // TODO: translate to he
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to he
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to he
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to he
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to he
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to he
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to he
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to he
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to he
+    optSeedInstrumentSine:                  "סינוס: סינתיסייזר מובנה",
     lblSeedFormat:                          "פורמט",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "ביטרייט MP3",
     lblSeedName:                            "שם",
     lblSeedOutput:                          "פלט",
-    hntSeedOutput:                          "שם בסיס לקבצים המעובדים. אסימונים מוחלפים בעת העיבוד: {name}, {chords} (8 האקורדים הראשונים), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "שם בסיס של הקבצים המעובדים. אסימונים מוחלפים בעת העיבוד: {name}, {chords} (8 האקורדים הראשונים), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "רנדר סיד",
+    btnSeedPlay:                            "נגן",
+    btnSeedStop:                            "עצור",
+    msgSeedPlayFailed:                      "ההפעלה נכשלה",
     hntSeedRenderNeedsSave:                 "שמור את ה-seed לקובץ .yams תחילה — האודיו מעובד לידו.",
     tipSeedLoad:                            "טען Seed",
     ttlSeedLoad:                            "פתח קובץ Seed",
@@ -1421,6 +2104,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "עיבוד נכשל",
     lblSeedResult:                          "נשמר",
     hntSeedResult:                          "העלה את גרעין האודיו ל-Suno (קאבר). הוא עוקב אחר ההרמוניה שהוא שומע, לא אחר שמות האקורדים שאתה מקליד.",
+    msgSeedBusyInstrument:                  "טוען כלי נגינה…",
     msgSeedBusyRender:                      "רינדור שמע…",
     msgSeedBusySave:                        "שומר…",
     lblSeedSummaryChords:                   "אקורדים",
@@ -1470,18 +2154,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "توقيع زمني",
     lblSeedLoops:                           "حلقات",
     lblSeedStyle:                           "نمط",
-    optSeedStylePad:                        "لوحة: كوردات متكتلة",
-    optSeedStyleArp:                        "أرب: عزف بالأصابع",
-    optSeedStyleDrone:                      "درون: خلفية مستمرة",
-    optSeedStyleMarker:                     "علامة: ضربات وترية",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ar
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ar
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ar
+    optSeedStylePad:                        "Pad", // TODO: translate to ar
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ar
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ar
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ar
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ar
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ar
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ar
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ar
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ar
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ar
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ar
+    lblSeedInstrument:                      "آلة موسيقية",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ar
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ar
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ar
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ar
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ar
+    tabSeedRender:                          "Render", // TODO: translate to ar
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ar
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ar
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ar
+    tipSeedMute:                            "Mute", // TODO: translate to ar
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ar
+    lblSeedReverb:                          "Reverb", // TODO: translate to ar
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ar
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ar
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ar
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ar
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ar
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ar
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ar
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ar
+    optSeedInstrumentSine:                  "جيب: مركب صوتي مدمج",
     lblSeedFormat:                          "تنسيق",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "معدل بت MP3",
     lblSeedName:                            "الاسم",
     lblSeedOutput:                          "الإخراج",
-    hntSeedOutput:                          "الاسم الأساسي للملفات المعروضة. الرموز المميزة المستبدلة عند العرض: {name}, {chords} (أول 8 أوتار), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "الاسم الأساسي للملفات المعروضة. الرموز المميزة المستبدلة عند العرض: {name}, {chords} (أول 8 أوتار), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "عرض البذرة",
+    btnSeedPlay:                            "تشغيل",
+    btnSeedStop:                            "إيقاف",
+    msgSeedPlayFailed:                      "فشل التشغيل",
     hntSeedRenderNeedsSave:                 "احفظ البذرة في ملف .yams أولاً — يتم عرض الصوت بجانبه.",
     tipSeedLoad:                            "تحميل البذرة",
     ttlSeedLoad:                            "فتح ملف بذرة",
@@ -1500,6 +2221,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "فشل التقديم",
     lblSeedResult:                          "تم الحفظ",
     hntSeedResult:                          "ارفع بذرة الصوت إلى Suno (غلاف). يتبع الانسجام الذي يسمعه، وليس أسماء الأوتار التي تكتبها.",
+    msgSeedBusyInstrument:                  "جارٍ تحميل الآلة الموسيقية…",
     msgSeedBusyRender:                      "جاري معالجة الصوت…",
     msgSeedBusySave:                        "جاري الحفظ…",
     lblSeedSummaryChords:                   "كوردات",
@@ -1549,18 +2271,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "میزان نما",
     lblSeedLoops:                           "حلقه‌ها",
     lblSeedStyle:                           "سبک",
-    optSeedStylePad:                        "پد: آکوردهای بلوکی",
-    optSeedStyleArp:                        "آرپ: انگشت‌نوازی",
-    optSeedStyleDrone:                      "درن: بستر پایدار",
-    optSeedStyleMarker:                     "نشانگر: ضربات آکورد",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to fa
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to fa
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to fa
+    optSeedStylePad:                        "Pad", // TODO: translate to fa
+    optSeedStyleDrone:                      "Drone", // TODO: translate to fa
+    optSeedStyleMarker:                     "Marker", // TODO: translate to fa
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to fa
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to fa
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to fa
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to fa
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to fa
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to fa
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to fa
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to fa
+    lblSeedInstrument:                      "ساز",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to fa
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to fa
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to fa
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to fa
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to fa
+    tabSeedRender:                          "Render", // TODO: translate to fa
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to fa
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to fa
+    lblSeedKnobTune:                        "Tune", // TODO: translate to fa
+    tipSeedMute:                            "Mute", // TODO: translate to fa
+    tipSeedUnmute:                          "Unmute", // TODO: translate to fa
+    lblSeedReverb:                          "Reverb", // TODO: translate to fa
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to fa
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to fa
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to fa
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to fa
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to fa
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to fa
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to fa
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to fa
+    optSeedInstrumentSine:                  "سینوسی: سینت سایزر داخلی",
     lblSeedFormat:                          "قالب",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "بیت‌ریت MP3",
     lblSeedName:                            "نام",
     lblSeedOutput:                          "خروجی",
-    hntSeedOutput:                          "نام پایه فایل‌های رندر شده. توکن‌های جایگزین شده هنگام رندر: {name}, {chords} (۸ آکورد اول), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "نام پایه فایل‌های رندر شده. توکن‌های جایگزین شده هنگام رندر: {name}, {chords} (۸ آکورد اول), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "رندر سید",
+    btnSeedPlay:                            "پخش",
+    btnSeedStop:                            "توقف",
+    msgSeedPlayFailed:                      "پخش ناموفق بود",
     hntSeedRenderNeedsSave:                 "ابتدا seed را در یک فایل .yams ذخیره کنید — صدا در کنار آن رندر می‌شود.",
     tipSeedLoad:                            "بارگذاری سید",
     ttlSeedLoad:                            "باز کردن فایل سید",
@@ -1579,6 +2338,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "رندر ناموفق",
     lblSeedResult:                          "ذخیره شد",
     hntSeedResult:                          "بذر صوتی را در Suno (کاور) بارگذاری کنید. این برنامه از هارمونی که می‌شنود پیروی می‌کند، نه نام آکوردهایی که تایپ می‌کنید.",
+    msgSeedBusyInstrument:                  "در حال بارگذاری ساز…",
     msgSeedBusyRender:                      "در حال رندر صدا…",
     msgSeedBusySave:                        "در حال ذخیره…",
     lblSeedSummaryChords:                   "آکوردها",
@@ -1628,18 +2388,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "拍号",
     lblSeedLoops:                           "循环",
     lblSeedStyle:                           "风格",
-    optSeedStylePad:                        "衬底: 和弦块",
-    optSeedStyleArp:                        "琶音: 指弹",
-    optSeedStyleDrone:                      "持续音: 持续背景",
-    optSeedStyleMarker:                     "标记: 和弦敲击",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to zh_CN
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to zh_CN
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to zh_CN
+    optSeedStylePad:                        "Pad", // TODO: translate to zh_CN
+    optSeedStyleDrone:                      "Drone", // TODO: translate to zh_CN
+    optSeedStyleMarker:                     "Marker", // TODO: translate to zh_CN
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to zh_CN
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to zh_CN
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to zh_CN
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to zh_CN
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to zh_CN
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to zh_CN
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to zh_CN
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to zh_CN
+    lblSeedInstrument:                      "乐器",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to zh_CN
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to zh_CN
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to zh_CN
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to zh_CN
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to zh_CN
+    tabSeedRender:                          "Render", // TODO: translate to zh_CN
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to zh_CN
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to zh_CN
+    lblSeedKnobTune:                        "Tune", // TODO: translate to zh_CN
+    tipSeedMute:                            "Mute", // TODO: translate to zh_CN
+    tipSeedUnmute:                          "Unmute", // TODO: translate to zh_CN
+    lblSeedReverb:                          "Reverb", // TODO: translate to zh_CN
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to zh_CN
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to zh_CN
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to zh_CN
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to zh_CN
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to zh_CN
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to zh_CN
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to zh_CN
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to zh_CN
+    optSeedInstrumentSine:                  "正弦：内置合成器",
     lblSeedFormat:                          "格式",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 比特率",
     lblSeedName:                            "名称",
     lblSeedOutput:                          "输出",
-    hntSeedOutput:                          "渲染文件的基本名称。渲染时替换的标记：{name}, {chords} (前 8 个和弦), {style}, {bpm}, {loops}。",
+    hntSeedOutput:                          "渲染文件的基本名称。渲染时替换的令牌：{name}, {chords} (前8个和弦), {style}, {instrument}, {bpm}, {loops}。",
     btnSeedRender:                          "渲染种子",
+    btnSeedPlay:                            "播放",
+    btnSeedStop:                            "停止",
+    msgSeedPlayFailed:                      "播放失败",
     hntSeedRenderNeedsSave:                 "请先将种子保存到 .yams 文件 — 音频将渲染到该文件旁边。",
     tipSeedLoad:                            "加载种子",
     ttlSeedLoad:                            "打开种子文件",
@@ -1658,6 +2455,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "渲染失败",
     lblSeedResult:                          "已保存",
     hntSeedResult:                          "将音频种子上传到 Suno (翻唱)。它遵循听到的和声，而非您输入的和弦名称。",
+    msgSeedBusyInstrument:                  "正在加载乐器…",
     msgSeedBusyRender:                      "正在渲染音频…",
     msgSeedBusySave:                        "正在保存…",
     lblSeedSummaryChords:                   "和弦",
@@ -1707,18 +2505,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "拍號",
     lblSeedLoops:                           "循環",
     lblSeedStyle:                           "風格",
-    optSeedStylePad:                        "襯底: 和弦塊",
-    optSeedStyleArp:                        "琶音: 指彈",
-    optSeedStyleDrone:                      "持續音: 持續背景",
-    optSeedStyleMarker:                     "標記: 和弦敲擊",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to zh_TW
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to zh_TW
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to zh_TW
+    optSeedStylePad:                        "Pad", // TODO: translate to zh_TW
+    optSeedStyleDrone:                      "Drone", // TODO: translate to zh_TW
+    optSeedStyleMarker:                     "Marker", // TODO: translate to zh_TW
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to zh_TW
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to zh_TW
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to zh_TW
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to zh_TW
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to zh_TW
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to zh_TW
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to zh_TW
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to zh_TW
+    lblSeedInstrument:                      "樂器",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to zh_TW
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to zh_TW
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to zh_TW
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to zh_TW
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to zh_TW
+    tabSeedRender:                          "Render", // TODO: translate to zh_TW
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to zh_TW
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to zh_TW
+    lblSeedKnobTune:                        "Tune", // TODO: translate to zh_TW
+    tipSeedMute:                            "Mute", // TODO: translate to zh_TW
+    tipSeedUnmute:                          "Unmute", // TODO: translate to zh_TW
+    lblSeedReverb:                          "Reverb", // TODO: translate to zh_TW
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to zh_TW
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to zh_TW
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to zh_TW
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to zh_TW
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to zh_TW
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to zh_TW
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to zh_TW
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to zh_TW
+    optSeedInstrumentSine:                  "正弦：內建合成器",
     lblSeedFormat:                          "格式",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 位元率",
     lblSeedName:                            "名稱",
     lblSeedOutput:                          "輸出",
-    hntSeedOutput:                          "渲染檔案的基本名稱。渲染時替換的標記：{name}, {chords} (前 8 個和弦), {style}, {bpm}, {loops}。",
+    hntSeedOutput:                          "渲染檔案的基本名稱。渲染時替換的令牌：{name}, {chords} (前8個和弦), {style}, {instrument}, {bpm}, {loops}。",
     btnSeedRender:                          "渲染種子",
+    btnSeedPlay:                            "播放",
+    btnSeedStop:                            "停止",
+    msgSeedPlayFailed:                      "播放失敗",
     hntSeedRenderNeedsSave:                 "請先將種子儲存至 .yams 檔案 — 音訊將會渲染於其旁。",
     tipSeedLoad:                            "載入種子",
     ttlSeedLoad:                            "開啟種子檔案",
@@ -1737,6 +2572,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "渲染失敗",
     lblSeedResult:                          "已儲存",
     hntSeedResult:                          "將音訊種子上傳至 Suno (翻唱)。它遵循聽到的和聲，而非您輸入的和弦名稱。",
+    msgSeedBusyInstrument:                  "正在載入樂器…",
     msgSeedBusyRender:                      "正在渲染音訊…",
     msgSeedBusySave:                        "正在儲存…",
     lblSeedSummaryChords:                   "和弦",
@@ -1786,18 +2622,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "拍子記号",
     lblSeedLoops:                           "ループ",
     lblSeedStyle:                           "スタイル",
-    optSeedStylePad:                        "パッド: ブロックコード",
-    optSeedStyleArp:                        "アルペジオ: 指弾き",
-    optSeedStyleDrone:                      "ドローン: 持続的な基盤",
-    optSeedStyleMarker:                     "マーカー: コードスタブ",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ja
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ja
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ja
+    optSeedStylePad:                        "Pad", // TODO: translate to ja
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ja
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ja
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ja
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ja
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ja
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ja
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ja
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ja
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ja
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ja
+    lblSeedInstrument:                      "楽器",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ja
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ja
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ja
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ja
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ja
+    tabSeedRender:                          "Render", // TODO: translate to ja
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ja
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ja
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ja
+    tipSeedMute:                            "Mute", // TODO: translate to ja
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ja
+    lblSeedReverb:                          "Reverb", // TODO: translate to ja
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ja
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ja
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ja
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ja
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ja
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ja
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ja
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ja
+    optSeedInstrumentSine:                  "サイン波：内蔵シンセ",
     lblSeedFormat:                          "フォーマット",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 ビットレート",
     lblSeedName:                            "名前",
     lblSeedOutput:                          "出力",
-    hntSeedOutput:                          "レンダリングされたファイルのベース名。レンダリング時に置換されるトークン: {name}, {chords} (最初の8つのコード), {style}, {bpm}, {loops}。",
+    hntSeedOutput:                          "レンダリングされたファイルのベース名。レンダリング時に置き換えられるトークン：{name}, {chords} (最初の8つのコード), {style}, {instrument}, {bpm}, {loops}。",
     btnSeedRender:                          "シードをレンダリング",
+    btnSeedPlay:                            "再生",
+    btnSeedStop:                            "停止",
+    msgSeedPlayFailed:                      "再生に失敗しました",
     hntSeedRenderNeedsSave:                 "まずシードを.yamsファイルに保存してください — 音声はその隣にレンダリングされます。",
     tipSeedLoad:                            "シードを読み込む",
     ttlSeedLoad:                            "シードファイルを開く",
@@ -1816,6 +2689,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "レンダリング失敗",
     lblSeedResult:                          "保存済み",
     hntSeedResult:                          "オーディオシードをSuno (カバー) にアップロードします。入力したコード名ではなく、聞こえるハーモニーに従います。",
+    msgSeedBusyInstrument:                  "楽器を読み込み中…",
     msgSeedBusyRender:                      "音声レンダリング中…",
     msgSeedBusySave:                        "保存中…",
     lblSeedSummaryChords:                   "コード",
@@ -1865,18 +2739,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "박자표",
     lblSeedLoops:                           "루프",
     lblSeedStyle:                           "스타일",
-    optSeedStylePad:                        "패드: 블록 코드",
-    optSeedStyleArp:                        "아르페지오: 핑거피킹",
-    optSeedStyleDrone:                      "드론: 지속적인 배경",
-    optSeedStyleMarker:                     "마커: 코드 타격",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ko
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ko
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ko
+    optSeedStylePad:                        "Pad", // TODO: translate to ko
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ko
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ko
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ko
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ko
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ko
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ko
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ko
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ko
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ko
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ko
+    lblSeedInstrument:                      "악기",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ko
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ko
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ko
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ko
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ko
+    tabSeedRender:                          "Render", // TODO: translate to ko
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ko
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ko
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ko
+    tipSeedMute:                            "Mute", // TODO: translate to ko
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ko
+    lblSeedReverb:                          "Reverb", // TODO: translate to ko
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ko
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ko
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ko
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ko
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ko
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ko
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ko
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ko
+    optSeedInstrumentSine:                  "사인: 내장 신시사이저",
     lblSeedFormat:                          "형식",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 비트 전송률",
     lblSeedName:                            "이름",
     lblSeedOutput:                          "출력",
-    hntSeedOutput:                          "렌더링된 파일의 기본 이름. 렌더링 시 대체되는 토큰: {name}, {chords} (첫 8개 코드), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "렌더링된 파일의 기본 이름. 렌더링 시 대체되는 토큰: {name}, {chords} (첫 8개 코드), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "시드 렌더링",
+    btnSeedPlay:                            "재생",
+    btnSeedStop:                            "중지",
+    msgSeedPlayFailed:                      "재생 실패",
     hntSeedRenderNeedsSave:                 "먼저 시드를 .yams 파일에 저장하세요 — 오디오는 그 옆에 렌더링됩니다.",
     tipSeedLoad:                            "시드 불러오기",
     ttlSeedLoad:                            "시드 파일 열기",
@@ -1895,6 +2806,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "렌더링 실패",
     lblSeedResult:                          "저장됨",
     hntSeedResult:                          "오디오 시드를 Suno (커버)에 업로드하세요. 입력한 코드 이름이 아닌, 들리는 하모니를 따릅니다.",
+    msgSeedBusyInstrument:                  "악기 로드 중…",
     msgSeedBusyRender:                      "오디오 렌더링 중…",
     msgSeedBusySave:                        "저장 중…",
     lblSeedSummaryChords:                   "코드",
@@ -1944,18 +2856,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Nhịp",
     lblSeedLoops:                           "Vòng lặp",
     lblSeedStyle:                           "Kiểu",
-    optSeedStylePad:                        "Pad: hợp âm khối",
-    optSeedStyleArp:                        "Arp: gảy ngón",
-    optSeedStyleDrone:                      "Drone: nền duy trì",
-    optSeedStyleMarker:                     "Đánh dấu: hợp âm dứt khoát",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to vi
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to vi
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to vi
+    optSeedStylePad:                        "Pad", // TODO: translate to vi
+    optSeedStyleDrone:                      "Drone", // TODO: translate to vi
+    optSeedStyleMarker:                     "Marker", // TODO: translate to vi
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to vi
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to vi
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to vi
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to vi
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to vi
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to vi
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to vi
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to vi
+    lblSeedInstrument:                      "Nhạc cụ",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to vi
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to vi
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to vi
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to vi
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to vi
+    tabSeedRender:                          "Render", // TODO: translate to vi
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to vi
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to vi
+    lblSeedKnobTune:                        "Tune", // TODO: translate to vi
+    tipSeedMute:                            "Mute", // TODO: translate to vi
+    tipSeedUnmute:                          "Unmute", // TODO: translate to vi
+    lblSeedReverb:                          "Reverb", // TODO: translate to vi
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to vi
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to vi
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to vi
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to vi
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to vi
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to vi
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to vi
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to vi
+    optSeedInstrumentSine:                  "Sóng sin: bộ tổng hợp tích hợp",
     lblSeedFormat:                          "Định dạng",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Tốc độ bit MP3",
     lblSeedName:                            "Tên",
     lblSeedOutput:                          "Đầu ra",
-    hntSeedOutput:                          "Tên cơ sở của các tệp đã kết xuất. Các mã thông báo được thay thế khi kết xuất: {name}, {chords} (8 hợp âm đầu tiên), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Tên cơ sở của các tệp đã kết xuất. Các mã thông báo được thay thế khi kết xuất: {name}, {chords} (8 hợp âm đầu tiên), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Kết xuất hạt giống",
+    btnSeedPlay:                            "Phát",
+    btnSeedStop:                            "Dừng",
+    msgSeedPlayFailed:                      "Phát lại thất bại",
     hntSeedRenderNeedsSave:                 "Trước tiên, hãy lưu seed vào tệp .yams — âm thanh được kết xuất bên cạnh nó.",
     tipSeedLoad:                            "Tải seed",
     ttlSeedLoad:                            "Mở tệp seed",
@@ -1974,6 +2923,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Kết xuất thất bại",
     lblSeedResult:                          "Đã lưu",
     hntSeedResult:                          "Tải hạt giống âm thanh lên Suno (Cover). Nó tuân theo hòa âm mà nó nghe được, không phải tên hợp âm bạn gõ.",
+    msgSeedBusyInstrument:                  "Đang tải nhạc cụ…",
     msgSeedBusyRender:                      "Đang kết xuất âm thanh…",
     msgSeedBusySave:                        "Đang lưu…",
     lblSeedSummaryChords:                   "Hợp âm",
@@ -2023,18 +2973,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "เครื่องหมายกำหนดจังหวะ",
     lblSeedLoops:                           "ลูป",
     lblSeedStyle:                           "สไตล์",
-    optSeedStylePad:                        "แพด: คอร์ดบล็อก",
-    optSeedStyleArp:                        "อาร์ป: ดีดด้วยนิ้ว",
-    optSeedStyleDrone:                      "โดรน: พื้นหลังต่อเนื่อง",
-    optSeedStyleMarker:                     "มาร์กเกอร์: คอร์ดกระแทก",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to th
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to th
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to th
+    optSeedStylePad:                        "Pad", // TODO: translate to th
+    optSeedStyleDrone:                      "Drone", // TODO: translate to th
+    optSeedStyleMarker:                     "Marker", // TODO: translate to th
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to th
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to th
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to th
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to th
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to th
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to th
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to th
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to th
+    lblSeedInstrument:                      "เครื่องดนตรี",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to th
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to th
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to th
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to th
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to th
+    tabSeedRender:                          "Render", // TODO: translate to th
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to th
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to th
+    lblSeedKnobTune:                        "Tune", // TODO: translate to th
+    tipSeedMute:                            "Mute", // TODO: translate to th
+    tipSeedUnmute:                          "Unmute", // TODO: translate to th
+    lblSeedReverb:                          "Reverb", // TODO: translate to th
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to th
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to th
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to th
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to th
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to th
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to th
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to th
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to th
+    optSeedInstrumentSine:                  "ไซน์: ซินธ์ในตัว",
     lblSeedFormat:                          "รูปแบบ",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "บิตเรต MP3",
     lblSeedName:                            "ชื่อ",
     lblSeedOutput:                          "เอาต์พุต",
-    hntSeedOutput:                          "ชื่อพื้นฐานของไฟล์ที่เรนเดอร์ โทเค็นที่ถูกแทนที่เมื่อเรนเดอร์: {name}, {chords} (คอร์ด 8 ตัวแรก), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "ชื่อพื้นฐานของไฟล์ที่เรนเดอร์ โทเค็นที่ถูกแทนที่เมื่อเรนเดอร์: {name}, {chords} (คอร์ด 8 ตัวแรก), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "เรนเดอร์ซีด",
+    btnSeedPlay:                            "เล่น",
+    btnSeedStop:                            "หยุด",
+    msgSeedPlayFailed:                      "เล่นล้มเหลว",
     hntSeedRenderNeedsSave:                 "บันทึก seed ลงในไฟล์ .yams ก่อน — เสียงจะถูกเรนเดอร์ถัดจากไฟล์นั้น",
     tipSeedLoad:                            "โหลด Seed",
     ttlSeedLoad:                            "เปิดไฟล์ Seed",
@@ -2053,6 +3040,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "เรนเดอร์ล้มเหลว",
     lblSeedResult:                          "บันทึกแล้ว",
     hntSeedResult:                          "อัปโหลด Audio Seed ไปยัง Suno (Cover) มันจะตามฮาร์โมนีที่ได้ยิน ไม่ใช่ชื่อคอร์ดที่คุณพิมพ์",
+    msgSeedBusyInstrument:                  "กำลังโหลดเครื่องดนตรี…",
     msgSeedBusyRender:                      "กำลังเรนเดอร์เสียง…",
     msgSeedBusySave:                        "กำลังบันทึก…",
     lblSeedSummaryChords:                   "คอร์ด",
@@ -2102,18 +3090,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Tanda birama",
     lblSeedLoops:                           "Loop",
     lblSeedStyle:                           "Gaya",
-    optSeedStylePad:                        "Pad: akor blok",
-    optSeedStyleArp:                        "Arp: petikan jari",
-    optSeedStyleDrone:                      "Drone: dasar berkelanjutan",
-    optSeedStyleMarker:                     "Penanda: tusukan akor",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to id
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to id
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to id
+    optSeedStylePad:                        "Pad", // TODO: translate to id
+    optSeedStyleDrone:                      "Drone", // TODO: translate to id
+    optSeedStyleMarker:                     "Marker", // TODO: translate to id
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to id
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to id
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to id
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to id
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to id
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to id
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to id
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to id
+    lblSeedInstrument:                      "Instrumen",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to id
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to id
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to id
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to id
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to id
+    tabSeedRender:                          "Render", // TODO: translate to id
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to id
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to id
+    lblSeedKnobTune:                        "Tune", // TODO: translate to id
+    tipSeedMute:                            "Mute", // TODO: translate to id
+    tipSeedUnmute:                          "Unmute", // TODO: translate to id
+    lblSeedReverb:                          "Reverb", // TODO: translate to id
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to id
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to id
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to id
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to id
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to id
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to id
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to id
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to id
+    optSeedInstrumentSine:                  "Sinus: synth bawaan",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nama",
     lblSeedOutput:                          "Keluaran",
-    hntSeedOutput:                          "Nama dasar file yang dirender. Token diganti saat render: {name}, {chords} (8 akor pertama), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nama dasar file yang dirender. Token yang diganti saat render: {name}, {chords} (8 akor pertama), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Render seed",
+    btnSeedPlay:                            "Putar",
+    btnSeedStop:                            "Berhenti",
+    msgSeedPlayFailed:                      "Pemutaran gagal",
     hntSeedRenderNeedsSave:                 "Simpan seed ke file .yams terlebih dahulu — audio akan dirender di sebelahnya.",
     tipSeedLoad:                            "Muat seed",
     ttlSeedLoad:                            "Buka file seed",
@@ -2132,6 +3157,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Render gagal",
     lblSeedResult:                          "Tersimpan",
     hntSeedResult:                          "Unggah seed audio ke Suno (Cover). Ini mengikuti harmoni yang didengarnya, bukan nama akor yang Anda ketik.",
+    msgSeedBusyInstrument:                  "Memuat instrumen…",
     msgSeedBusyRender:                      "Merender audio…",
     msgSeedBusySave:                        "Menyimpan…",
     lblSeedSummaryChords:                   "Akor",
@@ -2181,18 +3207,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Compàs",
     lblSeedLoops:                           "Bucles",
     lblSeedStyle:                           "Estil",
-    optSeedStylePad:                        "Pad: acords en bloc",
-    optSeedStyleArp:                        "Arp: puntejat amb dits",
-    optSeedStyleDrone:                      "Dron: base sostinguda",
-    optSeedStyleMarker:                     "Marcador: punxades d'acords",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ca
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ca
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ca
+    optSeedStylePad:                        "Pad", // TODO: translate to ca
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ca
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ca
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ca
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ca
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ca
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ca
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ca
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ca
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ca
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ca
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ca
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ca
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ca
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ca
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ca
+    tabSeedRender:                          "Render", // TODO: translate to ca
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ca
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ca
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ca
+    tipSeedMute:                            "Mute", // TODO: translate to ca
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ca
+    lblSeedReverb:                          "Reverb", // TODO: translate to ca
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ca
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ca
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ca
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ca
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ca
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ca
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ca
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ca
+    optSeedInstrumentSine:                  "Sinus: sintetitzador integrat",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nom",
     lblSeedOutput:                          "Sortida",
-    hntSeedOutput:                          "Nom base dels fitxers renderitzats. Tokens substituïts en renderitzar: {name}, {chords} (els 8 primers acords), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nom base dels fitxers renderitzats. Tokens substituïts en renderitzar: {name}, {chords} (els 8 primers acords), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderitza la llavor",
+    btnSeedPlay:                            "Reprodueix",
+    btnSeedStop:                            "Atura",
+    msgSeedPlayFailed:                      "Ha fallat la reproducció",
     hntSeedRenderNeedsSave:                 "Desa la llavor en un fitxer .yams primer — l'àudio es renderitza al costat.",
     tipSeedLoad:                            "Carrega llavor",
     ttlSeedLoad:                            "Obre un fitxer de llavor",
@@ -2211,6 +3274,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Ha fallat la renderització",
     lblSeedResult:                          "Guardat",
     hntSeedResult:                          "Puja la llavor d'àudio a Suno (Cover). Segueix l'harmonia que escolta, no els noms d'acords que escrius.",
+    msgSeedBusyInstrument:                  "Carregant instrument…",
     msgSeedBusyRender:                      "Renderitzant àudio…",
     msgSeedBusySave:                        "Desant…",
     lblSeedSummaryChords:                   "Acords",
@@ -2260,18 +3324,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktové označení",
     lblSeedLoops:                           "Smyčky",
     lblSeedStyle:                           "Styl",
-    optSeedStylePad:                        "Pad: blokové akordy",
-    optSeedStyleArp:                        "Arp: prstokladem",
-    optSeedStyleDrone:                      "Drone: soustavný podklad",
-    optSeedStyleMarker:                     "Značka: akordové údery",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to cs
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to cs
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to cs
+    optSeedStylePad:                        "Pad", // TODO: translate to cs
+    optSeedStyleDrone:                      "Drone", // TODO: translate to cs
+    optSeedStyleMarker:                     "Marker", // TODO: translate to cs
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to cs
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to cs
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to cs
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to cs
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to cs
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to cs
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to cs
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to cs
+    lblSeedInstrument:                      "Nástroj",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to cs
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to cs
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to cs
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to cs
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to cs
+    tabSeedRender:                          "Render", // TODO: translate to cs
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to cs
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to cs
+    lblSeedKnobTune:                        "Tune", // TODO: translate to cs
+    tipSeedMute:                            "Mute", // TODO: translate to cs
+    tipSeedUnmute:                          "Unmute", // TODO: translate to cs
+    lblSeedReverb:                          "Reverb", // TODO: translate to cs
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to cs
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to cs
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to cs
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to cs
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to cs
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to cs
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to cs
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to cs
+    optSeedInstrumentSine:                  "Sinus: vestavěný syntezátor",
     lblSeedFormat:                          "Formát",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Název",
     lblSeedOutput:                          "Výstup",
-    hntSeedOutput:                          "Základní název vykreslených souborů. Tokeny nahrazené při vykreslování: {name}, {chords} (prvních 8 akordů), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Základní název renderovaných souborů. Tokeny nahrazené při renderování: {name}, {chords} (prvních 8 akordů), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Vykreslit seed",
+    btnSeedPlay:                            "Přehrát",
+    btnSeedStop:                            "Zastavit",
+    msgSeedPlayFailed:                      "Přehrávání se nezdařilo",
     hntSeedRenderNeedsSave:                 "Nejprve uložte seed do souboru .yams — zvuk se vykreslí vedle něj.",
     tipSeedLoad:                            "Načíst seed",
     ttlSeedLoad:                            "Otevřít soubor seed",
@@ -2290,6 +3391,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Vykreslení selhalo",
     lblSeedResult:                          "Uloženo",
     hntSeedResult:                          "Nahrajte zvukový seed do Suno (Cover). Řídí se harmonií, kterou slyší, nikoli názvy akordů, které zadáváte.",
+    msgSeedBusyInstrument:                  "Načítání nástroje…",
     msgSeedBusyRender:                      "Vykreslování zvuku…",
     msgSeedBusySave:                        "Ukládání…",
     lblSeedSummaryChords:                   "Akordy",
@@ -2339,18 +3441,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktart",
     lblSeedLoops:                           "Gentagelser",
     lblSeedStyle:                           "Stil",
-    optSeedStylePad:                        "Pad: blokakkorder",
-    optSeedStyleArp:                        "Arp: fingerplukket",
-    optSeedStyleDrone:                      "Drone: vedvarende bund",
-    optSeedStyleMarker:                     "Markør: akkordstød",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to da
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to da
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to da
+    optSeedStylePad:                        "Pad", // TODO: translate to da
+    optSeedStyleDrone:                      "Drone", // TODO: translate to da
+    optSeedStyleMarker:                     "Marker", // TODO: translate to da
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to da
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to da
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to da
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to da
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to da
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to da
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to da
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to da
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to da
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to da
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to da
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to da
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to da
+    tabSeedRender:                          "Render", // TODO: translate to da
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to da
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to da
+    lblSeedKnobTune:                        "Tune", // TODO: translate to da
+    tipSeedMute:                            "Mute", // TODO: translate to da
+    tipSeedUnmute:                          "Unmute", // TODO: translate to da
+    lblSeedReverb:                          "Reverb", // TODO: translate to da
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to da
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to da
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to da
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to da
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to da
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to da
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to da
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to da
+    optSeedInstrumentSine:                  "Sinus: indbygget synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3-bitrate",
     lblSeedName:                            "Navn",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Basisnavn for de renderede filer. Tokens erstattes ved rendering: {name}, {chords} (de første 8 akkorder), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Basisnavn for de renderede filer. Tokens erstattes ved rendering: {name}, {chords} (de første 8 akkorder), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Render seed",
+    btnSeedPlay:                            "Afspil",
+    btnSeedStop:                            "Stop",
+    msgSeedPlayFailed:                      "Afspilning mislykkedes",
     hntSeedRenderNeedsSave:                 "Gem seedet i en .yams-fil først — lyden gengives ved siden af den.",
     tipSeedLoad:                            "Indlæs seed",
     ttlSeedLoad:                            "Åbn seed-fil",
@@ -2369,6 +3508,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Gengivelse mislykkedes",
     lblSeedResult:                          "Gemt",
     hntSeedResult:                          "Upload lydfrøet til Suno (Cover). Den følger den harmoni, den hører, ikke de akkordnavne, du skriver.",
+    msgSeedBusyInstrument:                  "Indlæser instrument…",
     msgSeedBusyRender:                      "Gengiver lyd…",
     msgSeedBusySave:                        "Gemmer…",
     lblSeedSummaryChords:                   "Akkorder",
@@ -2418,18 +3558,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Tahtilaji",
     lblSeedLoops:                           "Silmukat",
     lblSeedStyle:                           "Tyyli",
-    optSeedStylePad:                        "Pad: blokkisoinnut",
-    optSeedStyleArp:                        "Arp: sormin näppäilty",
-    optSeedStyleDrone:                      "Drone: jatkuva pohja",
-    optSeedStyleMarker:                     "Merkki: sointuiskuja",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to fi
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to fi
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to fi
+    optSeedStylePad:                        "Pad", // TODO: translate to fi
+    optSeedStyleDrone:                      "Drone", // TODO: translate to fi
+    optSeedStyleMarker:                     "Marker", // TODO: translate to fi
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to fi
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to fi
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to fi
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to fi
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to fi
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to fi
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to fi
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to fi
+    lblSeedInstrument:                      "Instrumentti",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to fi
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to fi
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to fi
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to fi
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to fi
+    tabSeedRender:                          "Render", // TODO: translate to fi
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to fi
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to fi
+    lblSeedKnobTune:                        "Tune", // TODO: translate to fi
+    tipSeedMute:                            "Mute", // TODO: translate to fi
+    tipSeedUnmute:                          "Unmute", // TODO: translate to fi
+    lblSeedReverb:                          "Reverb", // TODO: translate to fi
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to fi
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to fi
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to fi
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to fi
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to fi
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to fi
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to fi
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to fi
+    optSeedInstrumentSine:                  "Siniaalto: sisäänrakennettu syntikka",
     lblSeedFormat:                          "Muoto",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3-bittinopeus",
     lblSeedName:                            "Nimi",
     lblSeedOutput:                          "Tuloste",
-    hntSeedOutput:                          "Renderöityjen tiedostojen perusnimi. Renderöinnissä korvattavat tunnukset: {name}, {chords} (ensimmäiset 8 sointua), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Renderöityjen tiedostojen perusnimi. Renderöinnissä korvattavat tunnukset: {name}, {chords} (ensimmäiset 8 sointua), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderöi siemen",
+    btnSeedPlay:                            "Toista",
+    btnSeedStop:                            "Pysäytä",
+    msgSeedPlayFailed:                      "Toisto epäonnistui",
     hntSeedRenderNeedsSave:                 "Tallenna siemen ensin .yams-tiedostoon — ääni renderöidään sen viereen.",
     tipSeedLoad:                            "Lataa siemen",
     ttlSeedLoad:                            "Avaa siementiedosto",
@@ -2448,6 +3625,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Renderöinti epäonnistui",
     lblSeedResult:                          "Tallennettu",
     hntSeedResult:                          "Lataa äänisiemen Sunoon (Cover). Se seuraa kuulemaansa harmoniaa, ei kirjoittamiasi sointunimiä.",
+    msgSeedBusyInstrument:                  "Ladataan instrumenttia…",
     msgSeedBusyRender:                      "Renderöi ääntä…",
     msgSeedBusySave:                        "Tallennetaan…",
     lblSeedSummaryChords:                   "Soinnut",
@@ -2497,18 +3675,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Tanda masa",
     lblSeedLoops:                           "Gelung",
     lblSeedStyle:                           "Gaya",
-    optSeedStylePad:                        "Pad: kord blok",
-    optSeedStyleArp:                        "Arp: petikan jari",
-    optSeedStyleDrone:                      "Drone: dasar berterusan",
-    optSeedStyleMarker:                     "Penanda: hentakan kord",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ms
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ms
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ms
+    optSeedStylePad:                        "Pad", // TODO: translate to ms
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ms
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ms
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ms
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ms
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ms
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ms
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ms
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ms
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ms
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ms
+    lblSeedInstrument:                      "Instrumen",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ms
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ms
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ms
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ms
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ms
+    tabSeedRender:                          "Render", // TODO: translate to ms
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ms
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ms
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ms
+    tipSeedMute:                            "Mute", // TODO: translate to ms
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ms
+    lblSeedReverb:                          "Reverb", // TODO: translate to ms
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ms
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ms
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ms
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ms
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ms
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ms
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ms
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ms
+    optSeedInstrumentSine:                  "Sinus: sintesis terbina dalam",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Kadar bit MP3",
     lblSeedName:                            "Nama",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Nama asas fail yang dirender. Token diganti semasa render: {name}, {chords} (8 kord pertama), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nama asas fail yang dirender. Token diganti semasa render: {name}, {chords} (8 kord pertama), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Render benih",
+    btnSeedPlay:                            "Main",
+    btnSeedStop:                            "Henti",
+    msgSeedPlayFailed:                      "Main semula gagal",
     hntSeedRenderNeedsSave:                 "Simpan seed ke fail .yams dahulu — audio akan dirender di sebelahnya.",
     tipSeedLoad:                            "Muat seed",
     ttlSeedLoad:                            "Buka fail seed",
@@ -2527,6 +3742,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Paparan gagal",
     lblSeedResult:                          "Disimpan",
     hntSeedResult:                          "Muat naik benih audio ke Suno (Cover). Ia mengikut harmoni yang didengarinya, bukan nama kord yang anda taip.",
+    msgSeedBusyInstrument:                  "Memuatkan instrumen…",
     msgSeedBusyRender:                      "Sedang memapar audio…",
     msgSeedBusySave:                        "Sedang menyimpan…",
     lblSeedSummaryChords:                   "Kord",
@@ -2576,18 +3792,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Ժամանակի չափ",
     lblSeedLoops:                           "Օղակներ",
     lblSeedStyle:                           "Ոճ",
-    optSeedStylePad:                        "Պադ: բլոկ ակորդներ",
-    optSeedStyleArp:                        "Արպ: մատներով նվագված",
-    optSeedStyleDrone:                      "Դրոն: շարունակական հիմք",
-    optSeedStyleMarker:                     "Նշիչ: ակորդային հարվածներ",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to hy
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to hy
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to hy
+    optSeedStylePad:                        "Pad", // TODO: translate to hy
+    optSeedStyleDrone:                      "Drone", // TODO: translate to hy
+    optSeedStyleMarker:                     "Marker", // TODO: translate to hy
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to hy
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to hy
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to hy
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to hy
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to hy
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to hy
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to hy
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to hy
+    lblSeedInstrument:                      "Գործիք",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to hy
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to hy
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to hy
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to hy
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to hy
+    tabSeedRender:                          "Render", // TODO: translate to hy
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to hy
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to hy
+    lblSeedKnobTune:                        "Tune", // TODO: translate to hy
+    tipSeedMute:                            "Mute", // TODO: translate to hy
+    tipSeedUnmute:                          "Unmute", // TODO: translate to hy
+    lblSeedReverb:                          "Reverb", // TODO: translate to hy
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to hy
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to hy
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to hy
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to hy
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to hy
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to hy
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to hy
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to hy
+    optSeedInstrumentSine:                  "Սինուս: ներկառուցված սինթեզատոր",
     lblSeedFormat:                          "Ձևաչափ",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 բիթրեյթ",
     lblSeedName:                            "Անուն",
     lblSeedOutput:                          "Ելք",
-    hntSeedOutput:                          "Արտածված ֆայլերի հիմնական անունը։ Ռենդերինգի ժամանակ փոխարինվող թոքեններ՝ {name}, {chords} (առաջին 8 ակորդները), {style}, {bpm}, {loops}։",
+    hntSeedOutput:                          "Ռենդերացված ֆայլերի հիմնական անունը։ Ռենդերացման ժամանակ փոխարինվող թոքեններ՝ {name}, {chords} (առաջին 8 ակորդները), {style}, {instrument}, {bpm}, {loops}։",
     btnSeedRender:                          "Ռենդեր սիդ",
+    btnSeedPlay:                            "Նվագարկել",
+    btnSeedStop:                            "Դադարեցնել",
+    msgSeedPlayFailed:                      "Նվագարկումը ձախողվեց",
     hntSeedRenderNeedsSave:                 "Նախ պահպանեք սիդը .yams ֆայլում — աուդիոն կմշակվի դրա կողքին։",
     tipSeedLoad:                            "Բեռնել սիդ",
     ttlSeedLoad:                            "Բացել սիդ ֆայլը",
@@ -2606,6 +3859,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Ռենդերինգը ձախողվեց",
     lblSeedResult:                          "Պահպանված է",
     hntSeedResult:                          "Վերբեռնեք աուդիո սիդը Suno (Cover) հավելված։ Այն հետևում է լսած հարմոնիային, ոչ թե ձեր մուտքագրած ակորդների անուններին։",
+    msgSeedBusyInstrument:                  "Գործիքի բեռնում…",
     msgSeedBusyRender:                      "Ձայնի ռենդերում…",
     msgSeedBusySave:                        "Պահպանում…",
     lblSeedSummaryChords:                   "Ակորդներ",
@@ -2655,18 +3909,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Тактов размер",
     lblSeedLoops:                           "Цикли",
     lblSeedStyle:                           "Стил",
-    optSeedStylePad:                        "Пад: блокови акорди",
-    optSeedStyleArp:                        "Арп: с пръсти",
-    optSeedStyleDrone:                      "Дрон: непрекъснат фон",
-    optSeedStyleMarker:                     "Маркер: акордови удари",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to bg
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to bg
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to bg
+    optSeedStylePad:                        "Pad", // TODO: translate to bg
+    optSeedStyleDrone:                      "Drone", // TODO: translate to bg
+    optSeedStyleMarker:                     "Marker", // TODO: translate to bg
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to bg
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to bg
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to bg
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to bg
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to bg
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to bg
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to bg
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to bg
+    lblSeedInstrument:                      "Инструмент",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to bg
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to bg
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to bg
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to bg
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to bg
+    tabSeedRender:                          "Render", // TODO: translate to bg
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to bg
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to bg
+    lblSeedKnobTune:                        "Tune", // TODO: translate to bg
+    tipSeedMute:                            "Mute", // TODO: translate to bg
+    tipSeedUnmute:                          "Unmute", // TODO: translate to bg
+    lblSeedReverb:                          "Reverb", // TODO: translate to bg
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to bg
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to bg
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to bg
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to bg
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to bg
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to bg
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to bg
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to bg
+    optSeedInstrumentSine:                  "Синус: вграден синтезатор",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 битрейт",
     lblSeedName:                            "Име",
     lblSeedOutput:                          "Изход",
-    hntSeedOutput:                          "Базово име на рендираните файлове. Токени, заменяни при рендиране: {name}, {chords} (първите 8 акорда), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Базово име на рендираните файлове. Токени, заменяни при рендиране: {name}, {chords} (първите 8 акорда), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Рендирай сийд",
+    btnSeedPlay:                            "Възпроизвеждане",
+    btnSeedStop:                            "Спиране",
+    msgSeedPlayFailed:                      "Възпроизвеждането е неуспешно",
     hntSeedRenderNeedsSave:                 "Първо запазете сида във файл .yams — аудиото се рендира до него.",
     tipSeedLoad:                            "Зареди сийд",
     ttlSeedLoad:                            "Отвори сийд файл",
@@ -2685,6 +3976,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Рендирането е неуспешно",
     lblSeedResult:                          "Запазено",
     hntSeedResult:                          "Качете аудио семето в Suno (Cover). То следва хармонията, която чува, а не имената на акордите, които въвеждате.",
+    msgSeedBusyInstrument:                  "Зареждане на инструмент…",
     msgSeedBusyRender:                      "Рендиране на аудио…",
     msgSeedBusySave:                        "Записване…",
     lblSeedSummaryChords:                   "Акорди",
@@ -2734,18 +4026,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Compás",
     lblSeedLoops:                           "Bucles",
     lblSeedStyle:                           "Estilo",
-    optSeedStylePad:                        "Pad: acordes en bloque",
-    optSeedStyleArp:                        "Arp: punteado con dedos",
-    optSeedStyleDrone:                      "Drone: base sostida",
-    optSeedStyleMarker:                     "Marcador: golpes de acordes",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to gl
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to gl
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to gl
+    optSeedStylePad:                        "Pad", // TODO: translate to gl
+    optSeedStyleDrone:                      "Drone", // TODO: translate to gl
+    optSeedStyleMarker:                     "Marker", // TODO: translate to gl
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to gl
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to gl
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to gl
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to gl
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to gl
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to gl
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to gl
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to gl
+    lblSeedInstrument:                      "Instrumento",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to gl
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to gl
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to gl
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to gl
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to gl
+    tabSeedRender:                          "Render", // TODO: translate to gl
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to gl
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to gl
+    lblSeedKnobTune:                        "Tune", // TODO: translate to gl
+    tipSeedMute:                            "Mute", // TODO: translate to gl
+    tipSeedUnmute:                          "Unmute", // TODO: translate to gl
+    lblSeedReverb:                          "Reverb", // TODO: translate to gl
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to gl
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to gl
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to gl
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to gl
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to gl
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to gl
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to gl
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to gl
+    optSeedInstrumentSine:                  "Seno: sintetizador integrado",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nome",
     lblSeedOutput:                          "Saída",
-    hntSeedOutput:                          "Nome base dos ficheiros renderizados. Tokens substituídos ao renderizar: {name}, {chords} (os 8 primeiros acordes), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nome base dos ficheiros renderizados. Tokens substituídos ao renderizar: {name}, {chords} (os 8 primeiros acordes), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderizar semente",
+    btnSeedPlay:                            "Reproducir",
+    btnSeedStop:                            "Deter",
+    msgSeedPlayFailed:                      "Fallou a reprodución",
     hntSeedRenderNeedsSave:                 "Garda a semente nun ficheiro .yams primeiro — o audio renderízase xunto a el.",
     tipSeedLoad:                            "Cargar semente",
     ttlSeedLoad:                            "Abrir un ficheiro de semente",
@@ -2764,6 +4093,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Fallou a renderización",
     lblSeedResult:                          "Gardado",
     hntSeedResult:                          "Sube a semente de audio a Suno (Cover). Segue a harmonía que escoita, non os nomes de acordes que escribes.",
+    msgSeedBusyInstrument:                  "Cargando instrumento…",
     msgSeedBusyRender:                      "Renderizando audio…",
     msgSeedBusySave:                        "Gardando…",
     lblSeedSummaryChords:                   "Acordes",
@@ -2813,18 +4143,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Ütemjelzés",
     lblSeedLoops:                           "Ismétlések",
     lblSeedStyle:                           "Stílus",
-    optSeedStylePad:                        "Pad: blokkakkordok",
-    optSeedStyleArp:                        "Arp: ujjal pengetett",
-    optSeedStyleDrone:                      "Drón: folyamatos alap",
-    optSeedStyleMarker:                     "Jelölő: akkord döfések",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to hu
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to hu
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to hu
+    optSeedStylePad:                        "Pad", // TODO: translate to hu
+    optSeedStyleDrone:                      "Drone", // TODO: translate to hu
+    optSeedStyleMarker:                     "Marker", // TODO: translate to hu
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to hu
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to hu
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to hu
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to hu
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to hu
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to hu
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to hu
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to hu
+    lblSeedInstrument:                      "Hangszer",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to hu
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to hu
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to hu
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to hu
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to hu
+    tabSeedRender:                          "Render", // TODO: translate to hu
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to hu
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to hu
+    lblSeedKnobTune:                        "Tune", // TODO: translate to hu
+    tipSeedMute:                            "Mute", // TODO: translate to hu
+    tipSeedUnmute:                          "Unmute", // TODO: translate to hu
+    lblSeedReverb:                          "Reverb", // TODO: translate to hu
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to hu
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to hu
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to hu
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to hu
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to hu
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to hu
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to hu
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to hu
+    optSeedInstrumentSine:                  "Szinusz: beépített szintetizátor",
     lblSeedFormat:                          "Formátum",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitráta",
     lblSeedName:                            "Név",
     lblSeedOutput:                          "Kimenet",
-    hntSeedOutput:                          "A renderelt fájlok alapneve. Rendereléskor lecserélt tokenek: {name}, {chords} (az első 8 akkord), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "A renderelt fájlok alapneve. Rendereléskor cserélődő tokenek: {name}, {chords} (az első 8 akkord), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Seed renderelése",
+    btnSeedPlay:                            "Lejátszás",
+    btnSeedStop:                            "Leállítás",
+    msgSeedPlayFailed:                      "Lejátszás sikertelen",
     hntSeedRenderNeedsSave:                 "Először mentse a seedet egy .yams fájlba — az audió mellette kerül renderelésre.",
     tipSeedLoad:                            "Seed betöltése",
     ttlSeedLoad:                            "Seed fájl megnyitása",
@@ -2843,6 +4210,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Renderelés sikertelen",
     lblSeedResult:                          "Mentve",
     hntSeedResult:                          "Töltsd fel az audio seedet a Suno-ra (Cover). A hallott harmóniát követi, nem az általad beírt akkordneveket.",
+    msgSeedBusyInstrument:                  "Hangszer betöltése…",
     msgSeedBusyRender:                      "Hang renderelése…",
     msgSeedBusySave:                        "Mentés…",
     lblSeedSummaryChords:                   "Akkordok",
@@ -2892,18 +4260,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktų skaičius",
     lblSeedLoops:                           "Ciklai",
     lblSeedStyle:                           "Stilius",
-    optSeedStylePad:                        "Pad: blokiniai akordai",
-    optSeedStyleArp:                        "Arp: pirštais grojamas",
-    optSeedStyleDrone:                      "Dronas: tęstinis pagrindas",
-    optSeedStyleMarker:                     "Žymeklis: akordų dūriai",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to lt
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to lt
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to lt
+    optSeedStylePad:                        "Pad", // TODO: translate to lt
+    optSeedStyleDrone:                      "Drone", // TODO: translate to lt
+    optSeedStyleMarker:                     "Marker", // TODO: translate to lt
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to lt
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to lt
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to lt
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to lt
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to lt
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to lt
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to lt
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to lt
+    lblSeedInstrument:                      "Instrumentas",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to lt
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to lt
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to lt
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to lt
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to lt
+    tabSeedRender:                          "Render", // TODO: translate to lt
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to lt
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to lt
+    lblSeedKnobTune:                        "Tune", // TODO: translate to lt
+    tipSeedMute:                            "Mute", // TODO: translate to lt
+    tipSeedUnmute:                          "Unmute", // TODO: translate to lt
+    lblSeedReverb:                          "Reverb", // TODO: translate to lt
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to lt
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to lt
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to lt
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to lt
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to lt
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to lt
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to lt
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to lt
+    optSeedInstrumentSine:                  "Sinusas: įmontuotas sintezatorius",
     lblSeedFormat:                          "Formatas",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitų sparta",
     lblSeedName:                            "Pavadinimas",
     lblSeedOutput:                          "Išvestis",
-    hntSeedOutput:                          "Atvaizduotų failų bazinis pavadinimas. Atvaizdavimo metu pakeičiami žetonai: {name}, {chords} (pirmieji 8 akordai), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Atvaizduotų failų bazinis pavadinimas. Atvaizdavimo metu pakeičiami žetonai: {name}, {chords} (pirmieji 8 akordai), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderinti sėklą",
+    btnSeedPlay:                            "Groti",
+    btnSeedStop:                            "Stabdyti",
+    msgSeedPlayFailed:                      "Nepavyko paleisti",
     hntSeedRenderNeedsSave:                 "Pirmiausia išsaugokite sėklą .yams faile — garso įrašas bus atvaizduotas šalia jo.",
     tipSeedLoad:                            "Įkelti seed",
     ttlSeedLoad:                            "Atidaryti seed failą",
@@ -2922,6 +4327,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Atvaizdavimas nepavyko",
     lblSeedResult:                          "Išsaugota",
     hntSeedResult:                          "Įkelkite garso sėklą į Suno (Cover). Ji seka girdimą harmoniją, o ne jūsų įvestus akordų pavadinimus.",
+    msgSeedBusyInstrument:                  "Įkeliamas instrumentas…",
     msgSeedBusyRender:                      "Garso atvaizdavimas…",
     msgSeedBusySave:                        "Išsaugoma…",
     lblSeedSummaryChords:                   "Akordai",
@@ -2971,18 +4377,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Тактов потпис",
     lblSeedLoops:                           "Јамки",
     lblSeedStyle:                           "Стил",
-    optSeedStylePad:                        "Подлога: блок акорди",
-    optSeedStyleArp:                        "Арп: со прсти",
-    optSeedStyleDrone:                      "Дрон: континуирана подлога",
-    optSeedStyleMarker:                     "Маркер: акордни удари",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to mk
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to mk
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to mk
+    optSeedStylePad:                        "Pad", // TODO: translate to mk
+    optSeedStyleDrone:                      "Drone", // TODO: translate to mk
+    optSeedStyleMarker:                     "Marker", // TODO: translate to mk
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to mk
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to mk
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to mk
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to mk
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to mk
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to mk
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to mk
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to mk
+    lblSeedInstrument:                      "Инструмент",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to mk
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to mk
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to mk
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to mk
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to mk
+    tabSeedRender:                          "Render", // TODO: translate to mk
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to mk
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to mk
+    lblSeedKnobTune:                        "Tune", // TODO: translate to mk
+    tipSeedMute:                            "Mute", // TODO: translate to mk
+    tipSeedUnmute:                          "Unmute", // TODO: translate to mk
+    lblSeedReverb:                          "Reverb", // TODO: translate to mk
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to mk
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to mk
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to mk
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to mk
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to mk
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to mk
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to mk
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to mk
+    optSeedInstrumentSine:                  "Синус: вграден синтисајзер",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 битрејт",
     lblSeedName:                            "Име",
     lblSeedOutput:                          "Излез",
-    hntSeedOutput:                          "Основно име на рендерираните датотеки. Токени заменети при рендерирање: {name}, {chords} (првите 8 акорди), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Основно име на рендерираните датотеки. Токени заменети при рендерирање: {name}, {chords} (првите 8 акорди), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Рендерирај сид",
+    btnSeedPlay:                            "Пушти",
+    btnSeedStop:                            "Запри",
+    msgSeedPlayFailed:                      "Неуспешна репродукција",
     hntSeedRenderNeedsSave:                 "Прво зачувајте го сидот во .yams датотека — аудиото се рендерира до него.",
     tipSeedLoad:                            "Вчитај сид",
     ttlSeedLoad:                            "Отвори сид датотека",
@@ -3001,6 +4444,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Рендерирањето не успеа",
     lblSeedResult:                          "Зачувано",
     hntSeedResult:                          "Поставете го аудио семето на Suno (Cover). Следи ја хармонијата што ја слуша, а не имињата на акордите што ги пишувате.",
+    msgSeedBusyInstrument:                  "Вчитување инструмент…",
     msgSeedBusyRender:                      "Рендерирање аудио…",
     msgSeedBusySave:                        "Зачувување…",
     lblSeedSummaryChords:                   "Акорди",
@@ -3050,18 +4494,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktna oznaka",
     lblSeedLoops:                           "Petlje",
     lblSeedStyle:                           "Stil",
-    optSeedStylePad:                        "Pad: blok akordi",
-    optSeedStyleArp:                        "Арп: прстима свирано",
-    optSeedStyleDrone:                      "Дрон: континуирана подлога",
-    optSeedStyleMarker:                     "Маркер: акордни убоди",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sr
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sr
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sr
+    optSeedStylePad:                        "Pad", // TODO: translate to sr
+    optSeedStyleDrone:                      "Drone", // TODO: translate to sr
+    optSeedStyleMarker:                     "Marker", // TODO: translate to sr
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sr
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sr
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sr
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sr
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sr
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sr
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sr
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to sr
+    lblSeedInstrument:                      "Инструмент",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to sr
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sr
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sr
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sr
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to sr
+    tabSeedRender:                          "Render", // TODO: translate to sr
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to sr
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to sr
+    lblSeedKnobTune:                        "Tune", // TODO: translate to sr
+    tipSeedMute:                            "Mute", // TODO: translate to sr
+    tipSeedUnmute:                          "Unmute", // TODO: translate to sr
+    lblSeedReverb:                          "Reverb", // TODO: translate to sr
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sr
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sr
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sr
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sr
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sr
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sr
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sr
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sr
+    optSeedInstrumentSine:                  "Синус: уграђени синтисајзер",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 битрејт",
     lblSeedName:                            "Назив",
     lblSeedOutput:                          "Излаз",
-    hntSeedOutput:                          "Основни назив рендерованих датотека. Токени замењени при рендеровању: {name}, {chords} (првих 8 акорда), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Основни назив рендерованих датотека. Токени замењени при рендеровању: {name}, {chords} (првих 8 акорда), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Рендеруј сид",
+    btnSeedPlay:                            "Пусти",
+    btnSeedStop:                            "Заустави",
+    msgSeedPlayFailed:                      "Грешка при репродукцији",
     hntSeedRenderNeedsSave:                 "Прво сачувајте сид у .yams датотеку — аудио се рендерује поред ње.",
     tipSeedLoad:                            "Учитај сид",
     ttlSeedLoad:                            "Отвори сид датотеку",
@@ -3080,6 +4561,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Рендеровање неуспешно",
     lblSeedResult:                          "Сачувано",
     hntSeedResult:                          "Отпремите аудио семе у Suno (Cover). Прати хармонију коју чује, а не називе акорда које уносите.",
+    msgSeedBusyInstrument:                  "Учитавање инструмента…",
     msgSeedBusyRender:                      "Рендеровање звука…",
     msgSeedBusySave:                        "Чување…",
     lblSeedSummaryChords:                   "Акорди",
@@ -3129,18 +4611,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktové označenie",
     lblSeedLoops:                           "Slučky",
     lblSeedStyle:                           "Štýl",
-    optSeedStylePad:                        "Pad: blokové akordy",
-    optSeedStyleArp:                        "Arp: prstokladom",
-    optSeedStyleDrone:                      "Drone: súvislý podklad",
-    optSeedStyleMarker:                     "Značka: akordové údery",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sk
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sk
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sk
+    optSeedStylePad:                        "Pad", // TODO: translate to sk
+    optSeedStyleDrone:                      "Drone", // TODO: translate to sk
+    optSeedStyleMarker:                     "Marker", // TODO: translate to sk
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sk
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sk
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sk
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sk
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sk
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sk
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sk
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to sk
+    lblSeedInstrument:                      "Nástroj",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to sk
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sk
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sk
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sk
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to sk
+    tabSeedRender:                          "Render", // TODO: translate to sk
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to sk
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to sk
+    lblSeedKnobTune:                        "Tune", // TODO: translate to sk
+    tipSeedMute:                            "Mute", // TODO: translate to sk
+    tipSeedUnmute:                          "Unmute", // TODO: translate to sk
+    lblSeedReverb:                          "Reverb", // TODO: translate to sk
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sk
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sk
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sk
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sk
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sk
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sk
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sk
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sk
+    optSeedInstrumentSine:                  "Sínus: vstavaný syntetizátor",
     lblSeedFormat:                          "Formát",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Názov",
     lblSeedOutput:                          "Výstup",
-    hntSeedOutput:                          "Základný názov vykreslených súborov. Tokeny nahradené pri vykresľovaní: {name}, {chords} (prvých 8 akordov), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Základný názov renderovaných súborov. Tokeny nahradené pri renderovaní: {name}, {chords} (prvých 8 akordov), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Vykresliť seed",
+    btnSeedPlay:                            "Prehrať",
+    btnSeedStop:                            "Zastaviť",
+    msgSeedPlayFailed:                      "Prehrávanie zlyhalo",
     hntSeedRenderNeedsSave:                 "Najprv uložte seed do súboru .yams — zvuk sa vykreslí vedľa neho.",
     tipSeedLoad:                            "Načítať seed",
     ttlSeedLoad:                            "Otvoriť súbor seed",
@@ -3159,6 +4678,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Vykreslenie zlyhalo",
     lblSeedResult:                          "Uložené",
     hntSeedResult:                          "Nahrajte zvukový seed do Suno (Cover). Riadi sa harmóniou, ktorú počuje, nie názvami akordov, ktoré zadávate.",
+    msgSeedBusyInstrument:                  "Načítava sa nástroj…",
     msgSeedBusyRender:                      "Vykresľovanie zvuku…",
     msgSeedBusySave:                        "Ukladanie…",
     lblSeedSummaryChords:                   "Akordy",
@@ -3208,18 +4728,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Taktovski podpis",
     lblSeedLoops:                           "Zanke",
     lblSeedStyle:                           "Slog",
-    optSeedStylePad:                        "Pad: blok akordi",
-    optSeedStyleArp:                        "Arp: s prsti igrano",
-    optSeedStyleDrone:                      "Drone: neprekinjena podlaga",
-    optSeedStyleMarker:                     "Označevalec: akordni udarci",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sl
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sl
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sl
+    optSeedStylePad:                        "Pad", // TODO: translate to sl
+    optSeedStyleDrone:                      "Drone", // TODO: translate to sl
+    optSeedStyleMarker:                     "Marker", // TODO: translate to sl
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sl
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sl
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sl
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sl
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sl
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sl
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sl
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to sl
+    lblSeedInstrument:                      "Instrument",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to sl
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sl
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sl
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sl
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to sl
+    tabSeedRender:                          "Render", // TODO: translate to sl
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to sl
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to sl
+    lblSeedKnobTune:                        "Tune", // TODO: translate to sl
+    tipSeedMute:                            "Mute", // TODO: translate to sl
+    tipSeedUnmute:                          "Unmute", // TODO: translate to sl
+    lblSeedReverb:                          "Reverb", // TODO: translate to sl
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sl
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sl
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sl
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sl
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sl
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sl
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sl
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sl
+    optSeedInstrumentSine:                  "Sinus: vgrajen sintetizator",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitna hitrost",
     lblSeedName:                            "Ime",
     lblSeedOutput:                          "Izhod",
-    hntSeedOutput:                          "Osnovno ime upodobljenih datotek. Žetoni, zamenjani ob upodabljanju: {name}, {chords} (prvih 8 akordov), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Osnovno ime upodobljenih datotek. Žetoni, zamenjani pri upodabljanju: {name}, {chords} (prvih 8 akordov), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Renderiraj seme",
+    btnSeedPlay:                            "Predvajaj",
+    btnSeedStop:                            "Ustavi",
+    msgSeedPlayFailed:                      "Predvajanje ni uspelo",
     hntSeedRenderNeedsSave:                 "Najprej shranite seme v datoteko .yams — zvok se upodobi poleg nje.",
     tipSeedLoad:                            "Naloži seed",
     ttlSeedLoad:                            "Odpri seed datoteko",
@@ -3238,6 +4795,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Upodabljanje ni uspelo",
     lblSeedResult:                          "Shranjeno",
     hntSeedResult:                          "Naložite zvočno seme v Suno (Cover). Sledi harmoniji, ki jo sliši, ne imenom akordov, ki jih vnašate.",
+    msgSeedBusyInstrument:                  "Nalaganje instrumenta…",
     msgSeedBusyRender:                      "Upodabljanje zvoka…",
     msgSeedBusySave:                        "Shranjevanje…",
     lblSeedSummaryChords:                   "Akordi",
@@ -3287,18 +4845,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "நேரக் குறி",
     lblSeedLoops:                           "சுழல்கள்",
     lblSeedStyle:                           "நடை",
-    optSeedStylePad:                        "பேட்: பிளாக் கார்டுகள்",
-    optSeedStyleArp:                        "ஆர்ப்: விரலால் வாசிக்கப்பட்டது",
-    optSeedStyleDrone:                      "ட்ரோன்: தொடர்ச்சியான அடிப்படை",
-    optSeedStyleMarker:                     "மார்க்கர்: கோர்வை குத்துகள்",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ta
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ta
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ta
+    optSeedStylePad:                        "Pad", // TODO: translate to ta
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ta
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ta
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ta
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ta
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ta
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ta
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ta
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ta
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ta
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ta
+    lblSeedInstrument:                      "கருவி",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ta
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ta
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ta
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ta
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ta
+    tabSeedRender:                          "Render", // TODO: translate to ta
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ta
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ta
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ta
+    tipSeedMute:                            "Mute", // TODO: translate to ta
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ta
+    lblSeedReverb:                          "Reverb", // TODO: translate to ta
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ta
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ta
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ta
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ta
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ta
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ta
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ta
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ta
+    optSeedInstrumentSine:                  "சைன்: உள்ளமைந்த சின்த்",
     lblSeedFormat:                          "வடிவம்",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 பிட்ரேட்",
     lblSeedName:                            "பெயர்",
     lblSeedOutput:                          "வெளியீடு",
-    hntSeedOutput:                          "ரெண்டர் செய்யப்பட்ட கோப்புகளின் அடிப்படைப் பெயர். ரெண்டர் செய்யும் போது மாற்றப்படும் டோக்கன்கள்: {name}, {chords} (முதல் 8 நாண்கள்), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "வழங்கப்பட்ட கோப்புகளின் அடிப்படைப் பெயர். வழங்குதலின்போது மாற்றப்படும் டோக்கன்கள்: {name}, {chords} (முதல் 8 நாண்கள்), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "சீடை ரெண்டர் செய்",
+    btnSeedPlay:                            "இயக்கு",
+    btnSeedStop:                            "நிறுத்து",
+    msgSeedPlayFailed:                      "பின்னணி தோல்வியடைந்தது",
     hntSeedRenderNeedsSave:                 "முதலில் விதையை ஒரு .yams கோப்பில் சேமிக்கவும் — ஆடியோ அதற்கு அடுத்ததாக ரெண்டர் செய்யப்படும்.",
     tipSeedLoad:                            "சீட் ஏற்றவும்",
     ttlSeedLoad:                            "சீட் கோப்பை திறக்கவும்",
@@ -3317,6 +4912,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "ரெண்டரிங் தோல்வியடைந்தது",
     lblSeedResult:                          "சேமிக்கப்பட்டது",
     hntSeedResult:                          "ஆடியோ சீடை Suno (Cover) இல் பதிவேற்றவும். இது நீங்கள் தட்டச்சு செய்யும் கார்டு பெயர்களைப் பின்பற்றாமல், அது கேட்கும் இணக்கத்தைப் பின்பற்றுகிறது.",
+    msgSeedBusyInstrument:                  "கருவி ஏற்றப்படுகிறது…",
     msgSeedBusyRender:                      "ஆடியோ ரெண்டரிங்…",
     msgSeedBusySave:                        "சேமிக்கிறது…",
     lblSeedSummaryChords:                   "நாண்",
@@ -3366,18 +4962,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "समय हस्ताक्षर",
     lblSeedLoops:                           "लूप",
     lblSeedStyle:                           "शैली",
-    optSeedStylePad:                        "पैड: ब्लॉक कॉर्ड्स",
-    optSeedStyleArp:                        "आर्प: उंगलियों से बजाया गया",
-    optSeedStyleDrone:                      "ड्रोन: निरंतर आधार",
-    optSeedStyleMarker:                     "मार्कर: कॉर्ड के झटके",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to hi
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to hi
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to hi
+    optSeedStylePad:                        "Pad", // TODO: translate to hi
+    optSeedStyleDrone:                      "Drone", // TODO: translate to hi
+    optSeedStyleMarker:                     "Marker", // TODO: translate to hi
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to hi
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to hi
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to hi
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to hi
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to hi
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to hi
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to hi
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to hi
+    lblSeedInstrument:                      "वाद्य यंत्र",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to hi
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to hi
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to hi
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to hi
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to hi
+    tabSeedRender:                          "Render", // TODO: translate to hi
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to hi
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to hi
+    lblSeedKnobTune:                        "Tune", // TODO: translate to hi
+    tipSeedMute:                            "Mute", // TODO: translate to hi
+    tipSeedUnmute:                          "Unmute", // TODO: translate to hi
+    lblSeedReverb:                          "Reverb", // TODO: translate to hi
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to hi
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to hi
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to hi
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to hi
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to hi
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to hi
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to hi
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to hi
+    optSeedInstrumentSine:                  "साइन: अंतर्निहित सिंथ",
     lblSeedFormat:                          "प्रारूप",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 बिटरेट",
     lblSeedName:                            "नाम",
     lblSeedOutput:                          "आउटपुट",
-    hntSeedOutput:                          "रेंडर की गई फ़ाइलों का मूल नाम। रेंडर करते समय बदले जाने वाले टोकन: {name}, {chords} (पहले 8 कॉर्ड), {style}, {bpm}, {loops}।",
+    hntSeedOutput:                          "रेंडर की गई फ़ाइलों का मूल नाम। रेंडर करते समय बदले गए टोकन: {name}, {chords} (पहले 8 कॉर्ड), {style}, {instrument}, {bpm}, {loops}।",
     btnSeedRender:                          "सीड रेंडर करें",
+    btnSeedPlay:                            "चलाएँ",
+    btnSeedStop:                            "रोकें",
+    msgSeedPlayFailed:                      "प्लेबैक विफल रहा",
     hntSeedRenderNeedsSave:                 "पहले सीड को .yams फ़ाइल में सहेजें — ऑडियो उसके बगल में रेंडर किया जाता है।",
     tipSeedLoad:                            "सीड लोड करें",
     ttlSeedLoad:                            "सीड फ़ाइल खोलें",
@@ -3396,6 +5029,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "रेंडर विफल रहा",
     lblSeedResult:                          "सहेजा गया",
     hntSeedResult:                          "ऑडियो सीड को Suno (कवर) पर अपलोड करें। यह आपके द्वारा टाइप किए गए कॉर्ड नामों के बजाय सुनी गई सद्भाव का पालन करता है।",
+    msgSeedBusyInstrument:                  "उपकरण लोड हो रहा है…",
     msgSeedBusyRender:                      "ऑडियो रेंडर हो रहा है…",
     msgSeedBusySave:                        "सहेजा जा रहा है…",
     lblSeedSummaryChords:                   "कॉर्ड्स",
@@ -3445,18 +5079,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "সময় স্বাক্ষর",
     lblSeedLoops:                           "লুপ",
     lblSeedStyle:                           "শৈলী",
-    optSeedStylePad:                        "প্যাড: ব্লক কর্ড",
-    optSeedStyleArp:                        "আর্প: আঙুল দিয়ে বাজানো",
-    optSeedStyleDrone:                      "ড্রোন: স্থায়ী ভিত্তি",
-    optSeedStyleMarker:                     "মার্কার: কর্ড আঘাত",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to bn
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to bn
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to bn
+    optSeedStylePad:                        "Pad", // TODO: translate to bn
+    optSeedStyleDrone:                      "Drone", // TODO: translate to bn
+    optSeedStyleMarker:                     "Marker", // TODO: translate to bn
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to bn
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to bn
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to bn
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to bn
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to bn
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to bn
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to bn
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to bn
+    lblSeedInstrument:                      "যন্ত্র",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to bn
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to bn
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to bn
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to bn
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to bn
+    tabSeedRender:                          "Render", // TODO: translate to bn
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to bn
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to bn
+    lblSeedKnobTune:                        "Tune", // TODO: translate to bn
+    tipSeedMute:                            "Mute", // TODO: translate to bn
+    tipSeedUnmute:                          "Unmute", // TODO: translate to bn
+    lblSeedReverb:                          "Reverb", // TODO: translate to bn
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to bn
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to bn
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to bn
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to bn
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to bn
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to bn
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to bn
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to bn
+    optSeedInstrumentSine:                  "সাইন: বিল্ট-ইন সিন্থ",
     lblSeedFormat:                          "বিন্যাস",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 বিটরেট",
     lblSeedName:                            "নাম",
     lblSeedOutput:                          "আউটপুট",
-    hntSeedOutput:                          "রেন্ডার করা ফাইলগুলির মূল নাম। রেন্ডার করার সময় প্রতিস্থাপিত টোকেন: {name}, {chords} (প্রথম 8টি কর্ড), {style}, {bpm}, {loops}।",
+    hntSeedOutput:                          "রেন্ডার করা ফাইলগুলির মূল নাম। রেন্ডার করার সময় প্রতিস্থাপিত টোকেন: {name}, {chords} (প্রথম 8টি কর্ড), {style}, {instrument}, {bpm}, {loops}।",
     btnSeedRender:                          "সিড রেন্ডার করুন",
+    btnSeedPlay:                            "চালান",
+    btnSeedStop:                            "থামান",
+    msgSeedPlayFailed:                      "প্লেব্যাক ব্যর্থ হয়েছে",
     hntSeedRenderNeedsSave:                 "প্রথমে সিডটি একটি .yams ফাইলে সংরক্ষণ করুন — অডিও এর পাশে রেন্ডার করা হয়।",
     tipSeedLoad:                            "সিড লোড করুন",
     ttlSeedLoad:                            "সিড ফাইল খুলুন",
@@ -3475,6 +5146,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "রেন্ডার ব্যর্থ হয়েছে",
     lblSeedResult:                          "সংরক্ষিত",
     hntSeedResult:                          "Suno (কভার)-এ অডিও সিড আপলোড করুন। এটি আপনার টাইপ করা কর্ডের নাম নয়, বরং শোনা সুর অনুসরণ করে।",
+    msgSeedBusyInstrument:                  "যন্ত্র লোড হচ্ছে…",
     msgSeedBusyRender:                      "অডিও রেন্ডার হচ্ছে…",
     msgSeedBusySave:                        "সংরক্ষণ করা হচ্ছে…",
     lblSeedSummaryChords:                   "কর্ড",
@@ -3524,18 +5196,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "وقت کا نشان",
     lblSeedLoops:                           "لوپس",
     lblSeedStyle:                           "انداز",
-    optSeedStylePad:                        "پیڈ: بلاک کورڈز",
-    optSeedStyleArp:                        "آرپ: انگلیوں سے بجایا گیا",
-    optSeedStyleDrone:                      "ڈرون: مسلسل بنیاد",
-    optSeedStyleMarker:                     "مارکر: کورڈ کے وار",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ur
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ur
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ur
+    optSeedStylePad:                        "Pad", // TODO: translate to ur
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ur
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ur
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ur
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ur
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ur
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ur
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ur
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ur
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ur
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ur
+    lblSeedInstrument:                      "آلہ",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ur
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ur
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ur
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ur
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ur
+    tabSeedRender:                          "Render", // TODO: translate to ur
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ur
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ur
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ur
+    tipSeedMute:                            "Mute", // TODO: translate to ur
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ur
+    lblSeedReverb:                          "Reverb", // TODO: translate to ur
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ur
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ur
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ur
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ur
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ur
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ur
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ur
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ur
+    optSeedInstrumentSine:                  "سائن: بلٹ ان سنتھ",
     lblSeedFormat:                          "فارمیٹ",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 بٹ ریٹ",
     lblSeedName:                            "نام",
     lblSeedOutput:                          "آؤٹ پٹ",
-    hntSeedOutput:                          "رینڈر شدہ فائلوں کا بنیادی نام۔ رینڈر کرتے وقت تبدیل ہونے والے ٹوکن: {name}, {chords} (پہلے 8 راگ), {style}, {bpm}, {loops}۔",
+    hntSeedOutput:                          "ریندر شدہ فائلوں کا بنیادی نام۔ رینڈر کرتے وقت تبدیل کیے گئے ٹوکن: {name}, {chords} (پہلے 8 راگ), {style}, {instrument}, {bpm}, {loops}۔",
     btnSeedRender:                          "سیڈ رینڈر کریں",
+    btnSeedPlay:                            "چلائیں",
+    btnSeedStop:                            "روکیں",
+    msgSeedPlayFailed:                      "پلے بیک ناکام ہو گیا",
     hntSeedRenderNeedsSave:                 "پہلے سیڈ کو .yams فائل میں محفوظ کریں — آڈیو اس کے ساتھ رینڈر کیا جاتا ہے۔",
     tipSeedLoad:                            "سیڈ لوڈ کریں",
     ttlSeedLoad:                            "سیڈ فائل کھولیں",
@@ -3554,6 +5263,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "رینڈر ناکام ہو گیا",
     lblSeedResult:                          "محفوظ ہو گیا",
     hntSeedResult:                          "آڈیو سیڈ کو Suno (کور) پر اپ لوڈ کریں۔ یہ آپ کے ٹائپ کردہ راگ کے ناموں کے بجائے سنی ہوئی ہم آہنگی کی پیروی کرتا ہے۔",
+    msgSeedBusyInstrument:                  "آلہ لوڈ ہو رہا ہے…",
     msgSeedBusyRender:                      "آڈیو رینڈر ہو رہا ہے…",
     msgSeedBusySave:                        "محفوظ کیا جا رہا ہے…",
     lblSeedSummaryChords:                   "راگ",
@@ -3603,18 +5313,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Saini ya muda",
     lblSeedLoops:                           "Mizunguko",
     lblSeedStyle:                           "Mtindo",
-    optSeedStylePad:                        "Pedi: akodi za kuzuia",
-    optSeedStyleArp:                        "Arp: iliyopigwa kwa vidole",
-    optSeedStyleDrone:                      "Drone: msingi endelevu",
-    optSeedStyleMarker:                     "Alama: miguno ya kodi",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sw
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sw
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sw
+    optSeedStylePad:                        "Pad", // TODO: translate to sw
+    optSeedStyleDrone:                      "Drone", // TODO: translate to sw
+    optSeedStyleMarker:                     "Marker", // TODO: translate to sw
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sw
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sw
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sw
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sw
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sw
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sw
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sw
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to sw
+    lblSeedInstrument:                      "Ala",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to sw
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sw
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sw
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sw
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to sw
+    tabSeedRender:                          "Render", // TODO: translate to sw
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to sw
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to sw
+    lblSeedKnobTune:                        "Tune", // TODO: translate to sw
+    tipSeedMute:                            "Mute", // TODO: translate to sw
+    tipSeedUnmute:                          "Unmute", // TODO: translate to sw
+    lblSeedReverb:                          "Reverb", // TODO: translate to sw
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sw
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sw
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sw
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sw
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sw
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sw
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sw
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sw
+    optSeedInstrumentSine:                  "Saini: synth iliyojengwa ndani",
     lblSeedFormat:                          "Umbizo",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Kiwango cha biti cha MP3",
     lblSeedName:                            "Jina",
     lblSeedOutput:                          "Pato",
-    hntSeedOutput:                          "Jina la msingi la faili zilizotolewa. Ishara zilizobadilishwa wakati wa kutoa: {name}, {chords} (nyimbo 8 za kwanza), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Jina la msingi la faili zilizotolewa. Tokeni zilizobadilishwa wakati wa kutoa: {name}, {chords} (nyimbo 8 za kwanza), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Toa mbegu",
+    btnSeedPlay:                            "Cheza",
+    btnSeedStop:                            "Simamisha",
+    msgSeedPlayFailed:                      "Uchezaji umeshindwa",
     hntSeedRenderNeedsSave:                 "Hifadhi seed kwenye faili ya .yams kwanza — sauti inatolewa karibu nayo.",
     tipSeedLoad:                            "Pakia mbegu",
     ttlSeedLoad:                            "Fungua faili la mbegu",
@@ -3633,6 +5380,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Utengenezaji umeshindwa",
     lblSeedResult:                          "Imehifadhiwa",
     hntSeedResult:                          "Pakia mbegu ya sauti kwa Suno (Cover). Inafuata upatanifu inayosikia, si majina ya akodi unayoandika.",
+    msgSeedBusyInstrument:                  "Inapakia ala…",
     msgSeedBusyRender:                      "Inatoa sauti…",
     msgSeedBusySave:                        "Inahifadhi…",
     lblSeedSummaryChords:                   "Akodi",
@@ -3682,18 +5430,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "ਸਮਾਂ ਦਸਤਖਤ",
     lblSeedLoops:                           "ਲੂਪਸ",
     lblSeedStyle:                           "ਸ਼ੈਲੀ",
-    optSeedStylePad:                        "ਪੈਡ: ਬਲਾਕ ਕੋਰਡਸ",
-    optSeedStyleArp:                        "ਆਰਪ: ਉਂਗਲਾਂ ਨਾਲ ਵਜਾਇਆ",
-    optSeedStyleDrone:                      "ਡਰੋਨ: ਲਗਾਤਾਰ ਆਧਾਰ",
-    optSeedStyleMarker:                     "ਮਾਰਕਰ: ਕੋਰਡ ਦੇ ਝਟਕੇ",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to pa
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to pa
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to pa
+    optSeedStylePad:                        "Pad", // TODO: translate to pa
+    optSeedStyleDrone:                      "Drone", // TODO: translate to pa
+    optSeedStyleMarker:                     "Marker", // TODO: translate to pa
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to pa
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to pa
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to pa
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to pa
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to pa
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to pa
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to pa
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to pa
+    lblSeedInstrument:                      "ਸਾਜ਼",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to pa
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to pa
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to pa
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to pa
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to pa
+    tabSeedRender:                          "Render", // TODO: translate to pa
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to pa
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to pa
+    lblSeedKnobTune:                        "Tune", // TODO: translate to pa
+    tipSeedMute:                            "Mute", // TODO: translate to pa
+    tipSeedUnmute:                          "Unmute", // TODO: translate to pa
+    lblSeedReverb:                          "Reverb", // TODO: translate to pa
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to pa
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to pa
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to pa
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to pa
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to pa
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to pa
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to pa
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to pa
+    optSeedInstrumentSine:                  "ਸਾਈਨ: ਬਿਲਟ-ਇਨ ਸਿੰਥ",
     lblSeedFormat:                          "ਫਾਰਮੈਟ",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 ਬਿੱਟਰੇਟ",
     lblSeedName:                            "ਨਾਮ",
     lblSeedOutput:                          "ਆਉਟਪੁੱਟ",
-    hntSeedOutput:                          "ਰੈਂਡਰ ਕੀਤੀਆਂ ਫਾਈਲਾਂ ਦਾ ਮੂਲ ਨਾਮ। ਰੈਂਡਰ ਕਰਨ ਵੇਲੇ ਬਦਲੇ ਗਏ ਟੋਕਨ: {name}, {chords} (ਪਹਿਲੇ 8 ਕੋਰਡ), {style}, {bpm}, {loops}।",
+    hntSeedOutput:                          "ਰੈਂਡਰ ਕੀਤੀਆਂ ਫਾਈਲਾਂ ਦਾ ਮੂਲ ਨਾਮ। ਰੈਂਡਰ ਕਰਨ ਵੇਲੇ ਬਦਲੇ ਗਏ ਟੋਕਨ: {name}, {chords} (ਪਹਿਲੇ 8 ਕੋਰਡ), {style}, {instrument}, {bpm}, {loops}।",
     btnSeedRender:                          "ਸੀਡ ਰੈਂਡਰ ਕਰੋ",
+    btnSeedPlay:                            "ਚਲਾਓ",
+    btnSeedStop:                            "ਰੋਕੋ",
+    msgSeedPlayFailed:                      "ਪਲੇਬੈਕ ਅਸਫਲ ਰਿਹਾ",
     hntSeedRenderNeedsSave:                 "ਪਹਿਲਾਂ ਸੀਡ ਨੂੰ .yams ਫਾਈਲ ਵਿੱਚ ਸੇਵ ਕਰੋ — ਆਡੀਓ ਇਸਦੇ ਨਾਲ ਰੈਂਡਰ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।",
     tipSeedLoad:                            "ਸੀਡ ਲੋਡ ਕਰੋ",
     ttlSeedLoad:                            "ਸੀਡ ਫਾਈਲ ਖੋਲ੍ਹੋ",
@@ -3712,6 +5497,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "ਰੈਂਡਰ ਅਸਫਲ ਰਿਹਾ",
     lblSeedResult:                          "ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ",
     hntSeedResult:                          "ਆਡੀਓ ਸੀਡ ਨੂੰ Suno (ਕਵਰ) 'ਤੇ ਅੱਪਲੋਡ ਕਰੋ। ਇਹ ਤੁਹਾਡੇ ਦੁਆਰਾ ਟਾਈਪ ਕੀਤੇ ਗਏ ਕੋਰਡ ਨਾਮਾਂ ਦੀ ਬਜਾਏ ਸੁਣੀ ਗਈ ਸੁਰ ਦਾ ਪਾਲਣ ਕਰਦਾ ਹੈ।",
+    msgSeedBusyInstrument:                  "ਸਾਜ਼ ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…",
     msgSeedBusyRender:                      "ਆਡੀਓ ਰੈਂਡਰ ਹੋ ਰਿਹਾ ਹੈ…",
     msgSeedBusySave:                        "ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…",
     lblSeedSummaryChords:                   "ਕੋਰਡ",
@@ -3761,18 +5547,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Sa hannun lokaci",
     lblSeedLoops:                           "Madauki",
     lblSeedStyle:                           "Salo",
-    optSeedStylePad:                        "Pad: katange-katange",
-    optSeedStyleArp:                        "Arp: da yatsa aka buga",
-    optSeedStyleDrone:                      "Drone: tushe mai dorewa",
-    optSeedStyleMarker:                     "Alama: bugun kirtani",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ha
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ha
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ha
+    optSeedStylePad:                        "Pad", // TODO: translate to ha
+    optSeedStyleDrone:                      "Drone", // TODO: translate to ha
+    optSeedStyleMarker:                     "Marker", // TODO: translate to ha
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ha
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ha
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ha
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ha
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ha
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ha
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ha
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to ha
+    lblSeedInstrument:                      "Kayan aiki",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to ha
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ha
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ha
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ha
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to ha
+    tabSeedRender:                          "Render", // TODO: translate to ha
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to ha
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to ha
+    lblSeedKnobTune:                        "Tune", // TODO: translate to ha
+    tipSeedMute:                            "Mute", // TODO: translate to ha
+    tipSeedUnmute:                          "Unmute", // TODO: translate to ha
+    lblSeedReverb:                          "Reverb", // TODO: translate to ha
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ha
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ha
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ha
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ha
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ha
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ha
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ha
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ha
+    optSeedInstrumentSine:                  "Sine: ginshigar synth",
     lblSeedFormat:                          "Tsari",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Suna",
     lblSeedOutput:                          "Fitarwa",
-    hntSeedOutput:                          "Sunan tushe na fayilolin da aka yi. Alamomin da aka maye gurbinsu yayin yin: {name}, {chords} (mafificin kirtani 8), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Sunan tushe na fayilolin da aka yi. Alamomin da aka maye gurbinsu yayin yin: {name}, {chords} (maɓallan 8 na farko), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Render iri",
+    btnSeedPlay:                            "Kunna",
+    btnSeedStop:                            "Tsaya",
+    msgSeedPlayFailed:                      "Kunna ya gaza",
     hntSeedRenderNeedsSave:                 "Ajiye seed zuwa fayil ɗin .yams da farko — ana fitar da sauti kusa da shi.",
     tipSeedLoad:                            "Ɗauki iri",
     ttlSeedLoad:                            "Bude fayil ɗin iri",
@@ -3791,6 +5614,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Sarrafawa ya gaza",
     lblSeedResult:                          "An adana",
     hntSeedResult:                          "Loda 'audio seed' zuwa Suno (Cover). Yana bin jituwar da yake ji, ba sunayen kirtani da kake rubutawa ba.",
+    msgSeedBusyInstrument:                  "Ana ɗora kayan kiɗa…",
     msgSeedBusyRender:                      "Ana fitar da sauti…",
     msgSeedBusySave:                        "Ana adanawa…",
     lblSeedSummaryChords:                   "Kordoji",
@@ -3840,18 +5664,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Ami akoko",
     lblSeedLoops:                           "Awọn lupu",
     lblSeedStyle:                           "Ara",
-    optSeedStylePad:                        "Paadi: awọn kọọdu bulọọki",
-    optSeedStyleArp:                        "Arp: fífín pẹlu ika",
-    optSeedStyleDrone:                      "Drone: ipilẹ ti o duro",
-    optSeedStyleMarker:                     "Àmì: ìkọlù kọ́ọ̀dù",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to yo
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to yo
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to yo
+    optSeedStylePad:                        "Pad", // TODO: translate to yo
+    optSeedStyleDrone:                      "Drone", // TODO: translate to yo
+    optSeedStyleMarker:                     "Marker", // TODO: translate to yo
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to yo
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to yo
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to yo
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to yo
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to yo
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to yo
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to yo
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to yo
+    lblSeedInstrument:                      "Ohun èlò",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to yo
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to yo
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to yo
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to yo
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to yo
+    tabSeedRender:                          "Render", // TODO: translate to yo
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to yo
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to yo
+    lblSeedKnobTune:                        "Tune", // TODO: translate to yo
+    tipSeedMute:                            "Mute", // TODO: translate to yo
+    tipSeedUnmute:                          "Unmute", // TODO: translate to yo
+    lblSeedReverb:                          "Reverb", // TODO: translate to yo
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to yo
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to yo
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to yo
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to yo
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to yo
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to yo
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to yo
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to yo
+    optSeedInstrumentSine:                  "Sine: sintetiki ti a kọ sinu",
     lblSeedFormat:                          "Ọna kika",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "Oṣuwọn bit MP3",
     lblSeedName:                            "Orukọ",
     lblSeedOutput:                          "Ìjáde",
-    hntSeedOutput:                          "Orukọ ipilẹ ti awọn faili ti a ti ṣe. Awọn ami ti a rọpo ni akoko ṣiṣe: {name}, {chords} (awọn akọọlẹ 8 akọkọ), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Orukọ ipilẹ awọn faili ti a ti ṣe. Awọn ami ti a rọpo nigba ṣiṣe: {name}, {chords} (awọn akọọlẹ 8 akọkọ), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "Render irugbin",
+    btnSeedPlay:                            "Ṣiṣẹ",
+    btnSeedStop:                            "Duro",
+    msgSeedPlayFailed:                      "Ikuna ṣiṣẹ",
     hntSeedRenderNeedsSave:                 "Kọkọ fipamọ irugbin naa si faili .yams — ohun yoo jẹ dida lẹgbẹẹ rẹ.",
     tipSeedLoad:                            "Ṣe ìgbékalẹ̀ irúgbìn",
     ttlSeedLoad:                            "Ṣí faili irúgbìn",
@@ -3870,6 +5731,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Ifihan kuna",
     lblSeedResult:                          "Ti fipamọ",
     hntSeedResult:                          "Po irugbin ohun si Suno (Ideri). O tẹle isokan ti o gbọ, kii ṣe awọn orukọ akọọlẹ ti o tẹ.",
+    msgSeedBusyInstrument:                  "Nṣe ikojọpọ ohun èlò…",
     msgSeedBusyRender:                      "Ńṣe ìtumọ̀ ohùn…",
     msgSeedBusySave:                        "Ńfi pamọ́…",
     lblSeedSummaryChords:                   "Kọ́ọ̀dù",
@@ -3919,18 +5781,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "సమయ సంతకం",
     lblSeedLoops:                           "లూప్‌లు",
     lblSeedStyle:                           "శైలి",
-    optSeedStylePad:                        "ప్యాడ్: బ్లాక్ తీగలు",
-    optSeedStyleArp:                        "ఆర్ప్: వేళ్ళతో వాయించబడింది",
-    optSeedStyleDrone:                      "డ్రోన్: నిరంతర ఆధారం",
-    optSeedStyleMarker:                     "మార్కర్: కార్డ్ దెబ్బలు",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to te
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to te
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to te
+    optSeedStylePad:                        "Pad", // TODO: translate to te
+    optSeedStyleDrone:                      "Drone", // TODO: translate to te
+    optSeedStyleMarker:                     "Marker", // TODO: translate to te
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to te
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to te
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to te
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to te
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to te
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to te
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to te
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to te
+    lblSeedInstrument:                      "వాయిద్యం",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to te
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to te
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to te
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to te
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to te
+    tabSeedRender:                          "Render", // TODO: translate to te
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to te
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to te
+    lblSeedKnobTune:                        "Tune", // TODO: translate to te
+    tipSeedMute:                            "Mute", // TODO: translate to te
+    tipSeedUnmute:                          "Unmute", // TODO: translate to te
+    lblSeedReverb:                          "Reverb", // TODO: translate to te
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to te
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to te
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to te
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to te
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to te
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to te
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to te
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to te
+    optSeedInstrumentSine:                  "సైన్: అంతర్నిర్మిత సింథ్",
     lblSeedFormat:                          "ఫార్మాట్",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 బిట్‌రేట్",
     lblSeedName:                            "పేరు",
     lblSeedOutput:                          "అవుట్‌పుట్",
-    hntSeedOutput:                          "రెండర్ చేయబడిన ఫైల్‌ల ప్రాథమిక పేరు. రెండర్ చేసేటప్పుడు మార్చబడే టోకెన్‌లు: {name}, {chords} (మొదటి 8 తీగలు), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "రెండర్ చేయబడిన ఫైల్‌ల ప్రాథమిక పేరు. రెండర్ చేసేటప్పుడు భర్తీ చేయబడిన టోకెన్‌లు: {name}, {chords} (మొదటి 8 తీగలు), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "సీడ్‌ను రెండర్ చేయండి",
+    btnSeedPlay:                            "ప్లే చేయి",
+    btnSeedStop:                            "ఆపు",
+    msgSeedPlayFailed:                      "ప్లేబ్యాక్ విఫలమైంది",
     hntSeedRenderNeedsSave:                 "ముందుగా సీడ్‌ను .yams ఫైల్‌లో సేవ్ చేయండి — ఆడియో దాని పక్కన రెండర్ చేయబడుతుంది.",
     tipSeedLoad:                            "సీడ్ లోడ్ చేయండి",
     ttlSeedLoad:                            "సీడ్ ఫైల్ తెరవండి",
@@ -3949,6 +5848,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "రెండరింగ్ విఫలమైంది",
     lblSeedResult:                          "సేవ్ చేయబడింది",
     hntSeedResult:                          "ఆడియో సీడ్‌ను Suno (కవర్)కి అప్‌లోడ్ చేయండి. ఇది మీరు టైప్ చేసిన తీగ పేర్లను కాకుండా, అది విన్న సామరస్యాన్ని అనుసరిస్తుంది.",
+    msgSeedBusyInstrument:                  "వాయిద్యం లోడ్ అవుతోంది…",
     msgSeedBusyRender:                      "ఆడియో రెండరింగ్ అవుతోంది…",
     msgSeedBusySave:                        "సేవ్ అవుతోంది…",
     lblSeedSummaryChords:                   "తీగలు",
@@ -3998,18 +5898,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "वेळ स्वाक्षरी",
     lblSeedLoops:                           "लूप्स",
     lblSeedStyle:                           "शैली",
-    optSeedStylePad:                        "पॅड: ब्लॉक कॉर्ड्स",
-    optSeedStyleArp:                        "आर्प: बोटांनी वाजवलेले",
-    optSeedStyleDrone:                      "ड्रोन: सततचा आधार",
-    optSeedStyleMarker:                     "मार्कर: कॉर्डचे झटके",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to mr
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to mr
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to mr
+    optSeedStylePad:                        "Pad", // TODO: translate to mr
+    optSeedStyleDrone:                      "Drone", // TODO: translate to mr
+    optSeedStyleMarker:                     "Marker", // TODO: translate to mr
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to mr
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to mr
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to mr
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to mr
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to mr
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to mr
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to mr
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to mr
+    lblSeedInstrument:                      "वाद्य",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to mr
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to mr
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to mr
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to mr
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to mr
+    tabSeedRender:                          "Render", // TODO: translate to mr
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to mr
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to mr
+    lblSeedKnobTune:                        "Tune", // TODO: translate to mr
+    tipSeedMute:                            "Mute", // TODO: translate to mr
+    tipSeedUnmute:                          "Unmute", // TODO: translate to mr
+    lblSeedReverb:                          "Reverb", // TODO: translate to mr
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to mr
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to mr
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to mr
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to mr
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to mr
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to mr
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to mr
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to mr
+    optSeedInstrumentSine:                  "साइन: अंगभूत सिंथ",
     lblSeedFormat:                          "स्वरूप",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 बिटरेट",
     lblSeedName:                            "नाव",
     lblSeedOutput:                          "आउटपुट",
-    hntSeedOutput:                          "रेंडर केलेल्या फाइल्सचे मूळ नाव. रेंडर करताना बदलले जाणारे टोकन: {name}, {chords} (पहिले 8 कॉर्ड), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "रेंडर केलेल्या फाइल्सचे मूळ नाव. रेंडर करताना बदललेले टोकन: {name}, {chords} (पहिले 8 कॉर्ड), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "सीड रेंडर करा",
+    btnSeedPlay:                            "प्ले करा",
+    btnSeedStop:                            "थांबा",
+    msgSeedPlayFailed:                      "प्लेबॅक अयशस्वी",
     hntSeedRenderNeedsSave:                 "प्रथम सीड .yams फाइलमध्ये सेव्ह करा — ऑडिओ त्याच्या शेजारी रेंडर केला जातो.",
     tipSeedLoad:                            "सीड लोड करा",
     ttlSeedLoad:                            "सीड फाइल उघडा",
@@ -4028,6 +5965,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "रेंडर अयशस्वी झाले",
     lblSeedResult:                          "जतन केले",
     hntSeedResult:                          "ऑडिओ सीड Suno (कव्हर) वर अपलोड करा. ते तुम्ही टाइप केलेल्या कॉर्ड नावांपेक्षा ऐकलेल्या सुसंवादाचे अनुसरण करते.",
+    msgSeedBusyInstrument:                  "वाद्य लोड होत आहे…",
     msgSeedBusyRender:                      "ऑडिओ रेंडर होत आहे…",
     msgSeedBusySave:                        "जतन करत आहे…",
     lblSeedSummaryChords:                   "कॉर्ड्स",
@@ -4077,18 +6015,55 @@ const TRANSLATIONS = {
     lblSeedSig:                             "Lagda ng oras",
     lblSeedLoops:                           "Mga Loop",
     lblSeedStyle:                           "Estilo",
-    optSeedStylePad:                        "Pad: mga block chord",
-    optSeedStyleArp:                        "Arp: pinipitik ng daliri",
-    optSeedStyleDrone:                      "Drone: patuloy na batayan",
-    optSeedStyleMarker:                     "Pananda: saksak ng kord",
+    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to tl
+    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to tl
+    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to tl
+    optSeedStylePad:                        "Pad", // TODO: translate to tl
+    optSeedStyleDrone:                      "Drone", // TODO: translate to tl
+    optSeedStyleMarker:                     "Marker", // TODO: translate to tl
+    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to tl
+    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to tl
+    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to tl
+    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to tl
+    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to tl
+    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to tl
+    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to tl
+    lblSeedKnobReverb:                      "reverb", // TODO: translate to tl
+    lblSeedInstrument:                      "Instrumento",
+    lblSeedBassInstrument:                  "Bass", // TODO: translate to tl
+    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to tl
+    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to tl
+    optSeedInstrumentFamilyAll:             "All", // TODO: translate to tl
+    // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
+    // removed with the audit together with the review UI.
+    tabSeedMusic:                           "Music", // TODO: translate to tl
+    tabSeedRender:                          "Render", // TODO: translate to tl
+    lblSeedKnobVolume:                      "Volume", // TODO: translate to tl
+    lblSeedKnobOctave:                      "Octave", // TODO: translate to tl
+    lblSeedKnobTune:                        "Tune", // TODO: translate to tl
+    tipSeedMute:                            "Mute", // TODO: translate to tl
+    tipSeedUnmute:                          "Unmute", // TODO: translate to tl
+    lblSeedReverb:                          "Reverb", // TODO: translate to tl
+    optSeedReverbNone:                      "Dry: no room", // TODO: translate to tl
+    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to tl
+    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to tl
+    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to tl
+    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to tl
+    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to tl
+    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to tl
+    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to tl
+    optSeedInstrumentSine:                  "Sine: built-in synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Pangalan",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Pangunahing pangalan ng mga na-render na file. Mga token na pinapalitan sa pag-render: {name}, {chords} (ang unang 8 chords), {style}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Pangunahing pangalan ng mga na-render na file. Mga token na pinalitan sa pag-render: {name}, {chords} (ang unang 8 chords), {style}, {instrument}, {bpm}, {loops}.",
     btnSeedRender:                          "I-render ang seed",
+    btnSeedPlay:                            "I-play",
+    btnSeedStop:                            "Itigil",
+    msgSeedPlayFailed:                      "Nabigo ang pag-playback",
     hntSeedRenderNeedsSave:                 "I-save muna ang seed sa isang .yams file — ang audio ay nire-render sa tabi nito.",
     tipSeedLoad:                            "I-load ang seed",
     ttlSeedLoad:                            "Buksan ang seed file",
@@ -4107,6 +6082,7 @@ const TRANSLATIONS = {
     msgSeedFailed:                          "Nabigo ang pag-render",
     lblSeedResult:                          "Naka-save",
     hntSeedResult:                          "I-upload ang audio seed sa Suno (Cover). Sinusunod nito ang harmoni na naririnig nito, hindi ang mga pangalan ng chord na iyong tina-type.",
+    msgSeedBusyInstrument:                  "Naglo-load ng instrumento…",
     msgSeedBusyRender:                      "Nagre-render ng audio…",
     msgSeedBusySave:                        "Nagse-save…",
     lblSeedSummaryChords:                   "Kord",

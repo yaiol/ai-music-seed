@@ -1,0 +1,192 @@
+{
+  "name": "keys-uprightpiano",
+  "label": "Upright Piano 2",
+  "format": 1,
+  "layer": "v2",
+  "zones": [
+    {
+      "file": "21.ogg",
+      "root": 21,
+      "lokey": 0,
+      "hikey": 23,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "25.ogg",
+      "root": 25,
+      "lokey": 24,
+      "hikey": 27,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "29.ogg",
+      "root": 29,
+      "lokey": 28,
+      "hikey": 31,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "33.ogg",
+      "root": 33,
+      "lokey": 32,
+      "hikey": 35,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "37.ogg",
+      "root": 37,
+      "lokey": 36,
+      "hikey": 39,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "41.ogg",
+      "root": 41,
+      "lokey": 40,
+      "hikey": 43,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "45.ogg",
+      "root": 45,
+      "lokey": 44,
+      "hikey": 47,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "49.ogg",
+      "root": 49,
+      "lokey": 48,
+      "hikey": 51,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "53.ogg",
+      "root": 53,
+      "lokey": 52,
+      "hikey": 55,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "57.ogg",
+      "root": 57,
+      "lokey": 56,
+      "hikey": 59,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "61.ogg",
+      "root": 61,
+      "lokey": 60,
+      "hikey": 63,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "65.ogg",
+      "root": 65,
+      "lokey": 64,
+      "hikey": 67,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "69.ogg",
+      "root": 69,
+      "lokey": 68,
+      "hikey": 71,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "73.ogg",
+      "root": 73,
+      "lokey": 72,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "77.ogg",
+      "root": 77,
+      "lokey": 76,
+      "hikey": 79,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "81.ogg",
+      "root": 81,
+      "lokey": 80,
+      "hikey": 83,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "85.ogg",
+      "root": 85,
+      "lokey": 84,
+      "hikey": 87,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "89.ogg",
+      "root": 89,
+      "lokey": 88,
+      "hikey": 91,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "93.ogg",
+      "root": 93,
+      "lokey": 92,
+      "hikey": 95,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "97.ogg",
+      "root": 97,
+      "lokey": 96,
+      "hikey": 99,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "101.ogg",
+      "root": 101,
+      "lokey": 100,
+      "hikey": 103,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "105.ogg",
+      "root": 105,
+      "lokey": 104,
+      "hikey": 106,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "108.ogg",
+      "root": 108,
+      "lokey": 107,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

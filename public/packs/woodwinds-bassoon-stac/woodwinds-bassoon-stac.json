@@ -1,0 +1,88 @@
+{
+  "name": "woodwinds-bassoon-stac",
+  "label": "Bassoon (Staccato)",
+  "format": 1,
+  "layer": "v1",
+  "zones": [
+    {
+      "file": "41.ogg",
+      "root": 41,
+      "lokey": 0,
+      "hikey": 43,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "45.ogg",
+      "root": 45,
+      "lokey": 44,
+      "hikey": 46,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "48.ogg",
+      "root": 48,
+      "lokey": 47,
+      "hikey": 50,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "52.ogg",
+      "root": 52,
+      "lokey": 51,
+      "hikey": 53,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "54.ogg",
+      "root": 54,
+      "lokey": 54,
+      "hikey": 55,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "57.ogg",
+      "root": 57,
+      "lokey": 56,
+      "hikey": 58,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 59,
+      "hikey": 62,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "64.ogg",
+      "root": 64,
+      "lokey": 63,
+      "hikey": 65,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "66.ogg",
+      "root": 66,
+      "lokey": 66,
+      "hikey": 69,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 70,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

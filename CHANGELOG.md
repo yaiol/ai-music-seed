@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.5.0 — 2026-09-02
+
+- A real instrument library: 83 sampled instrument packs compiled from openly-licensed sources (VSCO-2-CE, FreePats, Freesound sessions — CC0/CC BY), organized by family, loudness-matched and pitch-normalized to A440
+- Live preview: Play runs the seed through a look-ahead scheduler — chords, style, instruments, tempo, meter and mix are all editable while it plays, changes landing on the next chord
+- Two independent lanes: separate bass and treble instruments, each with its own volume, octave shift, mute and reverb send
+- Reverb rooms (room / chamber / hall / church) fed per lane, plus master highpass/lowpass filters at the end of the chain
+- A rebuilt style system on one data model: ten styles in three collections (Pads · Arpeggios · Grooves), with per-step dynamics, staccato/sustain, anticipated chords, turnaround conditions, scale-aware passing notes and polymeter figures
+- Redesigned window: Music and Render tabs, compact per-lane instrument rows with knob controls, instruments listed once with articulation buttons, family icons that switch the lane's instrument in one click
+- A piano keyboard strip that lights the playing notes per lane and auditions a note on click
+- Output-name tokens for the render settings ({instrument-treble}, {instrument-bass}, {reverb-type}, {reverb-amount}, {highpass}, {lowpass})
+- .yams files gain per-lane fields (instruments, volumes, octaves, reverb sends); older files load unchanged
+- Ship the compiled sample packs in the repo (previously ignored during library curation)
+- Update README, dev tooling and build configuration for the new architecture
+
 ## 1.0.4 — 2026-08-23
 
 - The Load dialog reopens in the folder you last used instead of starting in Downloads, and remembers it across restarts

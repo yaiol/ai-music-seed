@@ -1,0 +1,72 @@
+{
+  "name": "strings-solocontrabass-trem",
+  "label": "Double Bass (Tremolo)",
+  "format": 1,
+  "layer": "v1",
+  "zones": [
+    {
+      "file": "28.ogg",
+      "root": 28,
+      "lokey": 0,
+      "hikey": 29,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "30.ogg",
+      "root": 30,
+      "lokey": 30,
+      "hikey": 33,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "36.ogg",
+      "root": 36,
+      "lokey": 34,
+      "hikey": 38,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "40.ogg",
+      "root": 40,
+      "lokey": 39,
+      "hikey": 41,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "43.ogg",
+      "root": 43,
+      "lokey": 42,
+      "hikey": 47,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "52.ogg",
+      "root": 52,
+      "lokey": 48,
+      "hikey": 53,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "55.ogg",
+      "root": 55,
+      "lokey": 54,
+      "hikey": 57,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "59.ogg",
+      "root": 59,
+      "lokey": 58,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

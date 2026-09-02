@@ -1,0 +1,64 @@
+{
+  "name": "brass-fhorn-mute",
+  "label": "Horn (Mute)",
+  "format": 1,
+  "layer": "v2",
+  "zones": [
+    {
+      "file": "46.ogg",
+      "root": 46,
+      "lokey": 0,
+      "hikey": 48,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "51.ogg",
+      "root": 51,
+      "lokey": 49,
+      "hikey": 52,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "53.ogg",
+      "root": 53,
+      "lokey": 53,
+      "hikey": 56,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 57,
+      "hikey": 61,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "63.ogg",
+      "root": 63,
+      "lokey": 62,
+      "hikey": 65,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "68.ogg",
+      "root": 68,
+      "lokey": 66,
+      "hikey": 69,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "70.ogg",
+      "root": 70,
+      "lokey": 70,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

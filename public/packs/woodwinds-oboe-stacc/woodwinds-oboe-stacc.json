@@ -1,0 +1,72 @@
+{
+  "name": "woodwinds-oboe-stacc",
+  "label": "Oboe (Staccato)",
+  "format": 1,
+  "layer": "v2",
+  "zones": [
+    {
+      "file": "58.ogg",
+      "root": 58,
+      "lokey": 0,
+      "hikey": 60,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "62.ogg",
+      "root": 62,
+      "lokey": 61,
+      "hikey": 63,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "65.ogg",
+      "root": 65,
+      "lokey": 64,
+      "hikey": 67,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "70.ogg",
+      "root": 70,
+      "lokey": 68,
+      "hikey": 72,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "74.ogg",
+      "root": 74,
+      "lokey": 73,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "77.ogg",
+      "root": 77,
+      "lokey": 76,
+      "hikey": 79,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "82.ogg",
+      "root": 82,
+      "lokey": 80,
+      "hikey": 85,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "89.ogg",
+      "root": 89,
+      "lokey": 86,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "name": "keys-celesta",
+  "label": "Celesta",
+  "format": 1,
+  "layer": "single",
+  "zones": [
+    {
+      "file": "43.ogg",
+      "root": 43,
+      "lokey": 0,
+      "hikey": 44,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "45.ogg",
+      "root": 45,
+      "lokey": 45,
+      "hikey": 46,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "47.ogg",
+      "root": 47,
+      "lokey": 47,
+      "hikey": 47,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "48.ogg",
+      "root": 48,
+      "lokey": 48,
+      "hikey": 49,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "50.ogg",
+      "root": 50,
+      "lokey": 50,
+      "hikey": 51,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "52.ogg",
+      "root": 52,
+      "lokey": 52,
+      "hikey": 52,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "53.ogg",
+      "root": 53,
+      "lokey": 53,
+      "hikey": 54,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "55.ogg",
+      "root": 55,
+      "lokey": 55,
+      "hikey": 56,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "57.ogg",
+      "root": 57,
+      "lokey": 57,
+      "hikey": 58,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "59.ogg",
+      "root": 59,
+      "lokey": 59,
+      "hikey": 59,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 60,
+      "hikey": 61,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "62.ogg",
+      "root": 62,
+      "lokey": 62,
+      "hikey": 63,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "64.ogg",
+      "root": 64,
+      "lokey": 64,
+      "hikey": 64,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "65.ogg",
+      "root": 65,
+      "lokey": 65,
+      "hikey": 66,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "67.ogg",
+      "root": 67,
+      "lokey": 67,
+      "hikey": 68,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "69.ogg",
+      "root": 69,
+      "lokey": 69,
+      "hikey": 70,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "71.ogg",
+      "root": 71,
+      "lokey": 71,
+      "hikey": 71,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 72,
+      "hikey": 73,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "74.ogg",
+      "root": 74,
+      "lokey": 74,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "76.ogg",
+      "root": 76,
+      "lokey": 76,
+      "hikey": 76,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "77.ogg",
+      "root": 77,
+      "lokey": 77,
+      "hikey": 78,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "79.ogg",
+      "root": 79,
+      "lokey": 79,
+      "hikey": 80,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "81.ogg",
+      "root": 81,
+      "lokey": 81,
+      "hikey": 82,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "83.ogg",
+      "root": 83,
+      "lokey": 83,
+      "hikey": 83,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "84.ogg",
+      "root": 84,
+      "lokey": 84,
+      "hikey": 85,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "86.ogg",
+      "root": 86,
+      "lokey": 86,
+      "hikey": 87,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "88.ogg",
+      "root": 88,
+      "lokey": 88,
+      "hikey": 88,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "89.ogg",
+      "root": 89,
+      "lokey": 89,
+      "hikey": 90,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "91.ogg",
+      "root": 91,
+      "lokey": 91,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

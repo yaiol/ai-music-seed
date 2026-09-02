@@ -1,0 +1,73 @@
+{
+  "name": "brass-trumpet-straightm-sus",
+  "label": "Trumpet (Straight Mute)",
+  "format": 1,
+  "layer": "v1",
+  "tuneCents": 5,
+  "zones": [
+    {
+      "file": "58.ogg",
+      "root": 58,
+      "lokey": 0,
+      "hikey": 59,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 60,
+      "hikey": 61,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "62.ogg",
+      "root": 62,
+      "lokey": 62,
+      "hikey": 64,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "66.ogg",
+      "root": 66,
+      "lokey": 65,
+      "hikey": 68,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "70.ogg",
+      "root": 70,
+      "lokey": 69,
+      "hikey": 72,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "74.ogg",
+      "root": 74,
+      "lokey": 73,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "77.ogg",
+      "root": 77,
+      "lokey": 76,
+      "hikey": 79,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "81.ogg",
+      "root": 81,
+      "lokey": 80,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

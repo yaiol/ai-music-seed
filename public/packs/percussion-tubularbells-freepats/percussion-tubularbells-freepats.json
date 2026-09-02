@@ -1,0 +1,88 @@
+{
+  "name": "percussion-tubularbells-freepats",
+  "label": "Tubular Bells",
+  "format": 1,
+  "layer": "single",
+  "zones": [
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 0,
+      "hikey": 61,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "62.ogg",
+      "root": 62,
+      "lokey": 62,
+      "hikey": 63,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "64.ogg",
+      "root": 64,
+      "lokey": 64,
+      "hikey": 65,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "66.ogg",
+      "root": 66,
+      "lokey": 66,
+      "hikey": 67,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "68.ogg",
+      "root": 68,
+      "lokey": 68,
+      "hikey": 69,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "70.ogg",
+      "root": 70,
+      "lokey": 70,
+      "hikey": 71,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 72,
+      "hikey": 73,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "74.ogg",
+      "root": 74,
+      "lokey": 74,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "76.ogg",
+      "root": 76,
+      "lokey": 76,
+      "hikey": 79,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "82.ogg",
+      "root": 82,
+      "lokey": 80,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}
