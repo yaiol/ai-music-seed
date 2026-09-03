@@ -161,9 +161,21 @@ Supported chords: triads, sixths, sevenths and extensions (`maj7` / `m7` / `7` /
 
 Released under the [MIT License](LICENSE).
 
-### Third-party
+### Instrument credits
 
-The sampled instruments are compiled from freely-licensed sample libraries (CC0 and CC BY); each compiled pack's attribution (author, licence, source) is recorded with it.
+The sampled instruments come from freely-licensed recording sessions. Thank you to the people who recorded and shared them:
+
+| Author | Instruments |
+|---|---|
+| Sam Gossner / Versilian Studios (VSCO-2-CE) | Bassoon, Cellos, Chimes, Clarinet, Double Bass, Flute, Harp, Horn, Marimba I, Marimba II, Oboe, Old Trombone, Organ, Piccolo, Recorder, Timpani, Trombone, Trumpet, Tuba, Upright Piano ×2, Violas, Violin, Violins |
+| FreePats project (incl. roberto@zenvoid.org, Mateusz Dąbrowski) | Glass, Guitar, Hang, Tubular Bells, Ukulele, Xylophone (VCSL) |
+| Signature Sounds | Choir Aaaah's |
+| pjcohen | Celesta, Upright Bass |
+| Tim Kahn | Rhodes Mark II |
+| OldBassMan | Wurlitzer 200A |
+| Project16 | Bass Guitar, Rickenbacker Bass |
+
+Sources: [VSCO-2-CE / VCSL](https://vis.versilstudios.com/vsco-community.html) · [FreePats](https://freepats.zenvoid.org/) · [Freesound](https://freesound.org/). All sessions are CC0 (public domain) except: Chimes, Marimba II, Celesta, Rhodes Mark II and Wurlitzer 200A ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)), and Bass Guitar, Rickenbacker Bass ([CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)).
 
 <div align="center">
   <sub>AI Music Seed is part of <a href="https://apps.yaiol.com">yaiol Applications</a>.</sub>
