@@ -1,0 +1,192 @@
+{
+  "name": "woodwinds-tenorsax",
+  "label": "Saxophone Tenor",
+  "format": 1,
+  "layer": "mf",
+  "zones": [
+    {
+      "file": "44.ogg",
+      "root": 44,
+      "lokey": 0,
+      "hikey": 45,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "46.ogg",
+      "root": 46,
+      "lokey": 46,
+      "hikey": 47,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "48.ogg",
+      "root": 48,
+      "lokey": 48,
+      "hikey": 49,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "50.ogg",
+      "root": 50,
+      "lokey": 50,
+      "hikey": 51,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "52.ogg",
+      "root": 52,
+      "lokey": 52,
+      "hikey": 53,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "54.ogg",
+      "root": 54,
+      "lokey": 54,
+      "hikey": 55,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "56.ogg",
+      "root": 56,
+      "lokey": 56,
+      "hikey": 57,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "58.ogg",
+      "root": 58,
+      "lokey": 58,
+      "hikey": 59,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 60,
+      "hikey": 61,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "62.ogg",
+      "root": 62,
+      "lokey": 62,
+      "hikey": 63,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "64.ogg",
+      "root": 64,
+      "lokey": 64,
+      "hikey": 65,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "66.ogg",
+      "root": 66,
+      "lokey": 66,
+      "hikey": 67,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "68.ogg",
+      "root": 68,
+      "lokey": 68,
+      "hikey": 69,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "70.ogg",
+      "root": 70,
+      "lokey": 70,
+      "hikey": 71,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 72,
+      "hikey": 73,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "74.ogg",
+      "root": 74,
+      "lokey": 74,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "76.ogg",
+      "root": 76,
+      "lokey": 76,
+      "hikey": 77,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "78.ogg",
+      "root": 78,
+      "lokey": 78,
+      "hikey": 79,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "80.ogg",
+      "root": 80,
+      "lokey": 80,
+      "hikey": 81,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "82.ogg",
+      "root": 82,
+      "lokey": 82,
+      "hikey": 83,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "84.ogg",
+      "root": 84,
+      "lokey": 84,
+      "hikey": 85,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "86.ogg",
+      "root": 86,
+      "lokey": 86,
+      "hikey": 87,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "88.ogg",
+      "root": 88,
+      "lokey": 88,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

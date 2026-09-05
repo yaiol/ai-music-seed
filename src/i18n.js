@@ -37,22 +37,24 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "renders chord progressions to audio + MIDI seeds that constrain AI music generators like Suno.",
+    lblDlgSettingsAboutCredits:             "Instrument credits",
+    msgDlgSettingsAboutCreditsIntro:        "The sampled instruments come from freely-licensed recording sessions, by:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Chord progression",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "One bar per line: each line gets equal time, and the chords on it split that time evenly (a chord alone on a line holds the whole bar). [Section] tags, blank lines and | marks are ignored. Slash chords (C/G), 7ths (Gmaj7) and N.C. supported.",
+    tipSeedBarsAdd:                         "Longer lines: each line of chords lasts a quarter-bar more",
+    tipSeedBarsRemove:                      "Shorter lines: each line of chords lasts a quarter-bar less",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Bars per line",
     lblSeedSig:                             "Time signature",
     lblSeedLoops:                           "Loops",
-    lblSeedStyle:                           "Style",
     lblSeedStyleGroupPads:                  "Pads",
     lblSeedStyleGroupArps:                  "Arpeggios",
     lblSeedStyleGroupGrooves:               "Grooves",
     optSeedStylePad:                        "Pad",
     optSeedStyleDrone:                      "Drone",
     optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
     optSeedStyleArpeggio1:                  "Arpeggio 1",
     optSeedStyleArpeggio2:                  "Arpeggio 2",
     optSeedStyleArpeggio3:                  "Arpeggio 3",
@@ -70,9 +72,57 @@ const TRANSLATIONS = {
     // removed with the audit together with the review UI.
     tabSeedMusic:                           "Music",
     tabSeedRender:                          "Render",
-    lblSeedKnobVolume:                      "Volume",
-    lblSeedKnobOctave:                      "Octave",
-    lblSeedKnobTune:                        "Tune",
+    lblSeedKnobVolume:                      "volume",
+    lblSeedKnobOctave:                      "octave",
+    lblSeedKnobTune:                        "tune",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Style",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "None",
+    optSeedSwingLight:                      "Light",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simple",
+    lblSeedSigGroupComplex:                 "Complex",
+    lblSeedKnobVel:                         "velocity",
+    lblSeedKnobLen:                         "length",
+    btnSeedHold:                            "Hold",
+    tipSeedLaneMirror:                      "Play the lane back to front. A setting, not an edit — the figure keeps its name and it toggles off again",
+    tipSeedLaneShiftLeft:                   "Shift left",
+    tipSeedLaneShiftRight:                  "Shift right",
+    tipSeedLaneClear:                       "Clear the lane",
+    tipSeedSlots:                           "Steps in the lane — the + and − above add or remove one",
+    tipSeedRowAll:                          "The whole chord in this step — Chord Player's tall block (three notes on a triad, four on a seventh). Click a tone row in its column to start the block there",
+    tipSeedRowFifth:                        "The fifth above the root — Chord Player's BF row",
+    tipSeedRowDegree:                       "One chord tone: 1 = root, 2, 3, 4 upward; past the chord's size, the tone an octave up (Chord Player's C1–C4). Stack several in one column for a chord of your own",
+    tipSeedLaneAddStep:                     "Add a step at the end of the lane",
+    tipSeedLaneRemoveStep:                  "Remove the lane's last step",
+    lblSeedBeatDiv:                         "Beat division",
+    tipSeedBeatDiv:                         "Steps per beat, for both lanes (B/2 = eighths, B/3 = triplets, B/4 = sixteenths). The steps stay and the figure changes speed, as in Chord Player",
+    lblSeedChords:                          "Chords",
+    tipSeedChordsEdit:                      "Edit the chords as text — Ctrl+Enter or Escape to come back",
+    tipSeedInstrumentPrev:                  "Previous instrument in the list",
+    tipSeedInstrumentNext:                  "Next instrument in the list",
+    lblSeedMode:                            "mode",
+    tipSeedModeEdit:                        "Edit notes: click a cell to add a note, click a note to remove it",
+    tipSeedModeSettings:                    "Note settings: click a note to select it, then set its flags",
+    lblSeedFlagOctave:                      "octave",
+    lblSeedFlagScaleStep:                   "scale step",
+    lblSeedFlagLevel:                       "level",
+    lblSeedFlagLength:                      "length",
+    lblSeedFlagCondition:                   "condition",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Octave up",
+    tipSeedFlagOctDown:                     "Octave down",
+    tipSeedFlagScaleUp:                     "Passing note: one scale step up",
+    tipSeedFlagScaleDown:                   "Passing note: one scale step down",
+    tipSeedFlagAccent:                      "Accent",
+    tipSeedFlagGhost:                       "Ghost",
+    tipSeedFlagSustain:                     "Sustain to the end of the chord",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Only in the last beat of the chord",
+    tipSeedFlagNotLast:                     "Only outside the last beat",
+    tipSeedFlagEarly:                       "Early — this slot voices the next chord",
     tipSeedMute:                            "Mute",
     tipSeedUnmute:                          "Unmute",
     lblSeedReverb:                          "Reverb",
@@ -81,7 +131,6 @@ const TRANSLATIONS = {
     optSeedReverbChamber:                   "Chamber: medium, warm",
     optSeedReverbHall:                      "Hall: large and open",
     optSeedReverbChurch:                    "Church: very large, long tail",
-    lblSeedReverbAmount:                    "Reverb amount",
     lblSeedHighpass:                        "Highpass (Hz)",
     lblSeedLowpass:                         "Lowpass (Hz)",
     optSeedInstrumentSine:                  "Sine: built-in synth",
@@ -155,54 +204,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Génère des progressions d'accords en graines audio + MIDI qui contraignent les générateurs de musique IA comme Suno.",
+    lblDlgSettingsAboutCredits:             "Crédits instrument",
+    msgDlgSettingsAboutCreditsIntro:        "Les instruments échantillonnés proviennent de sessions d'enregistrement sous licence libre, par :",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progression d'accords",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Une mesure par ligne : chaque ligne a la même durée, et les accords se la partagent équitablement (un accord seul occupe toute la mesure). Les balises [Section], lignes vides et | sont ignorées. Accords barrés (C/G), 7èmes (Gmaj7) et N.C. pris en charge.",
+    tipSeedBarsAdd:                         "Lignes plus longues : chaque ligne d'accords dure un quart de mesure de plus",
+    tipSeedBarsRemove:                      "Lignes plus courtes : chaque ligne d'accords dure un quart de mesure de moins",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Mesures par ligne",
     lblSeedSig:                             "Signature rythmique",
     lblSeedLoops:                           "Boucles",
-    lblSeedStyle:                           "Style",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to fr
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to fr
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to fr
-    optSeedStylePad:                        "Pad", // TODO: translate to fr
-    optSeedStyleDrone:                      "Drone", // TODO: translate to fr
-    optSeedStyleMarker:                     "Marker", // TODO: translate to fr
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to fr
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to fr
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to fr
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to fr
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to fr
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to fr
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to fr
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to fr
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpèges",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "réverb",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to fr
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to fr
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to fr
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to fr
+    lblSeedBassInstrument:                  "Basse",
+    optSeedBassInstrumentSame:              "Identique à l'instrument",
+    plhSeedInstrumentFilter:                "Tapez pour filtrer…",
+    optSeedInstrumentFamilyAll:             "Tous",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to fr
-    tabSeedRender:                          "Render", // TODO: translate to fr
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to fr
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to fr
-    lblSeedKnobTune:                        "Tune", // TODO: translate to fr
-    tipSeedMute:                            "Mute", // TODO: translate to fr
-    tipSeedUnmute:                          "Unmute", // TODO: translate to fr
-    lblSeedReverb:                          "Reverb", // TODO: translate to fr
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to fr
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to fr
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to fr
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to fr
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to fr
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to fr
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to fr
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to fr
-    optSeedInstrumentSine:                  "Sinusoïde : synthé intégré",
+    tabSeedMusic:                           "Musique",
+    tabSeedRender:                          "Rendu",
+    lblSeedKnobVolume:                      "volume",
+    lblSeedKnobOctave:                      "octave",
+    lblSeedKnobTune:                        "accord",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Style",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Aucun",
+    optSeedSwingLight:                      "Léger",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simple",
+    lblSeedSigGroupComplex:                 "Complexe",
+    lblSeedKnobVel:                         "vitesse",
+    lblSeedKnobLen:                         "longueur",
+    btnSeedHold:                            "Maintenir",
+    tipSeedLaneMirror:                      "Inverser la piste. C'est un réglage, pas une édition — la figure conserve son nom et se désactive.",
+    tipSeedLaneShiftLeft:                   "Déplacer à gauche",
+    tipSeedLaneShiftRight:                  "Déplacer à droite",
+    tipSeedLaneClear:                       "Effacer la piste",
+    tipSeedSlots:                           "Étapes de piste — les + et − ci-dessus ajoutent ou suppriment une.",
+    tipSeedRowAll:                          "L'accord entier à cette étape — le bloc haut du Chord Player (trois notes sur une triade, quatre sur une septième). Cliquez sur une rangée de tons dans sa colonne pour y démarrer le bloc.",
+    tipSeedRowFifth:                        "La quinte au-dessus de la fondamentale — la rangée BF du Chord Player.",
+    tipSeedRowDegree:                       "Un ton d'accord : 1 = fondamentale, 2, 3, 4 ascendant. Au-delà de la taille de l'accord, le ton monte d'une octave (C1–C4 du Chord Player). Empilez-en plusieurs dans une colonne pour créer votre propre accord.",
+    tipSeedLaneAddStep:                     "Ajouter une étape à la fin de la voie",
+    tipSeedLaneRemoveStep:                  "Supprimer la dernière étape de la voie",
+    lblSeedBeatDiv:                         "Division du temps",
+    tipSeedBeatDiv:                         "Étapes par temps, pour les deux pistes (B/2 = croches, B/3 = triolets, B/4 = doubles croches). Les étapes restent et la figure change de vitesse, comme dans Chord Player.",
+    lblSeedChords:                          "Accords",
+    tipSeedChordsEdit:                      "Modifier les accords en texte — Ctrl+Entrée ou Échap pour revenir",
+    tipSeedInstrumentPrev:                  "Instrument précédent dans la liste",
+    tipSeedInstrumentNext:                  "Instrument suivant dans la liste",
+    lblSeedMode:                            "mode",
+    tipSeedModeEdit:                        "Modifier les notes : cliquez sur une cellule pour ajouter une note, cliquez sur une note pour la supprimer.",
+    tipSeedModeSettings:                    "Paramètres des notes : cliquez sur une note pour la sélectionner, puis définissez ses indicateurs.",
+    lblSeedFlagOctave:                      "octave",
+    lblSeedFlagScaleStep:                   "pas de gamme",
+    lblSeedFlagLevel:                       "niveau",
+    lblSeedFlagLength:                      "durée",
+    lblSeedFlagCondition:                   "condition",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Octave supérieure",
+    tipSeedFlagOctDown:                     "Octave inférieure",
+    tipSeedFlagScaleUp:                     "Note de passage : un degré de gamme supérieur",
+    tipSeedFlagScaleDown:                   "Note de passage : un degré de gamme inférieur",
+    tipSeedFlagAccent:                      "Accentuer",
+    tipSeedFlagGhost:                       "Fantôme",
+    tipSeedFlagSustain:                     "Tenir jusqu'à la fin de l'accord",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Seulement au dernier temps de l'accord",
+    tipSeedFlagNotLast:                     "Seulement en dehors du dernier temps",
+    tipSeedFlagEarly:                       "Anticipé : ce slot joue l'accord suivant",
+    tipSeedMute:                            "Muet",
+    tipSeedUnmute:                          "Réactiver le son",
+    lblSeedReverb:                          "Réverbération",
+    optSeedReverbNone:                      "Sec : pas de pièce",
+    optSeedReverbRoom:                      "Pièce : petite et proche",
+    optSeedReverbChamber:                   "Chambre : moyenne, chaleureuse",
+    optSeedReverbHall:                      "Salle : grande et ouverte",
+    optSeedReverbChurch:                    "Église : très grande, longue queue",
+    lblSeedHighpass:                        "Passe-haut (Hz)",
+    lblSeedLowpass:                         "Passe-bas (Hz)",
+    optSeedInstrumentSine:                  "Sinus : synthé intégré",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -217,7 +315,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Enregistrez la graine dans un fichier .yams d'abord — l'audio est rendu à côté.",
     tipSeedLoad:                            "Charger la graine",
     ttlSeedLoad:                            "Ouvrir un fichier de graine",
-    lblSeedLoadFilter:                      "Fichier de graine (.yams)",
+    lblSeedLoadFilter:                      "Fichier Seed (.yams)",
     msgSeedLoadFailed:                      "Impossible de charger ce fichier de graine",
     tipSeedNew:                             "Nouvelle graine",
     tipSeedTabClose:                        "Fermer",
@@ -272,54 +370,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Erzeugt Akkordfolgen als Audio- und MIDI-Seeds, die KI-Musikgeneratoren wie Suno einschränken.",
+    lblDlgSettingsAboutCredits:             "Instrumenten-Credits",
+    msgDlgSettingsAboutCreditsIntro:        "Die gesampelten Instrumente stammen aus frei lizenzierten Aufnahmesitzungen, von:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akkordfolge",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Ein Takt pro Zeile: Jede Zeile erhält die gleiche Zeit, Akkorde teilen diese gleichmäßig auf (ein Akkord allein füllt den ganzen Takt). [Section]-Tags, Leerzeilen und | werden ignoriert. Slash-Akkorde (C/G), Septakkorde (Gmaj7) und N.C. werden unterstützt.",
+    tipSeedBarsAdd:                         "Längere Linien: Jede Akkordlinie dauert ein Vierteltakt länger",
+    tipSeedBarsRemove:                      "Kürzere Linien: Jede Akkordlinie dauert ein Vierteltakt kürzer",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Takte pro Zeile",
     lblSeedSig:                             "Taktart",
     lblSeedLoops:                           "Schleifen",
-    lblSeedStyle:                           "Stil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to de
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to de
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to de
-    optSeedStylePad:                        "Pad", // TODO: translate to de
-    optSeedStyleDrone:                      "Drone", // TODO: translate to de
-    optSeedStyleMarker:                     "Marker", // TODO: translate to de
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to de
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to de
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to de
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to de
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to de
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to de
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to de
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to de
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpeggios",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Hall",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to de
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to de
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to de
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to de
+    lblSeedBassInstrument:                  "Bass",
+    optSeedBassInstrumentSame:              "Wie Instrument",
+    plhSeedInstrumentFilter:                "Zum Filtern tippen…",
+    optSeedInstrumentFamilyAll:             "Alle",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to de
-    tabSeedRender:                          "Render", // TODO: translate to de
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to de
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to de
-    lblSeedKnobTune:                        "Tune", // TODO: translate to de
-    tipSeedMute:                            "Mute", // TODO: translate to de
-    tipSeedUnmute:                          "Unmute", // TODO: translate to de
-    lblSeedReverb:                          "Reverb", // TODO: translate to de
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to de
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to de
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to de
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to de
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to de
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to de
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to de
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to de
-    optSeedInstrumentSine:                  "Sinus: eingebauter Synth",
+    tabSeedMusic:                           "Musik",
+    tabSeedRender:                          "Rendern",
+    lblSeedKnobVolume:                      "Lautstärke",
+    lblSeedKnobOctave:                      "Oktave",
+    lblSeedKnobTune:                        "Stimmung",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stil",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Keine",
+    optSeedSwingLight:                      "Leicht",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Einfach",
+    lblSeedSigGroupComplex:                 "Komplex",
+    lblSeedKnobVel:                         "Geschwindigkeit",
+    lblSeedKnobLen:                         "Länge",
+    btnSeedHold:                            "Halten",
+    tipSeedLaneMirror:                      "Spur umkehren. Eine Einstellung, keine Bearbeitung — die Figur behält ihren Namen und lässt sich wieder deaktivieren.",
+    tipSeedLaneShiftLeft:                   "Nach links verschieben",
+    tipSeedLaneShiftRight:                  "Nach rechts verschieben",
+    tipSeedLaneClear:                       "Spur leeren",
+    tipSeedSlots:                           "Schritte in der Spur — die + und − oben fügen einen hinzu oder entfernen einen.",
+    tipSeedRowAll:                          "Der ganze Akkord in diesem Schritt — der hohe Block des Chord Player (drei Noten bei einem Dreiklang, vier bei einem Septakkord). Klicken Sie auf eine Tonreihe in ihrer Spalte, um den Block dort zu starten.",
+    tipSeedRowFifth:                        "Die Quinte über dem Grundton — die BF-Reihe des Chord Player.",
+    tipSeedRowDegree:                       "Ein Akkordton: 1 = Grundton, 2, 3, 4 aufwärts. Über die Akkordgröße hinaus ist der Ton eine Oktave höher (Chord Player C1–C4). Stapeln Sie mehrere in einer Spalte für einen eigenen Akkord.",
+    tipSeedLaneAddStep:                     "Einen Schritt am Ende der Spur hinzufügen",
+    tipSeedLaneRemoveStep:                  "Den letzten Schritt der Spur entfernen",
+    lblSeedBeatDiv:                         "Taktunterteilung",
+    tipSeedBeatDiv:                         "Schritte pro Schlag, für beide Spuren (B/2 = Achtel, B/3 = Triolen, B/4 = Sechzehntel). Die Schritte bleiben und die Figur ändert die Geschwindigkeit, wie im Chord Player.",
+    lblSeedChords:                          "Akkorde",
+    tipSeedChordsEdit:                      "Akkorde als Text bearbeiten — Strg+Eingabe oder Esc zum Zurückkehren",
+    tipSeedInstrumentPrev:                  "Vorheriges Instrument in der Liste",
+    tipSeedInstrumentNext:                  "Nächstes Instrument in der Liste",
+    lblSeedMode:                            "Modus",
+    tipSeedModeEdit:                        "Notizen bearbeiten: Zelle anklicken, um eine Notiz hinzuzufügen; Notiz anklicken, um sie zu entfernen.",
+    tipSeedModeSettings:                    "Notizeinstellungen: Notiz anklicken, um sie auszuwählen, dann ihre Markierungen festlegen.",
+    lblSeedFlagOctave:                      "Oktave",
+    lblSeedFlagScaleStep:                   "Skalenschritt",
+    lblSeedFlagLevel:                       "Stufe",
+    lblSeedFlagLength:                      "Länge",
+    lblSeedFlagCondition:                   "Bedingung",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktave höher",
+    tipSeedFlagOctDown:                     "Oktave tiefer",
+    tipSeedFlagScaleUp:                     "Durchgangsnote: ein Skalenschritt aufwärts",
+    tipSeedFlagScaleDown:                   "Durchgangsnote: ein Skalenschritt abwärts",
+    tipSeedFlagAccent:                      "Akzent",
+    tipSeedFlagGhost:                       "Ghost",
+    tipSeedFlagSustain:                     "Halten bis zum Ende des Akkords",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Nur im letzten Schlag des Akkords",
+    tipSeedFlagNotLast:                     "Nur außerhalb des letzten Schlags",
+    tipSeedFlagEarly:                       "Früh: dieser Slot spielt den nächsten Akkord",
+    tipSeedMute:                            "Stummschalten",
+    tipSeedUnmute:                          "Stummschaltung aufheben",
+    lblSeedReverb:                          "Hall",
+    optSeedReverbNone:                      "Trocken: kein Raum",
+    optSeedReverbRoom:                      "Raum: klein und nah",
+    optSeedReverbChamber:                   "Kammer: mittel, warm",
+    optSeedReverbHall:                      "Halle: groß und offen",
+    optSeedReverbChurch:                    "Kirche: sehr groß, langer Nachhall",
+    lblSeedHighpass:                        "Hochpass (Hz)",
+    lblSeedLowpass:                         "Tiefpass (Hz)",
+    optSeedInstrumentSine:                  "Sinus: integrierter Synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -389,53 +536,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genera progresiones de acordes a semillas de audio + MIDI que restringen generadores de música IA como Suno.",
+    lblDlgSettingsAboutCredits:             "Créditos de instrumento",
+    msgDlgSettingsAboutCreditsIntro:        "Los instrumentos muestreados provienen de sesiones de grabación con licencia libre, por:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progresión de acordes",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Una barra por línea: cada línea tiene la misma duración, y los acordes la dividen equitativamente (un acorde solo ocupa toda la barra). Las etiquetas [Section], líneas en blanco y | se ignoran. Acordes con barra (C/G), séptimas (Gmaj7) y N.C. compatibles.",
+    tipSeedBarsAdd:                         "Líneas más largas: cada línea de acordes dura un cuarto de compás más",
+    tipSeedBarsRemove:                      "Líneas más cortas: cada línea de acordes dura un cuarto de compás menos",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Compases por línea",
     lblSeedSig:                             "Compás",
     lblSeedLoops:                           "Bucles",
-    lblSeedStyle:                           "Estilo",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to es
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to es
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to es
-    optSeedStylePad:                        "Pad", // TODO: translate to es
-    optSeedStyleDrone:                      "Drone", // TODO: translate to es
-    optSeedStyleMarker:                     "Marker", // TODO: translate to es
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to es
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to es
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to es
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to es
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to es
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to es
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to es
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to es
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpegios",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrumento",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to es
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to es
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to es
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to es
+    lblSeedBassInstrument:                  "Bajo",
+    optSeedBassInstrumentSame:              "Igual que el instrumento",
+    plhSeedInstrumentFilter:                "Escriba para filtrar…",
+    optSeedInstrumentFamilyAll:             "Todos",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to es
-    tabSeedRender:                          "Render", // TODO: translate to es
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to es
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to es
-    lblSeedKnobTune:                        "Tune", // TODO: translate to es
-    tipSeedMute:                            "Mute", // TODO: translate to es
-    tipSeedUnmute:                          "Unmute", // TODO: translate to es
-    lblSeedReverb:                          "Reverb", // TODO: translate to es
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to es
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to es
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to es
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to es
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to es
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to es
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to es
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to es
+    tabSeedMusic:                           "Música",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "volumen",
+    lblSeedKnobOctave:                      "octava",
+    lblSeedKnobTune:                        "afinación",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Estilo",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Ninguno",
+    optSeedSwingLight:                      "Ligero",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simple",
+    lblSeedSigGroupComplex:                 "Complejo",
+    lblSeedKnobVel:                         "velocidad",
+    lblSeedKnobLen:                         "longitud",
+    btnSeedHold:                            "Mantener",
+    tipSeedLaneMirror:                      "Invertir el carril. Es un ajuste, no una edición — la figura mantiene su nombre y se desactiva.",
+    tipSeedLaneShiftLeft:                   "Desplazar a la izquierda",
+    tipSeedLaneShiftRight:                  "Mover a la derecha",
+    tipSeedLaneClear:                       "Borrar la pista",
+    tipSeedSlots:                           "Pasos en la pista — los + y − de arriba añaden o quitan uno.",
+    tipSeedRowAll:                          "El acorde completo en este paso — el bloque alto del Chord Player (tres notas en una tríada, cuatro en una séptima). Haga clic en una fila de tonos en su columna para iniciar el bloque allí.",
+    tipSeedRowFifth:                        "La quinta sobre la raíz — la fila BF del Chord Player.",
+    tipSeedRowDegree:                       "Un tono de acorde: 1 = raíz, 2, 3, 4 ascendente. Más allá del tamaño del acorde, el tono sube una octava (C1–C4 del Chord Player). Apile varios en una columna para crear su propio acorde.",
+    tipSeedLaneAddStep:                     "Añadir un paso al final del carril",
+    tipSeedLaneRemoveStep:                  "Eliminar el último paso del carril",
+    lblSeedBeatDiv:                         "División de compás",
+    tipSeedBeatDiv:                         "Pasos por tiempo, para ambas pistas (B/2 = corcheas, B/3 = tresillos, B/4 = semicorcheas). Los pasos se mantienen y la figura cambia de velocidad, como en Chord Player.",
+    lblSeedChords:                          "Acordes",
+    tipSeedChordsEdit:                      "Editar los acordes como texto — Ctrl+Intro o Escape para volver",
+    tipSeedInstrumentPrev:                  "Instrumento anterior en la lista",
+    tipSeedInstrumentNext:                  "Siguiente instrumento en la lista",
+    lblSeedMode:                            "modo",
+    tipSeedModeEdit:                        "Editar notas: haz clic en una celda para añadir una nota, haz clic en una nota para eliminarla.",
+    tipSeedModeSettings:                    "Ajustes de notas: haz clic en una nota para seleccionarla y luego configura sus indicadores.",
+    lblSeedFlagOctave:                      "octava",
+    lblSeedFlagScaleStep:                   "paso de escala",
+    lblSeedFlagLevel:                       "nivel",
+    lblSeedFlagLength:                      "duración",
+    lblSeedFlagCondition:                   "condición",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Octava arriba",
+    tipSeedFlagOctDown:                     "Octava abajo",
+    tipSeedFlagScaleUp:                     "Nota de paso: un grado de escala arriba",
+    tipSeedFlagScaleDown:                   "Nota de paso: un grado de escala abajo",
+    tipSeedFlagAccent:                      "Acento",
+    tipSeedFlagGhost:                       "Fantasma",
+    tipSeedFlagSustain:                     "Sostener hasta el final del acorde",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Solo en el último tiempo del acorde",
+    tipSeedFlagNotLast:                     "Solo fuera del último tiempo",
+    tipSeedFlagEarly:                       "Anticipado: este espacio toca el siguiente acorde",
+    tipSeedMute:                            "Silenciar",
+    tipSeedUnmute:                          "Activar sonido",
+    lblSeedReverb:                          "Reverberación",
+    optSeedReverbNone:                      "Seco: sin sala",
+    optSeedReverbRoom:                      "Sala: pequeña y cercana",
+    optSeedReverbChamber:                   "Cámara: media, cálida",
+    optSeedReverbHall:                      "Pabellón: grande y abierto",
+    optSeedReverbChurch:                    "Iglesia: muy grande, cola larga",
+    lblSeedHighpass:                        "Paso alto (Hz)",
+    lblSeedLowpass:                         "Paso bajo (Hz)",
     optSeedInstrumentSine:                  "Seno: sintetizador integrado",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
@@ -451,7 +647,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Guarde la semilla en un archivo .yams primero — el audio se renderiza junto a él.",
     tipSeedLoad:                            "Cargar semilla",
     ttlSeedLoad:                            "Abrir un archivo de semilla",
-    lblSeedLoadFilter:                      "Archivo de semilla (.yams)",
+    lblSeedLoadFilter:                      "Archivo Seed (.yams)",
     msgSeedLoadFailed:                      "No se pudo cargar ese archivo de semilla",
     tipSeedNew:                             "Nueva semilla",
     tipSeedTabClose:                        "Cerrar",
@@ -506,53 +702,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
+    lblDlgSettingsAboutCredits:             "Créditos do instrumento",
+    msgDlgSettingsAboutCreditsIntro:        "Os instrumentos sampleados vêm de sessões de gravação com licença livre, por:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progressão de acordes",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Um compasso por linha: cada linha tem tempo igual, e os acordes dividem esse tempo uniformemente (um acorde sozinho ocupa o compasso inteiro). Tags [Section], linhas em branco e | são ignoradas. Acordes com barra (C/G), 7as (Gmaj7) e N.C. suportados.",
+    tipSeedBarsAdd:                         "Linhas mais longas: cada linha de acordes dura um quarto de compasso a mais",
+    tipSeedBarsRemove:                      "Linhas mais curtas: cada linha de acordes dura um quarto de compasso a menos",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Compassos por linha",
     lblSeedSig:                             "Compasso",
     lblSeedLoops:                           "Loops",
-    lblSeedStyle:                           "Estilo",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to pt_BR
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to pt_BR
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to pt_BR
-    optSeedStylePad:                        "Pad", // TODO: translate to pt_BR
-    optSeedStyleDrone:                      "Drone", // TODO: translate to pt_BR
-    optSeedStyleMarker:                     "Marker", // TODO: translate to pt_BR
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to pt_BR
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to pt_BR
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to pt_BR
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to pt_BR
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to pt_BR
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to pt_BR
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to pt_BR
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to pt_BR
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpejos",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrumento",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to pt_BR
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to pt_BR
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to pt_BR
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to pt_BR
+    lblSeedBassInstrument:                  "Baixo",
+    optSeedBassInstrumentSame:              "Mesmo que o instrumento",
+    plhSeedInstrumentFilter:                "Digite para filtrar…",
+    optSeedInstrumentFamilyAll:             "Todos",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to pt_BR
-    tabSeedRender:                          "Render", // TODO: translate to pt_BR
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to pt_BR
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to pt_BR
-    lblSeedKnobTune:                        "Tune", // TODO: translate to pt_BR
-    tipSeedMute:                            "Mute", // TODO: translate to pt_BR
-    tipSeedUnmute:                          "Unmute", // TODO: translate to pt_BR
-    lblSeedReverb:                          "Reverb", // TODO: translate to pt_BR
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to pt_BR
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to pt_BR
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to pt_BR
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to pt_BR
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to pt_BR
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to pt_BR
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to pt_BR
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to pt_BR
+    tabSeedMusic:                           "Música",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "volume",
+    lblSeedKnobOctave:                      "oitava",
+    lblSeedKnobTune:                        "afinação",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Estilo",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Nenhum",
+    optSeedSwingLight:                      "Leve",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simples",
+    lblSeedSigGroupComplex:                 "Complexo",
+    lblSeedKnobVel:                         "velocidade",
+    lblSeedKnobLen:                         "comprimento",
+    btnSeedHold:                            "Manter",
+    tipSeedLaneMirror:                      "Inverter a faixa. É uma configuração, não uma edição — a figura mantém seu nome e pode ser desativada.",
+    tipSeedLaneShiftLeft:                   "Deslocar para a esquerda",
+    tipSeedLaneShiftRight:                  "Deslocar para a direita",
+    tipSeedLaneClear:                       "Limpar a pista",
+    tipSeedSlots:                           "Passos na pista — os + e − acima adicionam ou removem um.",
+    tipSeedRowAll:                          "O acorde completo nesta etapa — o bloco alto do Chord Player (três notas em uma tríade, quatro em uma sétima). Clique em uma linha de tons em sua coluna para iniciar o bloco ali.",
+    tipSeedRowFifth:                        "A quinta acima da tônica — a linha BF do Chord Player.",
+    tipSeedRowDegree:                       "Um tom de acorde: 1 = tônica, 2, 3, 4 ascendente. Além do tamanho do acorde, o tom sobe uma oitava (C1–C4 do Chord Player). Empilhe vários em uma coluna para criar seu próprio acorde.",
+    tipSeedLaneAddStep:                     "Adicionar um passo ao final da faixa",
+    tipSeedLaneRemoveStep:                  "Remover o último passo da faixa",
+    lblSeedBeatDiv:                         "Divisão de batida",
+    tipSeedBeatDiv:                         "Passos por batida, para ambas as pistas (B/2 = colcheias, B/3 = tercinas, B/4 = semicolcheias). Os passos permanecem e a figura muda de velocidade, como no Chord Player.",
+    lblSeedChords:                          "Acordes",
+    tipSeedChordsEdit:                      "Editar os acordes como texto — Ctrl+Enter ou Escape para voltar",
+    tipSeedInstrumentPrev:                  "Instrumento anterior na lista",
+    tipSeedInstrumentNext:                  "Próximo instrumento na lista",
+    lblSeedMode:                            "modo",
+    tipSeedModeEdit:                        "Editar notas: clique em uma célula para adicionar uma nota, clique em uma nota para removê-la.",
+    tipSeedModeSettings:                    "Configurações de nota: clique em uma nota para selecioná-la e defina suas sinalizações.",
+    lblSeedFlagOctave:                      "oitava",
+    lblSeedFlagScaleStep:                   "passo da escala",
+    lblSeedFlagLevel:                       "nível",
+    lblSeedFlagLength:                      "duração",
+    lblSeedFlagCondition:                   "condição",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oitava acima",
+    tipSeedFlagOctDown:                     "Oitava abaixo",
+    tipSeedFlagScaleUp:                     "Nota de passagem: um grau da escala acima",
+    tipSeedFlagScaleDown:                   "Nota de passagem: um grau da escala abaixo",
+    tipSeedFlagAccent:                      "Acento",
+    tipSeedFlagGhost:                       "Fantasma",
+    tipSeedFlagSustain:                     "Sustentar até o fim do acorde",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Apenas no último tempo do acorde",
+    tipSeedFlagNotLast:                     "Apenas fora do último tempo",
+    tipSeedFlagEarly:                       "Antecipado: este slot toca o próximo acorde",
+    tipSeedMute:                            "Silenciar",
+    tipSeedUnmute:                          "Ativar som",
+    lblSeedReverb:                          "Reverberação",
+    optSeedReverbNone:                      "Seco: sem sala",
+    optSeedReverbRoom:                      "Sala: pequena e próxima",
+    optSeedReverbChamber:                   "Câmara: média, quente",
+    optSeedReverbHall:                      "Hall: grande e aberto",
+    optSeedReverbChurch:                    "Igreja: muito grande, cauda longa",
+    lblSeedHighpass:                        "Passa-altas (Hz)",
+    lblSeedLowpass:                         "Passa-baixas (Hz)",
     optSeedInstrumentSine:                  "Seno: sintetizador integrado",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
@@ -568,7 +813,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Salve a semente em um arquivo .yams primeiro — o áudio é renderizado ao lado dele.",
     tipSeedLoad:                            "Carregar semente",
     ttlSeedLoad:                            "Abrir um arquivo de semente",
-    lblSeedLoadFilter:                      "Arquivo de semente (.yams)",
+    lblSeedLoadFilter:                      "Arquivo Seed (.yams)",
     msgSeedLoadFailed:                      "Não foi possível carregar esse arquivo de semente",
     tipSeedNew:                             "Nova semente",
     tipSeedTabClose:                        "Fechar",
@@ -623,53 +868,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
+    lblDlgSettingsAboutCredits:             "Créditos do instrumento",
+    msgDlgSettingsAboutCreditsIntro:        "Os instrumentos amostrados provêm de sessões de gravação com licença livre, por:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progressão de acordes",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Um compasso por linha: cada linha tem tempo igual, e os acordes dividem esse tempo uniformemente (um acorde sozinho ocupa o compasso inteiro). As tags [Section], linhas em branco e | são ignoradas. Acordes com barra (C/G), 7as (Gmaj7) e N.C. suportados.",
+    tipSeedBarsAdd:                         "Linhas mais longas: cada linha de acordes dura um quarto de compasso a mais",
+    tipSeedBarsRemove:                      "Linhas mais curtas: cada linha de acordes dura um quarto de compasso a menos",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Compassos por linha",
     lblSeedSig:                             "Compasso",
     lblSeedLoops:                           "Laços",
-    lblSeedStyle:                           "Estilo",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to pt_PT
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to pt_PT
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to pt_PT
-    optSeedStylePad:                        "Pad", // TODO: translate to pt_PT
-    optSeedStyleDrone:                      "Drone", // TODO: translate to pt_PT
-    optSeedStyleMarker:                     "Marker", // TODO: translate to pt_PT
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to pt_PT
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to pt_PT
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to pt_PT
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to pt_PT
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to pt_PT
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to pt_PT
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to pt_PT
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to pt_PT
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpejos",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrumento",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to pt_PT
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to pt_PT
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to pt_PT
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to pt_PT
+    lblSeedBassInstrument:                  "Baixo",
+    optSeedBassInstrumentSame:              "Igual ao instrumento",
+    plhSeedInstrumentFilter:                "Escreva para filtrar…",
+    optSeedInstrumentFamilyAll:             "Todos",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to pt_PT
-    tabSeedRender:                          "Render", // TODO: translate to pt_PT
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to pt_PT
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to pt_PT
-    lblSeedKnobTune:                        "Tune", // TODO: translate to pt_PT
-    tipSeedMute:                            "Mute", // TODO: translate to pt_PT
-    tipSeedUnmute:                          "Unmute", // TODO: translate to pt_PT
-    lblSeedReverb:                          "Reverb", // TODO: translate to pt_PT
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to pt_PT
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to pt_PT
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to pt_PT
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to pt_PT
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to pt_PT
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to pt_PT
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to pt_PT
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to pt_PT
+    tabSeedMusic:                           "Música",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "volume",
+    lblSeedKnobOctave:                      "oitava",
+    lblSeedKnobTune:                        "afinação",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Estilo",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Nenhum",
+    optSeedSwingLight:                      "Leve",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simples",
+    lblSeedSigGroupComplex:                 "Complexo",
+    lblSeedKnobVel:                         "velocidade",
+    lblSeedKnobLen:                         "comprimento",
+    btnSeedHold:                            "Manter",
+    tipSeedLaneMirror:                      "Inverter a pista. É uma definição, não uma edição — a figura mantém o seu nome e desativa-se novamente.",
+    tipSeedLaneShiftLeft:                   "Deslocar para a esquerda",
+    tipSeedLaneShiftRight:                  "Deslocar para a direita",
+    tipSeedLaneClear:                       "Limpar a faixa",
+    tipSeedSlots:                           "Passos na pista — os + e − acima adicionam ou removem um.",
+    tipSeedRowAll:                          "O acorde completo neste passo — o bloco alto do Chord Player (três notas numa tríade, quatro numa sétima). Clique numa linha de tons na sua coluna para iniciar o bloco ali.",
+    tipSeedRowFifth:                        "A quinta acima da tónica — a linha BF do Chord Player.",
+    tipSeedRowDegree:                       "Um tom de acorde: 1 = tónica, 2, 3, 4 ascendente. Para além da dimensão do acorde, o tom sobe uma oitava (C1–C4 do Chord Player). Empilhe vários numa coluna para criar o seu próprio acorde.",
+    tipSeedLaneAddStep:                     "Adicionar um passo ao final da faixa",
+    tipSeedLaneRemoveStep:                  "Remover o último passo da faixa",
+    lblSeedBeatDiv:                         "Divisão de batida",
+    tipSeedBeatDiv:                         "Passos por batida, para ambas as pistas (B/2 = colcheias, B/3 = tercinas, B/4 = semicolcheias). Os passos permanecem e a figura muda de velocidade, como no Chord Player.",
+    lblSeedChords:                          "Acordes",
+    tipSeedChordsEdit:                      "Editar os acordes como texto — Ctrl+Enter ou Escape para voltar",
+    tipSeedInstrumentPrev:                  "Instrumento anterior na lista",
+    tipSeedInstrumentNext:                  "Instrumento seguinte na lista",
+    lblSeedMode:                            "modo",
+    tipSeedModeEdit:                        "Editar notas: clique numa célula para adicionar uma nota, clique numa nota para a remover.",
+    tipSeedModeSettings:                    "Definições de nota: clique numa nota para a selecionar e, em seguida, defina as suas sinalizações.",
+    lblSeedFlagOctave:                      "oitava",
+    lblSeedFlagScaleStep:                   "passo da escala",
+    lblSeedFlagLevel:                       "nível",
+    lblSeedFlagLength:                      "duração",
+    lblSeedFlagCondition:                   "condição",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oitava acima",
+    tipSeedFlagOctDown:                     "Oitava abaixo",
+    tipSeedFlagScaleUp:                     "Nota de passagem: um grau da escala acima",
+    tipSeedFlagScaleDown:                   "Nota de passagem: um grau da escala abaixo",
+    tipSeedFlagAccent:                      "Acento",
+    tipSeedFlagGhost:                       "Fantasma",
+    tipSeedFlagSustain:                     "Sustentar até ao fim do acorde",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Apenas no último tempo do acorde",
+    tipSeedFlagNotLast:                     "Apenas fora do último tempo",
+    tipSeedFlagEarly:                       "Antecipado: este slot toca o próximo acorde",
+    tipSeedMute:                            "Silenciar",
+    tipSeedUnmute:                          "Ativar som",
+    lblSeedReverb:                          "Reverberação",
+    optSeedReverbNone:                      "Seco: sem sala",
+    optSeedReverbRoom:                      "Sala: pequena e próxima",
+    optSeedReverbChamber:                   "Câmara: média, quente",
+    optSeedReverbHall:                      "Hall: grande e aberto",
+    optSeedReverbChurch:                    "Igreja: muito grande, cauda longa",
+    lblSeedHighpass:                        "Passa-altas (Hz)",
+    lblSeedLowpass:                         "Passa-baixas (Hz)",
     optSeedInstrumentSine:                  "Seno: sintetizador integrado",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
@@ -685,7 +979,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Guarde a semente num ficheiro .yams primeiro — o áudio é renderizado ao lado.",
     tipSeedLoad:                            "Carregar semente",
     ttlSeedLoad:                            "Abrir um ficheiro de semente",
-    lblSeedLoadFilter:                      "Ficheiro de semente (.yams)",
+    lblSeedLoadFilter:                      "Ficheiro Seed (.yams)",
     msgSeedLoadFailed:                      "Não foi possível carregar esse ficheiro de semente",
     tipSeedNew:                             "Nova semente",
     tipSeedTabClose:                        "Fechar",
@@ -740,54 +1034,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genera progressioni di accordi in semi audio + MIDI che vincolano generatori di musica AI come Suno.",
+    lblDlgSettingsAboutCredits:             "Crediti strumento",
+    msgDlgSettingsAboutCreditsIntro:        "Gli strumenti campionati provengono da sessioni di registrazione con licenza libera, di:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progressione di accordi",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Una battuta per riga: ogni riga ha la stessa durata, e gli accordi la dividono equamente (un accordo da solo occupa l'intera battuta). I tag [Section], le righe vuote e i segni | vengono ignorati. Accordi slash (C/G), 7e (Gmaj7) e N.C. supportati.",
+    tipSeedBarsAdd:                         "Linee più lunghe: ogni linea di accordi dura un quarto di battuta in più",
+    tipSeedBarsRemove:                      "Linee più corte: ogni linea di accordi dura un quarto di battuta in meno",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Misure per riga",
     lblSeedSig:                             "Indicazione di tempo",
     lblSeedLoops:                           "Loop",
-    lblSeedStyle:                           "Stile",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to it
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to it
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to it
-    optSeedStylePad:                        "Pad", // TODO: translate to it
-    optSeedStyleDrone:                      "Drone", // TODO: translate to it
-    optSeedStyleMarker:                     "Marker", // TODO: translate to it
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to it
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to it
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to it
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to it
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to it
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to it
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to it
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to it
+    lblSeedStyleGroupPads:                  "Pad",
+    lblSeedStyleGroupArps:                  "Arpeggi",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Riverbero",
     lblSeedInstrument:                      "Strumento",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to it
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to it
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to it
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to it
+    lblSeedBassInstrument:                  "Basso",
+    optSeedBassInstrumentSame:              "Come lo strumento",
+    plhSeedInstrumentFilter:                "Digita per filtrare…",
+    optSeedInstrumentFamilyAll:             "Tutti",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to it
-    tabSeedRender:                          "Render", // TODO: translate to it
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to it
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to it
-    lblSeedKnobTune:                        "Tune", // TODO: translate to it
-    tipSeedMute:                            "Mute", // TODO: translate to it
-    tipSeedUnmute:                          "Unmute", // TODO: translate to it
-    lblSeedReverb:                          "Reverb", // TODO: translate to it
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to it
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to it
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to it
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to it
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to it
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to it
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to it
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to it
-    optSeedInstrumentSine:                  "Onda sinusoidale: synth integrato",
+    tabSeedMusic:                           "Musica",
+    tabSeedRender:                          "Rendering",
+    lblSeedKnobVolume:                      "volume",
+    lblSeedKnobOctave:                      "ottava",
+    lblSeedKnobTune:                        "intonazione",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stile",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Nessuno",
+    optSeedSwingLight:                      "Leggero",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Semplice",
+    lblSeedSigGroupComplex:                 "Complesso",
+    lblSeedKnobVel:                         "velocità",
+    lblSeedKnobLen:                         "lunghezza",
+    btnSeedHold:                            "Mantieni",
+    tipSeedLaneMirror:                      "Inverti la corsia. È un'impostazione, non una modifica — la figura mantiene il suo nome e si disattiva.",
+    tipSeedLaneShiftLeft:                   "Sposta a sinistra",
+    tipSeedLaneShiftRight:                  "Sposta a destra",
+    tipSeedLaneClear:                       "Cancella la corsia",
+    tipSeedSlots:                           "Passi nella corsia — i + e − sopra aggiungono o rimuovono uno.",
+    tipSeedRowAll:                          "L'intero accordo in questo passaggio — il blocco alto del Chord Player (tre note su una triade, quattro su una settima). Clicca su una riga di toni nella sua colonna per avviare il blocco lì.",
+    tipSeedRowFifth:                        "La quinta sopra la fondamentale — la riga BF del Chord Player.",
+    tipSeedRowDegree:                       "Un tono dell'accordo: 1 = fondamentale, 2, 3, 4 ascendente. Oltre la dimensione dell'accordo, il tono è un'ottava sopra (C1–C4 del Chord Player). Impila più toni in una colonna per creare il tuo accordo.",
+    tipSeedLaneAddStep:                     "Aggiungi un passo alla fine della corsia",
+    tipSeedLaneRemoveStep:                  "Rimuovi l'ultimo passo della corsia",
+    lblSeedBeatDiv:                         "Divisione del battito",
+    tipSeedBeatDiv:                         "Passi per battuta, per entrambe le corsie (B/2 = ottavi, B/3 = terzine, B/4 = sedicesimi). I passi rimangono e la figura cambia velocità, come in Chord Player.",
+    lblSeedChords:                          "Accordi",
+    tipSeedChordsEdit:                      "Modifica gli accordi come testo — Ctrl+Invio o Esc per tornare",
+    tipSeedInstrumentPrev:                  "Strumento precedente nell'elenco",
+    tipSeedInstrumentNext:                  "Strumento successivo nell'elenco",
+    lblSeedMode:                            "modalità",
+    tipSeedModeEdit:                        "Modifica note: clicca su una cella per aggiungere una nota, clicca su una nota per rimuoverla.",
+    tipSeedModeSettings:                    "Impostazioni nota: clicca su una nota per selezionarla, quindi imposta i suoi flag.",
+    lblSeedFlagOctave:                      "ottava",
+    lblSeedFlagScaleStep:                   "passo della scala",
+    lblSeedFlagLevel:                       "livello",
+    lblSeedFlagLength:                      "durata",
+    lblSeedFlagCondition:                   "condizione",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Ottava su",
+    tipSeedFlagOctDown:                     "Ottava giù",
+    tipSeedFlagScaleUp:                     "Nota di passaggio: un grado di scala su",
+    tipSeedFlagScaleDown:                   "Nota di passaggio: un grado di scala giù",
+    tipSeedFlagAccent:                      "Accento",
+    tipSeedFlagGhost:                       "Fantasma",
+    tipSeedFlagSustain:                     "Sostenere fino alla fine dell'accordo",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Solo nell'ultimo battito dell'accordo",
+    tipSeedFlagNotLast:                     "Solo al di fuori dell'ultimo battito",
+    tipSeedFlagEarly:                       "In anticipo: questo slot suona l'accordo successivo",
+    tipSeedMute:                            "Silenzia",
+    tipSeedUnmute:                          "Riattiva audio",
+    lblSeedReverb:                          "Riverbero",
+    optSeedReverbNone:                      "Secco: nessuna stanza",
+    optSeedReverbRoom:                      "Stanza: piccola e vicina",
+    optSeedReverbChamber:                   "Camera: media, calda",
+    optSeedReverbHall:                      "Sala: grande e aperta",
+    optSeedReverbChurch:                    "Chiesa: molto grande, coda lunga",
+    lblSeedHighpass:                        "Passa-alto (Hz)",
+    lblSeedLowpass:                         "Passa-basso (Hz)",
+    optSeedInstrumentSine:                  "Seno: sintetizzatore integrato",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -802,7 +1145,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Salva il seed in un file .yams prima — l'audio viene renderizzato accanto ad esso.",
     tipSeedLoad:                            "Carica seed",
     ttlSeedLoad:                            "Apri file seed",
-    lblSeedLoadFilter:                      "File seed (.yams)",
+    lblSeedLoadFilter:                      "File Seed (.yams)",
     msgSeedLoadFailed:                      "Impossibile caricare quel file seed",
     tipSeedNew:                             "Nuovo seed",
     tipSeedTabClose:                        "Chiudi",
@@ -857,53 +1200,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genereert akkoordprogressies als audio- en MIDI-seeds die AI-muziekgeneratoren zoals Suno beperken.",
+    lblDlgSettingsAboutCredits:             "Instrumentcredits",
+    msgDlgSettingsAboutCreditsIntro:        "De gesamplede instrumenten komen van vrij gelicentieerde opnamesessies, door:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akkoordprogressie",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Eén maat per regel: elke regel krijgt gelijke tijd, en de akkoorden verdelen die tijd gelijkmatig (één akkoord op een regel vult de hele maat). [Section]-tags, lege regels en | worden genegeerd. Slash-akkoorden (C/G), 7e (Gmaj7) en N.C. worden ondersteund.",
+    tipSeedBarsAdd:                         "Langere lijnen: elke akkoordlijn duurt een kwartmaat langer",
+    tipSeedBarsRemove:                      "Kortere lijnen: elke akkoordlijn duurt een kwartmaat korter",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Maten per regel",
     lblSeedSig:                             "Maatsoort",
     lblSeedLoops:                           "Herhalingen",
-    lblSeedStyle:                           "Stijl",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to nl
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to nl
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to nl
-    optSeedStylePad:                        "Pad", // TODO: translate to nl
-    optSeedStyleDrone:                      "Drone", // TODO: translate to nl
-    optSeedStyleMarker:                     "Marker", // TODO: translate to nl
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to nl
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to nl
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to nl
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to nl
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to nl
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to nl
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to nl
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to nl
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpeggio's",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "nagalm",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to nl
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to nl
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to nl
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to nl
+    lblSeedBassInstrument:                  "Bas",
+    optSeedBassInstrumentSame:              "Zelfde als instrument",
+    plhSeedInstrumentFilter:                "Typ om te filteren…",
+    optSeedInstrumentFamilyAll:             "Alle",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to nl
-    tabSeedRender:                          "Render", // TODO: translate to nl
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to nl
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to nl
-    lblSeedKnobTune:                        "Tune", // TODO: translate to nl
-    tipSeedMute:                            "Mute", // TODO: translate to nl
-    tipSeedUnmute:                          "Unmute", // TODO: translate to nl
-    lblSeedReverb:                          "Reverb", // TODO: translate to nl
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to nl
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to nl
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to nl
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to nl
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to nl
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to nl
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to nl
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to nl
+    tabSeedMusic:                           "Muziek",
+    tabSeedRender:                          "Renderen",
+    lblSeedKnobVolume:                      "volume",
+    lblSeedKnobOctave:                      "octaaf",
+    lblSeedKnobTune:                        "stemming",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stijl",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Geen",
+    optSeedSwingLight:                      "Licht",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Eenvoudig",
+    lblSeedSigGroupComplex:                 "Complex",
+    lblSeedKnobVel:                         "snelheid",
+    lblSeedKnobLen:                         "lengte",
+    btnSeedHold:                            "Vasthouden",
+    tipSeedLaneMirror:                      "Keer de baan om. Een instelling, geen bewerking — de figuur behoudt zijn naam en schakelt weer uit.",
+    tipSeedLaneShiftLeft:                   "Naar links verschuiven",
+    tipSeedLaneShiftRight:                  "Naar rechts verschuiven",
+    tipSeedLaneClear:                       "Rij wissen",
+    tipSeedSlots:                           "Stappen in de baan — de + en − hierboven voegen er een toe of verwijderen er een.",
+    tipSeedRowAll:                          "Het hele akkoord in deze stap — de hoge blok van de Chord Player (drie noten op een drieklank, vier op een septiem). Klik op een toonrij in de kolom om de blok daar te starten.",
+    tipSeedRowFifth:                        "De kwint boven de grondtoon — de BF-rij van de Chord Player.",
+    tipSeedRowDegree:                       "Eén akkoordtoon: 1 = grondtoon, 2, 3, 4 omhoog. Voorbij de akkoordgrootte is de toon een octaaf hoger (Chord Player C1–C4). Stapel er meerdere in één kolom voor een eigen akkoord.",
+    tipSeedLaneAddStep:                     "Een stap toevoegen aan het einde van de rijstrook",
+    tipSeedLaneRemoveStep:                  "De laatste stap van de rijstrook verwijderen",
+    lblSeedBeatDiv:                         "Maatverdeling",
+    tipSeedBeatDiv:                         "Stappen per tel, voor beide banen (B/2 = achtsten, B/3 = triolen, B/4 = zestienden). De stappen blijven en de figuur verandert van snelheid, zoals in Chord Player.",
+    lblSeedChords:                          "Akkoorden",
+    tipSeedChordsEdit:                      "Akkoorden als tekst bewerken — Ctrl+Enter of Esc om terug te keren",
+    tipSeedInstrumentPrev:                  "Vorig instrument in de lijst",
+    tipSeedInstrumentNext:                  "Volgend instrument in de lijst",
+    lblSeedMode:                            "modus",
+    tipSeedModeEdit:                        "Notities bewerken: klik op een cel om een notitie toe te voegen, klik op een notitie om deze te verwijderen.",
+    tipSeedModeSettings:                    "Notitie-instellingen: klik op een notitie om deze te selecteren en stel vervolgens de vlaggen in.",
+    lblSeedFlagOctave:                      "octaaf",
+    lblSeedFlagScaleStep:                   "toonladderstap",
+    lblSeedFlagLevel:                       "niveau",
+    lblSeedFlagLength:                      "duur",
+    lblSeedFlagCondition:                   "voorwaarde",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Octaaf omhoog",
+    tipSeedFlagOctDown:                     "Octaaf omlaag",
+    tipSeedFlagScaleUp:                     "Doorgangsnoot: één toonladderstap omhoog",
+    tipSeedFlagScaleDown:                   "Doorgangsnoot: één toonladderstap omlaag",
+    tipSeedFlagAccent:                      "Accent",
+    tipSeedFlagGhost:                       "Spook",
+    tipSeedFlagSustain:                     "Aanhouden tot het einde van het akkoord",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Alleen in de laatste tel van het akkoord",
+    tipSeedFlagNotLast:                     "Alleen buiten de laatste tel",
+    tipSeedFlagEarly:                       "Vroeg: dit slot speelt het volgende akkoord",
+    tipSeedMute:                            "Dempen",
+    tipSeedUnmute:                          "Geluid aan",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Droog: geen ruimte",
+    optSeedReverbRoom:                      "Kamer: klein en dichtbij",
+    optSeedReverbChamber:                   "Kamer: medium, warm",
+    optSeedReverbHall:                      "Hal: groot en open",
+    optSeedReverbChurch:                    "Kerk: zeer groot, lange nagalm",
+    lblSeedHighpass:                        "Hoogdoorlaat (Hz)",
+    lblSeedLowpass:                         "Laagdoorlaat (Hz)",
     optSeedInstrumentSine:                  "Sinus: ingebouwde synth",
     lblSeedFormat:                          "Formaat",
     optSeedFormatMp3:                       "MP3",
@@ -974,53 +1366,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Создает аккордовые прогрессии в виде аудио- и MIDI-заготовок, ограничивающих ИИ-генераторы музыки, такие как Suno.",
+    lblDlgSettingsAboutCredits:             "Авторы инструментов",
+    msgDlgSettingsAboutCreditsIntro:        "Сэмплированные инструменты получены из свободно лицензированных сессий записи, от:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Последовательность аккордов",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Один такт на строку: каждая строка получает равное время, и аккорды в ней делят это время поровну (один аккорд на строке занимает весь такт). Теги [Section], пустые строки и | игнорируются. Поддерживаются слэш-аккорды (C/G), септаккорды (Gmaj7) и N.C.",
+    tipSeedBarsAdd:                         "Длиннее линии: каждая линия аккордов длится на четверть такта дольше",
+    tipSeedBarsRemove:                      "Короче линии: каждая линия аккордов длится на четверть такта меньше",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Такты на строку",
     lblSeedSig:                             "Размер",
     lblSeedLoops:                           "Петли",
-    lblSeedStyle:                           "Стиль",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ru
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ru
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ru
-    optSeedStylePad:                        "Pad", // TODO: translate to ru
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ru
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ru
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ru
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ru
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ru
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ru
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ru
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ru
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ru
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ru
+    lblSeedStyleGroupPads:                  "Пэды",
+    lblSeedStyleGroupArps:                  "Арпеджио",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Реверб",
     lblSeedInstrument:                      "Инструмент",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ru
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ru
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ru
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ru
+    lblSeedBassInstrument:                  "Бас",
+    optSeedBassInstrumentSame:              "Как инструмент",
+    plhSeedInstrumentFilter:                "Введите для фильтрации…",
+    optSeedInstrumentFamilyAll:             "Все",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ru
-    tabSeedRender:                          "Render", // TODO: translate to ru
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ru
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ru
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ru
-    tipSeedMute:                            "Mute", // TODO: translate to ru
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ru
-    lblSeedReverb:                          "Reverb", // TODO: translate to ru
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ru
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ru
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ru
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ru
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ru
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ru
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ru
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ru
+    tabSeedMusic:                           "Музыка",
+    tabSeedRender:                          "Рендер",
+    lblSeedKnobVolume:                      "громкость",
+    lblSeedKnobOctave:                      "октава",
+    lblSeedKnobTune:                        "настройка",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Стиль",
+    lblSeedSwing:                           "Свинг",
+    optSeedSwingNone:                       "Нет",
+    optSeedSwingLight:                      "Легкий",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Простой",
+    lblSeedSigGroupComplex:                 "Сложный",
+    lblSeedKnobVel:                         "скорость",
+    lblSeedKnobLen:                         "длина",
+    btnSeedHold:                            "Удерживать",
+    tipSeedLaneMirror:                      "Развернуть дорожку. Это настройка, не редактирование — фигура сохраняет свое имя и снова отключается.",
+    tipSeedLaneShiftLeft:                   "Сдвинуть влево",
+    tipSeedLaneShiftRight:                  "Сдвинуть вправо",
+    tipSeedLaneClear:                       "Очистить дорожку",
+    tipSeedSlots:                           "Шаги в дорожке — + и − выше добавляют или удаляют один.",
+    tipSeedRowAll:                          "Весь аккорд на этом шаге — высокий блок Chord Player (три ноты для трезвучия, четыре для септаккорда). Нажмите на тональный ряд в его столбце, чтобы начать блок там.",
+    tipSeedRowFifth:                        "Квинта над основным тоном — ряд BF Chord Player.",
+    tipSeedRowDegree:                       "Один аккордовый тон: 1 = основной тон, 2, 3, 4 вверх. За пределами размера аккорда тон на октаву выше (C1–C4 Chord Player). Сложите несколько в один столбец для создания собственного аккорда.",
+    tipSeedLaneAddStep:                     "Добавить шаг в конец дорожки",
+    tipSeedLaneRemoveStep:                  "Удалить последний шаг дорожки",
+    lblSeedBeatDiv:                         "Деление такта",
+    tipSeedBeatDiv:                         "Шаги на долю, для обеих дорожек (B/2 = восьмые, B/3 = триоли, B/4 = шестнадцатые). Шаги остаются, а фигура меняет скорость, как в Chord Player.",
+    lblSeedChords:                          "Аккорды",
+    tipSeedChordsEdit:                      "Редактировать аккорды как текст — Ctrl+Enter или Esc для возврата",
+    tipSeedInstrumentPrev:                  "Предыдущий инструмент в списке",
+    tipSeedInstrumentNext:                  "Следующий инструмент в списке",
+    lblSeedMode:                            "режим",
+    tipSeedModeEdit:                        "Редактирование заметок: нажмите на ячейку, чтобы добавить заметку; нажмите на заметку, чтобы удалить ее.",
+    tipSeedModeSettings:                    "Настройки заметок: нажмите на заметку, чтобы выбрать ее, затем установите ее флаги.",
+    lblSeedFlagOctave:                      "октава",
+    lblSeedFlagScaleStep:                   "ступень гаммы",
+    lblSeedFlagLevel:                       "уровень",
+    lblSeedFlagLength:                      "длительность",
+    lblSeedFlagCondition:                   "условие",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Октава вверх",
+    tipSeedFlagOctDown:                     "Октава вниз",
+    tipSeedFlagScaleUp:                     "Проходящая нота: на один шаг гаммы вверх",
+    tipSeedFlagScaleDown:                   "Проходящая нота: на один шаг гаммы вниз",
+    tipSeedFlagAccent:                      "Акцент",
+    tipSeedFlagGhost:                       "Призрак",
+    tipSeedFlagSustain:                     "Длительность до конца аккорда",
+    tipSeedFlagStaccato:                    "Стаккато",
+    tipSeedFlagLast:                        "Только в последней доле аккорда",
+    tipSeedFlagNotLast:                     "Только вне последней доли",
+    tipSeedFlagEarly:                       "Рано: этот слот озвучивает следующий аккорд",
+    tipSeedMute:                            "Выключить звук",
+    tipSeedUnmute:                          "Включить звук",
+    lblSeedReverb:                          "Реверберация",
+    optSeedReverbNone:                      "Сухой: без помещения",
+    optSeedReverbRoom:                      "Комната: малая и близкая",
+    optSeedReverbChamber:                   "Камера: средняя, тёплая",
+    optSeedReverbHall:                      "Зал: большой и открытый",
+    optSeedReverbChurch:                    "Церковь: очень большая, длинный хвост",
+    lblSeedHighpass:                        "Высокие частоты (Гц)",
+    lblSeedLowpass:                         "Низкие частоты (Гц)",
     optSeedInstrumentSine:                  "Синус: встроенный синтезатор",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
@@ -1036,7 +1477,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Сначала сохраните сид в файл .yams — аудио будет отрендерено рядом с ним.",
     tipSeedLoad:                            "Загрузить сид",
     ttlSeedLoad:                            "Открыть файл сида",
-    lblSeedLoadFilter:                      "Файл сида (.yams)",
+    lblSeedLoadFilter:                      "Файл Seed (.yams)",
     msgSeedLoadFailed:                      "Не удалось загрузить этот файл сида",
     tipSeedNew:                             "Новый сид",
     tipSeedTabClose:                        "Закрыть",
@@ -1091,53 +1532,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Створює акордові прогресії як аудіо- та MIDI-заготовки, що обмежують ШІ-генератори музики, наприклад Suno.",
+    lblDlgSettingsAboutCredits:             "Автори інструментів",
+    msgDlgSettingsAboutCreditsIntro:        "Семпловані інструменти походять з вільно ліцензованих сесій запису, від:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Послідовність акордів",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Один такт на рядок: кожен рядок отримує рівний час, і акорди в ньому ділять цей час порівну (один акорд на рядку займає весь такт). Теги [Section], порожні рядки та | ігноруються. Підтримуються слеш-акорди (C/G), септакорди (Gmaj7) та N.C.",
+    tipSeedBarsAdd:                         "Довші лінії: кожна лінія акордів триває на чверть такту довше",
+    tipSeedBarsRemove:                      "Коротші лінії: кожна лінія акордів триває на чверть такту менше",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Такти на рядок",
     lblSeedSig:                             "Розмір",
     lblSeedLoops:                           "Петлі",
-    lblSeedStyle:                           "Стиль",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to uk
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to uk
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to uk
-    optSeedStylePad:                        "Pad", // TODO: translate to uk
-    optSeedStyleDrone:                      "Drone", // TODO: translate to uk
-    optSeedStyleMarker:                     "Marker", // TODO: translate to uk
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to uk
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to uk
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to uk
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to uk
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to uk
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to uk
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to uk
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to uk
+    lblSeedStyleGroupPads:                  "Педи",
+    lblSeedStyleGroupArps:                  "Арпеджіо",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Реверб",
     lblSeedInstrument:                      "Інструмент",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to uk
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to uk
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to uk
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to uk
+    lblSeedBassInstrument:                  "Бас",
+    optSeedBassInstrumentSame:              "Як інструмент",
+    plhSeedInstrumentFilter:                "Введіть для фільтрації…",
+    optSeedInstrumentFamilyAll:             "Усі",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to uk
-    tabSeedRender:                          "Render", // TODO: translate to uk
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to uk
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to uk
-    lblSeedKnobTune:                        "Tune", // TODO: translate to uk
-    tipSeedMute:                            "Mute", // TODO: translate to uk
-    tipSeedUnmute:                          "Unmute", // TODO: translate to uk
-    lblSeedReverb:                          "Reverb", // TODO: translate to uk
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to uk
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to uk
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to uk
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to uk
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to uk
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to uk
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to uk
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to uk
+    tabSeedMusic:                           "Музика",
+    tabSeedRender:                          "Рендер",
+    lblSeedKnobVolume:                      "гучність",
+    lblSeedKnobOctave:                      "октава",
+    lblSeedKnobTune:                        "налаштування",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Стиль",
+    lblSeedSwing:                           "Свінг",
+    optSeedSwingNone:                       "Немає",
+    optSeedSwingLight:                      "Легкий",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Простий",
+    lblSeedSigGroupComplex:                 "Складний",
+    lblSeedKnobVel:                         "швидкість",
+    lblSeedKnobLen:                         "довжина",
+    btnSeedHold:                            "Утримувати",
+    tipSeedLaneMirror:                      "Розвернути доріжку. Це налаштування, а не редагування — фігура зберігає свою назву і знову вимикається.",
+    tipSeedLaneShiftLeft:                   "Зсунути вліво",
+    tipSeedLaneShiftRight:                  "Перемістити вправо",
+    tipSeedLaneClear:                       "Очистити доріжку",
+    tipSeedSlots:                           "Кроки в доріжці — + і − вище додають або видаляють один.",
+    tipSeedRowAll:                          "Весь акорд на цьому кроці — високий блок Chord Player (три ноти для тризвуку, чотири для септакорду). Клацніть на тоновий ряд у його стовпці, щоб почати блок там.",
+    tipSeedRowFifth:                        "Квінта над основним тоном — ряд BF Chord Player.",
+    tipSeedRowDegree:                       "Один акордний тон: 1 = основний тон, 2, 3, 4 вгору. За межами розміру акорду тон на октаву вище (C1–C4 Chord Player). Складіть кілька в один стовпець для власного акорду.",
+    tipSeedLaneAddStep:                     "Додати крок в кінець доріжки",
+    tipSeedLaneRemoveStep:                  "Видалити останній крок доріжки",
+    lblSeedBeatDiv:                         "Поділ такту",
+    tipSeedBeatDiv:                         "Кроки на такт, для обох доріжок (B/2 = восьмі, B/3 = тріолі, B/4 = шістнадцяті). Кроки залишаються, а фігура змінює швидкість, як у Chord Player.",
+    lblSeedChords:                          "Акорди",
+    tipSeedChordsEdit:                      "Редагувати акорди як текст — Ctrl+Enter або Esc, щоб повернутися",
+    tipSeedInstrumentPrev:                  "Попередній інструмент у списку",
+    tipSeedInstrumentNext:                  "Наступний інструмент у списку",
+    lblSeedMode:                            "режим",
+    tipSeedModeEdit:                        "Редагування нотаток: натисніть на клітинку, щоб додати нотатку; натисніть на нотатку, щоб видалити її.",
+    tipSeedModeSettings:                    "Налаштування нотаток: натисніть на нотатку, щоб вибрати її, потім встановіть її прапорці.",
+    lblSeedFlagOctave:                      "октава",
+    lblSeedFlagScaleStep:                   "ступінь гами",
+    lblSeedFlagLevel:                       "рівень",
+    lblSeedFlagLength:                      "тривалість",
+    lblSeedFlagCondition:                   "умова",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Октава вгору",
+    tipSeedFlagOctDown:                     "Октава вниз",
+    tipSeedFlagScaleUp:                     "Прохідна нота: на один крок гами вгору",
+    tipSeedFlagScaleDown:                   "Прохідна нота: на один крок гами вниз",
+    tipSeedFlagAccent:                      "Акцент",
+    tipSeedFlagGhost:                       "Привид",
+    tipSeedFlagSustain:                     "Тривалість до кінця акорду",
+    tipSeedFlagStaccato:                    "Стакато",
+    tipSeedFlagLast:                        "Лише в останній долі акорду",
+    tipSeedFlagNotLast:                     "Лише поза останньою долею",
+    tipSeedFlagEarly:                       "Рано: цей слот озвучує наступний акорд",
+    tipSeedMute:                            "Вимкнути звук",
+    tipSeedUnmute:                          "Увімкнути звук",
+    lblSeedReverb:                          "Реверберація",
+    optSeedReverbNone:                      "Сухий: без приміщення",
+    optSeedReverbRoom:                      "Кімната: мала та близька",
+    optSeedReverbChamber:                   "Камера: середня, тепла",
+    optSeedReverbHall:                      "Зал: великий та відкритий",
+    optSeedReverbChurch:                    "Церква: дуже велика, довгий хвіст",
+    lblSeedHighpass:                        "Високі частоти (Гц)",
+    lblSeedLowpass:                         "Низькі частоти (Гц)",
     optSeedInstrumentSine:                  "Синус: вбудований синтезатор",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
@@ -1153,7 +1643,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Спершу збережіть сід у файл .yams — аудіо буде відрендерено поруч із ним.",
     tipSeedLoad:                            "Завантажити сід",
     ttlSeedLoad:                            "Відкрити файл сіда",
-    lblSeedLoadFilter:                      "Файл сіда (.yams)",
+    lblSeedLoadFilter:                      "Файл Seed (.yams)",
     msgSeedLoadFailed:                      "Не вдалося завантажити цей файл сіда",
     tipSeedNew:                             "Новий сід",
     tipSeedTabClose:                        "Закрити",
@@ -1208,53 +1698,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generuje progresje akordów jako nasiona audio + MIDI, które ograniczają generatory muzyki AI, takie jak Suno.",
+    lblDlgSettingsAboutCredits:             "Twórcy instrumentów",
+    msgDlgSettingsAboutCreditsIntro:        "Próbkowane instrumenty pochodzą z sesji nagraniowych na wolnej licencji, autorstwa:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Postęp akordów",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Jeden takt na linię: każda linia ma równy czas, a akordy dzielą go równomiernie (pojedynczy akord na linii zajmuje cały takt). Tagi [Section], puste linie i | są ignorowane. Obsługiwane akordy ukośnikowe (C/G), septymowe (Gmaj7) i N.C.",
+    tipSeedBarsAdd:                         "Dłuższe linie: każda linia akordów trwa o ćwierć taktu dłużej",
+    tipSeedBarsRemove:                      "Krótsze linie: każda linia akordów trwa o ćwierć taktu krócej",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Takty na linię",
     lblSeedSig:                             "Metrum",
     lblSeedLoops:                           "Pętle",
-    lblSeedStyle:                           "Styl",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to pl
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to pl
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to pl
-    optSeedStylePad:                        "Pad", // TODO: translate to pl
-    optSeedStyleDrone:                      "Drone", // TODO: translate to pl
-    optSeedStyleMarker:                     "Marker", // TODO: translate to pl
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to pl
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to pl
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to pl
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to pl
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to pl
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to pl
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to pl
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to pl
+    lblSeedStyleGroupPads:                  "Pady",
+    lblSeedStyleGroupArps:                  "Arpeggia",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "pogłos",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to pl
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to pl
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to pl
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to pl
+    lblSeedBassInstrument:                  "Bas",
+    optSeedBassInstrumentSame:              "Jak instrument",
+    plhSeedInstrumentFilter:                "Wpisz, aby filtrować…",
+    optSeedInstrumentFamilyAll:             "Wszystkie",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to pl
-    tabSeedRender:                          "Render", // TODO: translate to pl
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to pl
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to pl
-    lblSeedKnobTune:                        "Tune", // TODO: translate to pl
-    tipSeedMute:                            "Mute", // TODO: translate to pl
-    tipSeedUnmute:                          "Unmute", // TODO: translate to pl
-    lblSeedReverb:                          "Reverb", // TODO: translate to pl
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to pl
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to pl
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to pl
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to pl
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to pl
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to pl
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to pl
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to pl
+    tabSeedMusic:                           "Muzyka",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "głośność",
+    lblSeedKnobOctave:                      "oktawa",
+    lblSeedKnobTune:                        "strojenie",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Styl",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Brak",
+    optSeedSwingLight:                      "Lekki",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Prosty",
+    lblSeedSigGroupComplex:                 "Złożony",
+    lblSeedKnobVel:                         "prędkość",
+    lblSeedKnobLen:                         "długość",
+    btnSeedHold:                            "Przytrzymaj",
+    tipSeedLaneMirror:                      "Odwróć ścieżkę. To ustawienie, nie edycja — figura zachowuje swoją nazwę i ponownie się wyłącza.",
+    tipSeedLaneShiftLeft:                   "Przesuń w lewo",
+    tipSeedLaneShiftRight:                  "Przesuń w prawo",
+    tipSeedLaneClear:                       "Wyczyść ścieżkę",
+    tipSeedSlots:                           "Kroki w ścieżce — + i − powyżej dodają lub usuwają jeden.",
+    tipSeedRowAll:                          "Cały akord w tym kroku — wysoki blok Chord Player (trzy nuty w triadzie, cztery w septymie). Kliknij rząd tonów w jego kolumnie, aby rozpocząć blok tam.",
+    tipSeedRowFifth:                        "Kwinta powyżej prymy — rząd BF Chord Player.",
+    tipSeedRowDegree:                       "Jeden ton akordowy: 1 = pryma, 2, 3, 4 w górę. Poza rozmiarem akordu, ton jest o oktawę wyżej (C1–C4 Chord Player). Ułóż kilka w jednej kolumnie, aby stworzyć własny akord.",
+    tipSeedLaneAddStep:                     "Dodaj krok na końcu ścieżki",
+    tipSeedLaneRemoveStep:                  "Usuń ostatni krok ścieżki",
+    lblSeedBeatDiv:                         "Podział taktu",
+    tipSeedBeatDiv:                         "Kroki na uderzenie, dla obu ścieżek (B/2 = ósemki, B/3 = triole, B/4 = szesnastki). Kroki pozostają, a figura zmienia prędkość, jak w Chord Player.",
+    lblSeedChords:                          "Akordy",
+    tipSeedChordsEdit:                      "Edytuj akordy jako tekst — Ctrl+Enter lub Esc, aby wrócić",
+    tipSeedInstrumentPrev:                  "Poprzedni instrument na liście",
+    tipSeedInstrumentNext:                  "Następny instrument na liście",
+    lblSeedMode:                            "tryb",
+    tipSeedModeEdit:                        "Edytuj notatki: kliknij komórkę, aby dodać notatkę; kliknij notatkę, aby ją usunąć.",
+    tipSeedModeSettings:                    "Ustawienia notatek: kliknij notatkę, aby ją wybrać, a następnie ustaw jej flagi.",
+    lblSeedFlagOctave:                      "oktawa",
+    lblSeedFlagScaleStep:                   "stopień gamy",
+    lblSeedFlagLevel:                       "poziom",
+    lblSeedFlagLength:                      "długość",
+    lblSeedFlagCondition:                   "warunek",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktawę w górę",
+    tipSeedFlagOctDown:                     "Oktawę w dół",
+    tipSeedFlagScaleUp:                     "Nuta przejściowa: jeden stopień skali w górę",
+    tipSeedFlagScaleDown:                   "Nuta przejściowa: jeden stopień skali w dół",
+    tipSeedFlagAccent:                      "Akcent",
+    tipSeedFlagGhost:                       "Duch",
+    tipSeedFlagSustain:                     "Utrzymaj do końca akordu",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Tylko w ostatnim uderzeniu akordu",
+    tipSeedFlagNotLast:                     "Tylko poza ostatnim uderzeniem",
+    tipSeedFlagEarly:                       "Wcześnie: ten slot odtwarza następny akord",
+    tipSeedMute:                            "Wycisz",
+    tipSeedUnmute:                          "Włącz dźwięk",
+    lblSeedReverb:                          "Pogłos",
+    optSeedReverbNone:                      "Suchy: bez pomieszczenia",
+    optSeedReverbRoom:                      "Pokój: mały i bliski",
+    optSeedReverbChamber:                   "Komora: średnia, ciepła",
+    optSeedReverbHall:                      "Hala: duża i otwarta",
+    optSeedReverbChurch:                    "Kościół: bardzo duży, długi ogon",
+    lblSeedHighpass:                        "Górnoprzepustowy (Hz)",
+    lblSeedLowpass:                         "Dolnoprzepustowy (Hz)",
     optSeedInstrumentSine:                  "Sinus: wbudowany syntezator",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -1270,7 +1809,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Najpierw zapisz seed do pliku .yams — dźwięk zostanie wyrenderowany obok niego.",
     tipSeedLoad:                            "Wczytaj seed",
     ttlSeedLoad:                            "Otwórz plik seed",
-    lblSeedLoadFilter:                      "Plik seed (.yams)",
+    lblSeedLoadFilter:                      "Plik Seed (.yams)",
     msgSeedLoadFailed:                      "Nie można było wczytać tego pliku seed",
     tipSeedNew:                             "Nowy seed",
     tipSeedTabClose:                        "Zamknij",
@@ -1325,53 +1864,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generează progresii de acorduri în semințe audio + MIDI care constrâng generatoarele de muzică AI precum Suno.",
+    lblDlgSettingsAboutCredits:             "Credite instrumente",
+    msgDlgSettingsAboutCreditsIntro:        "Instrumentele eșantionate provin din sesiuni de înregistrare cu licență liberă, de la:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progresie de acorduri",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "O măsură pe linie: fiecare linie primește timp egal, iar acordurile o împart uniform (un acord singur pe linie ocupă întreaga măsură). Tag-urile [Section], liniile goale și | sunt ignorate. Acorduri slash (C/G), 7ths (Gmaj7) și N.C. sunt suportate.",
+    tipSeedBarsAdd:                         "Linii mai lungi: fiecare linie de acorduri durează cu un sfert de măsură mai mult",
+    tipSeedBarsRemove:                      "Linii mai scurte: fiecare linie de acorduri durează cu un sfert de măsură mai puțin",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Măsuri pe linie",
     lblSeedSig:                             "Măsură",
     lblSeedLoops:                           "Bucle",
-    lblSeedStyle:                           "Stil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ro
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ro
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ro
-    optSeedStylePad:                        "Pad", // TODO: translate to ro
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ro
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ro
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ro
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ro
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ro
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ro
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ro
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ro
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ro
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ro
+    lblSeedStyleGroupPads:                  "Paduri",
+    lblSeedStyleGroupArps:                  "Arpegii",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ro
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ro
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ro
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ro
+    lblSeedBassInstrument:                  "Bas",
+    optSeedBassInstrumentSame:              "La fel ca instrumentul",
+    plhSeedInstrumentFilter:                "Tastați pentru a filtra…",
+    optSeedInstrumentFamilyAll:             "Toate",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ro
-    tabSeedRender:                          "Render", // TODO: translate to ro
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ro
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ro
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ro
-    tipSeedMute:                            "Mute", // TODO: translate to ro
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ro
-    lblSeedReverb:                          "Reverb", // TODO: translate to ro
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ro
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ro
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ro
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ro
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ro
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ro
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ro
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ro
+    tabSeedMusic:                           "Muzică",
+    tabSeedRender:                          "Randare",
+    lblSeedKnobVolume:                      "volum",
+    lblSeedKnobOctave:                      "octavă",
+    lblSeedKnobTune:                        "acord",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stil",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Niciunul",
+    optSeedSwingLight:                      "Ușor",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simplu",
+    lblSeedSigGroupComplex:                 "Complex",
+    lblSeedKnobVel:                         "viteză",
+    lblSeedKnobLen:                         "lungime",
+    btnSeedHold:                            "Ține",
+    tipSeedLaneMirror:                      "Inversează banda. O setare, nu o editare — figura își păstrează numele și se dezactivează din nou.",
+    tipSeedLaneShiftLeft:                   "Deplasează la stânga",
+    tipSeedLaneShiftRight:                  "Deplasează la dreapta",
+    tipSeedLaneClear:                       "Golește banda",
+    tipSeedSlots:                           "Pași pe bandă — + și − de mai sus adaugă sau elimină unul.",
+    tipSeedRowAll:                          "Întregul acord în acest pas — blocul înalt al Chord Player (trei note pe o triadă, patru pe o septimă). Faceți clic pe un rând de tonuri în coloana sa pentru a începe blocul acolo.",
+    tipSeedRowFifth:                        "Cvinta deasupra fundamentalei — rândul BF al Chord Player.",
+    tipSeedRowDegree:                       "Un ton de acord: 1 = fundamentală, 2, 3, 4 ascendent. Dincolo de dimensiunea acordului, tonul este o octavă mai sus (C1–C4 Chord Player). Stivuiți mai multe într-o coloană pentru un acord propriu.",
+    tipSeedLaneAddStep:                     "Adaugă un pas la sfârșitul benzii",
+    tipSeedLaneRemoveStep:                  "Elimină ultimul pas al benzii",
+    lblSeedBeatDiv:                         "Diviziune de ritm",
+    tipSeedBeatDiv:                         "Pași pe bătaie, pentru ambele benzi (B/2 = optimi, B/3 = trioleturi, B/4 = șaisprezecimi). Pașii rămân și figura își schimbă viteza, ca în Chord Player.",
+    lblSeedChords:                          "Acorduri",
+    tipSeedChordsEdit:                      "Editează acordurile ca text — Ctrl+Enter sau Esc pentru a reveni",
+    tipSeedInstrumentPrev:                  "Instrumentul anterior din listă",
+    tipSeedInstrumentNext:                  "Următorul instrument din listă",
+    lblSeedMode:                            "mod",
+    tipSeedModeEdit:                        "Editați notele: faceți clic pe o celulă pentru a adăuga o notă, faceți clic pe o notă pentru a o elimina.",
+    tipSeedModeSettings:                    "Setări notă: faceți clic pe o notă pentru a o selecta, apoi setați-i steagurile.",
+    lblSeedFlagOctave:                      "octavă",
+    lblSeedFlagScaleStep:                   "treaptă de gamă",
+    lblSeedFlagLevel:                       "nivel",
+    lblSeedFlagLength:                      "durată",
+    lblSeedFlagCondition:                   "condiție",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Octavă în sus",
+    tipSeedFlagOctDown:                     "Octavă în jos",
+    tipSeedFlagScaleUp:                     "Notă de pasaj: o treaptă de gamă în sus",
+    tipSeedFlagScaleDown:                   "Notă de pasaj: o treaptă de gamă în jos",
+    tipSeedFlagAccent:                      "Accent",
+    tipSeedFlagGhost:                       "Fantomă",
+    tipSeedFlagSustain:                     "Susține până la sfârșitul acordului",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Doar în ultima bătaie a acordului",
+    tipSeedFlagNotLast:                     "Doar în afara ultimei bătăi",
+    tipSeedFlagEarly:                       "Anticipat: acest slot sonorizează acordul următor",
+    tipSeedMute:                            "Dezactivează sunetul",
+    tipSeedUnmute:                          "Activează sunetul",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Uscat: fără cameră",
+    optSeedReverbRoom:                      "Cameră: mică și apropiată",
+    optSeedReverbChamber:                   "Cameră: medie, caldă",
+    optSeedReverbHall:                      "Sală: mare și deschisă",
+    optSeedReverbChurch:                    "Biserică: foarte mare, coadă lungă",
+    lblSeedHighpass:                        "Trece-sus (Hz)",
+    lblSeedLowpass:                         "Trece-jos (Hz)",
     optSeedInstrumentSine:                  "Sinus: sintetizator încorporat",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -1387,7 +1975,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Salvați seed-ul într-un fișier .yams mai întâi — sunetul este redat lângă el.",
     tipSeedLoad:                            "Încarcă seed",
     ttlSeedLoad:                            "Deschide fișier seed",
-    lblSeedLoadFilter:                      "Fișier seed (.yams)",
+    lblSeedLoadFilter:                      "Fișier Seed (.yams)",
     msgSeedLoadFailed:                      "Nu s-a putut încărca acel fișier seed",
     tipSeedNew:                             "Seed nou",
     tipSeedTabClose:                        "Închide",
@@ -1442,53 +2030,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genererar ackordföljder som ljud- och MIDI-frön som begränsar AI-musikgeneratorer som Suno.",
+    lblDlgSettingsAboutCredits:             "Instrumentkrediter",
+    msgDlgSettingsAboutCreditsIntro:        "De samplade instrumenten kommer från fritt licensierade inspelningssessioner, av:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Ackordföljd",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "En takt per rad: varje rad får lika lång tid, och ackorden på den delar tiden jämnt (ett ackord ensamt på en rad tar hela takten). [Section]-taggar, tomma rader och | ignoreras. Slash-ackord (C/G), 7:or (Gmaj7) och N.C. stöds.",
+    tipSeedBarsAdd:                         "Längre linjer: varje ackordlinje varar en kvarts takt längre",
+    tipSeedBarsRemove:                      "Kortare linjer: varje ackordlinje varar en kvarts takt kortare",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Takter per rad",
     lblSeedSig:                             "Taktart",
     lblSeedLoops:                           "Loopar",
-    lblSeedStyle:                           "Stil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sv
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sv
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sv
-    optSeedStylePad:                        "Pad", // TODO: translate to sv
-    optSeedStyleDrone:                      "Drone", // TODO: translate to sv
-    optSeedStyleMarker:                     "Marker", // TODO: translate to sv
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sv
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sv
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sv
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sv
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sv
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sv
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sv
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to sv
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpeggion",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to sv
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sv
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sv
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sv
+    lblSeedBassInstrument:                  "Bas",
+    optSeedBassInstrumentSame:              "Samma som instrument",
+    plhSeedInstrumentFilter:                "Skriv för att filtrera…",
+    optSeedInstrumentFamilyAll:             "Alla",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to sv
-    tabSeedRender:                          "Render", // TODO: translate to sv
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to sv
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to sv
-    lblSeedKnobTune:                        "Tune", // TODO: translate to sv
-    tipSeedMute:                            "Mute", // TODO: translate to sv
-    tipSeedUnmute:                          "Unmute", // TODO: translate to sv
-    lblSeedReverb:                          "Reverb", // TODO: translate to sv
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sv
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sv
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sv
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sv
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sv
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sv
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sv
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sv
+    tabSeedMusic:                           "Musik",
+    tabSeedRender:                          "Rendera",
+    lblSeedKnobVolume:                      "volym",
+    lblSeedKnobOctave:                      "oktav",
+    lblSeedKnobTune:                        "stämning",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stil",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Ingen",
+    optSeedSwingLight:                      "Lätt",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Enkel",
+    lblSeedSigGroupComplex:                 "Komplex",
+    lblSeedKnobVel:                         "hastighet",
+    lblSeedKnobLen:                         "längd",
+    btnSeedHold:                            "Håll",
+    tipSeedLaneMirror:                      "Vänd spåret. En inställning, inte en redigering — figuren behåller sitt namn och kan stängas av igen.",
+    tipSeedLaneShiftLeft:                   "Flytta vänster",
+    tipSeedLaneShiftRight:                  "Flytta höger",
+    tipSeedLaneClear:                       "Rensa filen",
+    tipSeedSlots:                           "Steg i spåret — + och − ovan lägger till eller tar bort ett.",
+    tipSeedRowAll:                          "Hela ackordet i detta steg — Chord Players höga block (tre toner i en triad, fyra i en septima). Klicka på en tonrad i dess kolumn för att starta blocket där.",
+    tipSeedRowFifth:                        "Kvinten ovanför grundtonen — Chord Players BF-rad.",
+    tipSeedRowDegree:                       "En ackordton: 1 = grundton, 2, 3, 4 uppåt. Bortom ackordets storlek är tonen en oktav upp (Chord Player C1–C4). Stapla flera i en kolumn för ett eget ackord.",
+    tipSeedLaneAddStep:                     "Lägg till ett steg i slutet av banan",
+    tipSeedLaneRemoveStep:                  "Ta bort banans sista steg",
+    lblSeedBeatDiv:                         "Taktindelning",
+    tipSeedBeatDiv:                         "Steg per slag, för båda spåren (B/2 = åttondelar, B/3 = trioler, B/4 = sextondelar). Stegen stannar och figuren ändrar hastighet, som i Chord Player.",
+    lblSeedChords:                          "Ackord",
+    tipSeedChordsEdit:                      "Redigera ackorden som text — Ctrl+Enter eller Esc för att återgå",
+    tipSeedInstrumentPrev:                  "Föregående instrument i listan",
+    tipSeedInstrumentNext:                  "Nästa instrument i listan",
+    lblSeedMode:                            "läge",
+    tipSeedModeEdit:                        "Redigera anteckningar: klicka på en cell för att lägga till en anteckning, klicka på en anteckning för att ta bort den.",
+    tipSeedModeSettings:                    "Anteckningsinställningar: klicka på en anteckning för att välja den, ställ sedan in dess flaggor.",
+    lblSeedFlagOctave:                      "oktav",
+    lblSeedFlagScaleStep:                   "skalsteg",
+    lblSeedFlagLevel:                       "nivå",
+    lblSeedFlagLength:                      "längd",
+    lblSeedFlagCondition:                   "villkor",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktav upp",
+    tipSeedFlagOctDown:                     "Oktav ner",
+    tipSeedFlagScaleUp:                     "Genomgångston: ett skalsteg upp",
+    tipSeedFlagScaleDown:                   "Genomgångston: ett skalsteg ner",
+    tipSeedFlagAccent:                      "Accent",
+    tipSeedFlagGhost:                       "Spöke",
+    tipSeedFlagSustain:                     "Håll ut till slutet av ackordet",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Endast på sista taktslaget i ackordet",
+    tipSeedFlagNotLast:                     "Endast utanför sista taktslaget",
+    tipSeedFlagEarly:                       "Tidigt: denna plats spelar nästa ackord",
+    tipSeedMute:                            "Tysta",
+    tipSeedUnmute:                          "Slå på ljud",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Torr: inget rum",
+    optSeedReverbRoom:                      "Rum: litet och nära",
+    optSeedReverbChamber:                   "Kammare: medium, varm",
+    optSeedReverbHall:                      "Hall: stor och öppen",
+    optSeedReverbChurch:                    "Kyrka: mycket stor, lång svans",
+    lblSeedHighpass:                        "Högpass (Hz)",
+    lblSeedLowpass:                         "Lågpass (Hz)",
     optSeedInstrumentSine:                  "Sinus: inbyggd synt",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -1559,53 +2196,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genererer akkordprogresjoner som lyd- og MIDI-frø som begrenser AI-musikgeneratorer som Suno.",
+    lblDlgSettingsAboutCredits:             "Instrumentkrediteringer",
+    msgDlgSettingsAboutCreditsIntro:        "De samplede instrumentene kommer fra fritt lisensierte innspillingsøkter, av:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akkordprogresjon",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Én takt per linje: hver linje får lik tid, og akkordene på den deler tiden jevnt (en akkord alene på en linje holder hele takten). [Section]-tagger, tomme linjer og | ignoreres. Skråstrekakkorder (C/G), 7-ere (Gmaj7) og N.C. støttes.",
+    tipSeedBarsAdd:                         "Lengre linjer: hver akkordlinje varer en kvart takt lenger",
+    tipSeedBarsRemove:                      "Kortere linjer: hver akkordlinje varer en kvart takt kortere",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Takter per linje",
     lblSeedSig:                             "Taktart",
     lblSeedLoops:                           "Looper",
-    lblSeedStyle:                           "Stil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to nb
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to nb
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to nb
-    optSeedStylePad:                        "Pad", // TODO: translate to nb
-    optSeedStyleDrone:                      "Drone", // TODO: translate to nb
-    optSeedStyleMarker:                     "Marker", // TODO: translate to nb
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to nb
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to nb
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to nb
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to nb
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to nb
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to nb
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to nb
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to nb
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpeggioer",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "romklang",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to nb
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to nb
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to nb
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to nb
+    lblSeedBassInstrument:                  "Bass",
+    optSeedBassInstrumentSame:              "Samme som instrument",
+    plhSeedInstrumentFilter:                "Skriv for å filtrere…",
+    optSeedInstrumentFamilyAll:             "Alle",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to nb
-    tabSeedRender:                          "Render", // TODO: translate to nb
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to nb
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to nb
-    lblSeedKnobTune:                        "Tune", // TODO: translate to nb
-    tipSeedMute:                            "Mute", // TODO: translate to nb
-    tipSeedUnmute:                          "Unmute", // TODO: translate to nb
-    lblSeedReverb:                          "Reverb", // TODO: translate to nb
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to nb
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to nb
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to nb
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to nb
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to nb
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to nb
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to nb
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to nb
+    tabSeedMusic:                           "Musikk",
+    tabSeedRender:                          "Rendere",
+    lblSeedKnobVolume:                      "volum",
+    lblSeedKnobOctave:                      "oktav",
+    lblSeedKnobTune:                        "stemming",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stil",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Ingen",
+    optSeedSwingLight:                      "Lett",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Enkel",
+    lblSeedSigGroupComplex:                 "Kompleks",
+    lblSeedKnobVel:                         "hastighet",
+    lblSeedKnobLen:                         "lengde",
+    btnSeedHold:                            "Hold",
+    tipSeedLaneMirror:                      "Snu sporet. En innstilling, ikke en redigering — figuren beholder navnet sitt og kan slås av igjen.",
+    tipSeedLaneShiftLeft:                   "Flytt til venstre",
+    tipSeedLaneShiftRight:                  "Flytt til høyre",
+    tipSeedLaneClear:                       "Tøm feltet",
+    tipSeedSlots:                           "Trinn i sporet — + og − over legger til eller fjerner ett.",
+    tipSeedRowAll:                          "Hele akkorden i dette trinnet — Chord Players høye blokk (tre noter på en treklang, fire på en septim). Klikk på en tonerekke i kolonnen for å starte blokken der.",
+    tipSeedRowFifth:                        "Kvinten over grunntonen — Chord Players BF-rekke.",
+    tipSeedRowDegree:                       "Én akkordtone: 1 = grunntone, 2, 3, 4 oppover. Forbi akkordens størrelse er tonen en oktav opp (Chord Player C1–C4). Stable flere i én kolonne for en egen akkord.",
+    tipSeedLaneAddStep:                     "Legg til et trinn på slutten av banen",
+    tipSeedLaneRemoveStep:                  "Fjern banens siste trinn",
+    lblSeedBeatDiv:                         "Taktinndeling",
+    tipSeedBeatDiv:                         "Trinn per slag, for begge spor (B/2 = åttendedeler, B/3 = trioler, B/4 = sekstendedeler). Trinnene forblir og figuren endrer hastighet, som i Chord Player.",
+    lblSeedChords:                          "Akkorder",
+    tipSeedChordsEdit:                      "Rediger akkordene som tekst — Ctrl+Enter eller Esc for å komme tilbake",
+    tipSeedInstrumentPrev:                  "Forrige instrument i listen",
+    tipSeedInstrumentNext:                  "Neste instrument i listen",
+    lblSeedMode:                            "modus",
+    tipSeedModeEdit:                        "Rediger notater: klikk en celle for å legge til et notat, klikk et notat for å fjerne det.",
+    tipSeedModeSettings:                    "Notatinnstillinger: klikk et notat for å velge det, og angi deretter flaggene.",
+    lblSeedFlagOctave:                      "oktav",
+    lblSeedFlagScaleStep:                   "skalatrinn",
+    lblSeedFlagLevel:                       "nivå",
+    lblSeedFlagLength:                      "lengde",
+    lblSeedFlagCondition:                   "betingelse",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktav opp",
+    tipSeedFlagOctDown:                     "Oktav ned",
+    tipSeedFlagScaleUp:                     "Gjennomgangstone: ett skalatrinn opp",
+    tipSeedFlagScaleDown:                   "Gjennomgangstone: ett skalatrinn ned",
+    tipSeedFlagAccent:                      "Aksent",
+    tipSeedFlagGhost:                       "Spøkelse",
+    tipSeedFlagSustain:                     "Hold ut til slutten av akkorden",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Kun på siste slag i akkorden",
+    tipSeedFlagNotLast:                     "Kun utenfor siste slag",
+    tipSeedFlagEarly:                       "Tidlig: dette sporet spiller neste akkord",
+    tipSeedMute:                            "Demp",
+    tipSeedUnmute:                          "Slå på lyd",
+    lblSeedReverb:                          "Romklang",
+    optSeedReverbNone:                      "Tørr: ingen rom",
+    optSeedReverbRoom:                      "Rom: lite og nært",
+    optSeedReverbChamber:                   "Kammer: medium, varm",
+    optSeedReverbHall:                      "Hall: stor og åpen",
+    optSeedReverbChurch:                    "Kirke: veldig stor, lang etterklang",
+    lblSeedHighpass:                        "Høypass (Hz)",
+    lblSeedLowpass:                         "Lavpass (Hz)",
     optSeedInstrumentSine:                  "Sinus: innebygd synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -1676,53 +2362,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Akor ilerlemelerini, Suno gibi yapay zeka müzik jeneratörlerini kısıtlayan ses + MIDI tohumlarına dönüştürür.",
+    lblDlgSettingsAboutCredits:             "Enstrüman kredileri",
+    msgDlgSettingsAboutCreditsIntro:        "Örneklenmiş enstrümanlar, serbest lisanslı kayıt oturumlarından gelmektedir, hazırlayan:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akort ilerlemesi",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Satır başına bir ölçü: her satır eşit süre alır ve üzerindeki akorlar bu süreyi eşit olarak paylaşır (bir satırdaki tek akor tüm ölçüyü kaplar). [Section] etiketleri, boş satırlar ve | işaretleri yok sayılır. Bölü akorlar (C/G), 7'liler (Gmaj7) ve N.C. desteklenir.",
+    tipSeedBarsAdd:                         "Daha uzun çizgiler: her akor çizgisi çeyrek ölçü daha uzun sürer",
+    tipSeedBarsRemove:                      "Daha kısa çizgiler: her akor çizgisi çeyrek ölçü daha kısa sürer",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Satır başına ölçü",
     lblSeedSig:                             "Zaman işareti",
     lblSeedLoops:                           "Döngüler",
-    lblSeedStyle:                           "Stil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to tr
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to tr
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to tr
-    optSeedStylePad:                        "Pad", // TODO: translate to tr
-    optSeedStyleDrone:                      "Drone", // TODO: translate to tr
-    optSeedStyleMarker:                     "Marker", // TODO: translate to tr
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to tr
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to tr
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to tr
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to tr
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to tr
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to tr
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to tr
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to tr
+    lblSeedStyleGroupPads:                  "Padler",
+    lblSeedStyleGroupArps:                  "Arpejler",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Enstrüman",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to tr
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to tr
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to tr
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to tr
+    lblSeedBassInstrument:                  "Bas",
+    optSeedBassInstrumentSame:              "Enstrümanla aynı",
+    plhSeedInstrumentFilter:                "Filtrelemek için yazın…",
+    optSeedInstrumentFamilyAll:             "Tümü",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to tr
-    tabSeedRender:                          "Render", // TODO: translate to tr
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to tr
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to tr
-    lblSeedKnobTune:                        "Tune", // TODO: translate to tr
-    tipSeedMute:                            "Mute", // TODO: translate to tr
-    tipSeedUnmute:                          "Unmute", // TODO: translate to tr
-    lblSeedReverb:                          "Reverb", // TODO: translate to tr
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to tr
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to tr
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to tr
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to tr
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to tr
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to tr
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to tr
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to tr
+    tabSeedMusic:                           "Müzik",
+    tabSeedRender:                          "Oluştur",
+    lblSeedKnobVolume:                      "ses",
+    lblSeedKnobOctave:                      "oktav",
+    lblSeedKnobTune:                        "ayar",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stil",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Yok",
+    optSeedSwingLight:                      "Hafif",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Basit",
+    lblSeedSigGroupComplex:                 "Karmaşık",
+    lblSeedKnobVel:                         "hız",
+    lblSeedKnobLen:                         "uzunluk",
+    btnSeedHold:                            "Tut",
+    tipSeedLaneMirror:                      "Şeridi ters çevir. Bir ayar, düzenleme değil — şekil adını korur ve tekrar kapatılabilir.",
+    tipSeedLaneShiftLeft:                   "Sola Kaydır",
+    tipSeedLaneShiftRight:                  "Sağa kaydır",
+    tipSeedLaneClear:                       "Şeridi Temizle",
+    tipSeedSlots:                           "Şeritteki adımlar — yukarıdaki + ve − bir tane ekler veya kaldırır.",
+    tipSeedRowAll:                          "Bu adımdaki tüm akor — Chord Player'ın uzun bloğu (bir üçlüde üç nota, bir yedili akorda dört nota). Bloğu orada başlatmak için sütunundaki bir ton sırasına tıklayın.",
+    tipSeedRowFifth:                        "Kökün üzerindeki beşli — Chord Player'ın BF sırası.",
+    tipSeedRowDegree:                       "Bir akor tonu: 1 = kök, 2, 3, 4 yukarı. Akorun boyutunu aştığında, ton bir oktav yukarıdadır (Chord Player C1–C4). Kendi akorunuzu oluşturmak için birkaçını tek bir sütunda istifleyin.",
+    tipSeedLaneAddStep:                     "Şeridin sonuna bir adım ekle",
+    tipSeedLaneRemoveStep:                  "Şeridin son adımını kaldır",
+    lblSeedBeatDiv:                         "Vuruş bölümlemesi",
+    tipSeedBeatDiv:                         "Her iki şerit için vuruş başına adımlar (B/2 = sekizlikler, B/3 = üçlemeler, B/4 = onaltılıklar). Adımlar kalır ve figür hızı değişir, tıpkı Chord Player'da olduğu gibi.",
+    lblSeedChords:                          "Akorlar",
+    tipSeedChordsEdit:                      "Akarları metin olarak düzenle — Ctrl+Enter veya Esc ile geri dön",
+    tipSeedInstrumentPrev:                  "Listedeki önceki enstrüman",
+    tipSeedInstrumentNext:                  "Listedeki sonraki enstrüman",
+    lblSeedMode:                            "mod",
+    tipSeedModeEdit:                        "Notları düzenle: Not eklemek için bir hücreye tıklayın, notu kaldırmak için bir nota tıklayın.",
+    tipSeedModeSettings:                    "Not ayarları: Bir notu seçmek için tıklayın, ardından bayraklarını ayarlayın.",
+    lblSeedFlagOctave:                      "oktav",
+    lblSeedFlagScaleStep:                   "gam adımı",
+    lblSeedFlagLevel:                       "seviye",
+    lblSeedFlagLength:                      "süre",
+    lblSeedFlagCondition:                   "koşul",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktav yukarı",
+    tipSeedFlagOctDown:                     "Oktav aşağı",
+    tipSeedFlagScaleUp:                     "Geçiş notası: bir gam adımı yukarı",
+    tipSeedFlagScaleDown:                   "Geçiş notası: bir gam adımı aşağı",
+    tipSeedFlagAccent:                      "Vurgu",
+    tipSeedFlagGhost:                       "Hayalet",
+    tipSeedFlagSustain:                     "Akordun sonuna kadar uzat",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Yalnızca akordun son vuruşunda",
+    tipSeedFlagNotLast:                     "Yalnızca son vuruş dışında",
+    tipSeedFlagEarly:                       "Erken: bu yuva bir sonraki akoru seslendirir",
+    tipSeedMute:                            "Sesi Kapat",
+    tipSeedUnmute:                          "Sesi Aç",
+    lblSeedReverb:                          "Yankı",
+    optSeedReverbNone:                      "Kuru: oda yok",
+    optSeedReverbRoom:                      "Oda: küçük ve yakın",
+    optSeedReverbChamber:                   "Oda: orta, sıcak",
+    optSeedReverbHall:                      "Salon: büyük ve açık",
+    optSeedReverbChurch:                    "Kilise: çok büyük, uzun kuyruk",
+    lblSeedHighpass:                        "Yüksek Geçiş (Hz)",
+    lblSeedLowpass:                         "Alçak Geçiş (Hz)",
     optSeedInstrumentSine:                  "Sinüs: dahili sentezleyici",
     lblSeedFormat:                          "Biçim",
     optSeedFormatMp3:                       "MP3",
@@ -1793,53 +2528,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generira akordne progresije kao audio + MIDI sjemenke koje ograničavaju AI generatore glazbe poput Suno.",
+    lblDlgSettingsAboutCredits:             "Zasluge za instrumente",
+    msgDlgSettingsAboutCreditsIntro:        "Uzorčani instrumenti potječu iz slobodno licenciranih snimanja, od:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akordna progresija",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Jedan takt po retku: svaki redak dobiva jednako vrijeme, a akordi ga ravnomjerno dijele (jedan akord sam u retku zauzima cijeli takt). Oznake [Section], prazni reci i | se zanemaruju. Podržani su kosi akordi (C/G), septakordi (Gmaj7) i N.C.",
+    tipSeedBarsAdd:                         "Duže linije: svaka linija akorda traje četvrtinu takta duže",
+    tipSeedBarsRemove:                      "Kraće linije: svaka linija akorda traje četvrtinu takta kraće",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Taktovi po retku",
     lblSeedSig:                             "Taktna oznaka",
     lblSeedLoops:                           "Petlje",
-    lblSeedStyle:                           "Stil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to hr
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to hr
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to hr
-    optSeedStylePad:                        "Pad", // TODO: translate to hr
-    optSeedStyleDrone:                      "Drone", // TODO: translate to hr
-    optSeedStyleMarker:                     "Marker", // TODO: translate to hr
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to hr
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to hr
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to hr
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to hr
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to hr
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to hr
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to hr
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to hr
+    lblSeedStyleGroupPads:                  "Padovi",
+    lblSeedStyleGroupArps:                  "Arpeggi",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to hr
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to hr
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to hr
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to hr
+    lblSeedBassInstrument:                  "Bas",
+    optSeedBassInstrumentSame:              "Isto kao instrument",
+    plhSeedInstrumentFilter:                "Upišite za filtriranje…",
+    optSeedInstrumentFamilyAll:             "Svi",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to hr
-    tabSeedRender:                          "Render", // TODO: translate to hr
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to hr
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to hr
-    lblSeedKnobTune:                        "Tune", // TODO: translate to hr
-    tipSeedMute:                            "Mute", // TODO: translate to hr
-    tipSeedUnmute:                          "Unmute", // TODO: translate to hr
-    lblSeedReverb:                          "Reverb", // TODO: translate to hr
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to hr
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to hr
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to hr
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to hr
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to hr
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to hr
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to hr
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to hr
+    tabSeedMusic:                           "Glazba",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "glasnoća",
+    lblSeedKnobOctave:                      "oktava",
+    lblSeedKnobTune:                        "ugađanje",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stil",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Nema",
+    optSeedSwingLight:                      "Lagano",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Jednostavno",
+    lblSeedSigGroupComplex:                 "Složeno",
+    lblSeedKnobVel:                         "brzina",
+    lblSeedKnobLen:                         "duljina",
+    btnSeedHold:                            "Zadrži",
+    tipSeedLaneMirror:                      "Obrni traku. Postavka, ne uređivanje — lik zadržava svoje ime i ponovno se isključuje.",
+    tipSeedLaneShiftLeft:                   "Pomakni lijevo",
+    tipSeedLaneShiftRight:                  "Pomakni desno",
+    tipSeedLaneClear:                       "Očisti traku",
+    tipSeedSlots:                           "Koraci u traci — + i − iznad dodaju ili uklanjaju jedan.",
+    tipSeedRowAll:                          "Cijeli akord u ovom koraku — visoki blok Chord Playera (tri note na trozvuku, četiri na septakordu). Kliknite na red tonova u njegovom stupcu da biste tamo pokrenuli blok.",
+    tipSeedRowFifth:                        "Kvinta iznad osnovnog tona — BF red Chord Playera.",
+    tipSeedRowDegree:                       "Jedan akordni ton: 1 = temeljni ton, 2, 3, 4 prema gore. Izvan veličine akorda, ton je oktavu više (Chord Player C1–C4). Složite nekoliko u jedan stupac za vlastiti akord.",
+    tipSeedLaneAddStep:                     "Dodaj korak na kraj trake",
+    tipSeedLaneRemoveStep:                  "Ukloni zadnji korak trake",
+    lblSeedBeatDiv:                         "Podjela takta",
+    tipSeedBeatDiv:                         "Koraci po udarcu, za obje trake (B/2 = osmine, B/3 = triole, B/4 = šesnaestine). Koraci ostaju, a figura mijenja brzinu, kao u Chord Playeru.",
+    lblSeedChords:                          "Akordi",
+    tipSeedChordsEdit:                      "Uredi akorde kao tekst — Ctrl+Enter ili Esc za povratak",
+    tipSeedInstrumentPrev:                  "Prethodni instrument na popisu",
+    tipSeedInstrumentNext:                  "Sljedeći instrument na popisu",
+    lblSeedMode:                            "način",
+    tipSeedModeEdit:                        "Uredi bilješke: kliknite ćeliju za dodavanje bilješke, kliknite bilješku za uklanjanje.",
+    tipSeedModeSettings:                    "Postavke bilješki: kliknite bilješku za odabir, zatim postavite njezine zastavice.",
+    lblSeedFlagOctave:                      "oktava",
+    lblSeedFlagScaleStep:                   "stupanj ljestvice",
+    lblSeedFlagLevel:                       "razina",
+    lblSeedFlagLength:                      "trajanje",
+    lblSeedFlagCondition:                   "uvjet",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktava gore",
+    tipSeedFlagOctDown:                     "Oktava dolje",
+    tipSeedFlagScaleUp:                     "Prolazna nota: jedan stupanj ljestvice gore",
+    tipSeedFlagScaleDown:                   "Prolazna nota: jedan stupanj ljestvice dolje",
+    tipSeedFlagAccent:                      "Naglasak",
+    tipSeedFlagGhost:                       "Duh",
+    tipSeedFlagSustain:                     "Zadrži do kraja akorda",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Samo u zadnjem udarcu akorda",
+    tipSeedFlagNotLast:                     "Samo izvan zadnjeg udarca",
+    tipSeedFlagEarly:                       "Rano: ovaj slot svira sljedeći akord",
+    tipSeedMute:                            "Isključi zvuk",
+    tipSeedUnmute:                          "Uključi zvuk",
+    lblSeedReverb:                          "Odjek",
+    optSeedReverbNone:                      "Suho: bez prostorije",
+    optSeedReverbRoom:                      "Soba: mala i bliska",
+    optSeedReverbChamber:                   "Komora: srednja, topla",
+    optSeedReverbHall:                      "Dvorana: velika i otvorena",
+    optSeedReverbChurch:                    "Crkva: vrlo velika, dugi rep",
+    lblSeedHighpass:                        "Visokopropusni (Hz)",
+    lblSeedLowpass:                         "Niskopropusni (Hz)",
     optSeedInstrumentSine:                  "Sinus: ugrađeni sintisajzer",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -1910,54 +2694,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Δημιουργεί συγχορδιακές προόδους ως ηχητικούς + MIDI σπόρους που περιορίζουν γεννήτριες μουσικής AI όπως το Suno.",
+    lblDlgSettingsAboutCredits:             "Συντελεστές οργάνων",
+    msgDlgSettingsAboutCreditsIntro:        "Τα δειγματοληπτικά όργανα προέρχονται από συνεδρίες ηχογράφησης με ελεύθερη άδεια, από:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Ακολουθία συγχορδιών",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Μία μπάρα ανά γραμμή: κάθε γραμμή λαμβάνει ίσο χρόνο, και οι συγχορδίες σε αυτήν τον μοιράζονται ομοιόμορφα (μία συγχορδία μόνη της σε μια γραμμή καταλαμβάνει ολόκληρη τη μπάρα). Οι ετικέτες [Section], οι κενές γραμμές και τα | αγνοούνται. Υποστηρίζονται συγχορδίες slash (C/G), 7ες (Gmaj7) και N.C.",
+    tipSeedBarsAdd:                         "Μεγαλύτερες γραμμές: κάθε γραμμή συγχορδιών διαρκεί ένα τέταρτο μέτρου περισσότερο",
+    tipSeedBarsRemove:                      "Μικρότερες γραμμές: κάθε γραμμή συγχορδιών διαρκεί ένα τέταρτο μέτρου λιγότερο",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Μέτρα ανά γραμμή",
     lblSeedSig:                             "Μέτρο",
     lblSeedLoops:                           "Βρόχοι",
-    lblSeedStyle:                           "Στυλ",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to el
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to el
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to el
-    optSeedStylePad:                        "Pad", // TODO: translate to el
-    optSeedStyleDrone:                      "Drone", // TODO: translate to el
-    optSeedStyleMarker:                     "Marker", // TODO: translate to el
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to el
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to el
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to el
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to el
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to el
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to el
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to el
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to el
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Αρπέτζιο",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Ρίβερμπ",
     lblSeedInstrument:                      "Όργανο",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to el
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to el
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to el
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to el
+    lblSeedBassInstrument:                  "Μπάσο",
+    optSeedBassInstrumentSame:              "Ίδιο με το όργανο",
+    plhSeedInstrumentFilter:                "Πληκτρολογήστε για φιλτράρισμα…",
+    optSeedInstrumentFamilyAll:             "Όλα",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to el
-    tabSeedRender:                          "Render", // TODO: translate to el
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to el
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to el
-    lblSeedKnobTune:                        "Tune", // TODO: translate to el
-    tipSeedMute:                            "Mute", // TODO: translate to el
-    tipSeedUnmute:                          "Unmute", // TODO: translate to el
-    lblSeedReverb:                          "Reverb", // TODO: translate to el
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to el
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to el
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to el
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to el
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to el
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to el
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to el
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to el
-    optSeedInstrumentSine:                  "Ημίτονο: ενσωματωμένος συνθεσάιζερ",
+    tabSeedMusic:                           "Μουσική",
+    tabSeedRender:                          "Απόδοση",
+    lblSeedKnobVolume:                      "ένταση",
+    lblSeedKnobOctave:                      "οκτάβα",
+    lblSeedKnobTune:                        "ρύθμιση",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Στυλ",
+    lblSeedSwing:                           "Σουίνγκ",
+    optSeedSwingNone:                       "Κανένα",
+    optSeedSwingLight:                      "Ελαφρύ",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Απλό",
+    lblSeedSigGroupComplex:                 "Πολύπλοκο",
+    lblSeedKnobVel:                         "ταχύτητα",
+    lblSeedKnobLen:                         "μήκος",
+    btnSeedHold:                            "Κράτημα",
+    tipSeedLaneMirror:                      "Αντιστροφή λωρίδας. Μια ρύθμιση, όχι μια επεξεργασία — το σχήμα διατηρεί το όνομά του και απενεργοποιείται ξανά.",
+    tipSeedLaneShiftLeft:                   "Μετατόπιση αριστερά",
+    tipSeedLaneShiftRight:                  "Μετατόπιση δεξιά",
+    tipSeedLaneClear:                       "Εκκαθάριση λωρίδας",
+    tipSeedSlots:                           "Βήματα στη λωρίδα — τα + και − παραπάνω προσθέτουν ή αφαιρούν ένα.",
+    tipSeedRowAll:                          "Ολόκληρη η συγχορδία σε αυτό το βήμα — το ψηλό μπλοκ του Chord Player (τρεις νότες σε μια τριάδα, τέσσερις σε μια έβδομη). Κάντε κλικ σε μια σειρά τόνων στη στήλη της για να ξεκινήσετε το μπλοκ εκεί.",
+    tipSeedRowFifth:                        "Η πέμπτη πάνω από τη θεμέλιο — η σειρά BF του Chord Player.",
+    tipSeedRowDegree:                       "Ένας τόνος συγχορδίας: 1 = θεμέλιος, 2, 3, 4 προς τα πάνω. Πέρα από το μέγεθος της συγχορδίας, ο τόνος είναι μια οκτάβα πάνω (C1–C4 του Chord Player). Στοιβάζετε πολλά σε μία στήλη για τη δική σας συγχορδία.",
+    tipSeedLaneAddStep:                     "Προσθήκη βήματος στο τέλος της λωρίδας",
+    tipSeedLaneRemoveStep:                  "Αφαίρεση του τελευταίου βήματος της λωρίδας",
+    lblSeedBeatDiv:                         "Διαίρεση ρυθμού",
+    tipSeedBeatDiv:                         "Βήματα ανά χτύπο, και για τις δύο λωρίδες (B/2 = όγδοα, B/3 = τρίηχα, B/4 = δέκατα έκτα). Τα βήματα παραμένουν και η φιγούρα αλλάζει ταχύτητα, όπως στο Chord Player.",
+    lblSeedChords:                          "Συγχορδίες",
+    tipSeedChordsEdit:                      "Επεξεργασία συγχορδιών ως κείμενο — Ctrl+Enter ή Escape για επιστροφή",
+    tipSeedInstrumentPrev:                  "Προηγούμενο όργανο στη λίστα",
+    tipSeedInstrumentNext:                  "Επόμενο όργανο στη λίστα",
+    lblSeedMode:                            "λειτουργία",
+    tipSeedModeEdit:                        "Επεξεργασία σημειώσεων: κάντε κλικ σε ένα κελί για να προσθέσετε μια σημείωση, κάντε κλικ σε μια σημείωση για να την αφαιρέσετε.",
+    tipSeedModeSettings:                    "Ρυθμίσεις σημειώσεων: κάντε κλικ σε μια σημείωση για να την επιλέξετε και, στη συνέχεια, ορίστε τις σημαίες της.",
+    lblSeedFlagOctave:                      "οκτάβα",
+    lblSeedFlagScaleStep:                   "βαθμός κλίμακας",
+    lblSeedFlagLevel:                       "επίπεδο",
+    lblSeedFlagLength:                      "διάρκεια",
+    lblSeedFlagCondition:                   "συνθήκη",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Οκτάβα πάνω",
+    tipSeedFlagOctDown:                     "Οκτάβα κάτω",
+    tipSeedFlagScaleUp:                     "Διερχόμενη νότα: ένα βήμα κλίμακας πάνω",
+    tipSeedFlagScaleDown:                   "Διερχόμενη νότα: ένα βήμα κλίμακας κάτω",
+    tipSeedFlagAccent:                      "Έμφαση",
+    tipSeedFlagGhost:                       "Φάντασμα",
+    tipSeedFlagSustain:                     "Διατήρηση μέχρι το τέλος της συγχορδίας",
+    tipSeedFlagStaccato:                    "Στάκατο",
+    tipSeedFlagLast:                        "Μόνο στον τελευταίο χτύπο της συγχορδίας",
+    tipSeedFlagNotLast:                     "Μόνο εκτός του τελευταίου χτύπου",
+    tipSeedFlagEarly:                       "Νωρίς: αυτό το slot εκφράζει την επόμενη συγχορδία",
+    tipSeedMute:                            "Σίγαση",
+    tipSeedUnmute:                          "Κατάργηση σίγασης",
+    lblSeedReverb:                          "Αντήχηση",
+    optSeedReverbNone:                      "Ξηρό: χωρίς χώρο",
+    optSeedReverbRoom:                      "Δωμάτιο: μικρό και κοντινό",
+    optSeedReverbChamber:                   "Θάλαμος: μεσαίος, ζεστός",
+    optSeedReverbHall:                      "Αίθουσα: μεγάλη και ανοιχτή",
+    optSeedReverbChurch:                    "Εκκλησία: πολύ μεγάλη, μακριά ουρά",
+    lblSeedHighpass:                        "Υψηλοπερατό (Hz)",
+    lblSeedLowpass:                         "Χαμηλοπερατό (Hz)",
+    optSeedInstrumentSine:                  "Ημίτονο: ενσωματωμένος συνθέτης",
     lblSeedFormat:                          "Μορφή",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -1972,7 +2805,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Αποθηκεύστε το seed σε ένα αρχείο .yams πρώτα — ο ήχος αποδίδεται δίπλα του.",
     tipSeedLoad:                            "Φόρτωση seed",
     ttlSeedLoad:                            "Άνοιγμα αρχείου seed",
-    lblSeedLoadFilter:                      "Αρχείο seed (.yams)",
+    lblSeedLoadFilter:                      "Αρχείο Seed (.yams)",
     msgSeedLoadFailed:                      "Δεν ήταν δυνατή η φόρτωση αυτού του αρχείου seed",
     tipSeedNew:                             "Νέος σπόρος",
     tipSeedTabClose:                        "Κλείσιμο",
@@ -2027,53 +2860,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "מפיק התקדמויות אקורדים לזרעי אודיו + MIDI המגבילים מחוללי מוזיקת AI כגון Suno.",
+    lblDlgSettingsAboutCredits:             "קרדיטים לכלי נגינה",
+    msgDlgSettingsAboutCreditsIntro:        "הכלים שנדגמו מגיעים מהקלטות ברישיון חופשי, מאת:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "מהלך אקורדים",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "תיבה אחת לשורה: כל שורה מקבלת זמן שווה, והאקורדים בה מחלקים את הזמן באופן שווה (אקורד בודד בשורה תופס את כל התיבה). תגיות [Section], שורות ריקות ו-| מתעלמים. אקורדי סלאש (C/G), ספטאקורדים (Gmaj7) ו-N.C. נתמכים.",
+    tipSeedBarsAdd:                         "שורות ארוכות יותר: כל שורת אקורדים נמשכת רבע תיבה יותר",
+    tipSeedBarsRemove:                      "שורות קצרות יותר: כל שורת אקורדים נמשכת רבע תיבה פחות",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "תיבות לשורה",
     lblSeedSig:                             "חתימת זמן",
     lblSeedLoops:                           "לולאות",
-    lblSeedStyle:                           "סגנון",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to he
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to he
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to he
-    optSeedStylePad:                        "Pad", // TODO: translate to he
-    optSeedStyleDrone:                      "Drone", // TODO: translate to he
-    optSeedStyleMarker:                     "Marker", // TODO: translate to he
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to he
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to he
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to he
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to he
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to he
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to he
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to he
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to he
+    lblSeedStyleGroupPads:                  "פדים",
+    lblSeedStyleGroupArps:                  "ארפג'יו",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "ריוורב",
     lblSeedInstrument:                      "כלי נגינה",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to he
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to he
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to he
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to he
+    lblSeedBassInstrument:                  "בס",
+    optSeedBassInstrumentSame:              "כמו הכלי",
+    plhSeedInstrumentFilter:                "הקלד לסינון…",
+    optSeedInstrumentFamilyAll:             "הכל",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to he
-    tabSeedRender:                          "Render", // TODO: translate to he
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to he
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to he
-    lblSeedKnobTune:                        "Tune", // TODO: translate to he
-    tipSeedMute:                            "Mute", // TODO: translate to he
-    tipSeedUnmute:                          "Unmute", // TODO: translate to he
-    lblSeedReverb:                          "Reverb", // TODO: translate to he
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to he
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to he
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to he
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to he
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to he
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to he
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to he
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to he
+    tabSeedMusic:                           "מוזיקה",
+    tabSeedRender:                          "רינדור",
+    lblSeedKnobVolume:                      "עוצמה",
+    lblSeedKnobOctave:                      "אוקטבה",
+    lblSeedKnobTune:                        "כיוון",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "סגנון",
+    lblSeedSwing:                           "סווינג",
+    optSeedSwingNone:                       "ללא",
+    optSeedSwingLight:                      "קל",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "פשוט",
+    lblSeedSigGroupComplex:                 "מורכב",
+    lblSeedKnobVel:                         "מהירות",
+    lblSeedKnobLen:                         "אורך",
+    btnSeedHold:                            "החזק",
+    tipSeedLaneMirror:                      "הפוך את הנתיב. הגדרה, לא עריכה — הצורה שומרת על שמה וניתן לבטל אותה שוב.",
+    tipSeedLaneShiftLeft:                   "הזז שמאלה",
+    tipSeedLaneShiftRight:                  "הזז ימינה",
+    tipSeedLaneClear:                       "נקה נתיב",
+    tipSeedSlots:                           "צעדים בנתיב — ה- + וה- − למעלה מוסיפים או מסירים אחד.",
+    tipSeedRowAll:                          "האקורד השלם בשלב זה — הבלוק הגבוה של Chord Player (שלושה צלילים בטריאד, ארבעה בספטאקורד). לחץ על שורת צלילים בעמודה שלה כדי להתחיל את הבלוק שם.",
+    tipSeedRowFifth:                        "הקווינטה מעל צליל השורש — שורת BF של Chord Player.",
+    tipSeedRowDegree:                       "טון אקורד אחד: 1 = שורש, 2, 3, 4 כלפי מעלה. מעבר לגודל האקורד, הטון הוא אוקטבה למעלה (C1–C4 של Chord Player). ערמו מספר טונים בעמודה אחת לאקורד משלכם.",
+    tipSeedLaneAddStep:                     "הוסף שלב בסוף הנתיב",
+    tipSeedLaneRemoveStep:                  "הסר את השלב האחרון של הנתיב",
+    lblSeedBeatDiv:                         "חלוקת פעימה",
+    tipSeedBeatDiv:                         "צעדים לכל פעימה, עבור שני הנתיבים (B/2 = שמיניות, B/3 = שלישיות, B/4 = שישיות). הצעדים נשארים והצורה משנה מהירות, כמו ב-Chord Player.",
+    lblSeedChords:                          "אקורדים",
+    tipSeedChordsEdit:                      "ערוך את האקורדים כטקסט — Ctrl+Enter או Escape כדי לחזור",
+    tipSeedInstrumentPrev:                  "כלי קודם ברשימה",
+    tipSeedInstrumentNext:                  "כלי הבא ברשימה",
+    lblSeedMode:                            "מצב",
+    tipSeedModeEdit:                        "ערוך הערות: לחץ על תא כדי להוסיף הערה, לחץ על הערה כדי להסיר אותה.",
+    tipSeedModeSettings:                    "הגדרות הערה: לחץ על הערה כדי לבחור אותה, ולאחר מכן הגדר את הדגלים שלה.",
+    lblSeedFlagOctave:                      "אוקטבה",
+    lblSeedFlagScaleStep:                   "דרגת סולם",
+    lblSeedFlagLevel:                       "רמה",
+    lblSeedFlagLength:                      "משך",
+    lblSeedFlagCondition:                   "תנאי",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "אוקטבה למעלה",
+    tipSeedFlagOctDown:                     "אוקטבה למטה",
+    tipSeedFlagScaleUp:                     "צליל מעבר: צעד סולם אחד למעלה",
+    tipSeedFlagScaleDown:                   "צליל מעבר: צעד סולם אחד למטה",
+    tipSeedFlagAccent:                      "הדגשה",
+    tipSeedFlagGhost:                       "רוח רפאים",
+    tipSeedFlagSustain:                     "החזקה עד סוף האקורד",
+    tipSeedFlagStaccato:                    "סטקטו",
+    tipSeedFlagLast:                        "רק בפעימה האחרונה של האקורד",
+    tipSeedFlagNotLast:                     "רק מחוץ לפעימה האחרונה",
+    tipSeedFlagEarly:                       "מוקדם: חריץ זה משמיע את האקורד הבא",
+    tipSeedMute:                            "השתק",
+    tipSeedUnmute:                          "בטל השתקה",
+    lblSeedReverb:                          "ריוורב",
+    optSeedReverbNone:                      "יבש: ללא חדר",
+    optSeedReverbRoom:                      "חדר: קטן וקרוב",
+    optSeedReverbChamber:                   "חדר תהודה: בינוני, חם",
+    optSeedReverbHall:                      "אולם: גדול ופתוח",
+    optSeedReverbChurch:                    "כנסייה: גדול מאוד, זנב ארוך",
+    lblSeedHighpass:                        "הייפאס (הרץ)",
+    lblSeedLowpass:                         "לואופאס (הרץ)",
     optSeedInstrumentSine:                  "סינוס: סינתיסייזר מובנה",
     lblSeedFormat:                          "פורמט",
     optSeedFormatMp3:                       "MP3",
@@ -2144,53 +3026,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "يحول تتابعات الأوتار إلى بذور صوتية وMIDI تقيد مولدات الموسيقى بالذكاء الاصطناعي مثل Suno.",
+    lblDlgSettingsAboutCredits:             "اعتمادات الآلة",
+    msgDlgSettingsAboutCreditsIntro:        "الآلات المعاينة مأخوذة من جلسات تسجيل مرخصة مجانًا، بواسطة:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "تتابع الكوردات",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "مقياس واحد لكل سطر: كل سطر يحصل على وقت متساوٍ، وتقسّم الأوتار عليه هذا الوقت بالتساوي (وتر واحد في سطر يحتل المقياس بأكمله). يتم تجاهل علامات [Section] والأسطر الفارغة وعلامات |. يتم دعم الأوتار المائلة (C/G) والسابعية (Gmaj7) وN.C.",
+    tipSeedBarsAdd:                         "خطوط أطول: كل خط أوتار يستمر ربع ميزان إضافي",
+    tipSeedBarsRemove:                      "خطوط أقصر: كل خط أوتار يستمر ربع ميزان أقل",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "موازير لكل سطر",
     lblSeedSig:                             "توقيع زمني",
     lblSeedLoops:                           "حلقات",
-    lblSeedStyle:                           "نمط",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ar
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ar
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ar
-    optSeedStylePad:                        "Pad", // TODO: translate to ar
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ar
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ar
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ar
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ar
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ar
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ar
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ar
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ar
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ar
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ar
+    lblSeedStyleGroupPads:                  "بادز",
+    lblSeedStyleGroupArps:                  "أربيجيو",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "ريفيرب",
     lblSeedInstrument:                      "آلة موسيقية",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ar
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ar
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ar
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ar
+    lblSeedBassInstrument:                  "باس",
+    optSeedBassInstrumentSame:              "مثل الآلة",
+    plhSeedInstrumentFilter:                "اكتب للتصفية…",
+    optSeedInstrumentFamilyAll:             "الكل",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ar
-    tabSeedRender:                          "Render", // TODO: translate to ar
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ar
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ar
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ar
-    tipSeedMute:                            "Mute", // TODO: translate to ar
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ar
-    lblSeedReverb:                          "Reverb", // TODO: translate to ar
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ar
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ar
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ar
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ar
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ar
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ar
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ar
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ar
+    tabSeedMusic:                           "موسيقى",
+    tabSeedRender:                          "تصيير",
+    lblSeedKnobVolume:                      "مستوى الصوت",
+    lblSeedKnobOctave:                      "أوكتاف",
+    lblSeedKnobTune:                        "ضبط",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "نمط",
+    lblSeedSwing:                           "سوينغ",
+    optSeedSwingNone:                       "لا شيء",
+    optSeedSwingLight:                      "خفيف",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "بسيط",
+    lblSeedSigGroupComplex:                 "معقد",
+    lblSeedKnobVel:                         "سرعة",
+    lblSeedKnobLen:                         "طول",
+    btnSeedHold:                            "احتفظ",
+    tipSeedLaneMirror:                      "عكس المسار. إعداد، وليس تعديلاً — الشكل يحتفظ باسمه ويمكن إيقاف تشغيله مرة أخرى.",
+    tipSeedLaneShiftLeft:                   "إزاحة لليسار",
+    tipSeedLaneShiftRight:                  "إزاحة لليمين",
+    tipSeedLaneClear:                       "مسح المسار",
+    tipSeedSlots:                           "الخطوات في المسار — الزائد والناقص أعلاه يضيفان أو يزيلان خطوة واحدة.",
+    tipSeedRowAll:                          "الوتر الكامل في هذه الخطوة — الكتلة الطويلة لمشغل الأوتار (ثلاث نغمات في ثلاثي، أربع في سباعي). انقر على صف نغمات في عموده لبدء الكتلة هناك.",
+    tipSeedRowFifth:                        "الخامسة فوق الجذر — صف BF لمشغل الأوتار.",
+    tipSeedRowDegree:                       "نغمة وتر واحدة: 1 = أساس، 2، 3، 4 للأعلى. بعد حجم الوتر، تكون النغمة أوكتافًا أعلى (C1–C4 لمشغل الأوتار). رصّ عدة نغمات في عمود واحد لإنشاء وتر خاص بك.",
+    tipSeedLaneAddStep:                     "أضف خطوة في نهاية المسار",
+    tipSeedLaneRemoveStep:                  "إزالة الخطوة الأخيرة للمسار",
+    lblSeedBeatDiv:                         "تقسيم الإيقاع",
+    tipSeedBeatDiv:                         "الخطوات لكل نبضة، لكلا المسارين (B/2 = أثمان، B/3 = ثلاثيات، B/4 = ستة عشر). تبقى الخطوات وتتغير سرعة الشكل، كما في Chord Player.",
+    lblSeedChords:                          "كوردات",
+    tipSeedChordsEdit:                      "تعديل الكوردات كنص — Ctrl+Enter أو Escape للعودة",
+    tipSeedInstrumentPrev:                  "الآلة السابقة في القائمة",
+    tipSeedInstrumentNext:                  "الآلة التالية في القائمة",
+    lblSeedMode:                            "وضع",
+    tipSeedModeEdit:                        "تحرير الملاحظات: انقر فوق خلية لإضافة ملاحظة، انقر فوق ملاحظة لإزالتها.",
+    tipSeedModeSettings:                    "إعدادات الملاحظة: انقر فوق ملاحظة لتحديدها، ثم قم بتعيين علاماتها.",
+    lblSeedFlagOctave:                      "أوكتاف",
+    lblSeedFlagScaleStep:                   "درجة السلم",
+    lblSeedFlagLevel:                       "مستوى",
+    lblSeedFlagLength:                      "مدة",
+    lblSeedFlagCondition:                   "شرط",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "أوكتاف للأعلى",
+    tipSeedFlagOctDown:                     "أوكتاف للأسفل",
+    tipSeedFlagScaleUp:                     "نغمة عابرة: درجة سلم واحدة للأعلى",
+    tipSeedFlagScaleDown:                   "نغمة عابرة: درجة سلم واحدة للأسفل",
+    tipSeedFlagAccent:                      "تمييز",
+    tipSeedFlagGhost:                       "شبح",
+    tipSeedFlagSustain:                     "استمرار حتى نهاية الوتر",
+    tipSeedFlagStaccato:                    "ستكاتو",
+    tipSeedFlagLast:                        "فقط في النبضة الأخيرة من الوتر",
+    tipSeedFlagNotLast:                     "فقط خارج النبضة الأخيرة",
+    tipSeedFlagEarly:                       "مبكر: هذا الموضع يعزف الوتر التالي",
+    tipSeedMute:                            "كتم الصوت",
+    tipSeedUnmute:                          "إلغاء كتم الصوت",
+    lblSeedReverb:                          "تردد",
+    optSeedReverbNone:                      "جاف: لا يوجد غرفة",
+    optSeedReverbRoom:                      "غرفة: صغيرة وقريبة",
+    optSeedReverbChamber:                   "حجرة: متوسطة، دافئة",
+    optSeedReverbHall:                      "قاعة: كبيرة ومفتوحة",
+    optSeedReverbChurch:                    "كنيسة: كبيرة جداً، ذيل طويل",
+    lblSeedHighpass:                        "تمرير عالي (هرتز)",
+    lblSeedLowpass:                         "تمرير منخفض (هرتز)",
     optSeedInstrumentSine:                  "جيب: مركب صوتي مدمج",
     lblSeedFormat:                          "تنسيق",
     optSeedFormatMp3:                       "MP3",
@@ -2206,7 +3137,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "احفظ البذرة في ملف .yams أولاً — يتم عرض الصوت بجانبه.",
     tipSeedLoad:                            "تحميل البذرة",
     ttlSeedLoad:                            "فتح ملف بذرة",
-    lblSeedLoadFilter:                      "ملف بذرة (.yams)",
+    lblSeedLoadFilter:                      "ملف Seed (.yams)",
     msgSeedLoadFailed:                      "تعذر تحميل ملف البذرة هذا",
     tipSeedNew:                             "بذرة جديدة",
     tipSeedTabClose:                        "إغلاق",
@@ -2261,53 +3192,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "تبدیل توالی آکوردها به بذرهای صوتی و MIDI که ژنراتورهای موسیقی هوش مصنوعی مانند Suno را محدود می‌کنند.",
+    lblDlgSettingsAboutCredits:             "اعتبارات ساز",
+    msgDlgSettingsAboutCreditsIntro:        "سازهای نمونه‌برداری شده از جلسات ضبط با مجوز آزاد تهیه شده‌اند، توسط:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "توالی آکورد",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "یک میزان در هر خط: هر خط زمان مساوی می‌گیرد و آکوردها آن زمان را به طور مساوی تقسیم می‌کنند (یک آکورد تنها در یک خط کل میزان را اشغال می‌کند). تگ‌های [Section]، خطوط خالی و علامت | نادیده گرفته می‌شوند. آکوردهای اسلش (C/G)، هفتم (Gmaj7) و N.C. پشتیبانی می‌شوند.",
+    tipSeedBarsAdd:                         "خطوط طولانی‌تر: هر خط آکورد یک چهارم میزان بیشتر طول می‌کشد",
+    tipSeedBarsRemove:                      "خطوط کوتاه‌تر: هر خط آکورد یک چهارم میزان کمتر طول می‌کشد",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "میزان در هر خط",
     lblSeedSig:                             "میزان نما",
     lblSeedLoops:                           "حلقه‌ها",
-    lblSeedStyle:                           "سبک",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to fa
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to fa
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to fa
-    optSeedStylePad:                        "Pad", // TODO: translate to fa
-    optSeedStyleDrone:                      "Drone", // TODO: translate to fa
-    optSeedStyleMarker:                     "Marker", // TODO: translate to fa
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to fa
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to fa
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to fa
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to fa
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to fa
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to fa
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to fa
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to fa
+    lblSeedStyleGroupPads:                  "پدها",
+    lblSeedStyleGroupArps:                  "آرپژها",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "ریورب",
     lblSeedInstrument:                      "ساز",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to fa
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to fa
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to fa
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to fa
+    lblSeedBassInstrument:                  "بیس",
+    optSeedBassInstrumentSame:              "همانند ساز",
+    plhSeedInstrumentFilter:                "برای فیلتر کردن تایپ کنید…",
+    optSeedInstrumentFamilyAll:             "همه",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to fa
-    tabSeedRender:                          "Render", // TODO: translate to fa
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to fa
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to fa
-    lblSeedKnobTune:                        "Tune", // TODO: translate to fa
-    tipSeedMute:                            "Mute", // TODO: translate to fa
-    tipSeedUnmute:                          "Unmute", // TODO: translate to fa
-    lblSeedReverb:                          "Reverb", // TODO: translate to fa
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to fa
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to fa
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to fa
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to fa
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to fa
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to fa
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to fa
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to fa
+    tabSeedMusic:                           "موسیقی",
+    tabSeedRender:                          "رندر",
+    lblSeedKnobVolume:                      "میزان صدا",
+    lblSeedKnobOctave:                      "اکتاو",
+    lblSeedKnobTune:                        "کوک",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "سبک",
+    lblSeedSwing:                           "سوینگ",
+    optSeedSwingNone:                       "هیچ",
+    optSeedSwingLight:                      "سبک",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "ساده",
+    lblSeedSigGroupComplex:                 "پیچیده",
+    lblSeedKnobVel:                         "سرعت",
+    lblSeedKnobLen:                         "طول",
+    btnSeedHold:                            "نگه دار",
+    tipSeedLaneMirror:                      "معکوس کردن مسیر. یک تنظیم است، نه ویرایش — شکل نام خود را حفظ می‌کند و دوباره خاموش می‌شود.",
+    tipSeedLaneShiftLeft:                   "انتقال به چپ",
+    tipSeedLaneShiftRight:                  "جابه‌جایی به راست",
+    tipSeedLaneClear:                       "پاک کردن خط",
+    tipSeedSlots:                           "گام‌ها در خط — + و − بالا یکی اضافه یا حذف می‌کنند.",
+    tipSeedRowAll:                          "آکورد کامل در این مرحله — بلوک بلند Chord Player (سه نت در یک سه‌صدایی، چهار نت در یک هفتم). برای شروع بلوک در آنجا، روی یک ردیف نت در ستون آن کلیک کنید.",
+    tipSeedRowFifth:                        "پنجم بالای نت پایه — ردیف BF Chord Player.",
+    tipSeedRowDegree:                       "یک نت آکورد: 1 = ریشه، 2، 3، 4 به سمت بالا. فراتر از اندازه آکورد، نت یک اکتاو بالاتر است (C1–C4 Chord Player). چندین نت را در یک ستون برای آکورد خودتان روی هم بچینید.",
+    tipSeedLaneAddStep:                     "افزودن گام در انتهای خط",
+    tipSeedLaneRemoveStep:                  "حذف گام آخر خط",
+    lblSeedBeatDiv:                         "تقسیم ضرب",
+    tipSeedBeatDiv:                         "گام‌ها در هر ضرب، برای هر دو خط (B/2 = هشتم، B/3 = سه‌تایی، B/4 = شانزدهم). گام‌ها ثابت می‌مانند و شکل سرعت را تغییر می‌دهد، مانند Chord Player.",
+    lblSeedChords:                          "آکوردها",
+    tipSeedChordsEdit:                      "ویرایش آکوردها به صورت متن — Ctrl+Enter یا Escape برای بازگشت",
+    tipSeedInstrumentPrev:                  "ساز قبلی در لیست",
+    tipSeedInstrumentNext:                  "ساز بعدی در لیست",
+    lblSeedMode:                            "حالت",
+    tipSeedModeEdit:                        "ویرایش یادداشت‌ها: برای افزودن یادداشت روی یک سلول کلیک کنید، برای حذف یادداشت روی آن کلیک کنید.",
+    tipSeedModeSettings:                    "تنظیمات یادداشت: برای انتخاب یک یادداشت روی آن کلیک کنید، سپس پرچم‌های آن را تنظیم کنید.",
+    lblSeedFlagOctave:                      "اکتاو",
+    lblSeedFlagScaleStep:                   "درجه گام",
+    lblSeedFlagLevel:                       "سطح",
+    lblSeedFlagLength:                      "مدت",
+    lblSeedFlagCondition:                   "شرط",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "یک اکتاو بالاتر",
+    tipSeedFlagOctDown:                     "یک اکتاو پایین‌تر",
+    tipSeedFlagScaleUp:                     "نت عبوری: یک گام مقیاس بالاتر",
+    tipSeedFlagScaleDown:                   "نت عبوری: یک گام مقیاس پایین‌تر",
+    tipSeedFlagAccent:                      "تاکید",
+    tipSeedFlagGhost:                       "شبح",
+    tipSeedFlagSustain:                     "نگه داشتن تا پایان آکورد",
+    tipSeedFlagStaccato:                    "استاکاتو",
+    tipSeedFlagLast:                        "فقط در ضرب آخر آکورد",
+    tipSeedFlagNotLast:                     "فقط خارج از ضرب آخر",
+    tipSeedFlagEarly:                       "زودتر: این اسلات آکورد بعدی را اجرا می‌کند",
+    tipSeedMute:                            "بی‌صدا",
+    tipSeedUnmute:                          "باصدا",
+    lblSeedReverb:                          "ریورب",
+    optSeedReverbNone:                      "خشک: بدون اتاق",
+    optSeedReverbRoom:                      "اتاق: کوچک و نزدیک",
+    optSeedReverbChamber:                   "حجره: متوسط، گرم",
+    optSeedReverbHall:                      "سالن: بزرگ و باز",
+    optSeedReverbChurch:                    "کلیسا: بسیار بزرگ، دنباله بلند",
+    lblSeedHighpass:                        "های‌پس (هرتز)",
+    lblSeedLowpass:                         "لوپاس (هرتز)",
     optSeedInstrumentSine:                  "سینوسی: سینت سایزر داخلی",
     lblSeedFormat:                          "قالب",
     optSeedFormatMp3:                       "MP3",
@@ -2323,7 +3303,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "ابتدا seed را در یک فایل .yams ذخیره کنید — صدا در کنار آن رندر می‌شود.",
     tipSeedLoad:                            "بارگذاری سید",
     ttlSeedLoad:                            "باز کردن فایل سید",
-    lblSeedLoadFilter:                      "فایل سید (.yams)",
+    lblSeedLoadFilter:                      "فایل Seed (.yams)",
     msgSeedLoadFailed:                      "امکان بارگذاری این فایل سید وجود نداشت",
     tipSeedNew:                             "دانه جدید",
     tipSeedTabClose:                        "بستن",
@@ -2378,53 +3358,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "将和弦进行渲染为音频和 MIDI 种子，用于约束 Suno 等 AI 音乐生成器。",
+    lblDlgSettingsAboutCredits:             "乐器鸣谢",
+    msgDlgSettingsAboutCreditsIntro:        "采样乐器来自以下自由许可的录音会话：",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "和弦进行",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "每行一小节：每行获得相同时间，其上的和弦平均分配该时间（一行上只有一个和弦时，它占据整个小节）。[Section] 标签、空行和 | 标记将被忽略。支持斜线和弦 (C/G)、七和弦 (Gmaj7) 和 N.C.。",
+    tipSeedBarsAdd:                         "更长的行：每行和弦持续时间增加四分之一小节",
+    tipSeedBarsRemove:                      "更短的行：每行和弦持续时间减少四分之一小节",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "每行小节数",
     lblSeedSig:                             "拍号",
     lblSeedLoops:                           "循环",
-    lblSeedStyle:                           "风格",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to zh_CN
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to zh_CN
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to zh_CN
-    optSeedStylePad:                        "Pad", // TODO: translate to zh_CN
-    optSeedStyleDrone:                      "Drone", // TODO: translate to zh_CN
-    optSeedStyleMarker:                     "Marker", // TODO: translate to zh_CN
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to zh_CN
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to zh_CN
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to zh_CN
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to zh_CN
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to zh_CN
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to zh_CN
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to zh_CN
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to zh_CN
+    lblSeedStyleGroupPads:                  "打击垫",
+    lblSeedStyleGroupArps:                  "琶音",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "混响",
     lblSeedInstrument:                      "乐器",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to zh_CN
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to zh_CN
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to zh_CN
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to zh_CN
+    lblSeedBassInstrument:                  "贝斯",
+    optSeedBassInstrumentSame:              "与乐器相同",
+    plhSeedInstrumentFilter:                "输入以筛选…",
+    optSeedInstrumentFamilyAll:             "全部",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to zh_CN
-    tabSeedRender:                          "Render", // TODO: translate to zh_CN
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to zh_CN
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to zh_CN
-    lblSeedKnobTune:                        "Tune", // TODO: translate to zh_CN
-    tipSeedMute:                            "Mute", // TODO: translate to zh_CN
-    tipSeedUnmute:                          "Unmute", // TODO: translate to zh_CN
-    lblSeedReverb:                          "Reverb", // TODO: translate to zh_CN
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to zh_CN
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to zh_CN
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to zh_CN
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to zh_CN
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to zh_CN
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to zh_CN
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to zh_CN
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to zh_CN
+    tabSeedMusic:                           "音乐",
+    tabSeedRender:                          "渲染",
+    lblSeedKnobVolume:                      "音量",
+    lblSeedKnobOctave:                      "八度",
+    lblSeedKnobTune:                        "音高",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "样式",
+    lblSeedSwing:                           "摇摆",
+    optSeedSwingNone:                       "无",
+    optSeedSwingLight:                      "轻",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "简单",
+    lblSeedSigGroupComplex:                 "复杂",
+    lblSeedKnobVel:                         "速度",
+    lblSeedKnobLen:                         "长度",
+    btnSeedHold:                            "保持",
+    tipSeedLaneMirror:                      "反转通道。一项设置，而非编辑 — 图形保持其名称并可再次关闭。",
+    tipSeedLaneShiftLeft:                   "左移",
+    tipSeedLaneShiftRight:                  "向右移动",
+    tipSeedLaneClear:                       "清空通道",
+    tipSeedSlots:                           "音轨中的步数 — 上方的 + 和 − 增加或移除一个。",
+    tipSeedRowAll:                          "此步骤中的整个和弦 — Chord Player 的高块（三和弦有三个音，七和弦有四个音）。单击其列中的音高行以在此处启动该块。",
+    tipSeedRowFifth:                        "根音上方的五度音 — Chord Player 的 BF 行。",
+    tipSeedRowDegree:                       "一个和弦音：1 = 根音，2、3、4 向上。超出和弦大小，音高则高一个八度（和弦播放器 C1–C4）。在同一列中堆叠多个音以创建自己的和弦。",
+    tipSeedLaneAddStep:                     "在通道末尾添加一个步骤",
+    tipSeedLaneRemoveStep:                  "移除通道的最后一个步骤",
+    lblSeedBeatDiv:                         "节拍划分",
+    tipSeedBeatDiv:                         "每拍步数，适用于两条音轨（B/2 = 八分音符，B/3 = 三连音，B/4 = 十六分音符）。步数保持不变，图形速度改变，如同 Chord Player。",
+    lblSeedChords:                          "和弦",
+    tipSeedChordsEdit:                      "将和弦编辑为文本 — 按 Ctrl+Enter 或 Esc 返回",
+    tipSeedInstrumentPrev:                  "列表中的上一个乐器",
+    tipSeedInstrumentNext:                  "列表中的下一个乐器",
+    lblSeedMode:                            "模式",
+    tipSeedModeEdit:                        "编辑备注：点击单元格添加备注，点击备注删除。",
+    tipSeedModeSettings:                    "备注设置：点击备注选择，然后设置其标记。",
+    lblSeedFlagOctave:                      "八度",
+    lblSeedFlagScaleStep:                   "音级",
+    lblSeedFlagLevel:                       "级别",
+    lblSeedFlagLength:                      "时长",
+    lblSeedFlagCondition:                   "条件",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "升高八度",
+    tipSeedFlagOctDown:                     "降低八度",
+    tipSeedFlagScaleUp:                     "经过音：音阶上行一步",
+    tipSeedFlagScaleDown:                   "经过音：音阶下行一步",
+    tipSeedFlagAccent:                      "重音",
+    tipSeedFlagGhost:                       "幽灵",
+    tipSeedFlagSustain:                     "持续到和弦结束",
+    tipSeedFlagStaccato:                    "断奏",
+    tipSeedFlagLast:                        "仅在和弦的最后拍",
+    tipSeedFlagNotLast:                     "仅在和弦的非最后拍",
+    tipSeedFlagEarly:                       "提前：此音槽演奏下一和弦",
+    tipSeedMute:                            "静音",
+    tipSeedUnmute:                          "取消静音",
+    lblSeedReverb:                          "混响",
+    optSeedReverbNone:                      "干声：无混响",
+    optSeedReverbRoom:                      "房间：小而近",
+    optSeedReverbChamber:                   "混响室：中等，温暖",
+    optSeedReverbHall:                      "大厅：宽敞开放",
+    optSeedReverbChurch:                    "教堂：超大，长余响",
+    lblSeedHighpass:                        "高通 (Hz)",
+    lblSeedLowpass:                         "低通 (Hz)",
     optSeedInstrumentSine:                  "正弦：内置合成器",
     lblSeedFormat:                          "格式",
     optSeedFormatMp3:                       "MP3",
@@ -2495,53 +3524,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "將和弦進行渲染為音訊和 MIDI 種子，用於約束 Suno 等 AI 音樂生成器。",
+    lblDlgSettingsAboutCredits:             "樂器鳴謝",
+    msgDlgSettingsAboutCreditsIntro:        "取樣樂器來自以下自由授權的錄音會話：",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "和弦進行",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "每行一小節：每行獲得相同時間，其上的和弦平均分配該時間（一行上只有一個和弦時，它佔據整個小節）。[Section] 標籤、空行和 | 標記將被忽略。支援斜線和弦 (C/G)、七和弦 (Gmaj7) 和 N.C.。",
+    tipSeedBarsAdd:                         "更長的行：每行和弦持續時間增加四分之一小節",
+    tipSeedBarsRemove:                      "更短的行：每行和弦持續時間減少四分之一小節",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "每行小節數",
     lblSeedSig:                             "拍號",
     lblSeedLoops:                           "循環",
-    lblSeedStyle:                           "風格",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to zh_TW
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to zh_TW
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to zh_TW
-    optSeedStylePad:                        "Pad", // TODO: translate to zh_TW
-    optSeedStyleDrone:                      "Drone", // TODO: translate to zh_TW
-    optSeedStyleMarker:                     "Marker", // TODO: translate to zh_TW
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to zh_TW
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to zh_TW
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to zh_TW
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to zh_TW
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to zh_TW
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to zh_TW
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to zh_TW
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to zh_TW
+    lblSeedStyleGroupPads:                  "打擊墊",
+    lblSeedStyleGroupArps:                  "琶音",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "混響",
     lblSeedInstrument:                      "樂器",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to zh_TW
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to zh_TW
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to zh_TW
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to zh_TW
+    lblSeedBassInstrument:                  "貝斯",
+    optSeedBassInstrumentSame:              "與樂器相同",
+    plhSeedInstrumentFilter:                "輸入以篩選…",
+    optSeedInstrumentFamilyAll:             "全部",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to zh_TW
-    tabSeedRender:                          "Render", // TODO: translate to zh_TW
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to zh_TW
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to zh_TW
-    lblSeedKnobTune:                        "Tune", // TODO: translate to zh_TW
-    tipSeedMute:                            "Mute", // TODO: translate to zh_TW
-    tipSeedUnmute:                          "Unmute", // TODO: translate to zh_TW
-    lblSeedReverb:                          "Reverb", // TODO: translate to zh_TW
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to zh_TW
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to zh_TW
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to zh_TW
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to zh_TW
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to zh_TW
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to zh_TW
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to zh_TW
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to zh_TW
+    tabSeedMusic:                           "音樂",
+    tabSeedRender:                          "渲染",
+    lblSeedKnobVolume:                      "音量",
+    lblSeedKnobOctave:                      "八度",
+    lblSeedKnobTune:                        "音高",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "樣式",
+    lblSeedSwing:                           "搖擺",
+    optSeedSwingNone:                       "無",
+    optSeedSwingLight:                      "輕",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "簡單",
+    lblSeedSigGroupComplex:                 "複雜",
+    lblSeedKnobVel:                         "速度",
+    lblSeedKnobLen:                         "長度",
+    btnSeedHold:                            "保持",
+    tipSeedLaneMirror:                      "反轉通道。一項設定，而非編輯 — 圖形保持其名稱並可再次關閉。",
+    tipSeedLaneShiftLeft:                   "左移",
+    tipSeedLaneShiftRight:                  "向右移動",
+    tipSeedLaneClear:                       "清空通道",
+    tipSeedSlots:                           "音軌中的步數 — 上方的 + 和 − 增加或移除一個。",
+    tipSeedRowAll:                          "此步驟中的整個和弦 — Chord Player 的高塊（三和弦有三個音，七和弦有四個音）。按一下其欄中的音高行以在此處啟動該塊。",
+    tipSeedRowFifth:                        "根音上方的五度音 — Chord Player 的 BF 行。",
+    tipSeedRowDegree:                       "一個和弦音：1 = 根音，2、3、4 向上。超出和弦大小，音高則高一個八度（和弦播放器 C1–C4）。在同一欄中堆疊多個音以建立自己的和弦。",
+    tipSeedLaneAddStep:                     "在通道末端新增一個步驟",
+    tipSeedLaneRemoveStep:                  "移除通道的最後一個步驟",
+    lblSeedBeatDiv:                         "節拍劃分",
+    tipSeedBeatDiv:                         "每拍步數，適用於兩條音軌（B/2 = 八分音符，B/3 = 三連音，B/4 = 十六分音符）。步數保持不變，圖形速度改變，如同 Chord Player。",
+    lblSeedChords:                          "和弦",
+    tipSeedChordsEdit:                      "將和弦編輯為文字 — 按 Ctrl+Enter 或 Esc 返回",
+    tipSeedInstrumentPrev:                  "清單中的上一個樂器",
+    tipSeedInstrumentNext:                  "清單中的下一個樂器",
+    lblSeedMode:                            "模式",
+    tipSeedModeEdit:                        "編輯備註：點擊儲存格新增備註，點擊備註移除。",
+    tipSeedModeSettings:                    "備註設定：點擊備註選擇，然後設定其標記。",
+    lblSeedFlagOctave:                      "八度",
+    lblSeedFlagScaleStep:                   "音級",
+    lblSeedFlagLevel:                       "級別",
+    lblSeedFlagLength:                      "時長",
+    lblSeedFlagCondition:                   "條件",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "升高八度",
+    tipSeedFlagOctDown:                     "降低八度",
+    tipSeedFlagScaleUp:                     "經過音：音階上行一步",
+    tipSeedFlagScaleDown:                   "經過音：音階下行一步",
+    tipSeedFlagAccent:                      "重音",
+    tipSeedFlagGhost:                       "幽靈",
+    tipSeedFlagSustain:                     "持續到和弦結束",
+    tipSeedFlagStaccato:                    "斷奏",
+    tipSeedFlagLast:                        "僅在和弦的最後拍",
+    tipSeedFlagNotLast:                     "僅在和弦的非最後拍",
+    tipSeedFlagEarly:                       "提前：此音槽演奏下一和弦",
+    tipSeedMute:                            "靜音",
+    tipSeedUnmute:                          "取消靜音",
+    lblSeedReverb:                          "殘響",
+    optSeedReverbNone:                      "乾聲：無混響",
+    optSeedReverbRoom:                      "房間：小而近",
+    optSeedReverbChamber:                   "混響室：中等，溫暖",
+    optSeedReverbHall:                      "大廳：寬敞開放",
+    optSeedReverbChurch:                    "教堂：超大，長餘響",
+    lblSeedHighpass:                        "高通 (Hz)",
+    lblSeedLowpass:                         "低通 (Hz)",
     optSeedInstrumentSine:                  "正弦：內建合成器",
     lblSeedFormat:                          "格式",
     optSeedFormatMp3:                       "MP3",
@@ -2612,53 +3690,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "コード進行をオーディオとMIDIシードとして生成し、SunoのようなAI音楽ジェネレーターを制約します。",
+    lblDlgSettingsAboutCredits:             "楽器のクレジット",
+    msgDlgSettingsAboutCreditsIntro:        "サンプリングされた楽器は、以下の自由ライセンスのレコーディングセッションに由来します：",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "コード進行",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "1行1小節: 各行は均等な時間を受け取り、その上のコードはその時間を均等に分割します（1行にコードが1つだけの場合、そのコードが小節全体を占めます）。[Section]タグ、空白行、|マークは無視されます。スラッシュコード (C/G)、7th (Gmaj7)、N.C.に対応しています。",
+    tipSeedBarsAdd:                         "長いライン：各コードラインは4分の1小節長く続きます",
+    tipSeedBarsRemove:                      "短いライン：各コードラインは4分の1小節短く続きます",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "1行あたりの小節数",
     lblSeedSig:                             "拍子記号",
     lblSeedLoops:                           "ループ",
-    lblSeedStyle:                           "スタイル",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ja
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ja
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ja
-    optSeedStylePad:                        "Pad", // TODO: translate to ja
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ja
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ja
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ja
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ja
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ja
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ja
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ja
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ja
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ja
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ja
+    lblSeedStyleGroupPads:                  "パッド",
+    lblSeedStyleGroupArps:                  "アルペジオ",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "リバーブ",
     lblSeedInstrument:                      "楽器",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ja
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ja
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ja
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ja
+    lblSeedBassInstrument:                  "ベース",
+    optSeedBassInstrumentSame:              "楽器と同じ",
+    plhSeedInstrumentFilter:                "入力してフィルター…",
+    optSeedInstrumentFamilyAll:             "すべて",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ja
-    tabSeedRender:                          "Render", // TODO: translate to ja
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ja
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ja
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ja
-    tipSeedMute:                            "Mute", // TODO: translate to ja
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ja
-    lblSeedReverb:                          "Reverb", // TODO: translate to ja
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ja
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ja
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ja
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ja
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ja
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ja
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ja
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ja
+    tabSeedMusic:                           "音楽",
+    tabSeedRender:                          "レンダリング",
+    lblSeedKnobVolume:                      "音量",
+    lblSeedKnobOctave:                      "オクターブ",
+    lblSeedKnobTune:                        "チューン",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "スタイル",
+    lblSeedSwing:                           "スウィング",
+    optSeedSwingNone:                       "なし",
+    optSeedSwingLight:                      "軽い",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "シンプル",
+    lblSeedSigGroupComplex:                 "複雑",
+    lblSeedKnobVel:                         "速度",
+    lblSeedKnobLen:                         "長さ",
+    btnSeedHold:                            "ホールド",
+    tipSeedLaneMirror:                      "レーンを反転。設定であり、編集ではありません — 図形は名前を保持し、再度オフにできます。",
+    tipSeedLaneShiftLeft:                   "左にシフト",
+    tipSeedLaneShiftRight:                  "右にシフト",
+    tipSeedLaneClear:                       "レーンをクリア",
+    tipSeedSlots:                           "レーンのステップ — 上の + と − で1つ追加または削除します。",
+    tipSeedRowAll:                          "このステップの全コード — Chord Player のトールブロック（三和音では3音、七和音では4音）。その列の音列をクリックして、そこでブロックを開始します。",
+    tipSeedRowFifth:                        "ルート音の5度上 — Chord Player のBF行。",
+    tipSeedRowDegree:                       "1つのコードトーン：1 = ルート、2、3、4 上向き。コードのサイズを超えると、音は1オクターブ上になります（Chord PlayerのC1–C4）。複数のトーンを1つの列に重ねて、独自のコードを作成します。",
+    tipSeedLaneAddStep:                     "レーンの最後にステップを追加",
+    tipSeedLaneRemoveStep:                  "レーンの最後のステップを削除",
+    lblSeedBeatDiv:                         "ビート分割",
+    tipSeedBeatDiv:                         "両レーンの拍ごとのステップ数（B/2 = 8分音符、B/3 = 3連符、B/4 = 16分音符）。ステップは維持され、図形はChord Playerのように速度を変更します。",
+    lblSeedChords:                          "コード",
+    tipSeedChordsEdit:                      "コードをテキストとして編集 — Ctrl+Enter または Esc で戻る",
+    tipSeedInstrumentPrev:                  "リスト内の前の楽器",
+    tipSeedInstrumentNext:                  "リスト内の次の楽器",
+    lblSeedMode:                            "モード",
+    tipSeedModeEdit:                        "ノートを編集: セルをクリックしてノートを追加、ノートをクリックして削除。",
+    tipSeedModeSettings:                    "ノート設定: ノートをクリックして選択し、フラグを設定。",
+    lblSeedFlagOctave:                      "オクターブ",
+    lblSeedFlagScaleStep:                   "音階度",
+    lblSeedFlagLevel:                       "レベル",
+    lblSeedFlagLength:                      "期間",
+    lblSeedFlagCondition:                   "条件",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "1オクターブ上",
+    tipSeedFlagOctDown:                     "1オクターブ下",
+    tipSeedFlagScaleUp:                     "経過音: スケール1段階上",
+    tipSeedFlagScaleDown:                   "経過音: スケール1段階下",
+    tipSeedFlagAccent:                      "アクセント",
+    tipSeedFlagGhost:                       "ゴースト",
+    tipSeedFlagSustain:                     "コードの終わりまで持続",
+    tipSeedFlagStaccato:                    "スタッカート",
+    tipSeedFlagLast:                        "コードの最後の拍のみ",
+    tipSeedFlagNotLast:                     "コードの最後の拍以外",
+    tipSeedFlagEarly:                       "早め: 次のコードを鳴らす",
+    tipSeedMute:                            "ミュート",
+    tipSeedUnmute:                          "ミュート解除",
+    lblSeedReverb:                          "リバーブ",
+    optSeedReverbNone:                      "ドライ：部屋なし",
+    optSeedReverbRoom:                      "ルーム：小さく近い",
+    optSeedReverbChamber:                   "チェンバー：中程度、暖か",
+    optSeedReverbHall:                      "ホール：広く開放的",
+    optSeedReverbChurch:                    "チャーチ：非常に広く、長い残響",
+    lblSeedHighpass:                        "ハイパス (Hz)",
+    lblSeedLowpass:                         "ローパス (Hz)",
     optSeedInstrumentSine:                  "サイン波：内蔵シンセ",
     lblSeedFormat:                          "フォーマット",
     optSeedFormatMp3:                       "MP3",
@@ -2729,53 +3856,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "코드 진행을 Suno와 같은 AI 음악 생성기를 제약하는 오디오 및 MIDI 시드로 생성합니다.",
+    lblDlgSettingsAboutCredits:             "악기 크레딧",
+    msgDlgSettingsAboutCreditsIntro:        "샘플링된 악기는 다음의 자유 라이선스 녹음 세션에서 가져왔습니다:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "코드 진행",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "한 줄에 한 마디: 각 줄은 동일한 시간을 가지며, 그 위의 코드는 시간을 균등하게 나눕니다 (한 줄에 코드 하나만 있으면 전체 마디를 차지합니다). [Section] 태그, 빈 줄 및 | 표시는 무시됩니다. 슬래시 코드 (C/G), 7th (Gmaj7) 및 N.C.가 지원됩니다.",
+    tipSeedBarsAdd:                         "더 긴 라인: 각 코드 라인이 4분의 1 마디 더 지속됩니다",
+    tipSeedBarsRemove:                      "더 짧은 라인: 각 코드 라인이 4분의 1 마디 덜 지속됩니다",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "줄당 마디 수",
     lblSeedSig:                             "박자표",
     lblSeedLoops:                           "루프",
-    lblSeedStyle:                           "스타일",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ko
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ko
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ko
-    optSeedStylePad:                        "Pad", // TODO: translate to ko
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ko
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ko
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ko
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ko
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ko
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ko
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ko
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ko
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ko
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ko
+    lblSeedStyleGroupPads:                  "패드",
+    lblSeedStyleGroupArps:                  "아르페지오",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "리버브",
     lblSeedInstrument:                      "악기",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ko
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ko
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ko
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ko
+    lblSeedBassInstrument:                  "베이스",
+    optSeedBassInstrumentSame:              "악기와 동일",
+    plhSeedInstrumentFilter:                "필터링하려면 입력…",
+    optSeedInstrumentFamilyAll:             "모두",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ko
-    tabSeedRender:                          "Render", // TODO: translate to ko
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ko
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ko
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ko
-    tipSeedMute:                            "Mute", // TODO: translate to ko
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ko
-    lblSeedReverb:                          "Reverb", // TODO: translate to ko
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ko
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ko
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ko
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ko
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ko
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ko
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ko
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ko
+    tabSeedMusic:                           "음악",
+    tabSeedRender:                          "렌더링",
+    lblSeedKnobVolume:                      "볼륨",
+    lblSeedKnobOctave:                      "옥타브",
+    lblSeedKnobTune:                        "튜닝",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "스타일",
+    lblSeedSwing:                           "스윙",
+    optSeedSwingNone:                       "없음",
+    optSeedSwingLight:                      "약함",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "단순",
+    lblSeedSigGroupComplex:                 "복잡",
+    lblSeedKnobVel:                         "속도",
+    lblSeedKnobLen:                         "길이",
+    btnSeedHold:                            "유지",
+    tipSeedLaneMirror:                      "레인 반전. 편집이 아닌 설정입니다 — 도형은 이름을 유지하며 다시 끌 수 있습니다.",
+    tipSeedLaneShiftLeft:                   "왼쪽으로 이동",
+    tipSeedLaneShiftRight:                  "오른쪽으로 이동",
+    tipSeedLaneClear:                       "레인 지우기",
+    tipSeedSlots:                           "레인 내 단계 — 위쪽의 + 및 −로 하나를 추가하거나 제거합니다.",
+    tipSeedRowAll:                          "이 단계의 전체 코드 — Chord Player의 높은 블록 (3화음은 3개 음, 7화음은 4개 음). 해당 열의 음정 행을 클릭하여 블록을 시작합니다.",
+    tipSeedRowFifth:                        "근음 위의 5도 — Chord Player의 BF 행.",
+    tipSeedRowDegree:                       "하나의 코드 톤: 1 = 근음, 2, 3, 4 위로. 코드 크기를 넘어서면 톤은 한 옥타브 위로 올라갑니다 (Chord Player의 C1–C4). 자신만의 코드를 만들려면 한 열에 여러 개를 쌓으세요.",
+    tipSeedLaneAddStep:                     "레인 끝에 단계 추가",
+    tipSeedLaneRemoveStep:                  "레인의 마지막 단계 제거",
+    lblSeedBeatDiv:                         "비트 분할",
+    tipSeedBeatDiv:                         "두 레인 모두에 대한 박자당 단계 수 (B/2 = 8분음표, B/3 = 3연음, B/4 = 16분음표). 단계는 유지되고 도형은 Chord Player처럼 속도를 변경합니다.",
+    lblSeedChords:                          "코드",
+    tipSeedChordsEdit:                      "코드를 텍스트로 편집 — Ctrl+Enter 또는 Esc로 돌아가기",
+    tipSeedInstrumentPrev:                  "목록의 이전 악기",
+    tipSeedInstrumentNext:                  "목록의 다음 악기",
+    lblSeedMode:                            "모드",
+    tipSeedModeEdit:                        "노트 편집: 셀을 클릭하여 노트를 추가하고, 노트를 클릭하여 제거합니다.",
+    tipSeedModeSettings:                    "노트 설정: 노트를 클릭하여 선택한 다음, 플래그를 설정합니다.",
+    lblSeedFlagOctave:                      "옥타브",
+    lblSeedFlagScaleStep:                   "음계 단계",
+    lblSeedFlagLevel:                       "레벨",
+    lblSeedFlagLength:                      "기간",
+    lblSeedFlagCondition:                   "조건",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "한 옥타브 위",
+    tipSeedFlagOctDown:                     "한 옥타브 아래",
+    tipSeedFlagScaleUp:                     "경과음: 한 음계 위",
+    tipSeedFlagScaleDown:                   "경과음: 한 음계 아래",
+    tipSeedFlagAccent:                      "강세",
+    tipSeedFlagGhost:                       "고스트",
+    tipSeedFlagSustain:                     "코드 끝까지 지속",
+    tipSeedFlagStaccato:                    "스타카토",
+    tipSeedFlagLast:                        "코드의 마지막 박자에만",
+    tipSeedFlagNotLast:                     "코드의 마지막 박자 외",
+    tipSeedFlagEarly:                       "일찍: 이 슬롯은 다음 코드를 연주합니다",
+    tipSeedMute:                            "음소거",
+    tipSeedUnmute:                          "음소거 해제",
+    lblSeedReverb:                          "리버브",
+    optSeedReverbNone:                      "드라이: 공간 없음",
+    optSeedReverbRoom:                      "룸: 작고 가까움",
+    optSeedReverbChamber:                   "챔버: 중간, 따뜻함",
+    optSeedReverbHall:                      "홀: 크고 개방적",
+    optSeedReverbChurch:                    "교회: 매우 큼, 긴 잔향",
+    lblSeedHighpass:                        "하이패스 (Hz)",
+    lblSeedLowpass:                         "로우패스 (Hz)",
     optSeedInstrumentSine:                  "사인: 내장 신시사이저",
     lblSeedFormat:                          "형식",
     optSeedFormatMp3:                       "MP3",
@@ -2846,53 +4022,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Tạo ra các chuỗi hợp âm thành hạt giống âm thanh + MIDI để hạn chế các trình tạo nhạc AI như Suno.",
+    lblDlgSettingsAboutCredits:             "Tín dụng nhạc cụ",
+    msgDlgSettingsAboutCreditsIntro:        "Các nhạc cụ được lấy mẫu đến từ các buổi ghi âm có giấy phép tự do, bởi:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Tiến trình hợp âm",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Một ô nhịp mỗi dòng: mỗi dòng có thời gian bằng nhau, và các hợp âm trên đó chia đều thời gian đó (một hợp âm duy nhất trên một dòng chiếm toàn bộ ô nhịp). Các thẻ [Section], dòng trống và dấu | bị bỏ qua. Hỗ trợ hợp âm slash (C/G), 7ths (Gmaj7) và N.C.",
+    tipSeedBarsAdd:                         "Dòng dài hơn: mỗi dòng hợp âm kéo dài thêm một phần tư ô nhịp",
+    tipSeedBarsRemove:                      "Dòng ngắn hơn: mỗi dòng hợp âm kéo dài bớt một phần tư ô nhịp",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Số ô nhịp mỗi dòng",
     lblSeedSig:                             "Nhịp",
     lblSeedLoops:                           "Vòng lặp",
-    lblSeedStyle:                           "Kiểu",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to vi
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to vi
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to vi
-    optSeedStylePad:                        "Pad", // TODO: translate to vi
-    optSeedStyleDrone:                      "Drone", // TODO: translate to vi
-    optSeedStyleMarker:                     "Marker", // TODO: translate to vi
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to vi
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to vi
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to vi
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to vi
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to vi
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to vi
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to vi
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to vi
+    lblSeedStyleGroupPads:                  "Pad",
+    lblSeedStyleGroupArps:                  "Hợp âm rải",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Nhạc cụ",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to vi
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to vi
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to vi
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to vi
+    lblSeedBassInstrument:                  "Bass",
+    optSeedBassInstrumentSame:              "Giống nhạc cụ",
+    plhSeedInstrumentFilter:                "Nhập để lọc…",
+    optSeedInstrumentFamilyAll:             "Tất cả",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to vi
-    tabSeedRender:                          "Render", // TODO: translate to vi
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to vi
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to vi
-    lblSeedKnobTune:                        "Tune", // TODO: translate to vi
-    tipSeedMute:                            "Mute", // TODO: translate to vi
-    tipSeedUnmute:                          "Unmute", // TODO: translate to vi
-    lblSeedReverb:                          "Reverb", // TODO: translate to vi
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to vi
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to vi
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to vi
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to vi
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to vi
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to vi
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to vi
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to vi
+    tabSeedMusic:                           "Nhạc",
+    tabSeedRender:                          "Kết xuất",
+    lblSeedKnobVolume:                      "âm lượng",
+    lblSeedKnobOctave:                      "quãng tám",
+    lblSeedKnobTune:                        "điều chỉnh",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Kiểu",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Không",
+    optSeedSwingLight:                      "Nhẹ",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Đơn giản",
+    lblSeedSigGroupComplex:                 "Phức tạp",
+    lblSeedKnobVel:                         "vận tốc",
+    lblSeedKnobLen:                         "độ dài",
+    btnSeedHold:                            "Giữ",
+    tipSeedLaneMirror:                      "Đảo ngược làn. Một cài đặt, không phải chỉnh sửa — hình giữ nguyên tên và có thể tắt lại.",
+    tipSeedLaneShiftLeft:                   "Dịch trái",
+    tipSeedLaneShiftRight:                  "Dịch phải",
+    tipSeedLaneClear:                       "Xóa làn",
+    tipSeedSlots:                           "Bước trong làn — dấu + và − ở trên thêm hoặc xóa một.",
+    tipSeedRowAll:                          "Toàn bộ hợp âm trong bước này — khối cao của Chord Player (ba nốt trên một bộ ba, bốn nốt trên một bộ bảy). Nhấp vào một hàng âm trong cột của nó để bắt đầu khối ở đó.",
+    tipSeedRowFifth:                        "Quãng năm trên nốt gốc — hàng BF của Chord Player.",
+    tipSeedRowDegree:                       "Một âm hợp âm: 1 = gốc, 2, 3, 4 đi lên. Vượt quá kích thước hợp âm, âm sẽ cao hơn một quãng tám (C1–C4 của Chord Player). Xếp chồng nhiều âm vào một cột để tạo hợp âm của riêng bạn.",
+    tipSeedLaneAddStep:                     "Thêm một bước ở cuối làn",
+    tipSeedLaneRemoveStep:                  "Xóa bước cuối cùng của làn",
+    lblSeedBeatDiv:                         "Chia nhịp",
+    tipSeedBeatDiv:                         "Bước trên mỗi nhịp, cho cả hai làn (B/2 = nốt móc đơn, B/3 = nốt ba, B/4 = nốt móc kép). Các bước giữ nguyên và hình thay đổi tốc độ, như trong Chord Player.",
+    lblSeedChords:                          "Hợp âm",
+    tipSeedChordsEdit:                      "Chỉnh sửa hợp âm dưới dạng văn bản — Ctrl+Enter hoặc Escape để quay lại",
+    tipSeedInstrumentPrev:                  "Nhạc cụ trước đó trong danh sách",
+    tipSeedInstrumentNext:                  "Nhạc cụ tiếp theo trong danh sách",
+    lblSeedMode:                            "chế độ",
+    tipSeedModeEdit:                        "Chỉnh sửa ghi chú: nhấp vào ô để thêm ghi chú, nhấp vào ghi chú để xóa.",
+    tipSeedModeSettings:                    "Cài đặt ghi chú: nhấp vào ghi chú để chọn, sau đó đặt cờ của nó.",
+    lblSeedFlagOctave:                      "quãng tám",
+    lblSeedFlagScaleStep:                   "bậc thang âm",
+    lblSeedFlagLevel:                       "cấp độ",
+    lblSeedFlagLength:                      "thời lượng",
+    lblSeedFlagCondition:                   "điều kiện",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Tăng một quãng tám",
+    tipSeedFlagOctDown:                     "Giảm một quãng tám",
+    tipSeedFlagScaleUp:                     "Nốt lướt: lên một bậc thang âm",
+    tipSeedFlagScaleDown:                   "Nốt lướt: xuống một bậc thang âm",
+    tipSeedFlagAccent:                      "Nhấn",
+    tipSeedFlagGhost:                       "Ma",
+    tipSeedFlagSustain:                     "Giữ đến cuối hợp âm",
+    tipSeedFlagStaccato:                    "Ngắt âm",
+    tipSeedFlagLast:                        "Chỉ ở nhịp cuối của hợp âm",
+    tipSeedFlagNotLast:                     "Chỉ ngoài nhịp cuối",
+    tipSeedFlagEarly:                       "Sớm: ô này chơi hợp âm tiếp theo",
+    tipSeedMute:                            "Tắt tiếng",
+    tipSeedUnmute:                          "Bật tiếng",
+    lblSeedReverb:                          "Tiếng vang",
+    optSeedReverbNone:                      "Khô: không phòng",
+    optSeedReverbRoom:                      "Phòng: nhỏ và gần",
+    optSeedReverbChamber:                   "Buồng: vừa, ấm",
+    optSeedReverbHall:                      "Hội trường: lớn và mở",
+    optSeedReverbChurch:                    "Nhà thờ: rất lớn, đuôi dài",
+    lblSeedHighpass:                        "Thông cao (Hz)",
+    lblSeedLowpass:                         "Thông thấp (Hz)",
     optSeedInstrumentSine:                  "Sóng sin: bộ tổng hợp tích hợp",
     lblSeedFormat:                          "Định dạng",
     optSeedFormatMp3:                       "MP3",
@@ -2908,7 +4133,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Trước tiên, hãy lưu seed vào tệp .yams — âm thanh được kết xuất bên cạnh nó.",
     tipSeedLoad:                            "Tải seed",
     ttlSeedLoad:                            "Mở tệp seed",
-    lblSeedLoadFilter:                      "Tệp seed (.yams)",
+    lblSeedLoadFilter:                      "Tệp Seed (.yams)",
     msgSeedLoadFailed:                      "Không thể tải tệp seed đó",
     tipSeedNew:                             "Hạt giống mới",
     tipSeedTabClose:                        "Đóng",
@@ -2963,53 +4188,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "สร้างคอร์ดโปรเกรสชันเป็นเมล็ดเสียง + MIDI ที่จำกัดเครื่องสร้างเพลง AI เช่น Suno",
+    lblDlgSettingsAboutCredits:             "เครดิตเครื่องดนตรี",
+    msgDlgSettingsAboutCreditsIntro:        "เครื่องดนตรีที่สุ่มตัวอย่างมาจากเซสชันการบันทึกที่ได้รับอนุญาตอย่างอิสระ โดย:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "คอร์ดโปรเกรสชัน",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "หนึ่งห้องต่อหนึ่งบรรทัด: แต่ละบรรทัดจะได้รับเวลาเท่ากัน และคอร์ดบนบรรทัดนั้นจะแบ่งเวลาเท่าๆ กัน (คอร์ดเดียวบนบรรทัดจะครอบคลุมทั้งห้อง). แท็ก [Section], บรรทัดว่าง และเครื่องหมาย | จะถูกละเว้น. รองรับคอร์ดสแลช (C/G), คอร์ด 7 (Gmaj7) และ N.C.",
+    tipSeedBarsAdd:                         "บรรทัดยาวขึ้น: แต่ละบรรทัดคอร์ดจะยาวขึ้นหนึ่งในสี่ห้องเพลง",
+    tipSeedBarsRemove:                      "บรรทัดสั้นลง: แต่ละบรรทัดคอร์ดจะสั้นลงหนึ่งในสี่ห้องเพลง",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "ห้องเพลงต่อบรรทัด",
     lblSeedSig:                             "เครื่องหมายกำหนดจังหวะ",
     lblSeedLoops:                           "ลูป",
-    lblSeedStyle:                           "สไตล์",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to th
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to th
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to th
-    optSeedStylePad:                        "Pad", // TODO: translate to th
-    optSeedStyleDrone:                      "Drone", // TODO: translate to th
-    optSeedStyleMarker:                     "Marker", // TODO: translate to th
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to th
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to th
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to th
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to th
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to th
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to th
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to th
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to th
+    lblSeedStyleGroupPads:                  "แพด",
+    lblSeedStyleGroupArps:                  "อาร์เปจจิโอ",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "รีเวิร์บ",
     lblSeedInstrument:                      "เครื่องดนตรี",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to th
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to th
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to th
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to th
+    lblSeedBassInstrument:                  "เบส",
+    optSeedBassInstrumentSame:              "เหมือนเครื่องดนตรี",
+    plhSeedInstrumentFilter:                "พิมพ์เพื่อกรอง…",
+    optSeedInstrumentFamilyAll:             "ทั้งหมด",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to th
-    tabSeedRender:                          "Render", // TODO: translate to th
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to th
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to th
-    lblSeedKnobTune:                        "Tune", // TODO: translate to th
-    tipSeedMute:                            "Mute", // TODO: translate to th
-    tipSeedUnmute:                          "Unmute", // TODO: translate to th
-    lblSeedReverb:                          "Reverb", // TODO: translate to th
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to th
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to th
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to th
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to th
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to th
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to th
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to th
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to th
+    tabSeedMusic:                           "เพลง",
+    tabSeedRender:                          "เรนเดอร์",
+    lblSeedKnobVolume:                      "ระดับเสียง",
+    lblSeedKnobOctave:                      "อ็อกเทฟ",
+    lblSeedKnobTune:                        "ปรับเสียง",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "สไตล์",
+    lblSeedSwing:                           "สวิง",
+    optSeedSwingNone:                       "ไม่มี",
+    optSeedSwingLight:                      "เบา",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "ง่าย",
+    lblSeedSigGroupComplex:                 "ซับซ้อน",
+    lblSeedKnobVel:                         "ความเร็ว",
+    lblSeedKnobLen:                         "ความยาว",
+    btnSeedHold:                            "พักไว้",
+    tipSeedLaneMirror:                      "กลับเลน. เป็นการตั้งค่า ไม่ใช่การแก้ไข — รูปร่างยังคงชื่อเดิมและสามารถปิดได้อีกครั้ง",
+    tipSeedLaneShiftLeft:                   "เลื่อนซ้าย",
+    tipSeedLaneShiftRight:                  "เลื่อนไปทางขวา",
+    tipSeedLaneClear:                       "ล้างเลน",
+    tipSeedSlots:                           "ขั้นในเลน — เครื่องหมาย + และ − ด้านบนเพิ่มหรือลบหนึ่งขั้น",
+    tipSeedRowAll:                          "คอร์ดทั้งหมดในขั้นตอนนี้ — บล็อกสูงของ Chord Player (สามโน้ตสำหรับไทรแอด, สี่โน้ตสำหรับเซเว่นธ์). คลิกแถวโทนในคอลัมน์เพื่อเริ่มบล็อกที่นั่น",
+    tipSeedRowFifth:                        "คู่ห้าเหนือโน้ตหลัก — แถว BF ของ Chord Player",
+    tipSeedRowDegree:                       "หนึ่งโทนคอร์ด: 1 = รูท, 2, 3, 4 ขึ้นไป. หากเกินขนาดคอร์ด โทนจะสูงขึ้นหนึ่งอ็อกเทฟ (C1–C4 ของ Chord Player) ซ้อนกันหลายโทนในคอลัมน์เดียวเพื่อสร้างคอร์ดของคุณเอง",
+    tipSeedLaneAddStep:                     "เพิ่มขั้นตอนที่ท้ายเลน",
+    tipSeedLaneRemoveStep:                  "ลบขั้นตอนสุดท้ายของเลน",
+    lblSeedBeatDiv:                         "การแบ่งจังหวะ",
+    tipSeedBeatDiv:                         "ขั้นต่อจังหวะ สำหรับทั้งสองเลน (B/2 = ตัวเขบ็ตหนึ่งชั้น, B/3 = ตัวโน้ตสามพยางค์, B/4 = ตัวเขบ็ตสองชั้น) ขั้นจะคงอยู่และรูปจะเปลี่ยนความเร็ว เหมือนใน Chord Player",
+    lblSeedChords:                          "คอร์ด",
+    tipSeedChordsEdit:                      "แก้ไขคอร์ดเป็นข้อความ — Ctrl+Enter หรือ Escape เพื่อกลับ",
+    tipSeedInstrumentPrev:                  "เครื่องดนตรีก่อนหน้าในรายการ",
+    tipSeedInstrumentNext:                  "เครื่องดนตรีถัดไปในรายการ",
+    lblSeedMode:                            "โหมด",
+    tipSeedModeEdit:                        "แก้ไขบันทึก: คลิกเซลล์เพื่อเพิ่มบันทึก, คลิกบันทึกเพื่อลบ",
+    tipSeedModeSettings:                    "การตั้งค่าบันทึก: คลิกบันทึกเพื่อเลือก, จากนั้นตั้งค่าสถานะ",
+    lblSeedFlagOctave:                      "อ็อกเทฟ",
+    lblSeedFlagScaleStep:                   "ขั้นบันไดเสียง",
+    lblSeedFlagLevel:                       "ระดับ",
+    lblSeedFlagLength:                      "ระยะเวลา",
+    lblSeedFlagCondition:                   "เงื่อนไข",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "เพิ่มหนึ่งคู่แปด",
+    tipSeedFlagOctDown:                     "ลดหนึ่งคู่แปด",
+    tipSeedFlagScaleUp:                     "โน้ตผ่าน: ขึ้นหนึ่งขั้นบันไดเสียง",
+    tipSeedFlagScaleDown:                   "โน้ตผ่าน: ลงหนึ่งขั้นบันไดเสียง",
+    tipSeedFlagAccent:                      "เน้น",
+    tipSeedFlagGhost:                       "โน้ตผี",
+    tipSeedFlagSustain:                     "ค้างเสียงจนจบของคอร์ด",
+    tipSeedFlagStaccato:                    "สตักกาโต",
+    tipSeedFlagLast:                        "เฉพาะในจังหวะสุดท้ายของคอร์ด",
+    tipSeedFlagNotLast:                     "เฉพาะนอกจังหวะสุดท้าย",
+    tipSeedFlagEarly:                       "ก่อนกำหนด: ช่องนี้เล่นคอร์ดถัดไป",
+    tipSeedMute:                            "ปิดเสียง",
+    tipSeedUnmute:                          "เปิดเสียง",
+    lblSeedReverb:                          "รีเวิร์บ",
+    optSeedReverbNone:                      "แห้ง: ไม่มีห้อง",
+    optSeedReverbRoom:                      "ห้อง: เล็กและใกล้",
+    optSeedReverbChamber:                   "ห้องโถง: ขนาดกลาง, อบอุ่น",
+    optSeedReverbHall:                      "ฮอลล์: ใหญ่และเปิด",
+    optSeedReverbChurch:                    "โบสถ์: ใหญ่มาก, หางยาว",
+    lblSeedHighpass:                        "ไฮพาส (Hz)",
+    lblSeedLowpass:                         "โลว์พาส (Hz)",
     optSeedInstrumentSine:                  "ไซน์: ซินธ์ในตัว",
     lblSeedFormat:                          "รูปแบบ",
     optSeedFormatMp3:                       "MP3",
@@ -3080,53 +4354,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Menghasilkan progresi akor menjadi benih audio + MIDI yang membatasi generator musik AI seperti Suno.",
+    lblDlgSettingsAboutCredits:             "Kredit instrumen",
+    msgDlgSettingsAboutCreditsIntro:        "Instrumen yang disampel berasal dari sesi rekaman berlisensi bebas, oleh:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progresi akor",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Satu birama per baris: setiap baris mendapat waktu yang sama, dan akor di dalamnya membagi waktu itu secara merata (satu akor saja dalam satu baris menempati seluruh birama). Tag [Section], baris kosong, dan tanda | diabaikan. Akor slash (C/G), 7ths (Gmaj7), dan N.C. didukung.",
+    tipSeedBarsAdd:                         "Baris lebih panjang: setiap baris akor berlangsung seperempat birama lebih lama",
+    tipSeedBarsRemove:                      "Baris lebih pendek: setiap baris akor berlangsung seperempat birama lebih singkat",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Birama per baris",
     lblSeedSig:                             "Tanda birama",
     lblSeedLoops:                           "Loop",
-    lblSeedStyle:                           "Gaya",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to id
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to id
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to id
-    optSeedStylePad:                        "Pad", // TODO: translate to id
-    optSeedStyleDrone:                      "Drone", // TODO: translate to id
-    optSeedStyleMarker:                     "Marker", // TODO: translate to id
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to id
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to id
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to id
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to id
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to id
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to id
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to id
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to id
+    lblSeedStyleGroupPads:                  "Pad",
+    lblSeedStyleGroupArps:                  "Arpegio",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrumen",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to id
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to id
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to id
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to id
+    lblSeedBassInstrument:                  "Bass",
+    optSeedBassInstrumentSame:              "Sama seperti instrumen",
+    plhSeedInstrumentFilter:                "Ketik untuk memfilter…",
+    optSeedInstrumentFamilyAll:             "Semua",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to id
-    tabSeedRender:                          "Render", // TODO: translate to id
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to id
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to id
-    lblSeedKnobTune:                        "Tune", // TODO: translate to id
-    tipSeedMute:                            "Mute", // TODO: translate to id
-    tipSeedUnmute:                          "Unmute", // TODO: translate to id
-    lblSeedReverb:                          "Reverb", // TODO: translate to id
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to id
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to id
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to id
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to id
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to id
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to id
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to id
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to id
+    tabSeedMusic:                           "Musik",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "volume",
+    lblSeedKnobOctave:                      "oktaf",
+    lblSeedKnobTune:                        "tala",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Gaya",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Tidak Ada",
+    optSeedSwingLight:                      "Ringan",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Sederhana",
+    lblSeedSigGroupComplex:                 "Kompleks",
+    lblSeedKnobVel:                         "kecepatan",
+    lblSeedKnobLen:                         "panjang",
+    btnSeedHold:                            "Tahan",
+    tipSeedLaneMirror:                      "Balik jalur. Sebuah pengaturan, bukan pengeditan — figur mempertahankan namanya dan dapat dimatikan lagi.",
+    tipSeedLaneShiftLeft:                   "Geser kiri",
+    tipSeedLaneShiftRight:                  "Geser kanan",
+    tipSeedLaneClear:                       "Bersihkan jalur",
+    tipSeedSlots:                           "Langkah di jalur — + dan − di atas menambah atau menghapus satu.",
+    tipSeedRowAll:                          "Seluruh akor dalam langkah ini — blok tinggi Chord Player (tiga nada pada triad, empat pada seventh). Klik baris nada di kolomnya untuk memulai blok di sana.",
+    tipSeedRowFifth:                        "Nada kelima di atas root — baris BF Chord Player.",
+    tipSeedRowDegree:                       "Satu nada akor: 1 = root, 2, 3, 4 ke atas. Melewati ukuran akor, nada akan satu oktaf lebih tinggi (C1–C4 Chord Player). Tumpuk beberapa di satu kolom untuk akor Anda sendiri.",
+    tipSeedLaneAddStep:                     "Tambah langkah di akhir jalur",
+    tipSeedLaneRemoveStep:                  "Hapus langkah terakhir jalur",
+    lblSeedBeatDiv:                         "Pembagian ketukan",
+    tipSeedBeatDiv:                         "Langkah per ketukan, untuk kedua jalur (B/2 = not seperdelapan, B/3 = triplet, B/4 = not seperenambelas). Langkah tetap dan figur berubah kecepatan, seperti di Chord Player.",
+    lblSeedChords:                          "Akor",
+    tipSeedChordsEdit:                      "Edit akor sebagai teks — Ctrl+Enter atau Escape untuk kembali",
+    tipSeedInstrumentPrev:                  "Instrumen sebelumnya dalam daftar",
+    tipSeedInstrumentNext:                  "Instrumen berikutnya dalam daftar",
+    lblSeedMode:                            "mode",
+    tipSeedModeEdit:                        "Edit catatan: klik sel untuk menambahkan catatan, klik catatan untuk menghapusnya.",
+    tipSeedModeSettings:                    "Pengaturan catatan: klik catatan untuk memilihnya, lalu atur benderanya.",
+    lblSeedFlagOctave:                      "oktaf",
+    lblSeedFlagScaleStep:                   "langkah tangga nada",
+    lblSeedFlagLevel:                       "tingkat",
+    lblSeedFlagLength:                      "durasi",
+    lblSeedFlagCondition:                   "kondisi",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Satu oktaf naik",
+    tipSeedFlagOctDown:                     "Satu oktaf turun",
+    tipSeedFlagScaleUp:                     "Nada lewat: satu langkah tangga nada naik",
+    tipSeedFlagScaleDown:                   "Nada lewat: satu langkah tangga nada turun",
+    tipSeedFlagAccent:                      "Aksen",
+    tipSeedFlagGhost:                       "Hantu",
+    tipSeedFlagSustain:                     "Tahan hingga akhir akor",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Hanya pada ketukan terakhir akor",
+    tipSeedFlagNotLast:                     "Hanya di luar ketukan terakhir",
+    tipSeedFlagEarly:                       "Awal: slot ini membunyikan akor berikutnya",
+    tipSeedMute:                            "Bisukan",
+    tipSeedUnmute:                          "Nyalakan suara",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Kering: tanpa ruangan",
+    optSeedReverbRoom:                      "Ruangan: kecil dan dekat",
+    optSeedReverbChamber:                   "Ruang: sedang, hangat",
+    optSeedReverbHall:                      "Aula: besar dan terbuka",
+    optSeedReverbChurch:                    "Gereja: sangat besar, ekor panjang",
+    lblSeedHighpass:                        "Highpass (Hz)",
+    lblSeedLowpass:                         "Lowpass (Hz)",
     optSeedInstrumentSine:                  "Sinus: synth bawaan",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -3142,7 +4465,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Simpan seed ke file .yams terlebih dahulu — audio akan dirender di sebelahnya.",
     tipSeedLoad:                            "Muat seed",
     ttlSeedLoad:                            "Buka file seed",
-    lblSeedLoadFilter:                      "File seed (.yams)",
+    lblSeedLoadFilter:                      "Berkas Seed (.yams)",
     msgSeedLoadFailed:                      "Tidak dapat memuat file seed tersebut",
     tipSeedNew:                             "Seed baru",
     tipSeedTabClose:                        "Tutup",
@@ -3197,53 +4520,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genera progressions d'acords a llavors d'àudio + MIDI que restringeixen generadors de música IA com Suno.",
+    lblDlgSettingsAboutCredits:             "Crèdits d'instruments",
+    msgDlgSettingsAboutCreditsIntro:        "Els instruments mostrejats provenen de sessions d'enregistrament amb llicència lliure, per:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progressió d'acords",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Un compàs per línia: cada línia té la mateixa durada, i els acords la divideixen equitativament (un acord sol en una línia ocupa tot el compàs). Les etiquetes [Section], línies en blanc i | s'ignoren. Acords amb barra (C/G), 7es (Gmaj7) i N.C. compatibles.",
+    tipSeedBarsAdd:                         "Línies més llargues: cada línia d'acords dura un quart de compàs més",
+    tipSeedBarsRemove:                      "Línies més curtes: cada línia d'acords dura un quart de compàs menys",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Compasos per línia",
     lblSeedSig:                             "Compàs",
     lblSeedLoops:                           "Bucles",
-    lblSeedStyle:                           "Estil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ca
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ca
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ca
-    optSeedStylePad:                        "Pad", // TODO: translate to ca
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ca
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ca
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ca
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ca
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ca
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ca
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ca
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ca
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ca
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ca
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpegis",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ca
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ca
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ca
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ca
+    lblSeedBassInstrument:                  "Baix",
+    optSeedBassInstrumentSame:              "Igual que l'instrument",
+    plhSeedInstrumentFilter:                "Escriviu per filtrar…",
+    optSeedInstrumentFamilyAll:             "Tots",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ca
-    tabSeedRender:                          "Render", // TODO: translate to ca
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ca
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ca
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ca
-    tipSeedMute:                            "Mute", // TODO: translate to ca
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ca
-    lblSeedReverb:                          "Reverb", // TODO: translate to ca
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ca
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ca
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ca
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ca
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ca
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ca
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ca
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ca
+    tabSeedMusic:                           "Música",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "volum",
+    lblSeedKnobOctave:                      "octava",
+    lblSeedKnobTune:                        "afinació",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Estil",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Cap",
+    optSeedSwingLight:                      "Lleuger",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simple",
+    lblSeedSigGroupComplex:                 "Complex",
+    lblSeedKnobVel:                         "velocitat",
+    lblSeedKnobLen:                         "longitud",
+    btnSeedHold:                            "Mantén",
+    tipSeedLaneMirror:                      "Inverteix el carril. Una configuració, no una edició — la figura manté el seu nom i es desactiva.",
+    tipSeedLaneShiftLeft:                   "Desplaça a l'esquerra",
+    tipSeedLaneShiftRight:                  "Veseli a la dreta",
+    tipSeedLaneClear:                       "Neteja la pista",
+    tipSeedSlots:                           "Passos a la pista — els + i − de dalt n'afegeixen o en treuen un.",
+    tipSeedRowAll:                          "Tot l'acord en aquest pas — el bloc alt del Chord Player (tres notes en una tríada, quatre en una sèptima). Feu clic a una fila de tons a la seva columna per iniciar el bloc allà.",
+    tipSeedRowFifth:                        "La quinta per sobre de l'arrel — la fila BF del Chord Player.",
+    tipSeedRowDegree:                       "Un to d'acord: 1 = tònica, 2, 3, 4 ascendent. Més enllà de la mida de l'acord, el to és una octava més amunt (C1–C4 del Chord Player). Apileu-ne diversos en una columna per a un acord propi.",
+    tipSeedLaneAddStep:                     "Afegeix un pas al final del carril",
+    tipSeedLaneRemoveStep:                  "Elimina l'últim pas del carril",
+    lblSeedBeatDiv:                         "Divisió de compàs",
+    tipSeedBeatDiv:                         "Passos per temps, per a ambdues pistes (B/2 = corxeres, B/3 = tresillos, B/4 = semicorxeres). Els passos es mantenen i la figura canvia de velocitat, com a Chord Player.",
+    lblSeedChords:                          "Acords",
+    tipSeedChordsEdit:                      "Edita els acords com a text — Ctrl+Retorn o Esc per tornar",
+    tipSeedInstrumentPrev:                  "Instrument anterior de la llista",
+    tipSeedInstrumentNext:                  "Instrument següent de la llista",
+    lblSeedMode:                            "mode",
+    tipSeedModeEdit:                        "Edita notes: fes clic en una cel·la per afegir una nota, fes clic en una nota per eliminar-la.",
+    tipSeedModeSettings:                    "Configuració de notes: fes clic en una nota per seleccionar-la i, a continuació, defineix les seves banderes.",
+    lblSeedFlagOctave:                      "octava",
+    lblSeedFlagScaleStep:                   "pas d'escala",
+    lblSeedFlagLevel:                       "nivell",
+    lblSeedFlagLength:                      "durada",
+    lblSeedFlagCondition:                   "condició",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Octava amunt",
+    tipSeedFlagOctDown:                     "Octava avall",
+    tipSeedFlagScaleUp:                     "Nota de pas: un grau d'escala amunt",
+    tipSeedFlagScaleDown:                   "Nota de pas: un grau d'escala avall",
+    tipSeedFlagAccent:                      "Accent",
+    tipSeedFlagGhost:                       "Fantasma",
+    tipSeedFlagSustain:                     "Sostenir fins al final de l'acord",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Només a l'últim temps de l'acord",
+    tipSeedFlagNotLast:                     "Només fora de l'últim temps",
+    tipSeedFlagEarly:                       "Anticipat: aquesta ranura expressa l'acord següent",
+    tipSeedMute:                            "Silencia",
+    tipSeedUnmute:                          "Activa el so",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Sec: sense sala",
+    optSeedReverbRoom:                      "Sala: petita i propera",
+    optSeedReverbChamber:                   "Cambra: mitjana, càlida",
+    optSeedReverbHall:                      "Vestíbul: gran i obert",
+    optSeedReverbChurch:                    "Església: molt gran, cua llarga",
+    lblSeedHighpass:                        "Passa-alt (Hz)",
+    lblSeedLowpass:                         "Passa-baix (Hz)",
     optSeedInstrumentSine:                  "Sinus: sintetitzador integrat",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -3259,7 +4631,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Desa la llavor en un fitxer .yams primer — l'àudio es renderitza al costat.",
     tipSeedLoad:                            "Carrega llavor",
     ttlSeedLoad:                            "Obre un fitxer de llavor",
-    lblSeedLoadFilter:                      "Fitxer de llavor (.yams)",
+    lblSeedLoadFilter:                      "Fitxer Seed (.yams)",
     msgSeedLoadFailed:                      "No s'ha pogut carregar aquest fitxer de llavor",
     tipSeedNew:                             "Nova llavor",
     tipSeedTabClose:                        "Tanca",
@@ -3314,53 +4686,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generuje akordové progrese jako audio + MIDI semena, která omezují generátory hudby AI, jako je Suno.",
+    lblDlgSettingsAboutCredits:             "Zásluhy nástrojů",
+    msgDlgSettingsAboutCreditsIntro:        "Vzorkované nástroje pocházejí z volně licencovaných nahrávacích relací, od:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akordová progrese",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Jeden takt na řádek: každý řádek má stejný čas a akordy na něm si tento čas rovnoměrně rozdělí (samostatný akord na řádku zabírá celý takt). Značky [Section], prázdné řádky a | jsou ignorovány. Podporovány jsou lomítkové akordy (C/G), septimové (Gmaj7) a N.C.",
+    tipSeedBarsAdd:                         "Delší linky: každá linka akordů trvá o čtvrt taktu déle",
+    tipSeedBarsRemove:                      "Kratší linky: každá linka akordů trvá o čtvrt taktu méně",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Takty na řádek",
     lblSeedSig:                             "Taktové označení",
     lblSeedLoops:                           "Smyčky",
-    lblSeedStyle:                           "Styl",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to cs
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to cs
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to cs
-    optSeedStylePad:                        "Pad", // TODO: translate to cs
-    optSeedStyleDrone:                      "Drone", // TODO: translate to cs
-    optSeedStyleMarker:                     "Marker", // TODO: translate to cs
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to cs
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to cs
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to cs
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to cs
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to cs
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to cs
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to cs
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to cs
+    lblSeedStyleGroupPads:                  "Pady",
+    lblSeedStyleGroupArps:                  "Arpeggia",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Nástroj",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to cs
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to cs
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to cs
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to cs
+    lblSeedBassInstrument:                  "Basy",
+    optSeedBassInstrumentSame:              "Stejné jako nástroj",
+    plhSeedInstrumentFilter:                "Zadejte pro filtrování…",
+    optSeedInstrumentFamilyAll:             "Všechny",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to cs
-    tabSeedRender:                          "Render", // TODO: translate to cs
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to cs
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to cs
-    lblSeedKnobTune:                        "Tune", // TODO: translate to cs
-    tipSeedMute:                            "Mute", // TODO: translate to cs
-    tipSeedUnmute:                          "Unmute", // TODO: translate to cs
-    lblSeedReverb:                          "Reverb", // TODO: translate to cs
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to cs
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to cs
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to cs
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to cs
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to cs
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to cs
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to cs
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to cs
+    tabSeedMusic:                           "Hudba",
+    tabSeedRender:                          "Renderování",
+    lblSeedKnobVolume:                      "hlasitost",
+    lblSeedKnobOctave:                      "oktáva",
+    lblSeedKnobTune:                        "ladění",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Styl",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Žádné",
+    optSeedSwingLight:                      "Lehké",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Jednoduché",
+    lblSeedSigGroupComplex:                 "Složité",
+    lblSeedKnobVel:                         "rychlost",
+    lblSeedKnobLen:                         "délka",
+    btnSeedHold:                            "Podržet",
+    tipSeedLaneMirror:                      "Otočit pruh. Nastavení, ne úprava — obrazec si zachovává svůj název a lze jej znovu vypnout.",
+    tipSeedLaneShiftLeft:                   "Posunout doleva",
+    tipSeedLaneShiftRight:                  "Posunout doprava",
+    tipSeedLaneClear:                       "Vyčistit stopu",
+    tipSeedSlots:                           "Kroky v dráze — + a − nahoře přidávají nebo odebírají jeden.",
+    tipSeedRowAll:                          "Celý akord v tomto kroku — vysoký blok Chord Playeru (tři noty na trojzvuku, čtyři na septakordu). Klikněte na řádek tónů v jeho sloupci, abyste tam blok spustili.",
+    tipSeedRowFifth:                        "Kvinta nad základním tónem — řádek BF Chord Playeru.",
+    tipSeedRowDegree:                       "Jeden akordový tón: 1 = základní tón, 2, 3, 4 nahoru. Za velikostí akordu je tón o oktávu výše (C1–C4 Chord Player). Skládejte několik do jednoho sloupce pro vlastní akord.",
+    tipSeedLaneAddStep:                     "Přidat krok na konec pruhu",
+    tipSeedLaneRemoveStep:                  "Odebrat poslední krok pruhu",
+    lblSeedBeatDiv:                         "Dělení taktu",
+    tipSeedBeatDiv:                         "Kroky na dobu, pro obě dráhy (B/2 = osminy, B/3 = trioly, B/4 = šestnáctiny). Kroky zůstávají a figura mění rychlost, jako v Chord Playeru.",
+    lblSeedChords:                          "Akordy",
+    tipSeedChordsEdit:                      "Upravit akordy jako text — Ctrl+Enter nebo Escape pro návrat",
+    tipSeedInstrumentPrev:                  "Předchozí nástroj v seznamu",
+    tipSeedInstrumentNext:                  "Další nástroj v seznamu",
+    lblSeedMode:                            "režim",
+    tipSeedModeEdit:                        "Upravit poznámky: kliknutím na buňku přidáte poznámku, kliknutím na poznámku ji odeberete.",
+    tipSeedModeSettings:                    "Nastavení poznámek: kliknutím na poznámku ji vyberete a poté nastavíte její příznaky.",
+    lblSeedFlagOctave:                      "oktáva",
+    lblSeedFlagScaleStep:                   "stupeň stupnice",
+    lblSeedFlagLevel:                       "úroveň",
+    lblSeedFlagLength:                      "délka",
+    lblSeedFlagCondition:                   "podmínka",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "O oktávu výše",
+    tipSeedFlagOctDown:                     "O oktávu níže",
+    tipSeedFlagScaleUp:                     "Průchodná nota: o jeden stupeň stupnice nahoru",
+    tipSeedFlagScaleDown:                   "Průchodná nota: o jeden stupeň stupnice dolů",
+    tipSeedFlagAccent:                      "Akcent",
+    tipSeedFlagGhost:                       "Duch",
+    tipSeedFlagSustain:                     "Podržet do konce akordu",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Pouze v poslední době akordu",
+    tipSeedFlagNotLast:                     "Pouze mimo poslední dobu",
+    tipSeedFlagEarly:                       "Předčasně: tento slot hraje další akord",
+    tipSeedMute:                            "Ztlumit",
+    tipSeedUnmute:                          "Zrušit ztlumení",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Suchý: bez místnosti",
+    optSeedReverbRoom:                      "Místnost: malá a blízká",
+    optSeedReverbChamber:                   "Komora: střední, teplá",
+    optSeedReverbHall:                      "Sál: velký a otevřený",
+    optSeedReverbChurch:                    "Kostel: velmi velký, dlouhý dozvuk",
+    lblSeedHighpass:                        "Horní propust (Hz)",
+    lblSeedLowpass:                         "Dolní propust (Hz)",
     optSeedInstrumentSine:                  "Sinus: vestavěný syntezátor",
     lblSeedFormat:                          "Formát",
     optSeedFormatMp3:                       "MP3",
@@ -3376,7 +4797,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Nejprve uložte seed do souboru .yams — zvuk se vykreslí vedle něj.",
     tipSeedLoad:                            "Načíst seed",
     ttlSeedLoad:                            "Otevřít soubor seed",
-    lblSeedLoadFilter:                      "Soubor seed (.yams)",
+    lblSeedLoadFilter:                      "Soubor Seed (.yams)",
     msgSeedLoadFailed:                      "Nepodařilo se načíst tento soubor seed",
     tipSeedNew:                             "Nové semeno",
     tipSeedTabClose:                        "Zavřít",
@@ -3431,53 +4852,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genererer akkordprogressioner som lyd- og MIDI-frø, der begrænser AI-musikgeneratorer som Suno.",
+    lblDlgSettingsAboutCredits:             "Instrumentkreditter",
+    msgDlgSettingsAboutCreditsIntro:        "De samplede instrumenter kommer fra frit licenserede optagelsessessioner, af:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akkordprogression",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Én takt pr. linje: hver linje får lige lang tid, og akkorderne på den deler tiden jævnt (en akkord alene på en linje holder hele takten). [Section]-tags, tomme linjer og | ignoreres. Skråstregakkorder (C/G), 7'ere (Gmaj7) og N.C. understøttes.",
+    tipSeedBarsAdd:                         "Længere linjer: hver akkordlinje varer en kvart takt længere",
+    tipSeedBarsRemove:                      "Kortere linjer: hver akkordlinje varer en kvart takt kortere",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Takter per linje",
     lblSeedSig:                             "Taktart",
     lblSeedLoops:                           "Gentagelser",
-    lblSeedStyle:                           "Stil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to da
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to da
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to da
-    optSeedStylePad:                        "Pad", // TODO: translate to da
-    optSeedStyleDrone:                      "Drone", // TODO: translate to da
-    optSeedStyleMarker:                     "Marker", // TODO: translate to da
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to da
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to da
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to da
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to da
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to da
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to da
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to da
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to da
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpeggioer",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "rumklang",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to da
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to da
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to da
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to da
+    lblSeedBassInstrument:                  "Bas",
+    optSeedBassInstrumentSame:              "Samme som instrument",
+    plhSeedInstrumentFilter:                "Skriv for at filtrere…",
+    optSeedInstrumentFamilyAll:             "Alle",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to da
-    tabSeedRender:                          "Render", // TODO: translate to da
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to da
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to da
-    lblSeedKnobTune:                        "Tune", // TODO: translate to da
-    tipSeedMute:                            "Mute", // TODO: translate to da
-    tipSeedUnmute:                          "Unmute", // TODO: translate to da
-    lblSeedReverb:                          "Reverb", // TODO: translate to da
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to da
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to da
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to da
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to da
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to da
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to da
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to da
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to da
+    tabSeedMusic:                           "Musik",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "lydstyrke",
+    lblSeedKnobOctave:                      "oktav",
+    lblSeedKnobTune:                        "stemning",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stil",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Ingen",
+    optSeedSwingLight:                      "Let",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Enkel",
+    lblSeedSigGroupComplex:                 "Kompleks",
+    lblSeedKnobVel:                         "hastighed",
+    lblSeedKnobLen:                         "længde",
+    btnSeedHold:                            "Hold",
+    tipSeedLaneMirror:                      "Vend banen. En indstilling, ikke en redigering — figuren beholder sit navn og kan slås fra igen.",
+    tipSeedLaneShiftLeft:                   "Skift til venstre",
+    tipSeedLaneShiftRight:                  "Forskyd til højre",
+    tipSeedLaneClear:                       "Ryd banen",
+    tipSeedSlots:                           "Trin i sporet — + og − ovenfor tilføjer eller fjerner et.",
+    tipSeedRowAll:                          "Hele akkorden i dette trin — Chord Players høje blok (tre toner på en treklang, fire på en septim). Klik på en tonerrække i dens kolonne for at starte blokken der.",
+    tipSeedRowFifth:                        "Kvinten over grundtonen — Chord Players BF-række.",
+    tipSeedRowDegree:                       "Én akkordtone: 1 = grundtone, 2, 3, 4 opad. Ud over akkordens størrelse er tonen en oktav op (Chord Player C1–C4). Stabel flere i én kolonne for en egen akkord.",
+    tipSeedLaneAddStep:                     "Tilføj et trin i slutningen af banen",
+    tipSeedLaneRemoveStep:                  "Fjern banens sidste trin",
+    lblSeedBeatDiv:                         "Taktinddeling",
+    tipSeedBeatDiv:                         "Trin pr. slag, for begge spor (B/2 = ottendedele, B/3 = trioler, B/4 = sekstendedele). Trinene forbliver, og figuren ændrer hastighed, som i Chord Player.",
+    lblSeedChords:                          "Akkorder",
+    tipSeedChordsEdit:                      "Rediger akkorderne som tekst — Ctrl+Enter eller Escape for at vende tilbage",
+    tipSeedInstrumentPrev:                  "Forrige instrument på listen",
+    tipSeedInstrumentNext:                  "Næste instrument på listen",
+    lblSeedMode:                            "tilstand",
+    tipSeedModeEdit:                        "Rediger noter: klik på en celle for at tilføje en note, klik på en note for at fjerne den.",
+    tipSeedModeSettings:                    "Noteindstillinger: klik på en note for at vælge den, og indstil derefter dens flag.",
+    lblSeedFlagOctave:                      "oktav",
+    lblSeedFlagScaleStep:                   "skalatrin",
+    lblSeedFlagLevel:                       "niveau",
+    lblSeedFlagLength:                      "længde",
+    lblSeedFlagCondition:                   "betingelse",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktav op",
+    tipSeedFlagOctDown:                     "Oktav ned",
+    tipSeedFlagScaleUp:                     "Gennemgangstone: et skalatrin op",
+    tipSeedFlagScaleDown:                   "Gennemgangstone: et skalatrin ned",
+    tipSeedFlagAccent:                      "Accent",
+    tipSeedFlagGhost:                       "Spøgelse",
+    tipSeedFlagSustain:                     "Hold ud til akkordens slutning",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Kun på sidste slag i akkorden",
+    tipSeedFlagNotLast:                     "Kun uden for sidste slag",
+    tipSeedFlagEarly:                       "Tidligt: denne plads stemmer næste akkord",
+    tipSeedMute:                            "Slå lyd fra",
+    tipSeedUnmute:                          "Slå lyd til",
+    lblSeedReverb:                          "Rumklang",
+    optSeedReverbNone:                      "Tør: intet rum",
+    optSeedReverbRoom:                      "Rum: lille og tæt",
+    optSeedReverbChamber:                   "Kammer: medium, varm",
+    optSeedReverbHall:                      "Hal: stor og åben",
+    optSeedReverbChurch:                    "Kirke: meget stor, lang efterklang",
+    lblSeedHighpass:                        "Højpas (Hz)",
+    lblSeedLowpass:                         "Lavpas (Hz)",
     optSeedInstrumentSine:                  "Sinus: indbygget synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -3548,54 +5018,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Luo sointukulkuja ääni- ja MIDI-siemeniksi, jotka rajoittavat tekoälymusiikkigeneraattoreita kuten Sunoa.",
+    lblDlgSettingsAboutCredits:             "Instrumenttien tekijätiedot",
+    msgDlgSettingsAboutCreditsIntro:        "Näytteistetyt instrumentit ovat peräisin vapaasti lisensoiduista äänityssessioista, tekijä:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Sointukulku",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Yksi tahti per rivi: jokainen rivi saa yhtä paljon aikaa, ja sen soinnut jakavat ajan tasaisesti (yksi sointu rivillä vie koko tahdin). [Section]-tagit, tyhjät rivit ja | merkit ohitetaan. Vinoviivasoinnut (C/G), 7-soinnut (Gmaj7) ja N.C. tuetaan.",
+    tipSeedBarsAdd:                         "Pidemmät rivit: jokainen sointurivi kestää neljäsosatahdin pidempään",
+    tipSeedBarsRemove:                      "Lyhyemmät rivit: jokainen sointurivi kestää neljäsosatahdin lyhyemmän ajan",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Tahdit per rivi",
     lblSeedSig:                             "Tahtilaji",
     lblSeedLoops:                           "Silmukat",
-    lblSeedStyle:                           "Tyyli",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to fi
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to fi
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to fi
-    optSeedStylePad:                        "Pad", // TODO: translate to fi
-    optSeedStyleDrone:                      "Drone", // TODO: translate to fi
-    optSeedStyleMarker:                     "Marker", // TODO: translate to fi
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to fi
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to fi
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to fi
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to fi
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to fi
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to fi
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to fi
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to fi
+    lblSeedStyleGroupPads:                  "Padit",
+    lblSeedStyleGroupArps:                  "Arpeggiot",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "kaiku",
     lblSeedInstrument:                      "Instrumentti",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to fi
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to fi
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to fi
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to fi
+    lblSeedBassInstrument:                  "Basso",
+    optSeedBassInstrumentSame:              "Sama kuin instrumentti",
+    plhSeedInstrumentFilter:                "Kirjoita suodattaaksesi…",
+    optSeedInstrumentFamilyAll:             "Kaikki",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to fi
-    tabSeedRender:                          "Render", // TODO: translate to fi
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to fi
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to fi
-    lblSeedKnobTune:                        "Tune", // TODO: translate to fi
-    tipSeedMute:                            "Mute", // TODO: translate to fi
-    tipSeedUnmute:                          "Unmute", // TODO: translate to fi
-    lblSeedReverb:                          "Reverb", // TODO: translate to fi
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to fi
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to fi
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to fi
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to fi
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to fi
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to fi
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to fi
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to fi
-    optSeedInstrumentSine:                  "Siniaalto: sisäänrakennettu syntikka",
+    tabSeedMusic:                           "Musiikki",
+    tabSeedRender:                          "Renderöinti",
+    lblSeedKnobVolume:                      "äänenvoimakkuus",
+    lblSeedKnobOctave:                      "oktaavi",
+    lblSeedKnobTune:                        "vire",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Tyyli",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Ei mitään",
+    optSeedSwingLight:                      "Kevyt",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Yksinkertainen",
+    lblSeedSigGroupComplex:                 "Monimutkainen",
+    lblSeedKnobVel:                         "nopeus",
+    lblSeedKnobLen:                         "pituus",
+    btnSeedHold:                            "Pidä",
+    tipSeedLaneMirror:                      "Käännä kaista. Asetus, ei muokkaus — kuvio säilyttää nimensä ja sen voi kytkeä uudelleen pois päältä.",
+    tipSeedLaneShiftLeft:                   "Siirrä vasemmalle",
+    tipSeedLaneShiftRight:                  "Siirrä oikealle",
+    tipSeedLaneClear:                       "Tyhjennä kaista",
+    tipSeedSlots:                           "Askeleet kaistalla — yllä olevat + ja − lisäävät tai poistavat yhden.",
+    tipSeedRowAll:                          "Koko sointu tässä vaiheessa — Chord Playerin korkea lohko (kolme nuottia kolmisoinnussa, neljä septimisoinnussa). Napsauta sävelriviä sen sarakkeessa aloittaaksesi lohkon sieltä.",
+    tipSeedRowFifth:                        "Kvintti perussävelen yläpuolella — Chord Playerin BF-rivi.",
+    tipSeedRowDegree:                       "Yksi sointusävel: 1 = perussävel, 2, 3, 4 ylöspäin. Sointun koon ylittyessä sävel on oktaavia ylempänä (Chord Playerin C1–C4). Pinoamalla useita yhteen sarakkeeseen voit luoda oman sointusi.",
+    tipSeedLaneAddStep:                     "Lisää vaihe kaistan loppuun",
+    tipSeedLaneRemoveStep:                  "Poista kaistan viimeinen vaihe",
+    lblSeedBeatDiv:                         "Tahdin jako",
+    tipSeedBeatDiv:                         "Askeleet per isku, molemmille kaistoille (B/2 = kahdeksasosat, B/3 = triolit, B/4 = kuudestoistaosat). Askeleet pysyvät ja kuvio muuttaa nopeutta, kuten Chord Playerissa.",
+    lblSeedChords:                          "Soinnut",
+    tipSeedChordsEdit:                      "Muokkaa sointuja tekstinä — Ctrl+Enter tai Esc palataksesi",
+    tipSeedInstrumentPrev:                  "Edellinen instrumentti luettelossa",
+    tipSeedInstrumentNext:                  "Seuraava instrumentti luettelossa",
+    lblSeedMode:                            "tila",
+    tipSeedModeEdit:                        "Muokkaa muistiinpanoja: lisää muistiinpano napsauttamalla solua, poista muistiinpano napsauttamalla muistiinpanoa.",
+    tipSeedModeSettings:                    "Muistiinpanoasetukset: valitse muistiinpano napsauttamalla sitä ja aseta sitten sen liput.",
+    lblSeedFlagOctave:                      "oktaavi",
+    lblSeedFlagScaleStep:                   "asteikon askel",
+    lblSeedFlagLevel:                       "taso",
+    lblSeedFlagLength:                      "kesto",
+    lblSeedFlagCondition:                   "ehto",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktaavi ylös",
+    tipSeedFlagOctDown:                     "Oktaavi alas",
+    tipSeedFlagScaleUp:                     "Läpikulkuääni: yksi asteikkoaskel ylös",
+    tipSeedFlagScaleDown:                   "Läpikulkuääni: yksi asteikkoaskel alas",
+    tipSeedFlagAccent:                      "Korostus",
+    tipSeedFlagGhost:                       "Haamu",
+    tipSeedFlagSustain:                     "Kestä soinnun loppuun",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Vain soinnun viimeisellä iskulla",
+    tipSeedFlagNotLast:                     "Vain viimeisen iskun ulkopuolella",
+    tipSeedFlagEarly:                       "Aikaisin: tämä paikka soittaa seuraavan soinnun",
+    tipSeedMute:                            "Mykistä",
+    tipSeedUnmute:                          "Poista mykistys",
+    lblSeedReverb:                          "Kaiku",
+    optSeedReverbNone:                      "Kuiva: ei huonetta",
+    optSeedReverbRoom:                      "Huone: pieni ja lähellä",
+    optSeedReverbChamber:                   "Kammio: keskikokoinen, lämmin",
+    optSeedReverbHall:                      "Sali: suuri ja avoin",
+    optSeedReverbChurch:                    "Kirkko: erittäin suuri, pitkä häntä",
+    lblSeedHighpass:                        "Ylipäästö (Hz)",
+    lblSeedLowpass:                         "Alipäästö (Hz)",
+    optSeedInstrumentSine:                  "Sini: sisäänrakennettu syntikka",
     lblSeedFormat:                          "Muoto",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -3610,7 +5129,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Tallenna siemen ensin .yams-tiedostoon — ääni renderöidään sen viereen.",
     tipSeedLoad:                            "Lataa siemen",
     ttlSeedLoad:                            "Avaa siementiedosto",
-    lblSeedLoadFilter:                      "Siementiedosto (.yams)",
+    lblSeedLoadFilter:                      "Seed-tiedosto (.yams)",
     msgSeedLoadFailed:                      "Tätä siementiedostoa ei voitu ladata",
     tipSeedNew:                             "Uusi siemen",
     tipSeedTabClose:                        "Sulje",
@@ -3665,54 +5184,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Menghasilkan progresi kord kepada benih audio + MIDI yang mengekang penjana muzik AI seperti Suno.",
+    lblDlgSettingsAboutCredits:             "Kredit instrumen",
+    msgDlgSettingsAboutCreditsIntro:        "Instrumen yang disampel berasal daripada sesi rakaman berlesen bebas, oleh:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progresi kord",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Satu bar per baris: setiap baris mendapat masa yang sama, dan kord di atasnya membahagi masa itu secara sama rata (satu kord sahaja pada satu baris memegang keseluruhan bar). Tag [Section], baris kosong dan tanda | diabaikan. Kord slash (C/G), 7ths (Gmaj7) dan N.C. disokong.",
+    tipSeedBarsAdd:                         "Baris lebih panjang: setiap baris kord berlangsung suku bar lebih lama",
+    tipSeedBarsRemove:                      "Baris lebih pendek: setiap baris kord berlangsung suku bar lebih singkat",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Bar per baris",
     lblSeedSig:                             "Tanda masa",
     lblSeedLoops:                           "Gelung",
-    lblSeedStyle:                           "Gaya",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ms
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ms
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ms
-    optSeedStylePad:                        "Pad", // TODO: translate to ms
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ms
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ms
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ms
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ms
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ms
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ms
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ms
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ms
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ms
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ms
+    lblSeedStyleGroupPads:                  "Pad",
+    lblSeedStyleGroupArps:                  "Arpegio",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrumen",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ms
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ms
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ms
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ms
+    lblSeedBassInstrument:                  "Bes",
+    optSeedBassInstrumentSame:              "Sama seperti instrumen",
+    plhSeedInstrumentFilter:                "Taip untuk tapis…",
+    optSeedInstrumentFamilyAll:             "Semua",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ms
-    tabSeedRender:                          "Render", // TODO: translate to ms
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ms
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ms
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ms
-    tipSeedMute:                            "Mute", // TODO: translate to ms
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ms
-    lblSeedReverb:                          "Reverb", // TODO: translate to ms
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ms
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ms
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ms
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ms
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ms
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ms
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ms
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ms
-    optSeedInstrumentSine:                  "Sinus: sintesis terbina dalam",
+    tabSeedMusic:                           "Muzik",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "kelantangan",
+    lblSeedKnobOctave:                      "oktaf",
+    lblSeedKnobTune:                        "tala",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Gaya",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Tiada",
+    optSeedSwingLight:                      "Ringan",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Mudah",
+    lblSeedSigGroupComplex:                 "Kompleks",
+    lblSeedKnobVel:                         "kelajuan",
+    lblSeedKnobLen:                         "panjang",
+    btnSeedHold:                            "Tahan",
+    tipSeedLaneMirror:                      "Balikkan lorong. Satu tetapan, bukan suntingan — angka mengekalkan namanya dan boleh dimatikan semula.",
+    tipSeedLaneShiftLeft:                   "Anjak kiri",
+    tipSeedLaneShiftRight:                  "Alihkanan",
+    tipSeedLaneClear:                       "Kosongkan lorong",
+    tipSeedSlots:                           "Langkah dalam lorong — + dan − di atas menambah atau membuang satu.",
+    tipSeedRowAll:                          "Keseluruhan kord dalam langkah ini — blok tinggi Chord Player (tiga not pada triad, empat pada seventh). Klik baris nada dalam lajurnya untuk memulakan blok di sana.",
+    tipSeedRowFifth:                        "Kelima di atas akar — baris BF Chord Player.",
+    tipSeedRowDegree:                       "Satu nada kord: 1 = akar, 2, 3, 4 ke atas. Melebihi saiz kord, nada adalah satu oktaf lebih tinggi (C1–C4 Chord Player). Susun beberapa dalam satu lajur untuk kord anda sendiri.",
+    tipSeedLaneAddStep:                     "Tambah langkah di hujung lorong",
+    tipSeedLaneRemoveStep:                  "Buang langkah terakhir lorong",
+    lblSeedBeatDiv:                         "Pembahagian rentak",
+    tipSeedBeatDiv:                         "Langkah per rentak, untuk kedua-dua lorong (B/2 = not krocet, B/3 = triplet, B/4 = not semikrocet). Langkah kekal dan bentuk berubah kelajuan, seperti dalam Chord Player.",
+    lblSeedChords:                          "Kord",
+    tipSeedChordsEdit:                      "Edit kord sebagai teks — Ctrl+Enter atau Escape untuk kembali",
+    tipSeedInstrumentPrev:                  "Instrumen sebelumnya dalam senarai",
+    tipSeedInstrumentNext:                  "Instrumen seterusnya dalam senarai",
+    lblSeedMode:                            "mod",
+    tipSeedModeEdit:                        "Edit nota: klik sel untuk menambah nota, klik nota untuk membuangnya.",
+    tipSeedModeSettings:                    "Tetapan nota: klik nota untuk memilihnya, kemudian tetapkan benderanya.",
+    lblSeedFlagOctave:                      "oktaf",
+    lblSeedFlagScaleStep:                   "langkah skala",
+    lblSeedFlagLevel:                       "tahap",
+    lblSeedFlagLength:                      "tempoh",
+    lblSeedFlagCondition:                   "syarat",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktaf atas",
+    tipSeedFlagOctDown:                     "Oktaf bawah",
+    tipSeedFlagScaleUp:                     "Nota laluan: satu langkah skala ke atas",
+    tipSeedFlagScaleDown:                   "Nota laluan: satu langkah skala ke bawah",
+    tipSeedFlagAccent:                      "Aksen",
+    tipSeedFlagGhost:                       "Hantu",
+    tipSeedFlagSustain:                     "Kekalkan hingga akhir kord",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Hanya pada rentak terakhir kord",
+    tipSeedFlagNotLast:                     "Hanya di luar rentak terakhir",
+    tipSeedFlagEarly:                       "Awal: slot ini membunyikan kord seterusnya",
+    tipSeedMute:                            "Senyapkan",
+    tipSeedUnmute:                          "Nyahsenyap",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Kering: tiada bilik",
+    optSeedReverbRoom:                      "Bilik: kecil dan dekat",
+    optSeedReverbChamber:                   "Ruang: sederhana, hangat",
+    optSeedReverbHall:                      "Dewan: besar dan terbuka",
+    optSeedReverbChurch:                    "Gereja: sangat besar, ekor panjang",
+    lblSeedHighpass:                        "Highpass (Hz)",
+    lblSeedLowpass:                         "Lowpass (Hz)",
+    optSeedInstrumentSine:                  "Sinus: pensintesis terbina dalam",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -3727,7 +5295,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Simpan seed ke fail .yams dahulu — audio akan dirender di sebelahnya.",
     tipSeedLoad:                            "Muat seed",
     ttlSeedLoad:                            "Buka fail seed",
-    lblSeedLoadFilter:                      "Fail seed (.yams)",
+    lblSeedLoadFilter:                      "Fail Seed (.yams)",
     msgSeedLoadFailed:                      "Tidak dapat memuatkan fail seed itu",
     tipSeedNew:                             "Benih baharu",
     tipSeedTabClose:                        "Tutup",
@@ -3782,53 +5350,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Ստեղծում է ակորդային հաջորդականություններ որպես աուդիո + MIDI սերմեր, որոնք սահմանափակում են AI երաժշտական գեներատորները, ինչպիսին է Suno-ն։",
+    lblDlgSettingsAboutCredits:             "Գործիքի հեղինակներ",
+    msgDlgSettingsAboutCreditsIntro:        "Նմուշառված գործիքները ստացվել են ազատ լիցենզավորված ձայնագրման սեսիաներից, կողմից՝",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Ակորդային հաջորդականություն",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Մեկ տակտ մեկ տողում. յուրաքանչյուր տող ստանում է հավասար ժամանակ, և դրա ակորդները հավասարաչափ բաժանում են այդ ժամանակը (մեկ ակորդը մեկ տողում զբաղեցնում է ամբողջ տակտը): [Section] թեգերը, դատարկ տողերը և | նշանները անտեսվում են: Աջակցվում են սլեշ ակորդները (C/G), 7-րդները (Gmaj7) և N.C.:",
+    tipSeedBarsAdd:                         "Ավելի երկար տողեր. ակորդների յուրաքանչյուր տող տևում է մեկ քառորդ տակտ ավելի",
+    tipSeedBarsRemove:                      "Ավելի կարճ տողեր. ակորդների յուրաքանչյուր տող տևում է մեկ քառորդ տակտ պակաս",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Տակտեր տողի համար",
     lblSeedSig:                             "Ժամանակի չափ",
     lblSeedLoops:                           "Օղակներ",
-    lblSeedStyle:                           "Ոճ",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to hy
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to hy
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to hy
-    optSeedStylePad:                        "Pad", // TODO: translate to hy
-    optSeedStyleDrone:                      "Drone", // TODO: translate to hy
-    optSeedStyleMarker:                     "Marker", // TODO: translate to hy
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to hy
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to hy
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to hy
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to hy
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to hy
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to hy
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to hy
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to hy
+    lblSeedStyleGroupPads:                  "Փեդեր",
+    lblSeedStyleGroupArps:                  "Արպեջիոներ",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Ռևերբ",
     lblSeedInstrument:                      "Գործիք",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to hy
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to hy
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to hy
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to hy
+    lblSeedBassInstrument:                  "Բաս",
+    optSeedBassInstrumentSame:              "Նույնը, ինչ գործիքը",
+    plhSeedInstrumentFilter:                "Մուտքագրեք զտելու համար…",
+    optSeedInstrumentFamilyAll:             "Բոլորը",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to hy
-    tabSeedRender:                          "Render", // TODO: translate to hy
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to hy
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to hy
-    lblSeedKnobTune:                        "Tune", // TODO: translate to hy
-    tipSeedMute:                            "Mute", // TODO: translate to hy
-    tipSeedUnmute:                          "Unmute", // TODO: translate to hy
-    lblSeedReverb:                          "Reverb", // TODO: translate to hy
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to hy
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to hy
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to hy
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to hy
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to hy
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to hy
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to hy
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to hy
+    tabSeedMusic:                           "Երաժշտություն",
+    tabSeedRender:                          "Ռենդեր",
+    lblSeedKnobVolume:                      "ձայնի ուժգնություն",
+    lblSeedKnobOctave:                      "օկտավա",
+    lblSeedKnobTune:                        "լարում",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Ոճ",
+    lblSeedSwing:                           "Սվինգ",
+    optSeedSwingNone:                       "Ոչ մեկը",
+    optSeedSwingLight:                      "Թեթև",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Պարզ",
+    lblSeedSigGroupComplex:                 "Բարդ",
+    lblSeedKnobVel:                         "արագություն",
+    lblSeedKnobLen:                         "երկարություն",
+    btnSeedHold:                            "Պահել",
+    tipSeedLaneMirror:                      "Շրջել գիծը։ Կարգավորում է, ոչ թե խմբագրում — պատկերը պահպանում է իր անունը և նորից անջատվում է։",
+    tipSeedLaneShiftLeft:                   "Տեղաշարժել ձախ",
+    tipSeedLaneShiftRight:                  "Շեղել աջ",
+    tipSeedLaneClear:                       "Մաքրել գիծը",
+    tipSeedSlots:                           "Քայլեր գծում — վերևի + և − ավելացնում կամ հեռացնում են մեկը։",
+    tipSeedRowAll:                          "Ամբողջ ակորդն այս քայլում — Chord Player-ի բարձր բլոկը (երեք նոտա տրիադի վրա, չորսը՝ սեպտիմի). Սեղմեք տոնային շարքի վրա իր սյունակում՝ բլոկն այնտեղ սկսելու համար:",
+    tipSeedRowFifth:                        "Հինգերորդը հիմնական տոնից վեր — Chord Player-ի BF շարքը:",
+    tipSeedRowDegree:                       "Մեկ ակորդի տոն՝ 1 = հիմնական տոն, 2, 3, 4 վերև. Ակորդի չափից դուրս, տոնը մեկ օկտավա վերև է (Chord Player-ի C1–C4): Կուտակեք մի քանիսը մեկ սյունակում՝ ձեր սեփական ակորդը ստեղծելու համար:",
+    tipSeedLaneAddStep:                     "Ավելացնել քայլ ուղու վերջում",
+    tipSeedLaneRemoveStep:                  "Հեռացնել ուղու վերջին քայլը",
+    lblSeedBeatDiv:                         "Ռիթմի բաժանում",
+    tipSeedBeatDiv:                         "Քայլեր ըստ զարկի, երկու գծերի համար (B/2 = ութերորդականներ, B/3 = եռյակներ, B/4 = տասնվեցերորդականներ)։ Քայլերը մնում են, և պատկերը փոխում է արագությունը, ինչպես Chord Player-ում։",
+    lblSeedChords:                          "Ակորդներ",
+    tipSeedChordsEdit:                      "Խմբագրել ակորդները որպես տեքստ — Ctrl+Enter կամ Escape՝ վերադառնալու համար",
+    tipSeedInstrumentPrev:                  "Նախորդ գործիքը ցուցակում",
+    tipSeedInstrumentNext:                  "Հաջորդ գործիքը ցուցակում",
+    lblSeedMode:                            "ռեժիմ",
+    tipSeedModeEdit:                        "Ծանոթագրությունների խմբագրում. սեղմեք բջիջի վրա՝ ծանոթագրություն ավելացնելու համար, սեղմեք ծանոթագրության վրա՝ այն հեռացնելու համար։",
+    tipSeedModeSettings:                    "Ծանոթագրության կարգավորումներ. սեղմեք ծանոթագրության վրա՝ այն ընտրելու համար, ապա սահմանեք դրա դրոշները։",
+    lblSeedFlagOctave:                      "օկտավա",
+    lblSeedFlagScaleStep:                   "սանդղակի աստիճան",
+    lblSeedFlagLevel:                       "մակարդակ",
+    lblSeedFlagLength:                      "տևողություն",
+    lblSeedFlagCondition:                   "պայման",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Օկտավա վերև",
+    tipSeedFlagOctDown:                     "Օկտավա ներքև",
+    tipSeedFlagScaleUp:                     "Անցողիկ նոտա. մեկ սանդղակային քայլ վերև",
+    tipSeedFlagScaleDown:                   "Անցողիկ նոտա. մեկ սանդղակային քայլ ներքև",
+    tipSeedFlagAccent:                      "Շեշտադրում",
+    tipSeedFlagGhost:                       "Ուրվական",
+    tipSeedFlagSustain:                     "Պահպանել մինչև ակորդի ավարտը",
+    tipSeedFlagStaccato:                    "Ստակատո",
+    tipSeedFlagLast:                        "Միայն ակորդի վերջին բիթում",
+    tipSeedFlagNotLast:                     "Միայն վերջին բիթից դուրս",
+    tipSeedFlagEarly:                       "Վաղ. այս բնիկը հնչեցնում է հաջորդ ակորդը",
+    tipSeedMute:                            "Անձայնացնել",
+    tipSeedUnmute:                          "Ձայնացնել",
+    lblSeedReverb:                          "Ռևերբ",
+    optSeedReverbNone:                      "Չոր: առանց սենյակի",
+    optSeedReverbRoom:                      "Սենյակ: փոքր և մոտ",
+    optSeedReverbChamber:                   "Խցիկ: միջին, տաք",
+    optSeedReverbHall:                      "Դահլիճ: մեծ և բաց",
+    optSeedReverbChurch:                    "Եկեղեցի: շատ մեծ, երկար պոչ",
+    lblSeedHighpass:                        "Բարձր անցում (Հց)",
+    lblSeedLowpass:                         "Ցածր անցում (Հց)",
     optSeedInstrumentSine:                  "Սինուս: ներկառուցված սինթեզատոր",
     lblSeedFormat:                          "Ձևաչափ",
     optSeedFormatMp3:                       "MP3",
@@ -3844,7 +5461,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Նախ պահպանեք սիդը .yams ֆայլում — աուդիոն կմշակվի դրա կողքին։",
     tipSeedLoad:                            "Բեռնել սիդ",
     ttlSeedLoad:                            "Բացել սիդ ֆայլը",
-    lblSeedLoadFilter:                      "Սիդ ֆայլ (.yams)",
+    lblSeedLoadFilter:                      "Seed ֆայլ (.yams)",
     msgSeedLoadFailed:                      "Հնարավոր չեղավ բեռնել այդ սիդ ֆայլը",
     tipSeedNew:                             "Նոր սերմ",
     tipSeedTabClose:                        "Փակել",
@@ -3899,53 +5516,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Генерира акордови прогресии като аудио + MIDI семена, които ограничават AI музикални генератори като Suno.",
+    lblDlgSettingsAboutCredits:             "Автори на инструменти",
+    msgDlgSettingsAboutCreditsIntro:        "Семплираните инструменти идват от свободно лицензирани звукозаписни сесии, от:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Акордова прогресия",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Един такт на ред: всеки ред получава равно време, а акордите в него делят това време поравно (един акорд сам на ред заема целия такт). Таговете [Section], празните редове и | се игнорират. Поддържат се наклонени акорди (C/G), 7-ми (Gmaj7) и N.C.",
+    tipSeedBarsAdd:                         "По-дълги линии: всяка линия акорди трае една четвърт такт повече",
+    tipSeedBarsRemove:                      "По-къси линии: всяка линия акорди трае една четвърт такт по-малко",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Тактове на ред",
     lblSeedSig:                             "Тактов размер",
     lblSeedLoops:                           "Цикли",
-    lblSeedStyle:                           "Стил",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to bg
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to bg
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to bg
-    optSeedStylePad:                        "Pad", // TODO: translate to bg
-    optSeedStyleDrone:                      "Drone", // TODO: translate to bg
-    optSeedStyleMarker:                     "Marker", // TODO: translate to bg
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to bg
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to bg
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to bg
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to bg
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to bg
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to bg
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to bg
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to bg
+    lblSeedStyleGroupPads:                  "Падове",
+    lblSeedStyleGroupArps:                  "Арпежи",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Реверб",
     lblSeedInstrument:                      "Инструмент",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to bg
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to bg
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to bg
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to bg
+    lblSeedBassInstrument:                  "Бас",
+    optSeedBassInstrumentSame:              "Същото като инструмента",
+    plhSeedInstrumentFilter:                "Въведете за филтриране…",
+    optSeedInstrumentFamilyAll:             "Всички",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to bg
-    tabSeedRender:                          "Render", // TODO: translate to bg
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to bg
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to bg
-    lblSeedKnobTune:                        "Tune", // TODO: translate to bg
-    tipSeedMute:                            "Mute", // TODO: translate to bg
-    tipSeedUnmute:                          "Unmute", // TODO: translate to bg
-    lblSeedReverb:                          "Reverb", // TODO: translate to bg
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to bg
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to bg
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to bg
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to bg
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to bg
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to bg
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to bg
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to bg
+    tabSeedMusic:                           "Музика",
+    tabSeedRender:                          "Рендер",
+    lblSeedKnobVolume:                      "сила на звука",
+    lblSeedKnobOctave:                      "октава",
+    lblSeedKnobTune:                        "настройка",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Стил",
+    lblSeedSwing:                           "Суинг",
+    optSeedSwingNone:                       "Няма",
+    optSeedSwingLight:                      "Лек",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Прост",
+    lblSeedSigGroupComplex:                 "Сложен",
+    lblSeedKnobVel:                         "скорост",
+    lblSeedKnobLen:                         "дължина",
+    btnSeedHold:                            "Задръж",
+    tipSeedLaneMirror:                      "Обърни лентата. Настройка, не редакция — фигурата запазва името си и се изключва отново.",
+    tipSeedLaneShiftLeft:                   "Преместване наляво",
+    tipSeedLaneShiftRight:                  "Премести надясно",
+    tipSeedLaneClear:                       "Изчистване на лентата",
+    tipSeedSlots:                           "Стъпки в лентата — + и − отгоре добавят или премахват една.",
+    tipSeedRowAll:                          "Целият акорд в тази стъпка — високият блок на Chord Player (три ноти на тризвучие, четири на септакорд). Кликнете върху тонов ред в колоната му, за да стартирате блока там.",
+    tipSeedRowFifth:                        "Квинта над основния тон — BF редът на Chord Player.",
+    tipSeedRowDegree:                       "Един акорд тон: 1 = основен тон, 2, 3, 4 нагоре. Извън размера на акорда, тонът е една октава по-високо (C1–C4 на Chord Player). Подредете няколко в една колона за собствен акорд.",
+    tipSeedLaneAddStep:                     "Добави стъпка в края на лентата",
+    tipSeedLaneRemoveStep:                  "Премахни последната стъпка на лентата",
+    lblSeedBeatDiv:                         "Деление на такта",
+    tipSeedBeatDiv:                         "Стъпки на такт, за двете ленти (B/2 = осмини, B/3 = триоли, B/4 = шестнадесетини). Стъпките остават и фигурата променя скоростта, както в Chord Player.",
+    lblSeedChords:                          "Акорди",
+    tipSeedChordsEdit:                      "Редактирай акордите като текст — Ctrl+Enter или Escape за връщане",
+    tipSeedInstrumentPrev:                  "Предишен инструмент в списъка",
+    tipSeedInstrumentNext:                  "Следващ инструмент в списъка",
+    lblSeedMode:                            "режим",
+    tipSeedModeEdit:                        "Редактиране на бележки: щракнете върху клетка, за да добавите бележка; щракнете върху бележка, за да я премахнете.",
+    tipSeedModeSettings:                    "Настройки на бележки: щракнете върху бележка, за да я изберете, след което задайте нейните флагове.",
+    lblSeedFlagOctave:                      "октава",
+    lblSeedFlagScaleStep:                   "степен на гама",
+    lblSeedFlagLevel:                       "ниво",
+    lblSeedFlagLength:                      "продължителност",
+    lblSeedFlagCondition:                   "условие",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Октава нагоре",
+    tipSeedFlagOctDown:                     "Октава надолу",
+    tipSeedFlagScaleUp:                     "Проходна нота: една стъпка нагоре по гамата",
+    tipSeedFlagScaleDown:                   "Проходна нота: една стъпка надолу по гамата",
+    tipSeedFlagAccent:                      "Акцент",
+    tipSeedFlagGhost:                       "Призрак",
+    tipSeedFlagSustain:                     "Задръж до края на акорда",
+    tipSeedFlagStaccato:                    "Стакато",
+    tipSeedFlagLast:                        "Само в последното биене на акорда",
+    tipSeedFlagNotLast:                     "Само извън последното биене",
+    tipSeedFlagEarly:                       "По-рано: този слот озвучава следващия акорд",
+    tipSeedMute:                            "Заглушаване",
+    tipSeedUnmute:                          "Включване на звук",
+    lblSeedReverb:                          "Реверберация",
+    optSeedReverbNone:                      "Сух: без стая",
+    optSeedReverbRoom:                      "Стая: малка и близка",
+    optSeedReverbChamber:                   "Камера: средна, топла",
+    optSeedReverbHall:                      "Зала: голяма и отворена",
+    optSeedReverbChurch:                    "Църква: много голяма, дълга опашка",
+    lblSeedHighpass:                        "Високочестотен филтър (Hz)",
+    lblSeedLowpass:                         "Нискочестотен филтър (Hz)",
     optSeedInstrumentSine:                  "Синус: вграден синтезатор",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
@@ -3961,7 +5627,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Първо запазете сида във файл .yams — аудиото се рендира до него.",
     tipSeedLoad:                            "Зареди сийд",
     ttlSeedLoad:                            "Отвори сийд файл",
-    lblSeedLoadFilter:                      "Сийд файл (.yams)",
+    lblSeedLoadFilter:                      "Файл Seed (.yams)",
     msgSeedLoadFailed:                      "Не може да се зареди този сийд файл",
     tipSeedNew:                             "Ново семе",
     tipSeedTabClose:                        "Затвори",
@@ -4016,53 +5682,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Xera progresións de acordes a sementes de audio + MIDI que restrinxen xeradores de música IA como Suno.",
+    lblDlgSettingsAboutCredits:             "Créditos do instrumento",
+    msgDlgSettingsAboutCreditsIntro:        "Os instrumentos mostreados proveñen de sesións de gravación con licenza libre, por:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Progresión de acordes",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Un compás por liña: cada liña recibe o mesmo tempo, e os acordes nela divídeno equitativamente (un acorde só nunha liña ocupa todo o compás). As etiquetas [Section], liñas en branco e | ignóranse. Acordes con barra (C/G), 7as (Gmaj7) e N.C. compatibles.",
+    tipSeedBarsAdd:                         "Liñas máis longas: cada liña de acordes dura un cuarto de compás máis",
+    tipSeedBarsRemove:                      "Liñas máis curtas: cada liña de acordes dura un cuarto de compás menos",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Compases por liña",
     lblSeedSig:                             "Compás",
     lblSeedLoops:                           "Bucles",
-    lblSeedStyle:                           "Estilo",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to gl
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to gl
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to gl
-    optSeedStylePad:                        "Pad", // TODO: translate to gl
-    optSeedStyleDrone:                      "Drone", // TODO: translate to gl
-    optSeedStyleMarker:                     "Marker", // TODO: translate to gl
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to gl
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to gl
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to gl
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to gl
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to gl
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to gl
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to gl
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to gl
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpexios",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrumento",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to gl
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to gl
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to gl
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to gl
+    lblSeedBassInstrument:                  "Baixo",
+    optSeedBassInstrumentSame:              "Igual que o instrumento",
+    plhSeedInstrumentFilter:                "Escriba para filtrar…",
+    optSeedInstrumentFamilyAll:             "Todos",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to gl
-    tabSeedRender:                          "Render", // TODO: translate to gl
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to gl
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to gl
-    lblSeedKnobTune:                        "Tune", // TODO: translate to gl
-    tipSeedMute:                            "Mute", // TODO: translate to gl
-    tipSeedUnmute:                          "Unmute", // TODO: translate to gl
-    lblSeedReverb:                          "Reverb", // TODO: translate to gl
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to gl
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to gl
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to gl
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to gl
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to gl
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to gl
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to gl
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to gl
+    tabSeedMusic:                           "Música",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "volume",
+    lblSeedKnobOctave:                      "oitava",
+    lblSeedKnobTune:                        "afinación",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Estilo",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Ningún",
+    optSeedSwingLight:                      "Lixeiro",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simple",
+    lblSeedSigGroupComplex:                 "Complexo",
+    lblSeedKnobVel:                         "velocidade",
+    lblSeedKnobLen:                         "lonxitude",
+    btnSeedHold:                            "Manter",
+    tipSeedLaneMirror:                      "Inverter a pista. Unha configuración, non unha edición — a figura mantén o seu nome e desactívase.",
+    tipSeedLaneShiftLeft:                   "Desprazar á esquerda",
+    tipSeedLaneShiftRight:                  "Mover á dereita",
+    tipSeedLaneClear:                       "Limpar a pista",
+    tipSeedSlots:                           "Pasos na pista — os + e − de arriba engaden ou quitan un.",
+    tipSeedRowAll:                          "O acorde completo neste paso — o bloque alto do Chord Player (tres notas nunha tríada, catro nunha sétima). Fai clic nunha fila de tons na súa columna para iniciar o bloque alí.",
+    tipSeedRowFifth:                        "A quinta sobre a raíz — a fila BF do Chord Player.",
+    tipSeedRowDegree:                       "Un ton de acorde: 1 = raíz, 2, 3, 4 ascendente. Máis alá do tamaño do acorde, o ton é unha oitava máis arriba (C1–C4 do Chord Player). Apila varios nunha columna para un acorde propio.",
+    tipSeedLaneAddStep:                     "Engadir un paso ao final da pista",
+    tipSeedLaneRemoveStep:                  "Eliminar o último paso da pista",
+    lblSeedBeatDiv:                         "División de compás",
+    tipSeedBeatDiv:                         "Pasos por tempo, para ambas as pistas (B/2 = corcheas, B/3 = tresillos, B/4 = semicorcheas). Os pasos mantéñense e a figura cambia de velocidade, como en Chord Player.",
+    lblSeedChords:                          "Acordes",
+    tipSeedChordsEdit:                      "Editar os acordes como texto — Ctrl+Intro ou Escape para volver",
+    tipSeedInstrumentPrev:                  "Instrumento anterior na lista",
+    tipSeedInstrumentNext:                  "Seguinte instrumento na lista",
+    lblSeedMode:                            "modo",
+    tipSeedModeEdit:                        "Editar notas: fai clic nunha cela para engadir unha nota, fai clic nunha nota para eliminala.",
+    tipSeedModeSettings:                    "Configuración de notas: fai clic nunha nota para seleccionala e, a continuación, establece as súas bandeiras.",
+    lblSeedFlagOctave:                      "oitava",
+    lblSeedFlagScaleStep:                   "paso da escala",
+    lblSeedFlagLevel:                       "nivel",
+    lblSeedFlagLength:                      "duración",
+    lblSeedFlagCondition:                   "condición",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oitava arriba",
+    tipSeedFlagOctDown:                     "Oitava abaixo",
+    tipSeedFlagScaleUp:                     "Nota de paso: un grao de escala arriba",
+    tipSeedFlagScaleDown:                   "Nota de paso: un grao de escala abaixo",
+    tipSeedFlagAccent:                      "Acento",
+    tipSeedFlagGhost:                       "Pantasma",
+    tipSeedFlagSustain:                     "Soster ata o final do acorde",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Só no último tempo do acorde",
+    tipSeedFlagNotLast:                     "Só fóra do último tempo",
+    tipSeedFlagEarly:                       "Anticipado: este slot expresa o seguinte acorde",
+    tipSeedMute:                            "Silenciar",
+    tipSeedUnmute:                          "Activar son",
+    lblSeedReverb:                          "Reverberación",
+    optSeedReverbNone:                      "Seco: sen sala",
+    optSeedReverbRoom:                      "Sala: pequena e próxima",
+    optSeedReverbChamber:                   "Cámara: media, cálida",
+    optSeedReverbHall:                      "Salón: grande e aberto",
+    optSeedReverbChurch:                    "Igrexa: moi grande, cola longa",
+    lblSeedHighpass:                        "Paso alto (Hz)",
+    lblSeedLowpass:                         "Paso baixo (Hz)",
     optSeedInstrumentSine:                  "Seno: sintetizador integrado",
     lblSeedFormat:                          "Formato",
     optSeedFormatMp3:                       "MP3",
@@ -4078,7 +5793,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Garda a semente nun ficheiro .yams primeiro — o audio renderízase xunto a el.",
     tipSeedLoad:                            "Cargar semente",
     ttlSeedLoad:                            "Abrir un ficheiro de semente",
-    lblSeedLoadFilter:                      "Ficheiro de semente (.yams)",
+    lblSeedLoadFilter:                      "Ficheiro Seed (.yams)",
     msgSeedLoadFailed:                      "Non se puido cargar ese ficheiro de semente",
     tipSeedNew:                             "Nova semente",
     tipSeedTabClose:                        "Pechar",
@@ -4133,53 +5848,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Akkordmeneteket generál audio + MIDI magokká, amelyek korlátozzák az AI zenei generátorokat, mint a Suno.",
+    lblDlgSettingsAboutCredits:             "Hangszerkreditek",
+    msgDlgSettingsAboutCreditsIntro:        "A mintavételezett hangszerek szabadon licencelt felvételi alkalmakról származnak, készítette:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akkordmenet",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Egy ütem soronként: minden sor egyenlő időt kap, és az azon lévő akkordok egyenletesen osztják el ezt az időt (egy akkord önmagában egy soron az egész ütemet kitölti). A [Section] címkék, üres sorok és a | jelek figyelmen kívül maradnak. Támogatottak a tört akkordok (C/G), 7-esek (Gmaj7) és az N.C.",
+    tipSeedBarsAdd:                         "Hosszabb sorok: minden akkordsor negyed ütemmel tovább tart",
+    tipSeedBarsRemove:                      "Rövidebb sorok: minden akkordsor negyed ütemmel rövidebb ideig tart",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Ütemek soronként",
     lblSeedSig:                             "Ütemjelzés",
     lblSeedLoops:                           "Ismétlések",
-    lblSeedStyle:                           "Stílus",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to hu
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to hu
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to hu
-    optSeedStylePad:                        "Pad", // TODO: translate to hu
-    optSeedStyleDrone:                      "Drone", // TODO: translate to hu
-    optSeedStyleMarker:                     "Marker", // TODO: translate to hu
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to hu
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to hu
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to hu
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to hu
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to hu
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to hu
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to hu
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to hu
+    lblSeedStyleGroupPads:                  "Padok",
+    lblSeedStyleGroupArps:                  "Arpeggiók",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Hangszer",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to hu
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to hu
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to hu
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to hu
+    lblSeedBassInstrument:                  "Basszus",
+    optSeedBassInstrumentSame:              "Ugyanaz, mint a hangszer",
+    plhSeedInstrumentFilter:                "Írjon a szűréshez…",
+    optSeedInstrumentFamilyAll:             "Összes",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to hu
-    tabSeedRender:                          "Render", // TODO: translate to hu
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to hu
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to hu
-    lblSeedKnobTune:                        "Tune", // TODO: translate to hu
-    tipSeedMute:                            "Mute", // TODO: translate to hu
-    tipSeedUnmute:                          "Unmute", // TODO: translate to hu
-    lblSeedReverb:                          "Reverb", // TODO: translate to hu
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to hu
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to hu
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to hu
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to hu
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to hu
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to hu
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to hu
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to hu
+    tabSeedMusic:                           "Zene",
+    tabSeedRender:                          "Renderelés",
+    lblSeedKnobVolume:                      "hangerő",
+    lblSeedKnobOctave:                      "oktáv",
+    lblSeedKnobTune:                        "hangolás",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stílus",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Nincs",
+    optSeedSwingLight:                      "Enyhe",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Egyszerű",
+    lblSeedSigGroupComplex:                 "Összetett",
+    lblSeedKnobVel:                         "sebesség",
+    lblSeedKnobLen:                         "hossz",
+    btnSeedHold:                            "Tartás",
+    tipSeedLaneMirror:                      "Sáv megfordítása. Beállítás, nem szerkesztés — az ábra megtartja a nevét és újra kikapcsolható.",
+    tipSeedLaneShiftLeft:                   "Balra tolás",
+    tipSeedLaneShiftRight:                  "Jobbra tolás",
+    tipSeedLaneClear:                       "Sáv törlése",
+    tipSeedSlots:                           "Lépések a sávban — a fenti + és − egyet hozzáad vagy eltávolít.",
+    tipSeedRowAll:                          "Az egész akkord ebben a lépésben — a Chord Player magas blokkja (három hang egy hármashangzatban, négy egy szeptimben). Kattintson egy hangsorra az oszlopában a blokk indításához.",
+    tipSeedRowFifth:                        "Az alaphang feletti kvint — a Chord Player BF sora.",
+    tipSeedRowDegree:                       "Egy akkordhang: 1 = alaphang, 2, 3, 4 felfelé. Az akkord méretén túl a hang egy oktávval feljebb van (Chord Player C1–C4). Halmozzon fel többet egy oszlopba a saját akkordjához.",
+    tipSeedLaneAddStep:                     "Lépés hozzáadása a sáv végére",
+    tipSeedLaneRemoveStep:                  "A sáv utolsó lépésének eltávolítása",
+    lblSeedBeatDiv:                         "Ütemfelosztás",
+    tipSeedBeatDiv:                         "Lépések ütemenként, mindkét sávhoz (B/2 = nyolcadok, B/3 = triolák, B/4 = tizenhatodok). A lépések megmaradnak, és az ábra sebessége változik, mint a Chord Playerben.",
+    lblSeedChords:                          "Akkordok",
+    tipSeedChordsEdit:                      "Akkordok szerkesztése szövegként — Ctrl+Enter vagy Esc a visszatéréshez",
+    tipSeedInstrumentPrev:                  "Előző hangszer a listában",
+    tipSeedInstrumentNext:                  "Következő hangszer a listában",
+    lblSeedMode:                            "mód",
+    tipSeedModeEdit:                        "Jegyzetek szerkesztése: kattintson egy cellára jegyzet hozzáadásához, kattintson egy jegyzetre az eltávolításához.",
+    tipSeedModeSettings:                    "Jegyzetbeállítások: kattintson egy jegyzetre a kiválasztásához, majd állítsa be a jelzőit.",
+    lblSeedFlagOctave:                      "oktáv",
+    lblSeedFlagScaleStep:                   "skálalépés",
+    lblSeedFlagLevel:                       "szint",
+    lblSeedFlagLength:                      "időtartam",
+    lblSeedFlagCondition:                   "feltétel",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktávval feljebb",
+    tipSeedFlagOctDown:                     "Oktávval lejjebb",
+    tipSeedFlagScaleUp:                     "Átmenő hang: egy skálalépéssel feljebb",
+    tipSeedFlagScaleDown:                   "Átmenő hang: egy skálalépéssel lejjebb",
+    tipSeedFlagAccent:                      "Akcentus",
+    tipSeedFlagGhost:                       "Szellem",
+    tipSeedFlagSustain:                     "Kitart az akkord végéig",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Csak az akkord utolsó ütemében",
+    tipSeedFlagNotLast:                     "Csak az utolsó ütemen kívül",
+    tipSeedFlagEarly:                       "Korán: ez a slot a következő akkordot szólaltatja meg",
+    tipSeedMute:                            "Némítás",
+    tipSeedUnmute:                          "Némítás feloldása",
+    lblSeedReverb:                          "Zengetés",
+    optSeedReverbNone:                      "Száraz: nincs terem",
+    optSeedReverbRoom:                      "Szoba: kicsi és közeli",
+    optSeedReverbChamber:                   "Kamra: közepes, meleg",
+    optSeedReverbHall:                      "Csarnok: nagy és nyitott",
+    optSeedReverbChurch:                    "Templom: nagyon nagy, hosszú lecsengés",
+    lblSeedHighpass:                        "Felüláteresztő (Hz)",
+    lblSeedLowpass:                         "Aluláteresztő (Hz)",
     optSeedInstrumentSine:                  "Szinusz: beépített szintetizátor",
     lblSeedFormat:                          "Formátum",
     optSeedFormatMp3:                       "MP3",
@@ -4250,54 +6014,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generuoja akordų progresijas kaip garso + MIDI sėklas, kurios apriboja AI muzikos generatorius, tokius kaip Suno.",
+    lblDlgSettingsAboutCredits:             "Instrumentų autoriai",
+    msgDlgSettingsAboutCreditsIntro:        "Paimti instrumentai yra iš laisvai licencijuotų įrašų sesijų, autorius:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akordų progresija",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Vienas taktas eilutėje: kiekviena eilutė gauna vienodą laiką, o akordai joje pasidalija tą laiką tolygiai (vienas akordas eilutėje užima visą taktą). [Section] žymės, tuščios eilutės ir | ženklai ignoruojami. Palaikomi pasvirieji akordai (C/G), septakordai (Gmaj7) ir N.C.",
+    tipSeedBarsAdd:                         "Ilgesnės eilutės: kiekviena akordų eilutė trunka ketvirtį takto ilgiau",
+    tipSeedBarsRemove:                      "Trumpesnės eilutės: kiekviena akordų eilutė trunka ketvirtį takto trumpiau",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Taktų eilutėje",
     lblSeedSig:                             "Taktų skaičius",
     lblSeedLoops:                           "Ciklai",
-    lblSeedStyle:                           "Stilius",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to lt
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to lt
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to lt
-    optSeedStylePad:                        "Pad", // TODO: translate to lt
-    optSeedStyleDrone:                      "Drone", // TODO: translate to lt
-    optSeedStyleMarker:                     "Marker", // TODO: translate to lt
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to lt
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to lt
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to lt
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to lt
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to lt
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to lt
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to lt
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to lt
+    lblSeedStyleGroupPads:                  "Padai",
+    lblSeedStyleGroupArps:                  "Arpedžio",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverbas",
     lblSeedInstrument:                      "Instrumentas",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to lt
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to lt
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to lt
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to lt
+    lblSeedBassInstrument:                  "Bosas",
+    optSeedBassInstrumentSame:              "Tas pats kaip instrumentas",
+    plhSeedInstrumentFilter:                "Įveskite, kad filtruotumėte…",
+    optSeedInstrumentFamilyAll:             "Visi",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to lt
-    tabSeedRender:                          "Render", // TODO: translate to lt
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to lt
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to lt
-    lblSeedKnobTune:                        "Tune", // TODO: translate to lt
-    tipSeedMute:                            "Mute", // TODO: translate to lt
-    tipSeedUnmute:                          "Unmute", // TODO: translate to lt
-    lblSeedReverb:                          "Reverb", // TODO: translate to lt
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to lt
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to lt
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to lt
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to lt
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to lt
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to lt
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to lt
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to lt
-    optSeedInstrumentSine:                  "Sinusas: įmontuotas sintezatorius",
+    tabSeedMusic:                           "Muzika",
+    tabSeedRender:                          "Atvaizdavimas",
+    lblSeedKnobVolume:                      "garsumas",
+    lblSeedKnobOctave:                      "oktava",
+    lblSeedKnobTune:                        "derinimas",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Stilius",
+    lblSeedSwing:                           "Svingas",
+    optSeedSwingNone:                       "Nėra",
+    optSeedSwingLight:                      "Lengvas",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Paprasta",
+    lblSeedSigGroupComplex:                 "Sudėtinga",
+    lblSeedKnobVel:                         "greitis",
+    lblSeedKnobLen:                         "ilgis",
+    btnSeedHold:                            "Laikyti",
+    tipSeedLaneMirror:                      "Apversti juostą. Nustatymas, ne redagavimas — figūra išlaiko savo pavadinimą ir vėl išsijungia.",
+    tipSeedLaneShiftLeft:                   "Paslinkti kairėn",
+    tipSeedLaneShiftRight:                  "Perkelti dešinėn",
+    tipSeedLaneClear:                       "Išvalyti juostą",
+    tipSeedSlots:                           "Žingsniai takelyje — viršutiniai + ir − prideda arba pašalina vieną.",
+    tipSeedRowAll:                          "Visas akordas šiame žingsnyje — Chord Player aukštas blokas (trys natos triadoje, keturios septimoje). Spustelėkite tonų eilutę jos stulpelyje, kad ten pradėtumėte bloką.",
+    tipSeedRowFifth:                        "Kvinta virš pagrindinio tono — Chord Player BF eilutė.",
+    tipSeedRowDegree:                       "Vienas akordo tonas: 1 = pagrindinis tonas, 2, 3, 4 aukštyn. Viršijus akordo dydį, tonas yra oktava aukščiau (Chord Player C1–C4). Sudėkite kelis į vieną stulpelį savo akordui.",
+    tipSeedLaneAddStep:                     "Pridėti žingsnį juostos gale",
+    tipSeedLaneRemoveStep:                  "Pašalinti paskutinį juostos žingsnį",
+    lblSeedBeatDiv:                         "Takto padalijimas",
+    tipSeedBeatDiv:                         "Žingsniai per taktą, abiem takeliams (B/2 = aštuntinės, B/3 = trioliai, B/4 = šešioliktinės). Žingsniai išlieka, o figūra keičia greitį, kaip „Chord Player“ programoje.",
+    lblSeedChords:                          "Akordai",
+    tipSeedChordsEdit:                      "Redaguoti akordus kaip tekstą — Ctrl+Enter arba Escape grįžti",
+    tipSeedInstrumentPrev:                  "Ankstesnis instrumentas sąraše",
+    tipSeedInstrumentNext:                  "Kitas instrumentas sąraše",
+    lblSeedMode:                            "režimas",
+    tipSeedModeEdit:                        "Redaguoti pastabas: spustelėkite langelį, kad pridėtumėte pastabą, spustelėkite pastabą, kad ją pašalintumėte.",
+    tipSeedModeSettings:                    "Pastabų nustatymai: spustelėkite pastabą, kad ją pasirinktumėte, tada nustatykite jos žymas.",
+    lblSeedFlagOctave:                      "oktava",
+    lblSeedFlagScaleStep:                   "gamos laipsnis",
+    lblSeedFlagLevel:                       "lygis",
+    lblSeedFlagLength:                      "trukmė",
+    lblSeedFlagCondition:                   "sąlyga",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktava aukštyn",
+    tipSeedFlagOctDown:                     "Oktava žemyn",
+    tipSeedFlagScaleUp:                     "Praeinanti nata: vienu laipsniu aukštyn",
+    tipSeedFlagScaleDown:                   "Praeinanti nata: vienu laipsniu žemyn",
+    tipSeedFlagAccent:                      "Akcentas",
+    tipSeedFlagGhost:                       "Šmėkla",
+    tipSeedFlagSustain:                     "Išlaikyti iki akordo pabaigos",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Tik paskutiniame akordo takte",
+    tipSeedFlagNotLast:                     "Tik už paskutinio takto",
+    tipSeedFlagEarly:                       "Anksti: šis lizdas įgarsina kitą akordą",
+    tipSeedMute:                            "Nutildyti",
+    tipSeedUnmute:                          "Įjungti garsą",
+    lblSeedReverb:                          "Reverberacija",
+    optSeedReverbNone:                      "Sausas: be kambario",
+    optSeedReverbRoom:                      "Kambarys: mažas ir artimas",
+    optSeedReverbChamber:                   "Kamera: vidutinė, šilta",
+    optSeedReverbHall:                      "Salė: didelė ir atvira",
+    optSeedReverbChurch:                    "Bažnyčia: labai didelė, ilgas aidas",
+    lblSeedHighpass:                        "Aukštadažnis (Hz)",
+    lblSeedLowpass:                         "Žemadažnis (Hz)",
+    optSeedInstrumentSine:                  "Sinusas: integruotas sintezatorius",
     lblSeedFormat:                          "Formatas",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -4367,53 +6180,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Генерира акордни прогресии како аудио + MIDI семиња кои ги ограничуваат AI музичките генератори како Suno.",
+    lblDlgSettingsAboutCredits:             "Кредити за инструменти",
+    msgDlgSettingsAboutCreditsIntro:        "Семплираните инструменти потекнуваат од слободно лиценцирани сесии за снимање, од:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Акордна прогресија",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Еден такт по линија: секоја линија добива еднакво време, а акордите на неа го делат тоа време рамномерно (еден акорд сам на линија го држи целиот такт). Ознаките [Section], празни линии и | се игнорираат. Поддржани се слеш акорди (C/G), 7-ми (Gmaj7) и N.C.",
+    tipSeedBarsAdd:                         "Подолги линии: секоја линија на акорди трае четвртина такт подолго",
+    tipSeedBarsRemove:                      "Пократки линии: секоја линија на акорди трае четвртина такт пократко",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Тактови по линија",
     lblSeedSig:                             "Тактов потпис",
     lblSeedLoops:                           "Јамки",
-    lblSeedStyle:                           "Стил",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to mk
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to mk
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to mk
-    optSeedStylePad:                        "Pad", // TODO: translate to mk
-    optSeedStyleDrone:                      "Drone", // TODO: translate to mk
-    optSeedStyleMarker:                     "Marker", // TODO: translate to mk
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to mk
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to mk
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to mk
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to mk
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to mk
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to mk
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to mk
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to mk
+    lblSeedStyleGroupPads:                  "Падови",
+    lblSeedStyleGroupArps:                  "Арпеџија",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Реверб",
     lblSeedInstrument:                      "Инструмент",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to mk
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to mk
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to mk
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to mk
+    lblSeedBassInstrument:                  "Бас",
+    optSeedBassInstrumentSame:              "Исто како инструмент",
+    plhSeedInstrumentFilter:                "Внесете за филтрирање…",
+    optSeedInstrumentFamilyAll:             "Сите",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to mk
-    tabSeedRender:                          "Render", // TODO: translate to mk
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to mk
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to mk
-    lblSeedKnobTune:                        "Tune", // TODO: translate to mk
-    tipSeedMute:                            "Mute", // TODO: translate to mk
-    tipSeedUnmute:                          "Unmute", // TODO: translate to mk
-    lblSeedReverb:                          "Reverb", // TODO: translate to mk
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to mk
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to mk
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to mk
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to mk
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to mk
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to mk
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to mk
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to mk
+    tabSeedMusic:                           "Музика",
+    tabSeedRender:                          "Рендер",
+    lblSeedKnobVolume:                      "јачина на звук",
+    lblSeedKnobOctave:                      "октава",
+    lblSeedKnobTune:                        "подесување",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Стил",
+    lblSeedSwing:                           "Свинг",
+    optSeedSwingNone:                       "Нема",
+    optSeedSwingLight:                      "Лесно",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Едноставно",
+    lblSeedSigGroupComplex:                 "Сложено",
+    lblSeedKnobVel:                         "брзина",
+    lblSeedKnobLen:                         "должина",
+    btnSeedHold:                            "Задржи",
+    tipSeedLaneMirror:                      "Сврти ја лентата. Поставка, не уредување — фигурата го задржува своето име и повторно се исклучува.",
+    tipSeedLaneShiftLeft:                   "Помести лево",
+    tipSeedLaneShiftRight:                  "Поместување десно",
+    tipSeedLaneClear:                       "Исчисти ја лентата",
+    tipSeedSlots:                           "Чекори во лентата — + и − горе додаваат или отстрануваат еден.",
+    tipSeedRowAll:                          "Целиот акорд во овој чекор — високиот блок на Chord Player (три ноти на тризвук, четири на септакорд). Кликнете на тонски ред во неговата колона за да го започнете блокот таму.",
+    tipSeedRowFifth:                        "Квинта над основниот тон — BF редот на Chord Player.",
+    tipSeedRowDegree:                       "Еден акорд тон: 1 = основен тон, 2, 3, 4 нагоре. Надвор од големината на акордот, тонот е октава повисоко (C1–C4 на Chord Player). Наредете неколку во една колона за сопствен акорд.",
+    tipSeedLaneAddStep:                     "Додај чекор на крајот на лентата",
+    tipSeedLaneRemoveStep:                  "Отстрани го последниот чекор на лентата",
+    lblSeedBeatDiv:                         "Поделба на такт",
+    tipSeedBeatDiv:                         "Чекори по такт, за двете ленти (B/2 = осмини, B/3 = триоли, B/4 = шеснаесетини). Чекорите остануваат, а фигурата ја менува брзината, како во Chord Player.",
+    lblSeedChords:                          "Акорди",
+    tipSeedChordsEdit:                      "Уреди ги акордите како текст — Ctrl+Enter или Escape за враќање",
+    tipSeedInstrumentPrev:                  "Претходен инструмент во листата",
+    tipSeedInstrumentNext:                  "Следен инструмент во листата",
+    lblSeedMode:                            "режим",
+    tipSeedModeEdit:                        "Уреди белешки: кликнете на ќелија за да додадете белешка, кликнете на белешка за да ја отстраните.",
+    tipSeedModeSettings:                    "Поставки за белешки: кликнете на белешка за да ја изберете, потоа поставете ги нејзините знаменца.",
+    lblSeedFlagOctave:                      "октава",
+    lblSeedFlagScaleStep:                   "скален чекор",
+    lblSeedFlagLevel:                       "ниво",
+    lblSeedFlagLength:                      "траење",
+    lblSeedFlagCondition:                   "услов",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Октава нагоре",
+    tipSeedFlagOctDown:                     "Октава надолу",
+    tipSeedFlagScaleUp:                     "Проодна нота: еден скален чекор нагоре",
+    tipSeedFlagScaleDown:                   "Проодна нота: еден скален чекор надолу",
+    tipSeedFlagAccent:                      "Акцент",
+    tipSeedFlagGhost:                       "Дух",
+    tipSeedFlagSustain:                     "Одржи до крајот на акордот",
+    tipSeedFlagStaccato:                    "Стакато",
+    tipSeedFlagLast:                        "Само во последниот удар на акордот",
+    tipSeedFlagNotLast:                     "Само надвор од последниот удар",
+    tipSeedFlagEarly:                       "Рано: овој слот го изразува следниот акорд",
+    tipSeedMute:                            "Исклучи звук",
+    tipSeedUnmute:                          "Вклучи звук",
+    lblSeedReverb:                          "Реверб",
+    optSeedReverbNone:                      "Суво: без соба",
+    optSeedReverbRoom:                      "Соба: мала и блиска",
+    optSeedReverbChamber:                   "Комора: средна, топла",
+    optSeedReverbHall:                      "Сала: голема и отворена",
+    optSeedReverbChurch:                    "Црква: многу голема, долга опашка",
+    lblSeedHighpass:                        "Високопропусен (Hz)",
+    lblSeedLowpass:                         "Нископропусен (Hz)",
     optSeedInstrumentSine:                  "Синус: вграден синтисајзер",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
@@ -4429,7 +6291,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Прво зачувајте го сидот во .yams датотека — аудиото се рендерира до него.",
     tipSeedLoad:                            "Вчитај сид",
     ttlSeedLoad:                            "Отвори сид датотека",
-    lblSeedLoadFilter:                      "Сид датотека (.yams)",
+    lblSeedLoadFilter:                      "Seed датотека (.yams)",
     msgSeedLoadFailed:                      "Не можеше да се вчита таа сид датотека",
     tipSeedNew:                             "Ново семе",
     tipSeedTabClose:                        "Затвори",
@@ -4484,53 +6346,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Генерише акордне прогресије као аудио + MIDI семена која ограничавају АИ музичке генераторе попут Suno.",
+    lblDlgSettingsAboutCredits:             "Заслуге за инструменте",
+    msgDlgSettingsAboutCreditsIntro:        "Семпловани инструменти потичу из слободно лиценцираних сесија снимања, од:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akordna progresija",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Један такт по реду: сваки ред добија једнако време, а акорди на њему деле то време равномерно (један акорд сам на реду заузима цео такт). Ознаке [Section], празни редови и | се игноришу. Подржани су коси акорди (C/G), 7-ми (Gmaj7) и N.C.",
+    tipSeedBarsAdd:                         "Дуже линије: свака линија акорда траје четвртину такта дуже",
+    tipSeedBarsRemove:                      "Краће линије: свака линија акорда траје четвртину такта краће",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Taktovi po redu",
     lblSeedSig:                             "Taktna oznaka",
     lblSeedLoops:                           "Petlje",
-    lblSeedStyle:                           "Stil",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sr
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sr
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sr
-    optSeedStylePad:                        "Pad", // TODO: translate to sr
-    optSeedStyleDrone:                      "Drone", // TODO: translate to sr
-    optSeedStyleMarker:                     "Marker", // TODO: translate to sr
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sr
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sr
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sr
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sr
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sr
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sr
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sr
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to sr
+    lblSeedStyleGroupPads:                  "Падови",
+    lblSeedStyleGroupArps:                  "Арпеђи",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Реверб",
     lblSeedInstrument:                      "Инструмент",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to sr
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sr
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sr
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sr
+    lblSeedBassInstrument:                  "Бас",
+    optSeedBassInstrumentSame:              "Исто као инструмент",
+    plhSeedInstrumentFilter:                "Унесите за филтрирање…",
+    optSeedInstrumentFamilyAll:             "Сви",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to sr
-    tabSeedRender:                          "Render", // TODO: translate to sr
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to sr
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to sr
-    lblSeedKnobTune:                        "Tune", // TODO: translate to sr
-    tipSeedMute:                            "Mute", // TODO: translate to sr
-    tipSeedUnmute:                          "Unmute", // TODO: translate to sr
-    lblSeedReverb:                          "Reverb", // TODO: translate to sr
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sr
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sr
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sr
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sr
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sr
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sr
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sr
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sr
+    tabSeedMusic:                           "Музика",
+    tabSeedRender:                          "Рендер",
+    lblSeedKnobVolume:                      "јачина звука",
+    lblSeedKnobOctave:                      "октава",
+    lblSeedKnobTune:                        "подешавање",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Стил",
+    lblSeedSwing:                           "Свинг",
+    optSeedSwingNone:                       "Нема",
+    optSeedSwingLight:                      "Лагано",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Једноставно",
+    lblSeedSigGroupComplex:                 "Сложено",
+    lblSeedKnobVel:                         "брзина",
+    lblSeedKnobLen:                         "дужина",
+    btnSeedHold:                            "Задржи",
+    tipSeedLaneMirror:                      "Обрни траку. Подешавање, не измена — фигура задржава своје име и поново се искључује.",
+    tipSeedLaneShiftLeft:                   "Помери лево",
+    tipSeedLaneShiftRight:                  "Помери десно",
+    tipSeedLaneClear:                       "Обриши траку",
+    tipSeedSlots:                           "Кораци у траци — + и − изнад додају или уклањају један.",
+    tipSeedRowAll:                          "Цео акорд у овом кораку — високи блок Chord Player-а (три ноте на трозвуку, четири на септакорду). Кликните на ред тонова у његовој колони да бисте тамо покренули блок.",
+    tipSeedRowFifth:                        "Квинта изнад основног тона — BF ред Chord Player-а.",
+    tipSeedRowDegree:                       "Један акордни тон: 1 = основни тон, 2, 3, 4 нагоре. Изван величине акорда, тон је октаву више (C1–C4 Chord Player). Сложите неколико у једну колону за сопствени акорд.",
+    tipSeedLaneAddStep:                     "Додај корак на крају траке",
+    tipSeedLaneRemoveStep:                  "Уклони последњи корак траке",
+    lblSeedBeatDiv:                         "Подела такта",
+    tipSeedBeatDiv:                         "Кораци по такту, за обе траке (B/2 = осмине, B/3 = триоле, B/4 = шеснаестине). Кораци остају, а фигура мења брзину, као у Chord Player-у.",
+    lblSeedChords:                          "Акорди",
+    tipSeedChordsEdit:                      "Уреди акорде као текст — Ctrl+Enter или Escape за повратак",
+    tipSeedInstrumentPrev:                  "Претходни инструмент на листи",
+    tipSeedInstrumentNext:                  "Следећи инструмент на листи",
+    lblSeedMode:                            "режим",
+    tipSeedModeEdit:                        "Уреди белешке: кликните на ћелију да додате белешку, кликните на белешку да је уклоните.",
+    tipSeedModeSettings:                    "Подешавања белешки: кликните на белешку да је изаберете, затим подесите њене ознаке.",
+    lblSeedFlagOctave:                      "октава",
+    lblSeedFlagScaleStep:                   "ступањ скале",
+    lblSeedFlagLevel:                       "ниво",
+    lblSeedFlagLength:                      "трајање",
+    lblSeedFlagCondition:                   "услов",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktava gore",
+    tipSeedFlagOctDown:                     "Oktava dole",
+    tipSeedFlagScaleUp:                     "Prolazna nota: jedan stepen skale gore",
+    tipSeedFlagScaleDown:                   "Prolazna nota: jedan stepen skale dole",
+    tipSeedFlagAccent:                      "Акценат",
+    tipSeedFlagGhost:                       "Дух",
+    tipSeedFlagSustain:                     "Задржи до краја акорда",
+    tipSeedFlagStaccato:                    "Стакато",
+    tipSeedFlagLast:                        "Само у последњем такту акорда",
+    tipSeedFlagNotLast:                     "Само ван последњег такта",
+    tipSeedFlagEarly:                       "Rano: ovaj slot svira sledeći akord",
+    tipSeedMute:                            "Искључи звук",
+    tipSeedUnmute:                          "Укључи звук",
+    lblSeedReverb:                          "Реверб",
+    optSeedReverbNone:                      "Суво: без просторије",
+    optSeedReverbRoom:                      "Соба: мала и блиска",
+    optSeedReverbChamber:                   "Комора: средња, топла",
+    optSeedReverbHall:                      "Хала: велика и отворена",
+    optSeedReverbChurch:                    "Црква: врло велика, дуг реп",
+    lblSeedHighpass:                        "Високопропусни (Hz)",
+    lblSeedLowpass:                         "Нископропусни (Hz)",
     optSeedInstrumentSine:                  "Синус: уграђени синтисајзер",
     lblSeedFormat:                          "Формат",
     optSeedFormatMp3:                       "MP3",
@@ -4546,7 +6457,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Прво сачувајте сид у .yams датотеку — аудио се рендерује поред ње.",
     tipSeedLoad:                            "Учитај сид",
     ttlSeedLoad:                            "Отвори сид датотеку",
-    lblSeedLoadFilter:                      "Сид датотека (.yams)",
+    lblSeedLoadFilter:                      "Seed датотека (.yams)",
     msgSeedLoadFailed:                      "Није могуће учитати ту сид датотеку",
     tipSeedNew:                             "Ново семе",
     tipSeedTabClose:                        "Затвори",
@@ -4601,53 +6512,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generuje akordové progrese ako audio + MIDI semená, ktoré obmedzujú generátory hudby AI, ako je Suno.",
+    lblDlgSettingsAboutCredits:             "Zásluhy nástrojov",
+    msgDlgSettingsAboutCreditsIntro:        "Vzorkované nástroje pochádzajú z voľne licencovaných nahrávacích relácií, od:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akordová progresia",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Jeden takt na riadok: každý riadok dostane rovnaký čas a akordy na ňom si tento čas rovnomerne rozdelia (samostatný akord na riadku zaberá celý takt). Značky [Section], prázdne riadky a | sú ignorované. Podporované sú lomítkové akordy (C/G), septimové (Gmaj7) a N.C.",
+    tipSeedBarsAdd:                         "Dlhšie linky: každá linka akordov trvá o štvrtinu taktu dlhšie",
+    tipSeedBarsRemove:                      "Kratšie linky: každá linka akordov trvá o štvrtinu taktu kratšie",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Takty na riadok",
     lblSeedSig:                             "Taktové označenie",
     lblSeedLoops:                           "Slučky",
-    lblSeedStyle:                           "Štýl",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sk
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sk
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sk
-    optSeedStylePad:                        "Pad", // TODO: translate to sk
-    optSeedStyleDrone:                      "Drone", // TODO: translate to sk
-    optSeedStyleMarker:                     "Marker", // TODO: translate to sk
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sk
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sk
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sk
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sk
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sk
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sk
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sk
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to sk
+    lblSeedStyleGroupPads:                  "Pady",
+    lblSeedStyleGroupArps:                  "Arpeggiá",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Nástroj",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to sk
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sk
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sk
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sk
+    lblSeedBassInstrument:                  "Basy",
+    optSeedBassInstrumentSame:              "Rovnaké ako nástroj",
+    plhSeedInstrumentFilter:                "Zadajte pre filtrovanie…",
+    optSeedInstrumentFamilyAll:             "Všetky",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to sk
-    tabSeedRender:                          "Render", // TODO: translate to sk
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to sk
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to sk
-    lblSeedKnobTune:                        "Tune", // TODO: translate to sk
-    tipSeedMute:                            "Mute", // TODO: translate to sk
-    tipSeedUnmute:                          "Unmute", // TODO: translate to sk
-    lblSeedReverb:                          "Reverb", // TODO: translate to sk
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sk
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sk
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sk
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sk
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sk
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sk
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sk
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sk
+    tabSeedMusic:                           "Hudba",
+    tabSeedRender:                          "Renderovanie",
+    lblSeedKnobVolume:                      "hlasitosť",
+    lblSeedKnobOctave:                      "oktáva",
+    lblSeedKnobTune:                        "ladenie",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Štýl",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Žiadne",
+    optSeedSwingLight:                      "Ľahké",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Jednoduché",
+    lblSeedSigGroupComplex:                 "Zložité",
+    lblSeedKnobVel:                         "rýchlosť",
+    lblSeedKnobLen:                         "dĺžka",
+    btnSeedHold:                            "Podržať",
+    tipSeedLaneMirror:                      "Otočiť pruh. Nastavenie, nie úprava — obrazec si zachováva svoj názov a dá sa znova vypnúť.",
+    tipSeedLaneShiftLeft:                   "Posunúť doľava",
+    tipSeedLaneShiftRight:                  "Posunúť doprava",
+    tipSeedLaneClear:                       "Vyčistiť stopu",
+    tipSeedSlots:                           "Kroky v dráhe — + a − hore pridávajú alebo odoberajú jeden.",
+    tipSeedRowAll:                          "Celý akord v tomto kroku — vysoký blok Chord Player (tri noty na trojzvuku, štyri na septakorde). Kliknite na riadok tónov v jeho stĺpci, aby ste tam blok spustili.",
+    tipSeedRowFifth:                        "Kvinta nad základným tónom — riadok BF Chord Player.",
+    tipSeedRowDegree:                       "Jeden akordový tón: 1 = základný tón, 2, 3, 4 nahor. Za veľkosťou akordu je tón o oktávu vyššie (C1–C4 Chord Player). Skladajte niekoľko do jedného stĺpca pre vlastný akord.",
+    tipSeedLaneAddStep:                     "Pridať krok na koniec pruhu",
+    tipSeedLaneRemoveStep:                  "Odstrániť posledný krok pruhu",
+    lblSeedBeatDiv:                         "Delenie taktu",
+    tipSeedBeatDiv:                         "Kroky na dobu, pre obe dráhy (B/2 = osminy, B/3 = trioly, B/4 = šestnástiny). Kroky zostávajú a figúra mení rýchlosť, ako v Chord Playeri.",
+    lblSeedChords:                          "Akordy",
+    tipSeedChordsEdit:                      "Upraviť akordy ako text — Ctrl+Enter alebo Escape pre návrat",
+    tipSeedInstrumentPrev:                  "Predchádzajúci nástroj v zozname",
+    tipSeedInstrumentNext:                  "Ďalší nástroj v zozname",
+    lblSeedMode:                            "režim",
+    tipSeedModeEdit:                        "Upraviť poznámky: kliknutím na bunku pridáte poznámku, kliknutím na poznámku ju odstránite.",
+    tipSeedModeSettings:                    "Nastavenia poznámok: kliknutím na poznámku ju vyberiete a potom nastavíte jej príznaky.",
+    lblSeedFlagOctave:                      "oktáva",
+    lblSeedFlagScaleStep:                   "stupeň stupnice",
+    lblSeedFlagLevel:                       "úroveň",
+    lblSeedFlagLength:                      "dĺžka",
+    lblSeedFlagCondition:                   "podmienka",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "O oktávu vyššie",
+    tipSeedFlagOctDown:                     "O oktávu nižšie",
+    tipSeedFlagScaleUp:                     "Prechodná nota: o jeden stupeň stupnice nahor",
+    tipSeedFlagScaleDown:                   "Prechodná nota: o jeden stupeň stupnice nadol",
+    tipSeedFlagAccent:                      "Akcent",
+    tipSeedFlagGhost:                       "Duch",
+    tipSeedFlagSustain:                     "Podržať do konca akordu",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Iba v poslednej dobe akordu",
+    tipSeedFlagNotLast:                     "Iba mimo poslednej doby",
+    tipSeedFlagEarly:                       "Predčasne: tento slot hrá ďalší akord",
+    tipSeedMute:                            "Stlmiť",
+    tipSeedUnmute:                          "Zrušiť stlmenie",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Suchý: bez miestnosti",
+    optSeedReverbRoom:                      "Miestnosť: malá a blízka",
+    optSeedReverbChamber:                   "Komora: stredná, teplá",
+    optSeedReverbHall:                      "Sála: veľká a otvorená",
+    optSeedReverbChurch:                    "Kostol: veľmi veľký, dlhý dozvuk",
+    lblSeedHighpass:                        "Horná priepusť (Hz)",
+    lblSeedLowpass:                         "Dolná priepusť (Hz)",
     optSeedInstrumentSine:                  "Sínus: vstavaný syntetizátor",
     lblSeedFormat:                          "Formát",
     optSeedFormatMp3:                       "MP3",
@@ -4663,7 +6623,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Najprv uložte seed do súboru .yams — zvuk sa vykreslí vedľa neho.",
     tipSeedLoad:                            "Načítať seed",
     ttlSeedLoad:                            "Otvoriť súbor seed",
-    lblSeedLoadFilter:                      "Súbor seed (.yams)",
+    lblSeedLoadFilter:                      "Súbor Seed (.yams)",
     msgSeedLoadFailed:                      "Nepodarilo sa načítať tento súbor seed",
     tipSeedNew:                             "Nové semeno",
     tipSeedTabClose:                        "Zavrieť",
@@ -4718,53 +6678,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Ustvarja akordne progresije kot avdio + MIDI semena, ki omejujejo AI generatorje glasbe, kot je Suno.",
+    lblDlgSettingsAboutCredits:             "Zasluge za instrumente",
+    msgDlgSettingsAboutCreditsIntro:        "Vzorčeni instrumenti izvirajo iz prosto licenciranih snemalnih sej, avtor:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Akordna progresija",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "En takt na vrstico: vsaka vrstica dobi enak čas, akordi na njej pa si ta čas enakomerno razdelijo (en sam akord na vrstici zasede celoten takt). Oznake [Section], prazne vrstice in | so prezrte. Podprti so poševni akordi (C/G), 7. (Gmaj7) in N.C.",
+    tipSeedBarsAdd:                         "Daljše linije: vsaka linija akordov traja četrtino takta dlje",
+    tipSeedBarsRemove:                      "Krajše linije: vsaka linija akordov traja četrtino takta manj",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Takti na vrstico",
     lblSeedSig:                             "Taktovski podpis",
     lblSeedLoops:                           "Zanke",
-    lblSeedStyle:                           "Slog",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sl
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sl
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sl
-    optSeedStylePad:                        "Pad", // TODO: translate to sl
-    optSeedStyleDrone:                      "Drone", // TODO: translate to sl
-    optSeedStyleMarker:                     "Marker", // TODO: translate to sl
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sl
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sl
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sl
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sl
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sl
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sl
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sl
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to sl
+    lblSeedStyleGroupPads:                  "Padi",
+    lblSeedStyleGroupArps:                  "Arpeggi",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrument",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to sl
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sl
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sl
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sl
+    lblSeedBassInstrument:                  "Bas",
+    optSeedBassInstrumentSame:              "Enako kot instrument",
+    plhSeedInstrumentFilter:                "Vnesite za filtriranje…",
+    optSeedInstrumentFamilyAll:             "Vsi",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to sl
-    tabSeedRender:                          "Render", // TODO: translate to sl
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to sl
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to sl
-    lblSeedKnobTune:                        "Tune", // TODO: translate to sl
-    tipSeedMute:                            "Mute", // TODO: translate to sl
-    tipSeedUnmute:                          "Unmute", // TODO: translate to sl
-    lblSeedReverb:                          "Reverb", // TODO: translate to sl
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sl
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sl
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sl
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sl
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sl
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sl
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sl
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sl
+    tabSeedMusic:                           "Glasba",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "glasnost",
+    lblSeedKnobOctave:                      "oktava",
+    lblSeedKnobTune:                        "uglaševanje",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Slog",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Brez",
+    optSeedSwingLight:                      "Lahko",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Enostavno",
+    lblSeedSigGroupComplex:                 "Kompleksno",
+    lblSeedKnobVel:                         "hitrost",
+    lblSeedKnobLen:                         "dolžina",
+    btnSeedHold:                            "Zadrži",
+    tipSeedLaneMirror:                      "Obrni pas. Nastavitev, ne urejanje — figura ohrani svoje ime in se znova izklopi.",
+    tipSeedLaneShiftLeft:                   "Premakni levo",
+    tipSeedLaneShiftRight:                  "Premakni desno",
+    tipSeedLaneClear:                       "Počisti pas",
+    tipSeedSlots:                           "Koraki v pasu — + in − zgoraj dodajo ali odstranijo enega.",
+    tipSeedRowAll:                          "Celoten akord v tem koraku — visok blok Chord Playerja (tri note na trozvoku, štiri na septakordu). Kliknite na vrstico tonov v njegovem stolpcu, da tam začnete blok.",
+    tipSeedRowFifth:                        "Kvinta nad osnovnim tonom — BF vrstica Chord Playerja.",
+    tipSeedRowDegree:                       "En akordni ton: 1 = osnovni ton, 2, 3, 4 navzgor. Preko velikosti akorda je ton oktavo višje (C1–C4 Chord Player). Zložite več v en stolpec za svoj akord.",
+    tipSeedLaneAddStep:                     "Dodaj korak na konec pasu",
+    tipSeedLaneRemoveStep:                  "Odstrani zadnji korak pasu",
+    lblSeedBeatDiv:                         "Delitev takta",
+    tipSeedBeatDiv:                         "Koraki na udarec, za oba pasova (B/2 = osminke, B/3 = triole, B/4 = šestnajstinke). Koraki ostanejo in figura spremeni hitrost, kot v Chord Playerju.",
+    lblSeedChords:                          "Akordi",
+    tipSeedChordsEdit:                      "Uredi akorde kot besedilo — Ctrl+Enter ali Escape za vrnitev",
+    tipSeedInstrumentPrev:                  "Prejšnji instrument na seznamu",
+    tipSeedInstrumentNext:                  "Naslednji instrument na seznamu",
+    lblSeedMode:                            "način",
+    tipSeedModeEdit:                        "Uredi opombe: kliknite celico, da dodate opombo, kliknite opombo, da jo odstranite.",
+    tipSeedModeSettings:                    "Nastavitve opomb: kliknite opombo, da jo izberete, nato nastavite njene zastavice.",
+    lblSeedFlagOctave:                      "oktava",
+    lblSeedFlagScaleStep:                   "stopnja lestvice",
+    lblSeedFlagLevel:                       "raven",
+    lblSeedFlagLength:                      "trajanje",
+    lblSeedFlagCondition:                   "pogoj",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktavo višje",
+    tipSeedFlagOctDown:                     "Oktavo nižje",
+    tipSeedFlagScaleUp:                     "Prehodna nota: eno stopnjo lestvice navzgor",
+    tipSeedFlagScaleDown:                   "Prehodna nota: eno stopnjo lestvice navzdol",
+    tipSeedFlagAccent:                      "Poudarek",
+    tipSeedFlagGhost:                       "Duh",
+    tipSeedFlagSustain:                     "Zadrži do konca akorda",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Samo v zadnjem taktu akorda",
+    tipSeedFlagNotLast:                     "Samo izven zadnjega takta",
+    tipSeedFlagEarly:                       "Zgodaj: ta reža izraža naslednji akord",
+    tipSeedMute:                            "Utišaj",
+    tipSeedUnmute:                          "Vklopi zvok",
+    lblSeedReverb:                          "Odmev",
+    optSeedReverbNone:                      "Suho: brez prostora",
+    optSeedReverbRoom:                      "Soba: majhna in blizu",
+    optSeedReverbChamber:                   "Komora: srednja, topla",
+    optSeedReverbHall:                      "Dvorana: velika in odprta",
+    optSeedReverbChurch:                    "Cerkev: zelo velika, dolg rep",
+    lblSeedHighpass:                        "Visokoprepustni (Hz)",
+    lblSeedLowpass:                         "Niskoprepustni (Hz)",
     optSeedInstrumentSine:                  "Sinus: vgrajen sintetizator",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
@@ -4780,7 +6789,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Najprej shranite seme v datoteko .yams — zvok se upodobi poleg nje.",
     tipSeedLoad:                            "Naloži seed",
     ttlSeedLoad:                            "Odpri seed datoteko",
-    lblSeedLoadFilter:                      "Seed datoteka (.yams)",
+    lblSeedLoadFilter:                      "Datoteka Seed (.yams)",
     msgSeedLoadFailed:                      "Ni bilo mogoče naložiti te seed datoteke",
     tipSeedNew:                             "Novo seme",
     tipSeedTabClose:                        "Zapri",
@@ -4835,53 +6844,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "சரம் முன்னேற்றங்களை ஆடியோ மற்றும் MIDI விதைகளாக உருவாக்குகிறது, இது Suno போன்ற AI இசை ஜெனரேட்டர்களைக் கட்டுப்படுத்துகிறது.",
+    lblDlgSettingsAboutCredits:             "கருவி வரவுகள்",
+    msgDlgSettingsAboutCreditsIntro:        "மாதிரியாக எடுக்கப்பட்ட இசைக்கருவிகள் இலவச உரிமம் பெற்ற பதிவு அமர்வுகளிலிருந்து பெறப்பட்டவை, வழங்கியவர்:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "சுரக்கோர்வை முன்னேற்றம்",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "ஒரு வரிக்கு ஒரு பட்டி: ஒவ்வொரு வரியும் சமமான நேரத்தைப் பெறுகிறது, மேலும் அதில் உள்ள நாண்கள் அந்த நேரத்தை சமமாகப் பிரிக்கின்றன (ஒரு வரியில் தனியாக ஒரு நாண் முழு பட்டியையும் வைத்திருக்கும்). [Section] குறிச்சொற்கள், வெற்று வரிகள் மற்றும் | குறிகள் புறக்கணிக்கப்படுகின்றன. ஸ்லாஷ் நாண்கள் (C/G), 7வது (Gmaj7) மற்றும் N.C. ஆதரிக்கப்படுகின்றன.",
+    tipSeedBarsAdd:                         "நீண்ட வரிகள்: ஒவ்வொரு சுருதி வரியும் கால் பட்டி அதிகமாக நீடிக்கும்",
+    tipSeedBarsRemove:                      "குறுகிய வரிகள்: ஒவ்வொரு சுருதி வரியும் கால் பட்டி குறைவாக நீடிக்கும்",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "வரிக்கு அளவுகள்",
     lblSeedSig:                             "நேரக் குறி",
     lblSeedLoops:                           "சுழல்கள்",
-    lblSeedStyle:                           "நடை",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ta
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ta
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ta
-    optSeedStylePad:                        "Pad", // TODO: translate to ta
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ta
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ta
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ta
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ta
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ta
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ta
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ta
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ta
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ta
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ta
+    lblSeedStyleGroupPads:                  "பேட்கள்",
+    lblSeedStyleGroupArps:                  "அர்பெஜியோக்கள்",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "ரீவெர்ப்",
     lblSeedInstrument:                      "கருவி",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ta
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ta
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ta
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ta
+    lblSeedBassInstrument:                  "பாஸ்",
+    optSeedBassInstrumentSame:              "கருவியைப் போலவே",
+    plhSeedInstrumentFilter:                "வடிகட்ட தட்டச்சு செய்யவும்…",
+    optSeedInstrumentFamilyAll:             "அனைத்தும்",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ta
-    tabSeedRender:                          "Render", // TODO: translate to ta
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ta
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ta
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ta
-    tipSeedMute:                            "Mute", // TODO: translate to ta
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ta
-    lblSeedReverb:                          "Reverb", // TODO: translate to ta
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ta
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ta
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ta
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ta
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ta
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ta
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ta
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ta
+    tabSeedMusic:                           "இசை",
+    tabSeedRender:                          "ரெண்டர்",
+    lblSeedKnobVolume:                      "ஒலி அளவு",
+    lblSeedKnobOctave:                      "ஆக்டேவ்",
+    lblSeedKnobTune:                        "ட்யூன்",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "நடை",
+    lblSeedSwing:                           "ஸ்விங்",
+    optSeedSwingNone:                       "எதுவும் இல்லை",
+    optSeedSwingLight:                      "லேசான",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "எளிய",
+    lblSeedSigGroupComplex:                 "சிக்கலான",
+    lblSeedKnobVel:                         "திசைவேகம்",
+    lblSeedKnobLen:                         "நீளம்",
+    btnSeedHold:                            "பிடித்துக்கொள்",
+    tipSeedLaneMirror:                      "பாதையை தலைகீழாக மாற்றவும். இது ஒரு அமைப்பு, திருத்தம் அல்ல — உருவம் அதன் பெயரைத் தக்கவைத்து மீண்டும் அணைக்கப்படும்.",
+    tipSeedLaneShiftLeft:                   "இடதுபுறம் நகர்த்து",
+    tipSeedLaneShiftRight:                  "வலதுபுறம் நகர்த்து",
+    tipSeedLaneClear:                       "பாதையை அழி",
+    tipSeedSlots:                           "பாதையில் உள்ள படிகள் — மேலே உள்ள + மற்றும் − ஒன்று சேர்க்கும் அல்லது நீக்கும்.",
+    tipSeedRowAll:                          "இந்த படிநிலையில் உள்ள முழு நாண் — Chord Player இன் உயரமான தொகுதி (மூன்று குறிப்புகள் ஒரு ட்ரையடில், நான்கு ஒரு செவன்த்தில்). அதன் நெடுவரிசையில் உள்ள ஒரு தொனி வரிசையை கிளிக் செய்து தொகுதியை அங்கு தொடங்கவும்.",
+    tipSeedRowFifth:                        "அடிப்படைக்கு மேலே உள்ள ஐந்தாவது — Chord Player இன் BF வரிசை.",
+    tipSeedRowDegree:                       "ஒரு நாண் தொனி: 1 = ரூட், 2, 3, 4 மேல்நோக்கி. நாணின் அளவைத் தாண்டி, தொனி ஒரு ஆக்டேவ் மேலே இருக்கும் (Chord Player இன் C1–C4). உங்கள் சொந்த நாணை உருவாக்க ஒரு நெடுவரிசையில் பலவற்றை அடுக்கவும்.",
+    tipSeedLaneAddStep:                     "பாதையின் முடிவில் ஒரு படி சேர்க்கவும்",
+    tipSeedLaneRemoveStep:                  "பாதையின் கடைசி படியை நீக்கு",
+    lblSeedBeatDiv:                         "பீட் பிரிவு",
+    tipSeedBeatDiv:                         "ஒவ்வொரு பீட்டிற்கும் படிகள், இரு பாதைகளுக்கும் (B/2 = எட்டாம், B/3 = ட்ரிப்லெட்டுகள், B/4 = பதினாறாம்). படிகள் அப்படியே இருக்கும் மற்றும் உருவம் Chord Player இல் உள்ளதைப் போல வேகத்தை மாற்றும்.",
+    lblSeedChords:                          "கோர்ஸ்",
+    tipSeedChordsEdit:                      "சுரங்களை உரையாகத் திருத்து — Ctrl+Enter அல்லது Escape அழுத்தித் திரும்பவும்",
+    tipSeedInstrumentPrev:                  "பட்டியலில் முந்தைய கருவி",
+    tipSeedInstrumentNext:                  "பட்டியலில் அடுத்த கருவி",
+    lblSeedMode:                            "முறை",
+    tipSeedModeEdit:                        "குறிப்புகளைத் திருத்து: ஒரு குறிப்பைச் சேர்க்க ஒரு கலத்தில் கிளிக் செய்யவும், ஒரு குறிப்பை அகற்ற ஒரு குறிப்பில் கிளிக் செய்யவும்.",
+    tipSeedModeSettings:                    "குறிப்பு அமைப்புகள்: ஒரு குறிப்பைத் தேர்ந்தெடுக்க ஒரு குறிப்பில் கிளிக் செய்யவும், பின்னர் அதன் கொடிகளை அமைக்கவும்.",
+    lblSeedFlagOctave:                      "ஆக்டேவ்",
+    lblSeedFlagScaleStep:                   "அளவுகோல் படி",
+    lblSeedFlagLevel:                       "நிலை",
+    lblSeedFlagLength:                      "கால அளவு",
+    lblSeedFlagCondition:                   "நிபந்தனை",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "ஆக்டேவ் மேலே",
+    tipSeedFlagOctDown:                     "ஆக்டேவ் கீழே",
+    tipSeedFlagScaleUp:                     "கடந்து செல்லும் குறிப்பு: ஒரு ஸ்கேல் படி மேலே",
+    tipSeedFlagScaleDown:                   "கடந்து செல்லும் குறிப்பு: ஒரு ஸ்கேல் படி கீழே",
+    tipSeedFlagAccent:                      "அழுத்தம்",
+    tipSeedFlagGhost:                       "பேய்",
+    tipSeedFlagSustain:                     "கடைசி தாளம் வரை நீட்டிக்கவும்",
+    tipSeedFlagStaccato:                    "ஸ்டாகட்டோ",
+    tipSeedFlagLast:                        "கடைசி தாளத்தில் மட்டும்",
+    tipSeedFlagNotLast:                     "கடைசி தாளத்திற்கு வெளியே மட்டும்",
+    tipSeedFlagEarly:                       "முன்கூட்டியே: இந்த ஸ்லாட் அடுத்த நாண் இசையை வெளிப்படுத்துகிறது",
+    tipSeedMute:                            "முடக்கு",
+    tipSeedUnmute:                          "முடக்கத்தை நீக்கு",
+    lblSeedReverb:                          "ரீவெர்ப்",
+    optSeedReverbNone:                      "உலர்ந்தது: அறை இல்லை",
+    optSeedReverbRoom:                      "அறை: சிறியது மற்றும் அருகில்",
+    optSeedReverbChamber:                   "அறை: நடுத்தர, சூடானது",
+    optSeedReverbHall:                      "மண்டபம்: பெரியது மற்றும் திறந்த",
+    optSeedReverbChurch:                    "தேவாலயம்: மிக பெரியது, நீண்ட வால்",
+    lblSeedHighpass:                        "ஹைபாஸ் (Hz)",
+    lblSeedLowpass:                         "லோபாஸ் (Hz)",
     optSeedInstrumentSine:                  "சைன்: உள்ளமைந்த சின்த்",
     lblSeedFormat:                          "வடிவம்",
     optSeedFormatMp3:                       "MP3",
@@ -4952,53 +7010,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "कॉर्ड प्रोग्रेशन को ऑडियो और MIDI सीड्स के रूप में उत्पन्न करता है जो Suno जैसे AI संगीत जनरेटर को नियंत्रित करते हैं।",
+    lblDlgSettingsAboutCredits:             "वाद्य यंत्र क्रेडिट",
+    msgDlgSettingsAboutCreditsIntro:        "नमूनाकृत वाद्ययंत्र स्वतंत्र रूप से लाइसेंस प्राप्त रिकॉर्डिंग सत्रों से आते हैं, द्वारा:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "कॉर्ड प्रगति",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "प्रति पंक्ति एक बार: प्रत्येक पंक्ति को समान समय मिलता है, और उस पर मौजूद कॉर्ड उस समय को समान रूप से विभाजित करते हैं (एक पंक्ति पर अकेला कॉर्ड पूरे बार को रखता है)। [Section] टैग, खाली पंक्तियाँ और | चिह्न अनदेखा किए जाते हैं। स्लैश कॉर्ड (C/G), 7वें (Gmaj7) और N.C. समर्थित हैं।",
+    tipSeedBarsAdd:                         "लंबी लाइनें: कॉर्ड की प्रत्येक लाइन एक चौथाई बार अधिक चलती है",
+    tipSeedBarsRemove:                      "छोटी लाइनें: कॉर्ड की प्रत्येक लाइन एक चौथाई बार कम चलती है",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "प्रति पंक्ति माप",
     lblSeedSig:                             "समय हस्ताक्षर",
     lblSeedLoops:                           "लूप",
-    lblSeedStyle:                           "शैली",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to hi
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to hi
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to hi
-    optSeedStylePad:                        "Pad", // TODO: translate to hi
-    optSeedStyleDrone:                      "Drone", // TODO: translate to hi
-    optSeedStyleMarker:                     "Marker", // TODO: translate to hi
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to hi
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to hi
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to hi
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to hi
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to hi
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to hi
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to hi
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to hi
+    lblSeedStyleGroupPads:                  "पैड",
+    lblSeedStyleGroupArps:                  "आर्पेगियो",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "रिवर्ब",
     lblSeedInstrument:                      "वाद्य यंत्र",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to hi
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to hi
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to hi
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to hi
+    lblSeedBassInstrument:                  "बास",
+    optSeedBassInstrumentSame:              "वाद्य यंत्र जैसा",
+    plhSeedInstrumentFilter:                "फ़िल्टर करने के लिए टाइप करें…",
+    optSeedInstrumentFamilyAll:             "सभी",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to hi
-    tabSeedRender:                          "Render", // TODO: translate to hi
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to hi
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to hi
-    lblSeedKnobTune:                        "Tune", // TODO: translate to hi
-    tipSeedMute:                            "Mute", // TODO: translate to hi
-    tipSeedUnmute:                          "Unmute", // TODO: translate to hi
-    lblSeedReverb:                          "Reverb", // TODO: translate to hi
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to hi
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to hi
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to hi
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to hi
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to hi
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to hi
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to hi
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to hi
+    tabSeedMusic:                           "संगीत",
+    tabSeedRender:                          "रेंडर",
+    lblSeedKnobVolume:                      "ध्वनि",
+    lblSeedKnobOctave:                      "ऑक्टेव",
+    lblSeedKnobTune:                        "ट्यून",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "शैली",
+    lblSeedSwing:                           "स्विंग",
+    optSeedSwingNone:                       "कोई नहीं",
+    optSeedSwingLight:                      "हल्का",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "सरल",
+    lblSeedSigGroupComplex:                 "जटिल",
+    lblSeedKnobVel:                         "वेग",
+    lblSeedKnobLen:                         "लंबाई",
+    btnSeedHold:                            "पकड़ें",
+    tipSeedLaneMirror:                      "लेन को पलटें। यह एक सेटिंग है, संपादन नहीं — आकृति अपना नाम बरकरार रखती है और इसे फिर से बंद किया जा सकता है।",
+    tipSeedLaneShiftLeft:                   "बाईं ओर खिसकाएँ",
+    tipSeedLaneShiftRight:                  "दाएँ खिसकाएँ",
+    tipSeedLaneClear:                       "लेन साफ़ करें",
+    tipSeedSlots:                           "लेन में चरण — ऊपर के + और − एक जोड़ते या हटाते हैं।",
+    tipSeedRowAll:                          "इस चरण में पूरा कॉर्ड — कॉर्ड प्लेयर का लंबा ब्लॉक (एक ट्रायड पर तीन नोट, एक सेवेंथ पर चार)। ब्लॉक को वहां शुरू करने के लिए उसके कॉलम में एक टोन रो पर क्लिक करें।",
+    tipSeedRowFifth:                        "रूट के ऊपर पांचवां — कॉर्ड प्लेयर की BF रो।",
+    tipSeedRowDegree:                       "एक कॉर्ड टोन: 1 = मूल, 2, 3, 4 ऊपर की ओर। कॉर्ड के आकार से परे, टोन एक सप्तक ऊपर होता है (कॉर्ड प्लेयर का C1–C4)। अपना खुद का कॉर्ड बनाने के लिए एक कॉलम में कई स्टैक करें।",
+    tipSeedLaneAddStep:                     "लेन के अंत में एक चरण जोड़ें",
+    tipSeedLaneRemoveStep:                  "लेन का अंतिम चरण हटाएँ",
+    lblSeedBeatDiv:                         "बीट विभाजन",
+    tipSeedBeatDiv:                         "दोनों लेन के लिए प्रति बीट चरण (B/2 = आठवें, B/3 = ट्रिपलेट, B/4 = सोलहवें)। चरण वैसे ही रहते हैं और आकृति Chord Player की तरह गति बदलती है।",
+    lblSeedChords:                          "कॉर्ड्स",
+    tipSeedChordsEdit:                      "कॉर्ड्स को टेक्स्ट के रूप में संपादित करें — वापस आने के लिए Ctrl+Enter या Escape",
+    tipSeedInstrumentPrev:                  "सूची में पिछला उपकरण",
+    tipSeedInstrumentNext:                  "सूची में अगला उपकरण",
+    lblSeedMode:                            "मोड",
+    tipSeedModeEdit:                        "नोट्स संपादित करें: नोट जोड़ने के लिए एक सेल पर क्लिक करें, नोट हटाने के लिए एक नोट पर क्लिक करें।",
+    tipSeedModeSettings:                    "नोट सेटिंग्स: एक नोट का चयन करने के लिए उस पर क्लिक करें, फिर उसके फ़्लैग सेट करें।",
+    lblSeedFlagOctave:                      "ऑक्टेव",
+    lblSeedFlagScaleStep:                   "स्केल का चरण",
+    lblSeedFlagLevel:                       "स्तर",
+    lblSeedFlagLength:                      "अवधि",
+    lblSeedFlagCondition:                   "शर्त",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "ऑक्टेव ऊपर",
+    tipSeedFlagOctDown:                     "ऑक्टेव नीचे",
+    tipSeedFlagScaleUp:                     "पासिंग नोट: एक स्केल स्टेप ऊपर",
+    tipSeedFlagScaleDown:                   "पासिंग नोट: एक स्केल स्टेप नीचे",
+    tipSeedFlagAccent:                      "उच्चारण",
+    tipSeedFlagGhost:                       "भूत",
+    tipSeedFlagSustain:                     "कॉर्ड के अंत तक बनाए रखें",
+    tipSeedFlagStaccato:                    "स्टैकैटो",
+    tipSeedFlagLast:                        "केवल कॉर्ड की अंतिम बीट में",
+    tipSeedFlagNotLast:                     "केवल अंतिम बीट के बाहर",
+    tipSeedFlagEarly:                       "जल्दी: यह स्लॉट अगले कॉर्ड को आवाज़ देता है",
+    tipSeedMute:                            "म्यूट करें",
+    tipSeedUnmute:                          "अनम्यूट करें",
+    lblSeedReverb:                          "रिवर्ब",
+    optSeedReverbNone:                      "शुष्क: कोई कमरा नहीं",
+    optSeedReverbRoom:                      "कमरा: छोटा और नज़दीक",
+    optSeedReverbChamber:                   "चेंबर: मध्यम, गर्म",
+    optSeedReverbHall:                      "हॉल: बड़ा और खुला",
+    optSeedReverbChurch:                    "चर्च: बहुत बड़ा, लंबी गूँज",
+    lblSeedHighpass:                        "हाईपास (हर्ट्ज़)",
+    lblSeedLowpass:                         "लोपास (हर्ट्ज़)",
     optSeedInstrumentSine:                  "साइन: अंतर्निहित सिंथ",
     lblSeedFormat:                          "प्रारूप",
     optSeedFormatMp3:                       "MP3",
@@ -5069,53 +7176,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "কর্ড প্রগ্রেশনকে অডিও এবং MIDI বীজ হিসেবে তৈরি করে যা Suno-এর মতো AI সঙ্গীত জেনারেটরকে সীমাবদ্ধ করে।",
+    lblDlgSettingsAboutCredits:             "যন্ত্রের ক্রেডিট",
+    msgDlgSettingsAboutCreditsIntro:        "স্যাম্পল করা যন্ত্রগুলি বিনামূল্যে লাইসেন্সপ্রাপ্ত রেকর্ডিং সেশন থেকে এসেছে, দ্বারা:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "কর্ড প্রগ্ৰেশন",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "প্রতি লাইনে একটি বার: প্রতিটি লাইন সমান সময় পায়, এবং এর উপর থাকা কর্ডগুলি সেই সময়কে সমানভাবে ভাগ করে (একটি লাইনে একা একটি কর্ড পুরো বারটি ধরে রাখে)। [Section] ট্যাগ, খালি লাইন এবং | চিহ্নগুলি উপেক্ষা করা হয়। স্ল্যাশ কর্ড (C/G), 7ম (Gmaj7) এবং N.C. সমর্থিত।",
+    tipSeedBarsAdd:                         "দীর্ঘ লাইন: প্রতিটি কর্ড লাইন এক-চতুর্থাংশ বার বেশি স্থায়ী হয়",
+    tipSeedBarsRemove:                      "ছোট লাইন: প্রতিটি কর্ড লাইন এক-চতুর্থাংশ বার কম স্থায়ী হয়",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "প্রতি লাইনে পরিমাপ",
     lblSeedSig:                             "সময় স্বাক্ষর",
     lblSeedLoops:                           "লুপ",
-    lblSeedStyle:                           "শৈলী",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to bn
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to bn
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to bn
-    optSeedStylePad:                        "Pad", // TODO: translate to bn
-    optSeedStyleDrone:                      "Drone", // TODO: translate to bn
-    optSeedStyleMarker:                     "Marker", // TODO: translate to bn
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to bn
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to bn
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to bn
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to bn
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to bn
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to bn
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to bn
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to bn
+    lblSeedStyleGroupPads:                  "প্যাড",
+    lblSeedStyleGroupArps:                  "আরপেজিও",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "রিভার্ব",
     lblSeedInstrument:                      "যন্ত্র",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to bn
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to bn
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to bn
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to bn
+    lblSeedBassInstrument:                  "বেস",
+    optSeedBassInstrumentSame:              "যন্ত্রের মতো",
+    plhSeedInstrumentFilter:                "ফিল্টার করতে টাইপ করুন…",
+    optSeedInstrumentFamilyAll:             "সব",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to bn
-    tabSeedRender:                          "Render", // TODO: translate to bn
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to bn
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to bn
-    lblSeedKnobTune:                        "Tune", // TODO: translate to bn
-    tipSeedMute:                            "Mute", // TODO: translate to bn
-    tipSeedUnmute:                          "Unmute", // TODO: translate to bn
-    lblSeedReverb:                          "Reverb", // TODO: translate to bn
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to bn
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to bn
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to bn
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to bn
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to bn
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to bn
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to bn
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to bn
+    tabSeedMusic:                           "সঙ্গীত",
+    tabSeedRender:                          "রেন্ডার",
+    lblSeedKnobVolume:                      "ভলিউম",
+    lblSeedKnobOctave:                      "অক্টেভ",
+    lblSeedKnobTune:                        "টিউন",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "শৈলী",
+    lblSeedSwing:                           "সুইং",
+    optSeedSwingNone:                       "কোনটিই নয়",
+    optSeedSwingLight:                      "হালকা",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "সহজ",
+    lblSeedSigGroupComplex:                 "জটিল",
+    lblSeedKnobVel:                         "বেগ",
+    lblSeedKnobLen:                         "দৈর্ঘ্য",
+    btnSeedHold:                            "ধরে রাখুন",
+    tipSeedLaneMirror:                      "লেন উল্টান। এটি একটি সেটিং, কোনো সম্পাদনা নয় — আকৃতি তার নাম বজায় রাখে এবং এটি আবার বন্ধ করা যায়।",
+    tipSeedLaneShiftLeft:                   "বামে সরান",
+    tipSeedLaneShiftRight:                  "ডানে সরান",
+    tipSeedLaneClear:                       "লেন পরিষ্কার করুন",
+    tipSeedSlots:                           "লেনের ধাপ — উপরের + এবং − একটি যোগ বা বাদ দেয়।",
+    tipSeedRowAll:                          "এই ধাপের পুরো কর্ড — কর্ড প্লেয়ারের লম্বা ব্লক (একটি ট্রায়াডে তিনটি নোট, একটি সেভেন্থে চারটি)। ব্লকটি সেখানে শুরু করতে এর কলামে একটি টোন রোতে ক্লিক করুন।",
+    tipSeedRowFifth:                        "রুট-এর উপরে পঞ্চম — কর্ড প্লেয়ারের BF রো।",
+    tipSeedRowDegree:                       "একটি কর্ড টোন: 1 = মূল, 2, 3, 4 উপরের দিকে। কর্ডের আকারের বাইরে, টোনটি এক অষ্টক উপরে থাকে (কর্ড প্লেয়ারের C1–C4)। আপনার নিজের কর্ড তৈরি করতে একটি কলামে একাধিক স্ট্যাক করুন।",
+    tipSeedLaneAddStep:                     "লেনের শেষে একটি ধাপ যোগ করুন",
+    tipSeedLaneRemoveStep:                  "লেনের শেষ ধাপটি সরান",
+    lblSeedBeatDiv:                         "বিট বিভাজন",
+    tipSeedBeatDiv:                         "উভয় লেনের জন্য প্রতি বিটে ধাপ (B/2 = অষ্টম, B/3 = ট্রিপলেট, B/4 = ষোড়শ)। ধাপগুলি স্থির থাকে এবং চিত্র Chord Player-এর মতো গতি পরিবর্তন করে।",
+    lblSeedChords:                          "কর্ডস",
+    tipSeedChordsEdit:                      "কর্ডগুলি পাঠ্য হিসাবে সম্পাদনা করুন — ফিরে আসার জন্য Ctrl+Enter বা Escape",
+    tipSeedInstrumentPrev:                  "তালিকার পূর্ববর্তী যন্ত্র",
+    tipSeedInstrumentNext:                  "তালিকার পরবর্তী যন্ত্র",
+    lblSeedMode:                            "মোড",
+    tipSeedModeEdit:                        "নোট সম্পাদনা করুন: একটি নোট যোগ করতে একটি সেলে ক্লিক করুন, একটি নোট সরাতে একটি নোটে ক্লিক করুন।",
+    tipSeedModeSettings:                    "নোট সেটিংস: একটি নোট নির্বাচন করতে সেটিতে ক্লিক করুন, তারপর তার ফ্ল্যাগ সেট করুন।",
+    lblSeedFlagOctave:                      "অক্টেভ",
+    lblSeedFlagScaleStep:                   "স্কেল ধাপ",
+    lblSeedFlagLevel:                       "স্তর",
+    lblSeedFlagLength:                      "সময়কাল",
+    lblSeedFlagCondition:                   "শর্ত",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "এক অষ্টক উপরে",
+    tipSeedFlagOctDown:                     "এক অষ্টক নিচে",
+    tipSeedFlagScaleUp:                     "পাসিং নোট: এক স্কেল ধাপ উপরে",
+    tipSeedFlagScaleDown:                   "পাসিং নোট: এক স্কেল ধাপ নিচে",
+    tipSeedFlagAccent:                      "উচ্চারণ",
+    tipSeedFlagGhost:                       "ভূত",
+    tipSeedFlagSustain:                     "কর্ড শেষ না হওয়া পর্যন্ত ধরে রাখুন",
+    tipSeedFlagStaccato:                    "স্ট্যাক্যাটো",
+    tipSeedFlagLast:                        "শুধুমাত্র কর্ডের শেষ বিটে",
+    tipSeedFlagNotLast:                     "শুধুমাত্র শেষ বিটের বাইরে",
+    tipSeedFlagEarly:                       "আগে: এই স্লটটি পরবর্তী কর্ড বাজায়",
+    tipSeedMute:                            "নিঃশব্দ করুন",
+    tipSeedUnmute:                          "আনমিউট করুন",
+    lblSeedReverb:                          "রিভার্ব",
+    optSeedReverbNone:                      "শুষ্ক: কোনো কক্ষ নেই",
+    optSeedReverbRoom:                      "কক্ষ: ছোট ও কাছাকাছি",
+    optSeedReverbChamber:                   "চেম্বার: মাঝারি, উষ্ণ",
+    optSeedReverbHall:                      "হল: বড় ও খোলা",
+    optSeedReverbChurch:                    "গির্জা: খুব বড়, দীর্ঘ প্রতিধ্বনি",
+    lblSeedHighpass:                        "হাইপাস (Hz)",
+    lblSeedLowpass:                         "লো-পাস (Hz)",
     optSeedInstrumentSine:                  "সাইন: বিল্ট-ইন সিন্থ",
     lblSeedFormat:                          "বিন্যাস",
     optSeedFormatMp3:                       "MP3",
@@ -5186,53 +7342,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "کورد پروگریشنز کو آڈیو اور MIDI سیڈز کے طور پر تیار کرتا ہے جو Suno جیسے AI میوزک جنریٹرز کو محدود کرتے ہیں۔",
+    lblDlgSettingsAboutCredits:             "آلے کے کریڈٹس",
+    msgDlgSettingsAboutCreditsIntro:        "نمونہ شدہ آلات آزادانہ طور پر لائسنس یافتہ ریکارڈنگ سیشنز سے آتے ہیں، از:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "کورد کی ترقی",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "ہر لائن پر ایک بار: ہر لائن کو برابر وقت ملتا ہے، اور اس پر موجود راگ اس وقت کو یکساں طور پر تقسیم کرتے ہیں (ایک لائن پر اکیلا راگ پورے بار کو رکھتا ہے)۔ [Section] ٹیگز، خالی لائنیں اور | نشانات نظر انداز کیے جاتے ہیں۔ سلیش راگ (C/G)، 7ویں (Gmaj7) اور N.C. کی حمایت کی جاتی ہے۔",
+    tipSeedBarsAdd:                         "لمبی لائنیں: راگوں کی ہر لائن ایک چوتھائی بار زیادہ چلتی ہے",
+    tipSeedBarsRemove:                      "چھوٹی لائنیں: راگوں کی ہر لائن ایک چوتھائی بار کم چلتی ہے",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "فی لائن پیمائش",
     lblSeedSig:                             "وقت کا نشان",
     lblSeedLoops:                           "لوپس",
-    lblSeedStyle:                           "انداز",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ur
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ur
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ur
-    optSeedStylePad:                        "Pad", // TODO: translate to ur
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ur
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ur
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ur
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ur
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ur
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ur
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ur
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ur
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ur
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ur
+    lblSeedStyleGroupPads:                  "پیڈز",
+    lblSeedStyleGroupArps:                  "آرپیجیو",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "ریورب",
     lblSeedInstrument:                      "آلہ",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ur
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ur
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ur
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ur
+    lblSeedBassInstrument:                  "باس",
+    optSeedBassInstrumentSame:              "آلے جیسا",
+    plhSeedInstrumentFilter:                "فلٹر کرنے کے لیے ٹائپ کریں…",
+    optSeedInstrumentFamilyAll:             "تمام",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ur
-    tabSeedRender:                          "Render", // TODO: translate to ur
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ur
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ur
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ur
-    tipSeedMute:                            "Mute", // TODO: translate to ur
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ur
-    lblSeedReverb:                          "Reverb", // TODO: translate to ur
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ur
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ur
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ur
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ur
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ur
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ur
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ur
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ur
+    tabSeedMusic:                           "موسیقی",
+    tabSeedRender:                          "رینڈر",
+    lblSeedKnobVolume:                      "آواز",
+    lblSeedKnobOctave:                      "آکٹیو",
+    lblSeedKnobTune:                        "ٹیون",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "انداز",
+    lblSeedSwing:                           "سوئنگ",
+    optSeedSwingNone:                       "کوئی نہیں",
+    optSeedSwingLight:                      "ہلکا",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "سادہ",
+    lblSeedSigGroupComplex:                 "پیچیدہ",
+    lblSeedKnobVel:                         "رفتار",
+    lblSeedKnobLen:                         "لمبائی",
+    btnSeedHold:                            "پکڑیں",
+    tipSeedLaneMirror:                      "لین کو الٹائیں۔ یہ ایک سیٹنگ ہے، ترمیم نہیں — شکل اپنا نام برقرار رکھتی ہے اور اسے دوبارہ بند کیا جا سکتا ہے۔",
+    tipSeedLaneShiftLeft:                   "بائیں منتقل کریں",
+    tipSeedLaneShiftRight:                  "دائیں شفٹ کریں",
+    tipSeedLaneClear:                       "لین صاف کریں",
+    tipSeedSlots:                           "لین میں اقدامات — اوپر کے + اور − ایک کو شامل یا حذف کرتے ہیں۔",
+    tipSeedRowAll:                          "اس مرحلے میں پورا راگ — کورڈ پلیئر کا لمبا بلاک (ایک ٹرائیڈ پر تین نوٹ، ایک سیونتھ پر چار)۔ بلاک کو وہاں شروع کرنے کے لیے اس کے کالم میں ایک ٹون رو پر کلک کریں۔",
+    tipSeedRowFifth:                        "روٹ کے اوپر پانچواں — کورڈ پلیئر کی BF رو۔",
+    tipSeedRowDegree:                       "ایک راگ کا سر: 1 = جڑ، 2، 3، 4 اوپر کی طرف۔ راگ کے سائز سے آگے، سر ایک آکٹیو اوپر ہوتا ہے (کورد پلیئر کا C1–C4)۔ اپنا راگ بنانے کے لیے ایک کالم میں کئی کو اسٹیک کریں۔",
+    tipSeedLaneAddStep:                     "لین کے آخر میں ایک قدم شامل کریں",
+    tipSeedLaneRemoveStep:                  "لین کا آخری قدم ہٹائیں",
+    lblSeedBeatDiv:                         "بیٹ کی تقسیم",
+    tipSeedBeatDiv:                         "دونوں لینز کے لیے فی بیٹ اقدامات (B/2 = آٹھویں، B/3 = ٹرپلٹس، B/4 = سولہویں)۔ اقدامات برقرار رہتے ہیں اور شکل کی رفتار بدل جاتی ہے، جیسا کہ Chord Player میں ہوتا ہے۔",
+    lblSeedChords:                          "کوردز",
+    tipSeedChordsEdit:                      "کورس کو متن کے طور پر ترمیم کریں — واپس آنے کے لیے Ctrl+Enter یا Escape",
+    tipSeedInstrumentPrev:                  "فہرست میں پچھلا آلہ",
+    tipSeedInstrumentNext:                  "فہرست میں اگلا آلہ",
+    lblSeedMode:                            "موڈ",
+    tipSeedModeEdit:                        "نوٹس میں ترمیم کریں: نوٹ شامل کرنے کے لیے ایک سیل پر کلک کریں، نوٹ ہٹانے کے لیے ایک نوٹ پر کلک کریں۔",
+    tipSeedModeSettings:                    "نوٹ کی ترتیبات: نوٹ کو منتخب کرنے کے لیے اس پر کلک کریں، پھر اس کے جھنڈے سیٹ کریں۔",
+    lblSeedFlagOctave:                      "آکٹیو",
+    lblSeedFlagScaleStep:                   "پیمانے کا قدم",
+    lblSeedFlagLevel:                       "سطح",
+    lblSeedFlagLength:                      "مدت",
+    lblSeedFlagCondition:                   "شرط",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "آکٹیو اوپر",
+    tipSeedFlagOctDown:                     "آکٹیو نیچے",
+    tipSeedFlagScaleUp:                     "گزرتا نوٹ: ایک اسکیل قدم اوپر",
+    tipSeedFlagScaleDown:                   "گزرتا نوٹ: ایک اسکیل قدم نیچے",
+    tipSeedFlagAccent:                      "لہجہ",
+    tipSeedFlagGhost:                       "بھوت",
+    tipSeedFlagSustain:                     "کورد کے آخر تک برقرار رکھیں",
+    tipSeedFlagStaccato:                    "سٹاکاٹو",
+    tipSeedFlagLast:                        "صرف کورد کی آخری بیٹ میں",
+    tipSeedFlagNotLast:                     "صرف آخری بیٹ کے باہر",
+    tipSeedFlagEarly:                       "جلدی: یہ سلاٹ اگلے راگ کو آواز دیتا ہے",
+    tipSeedMute:                            "خاموش کریں",
+    tipSeedUnmute:                          "آواز بحال کریں",
+    lblSeedReverb:                          "ریورب",
+    optSeedReverbNone:                      "خشک: کوئی کمرہ نہیں",
+    optSeedReverbRoom:                      "کمرہ: چھوٹا اور قریب",
+    optSeedReverbChamber:                   "چیمبر: درمیانہ، گرم",
+    optSeedReverbHall:                      "ہال: بڑا اور کھلا",
+    optSeedReverbChurch:                    "چرچ: بہت بڑا، لمبی گونج",
+    lblSeedHighpass:                        "ہائی پاس (ہرٹز)",
+    lblSeedLowpass:                         "لو پاس (ہرٹز)",
     optSeedInstrumentSine:                  "سائن: بلٹ ان سنتھ",
     lblSeedFormat:                          "فارمیٹ",
     optSeedFormatMp3:                       "MP3",
@@ -5303,53 +7508,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Hutengeneza maendeleo ya nyimbo kama mbegu za sauti + MIDI zinazoweka mipaka kwa jenereta za muziki za AI kama Suno.",
+    lblDlgSettingsAboutCredits:             "Mikopo ya ala",
+    msgDlgSettingsAboutCreditsIntro:        "Vyombo vilivyochukuliwa sampuli vinatokana na vipindi vya kurekodi vilivyo na leseni huru, na:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Mfuatano wa kodi",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Ba moja kwa kila mstari: kila mstari hupata muda sawa, na nyimbo zake hugawanya muda huo sawasawa (wimbo mmoja pekee kwenye mstari hushikilia ba nzima). Vitambulisho vya [Section], mistari tupu na alama za | hupuuzwa. Nyimbo za slash (C/G), 7ths (Gmaj7) na N.C. zinaungwa mkono.",
+    tipSeedBarsAdd:                         "Mistari mirefu zaidi: kila mstari wa kodi hudumu robo-baa zaidi",
+    tipSeedBarsRemove:                      "Mistari mifupi zaidi: kila mstari wa kodi hudumu robo-baa pungufu",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Mizani kwa mstari",
     lblSeedSig:                             "Saini ya muda",
     lblSeedLoops:                           "Mizunguko",
-    lblSeedStyle:                           "Mtindo",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to sw
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to sw
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to sw
-    optSeedStylePad:                        "Pad", // TODO: translate to sw
-    optSeedStyleDrone:                      "Drone", // TODO: translate to sw
-    optSeedStyleMarker:                     "Marker", // TODO: translate to sw
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to sw
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to sw
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to sw
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to sw
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to sw
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to sw
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to sw
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to sw
+    lblSeedStyleGroupPads:                  "Pedi",
+    lblSeedStyleGroupArps:                  "Arpeggio",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Ala",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to sw
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to sw
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to sw
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to sw
+    lblSeedBassInstrument:                  "Besi",
+    optSeedBassInstrumentSame:              "Sawa na ala",
+    plhSeedInstrumentFilter:                "Andika ili kuchuja…",
+    optSeedInstrumentFamilyAll:             "Zote",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to sw
-    tabSeedRender:                          "Render", // TODO: translate to sw
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to sw
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to sw
-    lblSeedKnobTune:                        "Tune", // TODO: translate to sw
-    tipSeedMute:                            "Mute", // TODO: translate to sw
-    tipSeedUnmute:                          "Unmute", // TODO: translate to sw
-    lblSeedReverb:                          "Reverb", // TODO: translate to sw
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to sw
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to sw
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to sw
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to sw
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to sw
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to sw
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to sw
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to sw
+    tabSeedMusic:                           "Muziki",
+    tabSeedRender:                          "Rendera",
+    lblSeedKnobVolume:                      "sauti",
+    lblSeedKnobOctave:                      "oktava",
+    lblSeedKnobTune:                        "kurekebisha",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Mtindo",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Hakuna",
+    optSeedSwingLight:                      "Kidogo",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Rahisi",
+    lblSeedSigGroupComplex:                 "Ngumu",
+    lblSeedKnobVel:                         "kasi",
+    lblSeedKnobLen:                         "urefu",
+    btnSeedHold:                            "Shikilia",
+    tipSeedLaneMirror:                      "Geuza njia. Mpangilio, si uhariri — umbo hubaki na jina lake na huzimika tena.",
+    tipSeedLaneShiftLeft:                   "Sogeza kushoto",
+    tipSeedLaneShiftRight:                  "Kusogeza kulia",
+    tipSeedLaneClear:                       "Futa njia",
+    tipSeedSlots:                           "Hatua kwenye njia — + na − hapo juu huongeza au kuondoa moja.",
+    tipSeedRowAll:                          "Akorodi nzima katika hatua hii — kizuizi kirefu cha Chord Player (noti tatu kwenye triad, nne kwenye saba). Bofya safu ya toni kwenye safu yake ili kuanza kizuizi hapo.",
+    tipSeedRowFifth:                        "Ya tano juu ya mzizi — safu ya BF ya Chord Player.",
+    tipSeedRowDegree:                       "Sauti moja ya kodi: 1 = mzizi, 2, 3, 4 kwenda juu. Zaidi ya ukubwa wa kodi, sauti huwa oktava moja juu (C1–C4 ya Chord Player). Weka kadhaa kwenye safu moja kwa kodi yako mwenyewe.",
+    tipSeedLaneAddStep:                     "Ongeza hatua mwishoni mwa njia",
+    tipSeedLaneRemoveStep:                  "Ondoa hatua ya mwisho ya njia",
+    lblSeedBeatDiv:                         "Mgawanyo wa mdundo",
+    tipSeedBeatDiv:                         "Hatua kwa kila mpigo, kwa njia zote mbili (B/2 = nane, B/3 = tatu, B/4 = kumi na sita). Hatua hubaki na umbo hubadilisha kasi, kama ilivyo kwenye Chord Player.",
+    lblSeedChords:                          "Akodi",
+    tipSeedChordsEdit:                      "Hariri nyimbo kama maandishi — Ctrl+Enter au Escape kurudi",
+    tipSeedInstrumentPrev:                  "Ala iliyopita kwenye orodha",
+    tipSeedInstrumentNext:                  "Ala inayofuata kwenye orodha",
+    lblSeedMode:                            "hali",
+    tipSeedModeEdit:                        "Hariri madokezo: bofya seli ili kuongeza dokezo, bofya dokezo ili kuliondoa.",
+    tipSeedModeSettings:                    "Mipangilio ya dokezo: bofya dokezo kulichagua, kisha weka bendera zake.",
+    lblSeedFlagOctave:                      "oktava",
+    lblSeedFlagScaleStep:                   "hatua ya mizani",
+    lblSeedFlagLevel:                       "kiwango",
+    lblSeedFlagLength:                      "muda",
+    lblSeedFlagCondition:                   "sharti",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktava juu",
+    tipSeedFlagOctDown:                     "Oktava chini",
+    tipSeedFlagScaleUp:                     "Noti ya kupita: hatua moja ya mizani juu",
+    tipSeedFlagScaleDown:                   "Noti ya kupita: hatua moja ya mizani chini",
+    tipSeedFlagAccent:                      "Mkazo",
+    tipSeedFlagGhost:                       "Roho",
+    tipSeedFlagSustain:                     "Dumisha hadi mwisho wa kodi",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Tu katika mpigo wa mwisho wa kodi",
+    tipSeedFlagNotLast:                     "Tu nje ya mpigo wa mwisho",
+    tipSeedFlagEarly:                       "Mapema: nafasi hii inatoa sauti ya kodi inayofuata",
+    tipSeedMute:                            "Nyamazisha",
+    tipSeedUnmute:                          "Fungua sauti",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Kavu: hakuna chumba",
+    optSeedReverbRoom:                      "Chumba: kidogo na karibu",
+    optSeedReverbChamber:                   "Chumba: cha kati, joto",
+    optSeedReverbHall:                      "Ukumbi: mkubwa na wazi",
+    optSeedReverbChurch:                    "Kanisa: kubwa sana, mkia mrefu",
+    lblSeedHighpass:                        "Highpass (Hz)",
+    lblSeedLowpass:                         "Lowpass (Hz)",
     optSeedInstrumentSine:                  "Saini: synth iliyojengwa ndani",
     lblSeedFormat:                          "Umbizo",
     optSeedFormatMp3:                       "MP3",
@@ -5365,7 +7619,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Hifadhi seed kwenye faili ya .yams kwanza — sauti inatolewa karibu nayo.",
     tipSeedLoad:                            "Pakia mbegu",
     ttlSeedLoad:                            "Fungua faili la mbegu",
-    lblSeedLoadFilter:                      "Faili la mbegu (.yams)",
+    lblSeedLoadFilter:                      "Faili ya Seed (.yams)",
     msgSeedLoadFailed:                      "Imeshindwa kupakia faili hilo la mbegu",
     tipSeedNew:                             "Mbegu mpya",
     tipSeedTabClose:                        "Funga",
@@ -5420,53 +7674,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "ਕੋਰਡ ਪ੍ਰੋਗਰੈਸ਼ਨਾਂ ਨੂੰ ਆਡੀਓ ਅਤੇ MIDI ਬੀਜਾਂ ਵਜੋਂ ਤਿਆਰ ਕਰਦਾ ਹੈ ਜੋ Suno ਵਰਗੇ AI ਸੰਗੀਤ ਜਨਰੇਟਰਾਂ ਨੂੰ ਸੀਮਤ ਕਰਦੇ ਹਨ।",
+    lblDlgSettingsAboutCredits:             "ਸਾਜ਼ ਕ੍ਰੈਡਿਟ",
+    msgDlgSettingsAboutCreditsIntro:        "ਨਮੂਨੇ ਵਾਲੇ ਸਾਜ਼ ਮੁਫ਼ਤ ਲਾਇਸੰਸਸ਼ੁਦਾ ਰਿਕਾਰਡਿੰਗ ਸੈਸ਼ਨਾਂ ਤੋਂ ਆਉਂਦੇ ਹਨ, ਦੁਆਰਾ:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "ਕੋਰਡ ਪ੍ਰਗਤੀ",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "ਪ੍ਰਤੀ ਲਾਈਨ ਇੱਕ ਬਾਰ: ਹਰੇਕ ਲਾਈਨ ਨੂੰ ਬਰਾਬਰ ਸਮਾਂ ਮਿਲਦਾ ਹੈ, ਅਤੇ ਇਸ 'ਤੇ ਮੌਜੂਦ ਕੋਰਡ ਉਸ ਸਮੇਂ ਨੂੰ ਬਰਾਬਰ ਵੰਡਦੇ ਹਨ (ਇੱਕ ਲਾਈਨ 'ਤੇ ਇਕੱਲਾ ਕੋਰਡ ਪੂਰੀ ਬਾਰ ਨੂੰ ਰੱਖਦਾ ਹੈ)। [Section] ਟੈਗ, ਖਾਲੀ ਲਾਈਨਾਂ ਅਤੇ | ਨਿਸ਼ਾਨ ਅਣਡਿੱਠ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਸਲੈਸ਼ ਕੋਰਡ (C/G), 7ਵੇਂ (Gmaj7) ਅਤੇ N.C. ਸਮਰਥਿਤ ਹਨ।",
+    tipSeedBarsAdd:                         "ਲੰਬੀਆਂ ਲਾਈਨਾਂ: ਤਾਰਾਂ ਦੀ ਹਰੇਕ ਲਾਈਨ ਇੱਕ ਚੌਥਾਈ ਬਾਰ ਵੱਧ ਰਹਿੰਦੀ ਹੈ",
+    tipSeedBarsRemove:                      "ਛੋਟੀਆਂ ਲਾਈਨਾਂ: ਤਾਰਾਂ ਦੀ ਹਰੇਕ ਲਾਈਨ ਇੱਕ ਚੌਥਾਈ ਬਾਰ ਘੱਟ ਰਹਿੰਦੀ ਹੈ",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "ਪ੍ਰਤੀ ਲਾਈਨ ਮਾਪ",
     lblSeedSig:                             "ਸਮਾਂ ਦਸਤਖਤ",
     lblSeedLoops:                           "ਲੂਪਸ",
-    lblSeedStyle:                           "ਸ਼ੈਲੀ",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to pa
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to pa
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to pa
-    optSeedStylePad:                        "Pad", // TODO: translate to pa
-    optSeedStyleDrone:                      "Drone", // TODO: translate to pa
-    optSeedStyleMarker:                     "Marker", // TODO: translate to pa
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to pa
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to pa
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to pa
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to pa
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to pa
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to pa
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to pa
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to pa
+    lblSeedStyleGroupPads:                  "ਪੈਡ",
+    lblSeedStyleGroupArps:                  "ਆਰਪੇਜੀਓ",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "ਰੀਵਰਬ",
     lblSeedInstrument:                      "ਸਾਜ਼",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to pa
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to pa
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to pa
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to pa
+    lblSeedBassInstrument:                  "ਬਾਸ",
+    optSeedBassInstrumentSame:              "ਸਾਜ਼ ਵਾਂਗ",
+    plhSeedInstrumentFilter:                "ਫਿਲਟਰ ਕਰਨ ਲਈ ਟਾਈਪ ਕਰੋ…",
+    optSeedInstrumentFamilyAll:             "ਸਾਰੇ",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to pa
-    tabSeedRender:                          "Render", // TODO: translate to pa
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to pa
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to pa
-    lblSeedKnobTune:                        "Tune", // TODO: translate to pa
-    tipSeedMute:                            "Mute", // TODO: translate to pa
-    tipSeedUnmute:                          "Unmute", // TODO: translate to pa
-    lblSeedReverb:                          "Reverb", // TODO: translate to pa
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to pa
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to pa
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to pa
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to pa
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to pa
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to pa
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to pa
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to pa
+    tabSeedMusic:                           "ਸੰਗੀਤ",
+    tabSeedRender:                          "ਰੈਂਡਰ",
+    lblSeedKnobVolume:                      "ਆਵਾਜ਼",
+    lblSeedKnobOctave:                      "ਅਕਟੇਵ",
+    lblSeedKnobTune:                        "ਟਿਊਨ",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "ਸ਼ੈਲੀ",
+    lblSeedSwing:                           "ਸਵਿੰਗ",
+    optSeedSwingNone:                       "ਕੋਈ ਨਹੀਂ",
+    optSeedSwingLight:                      "ਹਲਕਾ",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "ਸਧਾਰਨ",
+    lblSeedSigGroupComplex:                 "ਗੁੰਝਲਦਾਰ",
+    lblSeedKnobVel:                         "ਵੇਗ",
+    lblSeedKnobLen:                         "ਲੰਬਾਈ",
+    btnSeedHold:                            "ਫੜੋ",
+    tipSeedLaneMirror:                      "ਲੇਨ ਨੂੰ ਉਲਟਾਓ। ਇਹ ਇੱਕ ਸੈਟਿੰਗ ਹੈ, ਸੰਪਾਦਨ ਨਹੀਂ — ਆਕ੍ਰਿਤੀ ਆਪਣਾ ਨਾਮ ਬਰਕਰਾਰ ਰੱਖਦੀ ਹੈ ਅਤੇ ਇਸਨੂੰ ਦੁਬਾਰਾ ਬੰਦ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।",
+    tipSeedLaneShiftLeft:                   "ਖੱਬੇ ਪਾਸੇ ਸ਼ਿਫਟ ਕਰੋ",
+    tipSeedLaneShiftRight:                  "ਸੱਜੇ ਪਾਸੇ ਸ਼ਿਫਟ ਕਰੋ",
+    tipSeedLaneClear:                       "ਲੇਨ ਸਾਫ਼ ਕਰੋ",
+    tipSeedSlots:                           "ਲੇਨ ਵਿੱਚ ਕਦਮ — ਉੱਪਰਲੇ + ਅਤੇ − ਇੱਕ ਜੋੜਦੇ ਜਾਂ ਹਟਾਉਂਦੇ ਹਨ।",
+    tipSeedRowAll:                          "ਇਸ ਕਦਮ ਵਿੱਚ ਪੂਰਾ ਕੋਰਡ — ਕੋਰਡ ਪਲੇਅਰ ਦਾ ਲੰਬਾ ਬਲਾਕ (ਇੱਕ ਟ੍ਰਾਈਡ 'ਤੇ ਤਿੰਨ ਨੋਟ, ਇੱਕ ਸੈਵਨਥ 'ਤੇ ਚਾਰ)। ਬਲਾਕ ਨੂੰ ਉੱਥੇ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇਸਦੇ ਕਾਲਮ ਵਿੱਚ ਇੱਕ ਟੋਨ ਰੋ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
+    tipSeedRowFifth:                        "ਰੂਟ ਦੇ ਉੱਪਰ ਪੰਜਵਾਂ — ਕੋਰਡ ਪਲੇਅਰ ਦੀ BF ਰੋ।",
+    tipSeedRowDegree:                       "ਇੱਕ ਕੋਰਡ ਟੋਨ: 1 = ਮੂਲ, 2, 3, 4 ਉੱਪਰ ਵੱਲ। ਕੋਰਡ ਦੇ ਆਕਾਰ ਤੋਂ ਪਰੇ, ਟੋਨ ਇੱਕ ਅਸ਼ਟਕ ਉੱਪਰ ਹੁੰਦਾ ਹੈ (ਕੋਰਡ ਪਲੇਅਰ ਦਾ C1–C4)। ਆਪਣੀ ਖੁਦ ਦੀ ਕੋਰਡ ਬਣਾਉਣ ਲਈ ਇੱਕ ਕਾਲਮ ਵਿੱਚ ਕਈਆਂ ਨੂੰ ਸਟੈਕ ਕਰੋ।",
+    tipSeedLaneAddStep:                     "ਲੇਨ ਦੇ ਅੰਤ ਵਿੱਚ ਇੱਕ ਕਦਮ ਜੋੜੋ",
+    tipSeedLaneRemoveStep:                  "ਲੇਨ ਦਾ ਆਖਰੀ ਕਦਮ ਹਟਾਓ",
+    lblSeedBeatDiv:                         "ਬੀਟ ਵੰਡ",
+    tipSeedBeatDiv:                         "ਦੋਵਾਂ ਲੇਨਾਂ ਲਈ ਪ੍ਰਤੀ ਬੀਟ ਕਦਮ (B/2 = ਅੱਠਵੇਂ, B/3 = ਟ੍ਰਿਪਲੈਟਸ, B/4 = ਸੋਲ੍ਹਵੇਂ)। ਕਦਮ ਉਹੀ ਰਹਿੰਦੇ ਹਨ ਅਤੇ ਚਿੱਤਰ Chord Player ਵਾਂਗ ਗਤੀ ਬਦਲਦਾ ਹੈ।",
+    lblSeedChords:                          "ਕੋਰਡਜ਼",
+    tipSeedChordsEdit:                      "ਕੋਰਡਾਂ ਨੂੰ ਟੈਕਸਟ ਵਜੋਂ ਸੰਪਾਦਿਤ ਕਰੋ — ਵਾਪਸ ਆਉਣ ਲਈ Ctrl+Enter ਜਾਂ Escape",
+    tipSeedInstrumentPrev:                  "ਸੂਚੀ ਵਿੱਚ ਪਿਛਲਾ ਸਾਧਨ",
+    tipSeedInstrumentNext:                  "ਸੂਚੀ ਵਿੱਚ ਅਗਲਾ ਸਾਧਨ",
+    lblSeedMode:                            "ਮੋਡ",
+    tipSeedModeEdit:                        "ਨੋਟਸ ਸੰਪਾਦਿਤ ਕਰੋ: ਨੋਟ ਜੋੜਨ ਲਈ ਇੱਕ ਸੈੱਲ 'ਤੇ ਕਲਿੱਕ ਕਰੋ, ਨੋਟ ਹਟਾਉਣ ਲਈ ਇੱਕ ਨੋਟ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
+    tipSeedModeSettings:                    "ਨੋਟ ਸੈਟਿੰਗਾਂ: ਇੱਕ ਨੋਟ ਚੁਣਨ ਲਈ ਉਸ 'ਤੇ ਕਲਿੱਕ ਕਰੋ, ਫਿਰ ਉਸਦੇ ਫਲੈਗ ਸੈੱਟ ਕਰੋ।",
+    lblSeedFlagOctave:                      "ਅਕਟੇਵ",
+    lblSeedFlagScaleStep:                   "ਸਕੇਲ ਕਦਮ",
+    lblSeedFlagLevel:                       "ਪੱਧਰ",
+    lblSeedFlagLength:                      "ਮਿਆਦ",
+    lblSeedFlagCondition:                   "ਸ਼ਰਤ",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "ਅੱਠਵਾਂ ਸੁਰ ਉੱਪਰ",
+    tipSeedFlagOctDown:                     "ਅੱਠਵਾਂ ਸੁਰ ਹੇਠਾਂ",
+    tipSeedFlagScaleUp:                     "ਲੰਘਦਾ ਨੋਟ: ਇੱਕ ਸਕੇਲ ਕਦਮ ਉੱਪਰ",
+    tipSeedFlagScaleDown:                   "ਲੰਘਦਾ ਨੋਟ: ਇੱਕ ਸਕੇਲ ਕਦਮ ਹੇਠਾਂ",
+    tipSeedFlagAccent:                      "ਉਚਾਰਨ",
+    tipSeedFlagGhost:                       "ਭੂਤ",
+    tipSeedFlagSustain:                     "ਕੋਰਡ ਦੇ ਅੰਤ ਤੱਕ ਬਰਕਰਾਰ ਰੱਖੋ",
+    tipSeedFlagStaccato:                    "ਸਟੈਕਾਟੋ",
+    tipSeedFlagLast:                        "ਸਿਰਫ਼ ਕੋਰਡ ਦੀ ਆਖਰੀ ਬੀਟ ਵਿੱਚ",
+    tipSeedFlagNotLast:                     "ਸਿਰਫ਼ ਆਖਰੀ ਬੀਟ ਤੋਂ ਬਾਹਰ",
+    tipSeedFlagEarly:                       "ਜਲਦੀ: ਇਹ ਸਲਾਟ ਅਗਲੀ ਤਾਰ ਨੂੰ ਆਵਾਜ਼ ਦਿੰਦਾ ਹੈ",
+    tipSeedMute:                            "ਮਿਊਟ ਕਰੋ",
+    tipSeedUnmute:                          "ਅਨਮਿਊਟ ਕਰੋ",
+    lblSeedReverb:                          "ਰੀਵਰਬ",
+    optSeedReverbNone:                      "ਸੁੱਕਾ: ਕੋਈ ਕਮਰਾ ਨਹੀਂ",
+    optSeedReverbRoom:                      "ਕਮਰਾ: ਛੋਟਾ ਅਤੇ ਨੇੜੇ",
+    optSeedReverbChamber:                   "ਚੈਂਬਰ: ਦਰਮਿਆਨਾ, ਗਰਮ",
+    optSeedReverbHall:                      "ਹਾਲ: ਵੱਡਾ ਅਤੇ ਖੁੱਲ੍ਹਾ",
+    optSeedReverbChurch:                    "ਚਰਚ: ਬਹੁਤ ਵੱਡਾ, ਲੰਬੀ ਗੂੰਜ",
+    lblSeedHighpass:                        "ਹਾਈਪਾਸ (Hz)",
+    lblSeedLowpass:                         "ਲੋਅਪਾਸ (Hz)",
     optSeedInstrumentSine:                  "ਸਾਈਨ: ਬਿਲਟ-ਇਨ ਸਿੰਥ",
     lblSeedFormat:                          "ਫਾਰਮੈਟ",
     optSeedFormatMp3:                       "MP3",
@@ -5537,54 +7840,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Yana samar da ci gaban kida zuwa tsaba na sauti da MIDI waɗanda ke takura masu samar da kiɗa na AI kamar Suno.",
+    lblDlgSettingsAboutCredits:             "Kayan aiki credits",
+    msgDlgSettingsAboutCreditsIntro:        "Kayan kida da aka yi samfuri sun fito ne daga zaman rikodin da aka ba da lasisi kyauta, ta:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Ci gaban kodi",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Ma'auni ɗaya a kowane layi: kowane layi yana samun lokaci daidai, kuma kordoji a kai suna raba lokacin daidai (kordo ɗaya kaɗai a layi yana riƙe da ma'aunin gaba ɗaya). Ana watsi da alamomin [Section], layukan fanko da alamomin |. Ana tallafawa kordojin slash (C/G), 7ths (Gmaj7) da N.C.",
+    tipSeedBarsAdd:                         "Layuka masu tsayi: kowane layin kirtani yana ɗaukar kwata-bar fiye",
+    tipSeedBarsRemove:                      "Layuka masu gajarta: kowane layin kirtani yana ɗaukar kwata-bar ƙasa",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Ma'auni a kowane layi",
     lblSeedSig:                             "Sa hannun lokaci",
     lblSeedLoops:                           "Madauki",
-    lblSeedStyle:                           "Salo",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to ha
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to ha
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to ha
-    optSeedStylePad:                        "Pad", // TODO: translate to ha
-    optSeedStyleDrone:                      "Drone", // TODO: translate to ha
-    optSeedStyleMarker:                     "Marker", // TODO: translate to ha
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to ha
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to ha
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to ha
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to ha
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to ha
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to ha
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to ha
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to ha
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpeggios",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Kayan aiki",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to ha
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to ha
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to ha
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to ha
+    lblSeedBassInstrument:                  "Bass",
+    optSeedBassInstrumentSame:              "Daya da kayan aiki",
+    plhSeedInstrumentFilter:                "Rubuta don tacewa…",
+    optSeedInstrumentFamilyAll:             "Duk",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to ha
-    tabSeedRender:                          "Render", // TODO: translate to ha
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to ha
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to ha
-    lblSeedKnobTune:                        "Tune", // TODO: translate to ha
-    tipSeedMute:                            "Mute", // TODO: translate to ha
-    tipSeedUnmute:                          "Unmute", // TODO: translate to ha
-    lblSeedReverb:                          "Reverb", // TODO: translate to ha
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to ha
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to ha
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to ha
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to ha
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to ha
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to ha
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to ha
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to ha
-    optSeedInstrumentSine:                  "Sine: ginshigar synth",
+    tabSeedMusic:                           "Kiɗa",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "ƙara",
+    lblSeedKnobOctave:                      "oktaf",
+    lblSeedKnobTune:                        "gyara",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Salo",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Babu",
+    optSeedSwingLight:                      "Mai sauƙi",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Sauƙi",
+    lblSeedSigGroupComplex:                 "Rarrabe",
+    lblSeedKnobVel:                         "gudu",
+    lblSeedKnobLen:                         "tsawon",
+    btnSeedHold:                            "Riƙe",
+    tipSeedLaneMirror:                      "Juya layin. Saiti ne, ba gyara ba — siffar tana riƙe da sunanta kuma tana kashewa kuma.",
+    tipSeedLaneShiftLeft:                   "Matsa hagu",
+    tipSeedLaneShiftRight:                  "Matsar dama",
+    tipSeedLaneClear:                       "Share layin",
+    tipSeedSlots:                           "Matakai a cikin hanya — + da − na sama suna ƙara ko cire ɗaya.",
+    tipSeedRowAll:                          "Duk sautin a wannan matakin — babban block na Chord Player (notes uku akan triad, hudu akan seventh). Danna layin sautin a ginshikinsa don fara block din a can.",
+    tipSeedRowFifth:                        "Na biyar sama da tushe — layin BF na Chord Player.",
+    tipSeedRowDegree:                       "Sautin kirtani ɗaya: 1 = tushe, 2, 3, 4 sama. Bayan girman kirtani, sautin yana sama da oktaba ɗaya (C1–C4 na Chord Player). Tara da yawa a cikin shafi ɗaya don kirtaninka.",
+    tipSeedLaneAddStep:                     "Ƙara mataki a ƙarshen layin",
+    tipSeedLaneRemoveStep:                  "Cire mataki na ƙarshe na layin",
+    lblSeedBeatDiv:                         "Rabe-raben bugu",
+    tipSeedBeatDiv:                         "Matakai a kowane bugu, don hanyoyi biyu (B/2 = takwas, B/3 = uku-uku, B/4 = goma sha shida). Matakan suna tsayawa kuma siffar tana canza sauri, kamar a Chord Player.",
+    lblSeedChords:                          "Kordoji",
+    tipSeedChordsEdit:                      "Shirya kirtani a matsayin rubutu — Ctrl+Enter ko Escape don dawowa",
+    tipSeedInstrumentPrev:                  "Kayan aiki na baya a cikin jerin",
+    tipSeedInstrumentNext:                  "Kayan aiki na gaba a cikin jerin",
+    lblSeedMode:                            "yanayi",
+    tipSeedModeEdit:                        "Gyara bayanan kula: danna tantanin halitta don ƙara bayanin kula, danna bayanin kula don cire shi.",
+    tipSeedModeSettings:                    "Saitunan bayanin kula: danna bayanin kula don zaɓar shi, sannan saita alamunsa.",
+    lblSeedFlagOctave:                      "oktaf",
+    lblSeedFlagScaleStep:                   "matakin sikel",
+    lblSeedFlagLevel:                       "mataki",
+    lblSeedFlagLength:                      "tsawon lokaci",
+    lblSeedFlagCondition:                   "sharadi",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktav sama",
+    tipSeedFlagOctDown:                     "Oktav kasa",
+    tipSeedFlagScaleUp:                     "Bayanin wucewa: mataki ɗaya na sikelin sama",
+    tipSeedFlagScaleDown:                   "Bayanin wucewa: mataki ɗaya na sikelin kasa",
+    tipSeedFlagAccent:                      "Launi",
+    tipSeedFlagGhost:                       "Fatalwa",
+    tipSeedFlagSustain:                     "Ci gaba har zuwa ƙarshen kirtani",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Sai a bugun karshe na kirtani",
+    tipSeedFlagNotLast:                     "Sai a wajen bugun karshe",
+    tipSeedFlagEarly:                       "Da wuri: wannan ramin yana fitar da sautin kirtani na gaba",
+    tipSeedMute:                            "Kashe sauti",
+    tipSeedUnmute:                          "Kunna sauti",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Bushe: babu daki",
+    optSeedReverbRoom:                      "Daki: karami kuma kusa",
+    optSeedReverbChamber:                   "Daki: matsakaici, mai dumi",
+    optSeedReverbHall:                      "Zaure: babba kuma a buɗe",
+    optSeedReverbChurch:                    "Coci: babba sosai, dogon sauti",
+    lblSeedHighpass:                        "Highpass (Hz)",
+    lblSeedLowpass:                         "Lowpass (Hz)",
+    optSeedInstrumentSine:                  "Sine: synth ginannen",
     lblSeedFormat:                          "Tsari",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -5599,7 +7951,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Ajiye seed zuwa fayil ɗin .yams da farko — ana fitar da sauti kusa da shi.",
     tipSeedLoad:                            "Ɗauki iri",
     ttlSeedLoad:                            "Bude fayil ɗin iri",
-    lblSeedLoadFilter:                      "Fayil ɗin iri (.yams)",
+    lblSeedLoadFilter:                      "Fayil ɗin Seed (.yams)",
     msgSeedLoadFailed:                      "Ba a iya ɗaukar wannan fayil ɗin iri ba",
     tipSeedNew:                             "Sabon iri",
     tipSeedTabClose:                        "Rufe",
@@ -5654,54 +8006,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "N ṣe ipilẹṣẹ ilọsiwaju akọọlẹ bi awọn irugbin ohun + MIDI ti o fi ipa mu awọn olupilẹṣẹ orin AI bi Suno.",
+    lblDlgSettingsAboutCredits:             "Awọn kirẹditi ohun èlò",
+    msgDlgSettingsAboutCreditsIntro:        "Awọn ohun elo ti a ṣe ayẹwo wa lati awọn igba gbigbasilẹ ti o ni iwe-aṣẹ ọfẹ, nipasẹ:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Ìtẹ̀síwájú Kọ́ọ̀dù",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Ọkan bar fun ila kọọkan: ila kọọkan n gba akoko dọgba, ati awọn kọọdu lori rẹ pin akoko naa dọgba (kọọdu kan ṣoṣo lori ila kan n mu gbogbo bar naa). Awọn ami [Section], awọn ila ofo ati awọn ami | ni a ko kà si. Awọn kọọdu slash (C/G), 7ths (Gmaj7) ati N.C. ni atilẹyin.",
+    tipSeedBarsAdd:                         "Awọn ila gigun: ila kọọkan ti awọn kọọdu n gba idamẹrin-ọpa diẹ sii",
+    tipSeedBarsRemove:                      "Awọn ila kukuru: ila kọọkan ti awọn kọọdu n gba idamẹrin-ọpa diẹ",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Àwọn ìwọ̀n fún ìlà kọ̀ọ̀kan",
     lblSeedSig:                             "Ami akoko",
     lblSeedLoops:                           "Awọn lupu",
-    lblSeedStyle:                           "Ara",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to yo
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to yo
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to yo
-    optSeedStylePad:                        "Pad", // TODO: translate to yo
-    optSeedStyleDrone:                      "Drone", // TODO: translate to yo
-    optSeedStyleMarker:                     "Marker", // TODO: translate to yo
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to yo
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to yo
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to yo
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to yo
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to yo
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to yo
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to yo
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to yo
+    lblSeedStyleGroupPads:                  "Padi",
+    lblSeedStyleGroupArps:                  "Arpeggio",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Ohun èlò",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to yo
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to yo
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to yo
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to yo
+    lblSeedBassInstrument:                  "Bass",
+    optSeedBassInstrumentSame:              "Bakan naa bi ohun èlò",
+    plhSeedInstrumentFilter:                "Tẹ lati ṣe àlàyé…",
+    optSeedInstrumentFamilyAll:             "Gbogbo",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to yo
-    tabSeedRender:                          "Render", // TODO: translate to yo
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to yo
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to yo
-    lblSeedKnobTune:                        "Tune", // TODO: translate to yo
-    tipSeedMute:                            "Mute", // TODO: translate to yo
-    tipSeedUnmute:                          "Unmute", // TODO: translate to yo
-    lblSeedReverb:                          "Reverb", // TODO: translate to yo
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to yo
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to yo
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to yo
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to yo
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to yo
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to yo
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to yo
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to yo
-    optSeedInstrumentSine:                  "Sine: sintetiki ti a kọ sinu",
+    tabSeedMusic:                           "Orin",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "iwọn didun",
+    lblSeedKnobOctave:                      "oktavu",
+    lblSeedKnobTune:                        "ìtúnṣe",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Àwòṣe",
+    lblSeedSwing:                           "Swíngì",
+    optSeedSwingNone:                       "Kò sí",
+    optSeedSwingLight:                      "Fẹ́ẹ́rẹ́",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Rọrun",
+    lblSeedSigGroupComplex:                 "Kò rọrun",
+    lblSeedKnobVel:                         "iyara",
+    lblSeedKnobLen:                         "gigun",
+    btnSeedHold:                            "Duro",
+    tipSeedLaneMirror:                      "Yipada ọna. Eto ni, kii ṣe atunṣe — nọmba naa n tọju orukọ rẹ o si pa lẹẹkansi.",
+    tipSeedLaneShiftLeft:                   "Ṣi lọ si apa osi",
+    tipSeedLaneShiftRight:                  "Yipada si ọtun",
+    tipSeedLaneClear:                       "Nu ọna",
+    tipSeedSlots:                           "Awọn igbesẹ ninu ọna — + ati − loke n fi ọkan kun tabi yọ kuro.",
+    tipSeedRowAll:                          "Gbogbo kọọdu ni igbesẹ yii — bulọọki giga ti Chord Player (awọn akọsilẹ mẹta lori triad, mẹrin lori keje). Tẹ laini ohun orin kan ninu ọwọn rẹ lati bẹrẹ bulọọki naa nibẹ.",
+    tipSeedRowFifth:                        "Karun loke gbongbo — laini BF ti Chord Player.",
+    tipSeedRowDegree:                       "Ohùn kọ́ọ̀dù kan: 1 = gbòǹgbò, 2, 3, 4 sókè. Lẹ́yìn ìwọ̀n kọ́ọ̀dù, ohùn náà jẹ́ okita kan sókè (C1–C4 ti Chord Player). Kó ọ̀pọ̀lọpọ̀ jọ sínú òpó kan fún kọ́ọ̀dù tirẹ̀.",
+    tipSeedLaneAddStep:                     "Fi igbesẹ kan kun ni ipari ọna",
+    tipSeedLaneRemoveStep:                  "Yọ igbesẹ ikẹhin ti ọna kuro",
+    lblSeedBeatDiv:                         "Pínpín ìlù",
+    tipSeedBeatDiv:                         "Awọn igbesẹ fun lilu, fun awọn ọna mejeeji (B/2 = kẹjọ, B/3 = mẹta-mẹta, B/4 = kẹrindilogun). Awọn igbesẹ duro ati pe nọmba naa yipada iyara, bi ninu Chord Player.",
+    lblSeedChords:                          "Kọ́ọ̀dù",
+    tipSeedChordsEdit:                      "Ṣatunkọ awọn akọsilẹ bi ọrọ — Ctrl+Tẹ tabi Escape lati pada wa",
+    tipSeedInstrumentPrev:                  "Ohun elo ti tẹlẹ ninu atokọ",
+    tipSeedInstrumentNext:                  "Ohun elo ti o tẹle ninu atokọ",
+    lblSeedMode:                            "ipo",
+    tipSeedModeEdit:                        "Ṣatunkọ awọn akọsilẹ: tẹ sẹẹli kan lati ṣafikun akọsilẹ, tẹ akọsilẹ kan lati yọ kuro.",
+    tipSeedModeSettings:                    "Eto akọsilẹ: tẹ akọsilẹ kan lati yan, lẹhinna ṣeto awọn asia rẹ.",
+    lblSeedFlagOctave:                      "okitaafu",
+    lblSeedFlagScaleStep:                   "igbesẹ ìwọ̀n",
+    lblSeedFlagLevel:                       "ipele",
+    lblSeedFlagLength:                      "àkókò",
+    lblSeedFlagCondition:                   "ipò",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Okitafu soke",
+    tipSeedFlagOctDown:                     "Okitafu isalẹ",
+    tipSeedFlagScaleUp:                     "Akọsilẹ ti nkọja: igbesẹ iwọn kan soke",
+    tipSeedFlagScaleDown:                   "Akọsilẹ ti nkọja: igbesẹ iwọn kan isalẹ",
+    tipSeedFlagAccent:                      "Ohùn",
+    tipSeedFlagGhost:                       "Ẹmi",
+    tipSeedFlagSustain:                     "Mu duro titi di opin kọọdu",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Nikan ni lilu ikẹhin ti kọọdu",
+    tipSeedFlagNotLast:                     "Nikan ni ita lilu ikẹhin",
+    tipSeedFlagEarly:                       "Ni kutukutu: iho yii n sọ ohun orin atẹle",
+    tipSeedMute:                            "Pa ohun",
+    tipSeedUnmute:                          "Mu ohun",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Gbẹ: kò sí yàrá",
+    optSeedReverbRoom:                      "Yàrá: kékeré àti súnmọ́",
+    optSeedReverbChamber:                   "Yàrá: àárín, gbígbóná",
+    optSeedReverbHall:                      "Gbọ̀ngàn: tóbi àti sílẹ̀",
+    optSeedReverbChurch:                    "Ṣọ́ọ̀ṣì: tóbi gan-an, ìró gígùn",
+    lblSeedHighpass:                        "Highpass (Hz)",
+    lblSeedLowpass:                         "Lowpass (Hz)",
+    optSeedInstrumentSine:                  "Sine: synth ti a kọ sinu",
     lblSeedFormat:                          "Ọna kika",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",
@@ -5716,7 +8117,7 @@ const TRANSLATIONS = {
     hntSeedRenderNeedsSave:                 "Kọkọ fipamọ irugbin naa si faili .yams — ohun yoo jẹ dida lẹgbẹẹ rẹ.",
     tipSeedLoad:                            "Ṣe ìgbékalẹ̀ irúgbìn",
     ttlSeedLoad:                            "Ṣí faili irúgbìn",
-    lblSeedLoadFilter:                      "Faili irúgbìn (.yams)",
+    lblSeedLoadFilter:                      "Faili Seed (.yams)",
     msgSeedLoadFailed:                      "Kò lè ṣe ìgbékalẹ̀ faili irúgbìn yẹn",
     tipSeedNew:                             "Irugbin titun",
     tipSeedTabClose:                        "Pa",
@@ -5771,53 +8172,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "కార్డ్ ప్రోగ్రెషన్‌లను ఆడియో మరియు MIDI విత్తనాలుగా ఉత్పత్తి చేస్తుంది, ఇవి Suno వంటి AI సంగీత జనరేటర్‌లను పరిమితం చేస్తాయి.",
+    lblDlgSettingsAboutCredits:             "వాయిద్య క్రెడిట్‌లు",
+    msgDlgSettingsAboutCreditsIntro:        "నమూనా చేయబడిన వాయిద్యాలు ఉచిత లైసెన్స్ పొందిన రికార్డింగ్ సెషన్‌ల నుండి వచ్చాయి, ద్వారా:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "కార్డ్ ప్రగతి",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "ప్రతి పంక్తికి ఒక బార్: ప్రతి పంక్తికి సమాన సమయం లభిస్తుంది, మరియు దానిపై ఉన్న తీగలు ఆ సమయాన్ని సమానంగా పంచుకుంటాయి (ఒక పంక్తిలో ఒంటరి తీగ మొత్తం బార్‌ను కలిగి ఉంటుంది). [Section] ట్యాగ్‌లు, ఖాళీ పంక్తులు మరియు | గుర్తులు విస్మరించబడతాయి. స్లాష్ తీగలు (C/G), 7వ (Gmaj7) మరియు N.C. మద్దతు ఇవ్వబడతాయి.",
+    tipSeedBarsAdd:                         "పొడవైన పంక్తులు: ప్రతి తీగల పంక్తి పావు వంతు బార్ ఎక్కువ ఉంటుంది",
+    tipSeedBarsRemove:                      "చిన్న పంక్తులు: ప్రతి తీగల పంక్తి పావు వంతు బార్ తక్కువ ఉంటుంది",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "ప్రతి పంక్తికి కొలతలు",
     lblSeedSig:                             "సమయ సంతకం",
     lblSeedLoops:                           "లూప్‌లు",
-    lblSeedStyle:                           "శైలి",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to te
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to te
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to te
-    optSeedStylePad:                        "Pad", // TODO: translate to te
-    optSeedStyleDrone:                      "Drone", // TODO: translate to te
-    optSeedStyleMarker:                     "Marker", // TODO: translate to te
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to te
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to te
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to te
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to te
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to te
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to te
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to te
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to te
+    lblSeedStyleGroupPads:                  "ప్యాడ్‌లు",
+    lblSeedStyleGroupArps:                  "ఆర్పెగ్గియోలు",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "రివర్బ్",
     lblSeedInstrument:                      "వాయిద్యం",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to te
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to te
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to te
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to te
+    lblSeedBassInstrument:                  "బాస్",
+    optSeedBassInstrumentSame:              "వాయిద్యం వలె",
+    plhSeedInstrumentFilter:                "ఫిల్టర్ చేయడానికి టైప్ చేయండి…",
+    optSeedInstrumentFamilyAll:             "అన్నీ",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to te
-    tabSeedRender:                          "Render", // TODO: translate to te
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to te
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to te
-    lblSeedKnobTune:                        "Tune", // TODO: translate to te
-    tipSeedMute:                            "Mute", // TODO: translate to te
-    tipSeedUnmute:                          "Unmute", // TODO: translate to te
-    lblSeedReverb:                          "Reverb", // TODO: translate to te
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to te
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to te
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to te
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to te
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to te
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to te
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to te
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to te
+    tabSeedMusic:                           "సంగీతం",
+    tabSeedRender:                          "రెండర్",
+    lblSeedKnobVolume:                      "వాల్యూమ్",
+    lblSeedKnobOctave:                      "ఆక్టేవ్",
+    lblSeedKnobTune:                        "ట్యూన్",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "శైలి",
+    lblSeedSwing:                           "స్వింగ్",
+    optSeedSwingNone:                       "ఏదీ లేదు",
+    optSeedSwingLight:                      "తేలికపాటి",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "సాధారణ",
+    lblSeedSigGroupComplex:                 "సంక్లిష్ట",
+    lblSeedKnobVel:                         "వేగం",
+    lblSeedKnobLen:                         "పొడవు",
+    btnSeedHold:                            "పట్టుకోండి",
+    tipSeedLaneMirror:                      "లేన్‌ను తిప్పండి. ఇది ఒక సెట్టింగ్, సవరణ కాదు — ఆకృతి దాని పేరును నిలుపుకుంటుంది మరియు మళ్లీ ఆఫ్ అవుతుంది.",
+    tipSeedLaneShiftLeft:                   "ఎడమకు మార్చు",
+    tipSeedLaneShiftRight:                  "కుడికి మార్చు",
+    tipSeedLaneClear:                       "లేన్‌ను క్లియర్ చేయి",
+    tipSeedSlots:                           "లేన్‌లో దశలు — పైన ఉన్న + మరియు − ఒకటి జోడిస్తాయి లేదా తీసివేస్తాయి.",
+    tipSeedRowAll:                          "ఈ దశలోని మొత్తం తీగ — కార్డ్ ప్లేయర్ యొక్క పొడవైన బ్లాక్ (ట్రైడ్‌లో మూడు నోట్స్, సెవెంత్‌లో నాలుగు). బ్లాక్‌ను అక్కడ ప్రారంభించడానికి దాని కాలమ్‌లోని టోన్ వరుసపై క్లిక్ చేయండి.",
+    tipSeedRowFifth:                        "రూట్ పైన ఐదవది — కార్డ్ ప్లేయర్ యొక్క BF వరుస.",
+    tipSeedRowDegree:                       "ఒక తీగ స్వరం: 1 = మూలం, 2, 3, 4 పైకి. తీగ పరిమాణం దాటితే, స్వరం ఒక అష్టపది పైకి ఉంటుంది (కార్డ్ ప్లేయర్ యొక్క C1–C4). మీ స్వంత తీగను సృష్టించడానికి ఒక నిలువు వరుసలో అనేకంటిని పేర్చండి.",
+    tipSeedLaneAddStep:                     "లేన్ చివరిలో ఒక అడుగును జోడించు",
+    tipSeedLaneRemoveStep:                  "లేన్ యొక్క చివరి అడుగును తొలగించు",
+    lblSeedBeatDiv:                         "బీట్ విభజన",
+    tipSeedBeatDiv:                         "రెండు లేన్‌ల కోసం ప్రతి బీట్‌కు దశలు (B/2 = ఎనిమిదవ, B/3 = ట్రిప్లెట్‌లు, B/4 = పదహారవ). దశలు అలాగే ఉంటాయి మరియు Chord Player లో వలె ఆకృతి వేగాన్ని మారుస్తుంది.",
+    lblSeedChords:                          "కార్డ్స్",
+    tipSeedChordsEdit:                      "తీగలను టెక్స్ట్‌గా సవరించు — తిరిగి రావడానికి Ctrl+Enter లేదా Escape",
+    tipSeedInstrumentPrev:                  "జాబితాలోని మునుపటి వాయిద్యం",
+    tipSeedInstrumentNext:                  "జాబితాలోని తదుపరి వాయిద్యం",
+    lblSeedMode:                            "మోడ్",
+    tipSeedModeEdit:                        "గమనికలను సవరించండి: గమనికను జోడించడానికి ఒక సెల్‌పై క్లిక్ చేయండి, దాన్ని తీసివేయడానికి ఒక గమనికపై క్లిక్ చేయండి.",
+    tipSeedModeSettings:                    "గమనిక సెట్టింగ్‌లు: గమనికను ఎంచుకోవడానికి దానిపై క్లిక్ చేయండి, ఆపై దాని ఫ్లాగ్‌లను సెట్ చేయండి.",
+    lblSeedFlagOctave:                      "ఆక్టేవ్",
+    lblSeedFlagScaleStep:                   "స్కేల్ అడుగు",
+    lblSeedFlagLevel:                       "స్థాయి",
+    lblSeedFlagLength:                      "వ్యవధి",
+    lblSeedFlagCondition:                   "షరతు",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "ఆక్టేవ్ పైకి",
+    tipSeedFlagOctDown:                     "ఆక్టేవ్ క్రిందకు",
+    tipSeedFlagScaleUp:                     "పాసింగ్ నోట్: ఒక స్కేల్ స్టెప్ పైకి",
+    tipSeedFlagScaleDown:                   "పాసింగ్ నోట్: ఒక స్కేల్ స్టెప్ క్రిందకు",
+    tipSeedFlagAccent:                      "ఉచ్చారణ",
+    tipSeedFlagGhost:                       "దెయ్యం",
+    tipSeedFlagSustain:                     "తీగ చివరి వరకు కొనసాగించు",
+    tipSeedFlagStaccato:                    "స్టాకాటో",
+    tipSeedFlagLast:                        "తీగ చివరి బీట్‌లో మాత్రమే",
+    tipSeedFlagNotLast:                     "చివరి బీట్ వెలుపల మాత్రమే",
+    tipSeedFlagEarly:                       "ముందుగా: ఈ స్లాట్ తదుపరి తీగను వినిపిస్తుంది",
+    tipSeedMute:                            "మ్యూట్ చేయి",
+    tipSeedUnmute:                          "అన్‌మ్యూట్ చేయి",
+    lblSeedReverb:                          "రివర్బ్",
+    optSeedReverbNone:                      "పొడి: గది లేదు",
+    optSeedReverbRoom:                      "గది: చిన్నది మరియు దగ్గర",
+    optSeedReverbChamber:                   "ఛాంబర్: మధ్యస్థం, వెచ్చని",
+    optSeedReverbHall:                      "హాల్: పెద్దది మరియు తెరిచి ఉంది",
+    optSeedReverbChurch:                    "చర్చి: చాలా పెద్దది, పొడవైన తోక",
+    lblSeedHighpass:                        "హైపాస్ (Hz)",
+    lblSeedLowpass:                         "లోపాస్ (Hz)",
     optSeedInstrumentSine:                  "సైన్: అంతర్నిర్మిత సింథ్",
     lblSeedFormat:                          "ఫార్మాట్",
     optSeedFormatMp3:                       "MP3",
@@ -5888,53 +8338,102 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "कॉर्ड प्रोग्रेशन्सना ऑडिओ आणि MIDI सीड्स म्हणून तयार करते जे Suno सारख्या AI संगीत जनरेटरना मर्यादित करतात.",
+    lblDlgSettingsAboutCredits:             "इन्स्ट्रुमेंट क्रेडिट्स",
+    msgDlgSettingsAboutCreditsIntro:        "नमुना घेतलेली वाद्ये मुक्त-परवानाधारक रेकॉर्डिंग सत्रातून येतात, द्वारे:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "कॉर्ड प्रगती",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "प्रत्येक ओळीसाठी एक बार: प्रत्येक ओळीला समान वेळ मिळतो, आणि त्यावरील कॉर्ड्स तो वेळ समान रीतीने वाटून घेतात (एका ओळीतील एकटा कॉर्ड संपूर्ण बार व्यापतो). [Section] टॅग, रिकाम्या ओळी आणि | चिन्हे दुर्लक्षित केली जातात. स्लॅश कॉर्ड्स (C/G), 7वे (Gmaj7) आणि N.C. समर्थित आहेत.",
+    tipSeedBarsAdd:                         "लांब ओळी: प्रत्येक कॉर्डची ओळ एक चतुर्थांश बार जास्त टिकते",
+    tipSeedBarsRemove:                      "लहान ओळी: प्रत्येक कॉर्डची ओळ एक चतुर्थांश बार कमी टिकते",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "प्रत्येक ओळीसाठी मापे",
     lblSeedSig:                             "वेळ स्वाक्षरी",
     lblSeedLoops:                           "लूप्स",
-    lblSeedStyle:                           "शैली",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to mr
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to mr
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to mr
-    optSeedStylePad:                        "Pad", // TODO: translate to mr
-    optSeedStyleDrone:                      "Drone", // TODO: translate to mr
-    optSeedStyleMarker:                     "Marker", // TODO: translate to mr
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to mr
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to mr
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to mr
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to mr
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to mr
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to mr
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to mr
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to mr
+    lblSeedStyleGroupPads:                  "पॅड्स",
+    lblSeedStyleGroupArps:                  "आर्पेगिओ",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "रिव्हर्ब",
     lblSeedInstrument:                      "वाद्य",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to mr
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to mr
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to mr
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to mr
+    lblSeedBassInstrument:                  "बास",
+    optSeedBassInstrumentSame:              "इन्स्ट्रुमेंट प्रमाणे",
+    plhSeedInstrumentFilter:                "फिल्टर करण्यासाठी टाइप करा…",
+    optSeedInstrumentFamilyAll:             "सर्व",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to mr
-    tabSeedRender:                          "Render", // TODO: translate to mr
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to mr
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to mr
-    lblSeedKnobTune:                        "Tune", // TODO: translate to mr
-    tipSeedMute:                            "Mute", // TODO: translate to mr
-    tipSeedUnmute:                          "Unmute", // TODO: translate to mr
-    lblSeedReverb:                          "Reverb", // TODO: translate to mr
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to mr
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to mr
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to mr
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to mr
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to mr
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to mr
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to mr
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to mr
+    tabSeedMusic:                           "संगीत",
+    tabSeedRender:                          "रेंडर",
+    lblSeedKnobVolume:                      "आवाज",
+    lblSeedKnobOctave:                      "ऑक्टेव्ह",
+    lblSeedKnobTune:                        "ट्यून",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "शैली",
+    lblSeedSwing:                           "स्विंग",
+    optSeedSwingNone:                       "काहीही नाही",
+    optSeedSwingLight:                      "हलके",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "सोपे",
+    lblSeedSigGroupComplex:                 "जटिल",
+    lblSeedKnobVel:                         "वेग",
+    lblSeedKnobLen:                         "लांबी",
+    btnSeedHold:                            "धरून ठेवा",
+    tipSeedLaneMirror:                      "लेन उलटवा. ही एक सेटिंग आहे, संपादन नाही — आकृती तिचे नाव कायम ठेवते आणि ती पुन्हा बंद होते.",
+    tipSeedLaneShiftLeft:                   "डावीकडे सरकवा",
+    tipSeedLaneShiftRight:                  "उजवीकडे सरकवा",
+    tipSeedLaneClear:                       "लेन साफ करा",
+    tipSeedSlots:                           "लेनमधील पायऱ्या — वरील + आणि − एक जोडतात किंवा काढतात.",
+    tipSeedRowAll:                          "या टप्प्यातील संपूर्ण कॉर्ड — कॉर्ड प्लेयरचा उंच ब्लॉक (ट्रायडवर तीन नोट्स, सेव्हन्थवर चार). ब्लॉक तेथे सुरू करण्यासाठी त्याच्या स्तंभातील टोन पंक्तीवर क्लिक करा.",
+    tipSeedRowFifth:                        "मूळच्या वरचा पाचवा — कॉर्ड प्लेयरची BF पंक्ती.",
+    tipSeedRowDegree:                       "एक कॉर्ड टोन: 1 = मूळ, 2, 3, 4 वर. कॉर्डच्या आकारमानापलीकडे, टोन एक ऑक्टेव्ह वर असतो (कॉर्ड प्लेयरचे C1–C4). तुमचा स्वतःचा कॉर्ड तयार करण्यासाठी एका स्तंभात अनेक स्टॅक करा.",
+    tipSeedLaneAddStep:                     "लेनच्या शेवटी एक पायरी जोडा",
+    tipSeedLaneRemoveStep:                  "लेनची शेवटची पायरी काढा",
+    lblSeedBeatDiv:                         "बीट विभाजन",
+    tipSeedBeatDiv:                         "दोन्ही लेन्ससाठी प्रति बीट पायऱ्या (B/2 = आठवे, B/3 = ट्रिपलेट्स, B/4 = सोळावे). पायऱ्या तशाच राहतात आणि Chord Player प्रमाणे आकृती वेग बदलते.",
+    lblSeedChords:                          "कॉर्ड्स",
+    tipSeedChordsEdit:                      "कॉर्ड्स मजकूर म्हणून संपादित करा — परत येण्यासाठी Ctrl+Enter किंवा Escape",
+    tipSeedInstrumentPrev:                  "यादीतील मागील वाद्य",
+    tipSeedInstrumentNext:                  "यादीतील पुढील वाद्य",
+    lblSeedMode:                            "मोड",
+    tipSeedModeEdit:                        "नोट्स संपादित करा: नोट जोडण्यासाठी सेलवर क्लिक करा, नोट काढण्यासाठी नोटवर क्लिक करा.",
+    tipSeedModeSettings:                    "नोट सेटिंग्ज: नोट निवडण्यासाठी त्यावर क्लिक करा, नंतर त्याचे ध्वज सेट करा.",
+    lblSeedFlagOctave:                      "ऑक्टेव्ह",
+    lblSeedFlagScaleStep:                   "स्केल पायरी",
+    lblSeedFlagLevel:                       "स्तर",
+    lblSeedFlagLength:                      "कालावधी",
+    lblSeedFlagCondition:                   "अट",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "ऑक्टेव्ह वर",
+    tipSeedFlagOctDown:                     "ऑक्टेव्ह खाली",
+    tipSeedFlagScaleUp:                     "पासिंग नोट: एक स्केल स्टेप वर",
+    tipSeedFlagScaleDown:                   "पासिंग नोट: एक स्केल स्टेप खाली",
+    tipSeedFlagAccent:                      "उच्चार",
+    tipSeedFlagGhost:                       "भूत",
+    tipSeedFlagSustain:                     "कॉर्डच्या शेवटपर्यंत टिकवून ठेवा",
+    tipSeedFlagStaccato:                    "स्टॅकॅटो",
+    tipSeedFlagLast:                        "फक्त कॉर्डच्या शेवटच्या बीटमध्ये",
+    tipSeedFlagNotLast:                     "फक्त शेवटच्या बीटच्या बाहेर",
+    tipSeedFlagEarly:                       "लवकर: हा स्लॉट पुढील कॉर्डला आवाज देतो",
+    tipSeedMute:                            "निःशब्द करा",
+    tipSeedUnmute:                          "निःशब्दता रद्द करा",
+    lblSeedReverb:                          "रिव्हर्ब",
+    optSeedReverbNone:                      "कोरडे: खोली नाही",
+    optSeedReverbRoom:                      "खोली: लहान आणि जवळ",
+    optSeedReverbChamber:                   "चेंबर: मध्यम, उबदार",
+    optSeedReverbHall:                      "हॉल: मोठा आणि खुला",
+    optSeedReverbChurch:                    "चर्च: खूप मोठा, लांब प्रतिध्वनी",
+    lblSeedHighpass:                        "हायपास (Hz)",
+    lblSeedLowpass:                         "लोपास (Hz)",
     optSeedInstrumentSine:                  "साइन: अंगभूत सिंथ",
     lblSeedFormat:                          "स्वरूप",
     optSeedFormatMp3:                       "MP3",
@@ -6005,54 +8504,103 @@ const TRANSLATIONS = {
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Gumagawa ng mga chord progression bilang audio + MIDI seeds na naglilimita sa mga AI music generator tulad ng Suno.",
+    lblDlgSettingsAboutCredits:             "Mga kredito ng instrumento",
+    msgDlgSettingsAboutCreditsIntro:        "Ang mga instrumentong sinampulan ay nagmula sa mga sesyon ng pagre-record na may libreng lisensya, ni:",
 
     // Prefix:Seed - Scope:main seed generator panel
-    lblSeedProgression:                     "Pag-usad ng Kord",
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
-    hntSeedProgression:                     "Isang bar bawat linya: bawat linya ay nakakakuha ng pantay na oras, at ang mga chord dito ay pantay na naghahati ng oras na iyon (isang chord lamang sa isang linya ang humahawak sa buong bar). Ang mga tag na [Section], blangkong linya at | mark ay binabalewala. Sinusuportahan ang slash chords (C/G), 7ths (Gmaj7) at N.C.",
+    tipSeedBarsAdd:                         "Mas mahabang linya: bawat linya ng chords ay tumatagal ng isang quarter-bar pa",
+    tipSeedBarsRemove:                      "Mas maiikling linya: bawat linya ng chords ay tumatagal ng isang quarter-bar mas kaunti",
     lblSeedBpm:                             "BPM",
     lblSeedBars:                            "Mga sukat bawat linya",
     lblSeedSig:                             "Lagda ng oras",
     lblSeedLoops:                           "Mga Loop",
-    lblSeedStyle:                           "Estilo",
-    lblSeedStyleGroupPads:                  "Pads", // TODO: translate to tl
-    lblSeedStyleGroupArps:                  "Arpeggios", // TODO: translate to tl
-    lblSeedStyleGroupGrooves:               "Grooves", // TODO: translate to tl
-    optSeedStylePad:                        "Pad", // TODO: translate to tl
-    optSeedStyleDrone:                      "Drone", // TODO: translate to tl
-    optSeedStyleMarker:                     "Marker", // TODO: translate to tl
-    optSeedStyleArpeggio1:                  "Arpeggio 1", // TODO: translate to tl
-    optSeedStyleArpeggio2:                  "Arpeggio 2", // TODO: translate to tl
-    optSeedStyleArpeggio3:                  "Arpeggio 3", // TODO: translate to tl
-    optSeedStyleArpeggio4:                  "Arpeggio 4", // TODO: translate to tl
-    optSeedStyleArpeggio5:                  "Arpeggio 5", // TODO: translate to tl
-    optSeedStyleArpeggio6:                  "Arpeggio 6", // TODO: translate to tl
-    optSeedStyleGroove1:                    "Groove 1", // TODO: translate to tl
-    lblSeedKnobReverb:                      "reverb", // TODO: translate to tl
+    lblSeedStyleGroupPads:                  "Pads",
+    lblSeedStyleGroupArps:                  "Arpeggios",
+    lblSeedStyleGroupGrooves:               "Grooves",
+    optSeedStylePad:                        "Pad",
+    optSeedStyleDrone:                      "Drone",
+    optSeedStyleMarker:                     "Marker",
+    optSeedStyleCustom:                     "Custom",
+    optSeedStyleArpeggio1:                  "Arpeggio 1",
+    optSeedStyleArpeggio2:                  "Arpeggio 2",
+    optSeedStyleArpeggio3:                  "Arpeggio 3",
+    optSeedStyleArpeggio4:                  "Arpeggio 4",
+    optSeedStyleArpeggio5:                  "Arpeggio 5",
+    optSeedStyleArpeggio6:                  "Arpeggio 6",
+    optSeedStyleGroove1:                    "Groove 1",
+    lblSeedKnobReverb:                      "Reverb",
     lblSeedInstrument:                      "Instrumento",
-    lblSeedBassInstrument:                  "Bass", // TODO: translate to tl
-    optSeedBassInstrumentSame:              "Same as instrument", // TODO: translate to tl
-    plhSeedInstrumentFilter:                "Type to filter…", // TODO: translate to tl
-    optSeedInstrumentFamilyAll:             "All", // TODO: translate to tl
+    lblSeedBassInstrument:                  "Bass",
+    optSeedBassInstrumentSame:              "Katulad ng instrumento",
+    plhSeedInstrumentFilter:                "Mag-type para i-filter…",
+    optSeedInstrumentFamilyAll:             "Lahat",
     // ⚠ TEMPORARY library-audit triage row — EN-only (translation suspended),
     // removed with the audit together with the review UI.
-    tabSeedMusic:                           "Music", // TODO: translate to tl
-    tabSeedRender:                          "Render", // TODO: translate to tl
-    lblSeedKnobVolume:                      "Volume", // TODO: translate to tl
-    lblSeedKnobOctave:                      "Octave", // TODO: translate to tl
-    lblSeedKnobTune:                        "Tune", // TODO: translate to tl
-    tipSeedMute:                            "Mute", // TODO: translate to tl
-    tipSeedUnmute:                          "Unmute", // TODO: translate to tl
-    lblSeedReverb:                          "Reverb", // TODO: translate to tl
-    optSeedReverbNone:                      "Dry: no room", // TODO: translate to tl
-    optSeedReverbRoom:                      "Room: small and close", // TODO: translate to tl
-    optSeedReverbChamber:                   "Chamber: medium, warm", // TODO: translate to tl
-    optSeedReverbHall:                      "Hall: large and open", // TODO: translate to tl
-    optSeedReverbChurch:                    "Church: very large, long tail", // TODO: translate to tl
-    lblSeedReverbAmount:                    "Reverb amount", // TODO: translate to tl
-    lblSeedHighpass:                        "Highpass (Hz)", // TODO: translate to tl
-    lblSeedLowpass:                         "Lowpass (Hz)", // TODO: translate to tl
-    optSeedInstrumentSine:                  "Sine: built-in synth",
+    tabSeedMusic:                           "Musika",
+    tabSeedRender:                          "Render",
+    lblSeedKnobVolume:                      "lakas",
+    lblSeedKnobOctave:                      "oktaba",
+    lblSeedKnobTune:                        "tono",
+    // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
+    lblSeedStyle:                           "Estilo",
+    lblSeedSwing:                           "Swing",
+    optSeedSwingNone:                       "Wala",
+    optSeedSwingLight:                      "Bahagya",
+    optSeedSwingShuffle:                    "Shuffle",
+    optSeedSwingHard:                       "Hard",
+    lblSeedSigGroupSimple:                  "Simple",
+    lblSeedSigGroupComplex:                 "Kumplikado",
+    lblSeedKnobVel:                         "bilis",
+    lblSeedKnobLen:                         "haba",
+    btnSeedHold:                            "Hawakan",
+    tipSeedLaneMirror:                      "Baliktarin ang lane. Isang setting, hindi isang pag-edit — pinapanatili ng figure ang pangalan nito at muling nag-o-off.",
+    tipSeedLaneShiftLeft:                   "Ilipat pakaliwa",
+    tipSeedLaneShiftRight:                  "I-shift pakanan",
+    tipSeedLaneClear:                       "I-clear ang lane",
+    tipSeedSlots:                           "Mga hakbang sa lane — ang + at − sa itaas ay nagdaragdag o nagtatanggal ng isa.",
+    tipSeedRowAll:                          "Ang buong chord sa hakbang na ito — ang mataas na block ng Chord Player (tatlong nota sa isang triad, apat sa isang seventh). Mag-click sa isang hilera ng tono sa column nito upang simulan ang block doon.",
+    tipSeedRowFifth:                        "Ang ikalima sa itaas ng ugat — ang hilera ng BF ng Chord Player.",
+    tipSeedRowDegree:                       "Isang tono ng chord: 1 = ugat, 2, 3, 4 pataas. Lampas sa laki ng chord, ang tono ay isang oktaba pataas (C1–C4 ng Chord Player). Magpatong ng ilan sa isang column para sa sarili mong chord.",
+    tipSeedLaneAddStep:                     "Magdagdag ng hakbang sa dulo ng lane",
+    tipSeedLaneRemoveStep:                  "Alisin ang huling hakbang ng lane",
+    lblSeedBeatDiv:                         "Paghahati ng kumpas",
+    tipSeedBeatDiv:                         "Mga hakbang bawat beat, para sa parehong lane (B/2 = ikawalo, B/3 = triplets, B/4 = ikalabing-anim). Ang mga hakbang ay nananatili at ang pigura ay nagbabago ng bilis, tulad sa Chord Player.",
+    lblSeedChords:                          "Kord",
+    tipSeedChordsEdit:                      "I-edit ang mga chords bilang teksto — Ctrl+Enter o Escape para bumalik",
+    tipSeedInstrumentPrev:                  "Nakaraang instrumento sa listahan",
+    tipSeedInstrumentNext:                  "Susunod na instrumento sa listahan",
+    lblSeedMode:                            "mode",
+    tipSeedModeEdit:                        "I-edit ang mga tala: i-click ang isang cell upang magdagdag ng tala, i-click ang isang tala upang alisin ito.",
+    tipSeedModeSettings:                    "Mga setting ng tala: i-click ang isang tala upang piliin ito, pagkatapos ay itakda ang mga flag nito.",
+    lblSeedFlagOctave:                      "oktaba",
+    lblSeedFlagScaleStep:                   "hakbang ng iskala",
+    lblSeedFlagLevel:                       "antas",
+    lblSeedFlagLength:                      "tagal",
+    lblSeedFlagCondition:                   "kondisyon",
+    lblSeedFlagPush:                        "push",
+    tipSeedFlagOctUp:                       "Oktaba pataas",
+    tipSeedFlagOctDown:                     "Oktaba pababa",
+    tipSeedFlagScaleUp:                     "Nagdadaan na nota: isang hakbang ng iskala pataas",
+    tipSeedFlagScaleDown:                   "Nagdadaan na nota: isang hakbang ng iskala pababa",
+    tipSeedFlagAccent:                      "Diin",
+    tipSeedFlagGhost:                       "Multo",
+    tipSeedFlagSustain:                     "Panatilihin hanggang sa dulo ng kord",
+    tipSeedFlagStaccato:                    "Staccato",
+    tipSeedFlagLast:                        "Tanging sa huling kumpas ng kord",
+    tipSeedFlagNotLast:                     "Tanging sa labas ng huling kumpas",
+    tipSeedFlagEarly:                       "Maaga: ang slot na ito ay nagbibigay-boses sa susunod na chord",
+    tipSeedMute:                            "I-mute",
+    tipSeedUnmute:                          "I-unmute",
+    lblSeedReverb:                          "Reverb",
+    optSeedReverbNone:                      "Tuyo: walang silid",
+    optSeedReverbRoom:                      "Silid: maliit at malapit",
+    optSeedReverbChamber:                   "Kamara: katamtaman, mainit",
+    optSeedReverbHall:                      "Bulwagan: malaki at bukas",
+    optSeedReverbChurch:                    "Simbahan: napakalaki, mahabang buntot",
+    lblSeedHighpass:                        "Highpass (Hz)",
+    lblSeedLowpass:                         "Lowpass (Hz)",
+    optSeedInstrumentSine:                  "Sine: nakapaloob na synth",
     lblSeedFormat:                          "Format",
     optSeedFormatMp3:                       "MP3",
     optSeedFormatWav:                       "WAV",

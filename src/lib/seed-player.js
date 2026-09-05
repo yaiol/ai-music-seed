@@ -25,7 +25,7 @@
 // from the rendered file.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { planChords, gestureFor, filterLanes, shiftLaneOctaves, progressionScalePcs } from './seed-engine.js';
+import { planChords, gestureForSeed, filterLanes, shiftLaneOctaves, progressionScalePcs } from './seed-engine.js';
 import { buildOutputFilterGraph } from './output-filter.js';
 import { buildReverbGraph } from './reverb.js';
 import { FILTER_OPEN_HZ } from './soundfont.js';
@@ -128,7 +128,7 @@ export function playOnce(ctx, soundfont, midi, durS = 1.2) {
 }
 
 export function startSeed({ getSeed, getSoundFont = () => null, getBassSoundFont = () => null,
-                            ctx, onError, onNote = null, autoTick = true }) {
+                            ctx, onError, onNote = null, onChord = null, autoTick = true }) {
   // ⚠ CLAUDE: the OUTPUT STAGE. The exported file ends with a peak normalisation
   // (floatToInt16 scales to 0.89); live playback has no such stage, so without
   // this it plays several times quieter than the same seed sounds as a file —
@@ -278,14 +278,22 @@ export function startSeed({ getSeed, getSoundFont = () => null, getBassSoundFont
     // function is what made the room dropdown do nothing until Play was
     // restarted.
     applySettings(seed);
-    const { chords, barQ, qToFrames } = planChords(seed);
-    const gesture = gestureFor(seed.style);
+    const { chords, barQ, qToFrames, denom } = planChords(seed);
+    // ⚠ Through the resolver, like the render — a per-lane figure or an
+    // editor working copy must play live exactly as it renders.
+    const gesture = gestureForSeed(seed);
     const soundfont = getSoundFont();
     // A second instrument for the bass lane, mirroring generateSeed's
     // `bassSoundfont`. Null means "the bass plays whatever the chords play".
     const bassSoundfont = getBassSoundFont();
 
-    if (chordIndex >= chords.length) { chordIndex = 0; startQ = 0; }   // loop, and absorb a shortened progression
+    // Loop (and absorb a shortened progression). ⚠ startQ is NOT reset: the
+    // pattern's phase runs on across loops exactly as planSeedEvents' does —
+    // a two-bar figure over a one-bar progression plays its second bar on
+    // the second loop, in the file and here. Resetting it (until 2026-09-04)
+    // made the preview play bar one forever while the file alternated —
+    // and made the figure's second bar look dead. check:player asserts it.
+    if (chordIndex >= chords.length) chordIndex = 0;
     const chord = chords[chordIndex];
 
     if (chord.notes.length) {
@@ -302,8 +310,11 @@ export function startSeed({ getSeed, getSoundFont = () => null, getBassSoundFont
       //               preview plays chromatic neighbours where the render
       //               plays scale tones
       const first = chords.find((c) => c.notes.length);
+      //   beatQ     — one beat in quarters (4/denominator, 2026-09-03): the
+      //               `L`/`l` last-beat conditions key off it, so without it
+      //               a 3/8 turnaround fires at a different place live
       const ctxQ = {
-        startQ, durQ: chord.quarters, barQ, qToFrames,
+        startQ, durQ: chord.quarters, barQ, beatQ: 4 / denom, qToFrames,
         swing: seed.swing || 0,
         tonicPc: first ? first.notes[0] % 12 : 0,
         scalePcs: progressionScalePcs(chords),
@@ -323,10 +334,15 @@ export function startSeed({ getSeed, getSoundFont = () => null, getBassSoundFont
       }
     }
 
+    // Tap for the UI (the grids' playhead, the chord strip): which chord, when,
+    // how long, and where it sits on the beat grid — the SAME startQ the
+    // gesture tiles the pattern against, so the editor's cursor lands on the
+    // slot that is sounding.
+    onChord?.(chordIndex, nextChordTime, chord.durS, startQ, chord.quarters);
     nextChordTime += chord.durS;
     startQ += chord.quarters;
     chordIndex++;
-    if (chordIndex >= chords.length) { chordIndex = 0; startQ = 0; }
+    if (chordIndex >= chords.length) chordIndex = 0;   // phase runs on — see above
   };
 
   const tick = () => {

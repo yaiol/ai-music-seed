@@ -5,7 +5,7 @@
 //   language via the i18n key workflow. Full procedure: see CLAUDE-i18n.md.
 //   Never paste translations by hand. The scripts ARE the work.
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Settings, HelpCircle, Sun, Moon, X, ScrollText, FolderOpen, Music, AudioWaveform, Save, SavePlus, FilePlus, Play, Square, Volume2, VolumeX } from 'lucide-react';
+import { Settings, HelpCircle, Sun, Moon, X, ScrollText, FolderOpen, Music, AudioWaveform, Save, SavePlus, FilePlus, Play, Square, Volume2, VolumeX, ArrowLeftRight, ArrowRightToLine, ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Eraser, Pencil, PenLine, SlidersHorizontal, Plus, Minus } from 'lucide-react';
 import pkg from '../package.json';
 import { useT, LANGUAGES } from './i18n-gen';
 import { checkForUpdate, getUrl } from './lib/update-check';
@@ -13,6 +13,7 @@ import { UpdateBanner } from './lib/ui-update-banner';
 import { AppHeader } from './lib/ui-header';
 import { NumberField } from './lib/ui-ctl-numberfield';
 import { Knob } from './lib/ui-ctl-knob';
+import { shortLabels } from './lib/ui-text';
 import { Popover } from './lib/ui-ctl-popover';
 // Family icons (user-picked, SVG Repo) — real .svg files via ?react so they
 // follow the button's colour. Keyed by the exact family names below.
@@ -27,7 +28,10 @@ import IconFamilyWindsWood from './assets/icon-yaiol-family-winds-wood.svg?react
 import { Combobox } from './lib/ui-ctl-combobox';
 import { useFileDrop } from './lib/ui-fx-filedrop';
 import { GithubIcon } from './lib/ui-icons';
-import { generateSeed, analyzeSeed, defaultName, STYLES, STYLE_GROUPS, MP3_BITRATES } from './lib/seed-engine';
+import { generateSeed, analyzeSeed, defaultName, STYLES, STYLE_GROUPS, MP3_BITRATES,
+         parseSlots, serializeSlots, resolveStyleSpec, LANE_DEFAULTS, GRID_ROWS,
+         BEAT_DIVISIONS, SWINGS, SIGNATURES, parseLines, chordToken, sanitizePattern,
+         CHORD_FIGURES, BASS_FIGURES, STYLE_DEFS } from './lib/seed-engine';
 import { INSTRUMENTS, parseSoundFont, loadPreset, presetIndexForProgram } from './lib/soundfont';
 import { loadPack } from './lib/sample-pack';
 import { ROOM_KEYS } from './lib/reverb';
@@ -153,6 +157,14 @@ const DEFAULT_OUTPUT = '{name}-{style}-{bpm}';
 
 // Form fields that live only for this session — they change what you hear now,
 // they are never written to the .yams, and they never mark a seed unsaved.
+// `pattern` is the style editor's in-memory WORKING COPY (copy-on-edit over
+// a shipped style) — phase 1 of the editor persists nothing, so leaving the
+// seed loses the edit by design. Like `lanes`, it never reaches the .yams and
+// never flags the document unsaved.
+//
+// ⚠ `pattern` was one of these until 2026-09-04 (phase 2 of the style editor):
+// the seed's own figure IS saved now, so editing the grid marks the document
+// unsaved like any other change.
 const MONITOR_FIELDS = new Set(['lanes']);
 
 function makeSeed(overrides = {}) {
@@ -169,6 +181,20 @@ function makeSeed(overrides = {}) {
     // '' = the bass plays the same instrument as the chords. A pattern's two
     // lanes are independent parts, so they can be two players.
     bassInstrument: '',
+    // '' = this lane plays its STYLE's own figure; a key names one from the
+    // lane's library instead. A style is a PAIRING of a chord figure with a
+    // bass figure (Chord Player's model, 2026-09-04) — set either of these and
+    // the style reads "Custom".
+    chordFigure: '', bassFigure: '',
+    // Mirror is a FLAG, not an edit: the lane plays its steps back to front
+    // and keeps its figure's NAME. It lives HERE and not in the lane settings
+    // because those are inside the working copy, and writing there is exactly
+    // what turns a named figure into "Custom".
+    trebleMirror: false, bassMirror: false,
+    // Swing as a share of the slot the off-beat is delayed by (0 = straight;
+    // 1/3 = the triplet shuffle). The engine has applied it since 2026-08-29;
+    // this field is what finally lets a seed carry a value other than 0.
+    swing: 0,
     // Per-lane mix levels as PERCENT (0–100, 100 = untouched). The engine takes
     // a gain multiplier, so the /100 happens at the call sites. "Treble", not
     // "chord": BOTH lanes play chord material — the axis is register.
@@ -196,6 +222,7 @@ function makeSeed(overrides = {}) {
     // reset to 'both' by every open, so a file always renders whole unless the
     // solo is chosen deliberately, in this session, right now.
     lanes: 'both',
+    pattern: null,
     result: null, error: '',
     ...overrides,
   };
@@ -211,7 +238,7 @@ function makeSeed(overrides = {}) {
 // carries no `output` AND declares version < 2; a hand-written .yams with no version at
 // all is read as current (its `name` is the seed's name), which is the safe default now
 // that every Save writes v2.
-function seedFromFile(s, filePath = null) {
+export function seedFromFile(s, filePath = null) {
   const seed = makeSeed({ filePath, fileName: basename(filePath) });
   if (typeof s.chords === 'string') seed.progression = s.chords;
   if (s.bpm        != null) seed.bpm        = s.bpm;
@@ -222,12 +249,21 @@ function seedFromFile(s, filePath = null) {
   // back to the default texture rather than crashing the render — same
   // graceful degradation as an unknown room or a gone GM instrument key.
   if (s.style != null) seed.style = STYLES.includes(s.style) ? s.style : 'pad';
+  // The seed's own figure, if it has one (v3+). Sanitised, never trusted: a
+  // `.yams` is a text file someone may have edited by hand.
+  seed.pattern = sanitizePattern(s.pattern);
   // Absent in a pre-instrument .yams, which is exactly right: it falls back to
   // 'sine', the built-in synth those seeds were rendered with. `instrument` is
   // the field's pre-rename .yams key (2026-08-30: → trebleInstrument, since
   // both lanes play chords and the axis is register) — kept as a legacy read.
   seed.trebleInstrument = s.trebleInstrument ?? s.instrument ?? 'sine';
   seed.bassInstrument = typeof s.bassInstrument === 'string' ? s.bassInstrument : '';
+  // Additive, like every field since v2: absent = today's behaviour exactly.
+  if (CHORD_FIGURES[s.chordFigure]) seed.chordFigure = s.chordFigure;
+  if (BASS_FIGURES[s.bassFigure]) seed.bassFigure = s.bassFigure;
+  seed.trebleMirror = !!s.trebleMirror;
+  seed.bassMirror = !!s.bassMirror;
+  seed.swing = s.swing != null && Number.isFinite(Number(s.swing)) ? Number(s.swing) : 0;
   // Percent scale (0–100); absent = 100 = untouched. A value ≤ 2 is a file from
   // the few hours the field was a bare gain multiplier — read it back as %.
   // `chordVolume` is the field's day-one name, read as a fallback.
@@ -260,12 +296,23 @@ function seedFromFile(s, filePath = null) {
 
 // The .yams payload — every on-screen field, so a seed reopens + re-renders
 // identically. Written by Save / Save As (the .yams is the seed's primary file).
-const buildSeed = (s) => ({
-  version: 2,
+export const buildSeed = (s) => ({
+  // v3 (2026-09-04): the seed can carry its OWN figure (`pattern`), so a file
+  // is no longer described by a style NAME alone. Deliberately not additive —
+  // an older build would ignore the field and play the named style, which is
+  // silently the wrong music; the user ruled it does not need to open v3.
+  version: 3,
   name: s.name,
   chords: s.progression,
   bpm: Number(s.bpm), bars: Number(s.bars), sig: s.sig, loops: Number(s.loops),
-  style: s.style, trebleInstrument: s.trebleInstrument, bassInstrument: s.bassInstrument,
+  style: s.style, chordFigure: s.chordFigure, bassFigure: s.bassFigure, swing: Number(s.swing) || 0,
+  trebleMirror: !!s.trebleMirror, bassMirror: !!s.bassMirror,
+  // The edited figure, WHOLE (user ruling 2026-09-04): the seed plays the same
+  // in a year even if the shipped style it started from is improved. `style`
+  // stays beside it as provenance — what it was drawn from — and the figure
+  // picker shows "Custom" while this is set.
+  ...(s.pattern ? { pattern: s.pattern } : {}),
+  trebleInstrument: s.trebleInstrument, bassInstrument: s.bassInstrument,
   trebleVolume: Number(s.trebleVolume), bassVolume: Number(s.bassVolume),
   trebleOctave: Number(s.trebleOctave), bassOctave: Number(s.bassOctave),
   highpass: Number(s.highpass), lowpass: Number(s.lowpass),
@@ -468,11 +515,21 @@ export default function App() {
   const litEvents = useRef([]);          // { midi, lane, on, off } in ctx time
   const litRaf = useRef(0);
   const litSig = useRef('');
+  // The playhead: the chords the player has scheduled ({ idx, on, off, startQ,
+  // quarters }, ctx time) and the position derived from them each frame —
+  // the chord index and the beat-grid position in quarters, quantised to a
+  // 32nd so the state only changes when a grid column can.
+  const playChords = useRef([]);
+  const [playPos, setPlayPos] = useState(null);
+  const playSig = useRef('');
   const clearLit = () => {
     cancelAnimationFrame(litRaf.current);
     litEvents.current = [];
     litSig.current = '';
     setLitKeys({});
+    playChords.current = [];
+    playSig.current = '';
+    setPlayPos(null);
   };
   const runLitLoop = (ctx) => {
     const tick = () => {
@@ -483,6 +540,14 @@ export default function App() {
       for (const e of evs) if (e.on <= now) map[e.midi] = e.lane;
       const sig = Object.keys(map).sort().map((k) => k + map[k]).join('|');
       if (sig !== litSig.current) { litSig.current = sig; setLitKeys(map); }
+      const pcs = playChords.current;
+      for (let i = pcs.length - 1; i >= 0; i--) if (pcs[i].off <= now) pcs.splice(i, 1);
+      const cur = pcs.find((c) => c.on <= now && now < c.off);
+      if (cur) {
+        const q = Math.floor((cur.startQ + ((now - cur.on) / (cur.off - cur.on)) * cur.quarters) * 8) / 8;
+        const psig = cur.idx + ':' + q;
+        if (psig !== playSig.current) { playSig.current = psig; setPlayPos({ chord: cur.idx, q }); }
+      }
       litRaf.current = requestAnimationFrame(tick);
     };
     litRaf.current = requestAnimationFrame(tick);
@@ -542,10 +607,15 @@ export default function App() {
         onNote: (midi, lane, at, durS) => {
           litEvents.current.push({ midi, lane, on: at, off: at + Math.min(durS, 4) });
         },
+        onChord: (idx, at, durS, startQ, quarters) => {
+          playChords.current.push({ idx, on: at, off: at + durS, startQ, quarters });
+        },
         getSeed: () => {
           const c = liveSeed.current;
           return { progression: c.progression, bpm: Number(c.bpm), bars: Number(c.bars), sig: c.sig,
-                   style: c.style, lanes: c.lanes,
+                   style: c.style, chordFigure: c.chordFigure, bassFigure: c.bassFigure, pattern: c.pattern,
+                   trebleMirror: c.trebleMirror, bassMirror: c.bassMirror,
+                   swing: Number(c.swing) || 0, lanes: c.lanes,
                    trebleVolume: Number(c.trebleVolume) / 100, bassVolume: Number(c.bassVolume) / 100,
                    trebleOctave: Number(c.trebleOctave) || 0, bassOctave: Number(c.bassOctave) || 0,
                    // Read once, when the graph is built — see startSeed.
@@ -626,7 +696,9 @@ export default function App() {
       await repaint();
       const { audio, audioExt, midi } = generateSeed({
         progression: s.progression, bpm: Number(s.bpm), bars: Number(s.bars), sig: s.sig,
-        loops: Number(s.loops), style: s.style, trebleInstrument: s.trebleInstrument, soundfont, bassSoundfont,
+        loops: Number(s.loops), style: s.style, chordFigure: s.chordFigure, bassFigure: s.bassFigure, pattern: s.pattern,
+        trebleMirror: s.trebleMirror, bassMirror: s.bassMirror,
+        swing: Number(s.swing) || 0, trebleInstrument: s.trebleInstrument, soundfont, bassSoundfont,
         trebleVolume: Number(s.trebleVolume) / 100, bassVolume: Number(s.bassVolume) / 100,
         trebleOctave: Number(s.trebleOctave) || 0, bassOctave: Number(s.bassOctave) || 0,
         lanes: s.lanes, highpass: Number(s.highpass), lowpass: Number(s.lowpass),
@@ -854,6 +926,7 @@ export default function App() {
           t={t}
           lang={lang} setLang={setLang}
           theme={theme} setTheme={setTheme}
+          packs={packs}
           onClose={() => setSettingsOpen(false)}
         />
       )}
@@ -868,7 +941,7 @@ export default function App() {
               seed={active}
               busy={busy} busyMsg={busyMsg}
               playing={playing}
-              litKeys={litKeys} onAudition={auditionKey}
+              litKeys={litKeys} playPos={playPos} onAudition={auditionKey}
               tuneTrim={tuneTrim} onTuneTrim={setTuneTrim}
               packs={packs}
               // ⚠ MONITOR_FIELDS are not part of the .yams, so touching one must
@@ -945,6 +1018,40 @@ const packFamily = (name) => {
 const FAMILY_ORDER = ['Keys', 'Strings (Plucked)', 'Strings (Bowed)', 'Winds (Wood)', 'Winds (Brass)',
                       'Percussion (Tuned)', 'Percussion (Untuned)', 'Voices', 'Synth', 'Misc'];
 
+// The articulation SHORT NAMES (user-authored, 2026-09-04) — what the pills in
+// the band actually show; the full name is their tooltip. Three characters,
+// because five of them sit side by side on Double Bass and Trumpet and the
+// full names ("Sustained Non-Vibrato") do not fit any band.
+//
+// ⚠ CLAUDE: this is a display dictionary, so it lives HERE and not in
+// packs.json — that file is COMPILED from the library's folder names
+// (build-from-library.mjs, whose whole design is "no display-name
+// dictionaries"), and a field added to it by hand is gone at the next
+// compile. It is keyed by the ARTICULATION NAME, a closed vocabulary of 28
+// terms, not per pack — the same "Pizzicato" serves five instruments.
+//
+// Not translated, deliberately: these are the score abbreviations a musician
+// already reads (pizz., stacc., trem.), the same rule as note names.
+// Collisions were checked against every shipped instrument's own set: the
+// three sustained forms only ever meet on Double Bass, Flute and Trumpet, so
+// Sus / SuN / SuV must stay apart; "Sustained Long" is alone on Clarinet and
+// can share Sus; the three vibratos never meet, so all three are Vib; Mut is
+// alone on Horn while Trumpet's two mutes need MuH / MuS.
+const ARTIC_ABBR = {
+  'Buzz': 'Buz', 'Fall': 'Fal', 'Fingered': 'Fng', 'Hits': 'Hit', 'Medium': 'Med',
+  'Mute': 'Mut', 'Harmon Mute': 'MuH', 'Straight Mute': 'MuS',
+  'Pizzicato': 'Piz', 'Processed': 'Prc', 'Rolls': 'Rol', 'Short': 'Sht',
+  'Spiccato': 'Spc', 'Stabs': 'Stb', 'Staccato': 'Stc',
+  'Sustained': 'Sus', 'Sustained Long': 'Sus',
+  'Sustained Non-Vibrato': 'SuN', 'Sustained Vibrato': 'SuV',
+  'Sweeps': 'Swe', 'Tremolo': 'Trm',
+  'Vibrato': 'Vib', 'Arco Vibrato': 'Vib', 'Expressive Vibrato': 'Vib',
+  'Loud': 'L', 'Loud Pedal': 'PdL', 'Quiet': 'Q', 'Quiet Pedal': 'PdQ',
+};
+// An articulation the table has not met yet still gets a pill — its first
+// three letters, so a new library folder shows up instead of vanishing.
+const abbrOf = (name) => ARTIC_ABBR[name] || String(name || '').slice(0, 3);
+
 // One list entry per INSTRUMENT; its articulations ride as `variants` and the
 // panel shows them as mini buttons under the picker. The seed still stores the
 // concrete pack value (`vsco:<id>`) — the grouping is pure view, .yams intact.
@@ -966,7 +1073,8 @@ const instrumentOptions = (t, packs) => {
         group: p.collection || 'VSCO', family, role: 'bass', variants: [] });
     }
     const g = groups.get(key);
-    g.variants.push({ value: `vsco:${p.name}`, label: p.articulation || instrument });
+    g.variants.push({ value: `vsco:${p.name}`, label: p.articulation || instrument,
+                      abbr: abbrOf(p.articulation || instrument) });
     // `role` gates the TREBLE picker: hide the instrument only when EVERY
     // variant is bass-only (one treble-able articulation keeps it listed).
     if (p.role !== 'bass') g.role = p.role;
@@ -1074,8 +1182,245 @@ function Keyboard({ lit, onPlay }) {
   );
 }
 
-function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, onAudition, tuneTrim, onTuneTrim, onField, onRender, onPlay, onReveal }) {
-  const { progression, bpm, bars, sig, loops, style, trebleInstrument, bassInstrument, lanes,
+// ─── The style editor's grid ─────────────────────────────────────────────
+// Rows are DEGREES (GRID_ROWS), never pitches: `1` is the root of whatever
+// chord is sounding, which is why one grid plays any progression. A cell is
+// one entry of parseSlots' output; a hit shows the note's flags (silent at
+// defaults — a plain hit carries no chrome).
+const CUSTOM_FIGURE = '__custom';   // the figure picker's value while the seed carries its own
+const RULER_SUB = { 1: [''], 2: ['', '+'], 3: ['', '&', 'a'], 4: ['', 'e', '+', 'a'],
+                    6: ['', '·', '·', '·', '·', '·'], 8: ['', '·', '·', '·', '·', '·', '·', '·'] };
+const cap = (k) => k.charAt(0).toUpperCase() + k.slice(1);
+const swingKey = (v) => SWINGS.find(x => Math.abs(x.value - (Number(v) || 0)) < 1e-6)?.key ?? 'custom';
+// The flags a note carries, as the glyphs the grammar writes them with.
+const noteFlags = (nt, early) => {
+  // (an r's start digit is shown by the block's extent, not as text)
+  const suffix = serializeSlots([[nt]]).slice(String(nt.tone).length + (nt.tone === 'r' && nt.from > 1 ? 1 : 0));
+  return [...(early ? '@' : ''), ...suffix].join(' ');
+};
+const FLAG_GROUPS = [
+  { key: 'octave',    flags: [{ key: 'OctUp', glyph: '+' }, { key: 'OctDown', glyph: '–' }] },
+  { key: 'scaleStep', flags: [{ key: 'ScaleUp', glyph: '^' }, { key: 'ScaleDown', glyph: 'v' }] },
+  { key: 'level',     flags: [{ key: 'Accent', glyph: '!' }, { key: 'Ghost', glyph: '?' }] },
+  { key: 'length',    flags: [{ key: 'Sustain', glyph: 's' }, { key: 'Staccato', glyph: "'" }] },
+  { key: 'condition', flags: [{ key: 'Last', glyph: 'L' }, { key: 'NotLast', glyph: 'l' }] },
+  { key: 'push',      flags: [{ key: 'Early', glyph: '@' }] },
+];
+const flagOn = (key, nt, cell) => ({
+  OctUp: (nt.oct || 0) > 0, OctDown: (nt.oct || 0) < 0,
+  ScaleUp: (nt.scale || 0) > 0, ScaleDown: (nt.scale || 0) < 0,
+  Accent: !!nt.acc, Ghost: !!nt.ghost, Sustain: !!nt.sus, Staccato: !!nt.stac,
+  Last: nt.cond === 'last', NotLast: nt.cond === 'notLast', Early: !!cell.early,
+})[key];
+
+// ─── The stack's time axis — Chord Player's grid ─────────────────────────
+// ONE axis for the three grids: a column is a fixed slice of time (the seed's
+// beat division), the same in the treble, the bass and the chords, so a bass
+// eighth is exactly as wide as a treble eighth and a chord sits over the
+// beats it owns. The grid is TWO BARS wide, as Chord Player's is, growing by
+// whole bars only when a lane (or a progression line) needs more. Each lane
+// draws ITS OWN steps from column one and nothing past them — the rest of
+// the row is dimmed (`.off`), CP's grey zone; lanes free-run at their own
+// length in the engine (makeGesture), so a 6-step lane under an 8-step one
+// is simply 6 cells then grey, and each lane's playhead runs at its own
+// phase. ⚠ The maths mirrors makeGesture's tiling (a slot is 4/step
+// quarters, a lane repeats at its own length); if the engine's changes,
+// this changes with it, or the playhead lands on the wrong cell.
+function laneGeom(slots, cfg, meter, barQ) {
+  const slotQ = 4 / cfg.step;
+  const rawQ = Math.max(slotQ, slots.length * slotQ);                   // the lane's OWN length
+  // a pattern authored in another meter plays in whole bars of this one — makeGesture's rule
+  const foreign = meter != null && barQ != null && Math.abs(meter - barQ) > 1e-9;
+  return { slotQ, patternQ: foreign ? Math.max(1, Math.round(rawQ / barQ)) * barQ : rawQ };
+}
+// Re-quantise a lane to a finer division KEEPING TIME: every slot stays
+// where it sounds, rests are interleaved. Used when a click lands between
+// two slots of a lane coarser than the seed's division — the lane is
+// brought to the division so the note can sit on that column. Null when a
+// slot would not land on the new grid (the caller then does nothing). The
+// beat-division control itself does NOT use this: it re-times, like Chord
+// Player (see setDivision).
+function requantLane(slots, step, newStep) {
+  const n = Math.ceil((slots.length * newStep) / step - 1e-9);
+  const out = Array.from({ length: n }, () => []);
+  for (let i = 0; i < slots.length; i++) {
+    const cell = slots[i];
+    if (!cell.length && !cell.early) continue;
+    const j = (i * newStep) / step;
+    if (Math.abs(j - Math.round(j)) > 1e-9) return null;
+    out[Math.round(j)] = cell;
+  }
+  return out;
+}
+function stackGeom(sig, lanes, bars, lines, meter) {
+  const [n, d] = String(sig).split('/').map(Number);
+  const numer = n > 0 ? n : 4, denom = d > 0 ? d : 4;
+  const beatQ = 4 / denom, barQ = numer * beatQ;
+  const lineQ = Math.max(0, Number(bars) || 0) * barQ;
+  const reachQ = Math.max(0, lines || 0) * lineQ;
+  const spans = lanes.map((l) => laneGeom(l.slots, l.cfg, meter, barQ).patternQ);
+  const viewQ = Math.ceil(Math.max(2 * barQ, lineQ, ...spans) / barQ - 1e-9) * barQ;   // whole bars, two at least
+  const cpb = Math.max(1, ...lanes.map((l) => Math.round(l.cfg.step / denom)));
+  const colQ = beatQ / cpb;
+  const cols = Math.max(1, Math.round(viewQ / colQ));
+  return { numer, denom, beatQ, barQ, lineQ, reachQ, viewQ, cpb, colQ, cols };
+}
+
+// A lane on the axis. Rows are DEGREES (GRID_ROWS), never pitches: `1` is the
+// root of whatever chord is sounding, which is why one grid plays any
+// progression. A hit shows the note's flags (silent at defaults — a plain
+// hit carries no chrome). `.off` = a column past this lane's own length
+// (Chord Player's grey zone — not drawn on, not clickable); `.active` = the
+// playhead, at this lane's own phase.
+function StepGrid({ t, lane, slots, cfg, meter, geom, sel, showRuler, playCol = -1, mirror = false, onCell }) {
+  const { cols, cpb, colQ, numer } = geom;
+  const { slotQ, patternQ } = laneGeom(slots, cfg, meter, geom.barQ);
+  const sub = RULER_SUB[cpb] || [];
+  const colClass = (c) => `${c % cpb === 0 ? ' beat' : ''}${c === playCol ? ' active' : ''}`;
+  // the slot a column shows, and whether the slot STARTS on it — the note is
+  // drawn on that column only; the rest of a wide slot stays empty; past the
+  // lane's own length there is no slot (-1)
+  // ⚠ A MIRRORED lane is shown mirrored. The flag reverses the steps at play
+  // time, so a grid drawn in stored order would show one thing while the ear
+  // heard another — the one thing this editor must never do. Reversing the
+  // INDEX here does both jobs at once: the same mapping draws the cell and
+  // carries the click back to the underlying slot.
+  const at = (c) => {
+    const t = c * colQ;
+    if (t >= patternQ - 1e-6) return { s: -1, first: false };
+    const i = Math.floor(t / slotQ + 1e-6);
+    if (i >= slots.length) return { s: -1, first: false };
+    return { s: mirror ? slots.length - 1 - i : i, first: Math.abs(t - i * slotQ) < 1e-6 };
+  };
+  return (
+    <div className="stepgrid" style={{ '--stepgrid-cols': cols }}>
+      {showRuler && <>
+        <div />
+        {Array.from({ length: cols }, (_, c) => {
+          const beat = c % cpb === 0;
+          return <div key={c} className={`stepgrid-ruler${colClass(c)}`}>{beat ? ((c / cpb) % numer) + 1 : (sub[c % cpb] ?? '·')}</div>;
+        })}
+      </>}
+      {(() => {
+        // an `r` is Chord Player's tall block, drawn as a DOT on the r row (the
+        // handle — it is not a note) plus a blue block over the tone rows it
+        // covers, from 4 down to its start (`r3` starts at 3); the rows under
+        // the block are not drawn as cells
+        const covered = new Set();
+        const rowLine = (i) => (showRuler ? 1 : 0) + 1 + i;   // grid line of GRID_ROWS[i]
+        return GRID_ROWS.map((row, ri) => (
+          <React.Fragment key={row}>
+            <div className="stepgrid-rowlabel" title={t(row === 'r' ? 'tipSeedRowAll' : row === 'f' ? 'tipSeedRowFifth' : 'tipSeedRowDegree')}>{row}</div>
+            {Array.from({ length: cols }, (_, c) => {
+              if (covered.has(`${ri}:${c}`)) return null;
+              const { s, first } = at(c);
+              const cell = s >= 0 ? slots[s] : null;
+              const idx = cell ? cell.findIndex(n => n.tone === row) : -1;
+              const nt = first && idx >= 0 ? cell[idx] : null;
+              const isSel = !!nt && !!sel && sel.lane === lane && sel.slot === s && sel.idx === idx;
+              const isR = !!nt && row === 'r';
+              const blockRows = isR ? Math.max(1, GRID_ROWS.indexOf(nt.from || 1)) : 0;   // tone rows 4 … start
+              if (isR) for (let k = 1; k <= blockRows; k++) covered.add(`${k}:${c}`);
+              return (
+                <React.Fragment key={c}>
+                  <button type="button"
+                    className={`stepgrid-cell${colClass(c)}${nt && !isR ? ' hit' : ''}${isR ? ' mark' : ''}${isSel && !isR ? ' selected' : ''}${s < 0 ? ' off' : ''}`}
+                    disabled={s < 0}
+                    onContextMenu={(e) => { e.preventDefault(); if (first) onCell(lane, s, row, idx, null, true); }}
+                    onClick={(e) => first ? onCell(lane, s, row, idx, null, e.ctrlKey || e.metaKey)
+                      // between two slots: refine the lane to this column's
+                      // resolution (time kept) and place the note on the column
+                      : onCell(lane, s, row, -1, { step: geom.cpb * geom.denom, slot: c, mirror })}>
+                    {nt && !isR && <span className="stepgrid-flags">{noteFlags(nt, cell.early)}</span>}
+                  </button>
+                  {isR && (
+                    // the block: placed explicitly (auto-flow fills around it); a
+                    // click on one of its rows makes the block start there. The
+                    // selection ring is the block's alone — the dot is a handle
+                    <button type="button"
+                      className={`stepgrid-cell hit${colClass(c)}${isSel ? ' selected' : ''}`}
+                      style={{ '--rows': blockRows, gridColumn: c + 2, gridRow: `${rowLine(1)} / span ${blockRows}` }}
+                      onContextMenu={(e) => { e.preventDefault(); onCell(lane, s, 'r', idx, null, true); }}
+                      onClick={(e) => {
+                        // Ctrl+click selects the block for the flags; a plain
+                        // click moves its start to the row you pressed
+                        if (e.ctrlKey || e.metaKey) { onCell(lane, s, 'r', idx, null, true); return; }
+                        const k = 1 + Math.min(blockRows - 1, Math.floor((e.nativeEvent.offsetY / e.currentTarget.offsetHeight) * blockRows));
+                        onCell(lane, s, GRID_ROWS[k], -1);
+                      }}>
+                      <span className="stepgrid-flags">{noteFlags(nt, cell.early)}</span>
+                    </button>
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </React.Fragment>
+        ));
+      })()}
+    </div>
+  );
+}
+
+// The progression as a computed VIEW of the text, on the same axis. Each
+// LINE lasts bars × one bar (planEvents) whatever it holds, and its chords
+// share that evenly. Chords are placed by TIME — line k starts at k × lineQ,
+// the view wrapping every viewQ — which is one row per line whenever a line
+// fits the view. The sounding chord is the one under the playhead, by time
+// (the progression loops at its own length). `[Section]` tags label the row
+// they start.
+// ⚠ The tokens come from the ENGINE's own `chordToken`, weight included — the
+// strip must divide a line exactly the way `planEvents` does, or a chord is
+// drawn over beats it does not play.
+function chordRows(progression) {
+  const rows = []; let section = '';
+  for (const raw of String(progression).split(/\r?\n/)) {
+    const m = raw.match(/\[([^\]]*)\]/);
+    if (m) section = m[1];
+    const toks = raw.replace(/\[[^\]]*\]/g, ' ').replace(/\|/g, ' ').trim()
+      .split(/\s+/).filter(Boolean).map(chordToken);
+    if (toks.length) { rows.push({ section, toks, total: toks.reduce((a, t) => a + t.w, 0) }); section = ''; }
+  }
+  return rows;
+}
+function ChordStrip({ progression, geom, playQ = null }) {
+  const lines = useMemo(() => chordRows(progression), [progression]);
+  const { cols, colQ, lineQ, reachQ } = geom;
+  const lineC = Math.round(lineQ / colQ);
+  const reachC = Math.max(1, Math.round(reachQ / colQ));
+  const rows = Math.max(1, Math.ceil(reachC / cols));
+  const items = []; const labels = new Map();
+  lines.forEach((ln, k) => {
+    const t0 = k * lineC;
+    const row0 = Math.floor(t0 / cols);
+    if (ln.section && !labels.has(row0)) labels.set(row0, ln.section);
+    let used = 0;   // weights consumed so far on this line
+    ln.toks.forEach(({ sym, w }, j) => {
+      const c = t0 + Math.round((used * lineC) / ln.total);
+      used += w;
+      const next = t0 + Math.round((used * lineC) / ln.total);
+      const row = Math.floor(c / cols);
+      const c0 = c - row * cols;
+      items.push({ sym, row, c0, span: Math.max(1, Math.min(next - c, cols - c0)), key: `${k}.${j}` });
+    });
+  });
+  const pc = playQ == null ? -1 : Math.floor((((playQ / colQ) % reachC) + reachC) % reachC);
+  const pRow = Math.floor(pc / cols), pCol = pc - pRow * cols;
+  return (
+    <div className="stepgrid" style={{ '--stepgrid-cols': cols }}>
+      {Array.from({ length: rows }, (_, r) => (
+        <div key={`l${r}`} className="stepgrid-rowlabel" style={{ gridRow: r + 1, gridColumn: 1 }}>{labels.has(r) ? `[${labels.get(r)}]` : ''}</div>
+      ))}
+      {items.map(i => (
+        <div key={i.key} className={`stepgrid-span${pc >= 0 && i.row === pRow && pCol >= i.c0 && pCol < i.c0 + i.span ? ' active' : ''}`}
+             style={{ gridRow: i.row + 1, gridColumn: `${2 + i.c0} / span ${i.span}` }}>{i.sym}</div>
+      ))}
+    </div>
+  );
+}
+
+function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, onAudition, tuneTrim, onTuneTrim, onField, onRender, onPlay, onReveal }) {
+  const { progression, bpm, bars, sig, loops, style, chordFigure, bassFigure, pattern, swing,
+          trebleMirror, bassMirror, trebleInstrument, bassInstrument, lanes,
           trebleVolume, bassVolume, trebleOctave, bassOctave,
           highpass, lowpass, reverb, trebleReverb, bassReverb,
           format, mp3Bitrate, name, output, filePath, error, result } = seed;
@@ -1140,220 +1485,407 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, onAudition
   // the audio + MIDI are written (there is no separate output-folder control).
   const saved = !!filePath;
 
+  // ── The style editor ───────────────────────────────────────────────────
+  // The grid is a PURE VIEW over the slot strings: parseSlots in,
+  // serializeSlots out (npm run check:roundtrip). Every edit lands in
+  // `pattern`, the working copy — a COPY of the resolved style, so the ten
+  // shipped styles are never mutated (copy-on-edit). Phase 1 keeps it in
+  // memory only: it is a monitor field, never saved, gone with the seed.
+  const styleDef = STYLE_DEFS[style] || STYLE_DEFS.pad;
+  const spec = useMemo(() => resolveStyleSpec({ style, chordFigure, bassFigure, pattern }), [style, chordFigure, bassFigure, pattern]);
+  const laneCfg = (lane) => ({ ...LANE_DEFAULTS[lane], ...(spec[`${lane}Lane`] || {}) });
+  const laneSlots = (lane) => parseSlots(spec[lane] || '.');
+  // ONE time axis for the stack (see stackGeom); the progression's reach —
+  // lines × one line — is its loop point, where the chord strip tiles from.
+  const geom = useMemo(
+    () => stackGeom(sig, ['treble', 'bass'].map(l => ({ slots: laneSlots(l), cfg: laneCfg(l) })), bars, parseLines(progression).length, spec.meter),
+    [spec, sig, bars, progression]);   // eslint-disable-line react-hooks/exhaustive-deps
+  // The band captions: i18n holds the WHOLE word, translated normally; the band
+  // has room for about three characters, so the screen gets the short form and
+  // the tooltip keeps the word. Shortened as a SET (shortLabels, ui-text.js):
+  // the cut grows until no two captions in the row read the same — Hungarian
+  // "hangerő" and "hangolás" are both "han" at three — and scripts where a
+  // prefix is not an abbreviation come back whole. `npm run check:labels`.
+  const CAPTIONS = ['lblSeedKnobVel', 'lblSeedKnobLen', 'lblSeedKnobTune',
+                    'lblSeedKnobOctave', 'lblSeedKnobReverb', 'lblSeedKnobVolume'];
+  const caps = useMemo(() => {
+    const full = CAPTIONS.map((k) => t(k));
+    const short = shortLabels(full);
+    return Object.fromEntries(CAPTIONS.map((k, i) => [k, { label: short[i], title: full[i] }]));
+  }, [t]);   // eslint-disable-line react-hooks/exhaustive-deps
+  // ⚠ NOT `cap` — that is the module-level key-capitaliser (`cap('pad')` →
+  // 'Pad', for `t('optSeedStyle' + cap(k))`). Shadowing it here made every
+  // style, group and swing label look up `optSeedStyleundefined` (2026-09-04).
+  const knobCap = (key) => caps[key];
+  // each lane's playhead at its OWN phase — lanes free-run at their own length
+  const playColFor = (lane) => {
+    if (!playPos) return -1;
+    const { patternQ } = laneGeom(laneSlots(lane), laneCfg(lane), spec.meter, geom.barQ);
+    return Math.floor((((playPos.q % patternQ) + patternQ) % patternQ) / geom.colQ);
+  };
+  // Which note is selected: { lane, slot, idx } — the flags act on it.
+  const [sel, setSel] = useState(null);
+  const [chordsAsText, setChordsAsText] = useState(false);
+  // ⚠ CLAUDE: a click on a cell can mean two things and they cannot share the
+  // plain click. EDIT places and removes notes; SETTINGS selects one for the
+  // flags. With toggle-always as the only behaviour there was NO way to reach
+  // an existing note's flags — you had to switch it off and on again, which
+  // rewrites the note you were trying to adjust.
+  const [noteMode, setNoteMode] = useState('edit');
+  const selNote = useMemo(() => {
+    if (!sel) return null;
+    const cell = laneSlots(sel.lane)[sel.slot];
+    const nt = cell && cell[sel.idx];
+    return nt ? { nt, cell } : null;
+  }, [sel, spec]);   // eslint-disable-line react-hooks/exhaustive-deps
+  // Selection is a VIEW of the working copy — a new style, or a working copy
+  // that no longer holds the note, drops it.
+  useEffect(() => { if (sel && !selNote) setSel(null); }, [sel, selNote]);
+
+  const writeSpec = (next) => onField({ pattern: next });
+  // ⚠ Editing a lane's STEPS stamps the seed's meter on the working copy:
+  // the lane is authored in this meter now, so it free-runs at its own
+  // length (a shipped 4/4 pattern in a 3/4 seed plays in whole bars until
+  // then — makeGesture's foreign-meter rule).
+  const editLane = (lane, fn) => {
+    const slots = laneSlots(lane);
+    const out = fn(slots) || slots;
+    writeSpec({ ...spec, meter: geom.barQ, [lane]: serializeSlots(out) });
+  };
+  const setLaneCfg = (lane, patch) => writeSpec({ ...spec, [`${lane}Lane`]: { ...laneCfg(lane), ...patch } });
+  // A cell click: empty → place the row's degree there and select it; a
+  // hit → select it; the selected hit again → remove it.
+  // A lane brought to a finer division, KEEPING TIME (requantLane) — the
+  // click-between-slots path; null when a slot would not land on the new grid.
+  const requant = (lane, step) => requantLane(laneSlots(lane), laneCfg(lane).step, step);
+  // The seed's beat division, on BOTH lanes at once — Chord Player's B/x,
+  // and Chord Player's MODEL (user ruling 2026-09-04): the steps stay, the
+  // figure changes speed, nothing is ever refused. (Keeping time instead
+  // refused B/3 on any figure with eighths — "on CP I can select B/3".)
+  const setDivision = (div) => {
+    const step = div * geom.denom;
+    const out = {};
+    for (const lane of ['treble', 'bass']) {
+      if (laneCfg(lane).step !== step) out[`${lane}Lane`] = { ...laneCfg(lane), step };
+    }
+    if (Object.keys(out).length) writeSpec({ ...spec, meter: geom.barQ, ...out });
+  };
+  // ⚠ A CELL IS A TOGGLE. Click an empty one to place the note, click the note
+  // to take it away — always, whatever was selected before. It removed a note
+  // only when that note was ALREADY the selected one until 2026-09-04, so the
+  // first click on any other note merely selected it and looked like nothing
+  // happened: "it selects the button but doesn't switch on/off". Deterministic,
+  // but indistinguishable from a random misfire, because whether a click
+  // deleted depended on what you had touched last.
+  //
+  // The flags need a target that outlives the click, so selecting is its own
+  // gesture: Ctrl+click, or right-click. Placing a note still selects it, which
+  // is the common case — you flag the note you just drew.
+  const onCell = (lane, slot, tone, idx, refine = null, selectOnly = false) => {
+    // SETTINGS mode — and Ctrl+click / right-click, which reach a note without
+    // leaving EDIT mode: the click SELECTS, it never places or removes. A click
+    // inside an `r` block is that block: the tone rows it covers are drawn by
+    // it, not by notes of their own.
+    if (selectOnly || noteMode === 'settings') {
+      const cell = laneSlots(lane)[slot];
+      if (!cell) return;
+      let i = idx >= 0 ? idx : cell.findIndex(n => n.tone === tone);
+      if (i < 0) i = cell.findIndex(n => n.tone === 'r');
+      if (i >= 0) setSel({ lane, slot, idx: i });
+      return;
+    }
+    // a degree row in a column that holds an `r`: the block STARTS there
+    // (Chord Player's Remaining block drawn from C3) — a tone already inside
+    // the block would be a duplicate, so the click means "from here"
+    if (!refine && idx < 0 && typeof tone === 'number') {
+      const cell = laneSlots(lane)[slot];
+      const ri = cell ? cell.findIndex(n => n.tone === 'r') : -1;
+      if (ri >= 0) {
+        editLane(lane, (slots) => { const r = slots[slot][ri]; if (tone > 1) r.from = tone; else delete r.from; return slots; });
+        setSel({ lane, slot, idx: ri });
+        return;
+      }
+    }
+    if (refine) {
+      const slots = requant(lane, refine.step);
+      const at = refine.mirror ? slots.length - 1 - refine.slot : refine.slot;
+      const cell = slots && slots[at];
+      if (!cell) return;
+      const idx = cell.length;
+      cell.push({ tone, oct: 0, scale: 0 });
+      writeSpec({ ...spec, meter: geom.barQ, [lane]: serializeSlots(slots), [`${lane}Lane`]: { ...laneCfg(lane), step: refine.step } });
+      setSel({ lane, slot: at, idx });
+      return;
+    }
+    if (idx < 0) {
+      const at = laneSlots(lane)[slot].length;   // the index the new note will have
+      editLane(lane, (slots) => { slots[slot].push({ tone, oct: 0, scale: 0 }); return slots; });
+      setSel({ lane, slot, idx: at });
+      return;
+    }
+    editLane(lane, (slots) => { slots[slot].splice(idx, 1); return slots; });
+    setSel(null);
+  };
+  // The flags mutate the selected note (or, for the push, its slot).
+  const applyFlag = (key) => {
+    if (!sel) return;
+    editLane(sel.lane, (slots) => {
+      const cell = slots[sel.slot]; const nt = cell[sel.idx];
+      if (!nt) return slots;
+      const clamp = (v) => Math.max(-2, Math.min(2, v));
+      switch (key) {
+        case 'OctUp':     nt.oct = clamp((nt.oct || 0) + 1); break;
+        case 'OctDown':   nt.oct = clamp((nt.oct || 0) - 1); break;
+        case 'ScaleUp':   nt.scale = clamp((nt.scale || 0) + 1); break;
+        case 'ScaleDown': nt.scale = clamp((nt.scale || 0) - 1); break;
+        case 'Accent':    nt.acc = !nt.acc; if (nt.acc) nt.ghost = false; break;
+        case 'Ghost':     nt.ghost = !nt.ghost; if (nt.ghost) nt.acc = false; break;
+        case 'Sustain':   nt.sus = !nt.sus; if (nt.sus) nt.stac = false; break;
+        case 'Staccato':  nt.stac = !nt.stac; if (nt.stac) nt.sus = false; break;
+        case 'Last':      nt.cond = nt.cond === 'last' ? undefined : 'last'; break;
+        case 'NotLast':   nt.cond = nt.cond === 'notLast' ? undefined : 'notLast'; break;
+        case 'Early':     cell.early = !cell.early; break;
+        default: break;
+      }
+      return slots;
+    });
+  };
+  // The lane's rewrite actions — one-shot rewrites that leave the result on
+  // the grid, editable; never a hidden transform applied at playback.
+  const laneAction = (lane, what) => editLane(lane, (slots) => {
+    if (what === 'left')   return slots.length > 1 ? [...slots.slice(1), slots[0]] : slots;
+    if (what === 'right')  return slots.length > 1 ? [slots[slots.length - 1], ...slots.slice(0, -1)] : slots;
+    if (what === 'clear')  return slots.map(() => []);
+    // the lane's LENGTH — one step appended (a rest) or the last one dropped,
+    // Chord Player's + / −; lanes free-run at their own length, so any count
+    // is a real figure (a 6 under an 8 realigns every second bar)
+    if (what === 'add')    return [...slots, []];
+    if (what === 'remove') return slots.length > 1 ? slots.slice(0, -1) : slots;
+    return slots;
+  });
+
+  // ── A lane block: its band (figure · sound) over its grid + action strip ──
+  const renderLane = (lane) => {
+    const isT = lane === 'treble';
+    const cfg = laneCfg(lane);
+    const figures = isT ? CHORD_FIGURES : BASS_FIGURES;
+    const styleFig = styleDef[isT ? 'chord' : 'bass'];
+    // an inline figure is that style's OWN line, not a palette entry — the
+    // picker says Custom for it, as it does for a grid edit
+    const figKey = (isT ? chordFigure : bassFigure) || (typeof styleFig === 'string' ? styleFig : '');
+    const muted = isT ? trebleMuted : bassMuted;
+    const instrument = isT ? trebleInstrument : bassInstrument;
+    const field = isT ? 'trebleInstrument' : 'bassInstrument';
+    const setSearch = isT ? setInstSearch : setBassSearch;
+    // Prev / next within the list the picker is SHOWING — which is the family
+    // when one is chosen (the normal case: picking a family already picks its
+    // first instrument), and everything when the filter is off. Stepping a set
+    // other than the one on screen would jump somewhere the user cannot see.
+    // No wrap: at either end the chevron simply disables, because a silent
+    // jump from the last brass back to the first keyboard is not "next".
+    const instList = byFamily(isT ? instFamily : bassFamily).filter(o => !isT || o.role !== 'bass');
+    const instAt = instList.findIndex(o => o.value === instrument || o.variants?.some(v => v.value === instrument));
+    const stepInstrument = (dir) => {
+      const o = instList[instAt + dir];
+      if (o) onField({ [field]: pickValue(o, instrument) });
+    };
+    return (
+      <div className={`seed-lane-block ${lane}`}>
+        <div className="seed-block">
+          <div className="seed-band">
+            {/* FIGURE — this LANE's own steps, from this lane's library. The
+                chord list and the bass list are separate collections; a STYLE
+                (the seed row) is a named pairing of one from each. Picking a
+                figure here drops any grid edit and turns the style Custom. The
+                bass has no "same as treble" — a bass line is not a chord
+                figure, so there was nothing for it to mean. */}
+            <select className="select seed-figure" value={(pattern || !figKey) ? CUSTOM_FIGURE : figKey}
+                    onChange={e => onField({ [isT ? 'chordFigure' : 'bassFigure']: e.target.value, pattern: null })}>
+              {(pattern || !figKey) && <option value={CUSTOM_FIGURE}>{t('optSeedStyleCustom')}</option>}
+              {Object.entries(figures).map(([k, f]) => <option key={k} value={k}>{f.name}</option>)}
+            </select>
+            <Knob inline arc {...knobCap('lblSeedKnobVel')} min={0} max={100} step={5} unit="%"
+                  value={Math.round(cfg.vel * 100)} onChange={v => setLaneCfg(lane, { vel: v / 100 })} />
+            <Knob inline arc {...knobCap('lblSeedKnobLen')} min={1} max={16} step={1}
+                  value={cfg.len} onChange={v => setLaneCfg(lane, { len: v })} />
+            <button type="button" className={`btn icon${cfg.hold ? ' active' : ''}`} title={t('btnSeedHold')}
+                    onClick={() => setLaneCfg(lane, { hold: !cfg.hold })}><ArrowRightToLine /></button>
+            {/* SOUND — the lane's instrument and its mix. */}
+            <button type="button" className="btn icon"
+                    title={t(muted ? 'tipSeedUnmute' : 'tipSeedMute')}
+                    onClick={() => isT ? setMutes(!trebleMuted, bassMuted) : setMutes(trebleMuted, !bassMuted)}>
+              {muted ? <VolumeX /> : <Volume2 />}
+            </button>
+            <div className="barh-grp seed-picker-weld">
+            <FamilyPicker t={t} value={isT ? instFamily : bassFamily} families={families}
+              onChange={f => { (isT ? setInstFamily : setBassFamily)(f);
+                               pickFamily(f, field, instrument, isT ? (o => o.role !== 'bass') : undefined); }} />
+            <div className="seed-combo">
+            <Combobox
+              placeholder={t('plhSeedInstrumentFilter')}
+              value={(isT ? instOpen : bassOpen) ? (isT ? instSearch : bassSearch)
+                     : (instrument ? labelOf(instrument) : t('optSeedBassInstrumentSame'))}
+              onChange={setSearch}
+              onFocus={() => setSearch('')}
+              onOpenChange={isT ? setInstOpen : setBassOpen}
+              items={instrumentItems(byFamily(isT ? instFamily : bassFamily).filter(o => !isT || o.role !== 'bass'), isT ? instSearch : bassSearch)}
+              itemKey={(o, i) => o.header ? `h-${o.header}` : o.value}
+              itemHeader={o => o.header ?? null}
+              itemActive={o => o.value === instrument || o.variants?.some(v => v.value === instrument)}
+              renderItem={renderInstrumentRow}
+              onPick={o => { onField({ [field]: pickValue(o, instrument) }); setSearch(''); }}
+              renderHeader={isT ? undefined : ({ close }) => (
+                <button type="button" className={`pop-item${bassInstrument === '' ? ' active' : ''}`}
+                  onMouseDown={(e) => { e.preventDefault(); onField({ bassInstrument: '' }); setBassSearch(''); close(); }}>
+                  {t('optSeedBassInstrumentSame')}
+                </button>
+              )}
+            />
+            </div>
+            <button type="button" className="btn icon" title={t('tipSeedInstrumentPrev')}
+                    disabled={instAt <= 0} onClick={() => stepInstrument(-1)}><ChevronUp /></button>
+            <button type="button" className="btn icon" title={t('tipSeedInstrumentNext')}
+                    disabled={instAt < 0 || instAt >= instList.length - 1}
+                    onClick={() => stepInstrument(1)}><ChevronDown /></button>
+            </div>
+            {/* The instrument's articulations, inline — exactly one active, all
+                of them on screen (no list to open, nothing hidden). The zone
+                is always here so the mix knobs beside it never move. */}
+            <div className="seed-artics">
+              {instrument && variantsOf(instrument).length > 1 && variantsOf(instrument).map(v => (
+                <button key={v.value} type="button" title={v.label}
+                  className={`btn small opt-btn${v.value === instrument ? ' active' : ''}`}
+                  onClick={() => onField({ [field]: v.value })}>{v.abbr}</button>
+              ))}
+            </div>
+            {/* Live tuning probe on the treble pack — calibration by ear, never
+                saved; the found value gets stamped in the library. Treble only —
+                so it goes FIRST, and the knobs both lanes share (oct · rev · vol)
+                line up across the two bands instead of being shifted by it. */}
+            {isT && <Knob inline {...knobCap('lblSeedKnobTune')} min={-50} max={50} step={1} unit="¢"
+                          value={tuneTrim} onChange={onTuneTrim} />}
+            <Knob inline {...knobCap('lblSeedKnobOctave')} min={-1} max={1} step={1}
+                  value={isT ? trebleOctave : bassOctave} onChange={v => onField(isT ? { trebleOctave: v } : { bassOctave: v })} />
+            <Knob inline arc {...knobCap('lblSeedKnobReverb')} min={0} max={100} step={5} unit="%"
+                  disabled={reverb === 'none'}
+                  value={isT ? trebleReverb : bassReverb} onChange={v => onField(isT ? { trebleReverb: v } : { bassReverb: v })} />
+            <Knob inline arc {...knobCap('lblSeedKnobVolume')} min={0} max={100} step={5} unit="%"
+                  value={isT ? trebleVolume : bassVolume} onChange={v => onField(isT ? { trebleVolume: v } : { bassVolume: v })} />
+            {/* the lane's NAME sits at the RIGHT edge — the left column is
+                being cleared for the note flags, which belong beside the
+                notes they act on; the labels were all that held it */}
+            <span className="seed-lane-name">{t(isT ? 'lblSeedInstrument' : 'lblSeedBassInstrument')}</span>
+          </div>
+          <div className="seed-gridwrap">
+            <StepGrid t={t} lane={lane} slots={laneSlots(lane)} cfg={cfg} meter={spec.meter} geom={geom} sel={sel}
+                      showRuler={isT} playCol={playColFor(lane)} mirror={isT ? trebleMirror : bassMirror} onCell={onCell} />
+            {/* two columns, row for row with the grid: the rewrites, and the
+                lane's LENGTH in steps (+ / −, Chord Player's; the count
+                itself is a label on the band) */}
+            <div className="seed-strip">
+              <button type="button" title={t('tipSeedLaneMirror')}
+                      className={`btn icon small${(isT ? trebleMirror : bassMirror) ? ' active' : ''}`}
+                      onClick={() => onField({ [isT ? 'trebleMirror' : 'bassMirror']: !(isT ? trebleMirror : bassMirror) })}>
+                <ArrowLeftRight /></button>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneAddStep')} onClick={() => laneAction(lane, 'add')}><Plus /></button>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneShiftLeft')} onClick={() => laneAction(lane, 'left')}><ChevronLeft /></button>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneRemoveStep')} disabled={laneSlots(lane).length <= 1} onClick={() => laneAction(lane, 'remove')}><Minus /></button>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneShiftRight')} onClick={() => laneAction(lane, 'right')}><ChevronRight /></button>
+              <span className="seed-count mono" title={t('tipSeedSlots')}>{laneSlots(lane).length}</span>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneClear')} onClick={() => laneAction(lane, 'clear')}><Eraser /></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   // dlg-form: this body panel is a dialog-style form, so its .numfield + .btn
   // follow the same dialog field rules as the sibling .input/.select.
   // Two-column split: chord progression on the left, everything else on the right.
   return (
     <div className="seed-panel dlg-form">
-      {/* ── Left column: chord progression — a tall multi-line text zone ── */}
-      <div className="seed-col seed-col-chords">
-        <div className="seed-field seed-field-grow">
-          <label className="dlg-field-label">{t('lblSeedProgression')}</label>
-          <textarea
-            className="textarea"
-            style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
-            value={progression}
-            placeholder={t('plhSeedProgression')}
-            onChange={e => onField({ progression: e.target.value })}
-          />
-          <span className="hint">{t('hntSeedProgression')}</span>
-        </div>
-      </div>
-
-      {/* ── Right column: all the rest (parameters, output, summary, actions) ── */}
-      <div className="seed-col seed-col-rest">
-      {/* Two tabs (the catalog .tabs/.tab pair, same as the Settings dialog):
+      {/* Two tabs on a VERTICAL rail (the catalog .tabs.vertical) — the
+          panel's left edge, so the tab row costs no height on a screen
+          where height is the scarce resource (the 1080 gate):
           MUSIC = what plays (both live and in the file); RENDER = how the file
-          is produced (loops, format, bitrate, output name). The summary and
-          the action row stay below both. */}
-      <div className="tabs">
+          is produced (loops, format, bitrate, output name). */}
+      <div className="tabs vertical">
         <button type="button" className={`tab ${panelTab === 'music' ? 'active' : ''}`}
                 onClick={() => setPanelTab('music')}>{t('tabSeedMusic')}</button>
         <button type="button" className={`tab ${panelTab === 'render' ? 'active' : ''}`}
                 onClick={() => setPanelTab('render')}>{t('tabSeedRender')}</button>
       </div>
-      {panelTab === 'music' && <>
-      {/* Name — the seed's own name, above every other field. Feeds the {name} token
-          the default Output template is built from. */}
-      <div className="seed-field">
-        <label className="dlg-field-label">{t('lblSeedName')}</label>
-        <input className="input" type="text"
-               value={name} onChange={e => onField({ name: e.target.value })} />
-      </div>
+      <div className="seed-col seed-col-rest">
+      {panelTab === 'music' && <div className="seed-music">
+      {/* The keyboard on TOP — a PITCH axis, kept out of the time-aligned stack
+          below so the grids and the progression stay contiguous. */}
+      <Keyboard lit={litKeys} onPlay={onAudition} />
 
-      {/* Numeric / select parameters */}
-      <div className="seed-grid">
-        {/* Row one shares the instrument line's 50/50 skeleton so Style's left
-            edge aligns with the treble lane below it. */}
-        <div className="seed-field seed-field-full">
-          <div className="seed-instrument-line">
-            <div className="seed-lane">
-              {/* four EQUAL columns (BPM / bars / sig / spare) — each control
-                  fills its cell, so the fields line up with nothing content-sized */}
-              <div className="seed-params">
+      {/* ONE seed row: tempo · meter · swing | the output chain · Play | the name. */}
+      <div className="seed-toprow">
         <div className="seed-field">
           <label className="dlg-field-label">{t('lblSeedBpm')}</label>
-          <NumberField min={20} max={300} step={1} width="100%"
+          <NumberField min={20} max={300} step={1} width="76px"
                  value={bpm} onChange={v => onField({ bpm: v })} />
         </div>
-        <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedBars')}</label>
-          <NumberField min={0.25} step={0.25} width="100%"
-                 value={bars} onChange={v => onField({ bars: v })} />
-        </div>
-        <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedSig')}</label>
-          <input className="input" type="text"
-                 value={sig} onChange={e => onField({ sig: e.target.value })} />
-        </div>
-              </div>
-            </div>
-            <div className="seed-lane">
+        {/* STYLE sits SECOND so it lines up with each lane's FIGURE select in the
+            band below (user ruling 2026-09-05): the pairing reads as the parent of
+            the two figures it pairs, which a style parked at the far end did not.
+            It is the named PAIRING of a chord figure with a bass figure, and
+            the lane settings that pairing wants. Change either lane's figure,
+            or edit the grid, and it reads "Custom": the pair is no longer the
+            preset's. Picking one here resets both lanes to it. */}
         <div className="seed-field">
           <label className="dlg-field-label">{t('lblSeedStyle')}</label>
-          {/* Three collections by FIGURE TYPE (user taxonomy 2026-09-02):
-              Pads state the harmony, Arpeggios break it, Grooves rhythm it.
-              The old Textures/Rhythms split (implementation history) is gone. */}
-          <select className="select" value={style} onChange={e => onField({ style: e.target.value })}>
+          <select className="select" style={{ width: '150px' }}
+                  value={(pattern || chordFigure || bassFigure) ? CUSTOM_FIGURE : style}
+                  onChange={e => onField({ style: e.target.value, chordFigure: '', bassFigure: '', pattern: null })}>
+            {(pattern || chordFigure || bassFigure) && <option value={CUSTOM_FIGURE}>{t('optSeedStyleCustom')}</option>}
             {STYLE_GROUPS.map(g => (
-              <optgroup key={g.key} label={t('lblSeedStyleGroup' + g.key.charAt(0).toUpperCase() + g.key.slice(1))}>
-                {g.styles.map(s => (
-                  <option key={s} value={s}>{t('optSeedStyle' + s.charAt(0).toUpperCase() + s.slice(1))}</option>
-                ))}
+              <optgroup key={g.key} label={t('lblSeedStyleGroup' + cap(g.key))}>
+                {g.styles.map(k => <option key={k} value={k}>{t('optSeedStyle' + cap(k))}</option>)}
               </optgroup>
             ))}
           </select>
         </div>
-            </div>
-          </div>
+        {/* A PICKER, not free text: the denominator is a note length, so the set
+            is closed — `4/7` is meaningless, not exotic. A value from an older
+            file that is not in the list is still shown, never silently changed. */}
+        <div className="seed-field">
+          <label className="dlg-field-label">{t('lblSeedSig')}</label>
+          <select className="select" value={sig} onChange={e => onField({ sig: e.target.value })}>
+            {!SIGNATURES.some(g => g.sigs.includes(sig)) && <option value={sig}>{sig}</option>}
+            {SIGNATURES.map(g => (
+              <optgroup key={g.group} label={t('lblSeedSigGroup' + cap(g.group))}>
+                {g.sigs.map(x => <option key={x} value={x}>{x}</option>)}
+              </optgroup>
+            ))}
+          </select>
         </div>
-        {/* The lane monitor lives as the per-lane MUTE buttons on the
-            instrument line below (first control of each lane) — the old Hear
-            select is gone, but the internal `lanes` monitor field is the same:
-            both / bass / treble / none, never saved to the .yams. */}
-        {/* ── The instrument line: 8 controls on ONE row — per lane (treble
-            then bass): Volume knob, Octave knob, Family select, Instrument
-            Combobox. The Knob is the catalog's compact instrument-style
-            control (ui-ctl-knob); the pickers are the same catalog pieces as
-            before (.select + Combobox), laid out on a single line. */}
-        <div className="seed-field seed-field-full">
-          {/* BASS on the left, TREBLE on the right — the keyboard's own
-              left-low / right-high order. */}
-          <div className="seed-instrument-line">
-            {/* The bass lane's own player — empty = same as the treble
-                instrument, pinned above the filtered list. */}
-            <div className="seed-lane">
-              <label className="dlg-field-label">{t('lblSeedBassInstrument')}</label>
-              <div className="seed-row">
-                <button type="button" className="btn icon"
-                        title={t(bassMuted ? 'tipSeedUnmute' : 'tipSeedMute')}
-                        onClick={() => setMutes(trebleMuted, !bassMuted)}>
-                  {bassMuted ? <VolumeX /> : <Volume2 />}
-                </button>
-                <Knob label={t('lblSeedKnobVolume')} min={0} max={100} step={5} unit="%"
-                      value={bassVolume} onChange={v => onField({ bassVolume: v })} />
-                <Knob label={t('lblSeedKnobOctave')} min={-1} max={1} step={1}
-                      value={bassOctave} onChange={v => onField({ bassOctave: v })} />
-                {/* This lane's reverb SEND — how much bass feeds the room
-                    picked on the Render tab. Kept low by default: mud lives here. */}
-                <Knob label={t('lblSeedKnobReverb')} min={0} max={100} step={5} unit="%"
-                      disabled={reverb === 'none'}
-                      value={bassReverb} onChange={v => onField({ bassReverb: v })} />
-                <div className="barh-grp seed-picker-weld">
-                <FamilyPicker t={t} value={bassFamily} families={families}
-                  onChange={f => { setBassFamily(f); pickFamily(f, 'bassInstrument', bassInstrument); }} />
-                <div className="seed-combo">
-                <Combobox
-                  placeholder={t('plhSeedInstrumentFilter')}
-                  value={bassOpen ? bassSearch : (bassInstrument ? labelOf(bassInstrument) : t('optSeedBassInstrumentSame'))}
-                  onChange={setBassSearch}
-                  onFocus={() => setBassSearch('')}
-                  onOpenChange={setBassOpen}
-                  items={instrumentItems(byFamily(bassFamily), bassSearch)}
-                  itemKey={(o, i) => o.header ? `h-${o.header}` : o.value}
-                  itemHeader={o => o.header ?? null}
-                  itemActive={o => o.value === bassInstrument || o.variants?.some(v => v.value === bassInstrument)}
-                  renderItem={renderBassRow}
-                  onPick={o => { onField({ bassInstrument: pickValue(o, bassInstrument) }); setBassSearch(''); }}
-                  renderHeader={({ close }) => (
-                    <button type="button" className={`pop-item${bassInstrument === '' ? ' active' : ''}`}
-                      onMouseDown={(e) => { e.preventDefault(); onField({ bassInstrument: '' }); setBassSearch(''); close(); }}>
-                      {t('optSeedBassInstrumentSame')}
-                    </button>
-                  )}
-                />
-                </div>
-                </div>
-              </div>
-              {bassInstrument && variantsOf(bassInstrument).length > 1 && (
-                <div className="seed-artics">
-                  {variantsOf(bassInstrument).map(v => (
-                    <button key={v.value} type="button"
-                      className={`btn small opt-btn${v.value === bassInstrument ? ' active' : ''}`}
-                      onClick={() => onField({ bassInstrument: v.value })}>{v.label}</button>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="seed-lane">
-              <label className="dlg-field-label">{t('lblSeedInstrument')}</label>
-              <div className="seed-row">
-                <button type="button" className="btn icon"
-                        title={t(trebleMuted ? 'tipSeedUnmute' : 'tipSeedMute')}
-                        onClick={() => setMutes(!trebleMuted, bassMuted)}>
-                  {trebleMuted ? <VolumeX /> : <Volume2 />}
-                </button>
-                <Knob label={t('lblSeedKnobVolume')} min={0} max={100} step={5} unit="%"
-                      value={trebleVolume} onChange={v => onField({ trebleVolume: v })} />
-                <Knob label={t('lblSeedKnobOctave')} min={-1} max={1} step={1}
-                      value={trebleOctave} onChange={v => onField({ trebleOctave: v })} />
-                {/* Live tuning probe on the treble pack — calibration by ear,
-                    never saved; the found value gets stamped in the library. */}
-                <Knob label={t('lblSeedKnobTune')} min={-50} max={50} step={1} unit="¢"
-                      value={tuneTrim} onChange={onTuneTrim} />
-                {/* This lane's reverb SEND into the shared room. */}
-                <Knob label={t('lblSeedKnobReverb')} min={0} max={100} step={5} unit="%"
-                      disabled={reverb === 'none'}
-                      value={trebleReverb} onChange={v => onField({ trebleReverb: v })} />
-                <div className="barh-grp seed-picker-weld">
-                <FamilyPicker t={t} value={instFamily} families={families}
-                  onChange={f => { setInstFamily(f); pickFamily(f, 'trebleInstrument', trebleInstrument, o => o.role !== 'bass'); }} />
-                <div className="seed-combo">
-                <Combobox
-                  placeholder={t('plhSeedInstrumentFilter')}
-                  value={instOpen ? instSearch : labelOf(trebleInstrument)}
-                  onChange={setInstSearch}
-                  onFocus={() => setInstSearch('')}
-                  onOpenChange={setInstOpen}
-                  items={instrumentItems(byFamily(instFamily).filter(o => o.role !== 'bass'), instSearch)}
-                  itemKey={(o, i) => o.header ? `h-${o.header}` : o.value}
-                  itemHeader={o => o.header ?? null}
-                  itemActive={o => o.value === trebleInstrument || o.variants?.some(v => v.value === trebleInstrument)}
-                  renderItem={renderInstrumentRow}
-                  onPick={o => { onField({ trebleInstrument: pickValue(o, trebleInstrument) }); setInstSearch(''); }}
-                />
-                </div>
-                </div>
-              </div>
-              {/* The selected instrument's articulations, as mini buttons
-                  under the picker — exactly one active. */}
-              {variantsOf(trebleInstrument).length > 1 && (
-                <div className="seed-artics">
-                  {variantsOf(trebleInstrument).map(v => (
-                    <button key={v.value} type="button"
-                      className={`btn small opt-btn${v.value === trebleInstrument ? ' active' : ''}`}
-                      onClick={() => onField({ trebleInstrument: v.value })}>{v.label}</button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+        {/* The beat division — slots per BEAT, Chord Player's B/x — for the
+            whole seed (both lanes share the columns). Changing it keeps the
+            slots and re-times the figure, as Chord Player does. */}
+        <div className="seed-field">
+          <label className="dlg-field-label">{t('lblSeedBeatDiv')}</label>
+          <select className="select" value={geom.cpb} title={t('tipSeedBeatDiv')}
+                  onChange={e => setDivision(Number(e.target.value))}>
+            {!BEAT_DIVISIONS.includes(geom.cpb) && <option value={geom.cpb}>B/{geom.cpb}</option>}
+            {BEAT_DIVISIONS.map(d => <option key={d} value={d}>B/{d}</option>)}
+          </select>
         </div>
-        {/* The room. Generated, not recorded — a set of delays tuned to behave
-            like a space, applied over the finished mix rather than per note.
-            ONE room for the whole seed; how much each lane sends into it is
-            the per-lane reverb knob on the instrument line (the aux model). */}
-        <div className="seed-field-full seed-mix-line">
+        {/* Four named landmarks, never a number on screen. */}
+        <div className="seed-field">
+          <label className="dlg-field-label">{t('lblSeedSwing')}</label>
+          <select className="select" value={swingKey(swing)}
+                  onChange={e => onField({ swing: SWINGS.find(x => x.key === e.target.value)?.value ?? 0 })}>
+            {swingKey(swing) === 'custom' && <option value="custom">{Number(swing).toFixed(2)}</option>}
+            {SWINGS.map(x => <option key={x.key} value={x.key}>{t('optSeedSwing' + cap(x.key))}</option>)}
+          </select>
+        </div>
+        <div className="barh-sep" />
+        {/* The room. ONE room for the whole seed; each lane's SEND into it is
+            the reverb knob on its own band (the aux model). */}
         <div className="seed-field">
           <label className="dlg-field-label">{t('lblSeedReverb')}</label>
           <select className="select" style={{ width: '140px' }} value={reverb}
@@ -1363,12 +1895,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, onAudition
             ))}
           </select>
         </div>
-        {/* The master filters — the last thing the whole mix passes through.
-            Below the highpass sits rumble and the stretched tail of notes placed
-            under an instrument's real range; above the lowpass sits sample noise
-            and codec fizz. Neither is music, both eat headroom. 0 turns one off. */}
-        {/* No break: the whole output chain — room, amount, and the two master
-            cutoffs — reads as ONE row of four. */}
+        {/* The master filters — the last thing the whole mix passes through. 0 turns one off. */}
         <div className="seed-field">
           <label className="dlg-field-label">{t('lblSeedHighpass')}</label>
           <NumberField min={0} max={2000} step={10} width="96px"
@@ -1381,25 +1908,107 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, onAudition
           <NumberField min={0} max={20000} step={500} width="96px"
                  value={lowpass} onChange={v => onField({ lowpass: v })} />
         </div>
-        {/* Play lives with the sound controls — the whole line is "what am I
-            hearing". Preview needs no saved file; it writes nothing. */}
-        <button className="btn seed-mix-play" onClick={onPlay}
+        {/* Play lives with the sound controls. Preview needs no saved file. */}
+        <button className="btn" onClick={onPlay}
                 disabled={busy || summary.count === 0 || summary.sigBad || summary.invalid.length > 0}>
           {playing ? <Square /> : <Play />}{playing ? t('btnSeedStop') : t('btnSeedPlay')}
         </button>
-        </div>
       </div>
 
-      {/* The keyboard — lights with the playing notes, clicks audition the
-          treble instrument. */}
-      <Keyboard lit={litKeys} onPlay={onAudition} />
-      </>}
+      {/* ═══ the two zones: the FLAGS and the STACK (treble · bass · chords) ═══ */}
+      <div className="seed-stackrow">
+        {/* ── FLAGS, once: they edit the SELECTED note, and only one note is
+            selected at a time, so a copy per lane would leave one dead.
+            Disabled until a note is selected — with none there is nothing to
+            flag, and lighting buttons for a selection that does not exist
+            would be a lie. Label above, the pair below, one row unit each. */}
+        <div className="seed-flagcol">
+          {/* MODE — which of the two things a click means. It sits above the
+              flags because the second mode exists to feed them. */}
+          <div className="seed-flaggroup">
+            <span className="seed-flaglabel">{t('lblSeedMode')}</span>
+            <div className="seed-flagrow">
+              <button type="button" className={`btn icon small${noteMode === 'edit' ? ' active' : ''}`}
+                      title={t('tipSeedModeEdit')} onClick={() => setNoteMode('edit')}><PenLine /></button>
+              <button type="button" className={`btn icon small${noteMode === 'settings' ? ' active' : ''}`}
+                      title={t('tipSeedModeSettings')} onClick={() => setNoteMode('settings')}><SlidersHorizontal /></button>
+            </div>
+          </div>
+          {FLAG_GROUPS.map(g => (
+            <div key={g.key} className="seed-flaggroup">
+              <span className="seed-flaglabel">{t('lblSeedFlag' + cap(g.key))}</span>
+              <div className="seed-flagrow">
+                {g.flags.map(f => (
+                  <button key={f.key} type="button"
+                          className={`btn icon small${selNote && flagOn(f.key, selNote.nt, selNote.cell) ? ' active' : ''}`}
+                          disabled={!selNote} title={t('tipSeedFlag' + f.key)}
+                          onClick={() => applyFlag(f.key)}>{f.glyph}</button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="seed-stack">
+          {renderLane('treble')}
+          {renderLane('bass')}
+
+          {/* ── CHORDS: the progression, one row per LINE of text, on the same
+              columns as the grids above — a chord sits over the beats it owns.
+              The text stays the model; the blocks are a computed view. The ✎
+              swaps the blocks for the text IN PLACE (paste, Ctrl+Enter back). */}
+          <div className="seed-prog">
+            <div className="seed-block">
+              <div className="seed-gridwrap">
+                {chordsAsText ? (
+                  <textarea className="textarea mono seed-chordtext" autoFocus
+                    value={progression} placeholder={t('plhSeedProgression')}
+                    onChange={e => onField({ progression: e.target.value })}
+                    onKeyDown={e => {
+                      if ((e.key === 'Enter' && (e.ctrlKey || e.metaKey)) || e.key === 'Escape') {
+                        e.preventDefault(); setChordsAsText(false);
+                      }
+                    }} />
+                ) : (
+                  <ChordStrip progression={progression} geom={geom} playQ={playPos ? playPos.q : null} />
+                )}
+                {/* Column 1 edits the chord TEXT; column 2 is how long a LINE
+                    of it lasts — the progression's own extent, the same place a
+                    lane's length in steps sits, and the same + / −. It left the
+                    seed row (user ruling 2026-09-05): BPM and the meter describe
+                    the music, this describes how the text is READ, so it is a
+                    property of the chords and belongs on them. */}
+                <div className="seed-strip">
+                  <button type="button" className={`btn icon small${chordsAsText ? ' active' : ''}`}
+                          title={t('tipSeedChordsEdit')} onClick={() => setChordsAsText(v => !v)}>
+                    <Pencil />
+                  </button>
+                  <button type="button" className="btn icon small seed-strip-len" title={t('tipSeedBarsAdd')}
+                          onClick={() => onField({ bars: bars + 0.25 })}><Plus /></button>
+                  <button type="button" className="btn icon small seed-strip-len" title={t('tipSeedBarsRemove')}
+                          disabled={bars <= 0.25} onClick={() => onField({ bars: bars - 0.25 })}><Minus /></button>
+                  <span className="seed-count mono seed-strip-len" title={t('lblSeedBars')}>{bars}</span>
+                </div>
+                <div className="seed-gutter"><span className="seed-lane-name">{t('lblSeedChords')}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>}
 
       {/* ── RENDER tab: everything about producing the file. `loops` sets the
           rendered length (playback loops forever regardless), format/bitrate
           the encoding, Output the file's base name. */}
       {panelTab === 'render' && <>
       <div className="seed-grid">
+        {/* Name — the seed's own name; feeds the {name} output token. It sits
+            with the RENDER controls because that is what it feeds; the Music
+            row is for what you hear. */}
+        <div className="seed-field seed-field-name">
+          <label className="dlg-field-label">{t('lblSeedName')}</label>
+          <input className="input" type="text"
+                 value={name} onChange={e => onField({ name: e.target.value })} />
+        </div>
         <div className="seed-field">
           <label className="dlg-field-label">{t('lblSeedLoops')}</label>
           <NumberField min={1} max={32} step={1} width="76px"
@@ -1464,7 +2073,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, onAudition
             <AudioWaveform />{busy ? (busyMsg || t('msgSeedBusy')) : t('btnSeedRender')}
           </button>
         )}
-        {/* Play moved onto the sound-controls line (seed-mix-line) above. */}
+        {/* Play lives on the Music tab's seed row, with the sound controls. */}
         {panelTab === 'render' && !saved && <span className="hint">{t('hntSeedRenderNeedsSave')}</span>}
         {error && <span className="seed-error">{error}</span>}
       </div>
@@ -1488,7 +2097,25 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, onAudition
   );
 }
 
-function SettingsDialog({ t, lang, setLang, theme, setTheme, onClose }) {
+function SettingsDialog({ t, lang, setLang, theme, setTheme, packs, onClose }) {
+  // Instrument credits, grouped per AUTHOR (the person leads — user ruling
+  // 2026-09-02): rendered from packs.json's shipped attribution, so the list
+  // updates itself when the library changes. CC0 imposes nothing and is not
+  // shown; a CC BY instrument carries its licence tag (the attribution the
+  // licence requires, inside the distributed artifact).
+  const credits = useMemo(() => {
+    const byAuthor = new Map();
+    for (const p of packs || []) {
+      if (!p.author) continue;
+      if (!byAuthor.has(p.author)) byAuthor.set(p.author, new Map());
+      if (!byAuthor.get(p.author).has(p.instrument)) byAuthor.get(p.author).set(p.instrument, p.license);
+    }
+    return [...byAuthor.entries()]
+      .map(([author, insts]) => ({ author,
+        instruments: [...insts.entries()].sort((a, b) => a[0].localeCompare(b[0]))
+          .map(([inst, lic]) => inst + (lic && lic !== 'CC0' ? ` (${lic})` : '')).join(', ') }))
+      .sort((a, b) => b.instruments.length - a.instruments.length);
+  }, [packs]);
   const [activeTab, setActiveTab] = useState('display');
 
   useEffect(() => {
@@ -1572,6 +2199,15 @@ function SettingsDialog({ t, lang, setLang, theme, setTheme, onClose }) {
                 <div className="dlg-about-desc">{t('msgDlgSettingsAboutDesc')}</div>
               </div>
             </div>
+            {credits.length > 0 && (
+              <div className="seed-credits">
+                <div className="dlg-about-id">{t('lblDlgSettingsAboutCredits')}</div>
+                <div className="dlg-hint">{t('msgDlgSettingsAboutCreditsIntro')}</div>
+                {credits.map(c => (
+                  <div key={c.author} className="seed-credits-row"><b>{c.author}</b> — {c.instruments}</div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

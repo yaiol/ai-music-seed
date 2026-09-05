@@ -159,15 +159,26 @@ for (const pack of packs) {
   // each INSTRUMENT once and shows its articulations as variant buttons. A
   // two-level pack has no articulation — parens in ITS name are just the name
   // ("Hang (D minor)"), never a variation.
+  // author / license / url ship in packs.json — the CC BY packs make
+  // attribution a licence OBLIGATION of the built app, not a courtesy, so the
+  // compiled index is where the trail lives (the library's info.json never
+  // leaves the workspace).
   results.push({ name: info.id, label, family: fam, role: info.role, collection: info.collection,
-                 instrument: pack.trail[1], articulation: pack.trail[2] || null });
+                 instrument: pack.trail[1], articulation: pack.trail[2] || null,
+                 author: info.author, license: info.license, url: info.url || '' });
   console.log(`ok    ${label.padEnd(34)} ${String(zones.length).padStart(3)} notes  ` +
     (encoded ? `${encoded} encoded` : 'unchanged') + (kept && encoded ? `, ${kept} kept` : '') +
     `  ${mb(srcBytes).padStart(6)} MB → ${mb(outBytes)} MB`);
 }
 
 // Merge into packs.json: replace the entries this run rebuilt, keep the rest
-// (packs whose sources are still postponed keep their previous build).
+// (packs whose sources are still postponed keep their previous build) — but
+// ⚠ DROP any entry whose compiled folder is no longer on disk. "Keep the rest"
+// alone made an instrument REMOVED from the library immortal: nothing rebuilds
+// it, so it survived every later run as an index entry pointing at samples that
+// are gone, and the picker offered an instrument that could only fail to load.
+// Presence of the folder is the right test, not presence in this run's results:
+// a postponed pack still has its folder, a deleted one does not.
 if (!DRY && results.length) {
   const indexPath = path.join(OUT, 'packs.json');
   const idx = fs.existsSync(indexPath) ? JSON.parse(fs.readFileSync(indexPath, 'utf8')) : { format: 1, packs: [] };
@@ -177,9 +188,10 @@ if (!DRY && results.length) {
   // `collection` (info.json) is the SOURCE tag the picker shows beside each
   // instrument (VSCO / FreePats / Freesound) — a source fact, so it lives in
   // info.json, never in the folder name (folders are display labels).
-  const merged = idx.packs.filter((p) => !rebuilt.has(p.name))
+  const merged = idx.packs.filter((p) => !rebuilt.has(p.name) && fs.existsSync(path.join(OUT, p.name)))
     .concat(results.map((r) => ({ name: r.name, label: r.label, family: r.family, role: r.role,
-                                  collection: r.collection, instrument: r.instrument, articulation: r.articulation })));
+                                  collection: r.collection, instrument: r.instrument, articulation: r.articulation,
+                                  author: r.author, license: r.license, url: r.url })));
   merged.sort((a, b) => a.label.localeCompare(b.label));
   fs.writeFileSync(indexPath, JSON.stringify({ ...idx, packs: merged }, null, 2));
   console.log(`\n${results.length} pack(s) compiled from the library; packs.json lists ${merged.length}`);

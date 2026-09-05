@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.0.0 — 2026-09-05
+
+- Edit a style inside the app: the Music tab is now a step editor — a grid for each lane on one shared time axis, the chord progression on the same columns underneath, and a playhead that runs while you edit
+- Notes are placed by chord degree, not by pitch: row 1 is the root of whatever chord is sounding, so one figure plays every chord in the progression
+- A style is a pairing of two figures — one for the chords, one for the bass — each pickable on its own lane; changing either lane, or editing the grid, reads Custom
+- An edited figure is saved into the .yams and travels with the seed, so reopening it plays exactly what you wrote even if the style it started from later changes; older .yams files open unchanged
+- Beat division (B/2, B/3, B/4, B/6) is a seed-level control that re-times the figure instead of refusing it — eighths become triplets in one click
+- Swing is now a control: None, Light, Shuffle or Hard
+- The time signature is a picker of the meters the engine actually plays, not free text
+- A chord can carry a weight — "2Am 2E G B" holds Am and E for two beats each, letting the chord ring while the figure runs over it, where writing the chord twice re-strikes it
+- Per-note flags on the selected note: octave, scale step, accent and ghost, sustain and staccato, last-beat conditions, and the anticipation that voices the next chord early
+- Mirror is a per-lane flag rather than a one-shot rewrite: the lane plays back to front, keeps its figure's name, and can be switched off again
+- 16 more instruments, 97 in all: two grand pianos, three synth pads and a choir pad in a new Synth family, electric guitar, fingered and picked bass, accordion, bagpipe, ocarina, tenor saxophone, kalimba and jaw harp
+- Every articulation of an instrument is a button on its lane row — one click, nothing hidden behind a list — and chevrons step to the previous or next instrument
+- Fix a pad or drone playing only the first chord of a line and holding it through the rest
+- Fix the fourth degree on a three-note chord repeating the root instead of sounding the octave above it, which made several arpeggios play duplicate notes
+- Fix Play looping the first bar of a two-bar figure forever while the rendered file correctly alternated
+- Bars per line moved onto the chords, where it belongs, as + / − beside the progression
+- Volume, velocity, length and reverb knobs draw the swept arc from their minimum
+
 ## 1.5.0 — 2026-09-02
 
 - A real instrument library: 83 sampled instrument packs compiled from openly-licensed sources (VSCO-2-CE, FreePats, Freesound sessions — CC0/CC BY), organized by family, loudness-matched and pitch-normalized to A440

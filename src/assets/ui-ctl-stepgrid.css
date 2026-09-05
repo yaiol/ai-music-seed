@@ -1,0 +1,78 @@
+/* ui-ctl-stepgrid.css — the step-sequencer grid (.stepgrid)
+   ═══════════════════════════════════════════════════════════════════════════
+   An OPTIONAL control's skin, so it is its own file: the sync copies a catalog
+   CSS into an app only when that app uses it, and `ui-app.css` — which every
+   app holds unconditionally — is for what every app has by being a yaiol app.
+   It has NO component to ride with — the grid is markup an app writes
+   itself — so the app that uses it imports this file by name and that
+   import is what the usage scan sees.
+
+   ⚠ Do not edit an app's copy — this file is distributed by sync-shared.js;
+   edit the canonical source and re-sync.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── 2.6 Step grid — .stepgrid, the step-sequencer grid (rows × slots) ────────
+   A grid of one-row-tall cells: a ruler row, a label column, and slot cells that are either empty
+   or a `.hit` (a note, carrying its flag text). `.stepgrid-span` is a cell spanning N columns with a
+   label (a chord over the beats it owns). `.active` on a ruler / cell / span is the PLAYHEAD — the
+   column, or the chord, sounding now; `.off` on a ruler / cell is a column playback never reaches
+   (colour only, like every state). `--rows` (inline) makes a cell span rows — a chord block; `.mark` shows a cell's dot (its handle).
+
+   ⚠ ONE ROW UNIT — `--stepgrid-u`. Everything in AND BESIDE a step grid is a whole multiple of it:
+   a row is 1u, the box inside a row is u − gap, and `.btn.small` (20px) IS that box — so a column of
+   small buttons next to the grid steps row for row with it. The row gap lives INSIDE the row
+   (auto-rows 1u, row-gap 0): a vertical grid gap would ADD to the unit and every row below would
+   drift by it. A COLUMN IS THE ROW BOX: u − gap wide, so every cell is a square and the grid is
+   exactly as wide as its columns — it never stretches to fill its container (a wider row would
+   make the same note wider, Chord Player keeps it square; the container scrolls if it must).
+   Column count is data, set per instance as `--stepgrid-cols`. Colour flows from the container
+   (`--s-inp` fill, `--accent` hit — override `--accent` inline per lane). ── */
+:root { --stepgrid-u: 22px; --stepgrid-gap: 2px; }
+.stepgrid {
+  display: grid;
+  grid-template-columns: 26px repeat(var(--stepgrid-cols, 16), calc(var(--stepgrid-u) - var(--stepgrid-gap)));
+  grid-auto-rows: var(--stepgrid-u); align-items: start;
+  column-gap: var(--stepgrid-gap); row-gap: 0;
+  min-width: 0;
+}
+.stepgrid-ruler {
+  height: var(--stepgrid-u); line-height: var(--stepgrid-u); text-align: center;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 9.5px; color: var(--text-mute);
+}
+.stepgrid-ruler.beat { color: var(--text); font-weight: 600; }
+.stepgrid-ruler.active { color: var(--accent); }                            /* the playhead's column */
+.stepgrid-ruler.off { opacity: .35; }                                       /* a column playback never reaches */
+.stepgrid-rowlabel {
+  height: var(--stepgrid-u); display: flex; align-items: center; justify-content: flex-end; padding-right: 5px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 11px; font-weight: 600; color: var(--text-dim);
+}
+.stepgrid-cell, .stepgrid-span {
+  /* `--rows` (inline, data — like `--stepgrid-cols`) makes a cell span rows: a chord block */
+  grid-row: span var(--rows, 1);
+  height: calc(var(--stepgrid-u) * var(--rows, 1) - var(--stepgrid-gap)); box-sizing: border-box; min-width: 0;
+  border: 1px solid var(--border); border-radius: 3px; background: var(--s-inp, transparent);
+  display: flex; align-items: center; justify-content: center; padding: 0 3px;
+  cursor: pointer; font-family: inherit; outline: none;
+  transition: background .12s, border-color .12s;
+}
+.stepgrid-cell.beat { border-left-color: var(--text-dim); }                 /* a beat boundary */
+.stepgrid-cell:hover { border-color: var(--text-dim); }
+.stepgrid-cell.hit { background: var(--accent); border-color: var(--accent); }
+.stepgrid-cell.active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, var(--s-inp, transparent)); }
+.stepgrid-cell.hit.active { filter: brightness(1.18); }                     /* the note sounding now */
+.stepgrid-cell.off { opacity: .35; }                                        /* never reached — greyed, still editable */
+/* a MARK — a small dot, a cell that holds something other than a note (the handle of a chord
+   block); the dot's shape lives on the base, the state only shows it */
+.stepgrid-cell::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0; flex-shrink: 0; }
+.stepgrid-cell.mark::after { opacity: 1; }
+.stepgrid-cell.selected { box-shadow: 0 0 0 2px var(--dlg-bgd, var(--bg)), 0 0 0 4px var(--accent); }
+.stepgrid-cell:focus-visible { border-color: var(--accent); }
+.stepgrid-flags {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 10px; font-weight: 600;
+  color: #fff; white-space: nowrap; overflow: hidden; letter-spacing: .04em;
+}
+.stepgrid-span {
+  cursor: default; font-size: 11.5px; font-weight: 500; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; line-height: calc(var(--stepgrid-u) - var(--stepgrid-gap) - 2px); text-align: center;
+}
+.stepgrid-span.active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }

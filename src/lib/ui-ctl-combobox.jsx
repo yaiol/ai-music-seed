@@ -69,6 +69,12 @@ export function Combobox({
         value={value}
         onChange={(e) => { onChange?.(e.target.value); setHi(-1); if (!open) setOpen(true); }}
         onFocus={(e) => { setOpen(true); onFocus?.(e); }}
+        /* ⚠ CLAUDE: opening on focus ALONE strands the field after a pick —
+           picking closes the list but leaves the input focused, so the next
+           click fires no focus event and the list stays shut; the user has to
+           click away and back. A mousedown on the anchor is exempt from the
+           popover's click-away, so reopening here cannot fight it. */
+        onMouseDown={() => { if (!open) setOpen(true); }}
         onBlur={(e) => { onBlur?.(e); }}   /* click-away/pick (via Popover) handle close; blur must not race the pick */
         onKeyDown={handleKeyDown}
       />

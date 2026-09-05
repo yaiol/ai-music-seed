@@ -159,7 +159,14 @@ const WAVES = {
 //   1..9     a CHORD TONE by index - 1 root, 2 third, 3 fifth, 4 seventh …
 //   432      those tones struck together
 //   1+ / 1-  that tone an octave up / down
-//   _        hold: extend the previous event through this slot
+//
+// ⚠ CLAUDE: there is deliberately NO hold/tie token. A note's LENGTH is a
+// property of the note (`s` sustain, `'` staccato, the lane's `len`) and notes
+// ring until re-struck anyway — a symbol occupying the next slot would be a
+// third way to say the same thing. `_` existed here as documentation only: the
+// gesture builder skipped it exactly like a rest, so it promised a behaviour
+// the engine never had. Removed 2026-09-03; Chord Player has no equivalent
+// either (it carries a per-note Duration).
 //
 // ⚠ CLAUDE: digits are DEGREES, never pitches. "1" is the root of whatever chord
 // is sounding, so one string plays any progression. A pattern that stored
@@ -174,7 +181,7 @@ const WAVES = {
 // everything below the chord, and the chord sits in one octave around middle C.
 // A wide spread is what makes an arrangement sound like separate instruments
 // fighting rather than one player.
-const LANE_DEFAULTS = {
+export const LANE_DEFAULTS = {
   bass:  { step: 8,  octave: 1, vel: 0.85, len: 4, hold: true },
   treble: { step: 16, octave: 3, vel: 0.70, len: 4, hold: false },
 };
@@ -182,18 +189,20 @@ const LANE_DEFAULTS = {
 // Parse a slot string into per-slot note requests.
 // Each slot is an array of note objects — `tone` is a 1-based chord-tone index,
 // or 'f' (the perfect fifth above the root) or 'r' (the remaining/full upper
-// voicing). Note starters: 1-9 f r. Suffixes on a note:
+// voicing). `r` may carry a START digit: `r3` = the remaining tones FROM the
+// third up — Chord Player's "Remaining" block drawn from C3 (2026-09-04); a
+// digit right after `r` is that start, never a second note (no shipped
+// style ever wrote one). Note starters: 1-9 f r. Suffixes on a note:
 //   + / -   octave shift            ^ / v   one SCALE step up / down
 //   !       accent   ? ghost        s       sustain to the chord end
 //   '       staccato (fixed half-beat, opts out of ring-until-restruck)
 //   L / l   only in the last beat of the chord / only when NOT
 // Slot prefix @ = EARLY: the whole slot voices the NEXT chord (the push).
 // The pre-2026-09 grammar (digits + octave marks) parses byte-identically.
-function parseSlots(str) {
+export function parseSlots(str) {
   const slots = [];
   for (const tok of String(str).trim().split(/\s+/)) {
     if (tok === '.') { slots.push([]); continue; }
-    if (tok === '_') { slots.push('hold'); continue; }
     const notes = [];
     for (let i = tok[0] === '@' ? 1 : 0; i < tok.length; i++) {
       const d = tok[i];
@@ -202,6 +211,7 @@ function parseSlots(str) {
       else if (d === 'f' || d === 'r') tone = d;
       else continue;
       const note = { tone, oct: 0, scale: 0 };
+      if (tone === 'r' && i + 1 < tok.length && tok[i + 1] >= '2' && tok[i + 1] <= '9') { note.from = Number(tok[i + 1]); i++; }
       while (i + 1 < tok.length) {
         const c = tok[i + 1];
         if (c === '+') note.oct++;
@@ -224,6 +234,94 @@ function parseSlots(str) {
   }
   return slots;
 }
+
+// The inverse of parseSlots — the editor's write path. ⚠ CLAUDE: the grid is
+// a PURE VIEW over the slot string, so serialize(parseSlots(s)) must give back
+// `s` byte-for-byte for every shipped style (`npm run check:roundtrip`). That
+// only holds because suffixes are emitted in ONE canonical order — tone,
+// octave, scale step, level, sustain, staccato, condition — and the slot's
+// `@` prefix first. If a hand-written style ever disagrees with that order,
+// normalise the SOURCE once; never teach the serializer a second order.
+export function serializeSlots(slots) {
+  return slots.map((cell) => {
+    if (!cell || !cell.length) return '.';
+    let out = cell.early ? '@' : '';
+    for (const nt of cell) {
+      out += String(nt.tone);
+      if (nt.tone === 'r' && nt.from > 1) out += nt.from;
+      for (let k = 0; k < (nt.oct || 0); k++) out += '+';
+      for (let k = 0; k > (nt.oct || 0); k--) out += '-';
+      for (let k = 0; k < (nt.scale || 0); k++) out += '^';
+      for (let k = 0; k > (nt.scale || 0); k--) out += 'v';
+      if (nt.acc) out += '!';
+      if (nt.ghost) out += '?';
+      if (nt.sus) out += 's';
+      if (nt.stac) out += "'";
+      if (nt.cond === 'last') out += 'L';
+      if (nt.cond === 'notLast') out += 'l';
+    }
+    return out;
+  }).join(' ');
+}
+
+// The editor's row axis — what a slot can hold, top to bottom. DEGREES, never
+// pitches (`1` is the root of whatever chord is sounding), so one grid plays
+// any progression. `r` = the whole remaining voicing (Chord Player's tall
+// block; `r3` starts it at the third — drawn as a block from that row up),
+// `f` = the fifth above the root; `1..4` cover every shipped style.
+export const GRID_ROWS = ['r', 4, 3, 2, 1, 'f'];
+
+// A pattern read off disk, made safe. A `.yams` is a text file a user may
+// have edited by hand, and the render must never crash on one — every field
+// falls back to its lane default, and the two lane strings are normalised
+// through parse → serialize, so anything loaded already obeys the round-trip
+// law. Returns null for something that is not a pattern at all, and the seed
+// then plays its named style.
+export function sanitizePattern(p) {
+  if (!p || typeof p !== 'object' || Array.isArray(p)) return null;
+  const num = (v, dflt, lo, hi) => {
+    const n = Number(v);
+    return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : dflt;
+  };
+  const lane = (l) => {
+    const d = LANE_DEFAULTS[l], src = (p[`${l}Lane`] && typeof p[`${l}Lane`] === 'object') ? p[`${l}Lane`] : {};
+    return { step: num(src.step, d.step, 1, 64), octave: num(src.octave, d.octave, 0, 8),
+             vel: num(src.vel, d.vel, 0, 1), len: num(src.len, d.len, 1, 64), hold: !!src.hold };
+  };
+  const slots = (v) => (typeof v === 'string' && v.trim() ? serializeSlots(parseSlots(v)) : '.');
+  return { meter: num(p.meter, 4, 0.25, 64),
+           bass: slots(p.bass), treble: slots(p.treble),
+           bassLane: lane('bass'), trebleLane: lane('treble') };
+}
+
+// The beat division, in the MUSICIAN's unit — how many slots per BEAT (Chord
+// Player's B/x). A lane's `step` is slots per whole note, the engine's unit,
+// so step = division × the meter's denominator (B/2 in x/4 → 8, in x/8 → 16).
+// ONE division for the whole seed on screen (user ruling 2026-09-04: per-lane
+// divisions still had to share one time axis, so they only bought a
+// "disabled here, not there" surprise); the data stays per lane. B/3 and B/6
+// are the triplet grids; expressible for as long as the grammar has existed,
+// but no shipped style uses one, so their first use is also their first test.
+export const BEAT_DIVISIONS = [1, 2, 3, 4, 6, 8];
+
+// Swing as FOUR NAMED LANDMARKS, not a number on screen. The stored value is
+// continuous (the odd slot's delay as a share of the slot, see makeGesture);
+// these are Chord Player's ratios converted the way import-cp-style does:
+// (a−b)/(a+b) — 3:2 → .2, 2:1 → .333 (the triplet feel), 3:1 → .5.
+export const SWINGS = [
+  { key: 'none', value: 0 }, { key: 'light', value: 0.2 },
+  { key: 'shuffle', value: 1 / 3 }, { key: 'hard', value: 0.5 },
+];
+
+// Time signatures as a PICKER, not free text: the denominator is a note
+// length (a power of two) so the set is closed. Simple + Complex ship;
+// Compound (6/8 9/8 12/8) is deliberately absent — there the beat is a dotted
+// quarter, so the last-beat condition and swing's every-other-slot rule are
+// both wrong for it. Offering 12/8 would be a promise half-kept.
+export const SIGNATURES = [
+  { group: 'simple',  sigs: ['2/2', '4/2', '2/4', '3/4', '4/4', '3/8'] },
+  { group: 'complex', sigs: ['5/4', '7/4', '5/8', '7/8'] },
+];
 
 // Move a midi note by whole SCALE steps. The scale is the progression's own
 // pitch-class pool (progressionScalePcs) — the seed carries no key field, but
@@ -254,80 +352,110 @@ export function progressionScalePcs(chords) {
 // someone's authored work. A style the USER authored in another product's
 // editor and exported is the user's own work and imports fine (groove1).
 // Adding a style means adding two strings here.
-const PATTERNS = {
-  // ── `group` is the menu COLLECTION (pads / arps / grooves — user taxonomy
-  // 2026-09-02: grouping by FIGURE TYPE, not implementation history).
-  //
-  // PADS — state the harmony, no moving figure. (Former v1.0 textures,
-  // re-authored as patterns — same keys, so old .yams keep resolving.)
-  // pad — the whole voicing held for the chord's span.
-  pad:        { meter: 4, group: 'pads', bass: '1s', treble: 'rs',
-                bassLane: { step: 1, vel: 0.57, hold: false },
-                trebleLane: { step: 1, vel: 0.57, hold: false } },
-  // drone — pad with the root doubled an octave down; quieter (a bed).
-  drone:      { meter: 4, group: 'pads', bass: '1s1-s', treble: 'rs',
-                bassLane: { step: 1, vel: 0.5, hold: false },
-                trebleLane: { step: 1, vel: 0.5, hold: false } },
-  // marker — a short stab at each chord change, then silence.
-  marker:     { meter: 4, group: 'pads', bass: "1'", treble: "r'",
-                bassLane: { step: 1, vel: 0.88, hold: false },
-                trebleLane: { step: 1, vel: 0.88, hold: false } },
-  //
-  // ARPEGGIOS — broken-chord figures over a simple bass.
-  // arp — up-and-back-down eighths over a sustained root.
-  arpeggio1:  { meter: 4, group: 'arps', bass: '1s', treble: '. 1 2 3 4 4 3 2',
-                bassLane: { step: 1, vel: 0.55, hold: false },
-                trebleLane: { step: 8, vel: 0.79, hold: false } },
-  // "Arpeggio 2" (was Basic 1) — user-authored in the CP editor: a sustained root (octave up
-  // from our bass register) under an eighth-note broken-chord figure.
-  arpeggio2:  { meter: 4, group: 'arps',
-    bass:  '1s',
-    treble: '23 1 2 1 3 1 2 14',
-    bassLane: { step: 1, vel: 0.7, hold: false, octave: 2 },
-    trebleLane: { step: 8, vel: 0.7, hold: false } },
-  // "Arpeggio 3" (was Basic 2) — user-authored in the CP editor: sustained root + a fifth
-  // answer in the bass, rising eighth-note line over it.
-  arpeggio3:  { meter: 4, group: 'arps',
-    bass:  '1s . . . f . . .',
-    treble: '1 2 3 2 3 2 3 4',
-    bassLane: { step: 8, vel: 0.7, hold: false, octave: 2 },
-    trebleLane: { step: 8, vel: 0.7, hold: false } },
-  // "Arpeggio 4" (was Basic 3) — user-authored in the CP editor: the same bass under a
-  // TWO-BAR eighth-note call-and-response line (lanes tile by their own span).
-  arpeggio4:  { meter: 4, group: 'arps',
-    bass:  '1s . . . f . . .',
-    treble: '1 3 2 3 2 3 2 3 1 2 1 2 1 2 1 2',
-    bassLane: { step: 8, vel: 0.7, hold: false, octave: 2 },
-    trebleLane: { step: 8, vel: 0.7, hold: false } },
-  // "Arpeggio 5" (was Basic 4) — user-authored in the CP editor: a POLYMETER — a 6-eighths
-  // treble cycle free-running over the 4/4 bar, realigning every 3 bars
-  // (unrolled to the LCM so it stays bar-anchored), root+restrike bass under.
-  arpeggio5:  { meter: 4, group: 'arps',
-    bass:  '1s . . . 1 . . .',
-    treble: '1 2 3 2 1 4 1 2 3 2 1 4 1 2 3 2 1 4 1 2 3 2 1 4',
-    bassLane: { step: 8, vel: 0.7, hold: false, octave: 2 },
-    trebleLane: { step: 8, vel: 0.7, hold: false } },
-  // "Arpeggio 6" (was octaveArp — user-authored, deleted in the 2026-09-02
-  // purge, restored on request): a TWO-BAR pattern — the bass holds octave
-  // roots while the chord arpeggiates and punctuates on 3, then answers
-  // differently in the second bar. The two-bar span is why lanes tile by
-  // their own length. Strings and lane cfg byte-identical to the original.
-  arpeggio6:  { meter: 4, group: 'arps',
-                bass:  '11+ . . . . . . . 11+ . . . . . 2 3',
-                treble: '. . 1 2 . 3 2 1 432 . . . 3 . 2 . . . 1 2 . 3 2 1 432 . . . . . . .',
-                bassLane: { vel: 0.7 }, trebleLane: { vel: 0.7 } },
-  //
-  // GROOVES — rhythm-forward bass lines with pushes and stabs.
-  // "Groove 1" (né cpTest, the first CP import): a 4-bar bass line (staccato
-  // roots, passing notes, an early conditional turnaround) under an offbeat
-  // sustained chord. User-authored in the CP editor — the author's own work,
-  // never a shipped CP style.
-  groove1:    { meter: 4, group: 'grooves',
-    bass:  "1' . . . 1' . . . 1 . 2' . f' . @1v'L2'l . 1' . . . 1' . . . 1 . 1^' . 1' . 1v' . 1' . . . 1' . . . 1 . 2' . f' . 2' . 1' . . . 1' . . . 1 . 1+' . 1v . 1+v' .",
-    treble: '. . . . rs . . . . . . . rs . . .',
-    bassLane: { step: 16, vel: 0.7, hold: false },
-    trebleLane: { step: 16, vel: 0.7, hold: false } },
+// ─── The two FIGURE libraries, and the styles that pair them ─────────────
+//
+// A FIGURE is ONE LANE's steps and the division they are written in — nothing
+// else. A STYLE is a named PAIRING of a chord figure with a bass figure, plus
+// the lane settings that pairing wants. Chord Player's model, adopted
+// 2026-09-04: pick a style and both lanes change; change one lane and the
+// style reads "Custom".
+//
+// ⚠ Velocity, length, hold and register live on the STYLE's lane settings, not
+// on the figure. They are what you reach for while listening, and keeping them
+// out of the figure is what stops `pad` and `drone` — the same held chord at
+// two loudnesses — from being two identical entries in the chord list.
+//
+// The names are DATA and stay English, like the instruments and the
+// articulations: a figure's name is its degree sequence, which is language-
+// neutral, and a bass figure's is two or three words a musician already reads.
+
+export const CHORD_FIGURES = {
+  // the whole voicing, not a sequence
+  chord:   { name: 'Chord',   step: 1,  steps: 'rs' },
+  stab:    { name: 'Stab',    step: 1,  steps: "r'" },
+  // the basics — short cycles over the chord's degrees, named by the degrees
+  // themselves. ⚠ This list is a PALETTE and stays basic (user ruling
+  // 2026-09-04): a figure nobody would pick from a list is not a library
+  // figure, it is one style's own line, and it belongs inline on that style.
+  up3:     { name: '1-2-3',   step: 8,  steps: '1 2 3 1 2 3 1 2' },
+  down3:   { name: '3-2-1',   step: 8,  steps: '3 2 1 3 2 1 3 2' },
+  up4:     { name: '1-2-3-4', step: 8,  steps: '1 2 3 4 1 2 3 4' },
+  down4:   { name: '4-3-2-1', step: 8,  steps: '4 3 2 1 4 3 2 1' },
+  updown:  { name: '1-2-3-2', step: 8,  steps: '1 2 3 2 1 2 3 2' },
+  a132:    { name: '1-3-2',   step: 8,  steps: '1 3 2 1 3 2 1 3' },
+  a1243:   { name: '1-2-4-3', step: 8,  steps: '1 2 4 3 1 2 4 3' },
+  a1323:   { name: '1-3-2-3', step: 8,  steps: '1 3 2 3 1 3 2 3' },
+  a1324:   { name: '1-3-2-4', step: 8,  steps: '1 3 2 4 1 3 2 4' },
+  a1432:   { name: '1-4-3-2', step: 8,  steps: '1 4 3 2 1 4 3 2' },
+  a2123:   { name: '2-1-2-3', step: 8,  steps: '2 1 2 3 2 1 2 3' },
 };
+
+
+export const BASS_FIGURES = {
+  root:    { name: 'Root',        step: 1,  steps: '1s' },
+  rootOct: { name: 'Root + 8',    step: 1,  steps: '1s1-s' },
+  stab:    { name: 'Stab',        step: 1,  steps: "1'" },
+  fifth:   { name: 'Root · 5th',  step: 8,  steps: '1s . . . f . . .' },
+  twice:   { name: 'Root · root', step: 8,  steps: '1s . . . 1 . . .' },
+};
+
+
+// A style is the pairing. `chord` / `bass` either NAME a library figure or
+// carry one inline — a style's own line, the kind nobody would pick out of a
+// palette. The lane picker reads "Custom" for an inline one, exactly as it
+// does for a grid edit. The lane blocks hold only what is NOT the figure's
+// business.
+export const STYLE_DEFS = {
+  pad:        { group: 'pads',    chord: 'chord',   bass: 'root',
+                trebleLane: { vel: 0.57, hold: false }, bassLane: { vel: 0.57, hold: false } },
+  drone:      { group: 'pads',    chord: 'chord',   bass: 'rootOct',
+                trebleLane: { vel: 0.5,  hold: false }, bassLane: { vel: 0.5,  hold: false } },
+  marker:     { group: 'pads',    chord: 'stab',    bass: 'stab',
+                trebleLane: { vel: 0.88, hold: false }, bassLane: { vel: 0.88, hold: false } },
+  arpeggio1:  { group: 'arps',    bass: 'root',
+                chord: { name: 'Arpeggio 1', step: 8, steps: '. 1 2 3 4 4 3 2' },
+                trebleLane: { vel: 0.79, hold: false }, bassLane: { vel: 0.55, hold: false } },
+  arpeggio2:  { group: 'arps',    bass: 'root',
+                chord: { name: 'Arpeggio 2', step: 8, steps: '23 1 2 1 3 1 2 14' },
+                trebleLane: { vel: 0.7,  hold: false }, bassLane: { vel: 0.7, hold: false, octave: 2 } },
+  arpeggio3:  { group: 'arps',    bass: 'fifth',
+                chord: { name: 'Arpeggio 3', step: 8, steps: '1 2 3 2 3 2 3 4' },
+                trebleLane: { vel: 0.7,  hold: false }, bassLane: { vel: 0.7, hold: false, octave: 2 } },
+  arpeggio4:  { group: 'arps',    bass: 'fifth',
+                chord: { name: 'Arpeggio 4', step: 8, steps: '1 3 2 3 2 3 2 3 1 2 1 2 1 2 1 2' },
+                trebleLane: { vel: 0.7,  hold: false }, bassLane: { vel: 0.7, hold: false, octave: 2 } },
+  arpeggio5:  { group: 'arps',    bass: 'twice',
+                chord: { name: 'Arpeggio 5', step: 8, steps: '1 2 3 2 1 4' },
+                trebleLane: { vel: 0.7,  hold: false }, bassLane: { vel: 0.7, hold: false, octave: 2 } },
+  arpeggio6:  { group: 'arps',
+                chord: { name: 'Arpeggio 6', step: 16, steps: '. . 1 2 . 3 2 1 432 . . . 3 . 2 . . . 1 2 . 3 2 1 432 . . . . . . .' },
+                bass: { name: 'Arpeggio 6', step: 8, steps: '11+ . . . . . . . 11+ . . . . . 2 3' },
+                trebleLane: { vel: 0.7 }, bassLane: { vel: 0.7 } },
+  groove1:    { group: 'grooves',
+                chord: { name: 'Groove 1', step: 16, steps: '. . . . rs . . . . . . . rs . . .' },
+                bass: { name: 'Groove 1', step: 16, steps: "1' . . . 1' . . . 1 . 2' . f' . @1v'L2'l . 1' . . . 1' . . . 1 . 1^' . 1' . 1v' . 1' . . . 1' . . . 1 . 2' . f' . 2' . 1' . . . 1' . . . 1 . 1+' . 1v . 1+v' ." },
+                trebleLane: { vel: 0.7,  hold: false }, bassLane: { vel: 0.7, hold: false } },
+};
+
+// Compose a style into the flat spec the gesture builder consumes. ⚠ The
+// figure supplies the lane's STEPS and its `step`; everything else comes from
+// the style. Built once at load, so `PATTERNS` is byte-for-byte what it was
+// before the split (`npm run check:parity`).
+export const chordFigureOf = (v) => (typeof v === 'string' ? CHORD_FIGURES[v] : v);
+export const bassFigureOf = (v) => (typeof v === 'string' ? BASS_FIGURES[v] : v);
+
+export function composeStyle(def) {
+  const c = chordFigureOf(def.chord), b = bassFigureOf(def.bass);
+  return {
+    meter: 4, group: def.group,
+    bass: b.steps, treble: c.steps,
+    bassLane: { step: b.step, ...def.bassLane },
+    trebleLane: { step: c.step, ...def.trebleLane },
+  };
+}
+
+const PATTERNS = Object.fromEntries(
+  Object.entries(STYLE_DEFS).map(([k, def]) => [k, composeStyle(def)]));
 
 // The Style menu's collections, in display order — each holds the PATTERNS
 // keys tagged with its `group`.
@@ -353,7 +481,8 @@ function placeTone(notes, lane, tone, oct, octaveBase, tonicPc) {
   const rootPc = (lane === 'bass' ? notes[0] : upper[0]) % 12;
   const intervals = upper.map((u) => u - upper[0]);
   const iv = intervals[(tone - 1) % intervals.length];
-  const wrap = 12 * Math.floor((tone - 1) / intervals.length);
+  // capped at ONE octave: a one-tone "chord" (N.C./B) must not fling degree 4 three octaves up
+  const wrap = Math.min(12, 12 * Math.floor((tone - 1) / intervals.length));
   const pc = (rootPc + iv) % 12;
 
   if (lane === 'bass') {
@@ -367,12 +496,17 @@ function placeTone(notes, lane, tone, oct, octaveBase, tonicPc) {
     return bbase + (((pc - bbase) % 12) + 12) % 12 + wrap + 12 * oct;
   }
 
-  // ⚠ Chord tones fold into a fixed register, and `wrap` deliberately does NOT
-  // add an octave on top: once folded, a tone index past the end of the chord
-  // means that note again, not one an octave higher. Adding the octave as well
-  // put the root a whole register above the voicing it was meant to cap.
+  // Chord tones fold into a fixed register; a tone index PAST the end of the
+  // chord is that tone again an octave UP (`wrap`) — Chord Player's C4 row
+  // on a triad is the root above, and the editor's rows must all sound
+  // different (user 2026-09-04: rows 3 and 4 "play exactly the same note").
+  // Until then the wrap was deliberately dropped here ("adding the octave
+  // put the root a whole register above the voicing"), which made every
+  // degree past the chord's size a duplicate of a lower row; the arpeggios
+  // that use `4` (arpeggio1/2/3/5/6 — and arpeggio4 only on a one-tone N.C./B chord) changed with this — check:parity lists
+  // them, and that change is the fix.
   const base = 12 * (octaveBase + 2);
-  return base + (((pc - base) % 12) + 12) % 12 + 12 * oct;
+  return base + (((pc - base) % 12) + 12) % 12 + wrap + 12 * oct;
 }
 
 // Envelope shapes, in the synth's per-frame form.
@@ -390,15 +524,15 @@ function heldSynth(amp, wave, len) {
  * Build a gesture from a pattern spec that is NOT in the PATTERNS table — a
  * benchmark fixture, not a style the app offers.
  */
-export function customGesture(spec) {
-  return makeGesture(spec);
+export function customGesture(spec, mirror) {
+  return makeGesture(spec, mirror);
 }
 
 function patternGesture(key) {
   return makeGesture(PATTERNS[key]);
 }
 
-function makeGesture(pattern) {
+function makeGesture(pattern, mirror = null) {
 
   return (notes, n, ctx) => {
     if (!ctx || !(ctx.barQ > 0) || !(ctx.durQ > 0)) {
@@ -414,35 +548,76 @@ function makeGesture(pattern) {
 
     for (const lane of ['bass', 'treble']) {
       const cfg = { ...LANE_DEFAULTS[lane], ...(pattern[`${lane}Lane`] || {}) };
-      const slots = parseSlots(pattern[lane] || '.');
+      // ⚠ MIRROR IS A FLAG, NOT AN EDIT (user ruling 2026-09-04, Chord
+      // Player's checkbox). The lane's steps are read back to front here, at
+      // play time; the stored figure is untouched, so "1-2-4-3, mirrored"
+      // keeps its NAME instead of collapsing to Custom — which is what a
+      // one-shot rewrite of the grid did. It also toggles off again, where a
+      // baked rewrite cannot.
+      const slots = mirror && mirror[lane]
+        ? parseSlots(pattern[lane] || '.').reverse()
+        : parseSlots(pattern[lane] || '.');
       if (!slots.length) continue;
 
       const slotQ = 4 / cfg.step;                       // slot length in quarter notes
 
       // The pattern's OWN length decides how it tiles — a lane written to eight
-      // eighth-notes repeats every bar, one written to sixteen repeats every two.
-      // Tiling by the bar instead would silently fold a two-bar groove in half,
-      // which is how a call-and-response pattern loses its answer.
-      // ⚠ Round the pattern's span to WHOLE BARS. Tiling at the raw slot length
-      // lets a 4/4-written pattern free-run against a 3/4 bar, drifting further
-      // out of phase every repeat — the time signature stops meaning anything.
-      // Rounding keeps multi-bar patterns intact and keeps every pattern
-      // anchored to beat one; slots past the span simply are not reached, the
-      // same way a 4/4 groove loses its fourth beat in 3/4.
-      const spanBars = Math.max(1, Math.round((slots.length * slotQ) / barQ));
-      const patternQ = spanBars * barQ;
+      // eighth-notes repeats every bar, one written to sixteen repeats every two,
+      // and one written to SIX free-runs against the bar, realigning every
+      // second bar: Chord Player's lanes, exactly (user ruling 2026-09-04 —
+      // "all you need is to mimic"). Every SHIPPED pattern is a whole number
+      // of bars (the CP importer unrolls polymeters to their LCM), so this is
+      // byte-identical for them (check:parity); only editor-made lengths
+      // free-run. Until 2026-09-04 the span was rounded to whole bars — meant
+      // to keep a 4/4 pattern anchored in 3/4 — which silenced or wrapped the
+      // leftover slots and made the editor's + / − impossible to draw.
+      // ⚠ ONE exception, and it is what keeps the 3/4 renders byte-identical:
+      // a pattern authored in ANOTHER meter (`meter`, quarters per authored
+      // bar — every shipped pattern says 4) still gets the whole-bar rounding
+      // in this one. It was written in bars, so it plays in bars: a pad hits
+      // on each 3/4 bar instead of drifting a beat per bar. The editor stamps
+      // the seed's meter on a lane the moment its steps are edited, so
+      // anything the user authors is in the seed's meter and free-runs.
+      const rawQ = Math.max(slotQ, slots.length * slotQ);
+      const foreignMeter = pattern.meter != null && Math.abs(pattern.meter - barQ) > 1e-9;
+      const patternQ = foreignMeter ? Math.max(1, Math.round(rawQ / barQ)) * barQ : rawQ;
       const firstRep = Math.floor(startQ / patternQ) - 1;
       const lastRep = Math.ceil(endQ / patternQ);
+
+      // does a slot begin exactly on this chord's onset?
+      const inPat = ((startQ % patternQ) + patternQ) % patternQ;
+      const k = inPat / slotQ;
+      const onBoundary = Math.abs(k - Math.round(k)) < 1e-9 && Math.round(k) < slots.length;
 
       for (let rep = firstRep; rep <= lastRep; rep++) {
         for (let s = 0; s < slots.length; s++) {
           const cell = slots[s];
-          if (cell === 'hold' || !cell || !cell.length) continue;
+          if (!cell || !cell.length) continue;
 
           // Swing: delay every odd slot, the shuffle their format stores as a ratio.
           const swung = (s % 2 === 1) ? swing * slotQ * 0.5 : 0;
-          const atQ = rep * patternQ + s * slotQ + swung;
-          if (atQ < startQ - 1e-9 || atQ >= endQ) continue;
+          let atQ = rep * patternQ + s * slotQ + swung;
+          // ⚠ CLAUDE: A CHORD ALWAYS SPEAKS ON ITS OWN ONSET. When the chord
+          // starts INSIDE a slot rather than on one, the slot that is sounding
+          // is re-voiced at the chord change instead of being skipped — the
+          // chords are the content, the pattern is only how they are struck.
+          // Without it a pad (one 4-quarter slot) plays the FIRST chord of a
+          // line and nothing else: the default seed `Am C G Dm` on one line
+          // was Am held for the whole bar (found 2026-09-04 while adding chord
+          // weights). The rule was documented as `patternGesture`'s and was
+          // lost when the textures became patterns; the sweep that was meant
+          // to guard it put every chord on its OWN line, where each one lands
+          // on a slot boundary and the gap cannot appear.
+          if (atQ < startQ - 1e-9) {
+            // ⚠ …but only when nothing already lands ON the onset. A slot can
+            // be LONGER than the pattern's tiling period in a foreign meter (a
+            // 4-quarter pad slot tiled every 3-quarter bar), and there the
+            // in-progress slot and the next repetition's slot would BOTH land
+            // on the chord — the same note twice, at the same instant.
+            if (onBoundary || atQ + slotQ <= startQ + 1e-9) continue;
+            atQ = startQ;                                  // still sounding — re-voice it here
+          }
+          if (atQ >= endQ) continue;
 
           const at = Math.max(0, Math.round(qToFrames(atQ - startQ)));
           if (at >= n) continue;
@@ -450,7 +625,11 @@ function makeGesture(pattern) {
           // conditions key off the chord change, so a turnaround fires before
           // any change however long the chord is. (A beat is a quarter note;
           // patterns are authored in x/4.)
-          const lastBeat = atQ >= endQ - 1 - 1e-9;
+          // ⚠ One beat is 4/denominator quarters — it comes from the meter
+          // (ctx.beatQ), never a constant. A fixed quarter-note window was
+          // right in x/4 and covered two thirds of a 3/8 bar, so an `L`
+          // turnaround fired across most of it instead of at its end.
+          const lastBeat = atQ >= endQ - (ctx.beatQ || 1) - 1e-9;
           // An @early slot voices the NEXT chord — the push. Falls back to the
           // current chord when there is no next (a one-chord seed).
           const srcNotes = (cell.early && ctx.nextNotes && ctx.nextNotes.length) ? ctx.nextNotes : notes;
@@ -461,10 +640,12 @@ function makeGesture(pattern) {
 
             const midis = [];
             if (nt.tone === 'r') {
-              // remaining: the lane's full upper voicing, each tone folded the
-              // way a plain token would be
+              // remaining: the lane's upper voicing from `from` (default the
+              // root) up, each tone folded the way a plain token would be — a
+              // start past the chord's size still sounds that one tone
               const count = Math.max(1, srcNotes.length - 1);
-              for (let k = 1; k <= count; k++) {
+              const from = nt.from || 1;
+              for (let k = from; k <= Math.max(count, from); k++) {
                 const m = placeTone(srcNotes, lane, k, nt.oct, cfg.octave, ctx.tonicPc);
                 if (m !== null && !midis.includes(m)) midis.push(m);
               }
@@ -542,6 +723,45 @@ const GESTURES = Object.fromEntries(Object.keys(PATTERNS).map((k) => [k, pattern
 // ONE flat style list (the Textures/Rhythms grouping was removed 2026-09-02 —
 // a future regrouping will cut along different lines).
 export const STYLES = Object.keys(GESTURES);
+
+// Read access to the catalog for the editor — a COPY, so a working copy can
+// never mutate the shipped table (copy-on-edit is the whole model: the ten
+// shipped styles are read-only, "edit a built-in" means "start from it").
+export function getPattern(key) {
+  const p = PATTERNS[key] || PATTERNS.pad;
+  return { meter: p.meter, group: p.group, bass: p.bass, treble: p.treble,
+           bassLane: { ...(p.bassLane || {}) }, trebleLane: { ...(p.trebleLane || {}) },
+           ...(p.approach ? { approach: true } : {}) };
+}
+
+// THE RESOLVER — the one answer to "the slot table for this seed", per lane:
+//   1. the seed's OWN pattern (`pattern`) — the editor's copy-on-edit,
+//      never persisted in phase 1 (it is a monitor field, like `lanes`)
+//   2. the FIGURES the seed picked (chordFigure / bassFigure) over its style's —
+//      '' means "the same style as the treble", the bassInstrument convention
+//   3. PATTERNS, an unknown key falling back to pad (like an unknown room)
+export function resolveStyleSpec({ style = 'pad', chordFigure = '', bassFigure = '', pattern = null } = {}) {
+  if (pattern) return pattern;
+  const def = STYLE_DEFS[style] || STYLE_DEFS.pad;
+  return composeStyle({
+    ...def,
+    chord: CHORD_FIGURES[chordFigure] ? chordFigure : def.chord,
+    bass: BASS_FIGURES[bassFigure] ? bassFigure : def.bass,
+  });
+}
+
+
+// ⚠ CLAUDE: BOTH the render (planSeedEvents) and the live player go through
+// this — never through gestureFor(style) directly — or the preview plays a
+// different figure from the file it renders. A plain catalog style keeps its
+// prebuilt gesture; only an edit or a mixed lane pair builds one on the fly.
+export function gestureForSeed(seed) {
+  const mirror = { treble: !!seed.trebleMirror, bass: !!seed.bassMirror };
+  if (!seed.pattern && !seed.chordFigure && !seed.bassFigure && !mirror.treble && !mirror.bass) {
+    return gestureFor(seed.style);   // the prebuilt gesture — nothing overrides it
+  }
+  return customGesture(resolveStyleSpec(seed), mirror);
+}
 
 // The built-in synth voice. `t` is measured from the CHORD start (at + j), which
 // is what keeps a gesture's partials phase-continuous across the bar.
@@ -659,26 +879,48 @@ function timeSig(sig) {
   return { numer, denom, bad, barQuarters: bad ? 0 : (numer * 4) / denom };
 }
 
-// Split the progression text into lines of chord symbols. Drops [Section] tags,
-// | bar separators, and blank lines. Returns string[][].
+// A chord token may carry a leading WEIGHT — how long it lasts, in the line's
+// own units: `2Am` holds Am for twice as long as a bare `G` beside it. Chord
+// Player's notation, adopted 2026-09-04.
+//
+// ⚠ It is NOT the same as writing the chord twice. Every chord speaks on its
+// own onset (see makeGesture), so `Am Am` strikes Am a second time where `2Am`
+// lets the first strike ring on and the figure keep running over it. That
+// extra attack is the whole reason the weight exists.
+//
+// A weight is a run of digits followed by a non-digit, so a token that is only
+// digits stays a (bad) chord symbol and gets reported as unrecognised rather
+// than silently becoming a weight with nothing to weigh.
+const WEIGHT = /^(\d+)(?=\D)/;
+export function chordToken(tok) {
+  const m = WEIGHT.exec(tok);
+  return m ? { sym: tok.slice(m[0].length), w: Math.max(1, Number(m[1])) } : { sym: tok, w: 1 };
+}
+
+// Split the progression text into lines of chord tokens. Drops [Section] tags,
+// | bar separators, and blank lines. Returns { sym, w }[][].
 export function parseLines(progression) {
   return String(progression)
     .split(/\r?\n/)
     .map((line) => line.replace(/\[[^\]]*\]/g, ' ').replace(/\|/g, ' ').trim())
-    .map((line) => line.split(/\s+/).filter(Boolean))
+    .map((line) => line.split(/\s+/).filter(Boolean).map(chordToken))
     .filter((toks) => toks.length > 0);
 }
 
 // Turn the text into a flat list of timed events. `bars` is bars-PER-LINE; each
-// line's duration is split evenly across its chords. The single shared source of
-// the timing math, used by both generateSeed and analyzeSeed.
+// line's duration is split across its chords BY WEIGHT (a bare chord weighs 1,
+// so a line with no weights still splits evenly, exactly as before). The single
+// shared source of the timing math, used by both generateSeed and analyzeSeed.
 function planEvents(progression, barQuarters, bars, bpm) {
   const events = [];
   for (const toks of parseLines(progression)) {
-    const quarters = (barQuarters * bars) / toks.length;
-    const durS = (quarters * 60) / bpm;
-    const samples = Math.floor(SR * durS);
-    for (const sym of toks) events.push({ sym, quarters, durS, samples });
+    const total = toks.reduce((a, t) => a + t.w, 0);
+    const unit = (barQuarters * bars) / total;
+    for (const { sym, w } of toks) {
+      const quarters = unit * w;
+      const durS = (quarters * 60) / bpm;
+      events.push({ sym, quarters, durS, samples: Math.floor(SR * durS) });
+    }
   }
   return events;
 }
@@ -762,9 +1004,11 @@ export function shiftLaneOctaves(events, trebleOctave, bassOctave) {
 }
 
 export function planSeedEvents({ progression, bpm = 80, bars = 1, sig = '4/4', loops = 4, style = 'pad', swing = 0,
-                                lanes = 'both', trebleOctave = 0, bassOctave = 0 }) {
-  const gesture = gestureFor(style);
+                                lanes = 'both', trebleOctave = 0, bassOctave = 0,
+                                chordFigure = '', bassFigure = '', pattern = null, trebleMirror = false, bassMirror = false }) {
+  const gesture = gestureForSeed({ style, chordFigure, bassFigure, pattern, trebleMirror, bassMirror });
   const { chords: voiced, barQ, qToFrames, numer, denom } = planChords({ progression, bpm, bars, sig });
+  const beatQ = 4 / denom;
   const events = [];
   let offset = 0;
   let startQ = 0;
@@ -779,7 +1023,7 @@ export function planSeedEvents({ progression, bpm = 80, bars = 1, sig = '4/4', l
         // the one thing a self-contained pattern cannot know. It wraps at the end
         // so a looping seed walks back into its own first chord.
         const next = voiced[(voiced.indexOf(e) + 1) % voiced.length];
-        const ctx = { startQ, durQ: e.quarters, barQ, qToFrames, swing, tonicPc, scalePcs,
+        const ctx = { startQ, durQ: e.quarters, barQ, beatQ, qToFrames, swing, tonicPc, scalePcs,
                       nextNotes: next ? next.notes : null };
         // ⚠ Filter AFTER the gesture has run, never before: note lengths are
         // resolved against the complete set (ring-until-restruck), so soloing a
@@ -804,7 +1048,7 @@ const NAME_CHORDS = 8;
 // A safe default output filename from the progression: the first NAME_CHORDS chord
 // symbols, alphanumerics only ([Section] tags and | marks already dropped by parseLines).
 export function defaultName(progression) {
-  return (parseLines(progression).flat().slice(0, NAME_CHORDS).join('').replace(/[^a-zA-Z0-9]/g, '') || 'seed');
+  return (parseLines(progression).flat().slice(0, NAME_CHORDS).map((t) => t.sym).join('').replace(/[^a-zA-Z0-9]/g, '') || 'seed');
 }
 
 /**
@@ -815,7 +1059,7 @@ export function defaultName(progression) {
  * allocates the audio buffer.
  */
 export function analyzeSeed({ progression, bpm = 80, bars = 1, sig = '4/4', loops = 4, format = 'wav', mp3Bitrate = 192 }) {
-  const syms = parseLines(progression).flat();
+  const syms = parseLines(progression).flat().map((t) => t.sym);
   const invalid = [];
   for (const sym of syms) {
     try { voice(sym); } catch { invalid.push(sym); }
@@ -858,6 +1102,10 @@ export function generateSeed({ progression, bpm = 80, bars = 1, sig = '4/4', loo
                                // fall back to reverbAmount for that lane). Equal sends take the
                                // legacy single-buffer path, so old .yams render byte-identically.
                                swing = 0, reverb = 'none', reverbAmount = 1,
+                               // Per-lane figure (chordFigure / bassFigure) and the
+                               // editor's in-memory working copy — both resolve through
+                               // gestureForSeed, the same way the live player does.
+                               chordFigure = '', bassFigure = '', pattern = null, trebleMirror = false, bassMirror = false,
                                trebleReverb = null, bassReverb = null, lanes = 'both',
                                // ⚠ CLAUDE: OFF by default, and it must stay that way — a .yams
                                // written before the filters existed carries no cutoff and has to
@@ -865,7 +1113,7 @@ export function generateSeed({ progression, bpm = 80, bars = 1, sig = '4/4', loo
                                // the APP's choice for a new seed, not the engine's.
                                highpass = 0, lowpass = 0,
                                format = 'wav', mp3Bitrate = 192 }) {
-  const { events, totalSamples, voiced, numer, denom } = planSeedEvents({ progression, bpm, bars, sig, loops, style, swing, lanes, trebleOctave, bassOctave });
+  const { events, totalSamples, voiced, numer, denom } = planSeedEvents({ progression, bpm, bars, sig, loops, style, swing, lanes, trebleOctave, bassOctave, chordFigure, bassFigure, pattern, trebleMirror, bassMirror });
 
   // A sampled instrument that never loaded falls back to the built-in synth
   // rather than rendering silence - a seed always comes out.

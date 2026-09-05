@@ -7,18 +7,35 @@
 // The value line is a real input: click it, type a number, Enter/blur commits
 // (clamped + quantised), Escape reverts. `unit` is display-only ("%", "st").
 //
-// Geometry lives in the catalog (.knob* in ui-app.css); colour flows from the
-// container's surface tokens, per the UI colour-set model.
+// Geometry lives in the catalog (.knob* in the PAIRED ui-ctl-knob.css, which
+// this file side-effect-imports so the skin travels with the control); colour
+// flows from the container's surface tokens, per the UI colour-set model.
 //
 //   <Knob label="Volume" value={v} min={0} max={100} step={5} unit="%"
 //         onChange={setV} />
+//
+// `title` is the control's tooltip — where the caption is SHORTENED to fit
+// (shortLabel in ui-text.js), this is where the whole word stays readable.
+//
+// `arc` fills the travelled sweep, min → value, as a ring around the body —
+// for a knob whose value is an AMOUNT measured from its minimum (a volume, a
+// send, a length). Leave it off for a knob that sets a POSITION on a scale
+// either side of a centre (a tuning trim, an octave shift): there the filled
+// arc would read as "50% of something" instead of "one step above centre",
+// and the tick alone says the true thing.
+//
+// `inline` is the ONE-CONTROL-HEIGHT tier: the same knob laid out across —
+// body at the left, label over value beside it — 30px tall instead of three
+// stacked lines, for a band whose height is a fixed row multiple. Body, tick,
+// drag travel and fonts are unchanged; only the axis (.knob.inline).
 //
 // ⚠ Do not edit an app's copy — this file is distributed by sync-shared.js;
 // edit the canonical source and re-sync.
 
 import React, { useRef, useState } from 'react';
+import '../assets/ui-ctl-knob.css';
 
-export function Knob({ label, value, min = 0, max = 100, step = 1, unit = '', disabled = false, onChange }) {
+export function Knob({ label, value, min = 0, max = 100, step = 1, unit = '', disabled = false, inline = false, arc = false, title = '', onChange }) {
   const [editing, setEditing] = useState(null);   // null = showing; string = the draft being typed
   const drag = useRef(null);                      // { startY, startValue } while the body is held
 
@@ -51,15 +68,27 @@ export function Knob({ label, value, min = 0, max = 100, step = 1, unit = '', di
   };
 
   // −135°..+135° over the range, the convention every hardware knob follows.
-  const angle = max > min ? -135 + 270 * ((value - min) / (max - min)) : 0;
+  const frac = max > min ? (value - min) / (max - min) : 0;
+  const angle = -135 + 270 * frac;
 
   return (
-    <div className={`knob${disabled ? ' disabled' : ''}`}>
+    <div className={`knob${inline ? ' inline' : ''}${disabled ? ' disabled' : ''}`} title={title || undefined}>
       <span className="knob-label">{label}</span>
       <button type="button" className="knob-body" aria-label={label} disabled={disabled}
         onPointerDown={onPointerDown} onPointerMove={onPointerMove}
         onPointerUp={onPointerUp} onPointerCancel={onPointerUp}>
-        <span className="knob-tick" style={{ transform: `rotate(${angle}deg)` }} />
+        {/* `pathLength` re-scales the circle to 360 units so the dash IS the
+            swept angle; the rotate puts unit 0 at the knob's minimum (−135°),
+            which an SVG circle would otherwise place at 3 o'clock. */}
+        {arc && <svg className="knob-arc" viewBox="0 0 30 30" aria-hidden="true">
+          <circle cx="15" cy="15" r="9" pathLength="360"
+                  strokeDasharray={`${270 * frac} 360`} transform="rotate(135 15 15)" />
+        </svg>}
+        {/* the two are alternatives, never both: the arc ALREADY ends at the
+            value, so a tick there is the same statement drawn twice — and it
+            reads as an overshoot wherever the two edges do not land on the
+            same pixel. An empty ring is the minimum. */}
+        {!arc && <span className="knob-tick" style={{ transform: `rotate(${angle}deg)` }} />}
       </button>
       <input className="knob-value" disabled={disabled}
         value={editing !== null ? editing : `${value}${unit ? ' ' + unit : ''}`}

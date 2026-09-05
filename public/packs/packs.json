@@ -2,13 +2,76 @@
   "format": 1,
   "packs": [
     {
-      "name": "strings-bassguitar",
-      "label": "Bass Guitar",
+      "name": "keys-accordion",
+      "label": "Accordion",
+      "family": "Keys",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Accordion",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/"
+    },
+    {
+      "name": "woodwinds-bagpipe",
+      "label": "Bagpipe",
+      "family": "Winds (Wood)",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Bagpipe",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/"
+    },
+    {
+      "name": "strings-bass-finger",
+      "label": "Bass (Finger)",
+      "family": "Strings (Plucked)",
+      "role": "bass",
+      "collection": "FreePats",
+      "instrument": "Bass",
+      "articulation": "Finger",
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/"
+    },
+    {
+      "name": "strings-bass-picked",
+      "label": "Bass (Picked)",
+      "family": "Strings (Plucked)",
+      "role": "bass",
+      "collection": "FreePats",
+      "instrument": "Bass",
+      "articulation": "Picked",
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/"
+    },
+    {
+      "name": "strings-rickenbacker-fingered",
+      "label": "Bass Rickenbacker (Fingered)",
       "family": "Strings (Plucked)",
       "role": "bass",
       "collection": "Project16",
-      "instrument": "Bass Guitar",
-      "articulation": null
+      "instrument": "Bass Rickenbacker",
+      "articulation": "Fingered",
+      "author": "Project16",
+      "license": "CC BY 3.0",
+      "url": "https://freesound.org/people/project16/packs/10106/"
+    },
+    {
+      "name": "strings-uprightbass",
+      "label": "Bass Upright",
+      "family": "Strings (Plucked)",
+      "role": "bass",
+      "collection": "pjcohen",
+      "instrument": "Bass Upright",
+      "articulation": null,
+      "author": "pjcohen",
+      "license": "CC0",
+      "url": "https://freesound.org/people/pjcohen/packs/21521/"
     },
     {
       "name": "woodwinds-bassoon-stac",
@@ -17,7 +80,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Bassoon",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-bassoon-sus",
@@ -26,7 +92,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Bassoon",
-      "articulation": "Sustained"
+      "articulation": "Sustained",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-bassoon-vib",
@@ -35,7 +104,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Bassoon",
-      "articulation": "Vibrato"
+      "articulation": "Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "keys-celesta",
@@ -44,7 +116,10 @@
       "role": "both",
       "collection": "pjcohen",
       "instrument": "Celesta",
-      "articulation": null
+      "articulation": null,
+      "author": "pjcohen",
+      "license": "CC BY 4.0",
+      "url": "https://freesound.org/people/pjcohen/packs/23108/"
     },
     {
       "name": "strings-cellosection-pizzt",
@@ -53,7 +128,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Cellos",
-      "articulation": "Pizzicato"
+      "articulation": "Pizzicato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21003/"
     },
     {
       "name": "strings-cellosection-spic",
@@ -62,7 +140,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Cellos",
-      "articulation": "Spiccato"
+      "articulation": "Spiccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-cellosection-susvib",
@@ -71,7 +152,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Cellos",
-      "articulation": "Sustained Vibrato"
+      "articulation": "Sustained Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-cellosection-trem",
@@ -80,7 +164,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Cellos",
-      "articulation": "Tremolo"
+      "articulation": "Tremolo",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "percussion-chimes",
@@ -89,7 +176,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Chimes",
-      "articulation": null
+      "articulation": null,
+      "author": "Sam Gossner",
+      "license": "CC BY 4.0",
+      "url": "https://freesound.org/people/sgossner/packs/12231/"
     },
     {
       "name": "voices-choiraaahs-medium",
@@ -98,7 +188,10 @@
       "role": "both",
       "collection": "Signature Sounds",
       "instrument": "Choir Aaaah's",
-      "articulation": "Medium"
+      "articulation": "Medium",
+      "author": "Signature Sounds (SignatureSamples.co.uk)",
+      "license": "CC0",
+      "url": "https://signaturesounds.squarespace.com/about-"
     },
     {
       "name": "voices-choiraaahs-processed",
@@ -107,7 +200,10 @@
       "role": "both",
       "collection": "Signature Sounds",
       "instrument": "Choir Aaaah's",
-      "articulation": "Processed"
+      "articulation": "Processed",
+      "author": "Signature Sounds (SignatureSamples.co.uk)",
+      "license": "CC0",
+      "url": "https://signaturesounds.squarespace.com/about-"
     },
     {
       "name": "voices-choiraaahs-stabs",
@@ -116,7 +212,10 @@
       "role": "both",
       "collection": "Signature Sounds",
       "instrument": "Choir Aaaah's",
-      "articulation": "Stabs"
+      "articulation": "Stabs",
+      "author": "Signature Sounds (SignatureSamples.co.uk)",
+      "license": "CC0",
+      "url": "https://signaturesounds.squarespace.com/about-"
     },
     {
       "name": "voices-choiraaahs-sweeps",
@@ -125,7 +224,10 @@
       "role": "both",
       "collection": "Signature Sounds",
       "instrument": "Choir Aaaah's",
-      "articulation": "Sweeps"
+      "articulation": "Sweeps",
+      "author": "Signature Sounds (SignatureSamples.co.uk)",
+      "license": "CC0",
+      "url": "https://signaturesounds.squarespace.com/about-"
     },
     {
       "name": "woodwinds-clarinet-stac",
@@ -134,7 +236,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Clarinet",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-clarinet-suslong",
@@ -143,7 +248,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Clarinet",
-      "articulation": "Sustained Long"
+      "articulation": "Sustained Long",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-solocontrabass-pizz",
@@ -152,7 +260,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Double Bass",
-      "articulation": "Pizzicato"
+      "articulation": "Pizzicato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21015/"
     },
     {
       "name": "strings-solocontrabass-spic",
@@ -161,7 +272,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Double Bass",
-      "articulation": "Spiccato"
+      "articulation": "Spiccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21016/"
     },
     {
       "name": "strings-solocontrabass-susnv",
@@ -170,7 +284,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Double Bass",
-      "articulation": "Sustained Non-Vibrato"
+      "articulation": "Sustained Non-Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21017/"
     },
     {
       "name": "strings-solocontrabass-susvib",
@@ -179,7 +296,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Double Bass",
-      "articulation": "Sustained Vibrato"
+      "articulation": "Sustained Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-solocontrabass-trem",
@@ -188,7 +308,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Double Bass",
-      "articulation": "Tremolo"
+      "articulation": "Tremolo",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21019/"
     },
     {
       "name": "woodwinds-flute-expvib",
@@ -197,7 +320,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Flute",
-      "articulation": "Expressive Vibrato"
+      "articulation": "Expressive Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-flute-stac",
@@ -206,7 +332,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Flute",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-flute-susnv",
@@ -215,7 +344,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Flute",
-      "articulation": "Sustained Non-Vibrato"
+      "articulation": "Sustained Non-Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-flute-susvib",
@@ -224,7 +356,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Flute",
-      "articulation": "Sustained Vibrato"
+      "articulation": "Sustained Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "percussion-glass-freepats",
@@ -233,16 +368,46 @@
       "role": "treble",
       "collection": "FreePats",
       "instrument": "Glass",
-      "articulation": null
+      "articulation": null,
+      "author": "roberto@zenvoid.org / FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/ChromaticPercussion/glass.html"
     },
     {
-      "name": "strings-guitar-nylon",
-      "label": "Guitar (Nylon String)",
+      "name": "strings-eguitar-dist1",
+      "label": "Guitar Electric (Distortion 1)",
       "family": "Strings (Plucked)",
       "role": "both",
       "collection": "FreePats",
-      "instrument": "Guitar",
-      "articulation": "Nylon String"
+      "instrument": "Guitar Electric",
+      "articulation": "Distortion 1",
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/"
+    },
+    {
+      "name": "strings-eguitar-dist2",
+      "label": "Guitar Electric (Distortion 2)",
+      "family": "Strings (Plucked)",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Guitar Electric",
+      "articulation": "Distortion 2",
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/"
+    },
+    {
+      "name": "strings-guitar-nylon",
+      "label": "Guitar Nylon",
+      "family": "Strings (Plucked)",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Guitar Nylon",
+      "articulation": null,
+      "author": "roberto@zenvoid.org / FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/Guitar/acoustic-guitar.html"
     },
     {
       "name": "percussion-hang-freepats",
@@ -251,7 +416,10 @@
       "role": "treble",
       "collection": "FreePats",
       "instrument": "Hang (D minor)",
-      "articulation": null
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/ChromaticPercussion/hang.html"
     },
     {
       "name": "strings-harp",
@@ -260,7 +428,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Harp",
-      "articulation": null
+      "articulation": null,
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-fhorn-mute",
@@ -269,7 +440,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Horn",
-      "articulation": "Mute"
+      "articulation": "Mute",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-fhorn-stac",
@@ -278,7 +452,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Horn",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-fhorn-sus",
@@ -287,7 +464,34 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Horn",
-      "articulation": "Sustained"
+      "articulation": "Sustained",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
+    },
+    {
+      "name": "percussion-jawharp",
+      "label": "Jaw Harp",
+      "family": "Percussion (Tuned)",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Jaw Harp",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/Ethnic/jaw-harp.html"
+    },
+    {
+      "name": "percussion-kalimba",
+      "label": "Kalimba",
+      "family": "Percussion (Tuned)",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Kalimba",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/Ethnic/kalimba.html"
     },
     {
       "name": "percussion-marimba",
@@ -296,7 +500,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Marimba I",
-      "articulation": null
+      "articulation": null,
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "percussion-marimba-freesound",
@@ -305,7 +512,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Marimba II",
-      "articulation": null
+      "articulation": null,
+      "author": "Sam Gossner",
+      "license": "CC BY 4.0",
+      "url": "https://freesound.org/people/sgossner/packs/15684/"
     },
     {
       "name": "woodwinds-oboe-stacc",
@@ -314,7 +524,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Oboe",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-oboe-sus",
@@ -323,7 +536,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Oboe",
-      "articulation": "Sustained"
+      "articulation": "Sustained",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-oboe-vib",
@@ -332,52 +548,22 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Oboe",
-      "articulation": "Vibrato"
+      "articulation": "Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
-      "name": "brass-oldtrombone-buzz",
-      "label": "Old Trombone (Buzz)",
-      "family": "Winds (Brass)",
-      "role": "bass",
-      "collection": "VSCO",
-      "instrument": "Old Trombone",
-      "articulation": "Buzz"
-    },
-    {
-      "name": "brass-oldtrombone-fall",
-      "label": "Old Trombone (Fall)",
-      "family": "Winds (Brass)",
-      "role": "bass",
-      "collection": "VSCO",
-      "instrument": "Old Trombone",
-      "articulation": "Fall"
-    },
-    {
-      "name": "brass-oldtrombone-short",
-      "label": "Old Trombone (Short)",
-      "family": "Winds (Brass)",
-      "role": "bass",
-      "collection": "VSCO",
-      "instrument": "Old Trombone",
-      "articulation": "Short"
-    },
-    {
-      "name": "brass-oldtrombone-sustain",
-      "label": "Old Trombone (Sustained)",
-      "family": "Winds (Brass)",
-      "role": "bass",
-      "collection": "VSCO",
-      "instrument": "Old Trombone",
-      "articulation": "Sustained"
-    },
-    {
-      "name": "brass-oldtrombone-vibrato",
-      "label": "Old Trombone (Vibrato)",
-      "family": "Winds (Brass)",
-      "role": "bass",
-      "collection": "VSCO",
-      "instrument": "Old Trombone",
-      "articulation": "Vibrato"
+      "name": "woodwinds-ocarina",
+      "label": "Ocarina",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Ocarina",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/"
     },
     {
       "name": "keys-organ-loud-pedal",
@@ -386,7 +572,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Organ",
-      "articulation": "Loud Pedal"
+      "articulation": "Loud Pedal",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "keys-organ-loud",
@@ -395,7 +584,10 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Organ",
-      "articulation": "Loud"
+      "articulation": "Loud",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "keys-organ-quiet-pedal",
@@ -404,7 +596,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Organ",
-      "articulation": "Quiet Pedal"
+      "articulation": "Quiet Pedal",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "keys-organ-quiet",
@@ -413,7 +608,58 @@
       "role": "both",
       "collection": "VSCO",
       "instrument": "Organ",
-      "articulation": "Quiet"
+      "articulation": "Quiet",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
+    },
+    {
+      "name": "keys-piano-salamander",
+      "label": "Piano Grand Salamander",
+      "family": "Keys",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Piano Grand Salamander",
+      "articulation": null,
+      "author": "Alexander Holm",
+      "license": "CC BY 3.0",
+      "url": "https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html"
+    },
+    {
+      "name": "keys-piano-ydp",
+      "label": "Piano Grand YDP",
+      "family": "Keys",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Piano Grand YDP",
+      "articulation": null,
+      "author": "Zenph Studios / OLPC, bank by roberto@zenvoid.org",
+      "license": "CC BY 3.0",
+      "url": "https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html"
+    },
+    {
+      "name": "keys-uprightnr1",
+      "label": "Piano Upright 1",
+      "family": "Keys",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Piano Upright 1",
+      "articulation": null,
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
+    },
+    {
+      "name": "keys-uprightpiano",
+      "label": "Piano Upright 2",
+      "family": "Keys",
+      "role": "both",
+      "collection": "VSCO",
+      "instrument": "Piano Upright 2",
+      "articulation": null,
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21055/"
     },
     {
       "name": "woodwinds-piccolo-stac",
@@ -422,7 +668,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Piccolo",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-piccolo-sus",
@@ -431,7 +680,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Piccolo",
-      "articulation": "Sustained"
+      "articulation": "Sustained",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "woodwinds-recorder",
@@ -440,7 +692,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Recorder",
-      "articulation": null
+      "articulation": null,
+      "author": "Sam Gossner",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/14880/"
     },
     {
       "name": "keys-rhodes-markii",
@@ -449,16 +704,70 @@
       "role": "both",
       "collection": "Tim Kahn",
       "instrument": "Rhodes Mark II",
-      "articulation": null
+      "articulation": null,
+      "author": "Tim Kahn",
+      "license": "CC BY 4.0",
+      "url": "https://freesound.org/people/timkahn/packs/3957/"
     },
     {
-      "name": "strings-rickenbacker-fingered",
-      "label": "Rickenbacker Bass (Fingered)",
-      "family": "Strings (Plucked)",
-      "role": "bass",
-      "collection": "Project16",
-      "instrument": "Rickenbacker Bass",
-      "articulation": "Fingered"
+      "name": "woodwinds-tenorsax",
+      "label": "Saxophone Tenor",
+      "family": "Winds (Wood)",
+      "role": "treble",
+      "collection": "FreePats",
+      "instrument": "Saxophone Tenor",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/"
+    },
+    {
+      "name": "synth-newage",
+      "label": "Synth New Age",
+      "family": "Synth",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Synth New Age",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/Synthesizer/synth-pad.html#NewAge"
+    },
+    {
+      "name": "synth-padbowed",
+      "label": "Synth Pad Bowed",
+      "family": "Synth",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Synth Pad Bowed",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/Synthesizer/synth-pad.html"
+    },
+    {
+      "name": "voices-synthpadchoir",
+      "label": "Synth Pad Choir",
+      "family": "Voices",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Synth Pad Choir",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/Synthesizer/synth-pad.html#Choir"
+    },
+    {
+      "name": "synth-padsweep",
+      "label": "Synth Pad Sweep",
+      "family": "Synth",
+      "role": "both",
+      "collection": "FreePats",
+      "instrument": "Synth Pad Sweep",
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/Synthesizer/synth-pad.html#SweepPad"
     },
     {
       "name": "percussion-timpani",
@@ -467,7 +776,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Timpani",
-      "articulation": "Hits"
+      "articulation": "Hits",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21042/"
     },
     {
       "name": "percussion-timpani-rolls",
@@ -476,7 +788,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Timpani",
-      "articulation": "Rolls"
+      "articulation": "Rolls",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21043/"
     },
     {
       "name": "brass-tenortrombone-stac",
@@ -485,7 +800,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Trombone",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21044/"
     },
     {
       "name": "brass-tenortrombone-sus",
@@ -494,7 +812,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Trombone",
-      "articulation": "Sustained"
+      "articulation": "Sustained",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-tenortrombone-vib",
@@ -503,7 +824,70 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Trombone",
-      "articulation": "Vibrato"
+      "articulation": "Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
+    },
+    {
+      "name": "brass-oldtrombone-buzz",
+      "label": "Trombone Old (Buzz)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Trombone Old",
+      "articulation": "Buzz",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://freesound.org/people/sgossner/packs/21066/"
+    },
+    {
+      "name": "brass-oldtrombone-fall",
+      "label": "Trombone Old (Fall)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Trombone Old",
+      "articulation": "Fall",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
+    },
+    {
+      "name": "brass-oldtrombone-short",
+      "label": "Trombone Old (Short)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Trombone Old",
+      "articulation": "Short",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
+    },
+    {
+      "name": "brass-oldtrombone-sustain",
+      "label": "Trombone Old (Sustained)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Trombone Old",
+      "articulation": "Sustained",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
+    },
+    {
+      "name": "brass-oldtrombone-vibrato",
+      "label": "Trombone Old (Vibrato)",
+      "family": "Winds (Brass)",
+      "role": "bass",
+      "collection": "VSCO",
+      "instrument": "Trombone Old",
+      "articulation": "Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-trumpet-harmonm-sus",
@@ -512,7 +896,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Trumpet",
-      "articulation": "Harmon Mute"
+      "articulation": "Harmon Mute",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-trumpet-stac",
@@ -521,7 +908,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Trumpet",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-trumpet-straightm-sus",
@@ -530,7 +920,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Trumpet",
-      "articulation": "Straight Mute"
+      "articulation": "Straight Mute",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-trumpet-susvib",
@@ -539,7 +932,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Trumpet",
-      "articulation": "Sustained Vibrato"
+      "articulation": "Sustained Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-trumpet-sus",
@@ -548,7 +944,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Trumpet",
-      "articulation": "Sustained"
+      "articulation": "Sustained",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-tuba-stac",
@@ -557,7 +956,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Tuba",
-      "articulation": "Staccato"
+      "articulation": "Staccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "brass-tuba-sus",
@@ -566,7 +968,10 @@
       "role": "bass",
       "collection": "VSCO",
       "instrument": "Tuba",
-      "articulation": "Sustained"
+      "articulation": "Sustained",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "percussion-tubularbells-freepats",
@@ -575,7 +980,10 @@
       "role": "treble",
       "collection": "FreePats",
       "instrument": "Tubular Bells",
-      "articulation": null
+      "articulation": null,
+      "author": "FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/ChromaticPercussion/tubular-bells.html"
     },
     {
       "name": "strings-ukulele",
@@ -584,34 +992,10 @@
       "role": "treble",
       "collection": "FreePats",
       "instrument": "Ukulele",
-      "articulation": null
-    },
-    {
-      "name": "strings-uprightbass",
-      "label": "Upright Bass",
-      "family": "Strings (Plucked)",
-      "role": "bass",
-      "collection": "pjcohen",
-      "instrument": "Upright Bass",
-      "articulation": null
-    },
-    {
-      "name": "keys-uprightnr1",
-      "label": "Upright Piano",
-      "family": "Keys",
-      "role": "both",
-      "collection": "VSCO",
-      "instrument": "Upright Piano",
-      "articulation": null
-    },
-    {
-      "name": "keys-uprightpiano",
-      "label": "Upright Piano 2",
-      "family": "Keys",
-      "role": "both",
-      "collection": "VSCO",
-      "instrument": "Upright Piano 2",
-      "articulation": null
+      "articulation": null,
+      "author": "Mateusz Dąbrowski / FreePats project",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/Guitar/acoustic-guitar.html"
     },
     {
       "name": "strings-violasection-pizz",
@@ -620,7 +1004,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violas",
-      "articulation": "Pizzicato"
+      "articulation": "Pizzicato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-violasection-spic",
@@ -629,7 +1016,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violas",
-      "articulation": "Spiccato"
+      "articulation": "Spiccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-violasection-susvib",
@@ -638,7 +1028,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violas",
-      "articulation": "Sustained Vibrato"
+      "articulation": "Sustained Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-violasection-trem",
@@ -647,7 +1040,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violas",
-      "articulation": "Tremolo"
+      "articulation": "Tremolo",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-soloviolin-arcovib",
@@ -656,7 +1052,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violin",
-      "articulation": "Arco Vibrato"
+      "articulation": "Arco Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-soloviolin-pizz",
@@ -665,7 +1064,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violin",
-      "articulation": "Pizzicato"
+      "articulation": "Pizzicato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-soloviolin-spic",
@@ -674,7 +1076,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violin",
-      "articulation": "Spiccato"
+      "articulation": "Spiccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-soloviolin-trem",
@@ -683,7 +1088,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violin",
-      "articulation": "Tremolo"
+      "articulation": "Tremolo",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-violinsection-pizz",
@@ -692,7 +1100,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violins",
-      "articulation": "Pizzicato"
+      "articulation": "Pizzicato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-violinsection-spic",
@@ -701,7 +1112,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violins",
-      "articulation": "Spiccato"
+      "articulation": "Spiccato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-violinsection-susvib",
@@ -710,7 +1124,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violins",
-      "articulation": "Sustained Vibrato"
+      "articulation": "Sustained Vibrato",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "strings-violinsection-trem",
@@ -719,7 +1136,10 @@
       "role": "treble",
       "collection": "VSCO",
       "instrument": "Violins",
-      "articulation": "Tremolo"
+      "articulation": "Tremolo",
+      "author": "Sam Gossner / Versilian Studios",
+      "license": "CC0",
+      "url": "https://vis.versilstudios.com/vsco-community.html"
     },
     {
       "name": "keys-wurlitzer",
@@ -728,7 +1148,10 @@
       "role": "both",
       "collection": "OldBassMan",
       "instrument": "Wurlitzer 200A",
-      "articulation": null
+      "articulation": null,
+      "author": "OldBassMan",
+      "license": "CC BY 4.0",
+      "url": "https://freesound.org/people/oldbassman/packs/5726/"
     },
     {
       "name": "percussion-xylo-freepats",
@@ -737,7 +1160,10 @@
       "role": "treble",
       "collection": "FreePats",
       "instrument": "Xylophone",
-      "articulation": null
+      "articulation": null,
+      "author": "Versilian Studios (VCSL), curated by FreePats",
+      "license": "CC0",
+      "url": "https://freepats.zenvoid.org/ChromaticPercussion/xylophone.html"
     }
   ]
 }

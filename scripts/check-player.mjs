@@ -118,6 +118,78 @@ for (const style of engine.STYLES) {
   const sounded = new Set(plan.events.map((e) => e.chordOffset)).size;
   check(`rhythm ${style.padEnd(11)} ${String(plan.events.length).padStart(4)} events, ${sounded}/8 chords`,
     sounded === 8 && plan.events.length > 0, `only ${sounded} of 8 chords produce a note`);
+
+  // ⚠ …and again with all four chords on ONE line. This is the case the sweep
+  // above cannot see: a chord per line always starts on a slot boundary, so a
+  // pattern whose slot SPANS the chord change looked fine for months while a
+  // pad played the first chord of a line and swallowed the rest (2026-09-04).
+  const one = engine.planSeedEvents({ ...SEED, progression: 'C Em7 Am F', sig, loops: 2, style });
+  const oneSounded = new Set(one.events.map((e) => e.chordOffset)).size;
+  check(`  … all on one line   ${String(one.events.length).padStart(4)} events, ${oneSounded}/8 chords`,
+    oneSounded === 8, `only ${oneSounded} of 8 chords speak when they share a line`);
+}
+
+// ─── 2b. LOOP PHASE — the figure runs on across loops, as in the render ──
+// planSeedEvents never resets startQ between loops, so a two-bar figure over
+// a one-bar progression plays bar one on loop 1 and bar two on loop 2. The
+// live player must do the same (it reset the phase at every loop until
+// 2026-09-04, playing bar one forever): loop 2 must differ from loop 1 AND
+// match the render's loop 2, note for note.
+{
+  reset();
+  ctx.currentTime = 0;
+  const seed = seedOf({ progression: 'C', bars: 1, style: 'arpeggio4', lanes: 'treble' });
+  const heard = [];
+  const h = player.startSeed({ ctx, getSeed: () => seed, autoTick: false,
+                               onNote: (midi, lane, at) => heard.push({ midi, at }) });
+  runFor(h, 6);
+  h.stop();
+  const chordS = (4 * 60) / seed.bpm;                       // one 4/4 bar = the whole progression
+  const t0 = heard.length ? Math.min(...heard.map((n) => n.at)) : 0;
+  const byTime = (a, b) => (a.at - b.at) || (a.midi - b.midi);
+  const heardSeq = (k) => heard.filter((n) => Math.floor((n.at - t0 + 1e-6) / chordS) === k)
+    .sort(byTime).map((n) => n.midi).join(' ');
+  const plan = engine.planSeedEvents({ ...seed, loops: 2 });
+  const offsets = [...new Set(plan.events.map((e) => e.chordOffset))].sort((a, b) => a - b);
+  const planSeq = (k) => plan.events.filter((e) => e.chordOffset === offsets[k])
+    .sort(byTime).map((e) => e.midi).join(' ');
+  check('loop phase: loop 2 plays the figure\'s second bar, as the render does',
+    heardSeq(0) === planSeq(0) && heardSeq(1) === planSeq(1) && heardSeq(0) !== heardSeq(1),
+    `player [${heardSeq(0)}] / [${heardSeq(1)}]  render [${planSeq(0)}] / [${planSeq(1)}]`);
+}
+
+// ─── 2c. CHORD WEIGHT — `2Am` lasts twice as long as a bare chord ────────
+// A leading number is the chord's share of the line. The trap it exists to
+// avoid is writing the chord twice: every chord speaks on its own onset, so
+// `Am Am` strikes Am again where `2Am` lets it ring.
+{
+  const plan = (progression, bars = 1) =>
+    engine.planSeedEvents({ ...SEED, progression, bars, loops: 1, style: 'pad' });
+
+  const w = plan('2Am G');
+  const durs = [...new Set(w.events.map((e) => e.chordOffset))].sort((a, b) => a - b);
+  const even = plan('Am G');
+  check('a weighted line keeps the LINE length (2Am G === Am G)',
+    w.totalSamples === even.totalSamples, `${w.totalSamples} vs ${even.totalSamples}`);
+  check('`2Am G` gives Am twice the time of G',
+    durs.length === 2 && Math.abs(durs[1] / w.totalSamples - 2 / 3) < 1e-3,
+    `chord onsets ${durs.join(',')} of ${w.totalSamples}`);
+
+  // the point of the feature: one onset, not two
+  const held = plan('2Am', 1), twice = plan('Am Am', 1);
+  check('`2Am` strikes ONCE where `Am Am` strikes twice',
+    new Set(held.events.map((e) => e.chordOffset)).size === 1 &&
+    new Set(twice.events.map((e) => e.chordOffset)).size === 2,
+    `held ${new Set(held.events.map((e) => e.chordOffset)).size}, twice ${new Set(twice.events.map((e) => e.chordOffset)).size}`);
+  check('… and both fill the same line', held.totalSamples === twice.totalSamples,
+    `${held.totalSamples} vs ${twice.totalSamples}`);
+
+  // a token of only digits is a BAD CHORD, never a weight with nothing to weigh
+  check('a digits-only token is reported as an unrecognised chord',
+    engine.analyzeSeed({ ...SEED, progression: 'Am 2 G' }).invalid.includes('2'),
+    JSON.stringify(engine.analyzeSeed({ ...SEED, progression: 'Am 2 G' }).invalid));
+  check('a weight never reaches the filename', !/\d/.test(engine.defaultName('2Am 12E')),
+    engine.defaultName('2Am 12E'));
 }
 
 // ─── 3. Built-in synth playback ──────────────────────────────────────────────
@@ -758,12 +830,16 @@ if (!haveFfmpeg || !fs.existsSync(sfFile)) {
 
   for (const style of ['groove1', 'arpeggio1', 'pad']) {
     const seed = seedOf({ progression: 'Bm F#7 A E', bpm: 120, style });
-    // ⚠ Long enough to cover EVERY chord — 4 bars at 120 bpm is 8 s. A shorter
+    // ⚠ Long enough to cover EVERY chord AND every bar of the longest figure:
+    // this progression is one bar (2 s at 120 bpm), groove1's bass is a
+    // four-bar figure, and the figure's phase runs on across loops (the
+    // render's rule, the player's since 2026-09-04) — so a 10 s run reaches
+    // all four bars, and the render must be given as many loops. A shorter
     // run makes the comparison one-directional by accident, and groove1's early
     // turnaround (which needs nextNotes + the last-beat condition) lives on the
     // final slots of a bar.
     const live = pitchesOf(seed, 10);
-    const rendered = new Set(engine.planSeedEvents({ ...seed, loops: 1 }).events.map((e) => e.midi));
+    const rendered = new Set(engine.planSeedEvents({ ...seed, loops: 8 }).events.map((e) => e.midi));
 
     const extra = [...live].filter((m) => !rendered.has(m));
     const missing = [...rendered].filter((m) => !live.has(m));

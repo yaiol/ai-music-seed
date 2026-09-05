@@ -1,0 +1,96 @@
+{
+  "name": "strings-eguitar-dist2",
+  "label": "Guitar Electric (Distortion 2)",
+  "format": 1,
+  "layer": "mf",
+  "zones": [
+    {
+      "file": "36.ogg",
+      "root": 36,
+      "lokey": 0,
+      "hikey": 38,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "40.ogg",
+      "root": 40,
+      "lokey": 39,
+      "hikey": 40,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "41.ogg",
+      "root": 41,
+      "lokey": 41,
+      "hikey": 43,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "45.ogg",
+      "root": 45,
+      "lokey": 44,
+      "hikey": 46,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "48.ogg",
+      "root": 48,
+      "lokey": 47,
+      "hikey": 49,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "50.ogg",
+      "root": 50,
+      "lokey": 50,
+      "hikey": 51,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "52.ogg",
+      "root": 52,
+      "lokey": 52,
+      "hikey": 53,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "55.ogg",
+      "root": 55,
+      "lokey": 54,
+      "hikey": 57,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "59.ogg",
+      "root": 59,
+      "lokey": 58,
+      "hikey": 60,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "61.ogg",
+      "root": 61,
+      "lokey": 61,
+      "hikey": 62,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "64.ogg",
+      "root": 64,
+      "lokey": 63,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}
