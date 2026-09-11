@@ -14,7 +14,7 @@
 import { createServer } from 'vite';
 
 const CAPTIONS = ['lblSeedKnobVel', 'lblSeedKnobLen', 'lblSeedKnobVolume',
-                  'lblSeedKnobOctave', 'lblSeedKnobTune', 'lblSeedKnobReverb'];
+                  'lblSeedKnobOctave', 'lblSeedKnobTune', 'lblSeedKnobReverb', 'lblSeedKnobTranspose'];
 // scripts where a leading-letters abbreviation is NOT the convention: shortLabel
 // must hand these back whole, whatever their length
 const WHOLE_SCRIPT = /[\p{Script=Arabic}\p{Script=Hebrew}\p{Script=Thai}\p{Script=Devanagari}\p{Script=Bengali}\p{Script=Tamil}\p{Script=Telugu}\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u;

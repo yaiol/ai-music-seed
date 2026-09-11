@@ -848,6 +848,44 @@ if (!haveFfmpeg || !fs.existsSync(sfFile)) {
       [extra.length ? `preview plays ${extra.join(',')} the file does not` : '',
        missing.length ? `file plays ${missing.join(',')} the preview does not` : ''].filter(Boolean).join('; '));
   }
+
+  // Transpose rides the same path: the player must hear it too, not only the file.
+  const seed = seedOf({ progression: 'Bm F#7 A E', bpm: 120, style: 'groove1', transpose: 3 });
+  const live = pitchesOf(seed, 10);
+  const rendered = new Set(engine.planSeedEvents({ ...seed, loops: 8 }).events.map((e) => e.midi));
+  const plain = new Set(engine.planSeedEvents({ ...seed, transpose: 0, loops: 8 }).events.map((e) => e.midi));
+  check('preview matches render  transposed +3',
+    [...live].every((m) => rendered.has(m)) && [...rendered].every((m) => live.has(m)) &&
+    [...rendered].some((m) => !plain.has(m)),
+    `${live.size} live / ${rendered.size} rendered`);
+}
+
+// ─── A transposed seed IS the seed typed in the new key ─────────────────────
+// The transposition happens at the voicing, so the bass tonic, the passing-note
+// scale and the approach notes all move with it. Shifting the finished events
+// instead would pass a "notes went up" check and still anchor the bass on the
+// old key — this compares against the chords actually retyped, note for note.
+{
+  const plan = (s) => engine.planSeedEvents({ loops: 1, bpm: 96, ...s }).events
+    .map((e) => `${e.chordOffset}:${e.at}:${e.midi}:${e.len}:${e.lane}`).join('|');
+  const CASES = [
+    ['Am C G Dm', 2, 'Bm D A Em'],
+    ['Am C G Dm', -5, 'Em G D Am'],
+    ['2Cmaj7 Bm7b5/F E7sus4', 6, '2F#maj7 Fm7b5/B Bb7sus4'],
+    ['N.C. Bb Eb/G', 1, 'N.C. B E/Ab'],
+  ];
+  for (const style of ['groove1', 'arpeggio5', 'pad']) {
+    for (const [typed, t, retyped] of CASES) {
+      check(`transpose ${String(t).padStart(2)} = retyped  ${style.padEnd(9)} ${typed}`,
+        plan({ progression: typed, transpose: t, style }) === plan({ progression: retyped, style }));
+    }
+  }
+  const spelled = CASES.map(([typed, t]) => engine.parseLines(typed).flat().map((k) => (k.w > 1 ? k.w : '') + engine.transposeChord(k.sym, t)).join(' '));
+  check('transposeChord spells the new key',
+    JSON.stringify(spelled) === JSON.stringify(['Bm D A Em', 'Em G D Am', '2F#maj7 Fm7b5/B Bb7sus4', 'N.C. B E/Ab']),
+    JSON.stringify(spelled));
+  check('±12 is the identity (the octave is the Octave knobs\' job)',
+    plan({ progression: 'Am C G Dm', transpose: 12, style: 'groove1' }) === plan({ progression: 'Am C G Dm', style: 'groove1' }));
 }
 
 console.log(`\n${failed} failure(s)`);

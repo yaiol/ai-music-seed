@@ -1,7 +1,7 @@
 {
   "name": "ai-music-seed",
   "productName": "AI Music Seed",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "description": "Generate chord-progression harmonic seeds (WAV/MIDI) to constrain AI music generators like Suno",
   "private": true,
@@ -44,6 +44,7 @@
     "electron-is-dev": "^3.0.1",
     "lucide-react": "^1.33.0",
     "react": "^19.2.8",
+    "react-colorful": "^5.8.1",
     "react-dom": "^19.2.8",
     "vite": "^8.2.2",
     "vite-plugin-svgr": "^5.2.0",
@@ -101,7 +102,8 @@
       "createStartMenuShortcut": true,
       "menuCategory": "yaiol",
       "shortcutName": "AI Music Seed",
-      "uninstallDisplayName": "yaiol AI Music Seed"
+      "uninstallDisplayName": "yaiol AI Music Seed",
+      "artifactName": "${productName} Setup ${buildVersion}.${ext}"
     },
     "publish": [
       {

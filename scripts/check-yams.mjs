@@ -30,7 +30,7 @@ const save = (seed, buildSeed) => JSON.parse(JSON.stringify(buildSeed(seed)));  
 
 const server = await createServer({ root: process.cwd(), server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });
 try {
-  const { buildSeed, seedFromFile } = await server.ssrLoadModule('/src/App.jsx');
+  const { buildSeed, seedFromFile, computeFileName } = await server.ssrLoadModule('/src/App.jsx');
   const engine = await server.ssrLoadModule('/src/lib/seed-engine.js');
 
   // An edited figure: both lanes rewritten, every lane setting off its default.
@@ -46,7 +46,7 @@ try {
       name: 'A seed', progression: '[Verse]\nAm C G Dm\nF F G7', bpm: 96, bars: 2, sig: '7/8', loops: 3,
       style: 'arpeggio4', chordFigure: 'a1243', bassFigure: 'twice', swing: 1 / 3,
       trebleInstrument: 'vsco:strings-guitar-nylon', bassInstrument: '',
-      trebleVolume: 80, bassVolume: 55, trebleOctave: -1, bassOctave: 1,
+      trebleVolume: 80, bassVolume: 55, trebleOctave: -1, bassOctave: 1, transpose: -3,
       highpass: 120, lowpass: 9000, reverb: 'church', trebleReverb: 40, bassReverb: 15,
       format: 'wav', mp3Bitrate: 320, output: '{name}-{bpm}',
     })),
@@ -62,7 +62,7 @@ try {
   // 1. every field the user set comes back
   const FIELDS = ['name', 'progression', 'bpm', 'bars', 'sig', 'loops', 'style', 'chordFigure', 'bassFigure', 'swing',
                   'trebleInstrument', 'bassInstrument', 'trebleVolume', 'bassVolume', 'trebleOctave',
-                  'bassOctave', 'highpass', 'lowpass', 'reverb', 'trebleReverb', 'bassReverb',
+                  'bassOctave', 'transpose', 'highpass', 'lowpass', 'reverb', 'trebleReverb', 'bassReverb',
                   'format', 'mp3Bitrate', 'output'];
   const lost = FIELDS.filter((k) => JSON.stringify(back[k]) !== JSON.stringify(seed[k]));
   check(`every seed field survives the round trip (${FIELDS.length} fields)`, lost.length === 0,
@@ -106,6 +106,25 @@ try {
 
   // 6. a v2 file (no figure at all) still opens — the format's own history
   check('a v2 file still opens', seedFromFile({ version: 2, chords: 'C G', style: 'pad', output: 'x' }).progression === 'C G');
+
+  // 7. a token that is not in the current list is removed on load; known ones stay
+  const loaded = seedFromFile({ version: 3, chords: 'C', output: '{name}_{gone}_{bpm}{another-gone}' }).output;
+  check('unknown tokens are removed on load', loaded === '{name}__{bpm}', loaded);
+
+  // 8. every token resolves, in the documented order, to a filename-safe value
+  const lane = (l) => `{${l}-velocity}_{${l}-length}_{${l}-hold}_{${l}-instrument}_{${l}-octave}_{${l}-reverb}_{${l}-volume}`;
+  const ALL = `{name}_{loops}_{bitrate}_{bpm}_{style}_{sig}_{beat}_{swing}_{reverb}_{highpass}_{lowpass}_${lane('treble')}_${lane('bass')}_{transpose}_{chords}`;
+  const named = computeFileName({ ...back, output: ALL, lanes: 'both' });
+  // a WAV writes no bitrate; 7/8 with steps 12 and 8 → the finer lane, round(12 / 8)
+  // = B-2; the lane settings are the edited figure's; the chords are spelled at
+  // transpose −3, and the # survives (F#m is not Fm)
+  const expected = 'A seed_3__96_arpeggio4_7-8_B-2_shuffle_church_120_9000_' +
+    '42_7_hold_strings-guitar-nylon_-1_40_80_' +
+    '90_3_nohold_strings-guitar-nylon_+1_15_55_' +
+    '-3_F#mAEBmDDE7';
+  check('every Output token resolves', named === expected, `${named} vs ${expected}`);
+  check('no token is left unresolved', !/[{}]/.test(named), named);
+  check('{bitrate} names an MP3\'s bitrate', computeFileName({ ...back, format: 'mp3', output: '{bitrate}', lanes: 'both' }) === '320');
 } catch (e) {
   console.log('check:yams FAILED:', (e && e.stack) || e); failed++;
 } finally { await server.close(); }

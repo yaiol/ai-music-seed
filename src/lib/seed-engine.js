@@ -80,11 +80,17 @@ const placeBass = (pc) => 36 + (pc % 12);                                       
 
 // Voice a chord symbol into MIDI notes [bass, ...upper]. Handles minor / maj7 /
 // 7 / sus / dim, slash bass (D/E, Bm/F#, Gmaj7) and N.C. / N.C./B. [] = rest.
-export function voice(sym) {
+//
+// `transpose` (semitones) moves the root and the slash bass BEFORE placement,
+// so a transposed chord is voiced exactly as if its new name had been typed —
+// the register folds (placeRoot / placeTone) stay put, like a hand that keeps
+// its place on the keyboard. That is why ±12 is the identity: the whole seed
+// is a function of pitch classes, and an octave is what the Octave knobs do.
+export function voice(sym, transpose = 0) {
   sym = String(sym).trim();
   const slash = sym.split('/');
   const head = slash[0].trim();
-  const slashBass = slash.length > 1 ? notePc(slash[1]) : null;
+  const slashBass = slash.length > 1 ? (notePc(slash[1]) + transpose + 120) % 12 : null;
 
   if (head.toUpperCase().replace(/\./g, '').startsWith('NC')) {       // no chord
     return slashBass !== null ? [placeBass(slashBass)] : [];
@@ -92,13 +98,39 @@ export function voice(sym) {
 
   const m = head.match(/^([A-Ga-g])([#b]?)(.*)$/);
   if (!m) throw new Error(`Unrecognised chord: "${sym}"`);
-  const rootpc = notePc(m[1] + m[2]);
+  const rootpc = (notePc(m[1] + m[2]) + transpose + 120) % 12;
   const intervals = chordIntervals(m[3]);
 
   const root = placeRoot(rootpc);
   const upper = intervals.map((iv) => root + iv);
   const bass = placeBass(slashBass !== null ? slashBass : rootpc);
   return [bass, ...upper];
+}
+
+// The transposition range, in semitones. Twelve keys and the tritone reached
+// from both sides — ±6 sound the same, and anything past it is an octave the
+// fold would take straight back out.
+export const TRANSPOSE_MIN = -6;
+export const TRANSPOSE_MAX = 6;
+
+// A chord SYMBOL moved by `transpose` semitones — what the screen and the
+// filename show, so a transposed seed is never labelled in its old key. Only
+// the root and the slash bass change; the quality text is kept verbatim. A
+// root written flat stays flat, sharp stays sharp; a natural root lands on the
+// chart spelling (Eb, Ab, Bb but C#, F#). A symbol voice() would reject is
+// returned untouched, so the invalid-chord report still names what was typed.
+const SHARP_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+const FLAT_NAMES  = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+const CHART_NAMES = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
+function transposeNote(note, transpose) {
+  const names = note[1] === 'b' ? FLAT_NAMES : note[1] === '#' ? SHARP_NAMES : CHART_NAMES;
+  return names[(notePc(note) + transpose + 120) % 12];
+}
+export function transposeChord(sym, transpose) {
+  if (!transpose) return sym;
+  const m = /^([A-Ga-g][#b]?)([^/]*)(?:\/([A-Ga-g][#b]?)(.*))?$/.exec(sym);
+  if (!m) return sym;                                        // N.C., N.C./B, junk
+  return transposeNote(m[1], transpose) + m[2] + (m[3] ? '/' + transposeNote(m[3], transpose) + m[4] : '');
 }
 
 const midiToFreq = (n) => 440 * Math.pow(2, (n - 69) / 12);
@@ -944,15 +976,23 @@ function planEvents(progression, barQuarters, bars, bpm) {
  * the ordering anywhere else: float addition is not associative, so even a
  * re-ordered mix stops being byte-identical to what shipped.
  */
-export function planChords({ progression, bpm = 80, bars = 1, sig = '4/4' }) {
+export function planChords({ progression, bpm = 80, bars = 1, sig = '4/4', transpose = 0 }) {
   const { numer, denom, bad, barQuarters } = timeSig(sig);
   if (bad) throw new Error(`Bad time signature: "${sig}" (denominator must be a power of 2)`);
 
   const planned = planEvents(progression, barQuarters, bars, bpm);
   if (!planned.length) throw new Error('Empty progression');
 
+  // ⚠ CLAUDE: the transposition happens HERE, at the voicing, and nowhere else.
+  // Everything downstream — the tonic that anchors the bass, the scale the
+  // passing notes step through, the approach into the next chord, the .mid —
+  // reads these notes, so the render and the live player (which both call
+  // planChords) move together and a transposed seed is the seed typed in the
+  // new key. Shifting the events afterwards instead (the way the Octave knobs
+  // do) would leave the bass anchored on the old tonic.
+  const t = Number(transpose) || 0;
   return {
-    chords: planned.map((e) => ({ sym: e.sym, notes: voice(e.sym), durS: e.durS, samples: e.samples, quarters: e.quarters })),
+    chords: planned.map((e) => ({ sym: e.sym, notes: voice(e.sym, t), durS: e.durS, samples: e.samples, quarters: e.quarters })),
     // ⚠ CLAUDE: the BAR, from the time signature alone — NOT multiplied by
     // `bars`. "Bars per line" says how long a LINE lasts; it does not make the
     // bar longer. A rhythm pattern is written per bar and must repeat every bar,
@@ -1004,10 +1044,10 @@ export function shiftLaneOctaves(events, trebleOctave, bassOctave) {
 }
 
 export function planSeedEvents({ progression, bpm = 80, bars = 1, sig = '4/4', loops = 4, style = 'pad', swing = 0,
-                                lanes = 'both', trebleOctave = 0, bassOctave = 0,
+                                lanes = 'both', trebleOctave = 0, bassOctave = 0, transpose = 0,
                                 chordFigure = '', bassFigure = '', pattern = null, trebleMirror = false, bassMirror = false }) {
   const gesture = gestureForSeed({ style, chordFigure, bassFigure, pattern, trebleMirror, bassMirror });
-  const { chords: voiced, barQ, qToFrames, numer, denom } = planChords({ progression, bpm, bars, sig });
+  const { chords: voiced, barQ, qToFrames, numer, denom } = planChords({ progression, bpm, bars, sig, transpose });
   const beatQ = 4 / denom;
   const events = [];
   let offset = 0;
@@ -1046,9 +1086,13 @@ export function planSeedEvents({ progression, bpm = 80, bars = 1, sig = '4/4', l
 const NAME_CHORDS = 8;
 
 // A safe default output filename from the progression: the first NAME_CHORDS chord
-// symbols, alphanumerics only ([Section] tags and | marks already dropped by parseLines).
-export function defaultName(progression) {
-  return (parseLines(progression).flat().slice(0, NAME_CHORDS).map((t) => t.sym).join('').replace(/[^a-zA-Z0-9]/g, '') || 'seed');
+// symbols, alphanumerics and `#` only ([Section] tags and | marks already dropped by parseLines).
+// ⚠ CLAUDE: keep the `#`. It is legal in every file system, and stripping it
+// renames the chord — F#m became "Fm", a different chord — so the file lied.
+// Named in the key it SOUNDS in — a transposed render filed under its old chords
+// is a file that lies about what is in it.
+export function defaultName(progression, transpose = 0) {
+  return (parseLines(progression).flat().slice(0, NAME_CHORDS).map((t) => transposeChord(t.sym, transpose)).join('').replace(/[^a-zA-Z0-9#]/g, '') || 'seed');
 }
 
 /**
@@ -1098,6 +1142,9 @@ export function generateSeed({ progression, bpm = 80, bars = 1, sig = '4/4', loo
                                // Per-lane mix levels. 1 = untouched, which is why a .yams
                                // from before they existed renders byte-identically.
                                trebleVolume = 1, bassVolume = 1, trebleOctave = 0, bassOctave = 0,
+                               // Semitones, applied at the voicing (planChords) — so the
+                               // .mid below moves with the audio. 0 = untouched.
+                               transpose = 0,
                                // Per-lane reverb SENDS (multipliers, like reverbAmount; null =
                                // fall back to reverbAmount for that lane). Equal sends take the
                                // legacy single-buffer path, so old .yams render byte-identically.
@@ -1113,7 +1160,7 @@ export function generateSeed({ progression, bpm = 80, bars = 1, sig = '4/4', loo
                                // the APP's choice for a new seed, not the engine's.
                                highpass = 0, lowpass = 0,
                                format = 'wav', mp3Bitrate = 192 }) {
-  const { events, totalSamples, voiced, numer, denom } = planSeedEvents({ progression, bpm, bars, sig, loops, style, swing, lanes, trebleOctave, bassOctave, chordFigure, bassFigure, pattern, trebleMirror, bassMirror });
+  const { events, totalSamples, voiced, numer, denom } = planSeedEvents({ progression, bpm, bars, sig, loops, style, swing, lanes, trebleOctave, bassOctave, transpose, chordFigure, bassFigure, pattern, trebleMirror, bassMirror });
 
   // A sampled instrument that never loaded falls back to the built-in synth
   // rather than rendering silence - a seed always comes out.
@@ -1174,7 +1221,8 @@ export function generateSeed({ progression, bpm = 80, bars = 1, sig = '4/4', loo
     audioExt: format === 'mp3' ? 'mp3' : 'wav',
     midi,
     info: {
-      progression: voiced.map((e) => e.sym).join(' '),
+      progression: voiced.map((e) => transposeChord(e.sym, transpose)).join(' '),
+      transpose,
       voicings: voiced.map((e) => e.notes),
       // ⚠ `lanes` is reported because a soloed render is a PARTIAL file and
       // nothing else in it says so. The .mid alongside is unaffected — it

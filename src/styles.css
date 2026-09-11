@@ -38,9 +38,13 @@ body {
 .seed-panel {
   min-height: 100%;
   display: flex; flex-direction: row; align-items: stretch; gap: 14px;
-  /* the bass lane's colour — the same green the keyboard lights bass keys with */
-  --seed-bass: #1e9e63;
 }
+/* The two LANE colours — each lane block, and the keyboard keys it lights, are
+   painted with its own. Defaults here, on :root so the theme's accent resolves;
+   a colour picked in Settings overrides the token inline on <html> (App.jsx).
+   ⚠ Never declare them on a descendant again (they sat on .seed-panel): a
+   declaration below <html> beats the inherited override and Settings does nothing. */
+:root { --seed-treble: var(--accent); --seed-bass: #ff6eb4; --seed-chords: #4dc8c8; }
 .seed-col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .seed-col-rest { flex: 1; }
 .seed-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
@@ -75,12 +79,16 @@ body {
 .seed-stackrow { display: flex; align-items: flex-start; gap: 8px;
   --seed-gutter: 62px; --seed-gap: 8px; --seed-strip: 42px; }   /* strip = two 20px columns + gap */
 /* the grids are as wide as their columns (square cells, never stretched); a
-   view wider than the row scrolls the stack, it does not shrink the cells */
-.seed-stack { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow-x: auto; }
+   grid wider than the view scrolls INSIDE its own `.seed-gridscroll` (below),
+   it does not shrink the cells and it does not drag the block's tools with it */
+.seed-stack { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .seed-lane-block, .seed-prog { display: flex; align-items: stretch; border: 1px solid var(--border); }
-.seed-lane-block.treble { border-left: 3px solid var(--accent); border-radius: 7px 7px 0 0; }
+.seed-lane-block.treble { --accent: var(--seed-treble); border-left: 3px solid var(--accent); border-radius: 7px 7px 0 0; }
 .seed-lane-block.bass { --accent: var(--seed-bass); border-left: 3px solid var(--accent); margin-top: -1px; }
-.seed-prog { margin-top: -1px; border-radius: 0 0 7px 7px; }
+/* the chords block carries its colour exactly like a lane: the accent its
+   controls, spans and name read, and the same 3px left edge (which also lines
+   its grid up with the lanes' — at 1px it started 2px further left) */
+.seed-prog { --accent: var(--seed-chords); border-left: 3px solid var(--accent); margin-top: -1px; border-radius: 0 0 7px 7px; }
 .seed-block { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 /* the band runs the FULL width of its lane block — it used to stop where the
    grid stopped, back when the grid stretched to fill the row; now the grid is
@@ -112,15 +120,14 @@ body {
   font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
 }
 .seed-gridwrap { display: flex; align-items: stretch; gap: var(--seed-gap); padding: 0 10px; }
-/* `margin-left: auto` parks it at the row's right edge WITHOUT reserving a
-   column: a flex auto margin only absorbs POSITIVE free space, so when the
-   grid is wider than the view it collapses to 0 and the label simply follows
-   the strip instead of sitting on top of the scrolled grid. */
-.seed-gutter { flex: 0 0 var(--seed-gutter); display: flex; align-items: center;
-  justify-content: flex-end; min-width: 0; margin-left: auto; }
+/* The name ends every band at its right edge. A lane band's articulation zone
+   already takes the slack; the CHORDS band has nothing to, so the auto margin
+   absorbs the free space in front of the name (and is 0 wherever there is none). */
+.seed-band > .seed-lane-name { margin-left: auto; }
 /* the strip: TWO columns of row boxes on the grid's row unit (auto-rows 1u,
-   the 20px box inside — the .stepgrid rule): rewrites on the left, the lane's
-   length (+ / −) on the right; a click lands on the row it faces */
+   the 20px box inside — the .stepgrid rule). A lane strip PAIRS BY FUNCTION,
+   one action per row: mirror / clear, shift left / right, add / remove step —
+   the two halves of a thing sit side by side, where the eye expects them. */
 .seed-strip {
   flex: 0 0 var(--seed-strip); display: grid; grid-template-columns: 20px 20px;
   grid-auto-rows: var(--stepgrid-u); column-gap: var(--stepgrid-gap); row-gap: 0; align-items: start;
@@ -131,12 +138,50 @@ body {
   height: 20px; line-height: 20px; text-align: center;
   font-size: 10px; font-weight: 600; color: var(--text-dim); letter-spacing: -.02em;
 }
-/* The chords strip fills only its first column (the ✎), so its length
-   controls must be told to stay in the second — the lane strips need no such
-   rule because both their columns are full and the grid's row-major flow
-   interleaves them on its own. */
-.seed-strip-len { grid-column: 2; }
+/* the lane's count sits under BOTH halves of the + / − pair it labels, so it
+   spans the strip rather than parking under one of them */
+.seed-count-span { grid-column: 1 / -1; }
+/* The chords strip is the odd one: its first row holds only the ✎, so the pair
+   below has to be PLACED rather than flowed — row-major flow would put + beside
+   the ✎ and − alone on the next row. The lane strips need no such rule: both
+   their columns are full, so the flow interleaves them on its own. The + / −
+   sit side by side like every lane's pair, and the count spans under them
+   (`.seed-count-span`, which auto-places onto the first free row = 3). */
+.seed-strip-edit { grid-row: 1; grid-column: 1; }
+.seed-strip-add  { grid-row: 2; grid-column: 1; }
+.seed-strip-sub  { grid-row: 2; grid-column: 2; }
 .seed-lane-block.treble .seed-strip { padding-top: var(--stepgrid-u); }   /* clear the ruler row */
+/* ⚠ CLAUDE: THE SCROLL IS THE GRID'S, NOT THE BLOCK'S (user ruling 2026-09-09:
+   "the slider should be within the notes block, independent from the tools
+   block"). Only the notes scroll: `.seed-gridscroll` wraps the StepGrid alone,
+   so the strip and the lane / chord name are its SIBLINGS and never move — a
+   64-step lane is several screens wide, and when the whole block scrolled, a
+   lane's own + / − sat off the right edge (to lengthen a lane you first had to
+   travel to its end).
+   ⚠ Do NOT go back to `overflow-x` on `.seed-stack` with the strips made
+   `position: sticky`: sticky binds to the SCROLLPORT, and with the block itself
+   scrolling the strips pinned mid-grid instead of at the window edge, floating
+   over the cells. The scroller has to be the grid.
+   The three still move as ONE — `syncGridScroll` mirrors scrollLeft across them
+   (they share a column count from `stackGeom`, so the ranges are identical),
+   which is what holds a chord over the beats it owns. Only the CHORDS block
+   shows a scrollbar; it is the bottom one, where the old single bar was. */
+.seed-gridscroll { flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden; }
+/* every grid hides its own bar — the stack has ONE, below, and three stacked
+   bars for one axis is three ways to ask the same question */
+.seed-gridscroll { scrollbar-width: none; }
+.seed-gridscroll::-webkit-scrollbar { display: none; }
+/* ⚠ The bar is its OWN element, never one of the grids': a grid shows a bar
+   only when IT overflows, and they do not overflow alike (the chords block is
+   four blocks wide where a lane is 64 steps), so electing one leaves the stack
+   unscrollable whenever that one happens to fit. `scroll`, not `auto`, so it is
+   always there; the spacer is measured from the widest grid. The ::after clears
+   the strip, so the bar spans exactly the scrolling zone — every block's name
+   lives in its band now, so no grid row carries a name gutter to clear. */
+.seed-scrollrow { display: flex; gap: var(--seed-gap); padding: 2px 10px 0; }
+.seed-scrollrow::after { content: ''; flex: 0 0 var(--seed-strip); }
+.seed-scrollbar { flex: 1 1 auto; min-width: 0; overflow-x: scroll; overflow-y: hidden; }
+.seed-scrollspacer { height: 1px; }
 .seed-chordtext { flex: 1; min-height: calc(var(--stepgrid-u) * 5); resize: vertical; }
 /* the flags: start level with the first note row (band 2u + ruler 1u); a
    label row and a button row per type, each one row unit tall */
@@ -181,7 +226,7 @@ body {
 
 /* The keyboard — Chord Player's piano strip. A piano's white/black is intrinsic
    (theme-invariant, like a fretboard's wood); the lit states are the lane
-   colours: treble = accent, bass = its own green so a mixed chord reads. */
+   colours: each lane's own (--seed-treble / --seed-bass) so a mixed chord reads. */
 .kbd { position: relative; display: flex; height: 64px; margin-top: 0;
        border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
 .kbd-key { padding: 0; outline: none; border: none; cursor: pointer; }
@@ -192,7 +237,7 @@ body {
                  background: #23252b; border-radius: 0 0 3px 3px;
                  transform: translateX(-50%); z-index: 1; }
 .kbd-key.black:hover { background: #3a3d46; }
-.kbd-key.white.on-treble, .kbd-key.black.on-treble { background: var(--accent); }
+.kbd-key.white.on-treble, .kbd-key.black.on-treble { background: var(--seed-treble); }
 .kbd-key.white.on-bass, .kbd-key.black.on-bass { background: var(--seed-bass); }
 /* Live projection of the seed about to be rendered */
 .seed-summary {
@@ -237,6 +282,14 @@ body {
 .seed-credits { margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
 .seed-credits-row { font-size: 12px; color: var(--text-mute); line-height: 1.6; }
 .seed-credits-row b { color: var(--text); font-weight: 600; }
+/* Settings → lane colours: one row per lane — name (in the lane's colour),
+   the catalog .swatch launcher, Reset parked at the right edge. */
+.seed-colors-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+.seed-colors-name { flex: 0 0 120px; font-size: 13px; font-weight: 600; }
+.seed-colors-name.treble { color: var(--seed-treble); }
+.seed-colors-name.bass { color: var(--seed-bass); }
+.seed-colors-name.chords { color: var(--seed-chords); }
+.seed-colors-reset { margin-left: auto; }
 
 /* Dialog (modal) chrome is provided by the shared ./lib/dialog.css (imported in index.jsx). */
 

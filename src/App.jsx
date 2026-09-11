@@ -15,6 +15,7 @@ import { NumberField } from './lib/ui-ctl-numberfield';
 import { Knob } from './lib/ui-ctl-knob';
 import { shortLabels } from './lib/ui-text';
 import { Popover } from './lib/ui-ctl-popover';
+import { ColorPicker } from './lib/ui-ctl-colorpicker';
 // Family icons (user-picked, SVG Repo) — real .svg files via ?react so they
 // follow the button's colour. Keyed by the exact family names below.
 import IconFamilyKeys from './assets/icon-yaiol-family-keys.svg?react';
@@ -31,7 +32,8 @@ import { GithubIcon } from './lib/ui-icons';
 import { generateSeed, analyzeSeed, defaultName, STYLES, STYLE_GROUPS, MP3_BITRATES,
          parseSlots, serializeSlots, resolveStyleSpec, LANE_DEFAULTS, GRID_ROWS,
          BEAT_DIVISIONS, SWINGS, SIGNATURES, parseLines, chordToken, sanitizePattern,
-         CHORD_FIGURES, BASS_FIGURES, STYLE_DEFS } from './lib/seed-engine';
+         CHORD_FIGURES, BASS_FIGURES, STYLE_DEFS, transposeChord,
+         TRANSPOSE_MIN, TRANSPOSE_MAX } from './lib/seed-engine';
 import { INSTRUMENTS, parseSoundFont, loadPreset, presetIndexForProgram } from './lib/soundfont';
 import { loadPack } from './lib/sample-pack';
 import { ROOM_KEYS } from './lib/reverb';
@@ -135,6 +137,17 @@ const APP_VERSION = pkg.version;
 // localStorage keys - prefix uses the app alias (see CLAUDE.md Settings table)
 const LS_LANG     = `${STORAGE_PREFIX}-lang`;
 const LS_THEME    = `${STORAGE_PREFIX}-theme`;
+// The colour of each block of the stack — the two lanes and the chords — in
+// stack order: `key` names the CSS token (--seed-<key>) and the stored setting
+// (<prefix>-<key>Color), `nameKey` the block's on-screen name. Absent = the
+// stylesheet's default (the treble's follows the theme accent), so only a
+// colour the user actually picked is kept.
+const BLOCK_COLORS = [
+  { key: 'treble', nameKey: 'lblSeedInstrument' },
+  { key: 'bass',   nameKey: 'lblSeedBassInstrument' },
+  { key: 'chords', nameKey: 'lblSeedChords' },
+];
+const blockColorStorageKey = (key) => `${STORAGE_PREFIX}-${key}Color`;
 const DEFAULT_LANG  = 'en';
 const DEFAULT_THEME = 'light';
 
@@ -202,6 +215,11 @@ function makeSeed(overrides = {}) {
     // Whole-octave shift per lane (−1/0/+1) — some instruments live an octave
     // away from where the voicing writes them.
     trebleOctave: 0, bassOctave: 0,
+    // The whole progression moved by semitones (TRANSPOSE_MIN..MAX) — the seed
+    // as if its chords had been typed in another key. The chord TEXT is never
+    // rewritten: it stays what was copied from the tab, the way a capo leaves
+    // the chart alone.
+    transpose: 0,
     // ⚠ CLAUDE: a NEW seed starts filtered; an OLD .yams does not (seedFromFile
     // below). The engine's own default is off, so a file written before these
     // existed still renders byte-identically. 100 Hz / 10 kHz is where a
@@ -272,6 +290,10 @@ export function seedFromFile(s, filePath = null) {
   seed.bassVolume   = vol(s.bassVolume);
   seed.trebleOctave = s.trebleOctave != null ? Number(s.trebleOctave) : 0;
   seed.bassOctave   = s.bassOctave   != null ? Number(s.bassOctave)   : 0;
+  // Additive: absent = 0 = the key the chords are written in. Clamped, because
+  // a hand-edited +7 would sit outside the control that has to show it.
+  const tr = Math.round(Number(s.transpose));
+  seed.transpose = Number.isFinite(tr) ? Math.max(TRANSPOSE_MIN, Math.min(TRANSPOSE_MAX, tr)) : 0;
   // ⚠ CLAUDE: ABSENT means OFF, not "use the new default". A .yams written
   // before the master filters existed was rendered without them, and opening it
   // must not silently re-render it as a different file. Only makeSeed() starts
@@ -288,7 +310,7 @@ export function seedFromFile(s, filePath = null) {
   if (s.format     != null) seed.format     = s.format;
   if (s.mp3Bitrate != null) seed.mp3Bitrate = Number(s.mp3Bitrate);
   const legacy = typeof s.output !== 'string' && Number(s.version) < 2;
-  if (typeof s.output === 'string') seed.output = s.output || DEFAULT_OUTPUT;
+  if (typeof s.output === 'string') seed.output = dropUnknownTokens(s.output) || DEFAULT_OUTPUT;
   else if (legacy && s.name) seed.output = String(s.name);
   if (!legacy && typeof s.name === 'string') seed.name = s.name;
   return seed;
@@ -315,6 +337,7 @@ export const buildSeed = (s) => ({
   trebleInstrument: s.trebleInstrument, bassInstrument: s.bassInstrument,
   trebleVolume: Number(s.trebleVolume), bassVolume: Number(s.bassVolume),
   trebleOctave: Number(s.trebleOctave), bassOctave: Number(s.bassOctave),
+  transpose: Number(s.transpose) || 0,
   highpass: Number(s.highpass), lowpass: Number(s.lowpass),
   reverb: s.reverb, trebleReverb: Number(s.trebleReverb), bassReverb: Number(s.bassReverb),
   format: s.format, mp3Bitrate: Number(s.mp3Bitrate),
@@ -323,39 +346,71 @@ export const buildSeed = (s) => ({
 
 // The {chords} token — a safe base name derived from the chord names (capped at the
 // engine's first-NAME_CHORDS chords, so a whole song chart can't name the file).
-const chordsToken = (s) => defaultName(s.progression);
+// Spelled in the key the seed SOUNDS in, not the one it was typed in.
+const chordsToken = (s) => defaultName(s.progression, Number(s.transpose) || 0);
 
 // The {name} token — the seed's name, stripped of characters no file system accepts.
 // A nameless seed falls back to the chord-derived base, so the default template can
 // never resolve to a headless "-arp-80".
 const nameToken = (s) => (s.name || '').replace(/[<>:"/\\|?*\x00-\x1f]/g, '').trim() || chordsToken(s);
 
-// Resolve the output tokens against a seed: {name} → the seed name, {chords} → the
-// chord-derived base, {style} → the style key, {bpm} → the BPM, {loops} → the loop
-// count. The raw template (tokens kept) is what lives in the .yams, so re-rendering
-// after a parameter change renames the file.
+// The Output template's tokens: key → its value for a seed. The raw template
+// (tokens kept) is what lives in the .yams, so re-rendering after a parameter
+// change renames the file.
 // An instrument key as a filename part: the 'vsco:' prefix is dropped — a ':'
 // is illegal in a Windows filename, so the raw pack key must never reach disk.
 const instrumentToken = (key) => (key || 'sine').replace(/^vsco:/, '');
-const resolveName = (s, raw) => raw
-  .replace(/\{name\}/g,   nameToken(s))
-  .replace(/\{chords\}/g, chordsToken(s))
-  .replace(/\{style\}/g,  s.style)
-  // {instrument-treble} = the treble lane's player; {instrument-bass} = the
-  // bass lane's (falls back to the treble instrument, which is what an empty
-  // bass field means). The order matters: '{instrument}' is a prefix of both.
-  .replace(/\{instrument-treble\}/g, instrumentToken(s.trebleInstrument))
-  .replace(/\{instrument-bass\}/g,   instrumentToken(s.bassInstrument || s.trebleInstrument))
-  .replace(/\{instrument\}/g, instrumentToken(s.trebleInstrument))
-  .replace(/\{bpm\}/g,    String(s.bpm))
-  .replace(/\{loops\}/g,  String(s.loops))
-  // Settings tokens — so a test render's filename carries the exact knobs it
-  // was made with (the user reads them back when reporting an artefact).
-  .replace(/\{reverb-type\}/g,   s.reverb)
-  // treble-bass send percents, e.g. "50-20"
-  .replace(/\{reverb-amount\}/g, `${s.trebleReverb}-${s.bassReverb}`)
-  .replace(/\{highpass\}/g,      String(s.highpass))
-  .replace(/\{lowpass\}/g,       String(s.lowpass));
+//
+// ⚠ CLAUDE: this table is the ONE list of tokens — the resolver fills from it
+// and the loader keeps only what is in it (`dropUnknownTokens`). Its ORDER is
+// the user's (ruling 2026-09-11) and every other list — the Output hint, the
+// docs — keeps it: {name} and {loops} (the Render tab) first, then the Music
+// screen left to right, top to bottom — the seed row, the treble band, the bass
+// band, the chords. A token that belongs to one lane is named `<lane>-<field>`;
+// a lane token exists for BOTH lanes or for neither. The settings tokens let a
+// test render's filename carry the exact knobs it was made with.
+// One lane's tokens, in its band's left-to-right order — written ONCE for both
+// lanes, which is what keeps "a lane token exists for both lanes or neither" true.
+const laneTokens = (lane, instrument) => [
+  [`${lane}-velocity`,   (s) => String(laneVelocityPercent(seedLaneCfg(s, lane)))],
+  [`${lane}-length`,     (s) => String(seedLaneCfg(s, lane).len)],
+  [`${lane}-hold`,       (s) => (seedLaneCfg(s, lane).hold ? 'hold' : 'nohold')],
+  [`${lane}-instrument`, instrument],
+  [`${lane}-octave`,     (s) => signed(s[`${lane}Octave`])],
+  [`${lane}-reverb`,     (s) => String(s[`${lane}Reverb`])],
+  [`${lane}-volume`,     (s) => String(s[`${lane}Volume`])],
+];
+// a signed offset as a musician writes it: +2, 0, -3
+const signed = (n) => { const v = Number(n) || 0; return v > 0 ? `+${v}` : String(v); };
+const OUTPUT_TOKENS = [
+  ['name',              (s) => nameToken(s)],
+  ['loops',             (s) => String(s.loops)],
+  // a WAV has no bitrate — the token writes nothing rather than a number the file does not have
+  ['bitrate',           (s) => (s.format === 'mp3' ? String(s.mp3Bitrate) : '')],
+  ['bpm',               (s) => String(s.bpm)],
+  ['style',             (s) => s.style],
+  // a "/" cannot sit in a filename, so the screen's 4/4 and B/4 become 4-4 and B-4
+  ['sig',               (s) => String(s.sig).replace(/\//g, '-')],
+  ['beat',              (s) => `B-${seedBeatDivision(s)}`],
+  // the landmark's key (none · light · shuffle · hard); an off-list value, as the select shows it
+  ['swing',             (s) => (swingKey(s.swing) === 'custom' ? Number(s.swing).toFixed(2) : swingKey(s.swing))],
+  ['reverb',            (s) => s.reverb],
+  ['highpass',          (s) => String(s.highpass)],
+  ['lowpass',           (s) => String(s.lowpass)],
+  ...laneTokens('treble', (s) => instrumentToken(s.trebleInstrument)),
+  // an empty bass instrument means "the treble's", so the token says that too
+  ...laneTokens('bass',   (s) => instrumentToken(s.bassInstrument || s.trebleInstrument)),
+  ['transpose',         (s) => signed(s.transpose)],
+  ['chords',            (s) => chordsToken(s)],
+];
+const OUTPUT_TOKEN_VALUE = new Map(OUTPUT_TOKENS);
+const TOKEN = /\{([^{}]*)\}/g;
+const resolveName = (s, raw) => raw.replace(TOKEN, (m, key) => (OUTPUT_TOKEN_VALUE.has(key) ? OUTPUT_TOKEN_VALUE.get(key)(s) : m));
+
+// A token that is not in the current list is REMOVED when a .yams loads — no
+// table of old names is kept (user ruling 2026-09-11: one user, no installed
+// base, so a rename is simply a rename).
+const dropUnknownTokens = (raw) => raw.replace(TOKEN, (m, key) => (OUTPUT_TOKEN_VALUE.has(key) ? m : ''));
 
 // The output file base name — the Output template (emptied by hand → the default),
 // with tokens resolved; falls back to the bare chord name if that yields nothing.
@@ -367,7 +422,7 @@ const resolveName = (s, raw) => raw
 // away by a user who has customised the Output field.
 const laneSuffix = (s) =>
   (s.lanes === 'bass' ? '-bass' : s.lanes === 'treble' ? '-treble' : s.lanes === 'none' ? '-muted' : '');
-const computeFileName = (s) =>
+export const computeFileName = (s) =>
   (resolveName(s, (s.output || '').trim() || DEFAULT_OUTPUT).trim() || chordsToken(s)) + laneSuffix(s);
 
 const toB64 = (u8) => {
@@ -385,6 +440,8 @@ export default function App() {
   const [theme,        setTheme]        = useState(() => localStorage.getItem(LS_THEME) || DEFAULT_THEME);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [updateInfo,   setUpdateInfo]   = useState(null);
+  const [blockColors,  setBlockColors]  = useState(() =>
+    Object.fromEntries(BLOCK_COLORS.map(({ key }) => [key, localStorage.getItem(blockColorStorageKey(key))])));
 
   // ── Multi-document tabs: the open seed docs + the active one. Not persisted —
   // a fresh blank seed each launch; save a .yams to keep one. (seeds is already
@@ -412,6 +469,21 @@ export default function App() {
     localStorage.setItem(LS_THEME, theme);
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
+  // A picked block colour overrides the stylesheet's token on <html>; null
+  // removes the override, so the default (and its theme-following) comes back.
+  useEffect(() => {
+    for (const { key } of BLOCK_COLORS) {
+      const c = blockColors[key];
+      if (c) {
+        localStorage.setItem(blockColorStorageKey(key), c);
+        document.documentElement.style.setProperty(`--seed-${key}`, c);
+      } else {
+        localStorage.removeItem(blockColorStorageKey(key));
+        document.documentElement.style.removeProperty(`--seed-${key}`);
+      }
+    }
+  }, [blockColors]);
 
   // Check for a new version once on launch (silent if up to date / offline / skipped)
   useEffect(() => {
@@ -618,6 +690,8 @@ export default function App() {
                    swing: Number(c.swing) || 0, lanes: c.lanes,
                    trebleVolume: Number(c.trebleVolume) / 100, bassVolume: Number(c.bassVolume) / 100,
                    trebleOctave: Number(c.trebleOctave) || 0, bassOctave: Number(c.bassOctave) || 0,
+                   // planChords reads it, at every chord boundary — audible on the next chord.
+                   transpose: Number(c.transpose) || 0,
                    // Read once, when the graph is built — see startSeed.
                    highpass: Number(c.highpass), lowpass: Number(c.lowpass),
                    // percent → the engine's multiplier scale (50% = 1)
@@ -701,6 +775,7 @@ export default function App() {
         swing: Number(s.swing) || 0, trebleInstrument: s.trebleInstrument, soundfont, bassSoundfont,
         trebleVolume: Number(s.trebleVolume) / 100, bassVolume: Number(s.bassVolume) / 100,
         trebleOctave: Number(s.trebleOctave) || 0, bassOctave: Number(s.bassOctave) || 0,
+        transpose: Number(s.transpose) || 0,
         lanes: s.lanes, highpass: Number(s.highpass), lowpass: Number(s.lowpass),
         reverb: s.reverb, trebleReverb: Number(s.trebleReverb) / 50, bassReverb: Number(s.bassReverb) / 50,
         format: s.format, mp3Bitrate: Number(s.mp3Bitrate),
@@ -926,6 +1001,7 @@ export default function App() {
           t={t}
           lang={lang} setLang={setLang}
           theme={theme} setTheme={setTheme}
+          blockColors={blockColors} setBlockColors={setBlockColors}
           packs={packs}
           onClose={() => setSettingsOpen(false)}
         />
@@ -1252,15 +1328,39 @@ function requantLane(slots, step, newStep) {
   }
   return out;
 }
-function stackGeom(sig, lanes, bars, lines, meter) {
+// A time signature's two numbers, 4/4 when unreadable.
+function sigParts(sig) {
   const [n, d] = String(sig).split('/').map(Number);
-  const numer = n > 0 ? n : 4, denom = d > 0 ? d : 4;
+  return { numer: n > 0 ? n : 4, denom: d > 0 ? d : 4 };
+}
+// A lane's settings (step, velocity, length, hold, register) for a seed: its
+// resolved figure's, over the lane defaults.
+// ⚠ CLAUDE: the ONE call for them — the band's knobs, the grid, the beat
+// division and the Output tokens all read a lane's settings through this, on
+// the seed itself.
+function seedLaneCfg(s, lane) {
+  return { ...LANE_DEFAULTS[lane], ...(resolveStyleSpec(s)[`${lane}Lane`] || {}) };
+}
+// A lane's velocity as the percent its knob shows (and {<lane>-velocity} writes).
+const laneVelocityPercent = (cfg) => Math.round(cfg.vel * 100);
+// The seed's BEAT DIVISION — slots per beat, Chord Player's B/x — has no field
+// of its own: each lane keeps its step, and the division is the finer of the
+// two over the meter's beat.
+// ⚠ CLAUDE: this is the ONE call for it. The Music screen (the select and the
+// grid, via stackGeom's `cpb`) and the {beat} filename token both call it on the
+// seed itself — never re-derive it from a lane config assembled elsewhere, or
+// the file can name a division the screen is not showing.
+function seedBeatDivision(s) {
+  const { denom } = sigParts(s.sig);
+  return Math.max(1, ...['treble', 'bass'].map((l) => Math.round(seedLaneCfg(s, l).step / denom)));
+}
+function stackGeom(sig, lanes, bars, lines, meter, cpb) {
+  const { numer, denom } = sigParts(sig);
   const beatQ = 4 / denom, barQ = numer * beatQ;
   const lineQ = Math.max(0, Number(bars) || 0) * barQ;
   const reachQ = Math.max(0, lines || 0) * lineQ;
   const spans = lanes.map((l) => laneGeom(l.slots, l.cfg, meter, barQ).patternQ);
   const viewQ = Math.ceil(Math.max(2 * barQ, lineQ, ...spans) / barQ - 1e-9) * barQ;   // whole bars, two at least
-  const cpb = Math.max(1, ...lanes.map((l) => Math.round(l.cfg.step / denom)));
   const colQ = beatQ / cpb;
   const cols = Math.max(1, Math.round(viewQ / colQ));
   return { numer, denom, beatQ, barQ, lineQ, reachQ, viewQ, cpb, colQ, cols };
@@ -1382,7 +1482,9 @@ function chordRows(progression) {
   }
   return rows;
 }
-function ChordStrip({ progression, geom, playQ = null }) {
+// `transpose` renames the chords to the key they SOUND in — the text above
+// stays as typed, so this strip is where a transposition is visible.
+function ChordStrip({ progression, transpose = 0, geom, playQ = null }) {
   const lines = useMemo(() => chordRows(progression), [progression]);
   const { cols, colQ, lineQ, reachQ } = geom;
   const lineC = Math.round(lineQ / colQ);
@@ -1400,7 +1502,7 @@ function ChordStrip({ progression, geom, playQ = null }) {
       const next = t0 + Math.round((used * lineC) / ln.total);
       const row = Math.floor(c / cols);
       const c0 = c - row * cols;
-      items.push({ sym, row, c0, span: Math.max(1, Math.min(next - c, cols - c0)), key: `${k}.${j}` });
+      items.push({ sym: transposeChord(sym, transpose), row, c0, span: Math.max(1, Math.min(next - c, cols - c0)), key: `${k}.${j}` });
     });
   });
   const pc = playQ == null ? -1 : Math.floor((((playQ / colQ) % reachC) + reachC) % reachC);
@@ -1421,7 +1523,7 @@ function ChordStrip({ progression, geom, playQ = null }) {
 function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, onAudition, tuneTrim, onTuneTrim, onField, onRender, onPlay, onReveal }) {
   const { progression, bpm, bars, sig, loops, style, chordFigure, bassFigure, pattern, swing,
           trebleMirror, bassMirror, trebleInstrument, bassInstrument, lanes,
-          trebleVolume, bassVolume, trebleOctave, bassOctave,
+          trebleVolume, bassVolume, trebleOctave, bassOctave, transpose,
           highpass, lowpass, reverb, trebleReverb, bassReverb,
           format, mp3Bitrate, name, output, filePath, error, result } = seed;
 
@@ -1493,13 +1595,42 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
   // memory only: it is a monitor field, never saved, gone with the seed.
   const styleDef = STYLE_DEFS[style] || STYLE_DEFS.pad;
   const spec = useMemo(() => resolveStyleSpec({ style, chordFigure, bassFigure, pattern }), [style, chordFigure, bassFigure, pattern]);
-  const laneCfg = (lane) => ({ ...LANE_DEFAULTS[lane], ...(spec[`${lane}Lane`] || {}) });
+  const laneCfg = (lane) => seedLaneCfg(seed, lane);
   const laneSlots = (lane) => parseSlots(spec[lane] || '.');
   // ONE time axis for the stack (see stackGeom); the progression's reach —
   // lines × one line — is its loop point, where the chord strip tiles from.
   const geom = useMemo(
-    () => stackGeom(sig, ['treble', 'bass'].map(l => ({ slots: laneSlots(l), cfg: laneCfg(l) })), bars, parseLines(progression).length, spec.meter),
+    () => stackGeom(sig, ['treble', 'bass'].map(l => ({ slots: laneSlots(l), cfg: laneCfg(l) })), bars, parseLines(progression).length, spec.meter,
+                    seedBeatDivision(seed)),
     [spec, sig, bars, progression]);   // eslint-disable-line react-hooks/exhaustive-deps
+  // ⚠ CLAUDE: the three grids scroll SEPARATELY (each owns its `.seed-gridscroll`,
+  // so a block's tools stay put — see styles.css) but must MOVE AS ONE, or a chord
+  // stops sitting over the beats it owns, which is the whole point of the stack.
+  // They share a column count from `stackGeom`, so the ranges are identical and
+  // mirroring scrollLeft is exact. `syncing` breaks the echo: assigning scrollLeft
+  // fires the sibling's own scroll event, which would assign straight back.
+  const gridScrollers = useRef([]);
+  const syncing = useRef(false);
+  const registerGrid = i => el => { gridScrollers.current[i] = el; };
+  const syncGridScroll = i => e => {
+    if (syncing.current) return;
+    syncing.current = true;
+    const x = e.currentTarget.scrollLeft;
+    gridScrollers.current.forEach((el, j) => { if (el && j !== i) el.scrollLeft = x; });
+    syncing.current = false;
+  };
+  // ⚠ CLAUDE: the stack's scrollbar is its OWN element (index 3), not one of the
+  // grids'. A grid only shows a bar when IT overflows, and the three do not
+  // overflow alike — the chords block is four blocks wide where a lane is 64
+  // steps — so picking one to show its bar leaves the stack unscrollable
+  // whenever that one happens to fit. This is `overflow-x: scroll`, so the bar
+  // is always there, over a spacer measured from the WIDEST grid.
+  const [stackW, setStackW] = useState(0);
+  useEffect(() => {
+    const w = gridScrollers.current.slice(0, 3)
+      .reduce((m, el) => (el ? Math.max(m, el.scrollWidth) : m), 0);
+    setStackW(p => (p === w ? p : w));   // guarded: this effect runs on every render
+  });
   // The band captions: i18n holds the WHOLE word, translated normally; the band
   // has room for about three characters, so the screen gets the short form and
   // the tooltip keeps the word. Shortened as a SET (shortLabels, ui-text.js):
@@ -1507,7 +1638,8 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
   // "hangerő" and "hangolás" are both "han" at three — and scripts where a
   // prefix is not an abbreviation come back whole. `npm run check:labels`.
   const CAPTIONS = ['lblSeedKnobVel', 'lblSeedKnobLen', 'lblSeedKnobTune',
-                    'lblSeedKnobOctave', 'lblSeedKnobReverb', 'lblSeedKnobVolume'];
+                    'lblSeedKnobOctave', 'lblSeedKnobReverb', 'lblSeedKnobVolume',
+                    'lblSeedKnobTranspose'];
   const caps = useMemo(() => {
     const full = CAPTIONS.map((k) => t(k));
     const short = shortLabels(full);
@@ -1705,7 +1837,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
               {Object.entries(figures).map(([k, f]) => <option key={k} value={k}>{f.name}</option>)}
             </select>
             <Knob inline arc {...knobCap('lblSeedKnobVel')} min={0} max={100} step={5} unit="%"
-                  value={Math.round(cfg.vel * 100)} onChange={v => setLaneCfg(lane, { vel: v / 100 })} />
+                  value={laneVelocityPercent(cfg)} onChange={v => setLaneCfg(lane, { vel: v / 100 })} />
             <Knob inline arc {...knobCap('lblSeedKnobLen')} min={1} max={16} step={1}
                   value={cfg.len} onChange={v => setLaneCfg(lane, { len: v })} />
             <button type="button" className={`btn icon${cfg.hold ? ' active' : ''}`} title={t('btnSeedHold')}
@@ -1777,22 +1909,25 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
             <span className="seed-lane-name">{t(isT ? 'lblSeedInstrument' : 'lblSeedBassInstrument')}</span>
           </div>
           <div className="seed-gridwrap">
-            <StepGrid t={t} lane={lane} slots={laneSlots(lane)} cfg={cfg} meter={spec.meter} geom={geom} sel={sel}
-                      showRuler={isT} playCol={playColFor(lane)} mirror={isT ? trebleMirror : bassMirror} onCell={onCell} />
-            {/* two columns, row for row with the grid: the rewrites, and the
-                lane's LENGTH in steps (+ / −, Chord Player's; the count
-                itself is a label on the band) */}
+            <div className="seed-gridscroll" ref={registerGrid(isT ? 0 : 1)} onScroll={syncGridScroll(isT ? 0 : 1)}>
+              <StepGrid t={t} lane={lane} slots={laneSlots(lane)} cfg={cfg} meter={spec.meter} geom={geom} sel={sel}
+                        showRuler={isT} playCol={playColFor(lane)} mirror={isT ? trebleMirror : bassMirror} onCell={onCell} />
+            </div>
+            {/* two columns, row for row with the grid, PAIRED BY FUNCTION — each
+                row holds the two halves of one action: mirror / clear, shift
+                left / right, add / remove step. The lane's LENGTH is the last
+                pair, with the step count as a label spanning right under it. */}
             <div className="seed-strip">
               <button type="button" title={t('tipSeedLaneMirror')}
                       className={`btn icon small${(isT ? trebleMirror : bassMirror) ? ' active' : ''}`}
                       onClick={() => onField({ [isT ? 'trebleMirror' : 'bassMirror']: !(isT ? trebleMirror : bassMirror) })}>
                 <ArrowLeftRight /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneAddStep')} onClick={() => laneAction(lane, 'add')}><Plus /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneShiftLeft')} onClick={() => laneAction(lane, 'left')}><ChevronLeft /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneRemoveStep')} disabled={laneSlots(lane).length <= 1} onClick={() => laneAction(lane, 'remove')}><Minus /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneShiftRight')} onClick={() => laneAction(lane, 'right')}><ChevronRight /></button>
-              <span className="seed-count mono" title={t('tipSeedSlots')}>{laneSlots(lane).length}</span>
               <button type="button" className="btn icon small" title={t('tipSeedLaneClear')} onClick={() => laneAction(lane, 'clear')}><Eraser /></button>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneShiftLeft')} onClick={() => laneAction(lane, 'left')}><ChevronLeft /></button>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneShiftRight')} onClick={() => laneAction(lane, 'right')}><ChevronRight /></button>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneAddStep')} onClick={() => laneAction(lane, 'add')}><Plus /></button>
+              <button type="button" className="btn icon small" title={t('tipSeedLaneRemoveStep')} disabled={laneSlots(lane).length <= 1} onClick={() => laneAction(lane, 'remove')}><Minus /></button>
+              <span className="seed-count seed-count-span mono" title={t('tipSeedSlots')}>{laneSlots(lane).length}</span>
             </div>
           </div>
         </div>
@@ -1958,6 +2093,15 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
               swaps the blocks for the text IN PLACE (paste, Ctrl+Enter back). */}
           <div className="seed-prog">
             <div className="seed-block">
+              {/* the chords' own band, built like a lane's: controls that act on
+                  the HARMONY from the left edge, the block's name at the right.
+                  Transpose is a position either side of a centre, so no arc (like oct). */}
+              <div className="seed-band">
+                <Knob inline {...knobCap('lblSeedKnobTranspose')} title={t('tipSeedTranspose')}
+                      min={TRANSPOSE_MIN} max={TRANSPOSE_MAX} step={1}
+                      value={Number(transpose) || 0} onChange={v => onField({ transpose: v })} />
+                <span className="seed-lane-name">{t('lblSeedChords')}</span>
+              </div>
               <div className="seed-gridwrap">
                 {chordsAsText ? (
                   <textarea className="textarea mono seed-chordtext" autoFocus
@@ -1969,7 +2113,12 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
                       }
                     }} />
                 ) : (
-                  <ChordStrip progression={progression} geom={geom} playQ={playPos ? playPos.q : null} />
+                  /* the CHORDS grid is the one that SHOWS a scrollbar (styles.css)
+                     — it is the bottom block, where the stack's single bar used
+                     to sit; the two lanes hide theirs and follow it. */
+                  <div className="seed-gridscroll" ref={registerGrid(2)} onScroll={syncGridScroll(2)}>
+                    <ChordStrip progression={progression} transpose={Number(transpose) || 0} geom={geom} playQ={playPos ? playPos.q : null} />
+                  </div>
                 )}
                 {/* Column 1 edits the chord TEXT; column 2 is how long a LINE
                     of it lasts — the progression's own extent, the same place a
@@ -1978,18 +2127,26 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
                     the music, this describes how the text is READ, so it is a
                     property of the chords and belongs on them. */}
                 <div className="seed-strip">
-                  <button type="button" className={`btn icon small${chordsAsText ? ' active' : ''}`}
+                  <button type="button" className={`btn icon small seed-strip-edit${chordsAsText ? ' active' : ''}`}
                           title={t('tipSeedChordsEdit')} onClick={() => setChordsAsText(v => !v)}>
                     <Pencil />
                   </button>
-                  <button type="button" className="btn icon small seed-strip-len" title={t('tipSeedBarsAdd')}
+                  <button type="button" className="btn icon small seed-strip-add" title={t('tipSeedBarsAdd')}
                           onClick={() => onField({ bars: bars + 0.25 })}><Plus /></button>
-                  <button type="button" className="btn icon small seed-strip-len" title={t('tipSeedBarsRemove')}
+                  <button type="button" className="btn icon small seed-strip-sub" title={t('tipSeedBarsRemove')}
                           disabled={bars <= 0.25} onClick={() => onField({ bars: bars - 0.25 })}><Minus /></button>
-                  <span className="seed-count mono seed-strip-len" title={t('lblSeedBars')}>{bars}</span>
+                  <span className="seed-count seed-count-span mono" title={t('lblSeedBars')}>{bars}</span>
                 </div>
-                <div className="seed-gutter"><span className="seed-lane-name">{t('lblSeedChords')}</span></div>
               </div>
+            </div>
+          </div>
+          {/* the stack's ONE scrollbar — it drives the three grids and is driven
+              by them (syncGridScroll). It sits under the chords, where the old
+              whole-stack bar was, and spans exactly the grid column: the ::after
+              spacer clears the strip + the name gutter, which do not scroll. */}
+          <div className="seed-scrollrow">
+            <div className="seed-scrollbar" ref={registerGrid(3)} onScroll={syncGridScroll(3)}>
+              <div className="seed-scrollspacer" style={{ width: stackW }} />
             </div>
           </div>
         </div>
@@ -2030,16 +2187,17 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
         </div>
       </div>
 
-      {/* Output — own full-width row. The rendered file's base name: tokens {name}, {chords},
-          {style}, {instrument}, {instrument-treble}, {instrument-bass}, {bpm}, {loops},
-          {reverb-type}, {reverb-amount}, {highpass} and {lowpass} are replaced with the current
-          form values at render time (see resolveName()). Emptied by hand → the DEFAULT_OUTPUT
-          template. */}
+      {/* Output — own full-width row. The rendered file's base name: its tokens (the
+          list and its order live in OUTPUT_TOKENS) are replaced with the current form
+          values at render time. Emptied by hand → the DEFAULT_OUTPUT template. */}
       <div className="seed-field">
         <label className="dlg-field-label">{t('lblSeedOutput')}</label>
         <input className="input" type="text"
                value={output} onChange={e => onField({ output: e.target.value })} />
-        <span className="hint">{t('hntSeedOutput')}</span>
+        {/* the token list comes from OUTPUT_TOKENS itself, never from i18n: the
+            names are the same in every language, and a second copy of the list
+            in the text would drift from the table the resolver uses */}
+        <span className="hint">{t('hntSeedOutput')} {OUTPUT_TOKENS.map(([key]) => `{${key}}`).join(', ')}</span>
       </div>
       </>}
 
@@ -2097,7 +2255,11 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
   );
 }
 
-function SettingsDialog({ t, lang, setLang, theme, setTheme, packs, onClose }) {
+function SettingsDialog({ t, lang, setLang, theme, setTheme, blockColors, setBlockColors, packs, onClose }) {
+  // The swatch shows the colour the block is painted with right now: the picked
+  // one, or the stylesheet's resolved default (the treble's follows the theme).
+  const blockColorShown = (key) => blockColors[key]
+    || getComputedStyle(document.documentElement).getPropertyValue(`--seed-${key}`).trim();
   // Instrument credits, grouped per AUTHOR (the person leads — user ruling
   // 2026-09-02): rendered from packs.json's shipped attribution, so the list
   // updates itself when the library changes. CC0 imposes nothing and is not
@@ -2188,6 +2350,23 @@ function SettingsDialog({ t, lang, setLang, theme, setTheme, packs, onClose }) {
                     );
                   })}
                 </div>
+              </div>
+              {/* Block colours — the colour-card rows of ampl's Settings: the name in
+                  its colour, the shared ColorPicker swatch, Reset to the default. */}
+              <div className="dlg-field divider">
+                <label className="dlg-field-label">{t('lblDlgSettingsDisplayColors')}</label>
+                {BLOCK_COLORS.map(({ key, nameKey }) => (
+                  <div key={key} className="seed-colors-row">
+                    <span className={`seed-colors-name ${key}`}>{t(nameKey)}</span>
+                    <ColorPicker color={blockColorShown(key)}
+                      onChange={(c) => setBlockColors(prev => ({ ...prev, [key]: c }))}
+                      cancelLabel={t('btnGlobalCancel')} applyLabel={t('btnGlobalApply')} pickTitle={t('tipGlobalPickFromScreen')} />
+                    <button className="btn subtle seed-colors-reset" disabled={!blockColors[key]}
+                      onClick={() => setBlockColors(prev => ({ ...prev, [key]: null }))}>
+                      {t('btnDlgSettingsDisplayColorReset')}
+                    </button>
+                  </div>
+                ))}
               </div>
           </div>
 

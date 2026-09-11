@@ -12,6 +12,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Cancel",
+    btnGlobalApply:                         "Apply",
+    tipGlobalPickFromScreen:                "Pick from screen",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "New version available:",
@@ -34,6 +36,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Theme",
     btnDlgSettingsDisplayThemeDark:         "Dark",
     btnDlgSettingsDisplayThemeLight:        "Light",
+    lblDlgSettingsDisplayColors:            "Colors",
+    btnDlgSettingsDisplayColorReset:        "Reset",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "renders chord progressions to audio + MIDI seeds that constrain AI music generators like Suno.",
@@ -78,6 +82,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Style",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "transpose",
+    tipSeedTranspose:                       "Move the whole progression up or down in semitones — the same as typing the chords in another key. The chord text stays as written; the chord strip shows the new names",
     optSeedSwingNone:                       "None",
     optSeedSwingLight:                      "Light",
     optSeedSwingShuffle:                    "Shuffle",
@@ -140,7 +146,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Name",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Base name of the rendered files. Tokens replaced at render: {name}, {chords} (the first 8 chords), {style}, {instrument}, {instrument-treble}, {instrument-bass}, {bpm}, {loops}, {reverb-type}, {reverb-amount}, {highpass}, {lowpass}.",
+    hntSeedOutput:                          "Base name of the rendered files. The chords token keeps only the first 8 chords. Tokens replaced at render:",
     btnSeedRender:                          "Render seed",
     btnSeedPlay:                            "Play",
     btnSeedStop:                            "Stop",
@@ -179,6 +185,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Annuler",
+    btnGlobalApply:                         "Appliquer",
+    tipGlobalPickFromScreen:                "Sélectionner à l'écran",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nouvelle version disponible :",
@@ -201,6 +209,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Thème",
     btnDlgSettingsDisplayThemeDark:         "Sombre",
     btnDlgSettingsDisplayThemeLight:        "Clair",
+    lblDlgSettingsDisplayColors:            "Couleurs",
+    btnDlgSettingsDisplayColorReset:        "Réinitialiser",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Génère des progressions d'accords en graines audio + MIDI qui contraignent les générateurs de musique IA comme Suno.",
@@ -245,6 +255,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Style",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transposer",
+    tipSeedTranspose:                       "Déplacer toute la progression vers le haut ou vers le bas en demi-tons — comme si vous tapiez les accords dans une autre tonalité. Le texte des accords reste tel quel ; la bande d'accords affiche les nouveaux noms.",
     optSeedSwingNone:                       "Aucun",
     optSeedSwingLight:                      "Léger",
     optSeedSwingShuffle:                    "Shuffle",
@@ -307,7 +319,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Débit MP3",
     lblSeedName:                            "Nom",
     lblSeedOutput:                          "Sortie",
-    hntSeedOutput:                          "Nom de base des fichiers rendus. Jetons remplacés au rendu : {name}, {chords} (les 8 premiers accords), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nom de base des fichiers rendus. Le jeton d'accords ne conserve que les 8 premiers accords. Jetons remplacés au rendu :",
     btnSeedRender:                          "Rendre la source",
     btnSeedPlay:                            "Jouer",
     btnSeedStop:                            "Arrêter",
@@ -345,6 +357,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Abbrechen",
+    btnGlobalApply:                         "Anwenden",
+    tipGlobalPickFromScreen:                "Vom Bildschirm auswählen",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Neue Version verfügbar:",
@@ -367,6 +381,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Design",
     btnDlgSettingsDisplayThemeDark:         "Dunkel",
     btnDlgSettingsDisplayThemeLight:        "Hell",
+    lblDlgSettingsDisplayColors:            "Farben",
+    btnDlgSettingsDisplayColorReset:        "Zurücksetzen",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Erzeugt Akkordfolgen als Audio- und MIDI-Seeds, die KI-Musikgeneratoren wie Suno einschränken.",
@@ -411,6 +427,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stil",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponieren",
+    tipSeedTranspose:                       "Verschiebt die gesamte Progression in Halbtonschritten nach oben oder unten — wie wenn Sie die Akkorde in einer anderen Tonart eingeben würden. Der Akkordtext bleibt wie geschrieben; der Akkordstreifen zeigt die neuen Namen.",
     optSeedSwingNone:                       "Keine",
     optSeedSwingLight:                      "Leicht",
     optSeedSwingShuffle:                    "Shuffle",
@@ -473,7 +491,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3-Bitrate",
     lblSeedName:                            "Name",
     lblSeedOutput:                          "Ausgabe",
-    hntSeedOutput:                          "Basisname der gerenderten Dateien. Token, die beim Rendern ersetzt werden: {name}, {chords} (die ersten 8 Akkorde), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Basisname der gerenderten Dateien. Der Akkord-Token behält nur die ersten 8 Akkorde. Token werden beim Rendern ersetzt:",
     btnSeedRender:                          "Seed rendern",
     btnSeedPlay:                            "Abspielen",
     btnSeedStop:                            "Stoppen",
@@ -511,6 +529,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Cancelar",
+    btnGlobalApply:                         "Aplicar",
+    tipGlobalPickFromScreen:                "Seleccionar de la pantalla",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nueva versión disponible:",
@@ -533,6 +553,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Oscuro",
     btnDlgSettingsDisplayThemeLight:        "Claro",
+    lblDlgSettingsDisplayColors:            "Colores",
+    btnDlgSettingsDisplayColorReset:        "Restablecer",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genera progresiones de acordes a semillas de audio + MIDI que restringen generadores de música IA como Suno.",
@@ -577,6 +599,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Estilo",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponer",
+    tipSeedTranspose:                       "Mueve toda la progresión hacia arriba o hacia abajo en semitonos — lo mismo que escribir los acordes en otra tonalidad. El texto del acorde permanece como está; la tira de acordes muestra los nuevos nombres.",
     optSeedSwingNone:                       "Ninguno",
     optSeedSwingLight:                      "Ligero",
     optSeedSwingShuffle:                    "Shuffle",
@@ -639,7 +663,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nombre",
     lblSeedOutput:                          "Salida",
-    hntSeedOutput:                          "Nombre base de los archivos renderizados. Tokens reemplazados al renderizar: {name}, {chords} (los primeros 8 acordes), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nombre base de los archivos renderizados. El token de acordes mantiene solo los primeros 8 acordes. Tokens reemplazados al renderizar:",
     btnSeedRender:                          "Renderizar semilla",
     btnSeedPlay:                            "Reproducir",
     btnSeedStop:                            "Detener",
@@ -677,6 +701,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Cancelar",
+    btnGlobalApply:                         "Aplicar",
+    tipGlobalPickFromScreen:                "Selecionar da tela",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova versão disponível:",
@@ -699,6 +725,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Escuro",
     btnDlgSettingsDisplayThemeLight:        "Claro",
+    lblDlgSettingsDisplayColors:            "Cores",
+    btnDlgSettingsDisplayColorReset:        "Redefinir",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
@@ -743,6 +771,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Estilo",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transpor",
+    tipSeedTranspose:                       "Move toda a progressão para cima ou para baixo em semitons — o mesmo que digitar os acordes em outra tonalidade. O texto do acorde permanece como escrito; a faixa de acordes mostra os novos nomes.",
     optSeedSwingNone:                       "Nenhum",
     optSeedSwingLight:                      "Leve",
     optSeedSwingShuffle:                    "Shuffle",
@@ -805,7 +835,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nome",
     lblSeedOutput:                          "Saída",
-    hntSeedOutput:                          "Nome base dos arquivos renderizados. Tokens substituídos na renderização: {name}, {chords} (os 8 primeiros acordes), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nome base dos arquivos renderizados. O token de acordes mantém apenas os 8 primeiros acordes. Tokens substituídos na renderização:",
     btnSeedRender:                          "Renderizar semente",
     btnSeedPlay:                            "Reproduzir",
     btnSeedStop:                            "Parar",
@@ -843,6 +873,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Cancelar",
+    btnGlobalApply:                         "Aplicar",
+    tipGlobalPickFromScreen:                "Selecionar do ecrã",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova versão disponível:",
@@ -865,6 +897,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Escuro",
     btnDlgSettingsDisplayThemeLight:        "Claro",
+    lblDlgSettingsDisplayColors:            "Cores",
+    btnDlgSettingsDisplayColorReset:        "Repor",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
@@ -909,6 +943,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Estilo",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transpor",
+    tipSeedTranspose:                       "Move toda a progressão para cima ou para baixo em semitons — o mesmo que digitar os acordes noutra tonalidade. O texto do acorde permanece como escrito; a faixa de acordes mostra os novos nomes.",
     optSeedSwingNone:                       "Nenhum",
     optSeedSwingLight:                      "Leve",
     optSeedSwingShuffle:                    "Shuffle",
@@ -971,7 +1007,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nome",
     lblSeedOutput:                          "Saída",
-    hntSeedOutput:                          "Nome base dos ficheiros renderizados. Tokens substituídos na renderização: {name}, {chords} (os 8 primeiros acordes), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nome base dos ficheiros renderizados. O token de acordes mantém apenas os 8 primeiros acordes. Tokens substituídos na renderização:",
     btnSeedRender:                          "Renderizar semente",
     btnSeedPlay:                            "Reproduzir",
     btnSeedStop:                            "Parar",
@@ -1009,6 +1045,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Annulla",
+    btnGlobalApply:                         "Applica",
+    tipGlobalPickFromScreen:                "Seleziona dallo schermo",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nuova versione disponibile:",
@@ -1031,6 +1069,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Scuro",
     btnDlgSettingsDisplayThemeLight:        "Chiaro",
+    lblDlgSettingsDisplayColors:            "Colori",
+    btnDlgSettingsDisplayColorReset:        "Reimposta",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genera progressioni di accordi in semi audio + MIDI che vincolano generatori di musica AI come Suno.",
@@ -1075,6 +1115,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stile",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Trasporre",
+    tipSeedTranspose:                       "Sposta l'intera progressione su o giù di semitoni — come digitare gli accordi in un'altra tonalità. Il testo dell'accordo rimane come scritto; la striscia degli accordi mostra i nuovi nomi.",
     optSeedSwingNone:                       "Nessuno",
     optSeedSwingLight:                      "Leggero",
     optSeedSwingShuffle:                    "Shuffle",
@@ -1137,7 +1179,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nome",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Nome base dei file renderizzati. Token sostituiti al rendering: {name}, {chords} (i primi 8 accordi), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nome base dei file renderizzati. Il token degli accordi mantiene solo i primi 8 accordi. Token sostituiti al rendering:",
     btnSeedRender:                          "Renderizza seed",
     btnSeedPlay:                            "Riproduci",
     btnSeedStop:                            "Ferma",
@@ -1175,6 +1217,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Annuleren",
+    btnGlobalApply:                         "Toepassen",
+    tipGlobalPickFromScreen:                "Kiezen van scherm",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nieuwe versie beschikbaar:",
@@ -1197,6 +1241,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Thema",
     btnDlgSettingsDisplayThemeDark:         "Donker",
     btnDlgSettingsDisplayThemeLight:        "Licht",
+    lblDlgSettingsDisplayColors:            "Kleuren",
+    btnDlgSettingsDisplayColorReset:        "Herstellen",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genereert akkoordprogressies als audio- en MIDI-seeds die AI-muziekgeneratoren zoals Suno beperken.",
@@ -1241,6 +1287,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stijl",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponeren",
+    tipSeedTranspose:                       "Verplaats de hele progressie omhoog of omlaag in halve tonen — hetzelfde als het typen van de akkoorden in een andere toonsoort. De akkoordtekst blijft zoals geschreven; de akkoordbalk toont de nieuwe namen.",
     optSeedSwingNone:                       "Geen",
     optSeedSwingLight:                      "Licht",
     optSeedSwingShuffle:                    "Shuffle",
@@ -1303,7 +1351,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3-bitrate",
     lblSeedName:                            "Naam",
     lblSeedOutput:                          "Uitvoer",
-    hntSeedOutput:                          "Basisnaam van de gerenderde bestanden. Tokens vervangen bij renderen: {name}, {chords} (de eerste 8 akkoorden), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Basisnaam van de gerenderde bestanden. Het akkoorden-token behoudt alleen de eerste 8 akkoorden. Tokens vervangen bij renderen:",
     btnSeedRender:                          "Seed renderen",
     btnSeedPlay:                            "Afspelen",
     btnSeedStop:                            "Stoppen",
@@ -1341,6 +1389,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Отмена",
+    btnGlobalApply:                         "Применить",
+    tipGlobalPickFromScreen:                "Выбрать с экрана",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Доступна новая версия:",
@@ -1363,6 +1413,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Тема",
     btnDlgSettingsDisplayThemeDark:         "Тёмный",
     btnDlgSettingsDisplayThemeLight:        "Светлый",
+    lblDlgSettingsDisplayColors:            "Цвета",
+    btnDlgSettingsDisplayColorReset:        "Сбросить",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Создает аккордовые прогрессии в виде аудио- и MIDI-заготовок, ограничивающих ИИ-генераторы музыки, такие как Suno.",
@@ -1407,6 +1459,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Стиль",
     lblSeedSwing:                           "Свинг",
+    lblSeedKnobTranspose:                   "Транспонировать",
+    tipSeedTranspose:                       "Перемещает всю прогрессию вверх или вниз по полутонам — то же самое, что ввод аккордов в другой тональности. Текст аккорда остается как написан; полоса аккордов показывает новые названия.",
     optSeedSwingNone:                       "Нет",
     optSeedSwingLight:                      "Легкий",
     optSeedSwingShuffle:                    "Shuffle",
@@ -1469,7 +1523,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Битрейт MP3",
     lblSeedName:                            "Имя",
     lblSeedOutput:                          "Вывод",
-    hntSeedOutput:                          "Базовое имя рендеренных файлов. Токены, заменяемые при рендеринге: {name}, {chords} (первые 8 аккордов), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Базовое имя отрендеренных файлов. Токен аккордов сохраняет только первые 8 аккордов. Токены, заменяемые при рендеринге:",
     btnSeedRender:                          "Рендерить сид",
     btnSeedPlay:                            "Воспроизвести",
     btnSeedStop:                            "Стоп",
@@ -1507,6 +1561,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Скасувати",
+    btnGlobalApply:                         "Застосувати",
+    tipGlobalPickFromScreen:                "Вибрати з екрана",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Доступна нова версія:",
@@ -1529,6 +1585,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Тема",
     btnDlgSettingsDisplayThemeDark:         "Темний",
     btnDlgSettingsDisplayThemeLight:        "Світлий",
+    lblDlgSettingsDisplayColors:            "Кольори",
+    btnDlgSettingsDisplayColorReset:        "Скинути",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Створює акордові прогресії як аудіо- та MIDI-заготовки, що обмежують ШІ-генератори музики, наприклад Suno.",
@@ -1573,6 +1631,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Стиль",
     lblSeedSwing:                           "Свінг",
+    lblSeedKnobTranspose:                   "Транспонувати",
+    tipSeedTranspose:                       "Переміщує всю прогресію вгору або вниз на півтони — те саме, що введення акордів в іншій тональності. Текст акорду залишається як написано; смуга акордів показує нові назви.",
     optSeedSwingNone:                       "Немає",
     optSeedSwingLight:                      "Легкий",
     optSeedSwingShuffle:                    "Shuffle",
@@ -1635,7 +1695,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Бітрейт MP3",
     lblSeedName:                            "Назва",
     lblSeedOutput:                          "Вивід",
-    hntSeedOutput:                          "Базова назва відрендерених файлів. Токени, що замінюються при рендерингу: {name}, {chords} (перші 8 акордів), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Базова назва відрендерених файлів. Токен акордів зберігає лише перші 8 акордів. Токени, що замінюються під час рендерингу:",
     btnSeedRender:                          "Рендерити сід",
     btnSeedPlay:                            "Відтворити",
     btnSeedStop:                            "Зупинити",
@@ -1673,6 +1733,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Anuluj",
+    btnGlobalApply:                         "Zastosuj",
+    tipGlobalPickFromScreen:                "Wybierz z ekranu",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Dostępna nowa wersja:",
@@ -1695,6 +1757,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Motyw",
     btnDlgSettingsDisplayThemeDark:         "Ciemny",
     btnDlgSettingsDisplayThemeLight:        "Jasny",
+    lblDlgSettingsDisplayColors:            "Kolory",
+    btnDlgSettingsDisplayColorReset:        "Resetuj",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generuje progresje akordów jako nasiona audio + MIDI, które ograniczają generatory muzyki AI, takie jak Suno.",
@@ -1739,6 +1803,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Styl",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponuj",
+    tipSeedTranspose:                       "Przesuń całą progresję w górę lub w dół o półtony — tak jak wpisywanie akordów w innej tonacji. Tekst akordu pozostaje bez zmian; pasek akordów pokazuje nowe nazwy.",
     optSeedSwingNone:                       "Brak",
     optSeedSwingLight:                      "Lekki",
     optSeedSwingShuffle:                    "Shuffle",
@@ -1801,7 +1867,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nazwa",
     lblSeedOutput:                          "Wyjście",
-    hntSeedOutput:                          "Nazwa bazowa renderowanych plików. Tokeny zastępowane podczas renderowania: {name}, {chords} (pierwsze 8 akordów), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nazwa bazowa renderowanych plików. Token akordów zachowuje tylko pierwsze 8 akordów. Tokeny zastępowane podczas renderowania:",
     btnSeedRender:                          "Renderuj seed",
     btnSeedPlay:                            "Odtwórz",
     btnSeedStop:                            "Zatrzymaj",
@@ -1839,6 +1905,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Anulează",
+    btnGlobalApply:                         "Aplică",
+    tipGlobalPickFromScreen:                "Alege de pe ecran",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Versiune nouă disponibilă:",
@@ -1861,6 +1929,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Temă",
     btnDlgSettingsDisplayThemeDark:         "Întunecat",
     btnDlgSettingsDisplayThemeLight:        "Luminos",
+    lblDlgSettingsDisplayColors:            "Culori",
+    btnDlgSettingsDisplayColorReset:        "Resetează",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generează progresii de acorduri în semințe audio + MIDI care constrâng generatoarele de muzică AI precum Suno.",
@@ -1905,6 +1975,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stil",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transpunere",
+    tipSeedTranspose:                       "Mută întreaga progresie în sus sau în jos în semitonuri — la fel ca tastarea acordurilor într-o altă tonalitate. Textul acordului rămâne așa cum este scris; banda de acorduri arată noile nume.",
     optSeedSwingNone:                       "Niciunul",
     optSeedSwingLight:                      "Ușor",
     optSeedSwingShuffle:                    "Shuffle",
@@ -1967,7 +2039,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nume",
     lblSeedOutput:                          "Ieșire",
-    hntSeedOutput:                          "Numele de bază al fișierelor redate. Tokenuri înlocuite la redare: {name}, {chords} (primele 8 acorduri), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Numele de bază al fișierelor redate. Tokenul de acorduri păstrează doar primele 8 acorduri. Tokenuri înlocuite la redare:",
     btnSeedRender:                          "Randează seed-ul",
     btnSeedPlay:                            "Redare",
     btnSeedStop:                            "Oprește",
@@ -2005,6 +2077,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Avbryt",
+    btnGlobalApply:                         "Verkställ",
+    tipGlobalPickFromScreen:                "Välj från skärmen",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Ny version tillgänglig:",
@@ -2027,6 +2101,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Mörk",
     btnDlgSettingsDisplayThemeLight:        "Ljus",
+    lblDlgSettingsDisplayColors:            "Färger",
+    btnDlgSettingsDisplayColorReset:        "Återställ",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genererar ackordföljder som ljud- och MIDI-frön som begränsar AI-musikgeneratorer som Suno.",
@@ -2071,6 +2147,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stil",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponera",
+    tipSeedTranspose:                       "Flytta hela progressionen uppåt eller nedåt i halvtoner — samma som att skriva ackorden i en annan tonart. Ackordtexten förblir som skriven; ackordremsan visar de nya namnen.",
     optSeedSwingNone:                       "Ingen",
     optSeedSwingLight:                      "Lätt",
     optSeedSwingShuffle:                    "Shuffle",
@@ -2133,7 +2211,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3-bitrate",
     lblSeedName:                            "Namn",
     lblSeedOutput:                          "Utdata",
-    hntSeedOutput:                          "Basnamn för de renderade filerna. Token som ersätts vid rendering: {name}, {chords} (de första 8 ackorden), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Basnamn för de renderade filerna. Ackord-token behåller endast de första 8 ackorden. Tokens ersätts vid rendering:",
     btnSeedRender:                          "Rendera seed",
     btnSeedPlay:                            "Spela upp",
     btnSeedStop:                            "Stoppa",
@@ -2171,6 +2249,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Avbryt",
+    btnGlobalApply:                         "Bruk",
+    tipGlobalPickFromScreen:                "Velg fra skjermen",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Ny versjon tilgjengelig:",
@@ -2193,6 +2273,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Mørk",
     btnDlgSettingsDisplayThemeLight:        "Lys",
+    lblDlgSettingsDisplayColors:            "Farger",
+    btnDlgSettingsDisplayColorReset:        "Tilbakestill",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genererer akkordprogresjoner som lyd- og MIDI-frø som begrenser AI-musikgeneratorer som Suno.",
@@ -2237,6 +2319,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stil",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponere",
+    tipSeedTranspose:                       "Flytt hele progresjonen opp eller ned i halvtoner — det samme som å skrive akkordene i en annen toneart. Akkordteksten forblir som skrevet; akkordstripen viser de nye navnene.",
     optSeedSwingNone:                       "Ingen",
     optSeedSwingLight:                      "Lett",
     optSeedSwingShuffle:                    "Shuffle",
@@ -2299,7 +2383,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3-bitrate",
     lblSeedName:                            "Navn",
     lblSeedOutput:                          "Utdata",
-    hntSeedOutput:                          "Grunnnavn for de renderte filene. Tokens som erstattes ved rendering: {name}, {chords} (de første 8 akkordene), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Grunnnavn for de renderte filene. Akkord-tokenet beholder kun de første 8 akkordene. Tokens erstattes ved rendering:",
     btnSeedRender:                          "Rendrer seed",
     btnSeedPlay:                            "Spill av",
     btnSeedStop:                            "Stopp",
@@ -2337,6 +2421,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "İptal",
+    btnGlobalApply:                         "Uygula",
+    tipGlobalPickFromScreen:                "Ekrandan seç",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Yeni sürüm mevcut:",
@@ -2359,6 +2445,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Koyu",
     btnDlgSettingsDisplayThemeLight:        "Açık",
+    lblDlgSettingsDisplayColors:            "Renkler",
+    btnDlgSettingsDisplayColorReset:        "Sıfırla",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Akor ilerlemelerini, Suno gibi yapay zeka müzik jeneratörlerini kısıtlayan ses + MIDI tohumlarına dönüştürür.",
@@ -2403,6 +2491,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stil",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transpoze",
+    tipSeedTranspose:                       "Tüm ilerlemeyi yarım ton yukarı veya aşağı taşıyın — akorları başka bir tonda yazmakla aynı. Akor metni yazıldığı gibi kalır; akor şeridi yeni adları gösterir.",
     optSeedSwingNone:                       "Yok",
     optSeedSwingLight:                      "Hafif",
     optSeedSwingShuffle:                    "Shuffle",
@@ -2465,7 +2555,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bit hızı",
     lblSeedName:                            "Ad",
     lblSeedOutput:                          "Çıktı",
-    hntSeedOutput:                          "Oluşturulan dosyaların temel adı. Oluşturma sırasında değiştirilen belirteçler: {name}, {chords} (ilk 8 akor), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Oluşturulan dosyaların temel adı. Akor belirteci yalnızca ilk 8 akoru tutar. Oluşturma sırasında değiştirilen belirteçler:",
     btnSeedRender:                          "Seed'i oluştur",
     btnSeedPlay:                            "Oynat",
     btnSeedStop:                            "Durdur",
@@ -2503,6 +2593,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Odustani",
+    btnGlobalApply:                         "Primijeni",
+    tipGlobalPickFromScreen:                "Odaberi sa zaslona",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova verzija dostupna:",
@@ -2525,6 +2617,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Tamno",
     btnDlgSettingsDisplayThemeLight:        "Svijetlo",
+    lblDlgSettingsDisplayColors:            "Boje",
+    btnDlgSettingsDisplayColorReset:        "Poništi",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generira akordne progresije kao audio + MIDI sjemenke koje ograničavaju AI generatore glazbe poput Suno.",
@@ -2569,6 +2663,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stil",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponiraj",
+    tipSeedTranspose:                       "Pomaknite cijelu progresiju gore ili dolje u polutonovima — isto kao da upisujete akorde u drugom tonalitetu. Tekst akorda ostaje kako je napisan; traka akorda prikazuje nova imena.",
     optSeedSwingNone:                       "Nema",
     optSeedSwingLight:                      "Lagano",
     optSeedSwingShuffle:                    "Shuffle",
@@ -2631,7 +2727,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Naziv",
     lblSeedOutput:                          "Izlaz",
-    hntSeedOutput:                          "Osnovni naziv renderiranih datoteka. Tokeni zamijenjeni pri renderiranju: {name}, {chords} (prvih 8 akorda), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Osnovni naziv renderiranih datoteka. Token akorda zadržava samo prvih 8 akorda. Tokeni zamijenjeni pri renderiranju:",
     btnSeedRender:                          "Renderiraj sjeme",
     btnSeedPlay:                            "Reproduciraj",
     btnSeedStop:                            "Zaustavi",
@@ -2669,6 +2765,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Ακύρωση",
+    btnGlobalApply:                         "Εφαρμογή",
+    tipGlobalPickFromScreen:                "Επιλογή από οθόνη",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Νέα έκδοση διαθέσιμη:",
@@ -2691,6 +2789,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Θέμα",
     btnDlgSettingsDisplayThemeDark:         "Σκοτεινό",
     btnDlgSettingsDisplayThemeLight:        "Φωτεινό",
+    lblDlgSettingsDisplayColors:            "Χρώματα",
+    btnDlgSettingsDisplayColorReset:        "Επαναφορά",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Δημιουργεί συγχορδιακές προόδους ως ηχητικούς + MIDI σπόρους που περιορίζουν γεννήτριες μουσικής AI όπως το Suno.",
@@ -2735,6 +2835,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Στυλ",
     lblSeedSwing:                           "Σουίνγκ",
+    lblSeedKnobTranspose:                   "Μεταφορά",
+    tipSeedTranspose:                       "Μετακινήστε ολόκληρη την εξέλιξη πάνω ή κάτω σε ημιτόνια — το ίδιο με την πληκτρολόγηση των συγχορδιών σε άλλη τονικότητα. Το κείμενο της συγχορδίας παραμένει όπως γράφτηκε· η λωρίδα συγχορδιών δείχνει τα νέα ονόματα.",
     optSeedSwingNone:                       "Κανένα",
     optSeedSwingLight:                      "Ελαφρύ",
     optSeedSwingShuffle:                    "Shuffle",
@@ -2797,7 +2899,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Όνομα",
     lblSeedOutput:                          "Έξοδος",
-    hntSeedOutput:                          "Βασικό όνομα των αποδοθέντων αρχείων. Διακριτικά που αντικαθίστανται κατά την απόδοση: {name}, {chords} (τα πρώτα 8 ακόρντα), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Βασικό όνομα των αποδοθέντων αρχείων. Το διακριτικό συγχορδιών διατηρεί μόνο τις πρώτες 8 συγχορδίες. Διακριτικά που αντικαθίστανται κατά την απόδοση:",
     btnSeedRender:                          "Απόδοση seed",
     btnSeedPlay:                            "Αναπαραγωγή",
     btnSeedStop:                            "Διακοπή",
@@ -2835,6 +2937,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "ביטול",
+    btnGlobalApply:                         "החל",
+    tipGlobalPickFromScreen:                "בחר מהמסך",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "גרסה חדשה זמינה:",
@@ -2857,6 +2961,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "ערכת נושא",
     btnDlgSettingsDisplayThemeDark:         "כהה",
     btnDlgSettingsDisplayThemeLight:        "בהיר",
+    lblDlgSettingsDisplayColors:            "צבעים",
+    btnDlgSettingsDisplayColorReset:        "איפוס",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "מפיק התקדמויות אקורדים לזרעי אודיו + MIDI המגבילים מחוללי מוזיקת AI כגון Suno.",
@@ -2901,6 +3007,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "סגנון",
     lblSeedSwing:                           "סווינג",
+    lblSeedKnobTranspose:                   "טרנספוזיציה",
+    tipSeedTranspose:                       "הזז את כל ההתקדמות למעלה או למטה בחצאי טונים — כמו הקלדת האקורדים בסולם אחר. טקסט האקורד נשאר כפי שנכתב; רצועת האקורדים מציגה את השמות החדשים.",
     optSeedSwingNone:                       "ללא",
     optSeedSwingLight:                      "קל",
     optSeedSwingShuffle:                    "Shuffle",
@@ -2963,7 +3071,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "ביטרייט MP3",
     lblSeedName:                            "שם",
     lblSeedOutput:                          "פלט",
-    hntSeedOutput:                          "שם בסיס של הקבצים המעובדים. אסימונים מוחלפים בעת העיבוד: {name}, {chords} (8 האקורדים הראשונים), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "שם בסיס של הקבצים המעובדים. אסימון האקורדים שומר רק את 8 האקורדים הראשונים. אסימונים מוחלפים בעת העיבוד:",
     btnSeedRender:                          "רנדר סיד",
     btnSeedPlay:                            "נגן",
     btnSeedStop:                            "עצור",
@@ -3001,6 +3109,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "إلغاء",
+    btnGlobalApply:                         "تطبيق",
+    tipGlobalPickFromScreen:                "اختر من الشاشة",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "إصدار جديد متوفر:",
@@ -3023,6 +3133,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "المظهر",
     btnDlgSettingsDisplayThemeDark:         "داكن",
     btnDlgSettingsDisplayThemeLight:        "فاتح",
+    lblDlgSettingsDisplayColors:            "الألوان",
+    btnDlgSettingsDisplayColorReset:        "إعادة تعيين",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "يحول تتابعات الأوتار إلى بذور صوتية وMIDI تقيد مولدات الموسيقى بالذكاء الاصطناعي مثل Suno.",
@@ -3067,6 +3179,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "نمط",
     lblSeedSwing:                           "سوينغ",
+    lblSeedKnobTranspose:                   "تحويل",
+    tipSeedTranspose:                       "انقل التقدم بأكمله لأعلى أو لأسفل بنصف درجة — تمامًا مثل كتابة الكوردات في مفتاح آخر. يبقى نص الكورد كما هو مكتوب؛ ويعرض شريط الكوردات الأسماء الجديدة.",
     optSeedSwingNone:                       "لا شيء",
     optSeedSwingLight:                      "خفيف",
     optSeedSwingShuffle:                    "Shuffle",
@@ -3129,7 +3243,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "معدل بت MP3",
     lblSeedName:                            "الاسم",
     lblSeedOutput:                          "الإخراج",
-    hntSeedOutput:                          "الاسم الأساسي للملفات المعروضة. الرموز المميزة المستبدلة عند العرض: {name}, {chords} (أول 8 أوتار), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "الاسم الأساسي للملفات المعروضة. رمز الأوتار يحتفظ فقط بأول 8 أوتار. الرموز المستبدلة عند العرض:",
     btnSeedRender:                          "عرض البذرة",
     btnSeedPlay:                            "تشغيل",
     btnSeedStop:                            "إيقاف",
@@ -3167,6 +3281,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "لغو",
+    btnGlobalApply:                         "اعمال",
+    tipGlobalPickFromScreen:                "انتخاب از صفحه",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "نسخه جدید موجود است:",
@@ -3189,6 +3305,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "پوسته",
     btnDlgSettingsDisplayThemeDark:         "تیره",
     btnDlgSettingsDisplayThemeLight:        "روشن",
+    lblDlgSettingsDisplayColors:            "رنگ‌ها",
+    btnDlgSettingsDisplayColorReset:        "بازنشانی",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "تبدیل توالی آکوردها به بذرهای صوتی و MIDI که ژنراتورهای موسیقی هوش مصنوعی مانند Suno را محدود می‌کنند.",
@@ -3233,6 +3351,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "سبک",
     lblSeedSwing:                           "سوینگ",
+    lblSeedKnobTranspose:                   "ترانسپوز",
+    tipSeedTranspose:                       "کل پیشرفت را نیم‌پرده بالا یا پایین ببرید — همانند تایپ آکوردها در گام دیگر. متن آکورد همانطور که نوشته شده باقی می‌ماند؛ نوار آکورد نام‌های جدید را نشان می‌دهد.",
     optSeedSwingNone:                       "هیچ",
     optSeedSwingLight:                      "سبک",
     optSeedSwingShuffle:                    "Shuffle",
@@ -3295,7 +3415,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "بیت‌ریت MP3",
     lblSeedName:                            "نام",
     lblSeedOutput:                          "خروجی",
-    hntSeedOutput:                          "نام پایه فایل‌های رندر شده. توکن‌های جایگزین شده هنگام رندر: {name}, {chords} (۸ آکورد اول), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "نام پایه فایل‌های رندر شده. توکن آکورد فقط 8 آکورد اول را نگه می‌دارد. توکن‌های جایگزین شده هنگام رندر:",
     btnSeedRender:                          "رندر سید",
     btnSeedPlay:                            "پخش",
     btnSeedStop:                            "توقف",
@@ -3333,6 +3453,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "取消",
+    btnGlobalApply:                         "应用",
+    tipGlobalPickFromScreen:                "从屏幕选取",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "新版本可用:",
@@ -3355,6 +3477,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "主题",
     btnDlgSettingsDisplayThemeDark:         "深色",
     btnDlgSettingsDisplayThemeLight:        "浅色",
+    lblDlgSettingsDisplayColors:            "颜色",
+    btnDlgSettingsDisplayColorReset:        "重置",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "将和弦进行渲染为音频和 MIDI 种子，用于约束 Suno 等 AI 音乐生成器。",
@@ -3399,6 +3523,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "样式",
     lblSeedSwing:                           "摇摆",
+    lblSeedKnobTranspose:                   "移调",
+    tipSeedTranspose:                       "将整个和弦进行上移或下移半音 — 相当于在另一个调中输入和弦。和弦文本保持不变；和弦条显示新名称。",
     optSeedSwingNone:                       "无",
     optSeedSwingLight:                      "轻",
     optSeedSwingShuffle:                    "Shuffle",
@@ -3461,7 +3587,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 比特率",
     lblSeedName:                            "名称",
     lblSeedOutput:                          "输出",
-    hntSeedOutput:                          "渲染文件的基本名称。渲染时替换的令牌：{name}, {chords} (前8个和弦), {style}, {instrument}, {bpm}, {loops}。",
+    hntSeedOutput:                          "渲染文件的基本名称。和弦令牌仅保留前 8 个和弦。渲染时替换的令牌：",
     btnSeedRender:                          "渲染种子",
     btnSeedPlay:                            "播放",
     btnSeedStop:                            "停止",
@@ -3499,6 +3625,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "取消",
+    btnGlobalApply:                         "套用",
+    tipGlobalPickFromScreen:                "從螢幕選取",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "新版本可用:",
@@ -3521,6 +3649,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "佈景主題",
     btnDlgSettingsDisplayThemeDark:         "深色",
     btnDlgSettingsDisplayThemeLight:        "淺色",
+    lblDlgSettingsDisplayColors:            "顏色",
+    btnDlgSettingsDisplayColorReset:        "重設",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "將和弦進行渲染為音訊和 MIDI 種子，用於約束 Suno 等 AI 音樂生成器。",
@@ -3565,6 +3695,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "樣式",
     lblSeedSwing:                           "搖擺",
+    lblSeedKnobTranspose:                   "移調",
+    tipSeedTranspose:                       "將整個和弦進行上移或下移半音 — 相當於在另一個調中輸入和弦。和弦文字保持不變；和弦條顯示新名稱。",
     optSeedSwingNone:                       "無",
     optSeedSwingLight:                      "輕",
     optSeedSwingShuffle:                    "Shuffle",
@@ -3627,7 +3759,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 位元率",
     lblSeedName:                            "名稱",
     lblSeedOutput:                          "輸出",
-    hntSeedOutput:                          "渲染檔案的基本名稱。渲染時替換的令牌：{name}, {chords} (前8個和弦), {style}, {instrument}, {bpm}, {loops}。",
+    hntSeedOutput:                          "彩現檔案的基本名稱。和弦權杖僅保留前 8 個和弦。彩現時替換的權杖：",
     btnSeedRender:                          "渲染種子",
     btnSeedPlay:                            "播放",
     btnSeedStop:                            "停止",
@@ -3665,6 +3797,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "キャンセル",
+    btnGlobalApply:                         "適用",
+    tipGlobalPickFromScreen:                "画面から選択",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "新しいバージョンが利用可能です:",
@@ -3687,6 +3821,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "テーマ",
     btnDlgSettingsDisplayThemeDark:         "ダーク",
     btnDlgSettingsDisplayThemeLight:        "ライト",
+    lblDlgSettingsDisplayColors:            "色",
+    btnDlgSettingsDisplayColorReset:        "リセット",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "コード進行をオーディオとMIDIシードとして生成し、SunoのようなAI音楽ジェネレーターを制約します。",
@@ -3731,6 +3867,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "スタイル",
     lblSeedSwing:                           "スウィング",
+    lblSeedKnobTranspose:                   "移調",
+    tipSeedTranspose:                       "進行全体を半音単位で上下に移動します — 別のキーでコードを入力するのと同じです。コードテキストは書かれたまま維持され、コードストリップには新しい名前が表示されます。",
     optSeedSwingNone:                       "なし",
     optSeedSwingLight:                      "軽い",
     optSeedSwingShuffle:                    "Shuffle",
@@ -3793,7 +3931,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 ビットレート",
     lblSeedName:                            "名前",
     lblSeedOutput:                          "出力",
-    hntSeedOutput:                          "レンダリングされたファイルのベース名。レンダリング時に置き換えられるトークン：{name}, {chords} (最初の8つのコード), {style}, {instrument}, {bpm}, {loops}。",
+    hntSeedOutput:                          "レンダリングされたファイルのベース名。コードトークンは最初の8つのコードのみを保持します。レンダリング時に置換されるトークン：",
     btnSeedRender:                          "シードをレンダリング",
     btnSeedPlay:                            "再生",
     btnSeedStop:                            "停止",
@@ -3831,6 +3969,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "취소",
+    btnGlobalApply:                         "적용",
+    tipGlobalPickFromScreen:                "화면에서 선택",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "새 버전 사용 가능:",
@@ -3853,6 +3993,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "테마",
     btnDlgSettingsDisplayThemeDark:         "어둡게",
     btnDlgSettingsDisplayThemeLight:        "밝게",
+    lblDlgSettingsDisplayColors:            "색상",
+    btnDlgSettingsDisplayColorReset:        "재설정",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "코드 진행을 Suno와 같은 AI 음악 생성기를 제약하는 오디오 및 MIDI 시드로 생성합니다.",
@@ -3897,6 +4039,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "스타일",
     lblSeedSwing:                           "스윙",
+    lblSeedKnobTranspose:                   "조옮김",
+    tipSeedTranspose:                       "전체 진행을 반음 단위로 위아래로 이동합니다. — 다른 키로 코드를 입력하는 것과 같습니다. 코드 텍스트는 작성된 대로 유지되며, 코드 스트립에는 새 이름이 표시됩니다.",
     optSeedSwingNone:                       "없음",
     optSeedSwingLight:                      "약함",
     optSeedSwingShuffle:                    "Shuffle",
@@ -3959,7 +4103,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 비트 전송률",
     lblSeedName:                            "이름",
     lblSeedOutput:                          "출력",
-    hntSeedOutput:                          "렌더링된 파일의 기본 이름. 렌더링 시 대체되는 토큰: {name}, {chords} (첫 8개 코드), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "렌더링된 파일의 기본 이름. 코드 토큰은 처음 8개의 코드만 유지합니다. 렌더링 시 교체되는 토큰:",
     btnSeedRender:                          "시드 렌더링",
     btnSeedPlay:                            "재생",
     btnSeedStop:                            "중지",
@@ -3997,6 +4141,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Hủy",
+    btnGlobalApply:                         "Áp dụng",
+    tipGlobalPickFromScreen:                "Chọn từ màn hình",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Phiên bản mới có sẵn:",
@@ -4019,6 +4165,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Chủ đề",
     btnDlgSettingsDisplayThemeDark:         "Tối",
     btnDlgSettingsDisplayThemeLight:        "Sáng",
+    lblDlgSettingsDisplayColors:            "Màu sắc",
+    btnDlgSettingsDisplayColorReset:        "Đặt lại",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Tạo ra các chuỗi hợp âm thành hạt giống âm thanh + MIDI để hạn chế các trình tạo nhạc AI như Suno.",
@@ -4063,6 +4211,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Kiểu",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Dịch giọng",
+    tipSeedTranspose:                       "Di chuyển toàn bộ tiến trình lên hoặc xuống theo nửa cung — giống như nhập hợp âm ở một khóa khác. Văn bản hợp âm giữ nguyên như đã viết; dải hợp âm hiển thị tên mới.",
     optSeedSwingNone:                       "Không",
     optSeedSwingLight:                      "Nhẹ",
     optSeedSwingShuffle:                    "Shuffle",
@@ -4125,7 +4275,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Tốc độ bit MP3",
     lblSeedName:                            "Tên",
     lblSeedOutput:                          "Đầu ra",
-    hntSeedOutput:                          "Tên cơ sở của các tệp đã kết xuất. Các mã thông báo được thay thế khi kết xuất: {name}, {chords} (8 hợp âm đầu tiên), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Tên cơ sở của các tệp đã kết xuất. Mã thông báo hợp âm chỉ giữ 8 hợp âm đầu tiên. Mã thông báo được thay thế khi kết xuất:",
     btnSeedRender:                          "Kết xuất hạt giống",
     btnSeedPlay:                            "Phát",
     btnSeedStop:                            "Dừng",
@@ -4163,6 +4313,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "ยกเลิก",
+    btnGlobalApply:                         "ใช้",
+    tipGlobalPickFromScreen:                "เลือกจากหน้าจอ",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "มีเวอร์ชันใหม่:",
@@ -4185,6 +4337,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "ธีม",
     btnDlgSettingsDisplayThemeDark:         "มืด",
     btnDlgSettingsDisplayThemeLight:        "สว่าง",
+    lblDlgSettingsDisplayColors:            "สี",
+    btnDlgSettingsDisplayColorReset:        "รีเซ็ต",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "สร้างคอร์ดโปรเกรสชันเป็นเมล็ดเสียง + MIDI ที่จำกัดเครื่องสร้างเพลง AI เช่น Suno",
@@ -4229,6 +4383,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "สไตล์",
     lblSeedSwing:                           "สวิง",
+    lblSeedKnobTranspose:                   "ทรานสโพส",
+    tipSeedTranspose:                       "ย้ายลำดับคอร์ดทั้งหมดขึ้นหรือลงทีละครึ่งเสียง — เหมือนกับการพิมพ์คอร์ดในคีย์อื่น ข้อความคอร์ดจะยังคงเดิม; แถบแสดงคอร์ดจะแสดงชื่อใหม่",
     optSeedSwingNone:                       "ไม่มี",
     optSeedSwingLight:                      "เบา",
     optSeedSwingShuffle:                    "Shuffle",
@@ -4291,7 +4447,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "บิตเรต MP3",
     lblSeedName:                            "ชื่อ",
     lblSeedOutput:                          "เอาต์พุต",
-    hntSeedOutput:                          "ชื่อพื้นฐานของไฟล์ที่เรนเดอร์ โทเค็นที่ถูกแทนที่เมื่อเรนเดอร์: {name}, {chords} (คอร์ด 8 ตัวแรก), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "ชื่อพื้นฐานของไฟล์ที่เรนเดอร์ โทเค็นคอร์ดจะเก็บเฉพาะคอร์ด 8 ตัวแรก โทเค็นที่ถูกแทนที่เมื่อเรนเดอร์:",
     btnSeedRender:                          "เรนเดอร์ซีด",
     btnSeedPlay:                            "เล่น",
     btnSeedStop:                            "หยุด",
@@ -4329,6 +4485,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Batal",
+    btnGlobalApply:                         "Terapkan",
+    tipGlobalPickFromScreen:                "Pilih dari layar",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Versi baru tersedia:",
@@ -4351,6 +4509,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Gelap",
     btnDlgSettingsDisplayThemeLight:        "Terang",
+    lblDlgSettingsDisplayColors:            "Warna",
+    btnDlgSettingsDisplayColorReset:        "Atur ulang",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Menghasilkan progresi akor menjadi benih audio + MIDI yang membatasi generator musik AI seperti Suno.",
@@ -4395,6 +4555,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Gaya",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transpos",
+    tipSeedTranspose:                       "Pindahkan seluruh progresi naik atau turun dalam semitone — sama seperti mengetik akor dalam kunci lain. Teks akor tetap seperti yang tertulis; bilah akor menunjukkan nama baru.",
     optSeedSwingNone:                       "Tidak Ada",
     optSeedSwingLight:                      "Ringan",
     optSeedSwingShuffle:                    "Shuffle",
@@ -4457,7 +4619,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nama",
     lblSeedOutput:                          "Keluaran",
-    hntSeedOutput:                          "Nama dasar file yang dirender. Token yang diganti saat render: {name}, {chords} (8 akor pertama), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nama dasar file yang dirender. Token akor hanya menyimpan 8 akor pertama. Token diganti saat render:",
     btnSeedRender:                          "Render seed",
     btnSeedPlay:                            "Putar",
     btnSeedStop:                            "Berhenti",
@@ -4495,6 +4657,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Cancel·la",
+    btnGlobalApply:                         "Aplica",
+    tipGlobalPickFromScreen:                "Tria de la pantalla",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova versió disponible:",
@@ -4517,6 +4681,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Fosc",
     btnDlgSettingsDisplayThemeLight:        "Clar",
+    lblDlgSettingsDisplayColors:            "Colors",
+    btnDlgSettingsDisplayColorReset:        "Restableix",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genera progressions d'acords a llavors d'àudio + MIDI que restringeixen generadors de música IA com Suno.",
@@ -4561,6 +4727,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Estil",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transposar",
+    tipSeedTranspose:                       "Mou tota la progressió amunt o avall en semitons — el mateix que escriure els acords en una altra tonalitat. El text de l'acord es manté tal com està; la tira d'acords mostra els nous noms.",
     optSeedSwingNone:                       "Cap",
     optSeedSwingLight:                      "Lleuger",
     optSeedSwingShuffle:                    "Shuffle",
@@ -4623,7 +4791,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nom",
     lblSeedOutput:                          "Sortida",
-    hntSeedOutput:                          "Nom base dels fitxers renderitzats. Tokens substituïts en renderitzar: {name}, {chords} (els 8 primers acords), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nom base dels fitxers renderitzats. El testimoni d'acords només conserva els 8 primers acords. Testimonis substituïts en renderitzar:",
     btnSeedRender:                          "Renderitza la llavor",
     btnSeedPlay:                            "Reprodueix",
     btnSeedStop:                            "Atura",
@@ -4661,6 +4829,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Zrušit",
+    btnGlobalApply:                         "Použít",
+    tipGlobalPickFromScreen:                "Vybrat z obrazovky",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nová verze je k dispozici:",
@@ -4683,6 +4853,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Motiv",
     btnDlgSettingsDisplayThemeDark:         "Tmavý",
     btnDlgSettingsDisplayThemeLight:        "Světlý",
+    lblDlgSettingsDisplayColors:            "Barvy",
+    btnDlgSettingsDisplayColorReset:        "Obnovit",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generuje akordové progrese jako audio + MIDI semena, která omezují generátory hudby AI, jako je Suno.",
@@ -4727,6 +4899,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Styl",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponovat",
+    tipSeedTranspose:                       "Přesuňte celou progresi nahoru nebo dolů o půltóny — stejně jako zadávání akordů v jiné tónině. Text akordu zůstává tak, jak je napsán; proužek akordů zobrazuje nové názvy.",
     optSeedSwingNone:                       "Žádné",
     optSeedSwingLight:                      "Lehké",
     optSeedSwingShuffle:                    "Shuffle",
@@ -4789,7 +4963,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Název",
     lblSeedOutput:                          "Výstup",
-    hntSeedOutput:                          "Základní název renderovaných souborů. Tokeny nahrazené při renderování: {name}, {chords} (prvních 8 akordů), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Základní název renderovaných souborů. Token akordů zachovává pouze prvních 8 akordů. Tokeny nahrazené při renderování:",
     btnSeedRender:                          "Vykreslit seed",
     btnSeedPlay:                            "Přehrát",
     btnSeedStop:                            "Zastavit",
@@ -4827,6 +5001,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Annuller",
+    btnGlobalApply:                         "Anvend",
+    tipGlobalPickFromScreen:                "Vælg fra skærm",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Ny version tilgængelig:",
@@ -4849,6 +5025,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Mørk",
     btnDlgSettingsDisplayThemeLight:        "Lys",
+    lblDlgSettingsDisplayColors:            "Farver",
+    btnDlgSettingsDisplayColorReset:        "Nulstil",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Genererer akkordprogressioner som lyd- og MIDI-frø, der begrænser AI-musikgeneratorer som Suno.",
@@ -4893,6 +5071,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stil",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponer",
+    tipSeedTranspose:                       "Flyt hele progressionen op eller ned i halvtoner — det samme som at indtaste akkorderne i en anden toneart. Akkordteksten forbliver som skrevet; akkordstrimlen viser de nye navne.",
     optSeedSwingNone:                       "Ingen",
     optSeedSwingLight:                      "Let",
     optSeedSwingShuffle:                    "Shuffle",
@@ -4955,7 +5135,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3-bitrate",
     lblSeedName:                            "Navn",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Basisnavn for de renderede filer. Tokens erstattes ved rendering: {name}, {chords} (de første 8 akkorder), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Basisnavn for de renderede filer. Akkord-tokenet beholder kun de første 8 akkorder. Tokens erstattes ved rendering:",
     btnSeedRender:                          "Render seed",
     btnSeedPlay:                            "Afspil",
     btnSeedStop:                            "Stop",
@@ -4993,6 +5173,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Peruuta",
+    btnGlobalApply:                         "Käytä",
+    tipGlobalPickFromScreen:                "Valitse näytöltä",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Uusi versio saatavilla:",
@@ -5015,6 +5197,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Teema",
     btnDlgSettingsDisplayThemeDark:         "Tumma",
     btnDlgSettingsDisplayThemeLight:        "Vaalea",
+    lblDlgSettingsDisplayColors:            "Värit",
+    btnDlgSettingsDisplayColorReset:        "Palauta",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Luo sointukulkuja ääni- ja MIDI-siemeniksi, jotka rajoittavat tekoälymusiikkigeneraattoreita kuten Sunoa.",
@@ -5059,6 +5243,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Tyyli",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponoi",
+    tipSeedTranspose:                       "Siirrä koko progressio ylös tai alas puolisävelaskelin — sama kuin kirjoittaisi soinnut toiseen sävellajiin. Soinnun teksti pysyy kirjoitettuna; sointupalkki näyttää uudet nimet.",
     optSeedSwingNone:                       "Ei mitään",
     optSeedSwingLight:                      "Kevyt",
     optSeedSwingShuffle:                    "Shuffle",
@@ -5121,7 +5307,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3-bittinopeus",
     lblSeedName:                            "Nimi",
     lblSeedOutput:                          "Tuloste",
-    hntSeedOutput:                          "Renderöityjen tiedostojen perusnimi. Renderöinnissä korvattavat tunnukset: {name}, {chords} (ensimmäiset 8 sointua), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Renderöityjen tiedostojen perusnimi. Soinnut-token säilyttää vain 8 ensimmäistä sointua. Renderöinnissä korvattavat tokenit:",
     btnSeedRender:                          "Renderöi siemen",
     btnSeedPlay:                            "Toista",
     btnSeedStop:                            "Pysäytä",
@@ -5159,6 +5345,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Batal",
+    btnGlobalApply:                         "Guna",
+    tipGlobalPickFromScreen:                "Pilih dari skrin",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Versi baharu tersedia:",
@@ -5181,6 +5369,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Gelap",
     btnDlgSettingsDisplayThemeLight:        "Cerah",
+    lblDlgSettingsDisplayColors:            "Warna",
+    btnDlgSettingsDisplayColorReset:        "Tetapkan semula",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Menghasilkan progresi kord kepada benih audio + MIDI yang mengekang penjana muzik AI seperti Suno.",
@@ -5225,6 +5415,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Gaya",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transpos",
+    tipSeedTranspose:                       "Alihkan keseluruhan progresi ke atas atau ke bawah dalam semiton — sama seperti menaip kord dalam kunci lain. Teks kord kekal seperti yang ditulis; jalur kord menunjukkan nama baharu.",
     optSeedSwingNone:                       "Tiada",
     optSeedSwingLight:                      "Ringan",
     optSeedSwingShuffle:                    "Shuffle",
@@ -5287,7 +5479,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Kadar bit MP3",
     lblSeedName:                            "Nama",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Nama asas fail yang dirender. Token diganti semasa render: {name}, {chords} (8 kord pertama), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nama asas fail yang dirender. Token kord hanya menyimpan 8 kord pertama. Token diganti semasa render:",
     btnSeedRender:                          "Render benih",
     btnSeedPlay:                            "Main",
     btnSeedStop:                            "Henti",
@@ -5325,6 +5517,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Չեղարկել",
+    btnGlobalApply:                         "Կիրառել",
+    tipGlobalPickFromScreen:                "Ընտրել էկրանից",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Նոր տարբերակ հասանելի է:",
@@ -5347,6 +5541,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Թեմա",
     btnDlgSettingsDisplayThemeDark:         "Մուգ",
     btnDlgSettingsDisplayThemeLight:        "Բաց",
+    lblDlgSettingsDisplayColors:            "Գույներ",
+    btnDlgSettingsDisplayColorReset:        "Վերակայել",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Ստեղծում է ակորդային հաջորդականություններ որպես աուդիո + MIDI սերմեր, որոնք սահմանափակում են AI երաժշտական գեներատորները, ինչպիսին է Suno-ն։",
@@ -5391,6 +5587,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Ոճ",
     lblSeedSwing:                           "Սվինգ",
+    lblSeedKnobTranspose:                   "Տրանսպոզիցիա",
+    tipSeedTranspose:                       "Տեղափոխել ամբողջ պրոգրեսիան վեր կամ վար կիսատոներով — նույնն է, ինչ ակորդները մուտքագրել այլ տոնայնությամբ։ Ակորդի տեքստը մնում է գրվածի պես; ակորդի ժապավենը ցույց է տալիս նոր անունները։",
     optSeedSwingNone:                       "Ոչ մեկը",
     optSeedSwingLight:                      "Թեթև",
     optSeedSwingShuffle:                    "Shuffle",
@@ -5453,7 +5651,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 բիթրեյթ",
     lblSeedName:                            "Անուն",
     lblSeedOutput:                          "Ելք",
-    hntSeedOutput:                          "Ռենդերացված ֆայլերի հիմնական անունը։ Ռենդերացման ժամանակ փոխարինվող թոքեններ՝ {name}, {chords} (առաջին 8 ակորդները), {style}, {instrument}, {bpm}, {loops}։",
+    hntSeedOutput:                          "Վերարտադրված ֆայլերի հիմնական անունը։ Ակորդների թոքենը պահպանում է միայն առաջին 8 ակորդները։ Թոքենները փոխարինվում են վերարտադրման ժամանակ:",
     btnSeedRender:                          "Ռենդեր սիդ",
     btnSeedPlay:                            "Նվագարկել",
     btnSeedStop:                            "Դադարեցնել",
@@ -5491,6 +5689,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Отказ",
+    btnGlobalApply:                         "Приложи",
+    tipGlobalPickFromScreen:                "Избери от екрана",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Налична е нова версия:",
@@ -5513,6 +5713,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Тема",
     btnDlgSettingsDisplayThemeDark:         "Тъмен",
     btnDlgSettingsDisplayThemeLight:        "Светъл",
+    lblDlgSettingsDisplayColors:            "Цветове",
+    btnDlgSettingsDisplayColorReset:        "Нулиране",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Генерира акордови прогресии като аудио + MIDI семена, които ограничават AI музикални генератори като Suno.",
@@ -5557,6 +5759,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Стил",
     lblSeedSwing:                           "Суинг",
+    lblSeedKnobTranspose:                   "Транспониране",
+    tipSeedTranspose:                       "Премества цялата прогресия нагоре или надолу в полутонове — същото като въвеждането на акордите в друга тоналност. Текстът на акорда остава както е написан; лентата с акорди показва новите имена.",
     optSeedSwingNone:                       "Няма",
     optSeedSwingLight:                      "Лек",
     optSeedSwingShuffle:                    "Shuffle",
@@ -5619,7 +5823,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 битрейт",
     lblSeedName:                            "Име",
     lblSeedOutput:                          "Изход",
-    hntSeedOutput:                          "Базово име на рендираните файлове. Токени, заменяни при рендиране: {name}, {chords} (първите 8 акорда), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Базово име на рендираните файлове. Токенът за акорди запазва само първите 8 акорда. Токени, заменени при рендиране:",
     btnSeedRender:                          "Рендирай сийд",
     btnSeedPlay:                            "Възпроизвеждане",
     btnSeedStop:                            "Спиране",
@@ -5657,6 +5861,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Cancelar",
+    btnGlobalApply:                         "Aplicar",
+    tipGlobalPickFromScreen:                "Escoller da pantalla",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova versión dispoñible:",
@@ -5679,6 +5885,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Escuro",
     btnDlgSettingsDisplayThemeLight:        "Claro",
+    lblDlgSettingsDisplayColors:            "Cores",
+    btnDlgSettingsDisplayColorReset:        "Restablecer",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Xera progresións de acordes a sementes de audio + MIDI que restrinxen xeradores de música IA como Suno.",
@@ -5723,6 +5931,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Estilo",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transpoñer",
+    tipSeedTranspose:                       "Move toda a progresión cara arriba ou cara abaixo en semitons — o mesmo que escribir os acordes noutra tonalidade. O texto do acorde permanece como está; a tira de acordes mostra os novos nomes.",
     optSeedSwingNone:                       "Ningún",
     optSeedSwingLight:                      "Lixeiro",
     optSeedSwingShuffle:                    "Shuffle",
@@ -5785,7 +5995,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Bitrate MP3",
     lblSeedName:                            "Nome",
     lblSeedOutput:                          "Saída",
-    hntSeedOutput:                          "Nome base dos ficheiros renderizados. Tokens substituídos ao renderizar: {name}, {chords} (os 8 primeiros acordes), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Nome base dos ficheiros renderizados. O token de acordes só conserva os 8 primeiros acordes. Tokens substituídos ao renderizar:",
     btnSeedRender:                          "Renderizar semente",
     btnSeedPlay:                            "Reproducir",
     btnSeedStop:                            "Deter",
@@ -5823,6 +6033,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Mégse",
+    btnGlobalApply:                         "Alkalmaz",
+    tipGlobalPickFromScreen:                "Kiválasztás a képernyőről",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Új verzió elérhető:",
@@ -5845,6 +6057,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Téma",
     btnDlgSettingsDisplayThemeDark:         "Sötét",
     btnDlgSettingsDisplayThemeLight:        "Világos",
+    lblDlgSettingsDisplayColors:            "Színek",
+    btnDlgSettingsDisplayColorReset:        "Visszaállítás",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Akkordmeneteket generál audio + MIDI magokká, amelyek korlátozzák az AI zenei generátorokat, mint a Suno.",
@@ -5889,6 +6103,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stílus",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transzponálás",
+    tipSeedTranspose:                       "Az egész progressziót félhangonként fel vagy le mozgatja — ugyanaz, mintha az akkordokat egy másik hangnemben írná be. Az akkord szövege változatlan marad; az akkordcsík az új neveket mutatja.",
     optSeedSwingNone:                       "Nincs",
     optSeedSwingLight:                      "Enyhe",
     optSeedSwingShuffle:                    "Shuffle",
@@ -5951,7 +6167,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitráta",
     lblSeedName:                            "Név",
     lblSeedOutput:                          "Kimenet",
-    hntSeedOutput:                          "A renderelt fájlok alapneve. Rendereléskor cserélődő tokenek: {name}, {chords} (az első 8 akkord), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "A renderelt fájlok alapneve. Az akkord token csak az első 8 akkordot tartja meg. Rendereléskor lecserélt tokenek:",
     btnSeedRender:                          "Seed renderelése",
     btnSeedPlay:                            "Lejátszás",
     btnSeedStop:                            "Leállítás",
@@ -5989,6 +6205,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Atšaukti",
+    btnGlobalApply:                         "Taikyti",
+    tipGlobalPickFromScreen:                "Pasirinkti iš ekrano",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Yra nauja versija:",
@@ -6011,6 +6229,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Tamsus",
     btnDlgSettingsDisplayThemeLight:        "Šviesus",
+    lblDlgSettingsDisplayColors:            "Spalvos",
+    btnDlgSettingsDisplayColorReset:        "Atkurti",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generuoja akordų progresijas kaip garso + MIDI sėklas, kurios apriboja AI muzikos generatorius, tokius kaip Suno.",
@@ -6055,6 +6275,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Stilius",
     lblSeedSwing:                           "Svingas",
+    lblSeedKnobTranspose:                   "Transponuoti",
+    tipSeedTranspose:                       "Perkelkite visą progresiją aukštyn arba žemyn pustoniais — tas pats, kas įvesti akordus kita tonacija. Akordo tekstas lieka toks, koks parašytas; akordų juosta rodo naujus pavadinimus.",
     optSeedSwingNone:                       "Nėra",
     optSeedSwingLight:                      "Lengvas",
     optSeedSwingShuffle:                    "Shuffle",
@@ -6117,7 +6339,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitų sparta",
     lblSeedName:                            "Pavadinimas",
     lblSeedOutput:                          "Išvestis",
-    hntSeedOutput:                          "Atvaizduotų failų bazinis pavadinimas. Atvaizdavimo metu pakeičiami žetonai: {name}, {chords} (pirmieji 8 akordai), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Atvaizduotų failų bazinis pavadinimas. Akordų žetonas išlaiko tik pirmuosius 8 akordus. Žetonai keičiami atvaizduojant:",
     btnSeedRender:                          "Renderinti sėklą",
     btnSeedPlay:                            "Groti",
     btnSeedStop:                            "Stabdyti",
@@ -6155,6 +6377,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Откажи",
+    btnGlobalApply:                         "Примени",
+    tipGlobalPickFromScreen:                "Избери од екран",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Достапна е нова верзија:",
@@ -6177,6 +6401,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Тема",
     btnDlgSettingsDisplayThemeDark:         "Темно",
     btnDlgSettingsDisplayThemeLight:        "Светло",
+    lblDlgSettingsDisplayColors:            "Бои",
+    btnDlgSettingsDisplayColorReset:        "Ресетирај",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Генерира акордни прогресии како аудио + MIDI семиња кои ги ограничуваат AI музичките генератори како Suno.",
@@ -6221,6 +6447,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Стил",
     lblSeedSwing:                           "Свинг",
+    lblSeedKnobTranspose:                   "Транспонирај",
+    tipSeedTranspose:                       "Преместете ја целата прогресија нагоре или надолу во полутонови — исто како да ги внесувате акордите во друг клуч. Текстот на акордот останува како што е напишан; лентата со акорди ги прикажува новите имиња.",
     optSeedSwingNone:                       "Нема",
     optSeedSwingLight:                      "Лесно",
     optSeedSwingShuffle:                    "Shuffle",
@@ -6283,7 +6511,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 битрејт",
     lblSeedName:                            "Име",
     lblSeedOutput:                          "Излез",
-    hntSeedOutput:                          "Основно име на рендерираните датотеки. Токени заменети при рендерирање: {name}, {chords} (првите 8 акорди), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Основно име на рендерираните датотеки. Токенот за акорди ги задржува само првите 8 акорди. Токени заменети при рендерирање:",
     btnSeedRender:                          "Рендерирај сид",
     btnSeedPlay:                            "Пушти",
     btnSeedStop:                            "Запри",
@@ -6321,6 +6549,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Откажи",
+    btnGlobalApply:                         "Примени",
+    tipGlobalPickFromScreen:                "Изабери са екрана",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Доступна је нова верзија:",
@@ -6343,6 +6573,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Тема",
     btnDlgSettingsDisplayThemeDark:         "Тамно",
     btnDlgSettingsDisplayThemeLight:        "Светло",
+    lblDlgSettingsDisplayColors:            "Боје",
+    btnDlgSettingsDisplayColorReset:        "Ресетуј",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Генерише акордне прогресије као аудио + MIDI семена која ограничавају АИ музичке генераторе попут Suno.",
@@ -6387,6 +6619,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Стил",
     lblSeedSwing:                           "Свинг",
+    lblSeedKnobTranspose:                   "Транспонуј",
+    tipSeedTranspose:                       "Померите целу прогресију горе или доле у полутоновима — исто као да уносите акорде у другом кључу. Текст акорда остаје како је написан; трака акорда приказује нова имена.",
     optSeedSwingNone:                       "Нема",
     optSeedSwingLight:                      "Лагано",
     optSeedSwingShuffle:                    "Shuffle",
@@ -6449,7 +6683,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 битрејт",
     lblSeedName:                            "Назив",
     lblSeedOutput:                          "Излаз",
-    hntSeedOutput:                          "Основни назив рендерованих датотека. Токени замењени при рендеровању: {name}, {chords} (првих 8 акорда), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Основно име рендерованих датотека. Токен акорда задржава само првих 8 акорда. Токени замењени при рендеровању:",
     btnSeedRender:                          "Рендеруј сид",
     btnSeedPlay:                            "Пусти",
     btnSeedStop:                            "Заустави",
@@ -6487,6 +6721,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Zrušiť",
+    btnGlobalApply:                         "Použiť",
+    tipGlobalPickFromScreen:                "Vybrať z obrazovky",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "K dispozícii je nová verzia:",
@@ -6509,6 +6745,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Téma",
     btnDlgSettingsDisplayThemeDark:         "Tmavý",
     btnDlgSettingsDisplayThemeLight:        "Svetlý",
+    lblDlgSettingsDisplayColors:            "Farby",
+    btnDlgSettingsDisplayColorReset:        "Obnoviť",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Generuje akordové progrese ako audio + MIDI semená, ktoré obmedzujú generátory hudby AI, ako je Suno.",
@@ -6553,6 +6791,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Štýl",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponovať",
+    tipSeedTranspose:                       "Posuňte celú progresiu nahor alebo nadol o poltóny — rovnako ako zadávanie akordov v inej tónine. Text akordu zostáva tak, ako je napísaný; prúžok akordov zobrazuje nové názvy.",
     optSeedSwingNone:                       "Žiadne",
     optSeedSwingLight:                      "Ľahké",
     optSeedSwingShuffle:                    "Shuffle",
@@ -6615,7 +6855,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Názov",
     lblSeedOutput:                          "Výstup",
-    hntSeedOutput:                          "Základný názov renderovaných súborov. Tokeny nahradené pri renderovaní: {name}, {chords} (prvých 8 akordov), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Základný názov renderovaných súborov. Token akordov zachováva iba prvých 8 akordov. Tokeny nahradené pri renderovaní:",
     btnSeedRender:                          "Vykresliť seed",
     btnSeedPlay:                            "Prehrať",
     btnSeedStop:                            "Zastaviť",
@@ -6653,6 +6893,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Prekliči",
+    btnGlobalApply:                         "Uporabi",
+    tipGlobalPickFromScreen:                "Izberi z zaslona",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Na voljo je nova različica:",
@@ -6675,6 +6917,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Temno",
     btnDlgSettingsDisplayThemeLight:        "Svetlo",
+    lblDlgSettingsDisplayColors:            "Barve",
+    btnDlgSettingsDisplayColorReset:        "Ponastavi",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Ustvarja akordne progresije kot avdio + MIDI semena, ki omejujejo AI generatorje glasbe, kot je Suno.",
@@ -6719,6 +6963,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Slog",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponiraj",
+    tipSeedTranspose:                       "Premaknite celotno progresijo gor ali dol v poltonih — enako kot vnašanje akordov v drugem ključu. Besedilo akorda ostane napisano; trak akordov prikazuje nova imena.",
     optSeedSwingNone:                       "Brez",
     optSeedSwingLight:                      "Lahko",
     optSeedSwingShuffle:                    "Shuffle",
@@ -6781,7 +7027,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitna hitrost",
     lblSeedName:                            "Ime",
     lblSeedOutput:                          "Izhod",
-    hntSeedOutput:                          "Osnovno ime upodobljenih datotek. Žetoni, zamenjani pri upodabljanju: {name}, {chords} (prvih 8 akordov), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Osnovno ime upodobljenih datotek. Žeton akordov ohrani le prvih 8 akordov. Žetoni zamenjani ob upodabljanju:",
     btnSeedRender:                          "Renderiraj seme",
     btnSeedPlay:                            "Predvajaj",
     btnSeedStop:                            "Ustavi",
@@ -6819,6 +7065,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "ரத்துசெய்",
+    btnGlobalApply:                         "பயன்படுத்து",
+    tipGlobalPickFromScreen:                "திரையில் இருந்து தேர்வுசெய்",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "புதிய பதிப்பு உள்ளது:",
@@ -6841,6 +7089,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "தீம்",
     btnDlgSettingsDisplayThemeDark:         "இருண்ட",
     btnDlgSettingsDisplayThemeLight:        "வெளிச்சம்",
+    lblDlgSettingsDisplayColors:            "வண்ணங்கள்",
+    btnDlgSettingsDisplayColorReset:        "மீட்டமை",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "சரம் முன்னேற்றங்களை ஆடியோ மற்றும் MIDI விதைகளாக உருவாக்குகிறது, இது Suno போன்ற AI இசை ஜெனரேட்டர்களைக் கட்டுப்படுத்துகிறது.",
@@ -6885,6 +7135,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "நடை",
     lblSeedSwing:                           "ஸ்விங்",
+    lblSeedKnobTranspose:                   "இடமாற்றம்",
+    tipSeedTranspose:                       "முழு முன்னேற்றத்தையும் அரை டோன்களில் மேலும் கீழும் நகர்த்தவும் — இது வேறு ஒரு கீயில் கார்டுகளைத் தட்டச்சு செய்வதற்குச் சமம். கார்டு உரை எழுதியது போலவே இருக்கும்; கார்டு பட்டை புதிய பெயர்களைக் காட்டும்.",
     optSeedSwingNone:                       "எதுவும் இல்லை",
     optSeedSwingLight:                      "லேசான",
     optSeedSwingShuffle:                    "Shuffle",
@@ -6947,7 +7199,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 பிட்ரேட்",
     lblSeedName:                            "பெயர்",
     lblSeedOutput:                          "வெளியீடு",
-    hntSeedOutput:                          "வழங்கப்பட்ட கோப்புகளின் அடிப்படைப் பெயர். வழங்குதலின்போது மாற்றப்படும் டோக்கன்கள்: {name}, {chords} (முதல் 8 நாண்கள்), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "வழங்கப்பட்ட கோப்புகளின் அடிப்படைப் பெயர். நாண் டோக்கன் முதல் 8 நாண்களை மட்டுமே வைத்திருக்கும். வழங்குதலின் போது மாற்றப்படும் டோக்கன்கள்:",
     btnSeedRender:                          "சீடை ரெண்டர் செய்",
     btnSeedPlay:                            "இயக்கு",
     btnSeedStop:                            "நிறுத்து",
@@ -6985,6 +7237,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "रद्द करें",
+    btnGlobalApply:                         "लागू करें",
+    tipGlobalPickFromScreen:                "स्क्रीन से चुनें",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "नया संस्करण उपलब्ध है:",
@@ -7007,6 +7261,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "थीम",
     btnDlgSettingsDisplayThemeDark:         "गहरा",
     btnDlgSettingsDisplayThemeLight:        "हल्का",
+    lblDlgSettingsDisplayColors:            "रंग",
+    btnDlgSettingsDisplayColorReset:        "रीसेट करें",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "कॉर्ड प्रोग्रेशन को ऑडियो और MIDI सीड्स के रूप में उत्पन्न करता है जो Suno जैसे AI संगीत जनरेटर को नियंत्रित करते हैं।",
@@ -7051,6 +7307,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "शैली",
     lblSeedSwing:                           "स्विंग",
+    lblSeedKnobTranspose:                   "ट्रांसपोज़",
+    tipSeedTranspose:                       "पूरी प्रगति को सेमीटोन में ऊपर या नीचे ले जाएँ — यह किसी अन्य कुंजी में कॉर्ड टाइप करने जैसा ही है। कॉर्ड टेक्स्ट जैसा लिखा है वैसा ही रहता है; कॉर्ड स्ट्रिप नए नाम दिखाती है।",
     optSeedSwingNone:                       "कोई नहीं",
     optSeedSwingLight:                      "हल्का",
     optSeedSwingShuffle:                    "Shuffle",
@@ -7113,7 +7371,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 बिटरेट",
     lblSeedName:                            "नाम",
     lblSeedOutput:                          "आउटपुट",
-    hntSeedOutput:                          "रेंडर की गई फ़ाइलों का मूल नाम। रेंडर करते समय बदले गए टोकन: {name}, {chords} (पहले 8 कॉर्ड), {style}, {instrument}, {bpm}, {loops}।",
+    hntSeedOutput:                          "रेंडर की गई फ़ाइलों का मूल नाम। कॉर्ड टोकन केवल पहले 8 कॉर्ड रखता है। रेंडर करते समय बदले गए टोकन:",
     btnSeedRender:                          "सीड रेंडर करें",
     btnSeedPlay:                            "चलाएँ",
     btnSeedStop:                            "रोकें",
@@ -7151,6 +7409,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "বাতিল করুন",
+    btnGlobalApply:                         "প্রয়োগ করুন",
+    tipGlobalPickFromScreen:                "স্ক্রিন থেকে বাছুন",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "নতুন সংস্করণ উপলব্ধ:",
@@ -7173,6 +7433,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "থিম",
     btnDlgSettingsDisplayThemeDark:         "গাঢ়",
     btnDlgSettingsDisplayThemeLight:        "হালকা",
+    lblDlgSettingsDisplayColors:            "রঙ",
+    btnDlgSettingsDisplayColorReset:        "রিসেট করুন",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "কর্ড প্রগ্রেশনকে অডিও এবং MIDI বীজ হিসেবে তৈরি করে যা Suno-এর মতো AI সঙ্গীত জেনারেটরকে সীমাবদ্ধ করে।",
@@ -7217,6 +7479,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "শৈলী",
     lblSeedSwing:                           "সুইং",
+    lblSeedKnobTranspose:                   "ট্রান্সপোজ",
+    tipSeedTranspose:                       "পুরো প্রগেশনকে সেমিটোনে উপরে বা নিচে সরান — এটি অন্য কোনো কীতে কর্ড টাইপ করার মতোই। কর্ড টেক্সট যেমন লেখা আছে তেমনই থাকবে; কর্ড স্ট্রিপ নতুন নামগুলি দেখাবে।",
     optSeedSwingNone:                       "কোনটিই নয়",
     optSeedSwingLight:                      "হালকা",
     optSeedSwingShuffle:                    "Shuffle",
@@ -7279,7 +7543,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 বিটরেট",
     lblSeedName:                            "নাম",
     lblSeedOutput:                          "আউটপুট",
-    hntSeedOutput:                          "রেন্ডার করা ফাইলগুলির মূল নাম। রেন্ডার করার সময় প্রতিস্থাপিত টোকেন: {name}, {chords} (প্রথম 8টি কর্ড), {style}, {instrument}, {bpm}, {loops}।",
+    hntSeedOutput:                          "রেন্ডার করা ফাইলগুলির মূল নাম। কর্ড টোকেন শুধুমাত্র প্রথম 8টি কর্ড রাখে। রেন্ডারের সময় প্রতিস্থাপিত টোকেনগুলি:",
     btnSeedRender:                          "সিড রেন্ডার করুন",
     btnSeedPlay:                            "চালান",
     btnSeedStop:                            "থামান",
@@ -7317,6 +7581,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "منسوخ کریں",
+    btnGlobalApply:                         "لاگو کریں",
+    tipGlobalPickFromScreen:                "سکرین سے چنیں",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "نیا ورژن دستیاب ہے:",
@@ -7339,6 +7605,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "تھیم",
     btnDlgSettingsDisplayThemeDark:         "گہرا",
     btnDlgSettingsDisplayThemeLight:        "ہلکا",
+    lblDlgSettingsDisplayColors:            "رنگ",
+    btnDlgSettingsDisplayColorReset:        "ری سیٹ کریں",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "کورد پروگریشنز کو آڈیو اور MIDI سیڈز کے طور پر تیار کرتا ہے جو Suno جیسے AI میوزک جنریٹرز کو محدود کرتے ہیں۔",
@@ -7383,6 +7651,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "انداز",
     lblSeedSwing:                           "سوئنگ",
+    lblSeedKnobTranspose:                   "ٹرانسپوز",
+    tipSeedTranspose:                       "پوری ترقی کو سیمی ٹونز میں اوپر یا نیچے منتقل کریں — یہ کسی اور کلید میں راگ ٹائپ کرنے کے مترادف ہے۔ راگ کا متن جیسا لکھا ہے ویسا ہی رہتا ہے؛ راگ کی پٹی نئے نام دکھاتی ہے۔",
     optSeedSwingNone:                       "کوئی نہیں",
     optSeedSwingLight:                      "ہلکا",
     optSeedSwingShuffle:                    "Shuffle",
@@ -7445,7 +7715,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 بٹ ریٹ",
     lblSeedName:                            "نام",
     lblSeedOutput:                          "آؤٹ پٹ",
-    hntSeedOutput:                          "ریندر شدہ فائلوں کا بنیادی نام۔ رینڈر کرتے وقت تبدیل کیے گئے ٹوکن: {name}, {chords} (پہلے 8 راگ), {style}, {instrument}, {bpm}, {loops}۔",
+    hntSeedOutput:                          "ریندر شدہ فائلوں کا بنیادی نام۔ راگ ٹوکن صرف پہلے 8 راگ رکھتا ہے۔ رینڈر کے وقت تبدیل کیے گئے ٹوکنز:",
     btnSeedRender:                          "سیڈ رینڈر کریں",
     btnSeedPlay:                            "چلائیں",
     btnSeedStop:                            "روکیں",
@@ -7483,6 +7753,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Ghairi",
+    btnGlobalApply:                         "Tekeleza",
+    tipGlobalPickFromScreen:                "Chagua kutoka skrini",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Toleo jipya linapatikana:",
@@ -7505,6 +7777,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Mandhari",
     btnDlgSettingsDisplayThemeDark:         "Giza",
     btnDlgSettingsDisplayThemeLight:        "Nuru",
+    lblDlgSettingsDisplayColors:            "Rangi",
+    btnDlgSettingsDisplayColorReset:        "Rudisha",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Hutengeneza maendeleo ya nyimbo kama mbegu za sauti + MIDI zinazoweka mipaka kwa jenereta za muziki za AI kama Suno.",
@@ -7549,6 +7823,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Mtindo",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Hamisha",
+    tipSeedTranspose:                       "Sogeza maendeleo yote juu au chini kwa semitoni — sawa na kuandika akodi katika funguo nyingine. Maandishi ya akodi hubaki kama yalivyoandikwa; ukanda wa akodi huonyesha majina mapya.",
     optSeedSwingNone:                       "Hakuna",
     optSeedSwingLight:                      "Kidogo",
     optSeedSwingShuffle:                    "Shuffle",
@@ -7611,7 +7887,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Kiwango cha biti cha MP3",
     lblSeedName:                            "Jina",
     lblSeedOutput:                          "Pato",
-    hntSeedOutput:                          "Jina la msingi la faili zilizotolewa. Tokeni zilizobadilishwa wakati wa kutoa: {name}, {chords} (nyimbo 8 za kwanza), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Jina la msingi la faili zilizotolewa. Tokeni ya nyimbo huweka nyimbo 8 za kwanza pekee. Tokeni zilizobadilishwa wakati wa kutoa:",
     btnSeedRender:                          "Toa mbegu",
     btnSeedPlay:                            "Cheza",
     btnSeedStop:                            "Simamisha",
@@ -7649,6 +7925,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "ਰੱਦ ਕਰੋ",
+    btnGlobalApply:                         "ਲਾਗੂ ਕਰੋ",
+    tipGlobalPickFromScreen:                "ਸਕਰੀਨ ਤੋਂ ਚੁਣੋ",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "ਨਵਾਂ ਸੰਸਕਰਨ ਉਪਲਬਧ ਹੈ:",
@@ -7671,6 +7949,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "ਥੀਮ",
     btnDlgSettingsDisplayThemeDark:         "ਗੂੜ੍ਹਾ",
     btnDlgSettingsDisplayThemeLight:        "ਹਲਕਾ",
+    lblDlgSettingsDisplayColors:            "ਰੰਗ",
+    btnDlgSettingsDisplayColorReset:        "ਰੀਸੈਟ ਕਰੋ",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "ਕੋਰਡ ਪ੍ਰੋਗਰੈਸ਼ਨਾਂ ਨੂੰ ਆਡੀਓ ਅਤੇ MIDI ਬੀਜਾਂ ਵਜੋਂ ਤਿਆਰ ਕਰਦਾ ਹੈ ਜੋ Suno ਵਰਗੇ AI ਸੰਗੀਤ ਜਨਰੇਟਰਾਂ ਨੂੰ ਸੀਮਤ ਕਰਦੇ ਹਨ।",
@@ -7715,6 +7995,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "ਸ਼ੈਲੀ",
     lblSeedSwing:                           "ਸਵਿੰਗ",
+    lblSeedKnobTranspose:                   "ਟ੍ਰਾਂਸਪੋਜ਼",
+    tipSeedTranspose:                       "ਪੂਰੀ ਪ੍ਰਗਤੀ ਨੂੰ ਸੈਮੀਟੋਨਾਂ ਵਿੱਚ ਉੱਪਰ ਜਾਂ ਹੇਠਾਂ ਲਿਜਾਓ — ਇਹ ਕਿਸੇ ਹੋਰ ਕੁੰਜੀ ਵਿੱਚ ਕੋਰਡ ਟਾਈਪ ਕਰਨ ਦੇ ਬਰਾਬਰ ਹੈ। ਕੋਰਡ ਟੈਕਸਟ ਜਿਵੇਂ ਲਿਖਿਆ ਹੈ ਉਵੇਂ ਹੀ ਰਹਿੰਦਾ ਹੈ; ਕੋਰਡ ਸਟ੍ਰਿਪ ਨਵੇਂ ਨਾਮ ਦਿਖਾਉਂਦੀ ਹੈ।",
     optSeedSwingNone:                       "ਕੋਈ ਨਹੀਂ",
     optSeedSwingLight:                      "ਹਲਕਾ",
     optSeedSwingShuffle:                    "Shuffle",
@@ -7777,7 +8059,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 ਬਿੱਟਰੇਟ",
     lblSeedName:                            "ਨਾਮ",
     lblSeedOutput:                          "ਆਉਟਪੁੱਟ",
-    hntSeedOutput:                          "ਰੈਂਡਰ ਕੀਤੀਆਂ ਫਾਈਲਾਂ ਦਾ ਮੂਲ ਨਾਮ। ਰੈਂਡਰ ਕਰਨ ਵੇਲੇ ਬਦਲੇ ਗਏ ਟੋਕਨ: {name}, {chords} (ਪਹਿਲੇ 8 ਕੋਰਡ), {style}, {instrument}, {bpm}, {loops}।",
+    hntSeedOutput:                          "ਰੈਂਡਰ ਕੀਤੀਆਂ ਫਾਈਲਾਂ ਦਾ ਮੂਲ ਨਾਮ। ਕੋਰਡ ਟੋਕਨ ਸਿਰਫ਼ ਪਹਿਲੇ 8 ਕੋਰਡ ਰੱਖਦਾ ਹੈ। ਰੈਂਡਰ ਕਰਨ ਵੇਲੇ ਬਦਲੇ ਗਏ ਟੋਕਨ:",
     btnSeedRender:                          "ਸੀਡ ਰੈਂਡਰ ਕਰੋ",
     btnSeedPlay:                            "ਚਲਾਓ",
     btnSeedStop:                            "ਰੋਕੋ",
@@ -7815,6 +8097,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Soke",
+    btnGlobalApply:                         "Aiwatar",
+    tipGlobalPickFromScreen:                "Zaɓi daga allo",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Sabon sigar yana nan:",
@@ -7837,6 +8121,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Jigo",
     btnDlgSettingsDisplayThemeDark:         "Duhu",
     btnDlgSettingsDisplayThemeLight:        "Haske",
+    lblDlgSettingsDisplayColors:            "Launuka",
+    btnDlgSettingsDisplayColorReset:        "Sake saita",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Yana samar da ci gaban kida zuwa tsaba na sauti da MIDI waɗanda ke takura masu samar da kiɗa na AI kamar Suno.",
@@ -7881,6 +8167,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Salo",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Canza",
+    tipSeedTranspose:                       "Matsar da dukkan ci gaban sama ko kasa a cikin semitones — daidai da buga chords a wani maɓalli. Rubutun chord yana zama kamar yadda aka rubuta; layin chord yana nuna sabbin sunaye.",
     optSeedSwingNone:                       "Babu",
     optSeedSwingLight:                      "Mai sauƙi",
     optSeedSwingShuffle:                    "Shuffle",
@@ -7943,7 +8231,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Suna",
     lblSeedOutput:                          "Fitarwa",
-    hntSeedOutput:                          "Sunan tushe na fayilolin da aka yi. Alamomin da aka maye gurbinsu yayin yin: {name}, {chords} (maɓallan 8 na farko), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Sunan tushe na fayilolin da aka bayar. Alamar kirtani tana riƙe da kirtani 8 na farko kawai. Alamomin da aka maye gurbinsu yayin bayarwa:",
     btnSeedRender:                          "Render iri",
     btnSeedPlay:                            "Kunna",
     btnSeedStop:                            "Tsaya",
@@ -7981,6 +8269,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Fagilee",
+    btnGlobalApply:                         "Fi si",
+    tipGlobalPickFromScreen:                "Yan lati iboju",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Ẹya tuntun wa:",
@@ -8003,6 +8293,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Àtùpà",
     btnDlgSettingsDisplayThemeDark:         "Dudu",
     btnDlgSettingsDisplayThemeLight:        "Fẹ́lẹ́fẹ́lẹ́",
+    lblDlgSettingsDisplayColors:            "Awọn awọ",
+    btnDlgSettingsDisplayColorReset:        "Tun pada",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "N ṣe ipilẹṣẹ ilọsiwaju akọọlẹ bi awọn irugbin ohun + MIDI ti o fi ipa mu awọn olupilẹṣẹ orin AI bi Suno.",
@@ -8047,6 +8339,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Àwòṣe",
     lblSeedSwing:                           "Swíngì",
+    lblSeedKnobTranspose:                   "Yi ohun",
+    tipSeedTranspose:                       "Gbe gbogbo ilọsiwaju soke tabi silẹ ni semitones — bakanna pẹlu titẹ awọn akọọlẹ ni bọtini miiran. Ọrọ akọọlẹ naa wa bi a ti kọ; ila akọọlẹ naa fihan awọn orukọ titun.",
     optSeedSwingNone:                       "Kò sí",
     optSeedSwingLight:                      "Fẹ́ẹ́rẹ́",
     optSeedSwingShuffle:                    "Shuffle",
@@ -8109,7 +8403,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "Oṣuwọn bit MP3",
     lblSeedName:                            "Orukọ",
     lblSeedOutput:                          "Ìjáde",
-    hntSeedOutput:                          "Orukọ ipilẹ awọn faili ti a ti ṣe. Awọn ami ti a rọpo nigba ṣiṣe: {name}, {chords} (awọn akọọlẹ 8 akọkọ), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Orukọ ipilẹ ti awọn faili ti a ti ṣe. Ami orin nikan n tọju awọn orin 8 akọkọ. Awọn ami ti a rọpo ni akoko ṣiṣe:",
     btnSeedRender:                          "Render irugbin",
     btnSeedPlay:                            "Ṣiṣẹ",
     btnSeedStop:                            "Duro",
@@ -8147,6 +8441,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "రద్దు చేయి",
+    btnGlobalApply:                         "వర్తించు",
+    tipGlobalPickFromScreen:                "స్క్రీన్ నుండి ఎంచుకోండి",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "కొత్త వెర్షన్ అందుబాటులో ఉంది:",
@@ -8169,6 +8465,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "థీమ్",
     btnDlgSettingsDisplayThemeDark:         "ముదురు",
     btnDlgSettingsDisplayThemeLight:        "లేత",
+    lblDlgSettingsDisplayColors:            "రంగులు",
+    btnDlgSettingsDisplayColorReset:        "రీసెట్ చేయండి",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "కార్డ్ ప్రోగ్రెషన్‌లను ఆడియో మరియు MIDI విత్తనాలుగా ఉత్పత్తి చేస్తుంది, ఇవి Suno వంటి AI సంగీత జనరేటర్‌లను పరిమితం చేస్తాయి.",
@@ -8213,6 +8511,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "శైలి",
     lblSeedSwing:                           "స్వింగ్",
+    lblSeedKnobTranspose:                   "ట్రాన్స్‌పోజ్",
+    tipSeedTranspose:                       "మొత్తం పురోగతిని సెమిటోన్‌లలో పైకి లేదా క్రిందికి తరలించండి — ఇది మరొక కీలో తీగలను టైప్ చేసినట్లే. తీగ వచనం వ్రాసినట్లుగానే ఉంటుంది; తీగ స్ట్రిప్ కొత్త పేర్లను చూపుతుంది.",
     optSeedSwingNone:                       "ఏదీ లేదు",
     optSeedSwingLight:                      "తేలికపాటి",
     optSeedSwingShuffle:                    "Shuffle",
@@ -8275,7 +8575,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 బిట్‌రేట్",
     lblSeedName:                            "పేరు",
     lblSeedOutput:                          "అవుట్‌పుట్",
-    hntSeedOutput:                          "రెండర్ చేయబడిన ఫైల్‌ల ప్రాథమిక పేరు. రెండర్ చేసేటప్పుడు భర్తీ చేయబడిన టోకెన్‌లు: {name}, {chords} (మొదటి 8 తీగలు), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "రెండర్ చేయబడిన ఫైల్‌ల ప్రాథమిక పేరు. తీగల టోకెన్ మొదటి 8 తీగలను మాత్రమే ఉంచుతుంది. రెండర్ చేసేటప్పుడు భర్తీ చేయబడిన టోకెన్‌లు:",
     btnSeedRender:                          "సీడ్‌ను రెండర్ చేయండి",
     btnSeedPlay:                            "ప్లే చేయి",
     btnSeedStop:                            "ఆపు",
@@ -8313,6 +8613,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "रद्द करा",
+    btnGlobalApply:                         "लागू करा",
+    tipGlobalPickFromScreen:                "स्क्रीनमधून निवडा",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "नवीन आवृत्ती उपलब्ध आहे:",
@@ -8335,6 +8637,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "थीम",
     btnDlgSettingsDisplayThemeDark:         "गडद",
     btnDlgSettingsDisplayThemeLight:        "हलका",
+    lblDlgSettingsDisplayColors:            "रंग",
+    btnDlgSettingsDisplayColorReset:        "रीसेट करा",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "कॉर्ड प्रोग्रेशन्सना ऑडिओ आणि MIDI सीड्स म्हणून तयार करते जे Suno सारख्या AI संगीत जनरेटरना मर्यादित करतात.",
@@ -8379,6 +8683,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "शैली",
     lblSeedSwing:                           "स्विंग",
+    lblSeedKnobTranspose:                   "ट्रान्सपोज",
+    tipSeedTranspose:                       "संपूर्ण प्रगती सेमीटोनमध्ये वर किंवा खाली हलवा — हे दुसऱ्या कीमध्ये कॉर्ड्स टाइप करण्यासारखेच आहे. कॉर्ड मजकूर जसा लिहिला आहे तसाच राहतो; कॉर्ड स्ट्रिप नवीन नावे दाखवते.",
     optSeedSwingNone:                       "काहीही नाही",
     optSeedSwingLight:                      "हलके",
     optSeedSwingShuffle:                    "Shuffle",
@@ -8441,7 +8747,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 बिटरेट",
     lblSeedName:                            "नाव",
     lblSeedOutput:                          "आउटपुट",
-    hntSeedOutput:                          "रेंडर केलेल्या फाइल्सचे मूळ नाव. रेंडर करताना बदललेले टोकन: {name}, {chords} (पहिले 8 कॉर्ड), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "रेंडर केलेल्या फाइल्सचे मूळ नाव. कॉर्ड टोकन फक्त पहिले 8 कॉर्ड ठेवते. रेंडर करताना बदललेले टोकन:",
     btnSeedRender:                          "सीड रेंडर करा",
     btnSeedPlay:                            "प्ले करा",
     btnSeedStop:                            "थांबा",
@@ -8479,6 +8785,8 @@ const TRANSLATIONS = {
 
     // Prefix:Global - Scope:shared across all apps
     btnGlobalCancel:                        "Kanselahin",
+    btnGlobalApply:                         "Ilapat",
+    tipGlobalPickFromScreen:                "Pumili mula sa screen",
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "May bagong bersyon:",
@@ -8501,6 +8809,8 @@ const TRANSLATIONS = {
     lblDlgSettingsDisplayTheme:             "Tema",
     btnDlgSettingsDisplayThemeDark:         "Madilim",
     btnDlgSettingsDisplayThemeLight:        "Maliwanag",
+    lblDlgSettingsDisplayColors:            "Mga Kulay",
+    btnDlgSettingsDisplayColorReset:        "I-reset",
 
     // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
     msgDlgSettingsAboutDesc:                "Gumagawa ng mga chord progression bilang audio + MIDI seeds na naglilimita sa mga AI music generator tulad ng Suno.",
@@ -8545,6 +8855,8 @@ const TRANSLATIONS = {
     // ⚠ Style editor (2026-09-03) — EN-only while translation is suspended.
     lblSeedStyle:                           "Estilo",
     lblSeedSwing:                           "Swing",
+    lblSeedKnobTranspose:                   "Transponahin",
+    tipSeedTranspose:                       "Ilipat ang buong progresyon pataas o pababa sa semitones — katulad ng pagta-type ng mga chords sa ibang key. Ang teksto ng chord ay mananatili ayon sa nakasulat; ipinapakita ng chord strip ang mga bagong pangalan.",
     optSeedSwingNone:                       "Wala",
     optSeedSwingLight:                      "Bahagya",
     optSeedSwingShuffle:                    "Shuffle",
@@ -8607,7 +8919,7 @@ const TRANSLATIONS = {
     lblSeedMp3Bitrate:                      "MP3 bitrate",
     lblSeedName:                            "Pangalan",
     lblSeedOutput:                          "Output",
-    hntSeedOutput:                          "Pangunahing pangalan ng mga na-render na file. Mga token na pinalitan sa pag-render: {name}, {chords} (ang unang 8 chords), {style}, {instrument}, {bpm}, {loops}.",
+    hntSeedOutput:                          "Pangunahing pangalan ng mga na-render na file. Ang token ng chords ay nagpapanatili lamang ng unang 8 chords. Mga token na pinalitan sa pag-render:",
     btnSeedRender:                          "I-render ang seed",
     btnSeedPlay:                            "I-play",
     btnSeedStop:                            "Itigil",

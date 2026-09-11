@@ -84,7 +84,14 @@
 @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(8px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 .toast {
   position: fixed; bottom: var(--toast-bottom, 28px); left: 50%; transform: translateX(-50%);
-  z-index: 200;
+  /* ⚠ CLAUDE: MUST sit above .dl-backdrop (1000) and .pop-surface (1000). It was 200 — below both —
+     so every notice fired while a dialog was open rendered UNDER the backdrop and was read through
+     its blur(5px): dimmed, smeared, unreadable. Nothing about the notice was wrong, including plain
+     successes like "Copied" from inside a card dialog; they were simply painted behind a frosted
+     sheet. A stacking order nobody chose, not a design decision (found 2026-09-07). A notice that
+     cannot be read is not a notice — if a value here ever has to drop below 1000, the toast has to
+     stop being the channel first. */
+  z-index: 1200;
   background: var(--accent);
   border: 1px solid var(--accent);
   border-radius: 30px;

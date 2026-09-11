@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.0 — 2026-09-11
+
+- Transpose the whole progression up or down by up to six semitones — the render, Play and the MIDI file move to the new key together, the chord text stays exactly as typed, and the chord blocks show the new chord names
+- The chords block has its own control bar, like the treble and bass lanes; the transpose knob lives there
+- Choose the colour of the treble, bass and chords blocks in Settings → Display → Colors; each block and the keyboard keys it lights take its colour, and bass now defaults to pink, chords to teal
+- New file-name tokens: {bitrate}, {sig}, {beat}, {swing}, {transpose}, and for each lane {treble-…} / {bass-…} velocity, length, hold, octave and volume
+- File-name tokens now name the lane first — {treble-instrument}, {bass-instrument}, {treble-reverb}, {bass-reverb} — and {reverb-type} is now {reverb}; {instrument} and {reverb-amount} are gone, and a token the app no longer knows is removed from the template when a seed is opened
+- The Output hint lists every token in the order its control appears on screen
+- Fix {chords} dropping the sharp sign, which named an F#m seed "Fm"
+- Only the note grids scroll sideways: each lane's buttons and name stay in place, and one scrollbar under the chords moves all three grids together
+- A lane's buttons are paired by what they do: mirror and clear, shift left and right, add and remove a step
+- Text fields and selects are a lighter grey in the dark theme
+
 ## 2.0.0 — 2026-09-05
 
 - Edit a style inside the app: the Music tab is now a step editor — a grid for each lane on one shared time axis, the chord progression on the same columns underneath, and a playhead that runs while you edit
