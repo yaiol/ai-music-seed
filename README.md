@@ -141,13 +141,14 @@ The seed engine started as a JS port of a Python prototype (`chord-seed.py`); th
 | `--loops` | number | `loops` |
 | `--style` | select (4 textures + 16 rhythms) | `style` |
 | *(none)* | select (instrument) | `instrument` |
+| *(none)* | knob, **transpose** in the Chords band (−6…+6 semitones) | `transpose` — applied at the voicing, so the seed is the chords typed in the new key; the `.mid`, the chord strip and `{chords}` follow it |
 | `--format` | select (mp3 / wav) + bitrate | `format`, `mp3Bitrate` |
 | `--name` | **Output** — text (a token template) | save filename |
 | *(none)* | **Name** — text, above every other field | `name` (metadata; feeds `{name}`) |
 
 The prototype's `--outdir` flag has no form control: the output folder is the folder the seed's `.yams` lives in, so a seed must be **saved** before it can render (the Render button is disabled until then).
 
-**Name vs Output — two different things.** *Name* is what the seed is called; *Output* is what the rendered files are called. Output is a template resolved at render time: `{name}` (the seed name, file-name-sanitised, falling back to `{chords}` when the seed is unnamed), `{chords}` (a base name from the **first 8** chords — capped so a full song chart can't produce a 200-character filename), `{style}`, `{instrument}`, `{bpm}`, `{loops}`. A new seed starts at **`{name}-{style}-{bpm}`**, and that is also what a `.yams` without an `output` field falls back to — the field is never blank-with-hidden-behaviour.
+**Name vs Output — two different things.** *Name* is what the seed is called; *Output* is what the rendered files are called. Output is a template resolved at render time: `{name}` (the seed name, file-name-sanitised, falling back to `{chords}` when the seed is unnamed), `{loops}`, `{bitrate}`, `{bpm}`, `{style}`, `{sig}`, `{beat}`, `{swing}`, `{reverb}`, `{highpass}`, `{lowpass}`, then for each lane in turn `{treble-velocity}`, `{treble-length}`, `{treble-hold}`, `{treble-instrument}`, `{treble-octave}`, `{treble-reverb}`, `{treble-volume}` and the same seven as `{bass-…}`, then `{transpose}`, `{chords}` (a base name from the **first 8** chords — capped so a full song chart can't produce a 200-character filename). The order is the Render tab's two, then the Music screen left to right, top to bottom. A new seed starts at **`{name}-{style}-{bpm}`**, and that is also what a `.yams` without an `output` field falls back to — the field is never blank-with-hidden-behaviour.
 
 **Timing — line = bar.** The progression is read line by line: each non-blank line is one timing unit of `bars` bars, and the chords on that line **split it evenly** (four chords on a line = a beat each in 4/4; a chord alone on a line holds the whole bar). `[Section]` headers, blank lines and `|` bar marks are stripped, so a chord chart pastes in almost verbatim. `parseLines` → `planEvents` build the timed event list, shared by `generateSeed` (render) and `analyzeSeed` (the render-free size/duration projection shown live under the form).
 
