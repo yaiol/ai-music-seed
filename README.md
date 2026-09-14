@@ -19,7 +19,7 @@
 </div>
 
 <h3 align="center">
-  <a href="https://apps.yaiol.com/en/p/ai-music-seed/">Website</a>
+  <a href="https://apps.yaiol.com/p/ai-music-seed/">Website</a>
   <span>&nbsp;·&nbsp;</span>
   <a href="#install">Install</a>
   <span>&nbsp;·&nbsp;</span>
@@ -31,7 +31,7 @@
 </h3>
 
 <div align="center">
-  <sub><a href="https://apps.yaiol.com/en/p/ai-music-seed/help/"><b>Help in 28 languages</b></a></sub>
+  <sub><a href="https://apps.yaiol.com/p/ai-music-seed/help/"><b>Help in 28 languages</b></a></sub>
 </div>
 
 <!-- /readme:nav -->
@@ -80,10 +80,10 @@ It's a focused, single-purpose desktop app: type a progression, pick a texture a
 
 | | |
 |---|---|
-| **User manual** | [Read it online](https://apps.yaiol.com/en/p/ai-music-seed/help/) |
+| **User manual** | [Read it online](https://apps.yaiol.com/p/ai-music-seed/help/) |
 | **Printable PDF** | attached to each [release](../../releases/latest) |
-| **What's new** | [Release notes](https://apps.yaiol.com/en/p/ai-music-seed/help/releases/) |
-| **Product page** | [apps.yaiol.com](https://apps.yaiol.com/en/p/ai-music-seed/) |
+| **What's new** | [Release notes](https://apps.yaiol.com/p/ai-music-seed/help/releases/) |
+| **Product page** | [apps.yaiol.com](https://apps.yaiol.com/p/ai-music-seed/) |
 
 ---
 
