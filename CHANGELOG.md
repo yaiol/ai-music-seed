@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.1 — 2026-09-27
+
+- Settings is now a full-window page instead of a dialog: a rail of tabs on the left, the page covering everything below the top bar while the seed stays open underneath; the gear button toggles it, and the back arrow or Esc leaves it. The rest of the top bar is inactive while it is open
+- README gains a hero screenshot and a reworked introduction
+
 ## 2.1.0 — 2026-09-11
 
 - Transpose the whole progression up or down by up to six semitones — the render, Play and the MIDI file move to the new key together, the chord text stays exactly as typed, and the chord blocks show the new chord names

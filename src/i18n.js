@@ -26,23 +26,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Open settings",
     tipHdrHelp:                             "Help",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Settings",
-    tabDlgSettingsDisplay:                  "Display",
-    tabDlgSettingsAbout:                    "About",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Settings",
+    tipStgBack:                             "Back",
+    tabStgDisplay:                          "Display",
+    tabStgAbout:                            "About",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Language",
-    lblDlgSettingsDisplayTheme:             "Theme",
-    btnDlgSettingsDisplayThemeDark:         "Dark",
-    btnDlgSettingsDisplayThemeLight:        "Light",
-    lblDlgSettingsDisplayColors:            "Colors",
-    btnDlgSettingsDisplayColorReset:        "Reset",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Language",
+    lblStgDisplayTheme:                     "Theme",
+    btnStgDisplayThemeDark:                 "Dark",
+    btnStgDisplayThemeLight:                "Light",
+    lblStgDisplayColors:                    "Colors",
+    btnStgDisplayColorReset:                "Reset",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "renders chord progressions to audio + MIDI seeds that constrain AI music generators like Suno.",
-    lblDlgSettingsAboutCredits:             "Instrument credits",
-    msgDlgSettingsAboutCreditsIntro:        "The sampled instruments come from freely-licensed recording sessions, by:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "renders chord progressions to audio + MIDI seeds that constrain AI music generators like Suno.",
+    lblStgAboutCredits:                     "Instrument credits",
+    msgStgAboutCreditsIntro:                "The sampled instruments come from freely-licensed recording sessions, by:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -199,23 +200,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Ouvrir les paramètres",
     tipHdrHelp:                             "Aide",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Paramètres",
-    tabDlgSettingsDisplay:                  "Affichage",
-    tabDlgSettingsAbout:                    "À propos",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Paramètres",
+    tipStgBack:                             "Retour",
+    tabStgDisplay:                          "Affichage",
+    tabStgAbout:                            "À propos",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Langue",
-    lblDlgSettingsDisplayTheme:             "Thème",
-    btnDlgSettingsDisplayThemeDark:         "Sombre",
-    btnDlgSettingsDisplayThemeLight:        "Clair",
-    lblDlgSettingsDisplayColors:            "Couleurs",
-    btnDlgSettingsDisplayColorReset:        "Réinitialiser",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Langue",
+    lblStgDisplayTheme:                     "Thème",
+    btnStgDisplayThemeDark:                 "Sombre",
+    btnStgDisplayThemeLight:                "Clair",
+    lblStgDisplayColors:                    "Couleurs",
+    btnStgDisplayColorReset:                "Réinitialiser",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Génère des progressions d'accords en graines audio + MIDI qui contraignent les générateurs de musique IA comme Suno.",
-    lblDlgSettingsAboutCredits:             "Crédits instrument",
-    msgDlgSettingsAboutCreditsIntro:        "Les instruments échantillonnés proviennent de sessions d'enregistrement sous licence libre, par :",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Génère des progressions d'accords en graines audio + MIDI qui contraignent les générateurs de musique IA comme Suno.",
+    lblStgAboutCredits:                     "Crédits instrument",
+    msgStgAboutCreditsIntro:                "Les instruments échantillonnés proviennent de sessions d'enregistrement sous licence libre, par :",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -371,23 +373,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Einstellungen öffnen",
     tipHdrHelp:                             "Hilfe",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Einstellungen",
-    tabDlgSettingsDisplay:                  "Anzeige",
-    tabDlgSettingsAbout:                    "Über",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Einstellungen",
+    tipStgBack:                             "Zurück",
+    tabStgDisplay:                          "Anzeige",
+    tabStgAbout:                            "Über",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Sprache",
-    lblDlgSettingsDisplayTheme:             "Design",
-    btnDlgSettingsDisplayThemeDark:         "Dunkel",
-    btnDlgSettingsDisplayThemeLight:        "Hell",
-    lblDlgSettingsDisplayColors:            "Farben",
-    btnDlgSettingsDisplayColorReset:        "Zurücksetzen",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Sprache",
+    lblStgDisplayTheme:                     "Design",
+    btnStgDisplayThemeDark:                 "Dunkel",
+    btnStgDisplayThemeLight:                "Hell",
+    lblStgDisplayColors:                    "Farben",
+    btnStgDisplayColorReset:                "Zurücksetzen",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Erzeugt Akkordfolgen als Audio- und MIDI-Seeds, die KI-Musikgeneratoren wie Suno einschränken.",
-    lblDlgSettingsAboutCredits:             "Instrumenten-Credits",
-    msgDlgSettingsAboutCreditsIntro:        "Die gesampelten Instrumente stammen aus frei lizenzierten Aufnahmesitzungen, von:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Erzeugt Akkordfolgen als Audio- und MIDI-Seeds, die KI-Musikgeneratoren wie Suno einschränken.",
+    lblStgAboutCredits:                     "Instrumenten-Credits",
+    msgStgAboutCreditsIntro:                "Die gesampelten Instrumente stammen aus frei lizenzierten Aufnahmesitzungen, von:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -543,23 +546,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Abrir configuración",
     tipHdrHelp:                             "Ayuda",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Configuración",
-    tabDlgSettingsDisplay:                  "Pantalla",
-    tabDlgSettingsAbout:                    "Acerca de",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Configuración",
+    tipStgBack:                             "Atrás",
+    tabStgDisplay:                          "Pantalla",
+    tabStgAbout:                            "Acerca de",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Idioma",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Oscuro",
-    btnDlgSettingsDisplayThemeLight:        "Claro",
-    lblDlgSettingsDisplayColors:            "Colores",
-    btnDlgSettingsDisplayColorReset:        "Restablecer",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Idioma",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Oscuro",
+    btnStgDisplayThemeLight:                "Claro",
+    lblStgDisplayColors:                    "Colores",
+    btnStgDisplayColorReset:                "Restablecer",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Genera progresiones de acordes a semillas de audio + MIDI que restringen generadores de música IA como Suno.",
-    lblDlgSettingsAboutCredits:             "Créditos de instrumento",
-    msgDlgSettingsAboutCreditsIntro:        "Los instrumentos muestreados provienen de sesiones de grabación con licencia libre, por:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Genera progresiones de acordes a semillas de audio + MIDI que restringen generadores de música IA como Suno.",
+    lblStgAboutCredits:                     "Créditos de instrumento",
+    msgStgAboutCreditsIntro:                "Los instrumentos muestreados provienen de sesiones de grabación con licencia libre, por:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -715,23 +719,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Abrir configurações",
     tipHdrHelp:                             "Ajuda",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Configurações",
-    tabDlgSettingsDisplay:                  "Exibição",
-    tabDlgSettingsAbout:                    "Sobre",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Configurações",
+    tipStgBack:                             "Voltar",
+    tabStgDisplay:                          "Exibição",
+    tabStgAbout:                            "Sobre",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Idioma",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Escuro",
-    btnDlgSettingsDisplayThemeLight:        "Claro",
-    lblDlgSettingsDisplayColors:            "Cores",
-    btnDlgSettingsDisplayColorReset:        "Redefinir",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Idioma",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Escuro",
+    btnStgDisplayThemeLight:                "Claro",
+    lblStgDisplayColors:                    "Cores",
+    btnStgDisplayColorReset:                "Redefinir",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
-    lblDlgSettingsAboutCredits:             "Créditos do instrumento",
-    msgDlgSettingsAboutCreditsIntro:        "Os instrumentos sampleados vêm de sessões de gravação com licença livre, por:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
+    lblStgAboutCredits:                     "Créditos do instrumento",
+    msgStgAboutCreditsIntro:                "Os instrumentos sampleados vêm de sessões de gravação com licença livre, por:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -887,23 +892,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Abrir definições",
     tipHdrHelp:                             "Ajuda",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Definições",
-    tabDlgSettingsDisplay:                  "Visualização",
-    tabDlgSettingsAbout:                    "Acerca de",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Definições",
+    tipStgBack:                             "Voltar",
+    tabStgDisplay:                          "Visualização",
+    tabStgAbout:                            "Acerca de",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Idioma",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Escuro",
-    btnDlgSettingsDisplayThemeLight:        "Claro",
-    lblDlgSettingsDisplayColors:            "Cores",
-    btnDlgSettingsDisplayColorReset:        "Repor",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Idioma",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Escuro",
+    btnStgDisplayThemeLight:                "Claro",
+    lblStgDisplayColors:                    "Cores",
+    btnStgDisplayColorReset:                "Repor",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
-    lblDlgSettingsAboutCredits:             "Créditos do instrumento",
-    msgDlgSettingsAboutCreditsIntro:        "Os instrumentos amostrados provêm de sessões de gravação com licença livre, por:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
+    lblStgAboutCredits:                     "Créditos do instrumento",
+    msgStgAboutCreditsIntro:                "Os instrumentos amostrados provêm de sessões de gravação com licença livre, por:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -1059,23 +1065,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Apri impostazioni",
     tipHdrHelp:                             "Aiuto",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Impostazioni",
-    tabDlgSettingsDisplay:                  "Schermo",
-    tabDlgSettingsAbout:                    "Informazioni",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Impostazioni",
+    tipStgBack:                             "Indietro",
+    tabStgDisplay:                          "Schermo",
+    tabStgAbout:                            "Informazioni",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Lingua",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Scuro",
-    btnDlgSettingsDisplayThemeLight:        "Chiaro",
-    lblDlgSettingsDisplayColors:            "Colori",
-    btnDlgSettingsDisplayColorReset:        "Reimposta",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Lingua",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Scuro",
+    btnStgDisplayThemeLight:                "Chiaro",
+    lblStgDisplayColors:                    "Colori",
+    btnStgDisplayColorReset:                "Reimposta",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Genera progressioni di accordi in semi audio + MIDI che vincolano generatori di musica AI come Suno.",
-    lblDlgSettingsAboutCredits:             "Crediti strumento",
-    msgDlgSettingsAboutCreditsIntro:        "Gli strumenti campionati provengono da sessioni di registrazione con licenza libera, di:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Genera progressioni di accordi in semi audio + MIDI che vincolano generatori di musica AI come Suno.",
+    lblStgAboutCredits:                     "Crediti strumento",
+    msgStgAboutCreditsIntro:                "Gli strumenti campionati provengono da sessioni di registrazione con licenza libera, di:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -1231,23 +1238,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Instellingen openen",
     tipHdrHelp:                             "Hulp",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Instellingen",
-    tabDlgSettingsDisplay:                  "Weergave",
-    tabDlgSettingsAbout:                    "Over",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Instellingen",
+    tipStgBack:                             "Terug",
+    tabStgDisplay:                          "Weergave",
+    tabStgAbout:                            "Over",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Taal",
-    lblDlgSettingsDisplayTheme:             "Thema",
-    btnDlgSettingsDisplayThemeDark:         "Donker",
-    btnDlgSettingsDisplayThemeLight:        "Licht",
-    lblDlgSettingsDisplayColors:            "Kleuren",
-    btnDlgSettingsDisplayColorReset:        "Herstellen",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Taal",
+    lblStgDisplayTheme:                     "Thema",
+    btnStgDisplayThemeDark:                 "Donker",
+    btnStgDisplayThemeLight:                "Licht",
+    lblStgDisplayColors:                    "Kleuren",
+    btnStgDisplayColorReset:                "Herstellen",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Genereert akkoordprogressies als audio- en MIDI-seeds die AI-muziekgeneratoren zoals Suno beperken.",
-    lblDlgSettingsAboutCredits:             "Instrumentcredits",
-    msgDlgSettingsAboutCreditsIntro:        "De gesamplede instrumenten komen van vrij gelicentieerde opnamesessies, door:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Genereert akkoordprogressies als audio- en MIDI-seeds die AI-muziekgeneratoren zoals Suno beperken.",
+    lblStgAboutCredits:                     "Instrumentcredits",
+    msgStgAboutCreditsIntro:                "De gesamplede instrumenten komen van vrij gelicentieerde opnamesessies, door:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -1403,23 +1411,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Открыть настройки",
     tipHdrHelp:                             "Справка",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Настройки",
-    tabDlgSettingsDisplay:                  "Отображение",
-    tabDlgSettingsAbout:                    "О программе",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Настройки",
+    tipStgBack:                             "Назад",
+    tabStgDisplay:                          "Отображение",
+    tabStgAbout:                            "О программе",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Язык",
-    lblDlgSettingsDisplayTheme:             "Тема",
-    btnDlgSettingsDisplayThemeDark:         "Тёмный",
-    btnDlgSettingsDisplayThemeLight:        "Светлый",
-    lblDlgSettingsDisplayColors:            "Цвета",
-    btnDlgSettingsDisplayColorReset:        "Сбросить",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Язык",
+    lblStgDisplayTheme:                     "Тема",
+    btnStgDisplayThemeDark:                 "Тёмный",
+    btnStgDisplayThemeLight:                "Светлый",
+    lblStgDisplayColors:                    "Цвета",
+    btnStgDisplayColorReset:                "Сбросить",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Создает аккордовые прогрессии в виде аудио- и MIDI-заготовок, ограничивающих ИИ-генераторы музыки, такие как Suno.",
-    lblDlgSettingsAboutCredits:             "Авторы инструментов",
-    msgDlgSettingsAboutCreditsIntro:        "Сэмплированные инструменты получены из свободно лицензированных сессий записи, от:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Создает аккордовые прогрессии в виде аудио- и MIDI-заготовок, ограничивающих ИИ-генераторы музыки, такие как Suno.",
+    lblStgAboutCredits:                     "Авторы инструментов",
+    msgStgAboutCreditsIntro:                "Сэмплированные инструменты получены из свободно лицензированных сессий записи, от:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -1575,23 +1584,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Відкрити налаштування",
     tipHdrHelp:                             "Довідка",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Налаштування",
-    tabDlgSettingsDisplay:                  "Відображення",
-    tabDlgSettingsAbout:                    "Про програму",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Налаштування",
+    tipStgBack:                             "Назад",
+    tabStgDisplay:                          "Відображення",
+    tabStgAbout:                            "Про програму",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Мова",
-    lblDlgSettingsDisplayTheme:             "Тема",
-    btnDlgSettingsDisplayThemeDark:         "Темний",
-    btnDlgSettingsDisplayThemeLight:        "Світлий",
-    lblDlgSettingsDisplayColors:            "Кольори",
-    btnDlgSettingsDisplayColorReset:        "Скинути",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Мова",
+    lblStgDisplayTheme:                     "Тема",
+    btnStgDisplayThemeDark:                 "Темний",
+    btnStgDisplayThemeLight:                "Світлий",
+    lblStgDisplayColors:                    "Кольори",
+    btnStgDisplayColorReset:                "Скинути",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Створює акордові прогресії як аудіо- та MIDI-заготовки, що обмежують ШІ-генератори музики, наприклад Suno.",
-    lblDlgSettingsAboutCredits:             "Автори інструментів",
-    msgDlgSettingsAboutCreditsIntro:        "Семпловані інструменти походять з вільно ліцензованих сесій запису, від:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Створює акордові прогресії як аудіо- та MIDI-заготовки, що обмежують ШІ-генератори музики, наприклад Suno.",
+    lblStgAboutCredits:                     "Автори інструментів",
+    msgStgAboutCreditsIntro:                "Семпловані інструменти походять з вільно ліцензованих сесій запису, від:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -1747,23 +1757,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Otwórz ustawienia",
     tipHdrHelp:                             "Pomoc",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Ustawienia",
-    tabDlgSettingsDisplay:                  "Wyświetlanie",
-    tabDlgSettingsAbout:                    "O programie",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Ustawienia",
+    tipStgBack:                             "Wstecz",
+    tabStgDisplay:                          "Wyświetlanie",
+    tabStgAbout:                            "O programie",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Język",
-    lblDlgSettingsDisplayTheme:             "Motyw",
-    btnDlgSettingsDisplayThemeDark:         "Ciemny",
-    btnDlgSettingsDisplayThemeLight:        "Jasny",
-    lblDlgSettingsDisplayColors:            "Kolory",
-    btnDlgSettingsDisplayColorReset:        "Resetuj",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Język",
+    lblStgDisplayTheme:                     "Motyw",
+    btnStgDisplayThemeDark:                 "Ciemny",
+    btnStgDisplayThemeLight:                "Jasny",
+    lblStgDisplayColors:                    "Kolory",
+    btnStgDisplayColorReset:                "Resetuj",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Generuje progresje akordów jako nasiona audio + MIDI, które ograniczają generatory muzyki AI, takie jak Suno.",
-    lblDlgSettingsAboutCredits:             "Twórcy instrumentów",
-    msgDlgSettingsAboutCreditsIntro:        "Próbkowane instrumenty pochodzą z sesji nagraniowych na wolnej licencji, autorstwa:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Generuje progresje akordów jako nasiona audio + MIDI, które ograniczają generatory muzyki AI, takie jak Suno.",
+    lblStgAboutCredits:                     "Twórcy instrumentów",
+    msgStgAboutCreditsIntro:                "Próbkowane instrumenty pochodzą z sesji nagraniowych na wolnej licencji, autorstwa:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -1919,23 +1930,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Deschide setările",
     tipHdrHelp:                             "Ajutor",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Setări",
-    tabDlgSettingsDisplay:                  "Afișaj",
-    tabDlgSettingsAbout:                    "Despre",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Setări",
+    tipStgBack:                             "Înapoi",
+    tabStgDisplay:                          "Afișaj",
+    tabStgAbout:                            "Despre",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Limbă",
-    lblDlgSettingsDisplayTheme:             "Temă",
-    btnDlgSettingsDisplayThemeDark:         "Întunecat",
-    btnDlgSettingsDisplayThemeLight:        "Luminos",
-    lblDlgSettingsDisplayColors:            "Culori",
-    btnDlgSettingsDisplayColorReset:        "Resetează",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Limbă",
+    lblStgDisplayTheme:                     "Temă",
+    btnStgDisplayThemeDark:                 "Întunecat",
+    btnStgDisplayThemeLight:                "Luminos",
+    lblStgDisplayColors:                    "Culori",
+    btnStgDisplayColorReset:                "Resetează",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Generează progresii de acorduri în semințe audio + MIDI care constrâng generatoarele de muzică AI precum Suno.",
-    lblDlgSettingsAboutCredits:             "Credite instrumente",
-    msgDlgSettingsAboutCreditsIntro:        "Instrumentele eșantionate provin din sesiuni de înregistrare cu licență liberă, de la:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Generează progresii de acorduri în semințe audio + MIDI care constrâng generatoarele de muzică AI precum Suno.",
+    lblStgAboutCredits:                     "Credite instrumente",
+    msgStgAboutCreditsIntro:                "Instrumentele eșantionate provin din sesiuni de înregistrare cu licență liberă, de la:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -2091,23 +2103,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Öppna inställningar",
     tipHdrHelp:                             "Hjälp",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Inställningar",
-    tabDlgSettingsDisplay:                  "Visning",
-    tabDlgSettingsAbout:                    "Om",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Inställningar",
+    tipStgBack:                             "Tillbaka",
+    tabStgDisplay:                          "Visning",
+    tabStgAbout:                            "Om",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Språk",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Mörk",
-    btnDlgSettingsDisplayThemeLight:        "Ljus",
-    lblDlgSettingsDisplayColors:            "Färger",
-    btnDlgSettingsDisplayColorReset:        "Återställ",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Språk",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Mörk",
+    btnStgDisplayThemeLight:                "Ljus",
+    lblStgDisplayColors:                    "Färger",
+    btnStgDisplayColorReset:                "Återställ",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Genererar ackordföljder som ljud- och MIDI-frön som begränsar AI-musikgeneratorer som Suno.",
-    lblDlgSettingsAboutCredits:             "Instrumentkrediter",
-    msgDlgSettingsAboutCreditsIntro:        "De samplade instrumenten kommer från fritt licensierade inspelningssessioner, av:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Genererar ackordföljder som ljud- och MIDI-frön som begränsar AI-musikgeneratorer som Suno.",
+    lblStgAboutCredits:                     "Instrumentkrediter",
+    msgStgAboutCreditsIntro:                "De samplade instrumenten kommer från fritt licensierade inspelningssessioner, av:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -2263,23 +2276,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Åpne innstillinger",
     tipHdrHelp:                             "Hjelp",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Innstillinger",
-    tabDlgSettingsDisplay:                  "Skjerm",
-    tabDlgSettingsAbout:                    "Om",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Innstillinger",
+    tipStgBack:                             "Tilbake",
+    tabStgDisplay:                          "Skjerm",
+    tabStgAbout:                            "Om",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Språk",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Mørk",
-    btnDlgSettingsDisplayThemeLight:        "Lys",
-    lblDlgSettingsDisplayColors:            "Farger",
-    btnDlgSettingsDisplayColorReset:        "Tilbakestill",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Språk",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Mørk",
+    btnStgDisplayThemeLight:                "Lys",
+    lblStgDisplayColors:                    "Farger",
+    btnStgDisplayColorReset:                "Tilbakestill",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Genererer akkordprogresjoner som lyd- og MIDI-frø som begrenser AI-musikgeneratorer som Suno.",
-    lblDlgSettingsAboutCredits:             "Instrumentkrediteringer",
-    msgDlgSettingsAboutCreditsIntro:        "De samplede instrumentene kommer fra fritt lisensierte innspillingsøkter, av:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Genererer akkordprogresjoner som lyd- og MIDI-frø som begrenser AI-musikgeneratorer som Suno.",
+    lblStgAboutCredits:                     "Instrumentkrediteringer",
+    msgStgAboutCreditsIntro:                "De samplede instrumentene kommer fra fritt lisensierte innspillingsøkter, av:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -2435,23 +2449,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Ayarları aç",
     tipHdrHelp:                             "Yardım",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Ayarlar",
-    tabDlgSettingsDisplay:                  "Görüntü",
-    tabDlgSettingsAbout:                    "Hakkında",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Ayarlar",
+    tipStgBack:                             "Geri",
+    tabStgDisplay:                          "Görüntü",
+    tabStgAbout:                            "Hakkında",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Dil",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Koyu",
-    btnDlgSettingsDisplayThemeLight:        "Açık",
-    lblDlgSettingsDisplayColors:            "Renkler",
-    btnDlgSettingsDisplayColorReset:        "Sıfırla",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Dil",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Koyu",
+    btnStgDisplayThemeLight:                "Açık",
+    lblStgDisplayColors:                    "Renkler",
+    btnStgDisplayColorReset:                "Sıfırla",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Akor ilerlemelerini, Suno gibi yapay zeka müzik jeneratörlerini kısıtlayan ses + MIDI tohumlarına dönüştürür.",
-    lblDlgSettingsAboutCredits:             "Enstrüman kredileri",
-    msgDlgSettingsAboutCreditsIntro:        "Örneklenmiş enstrümanlar, serbest lisanslı kayıt oturumlarından gelmektedir, hazırlayan:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Akor ilerlemelerini, Suno gibi yapay zeka müzik jeneratörlerini kısıtlayan ses + MIDI tohumlarına dönüştürür.",
+    lblStgAboutCredits:                     "Enstrüman kredileri",
+    msgStgAboutCreditsIntro:                "Örneklenmiş enstrümanlar, serbest lisanslı kayıt oturumlarından gelmektedir, hazırlayan:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -2607,23 +2622,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Otvori postavke",
     tipHdrHelp:                             "Pomoć",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Postavke",
-    tabDlgSettingsDisplay:                  "Prikaz",
-    tabDlgSettingsAbout:                    "O programu",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Postavke",
+    tipStgBack:                             "Natrag",
+    tabStgDisplay:                          "Prikaz",
+    tabStgAbout:                            "O programu",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Jezik",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Tamno",
-    btnDlgSettingsDisplayThemeLight:        "Svijetlo",
-    lblDlgSettingsDisplayColors:            "Boje",
-    btnDlgSettingsDisplayColorReset:        "Poništi",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Jezik",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Tamno",
+    btnStgDisplayThemeLight:                "Svijetlo",
+    lblStgDisplayColors:                    "Boje",
+    btnStgDisplayColorReset:                "Poništi",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Generira akordne progresije kao audio + MIDI sjemenke koje ograničavaju AI generatore glazbe poput Suno.",
-    lblDlgSettingsAboutCredits:             "Zasluge za instrumente",
-    msgDlgSettingsAboutCreditsIntro:        "Uzorčani instrumenti potječu iz slobodno licenciranih snimanja, od:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Generira akordne progresije kao audio + MIDI sjemenke koje ograničavaju AI generatore glazbe poput Suno.",
+    lblStgAboutCredits:                     "Zasluge za instrumente",
+    msgStgAboutCreditsIntro:                "Uzorčani instrumenti potječu iz slobodno licenciranih snimanja, od:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -2779,23 +2795,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Άνοιγμα ρυθμίσεων",
     tipHdrHelp:                             "Βοήθεια",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Ρυθμίσεις",
-    tabDlgSettingsDisplay:                  "Οθόνη",
-    tabDlgSettingsAbout:                    "Σχετικά",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Ρυθμίσεις",
+    tipStgBack:                             "Πίσω",
+    tabStgDisplay:                          "Οθόνη",
+    tabStgAbout:                            "Σχετικά",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Γλώσσα",
-    lblDlgSettingsDisplayTheme:             "Θέμα",
-    btnDlgSettingsDisplayThemeDark:         "Σκοτεινό",
-    btnDlgSettingsDisplayThemeLight:        "Φωτεινό",
-    lblDlgSettingsDisplayColors:            "Χρώματα",
-    btnDlgSettingsDisplayColorReset:        "Επαναφορά",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Γλώσσα",
+    lblStgDisplayTheme:                     "Θέμα",
+    btnStgDisplayThemeDark:                 "Σκοτεινό",
+    btnStgDisplayThemeLight:                "Φωτεινό",
+    lblStgDisplayColors:                    "Χρώματα",
+    btnStgDisplayColorReset:                "Επαναφορά",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Δημιουργεί συγχορδιακές προόδους ως ηχητικούς + MIDI σπόρους που περιορίζουν γεννήτριες μουσικής AI όπως το Suno.",
-    lblDlgSettingsAboutCredits:             "Συντελεστές οργάνων",
-    msgDlgSettingsAboutCreditsIntro:        "Τα δειγματοληπτικά όργανα προέρχονται από συνεδρίες ηχογράφησης με ελεύθερη άδεια, από:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Δημιουργεί συγχορδιακές προόδους ως ηχητικούς + MIDI σπόρους που περιορίζουν γεννήτριες μουσικής AI όπως το Suno.",
+    lblStgAboutCredits:                     "Συντελεστές οργάνων",
+    msgStgAboutCreditsIntro:                "Τα δειγματοληπτικά όργανα προέρχονται από συνεδρίες ηχογράφησης με ελεύθερη άδεια, από:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -2951,23 +2968,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "פתח הגדרות",
     tipHdrHelp:                             "עזרה",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "הגדרות",
-    tabDlgSettingsDisplay:                  "תצוגה",
-    tabDlgSettingsAbout:                    "אודות",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "הגדרות",
+    tipStgBack:                             "חזור",
+    tabStgDisplay:                          "תצוגה",
+    tabStgAbout:                            "אודות",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "שפה",
-    lblDlgSettingsDisplayTheme:             "ערכת נושא",
-    btnDlgSettingsDisplayThemeDark:         "כהה",
-    btnDlgSettingsDisplayThemeLight:        "בהיר",
-    lblDlgSettingsDisplayColors:            "צבעים",
-    btnDlgSettingsDisplayColorReset:        "איפוס",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "שפה",
+    lblStgDisplayTheme:                     "ערכת נושא",
+    btnStgDisplayThemeDark:                 "כהה",
+    btnStgDisplayThemeLight:                "בהיר",
+    lblStgDisplayColors:                    "צבעים",
+    btnStgDisplayColorReset:                "איפוס",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "מפיק התקדמויות אקורדים לזרעי אודיו + MIDI המגבילים מחוללי מוזיקת AI כגון Suno.",
-    lblDlgSettingsAboutCredits:             "קרדיטים לכלי נגינה",
-    msgDlgSettingsAboutCreditsIntro:        "הכלים שנדגמו מגיעים מהקלטות ברישיון חופשי, מאת:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "מפיק התקדמויות אקורדים לזרעי אודיו + MIDI המגבילים מחוללי מוזיקת AI כגון Suno.",
+    lblStgAboutCredits:                     "קרדיטים לכלי נגינה",
+    msgStgAboutCreditsIntro:                "הכלים שנדגמו מגיעים מהקלטות ברישיון חופשי, מאת:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -3123,23 +3141,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "فتح الإعدادات",
     tipHdrHelp:                             "مساعدة",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "الإعدادات",
-    tabDlgSettingsDisplay:                  "عرض",
-    tabDlgSettingsAbout:                    "حول",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "الإعدادات",
+    tipStgBack:                             "رجوع",
+    tabStgDisplay:                          "عرض",
+    tabStgAbout:                            "حول",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "اللغة",
-    lblDlgSettingsDisplayTheme:             "المظهر",
-    btnDlgSettingsDisplayThemeDark:         "داكن",
-    btnDlgSettingsDisplayThemeLight:        "فاتح",
-    lblDlgSettingsDisplayColors:            "الألوان",
-    btnDlgSettingsDisplayColorReset:        "إعادة تعيين",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "اللغة",
+    lblStgDisplayTheme:                     "المظهر",
+    btnStgDisplayThemeDark:                 "داكن",
+    btnStgDisplayThemeLight:                "فاتح",
+    lblStgDisplayColors:                    "الألوان",
+    btnStgDisplayColorReset:                "إعادة تعيين",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "يحول تتابعات الأوتار إلى بذور صوتية وMIDI تقيد مولدات الموسيقى بالذكاء الاصطناعي مثل Suno.",
-    lblDlgSettingsAboutCredits:             "اعتمادات الآلة",
-    msgDlgSettingsAboutCreditsIntro:        "الآلات المعاينة مأخوذة من جلسات تسجيل مرخصة مجانًا، بواسطة:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "يحول تتابعات الأوتار إلى بذور صوتية وMIDI تقيد مولدات الموسيقى بالذكاء الاصطناعي مثل Suno.",
+    lblStgAboutCredits:                     "اعتمادات الآلة",
+    msgStgAboutCreditsIntro:                "الآلات المعاينة مأخوذة من جلسات تسجيل مرخصة مجانًا، بواسطة:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -3295,23 +3314,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "باز کردن تنظیمات",
     tipHdrHelp:                             "راهنما",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "تنظیمات",
-    tabDlgSettingsDisplay:                  "نمایش",
-    tabDlgSettingsAbout:                    "درباره",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "تنظیمات",
+    tipStgBack:                             "بازگشت",
+    tabStgDisplay:                          "نمایش",
+    tabStgAbout:                            "درباره",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "زبان",
-    lblDlgSettingsDisplayTheme:             "پوسته",
-    btnDlgSettingsDisplayThemeDark:         "تیره",
-    btnDlgSettingsDisplayThemeLight:        "روشن",
-    lblDlgSettingsDisplayColors:            "رنگ‌ها",
-    btnDlgSettingsDisplayColorReset:        "بازنشانی",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "زبان",
+    lblStgDisplayTheme:                     "پوسته",
+    btnStgDisplayThemeDark:                 "تیره",
+    btnStgDisplayThemeLight:                "روشن",
+    lblStgDisplayColors:                    "رنگ‌ها",
+    btnStgDisplayColorReset:                "بازنشانی",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "تبدیل توالی آکوردها به بذرهای صوتی و MIDI که ژنراتورهای موسیقی هوش مصنوعی مانند Suno را محدود می‌کنند.",
-    lblDlgSettingsAboutCredits:             "اعتبارات ساز",
-    msgDlgSettingsAboutCreditsIntro:        "سازهای نمونه‌برداری شده از جلسات ضبط با مجوز آزاد تهیه شده‌اند، توسط:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "تبدیل توالی آکوردها به بذرهای صوتی و MIDI که ژنراتورهای موسیقی هوش مصنوعی مانند Suno را محدود می‌کنند.",
+    lblStgAboutCredits:                     "اعتبارات ساز",
+    msgStgAboutCreditsIntro:                "سازهای نمونه‌برداری شده از جلسات ضبط با مجوز آزاد تهیه شده‌اند، توسط:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -3467,23 +3487,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "打开设置",
     tipHdrHelp:                             "帮助",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "设置",
-    tabDlgSettingsDisplay:                  "显示",
-    tabDlgSettingsAbout:                    "关于",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "设置",
+    tipStgBack:                             "返回",
+    tabStgDisplay:                          "显示",
+    tabStgAbout:                            "关于",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "语言",
-    lblDlgSettingsDisplayTheme:             "主题",
-    btnDlgSettingsDisplayThemeDark:         "深色",
-    btnDlgSettingsDisplayThemeLight:        "浅色",
-    lblDlgSettingsDisplayColors:            "颜色",
-    btnDlgSettingsDisplayColorReset:        "重置",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "语言",
+    lblStgDisplayTheme:                     "主题",
+    btnStgDisplayThemeDark:                 "深色",
+    btnStgDisplayThemeLight:                "浅色",
+    lblStgDisplayColors:                    "颜色",
+    btnStgDisplayColorReset:                "重置",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "将和弦进行渲染为音频和 MIDI 种子，用于约束 Suno 等 AI 音乐生成器。",
-    lblDlgSettingsAboutCredits:             "乐器鸣谢",
-    msgDlgSettingsAboutCreditsIntro:        "采样乐器来自以下自由许可的录音会话：",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "将和弦进行渲染为音频和 MIDI 种子，用于约束 Suno 等 AI 音乐生成器。",
+    lblStgAboutCredits:                     "乐器鸣谢",
+    msgStgAboutCreditsIntro:                "采样乐器来自以下自由许可的录音会话：",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -3639,23 +3660,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "打開設定",
     tipHdrHelp:                             "說明",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "設定",
-    tabDlgSettingsDisplay:                  "顯示",
-    tabDlgSettingsAbout:                    "關於",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "設定",
+    tipStgBack:                             "返回",
+    tabStgDisplay:                          "顯示",
+    tabStgAbout:                            "關於",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "語言",
-    lblDlgSettingsDisplayTheme:             "佈景主題",
-    btnDlgSettingsDisplayThemeDark:         "深色",
-    btnDlgSettingsDisplayThemeLight:        "淺色",
-    lblDlgSettingsDisplayColors:            "顏色",
-    btnDlgSettingsDisplayColorReset:        "重設",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "語言",
+    lblStgDisplayTheme:                     "佈景主題",
+    btnStgDisplayThemeDark:                 "深色",
+    btnStgDisplayThemeLight:                "淺色",
+    lblStgDisplayColors:                    "顏色",
+    btnStgDisplayColorReset:                "重設",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "將和弦進行渲染為音訊和 MIDI 種子，用於約束 Suno 等 AI 音樂生成器。",
-    lblDlgSettingsAboutCredits:             "樂器鳴謝",
-    msgDlgSettingsAboutCreditsIntro:        "取樣樂器來自以下自由授權的錄音會話：",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "將和弦進行渲染為音訊和 MIDI 種子，用於約束 Suno 等 AI 音樂生成器。",
+    lblStgAboutCredits:                     "樂器鳴謝",
+    msgStgAboutCreditsIntro:                "取樣樂器來自以下自由授權的錄音會話：",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -3811,23 +3833,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "設定を開く",
     tipHdrHelp:                             "ヘルプ",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "設定",
-    tabDlgSettingsDisplay:                  "表示",
-    tabDlgSettingsAbout:                    "概要",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "設定",
+    tipStgBack:                             "戻る",
+    tabStgDisplay:                          "表示",
+    tabStgAbout:                            "概要",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "言語",
-    lblDlgSettingsDisplayTheme:             "テーマ",
-    btnDlgSettingsDisplayThemeDark:         "ダーク",
-    btnDlgSettingsDisplayThemeLight:        "ライト",
-    lblDlgSettingsDisplayColors:            "色",
-    btnDlgSettingsDisplayColorReset:        "リセット",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "言語",
+    lblStgDisplayTheme:                     "テーマ",
+    btnStgDisplayThemeDark:                 "ダーク",
+    btnStgDisplayThemeLight:                "ライト",
+    lblStgDisplayColors:                    "色",
+    btnStgDisplayColorReset:                "リセット",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "コード進行をオーディオとMIDIシードとして生成し、SunoのようなAI音楽ジェネレーターを制約します。",
-    lblDlgSettingsAboutCredits:             "楽器のクレジット",
-    msgDlgSettingsAboutCreditsIntro:        "サンプリングされた楽器は、以下の自由ライセンスのレコーディングセッションに由来します：",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "コード進行をオーディオとMIDIシードとして生成し、SunoのようなAI音楽ジェネレーターを制約します。",
+    lblStgAboutCredits:                     "楽器のクレジット",
+    msgStgAboutCreditsIntro:                "サンプリングされた楽器は、以下の自由ライセンスのレコーディングセッションに由来します：",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -3983,23 +4006,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "설정 열기",
     tipHdrHelp:                             "도움말",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "설정",
-    tabDlgSettingsDisplay:                  "디스플레이",
-    tabDlgSettingsAbout:                    "정보",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "설정",
+    tipStgBack:                             "뒤로",
+    tabStgDisplay:                          "디스플레이",
+    tabStgAbout:                            "정보",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "언어",
-    lblDlgSettingsDisplayTheme:             "테마",
-    btnDlgSettingsDisplayThemeDark:         "어둡게",
-    btnDlgSettingsDisplayThemeLight:        "밝게",
-    lblDlgSettingsDisplayColors:            "색상",
-    btnDlgSettingsDisplayColorReset:        "재설정",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "언어",
+    lblStgDisplayTheme:                     "테마",
+    btnStgDisplayThemeDark:                 "어둡게",
+    btnStgDisplayThemeLight:                "밝게",
+    lblStgDisplayColors:                    "색상",
+    btnStgDisplayColorReset:                "재설정",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "코드 진행을 Suno와 같은 AI 음악 생성기를 제약하는 오디오 및 MIDI 시드로 생성합니다.",
-    lblDlgSettingsAboutCredits:             "악기 크레딧",
-    msgDlgSettingsAboutCreditsIntro:        "샘플링된 악기는 다음의 자유 라이선스 녹음 세션에서 가져왔습니다:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "코드 진행을 Suno와 같은 AI 음악 생성기를 제약하는 오디오 및 MIDI 시드로 생성합니다.",
+    lblStgAboutCredits:                     "악기 크레딧",
+    msgStgAboutCreditsIntro:                "샘플링된 악기는 다음의 자유 라이선스 녹음 세션에서 가져왔습니다:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -4155,23 +4179,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Mở cài đặt",
     tipHdrHelp:                             "Trợ giúp",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Cài đặt",
-    tabDlgSettingsDisplay:                  "Hiển thị",
-    tabDlgSettingsAbout:                    "Giới thiệu",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Cài đặt",
+    tipStgBack:                             "Quay lại",
+    tabStgDisplay:                          "Hiển thị",
+    tabStgAbout:                            "Giới thiệu",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Ngôn ngữ",
-    lblDlgSettingsDisplayTheme:             "Chủ đề",
-    btnDlgSettingsDisplayThemeDark:         "Tối",
-    btnDlgSettingsDisplayThemeLight:        "Sáng",
-    lblDlgSettingsDisplayColors:            "Màu sắc",
-    btnDlgSettingsDisplayColorReset:        "Đặt lại",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Ngôn ngữ",
+    lblStgDisplayTheme:                     "Chủ đề",
+    btnStgDisplayThemeDark:                 "Tối",
+    btnStgDisplayThemeLight:                "Sáng",
+    lblStgDisplayColors:                    "Màu sắc",
+    btnStgDisplayColorReset:                "Đặt lại",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Tạo ra các chuỗi hợp âm thành hạt giống âm thanh + MIDI để hạn chế các trình tạo nhạc AI như Suno.",
-    lblDlgSettingsAboutCredits:             "Tín dụng nhạc cụ",
-    msgDlgSettingsAboutCreditsIntro:        "Các nhạc cụ được lấy mẫu đến từ các buổi ghi âm có giấy phép tự do, bởi:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Tạo ra các chuỗi hợp âm thành hạt giống âm thanh + MIDI để hạn chế các trình tạo nhạc AI như Suno.",
+    lblStgAboutCredits:                     "Tín dụng nhạc cụ",
+    msgStgAboutCreditsIntro:                "Các nhạc cụ được lấy mẫu đến từ các buổi ghi âm có giấy phép tự do, bởi:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -4327,23 +4352,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "เปิดการตั้งค่า",
     tipHdrHelp:                             "วิธีใช้",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "การตั้งค่า",
-    tabDlgSettingsDisplay:                  "การแสดงผล",
-    tabDlgSettingsAbout:                    "เกี่ยวกับ",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "การตั้งค่า",
+    tipStgBack:                             "ย้อนกลับ",
+    tabStgDisplay:                          "การแสดงผล",
+    tabStgAbout:                            "เกี่ยวกับ",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "ภาษา",
-    lblDlgSettingsDisplayTheme:             "ธีม",
-    btnDlgSettingsDisplayThemeDark:         "มืด",
-    btnDlgSettingsDisplayThemeLight:        "สว่าง",
-    lblDlgSettingsDisplayColors:            "สี",
-    btnDlgSettingsDisplayColorReset:        "รีเซ็ต",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "ภาษา",
+    lblStgDisplayTheme:                     "ธีม",
+    btnStgDisplayThemeDark:                 "มืด",
+    btnStgDisplayThemeLight:                "สว่าง",
+    lblStgDisplayColors:                    "สี",
+    btnStgDisplayColorReset:                "รีเซ็ต",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "สร้างคอร์ดโปรเกรสชันเป็นเมล็ดเสียง + MIDI ที่จำกัดเครื่องสร้างเพลง AI เช่น Suno",
-    lblDlgSettingsAboutCredits:             "เครดิตเครื่องดนตรี",
-    msgDlgSettingsAboutCreditsIntro:        "เครื่องดนตรีที่สุ่มตัวอย่างมาจากเซสชันการบันทึกที่ได้รับอนุญาตอย่างอิสระ โดย:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "สร้างคอร์ดโปรเกรสชันเป็นเมล็ดเสียง + MIDI ที่จำกัดเครื่องสร้างเพลง AI เช่น Suno",
+    lblStgAboutCredits:                     "เครดิตเครื่องดนตรี",
+    msgStgAboutCreditsIntro:                "เครื่องดนตรีที่สุ่มตัวอย่างมาจากเซสชันการบันทึกที่ได้รับอนุญาตอย่างอิสระ โดย:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -4499,23 +4525,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Buka pengaturan",
     tipHdrHelp:                             "Bantuan",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Pengaturan",
-    tabDlgSettingsDisplay:                  "Tampilan",
-    tabDlgSettingsAbout:                    "Tentang",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Pengaturan",
+    tipStgBack:                             "Kembali",
+    tabStgDisplay:                          "Tampilan",
+    tabStgAbout:                            "Tentang",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Bahasa",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Gelap",
-    btnDlgSettingsDisplayThemeLight:        "Terang",
-    lblDlgSettingsDisplayColors:            "Warna",
-    btnDlgSettingsDisplayColorReset:        "Atur ulang",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Bahasa",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Gelap",
+    btnStgDisplayThemeLight:                "Terang",
+    lblStgDisplayColors:                    "Warna",
+    btnStgDisplayColorReset:                "Atur ulang",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Menghasilkan progresi akor menjadi benih audio + MIDI yang membatasi generator musik AI seperti Suno.",
-    lblDlgSettingsAboutCredits:             "Kredit instrumen",
-    msgDlgSettingsAboutCreditsIntro:        "Instrumen yang disampel berasal dari sesi rekaman berlisensi bebas, oleh:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Menghasilkan progresi akor menjadi benih audio + MIDI yang membatasi generator musik AI seperti Suno.",
+    lblStgAboutCredits:                     "Kredit instrumen",
+    msgStgAboutCreditsIntro:                "Instrumen yang disampel berasal dari sesi rekaman berlisensi bebas, oleh:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -4671,23 +4698,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Obre la configuració",
     tipHdrHelp:                             "Ajuda",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Configuració",
-    tabDlgSettingsDisplay:                  "Visualització",
-    tabDlgSettingsAbout:                    "Quant a",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Configuració",
+    tipStgBack:                             "Enrere",
+    tabStgDisplay:                          "Visualització",
+    tabStgAbout:                            "Quant a",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Idioma",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Fosc",
-    btnDlgSettingsDisplayThemeLight:        "Clar",
-    lblDlgSettingsDisplayColors:            "Colors",
-    btnDlgSettingsDisplayColorReset:        "Restableix",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Idioma",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Fosc",
+    btnStgDisplayThemeLight:                "Clar",
+    lblStgDisplayColors:                    "Colors",
+    btnStgDisplayColorReset:                "Restableix",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Genera progressions d'acords a llavors d'àudio + MIDI que restringeixen generadors de música IA com Suno.",
-    lblDlgSettingsAboutCredits:             "Crèdits d'instruments",
-    msgDlgSettingsAboutCreditsIntro:        "Els instruments mostrejats provenen de sessions d'enregistrament amb llicència lliure, per:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Genera progressions d'acords a llavors d'àudio + MIDI que restringeixen generadors de música IA com Suno.",
+    lblStgAboutCredits:                     "Crèdits d'instruments",
+    msgStgAboutCreditsIntro:                "Els instruments mostrejats provenen de sessions d'enregistrament amb llicència lliure, per:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -4843,23 +4871,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Otevřít nastavení",
     tipHdrHelp:                             "Nápověda",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Nastavení",
-    tabDlgSettingsDisplay:                  "Zobrazení",
-    tabDlgSettingsAbout:                    "O aplikaci",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Nastavení",
+    tipStgBack:                             "Zpět",
+    tabStgDisplay:                          "Zobrazení",
+    tabStgAbout:                            "O aplikaci",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Jazyk",
-    lblDlgSettingsDisplayTheme:             "Motiv",
-    btnDlgSettingsDisplayThemeDark:         "Tmavý",
-    btnDlgSettingsDisplayThemeLight:        "Světlý",
-    lblDlgSettingsDisplayColors:            "Barvy",
-    btnDlgSettingsDisplayColorReset:        "Obnovit",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Jazyk",
+    lblStgDisplayTheme:                     "Motiv",
+    btnStgDisplayThemeDark:                 "Tmavý",
+    btnStgDisplayThemeLight:                "Světlý",
+    lblStgDisplayColors:                    "Barvy",
+    btnStgDisplayColorReset:                "Obnovit",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Generuje akordové progrese jako audio + MIDI semena, která omezují generátory hudby AI, jako je Suno.",
-    lblDlgSettingsAboutCredits:             "Zásluhy nástrojů",
-    msgDlgSettingsAboutCreditsIntro:        "Vzorkované nástroje pocházejí z volně licencovaných nahrávacích relací, od:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Generuje akordové progrese jako audio + MIDI semena, která omezují generátory hudby AI, jako je Suno.",
+    lblStgAboutCredits:                     "Zásluhy nástrojů",
+    msgStgAboutCreditsIntro:                "Vzorkované nástroje pocházejí z volně licencovaných nahrávacích relací, od:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -5015,23 +5044,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Åbn indstillinger",
     tipHdrHelp:                             "Hjælp",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Indstillinger",
-    tabDlgSettingsDisplay:                  "Skærm",
-    tabDlgSettingsAbout:                    "Om",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Indstillinger",
+    tipStgBack:                             "Tilbage",
+    tabStgDisplay:                          "Skærm",
+    tabStgAbout:                            "Om",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Sprog",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Mørk",
-    btnDlgSettingsDisplayThemeLight:        "Lys",
-    lblDlgSettingsDisplayColors:            "Farver",
-    btnDlgSettingsDisplayColorReset:        "Nulstil",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Sprog",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Mørk",
+    btnStgDisplayThemeLight:                "Lys",
+    lblStgDisplayColors:                    "Farver",
+    btnStgDisplayColorReset:                "Nulstil",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Genererer akkordprogressioner som lyd- og MIDI-frø, der begrænser AI-musikgeneratorer som Suno.",
-    lblDlgSettingsAboutCredits:             "Instrumentkreditter",
-    msgDlgSettingsAboutCreditsIntro:        "De samplede instrumenter kommer fra frit licenserede optagelsessessioner, af:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Genererer akkordprogressioner som lyd- og MIDI-frø, der begrænser AI-musikgeneratorer som Suno.",
+    lblStgAboutCredits:                     "Instrumentkreditter",
+    msgStgAboutCreditsIntro:                "De samplede instrumenter kommer fra frit licenserede optagelsessessioner, af:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -5187,23 +5217,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Avaa asetukset",
     tipHdrHelp:                             "Ohje",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Asetukset",
-    tabDlgSettingsDisplay:                  "Näyttö",
-    tabDlgSettingsAbout:                    "Tietoja",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Asetukset",
+    tipStgBack:                             "Takaisin",
+    tabStgDisplay:                          "Näyttö",
+    tabStgAbout:                            "Tietoja",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Kieli",
-    lblDlgSettingsDisplayTheme:             "Teema",
-    btnDlgSettingsDisplayThemeDark:         "Tumma",
-    btnDlgSettingsDisplayThemeLight:        "Vaalea",
-    lblDlgSettingsDisplayColors:            "Värit",
-    btnDlgSettingsDisplayColorReset:        "Palauta",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Kieli",
+    lblStgDisplayTheme:                     "Teema",
+    btnStgDisplayThemeDark:                 "Tumma",
+    btnStgDisplayThemeLight:                "Vaalea",
+    lblStgDisplayColors:                    "Värit",
+    btnStgDisplayColorReset:                "Palauta",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Luo sointukulkuja ääni- ja MIDI-siemeniksi, jotka rajoittavat tekoälymusiikkigeneraattoreita kuten Sunoa.",
-    lblDlgSettingsAboutCredits:             "Instrumenttien tekijätiedot",
-    msgDlgSettingsAboutCreditsIntro:        "Näytteistetyt instrumentit ovat peräisin vapaasti lisensoiduista äänityssessioista, tekijä:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Luo sointukulkuja ääni- ja MIDI-siemeniksi, jotka rajoittavat tekoälymusiikkigeneraattoreita kuten Sunoa.",
+    lblStgAboutCredits:                     "Instrumenttien tekijätiedot",
+    msgStgAboutCreditsIntro:                "Näytteistetyt instrumentit ovat peräisin vapaasti lisensoiduista äänityssessioista, tekijä:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -5359,23 +5390,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Buka tetapan",
     tipHdrHelp:                             "Bantuan",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Tetapan",
-    tabDlgSettingsDisplay:                  "Paparan",
-    tabDlgSettingsAbout:                    "Mengenai",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Tetapan",
+    tipStgBack:                             "Kembali",
+    tabStgDisplay:                          "Paparan",
+    tabStgAbout:                            "Mengenai",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Bahasa",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Gelap",
-    btnDlgSettingsDisplayThemeLight:        "Cerah",
-    lblDlgSettingsDisplayColors:            "Warna",
-    btnDlgSettingsDisplayColorReset:        "Tetapkan semula",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Bahasa",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Gelap",
+    btnStgDisplayThemeLight:                "Cerah",
+    lblStgDisplayColors:                    "Warna",
+    btnStgDisplayColorReset:                "Tetapkan semula",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Menghasilkan progresi kord kepada benih audio + MIDI yang mengekang penjana muzik AI seperti Suno.",
-    lblDlgSettingsAboutCredits:             "Kredit instrumen",
-    msgDlgSettingsAboutCreditsIntro:        "Instrumen yang disampel berasal daripada sesi rakaman berlesen bebas, oleh:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Menghasilkan progresi kord kepada benih audio + MIDI yang mengekang penjana muzik AI seperti Suno.",
+    lblStgAboutCredits:                     "Kredit instrumen",
+    msgStgAboutCreditsIntro:                "Instrumen yang disampel berasal daripada sesi rakaman berlesen bebas, oleh:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -5531,23 +5563,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Բացել կարգավորումները",
     tipHdrHelp:                             "Օգնություն",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Կարգավորումներ",
-    tabDlgSettingsDisplay:                  "Ցուցադրում",
-    tabDlgSettingsAbout:                    "Ծրագրի մասին",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Կարգավորումներ",
+    tipStgBack:                             "Հետ",
+    tabStgDisplay:                          "Ցուցադրում",
+    tabStgAbout:                            "Ծրագրի մասին",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Լեզու",
-    lblDlgSettingsDisplayTheme:             "Թեմա",
-    btnDlgSettingsDisplayThemeDark:         "Մուգ",
-    btnDlgSettingsDisplayThemeLight:        "Բաց",
-    lblDlgSettingsDisplayColors:            "Գույներ",
-    btnDlgSettingsDisplayColorReset:        "Վերակայել",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Լեզու",
+    lblStgDisplayTheme:                     "Թեմա",
+    btnStgDisplayThemeDark:                 "Մուգ",
+    btnStgDisplayThemeLight:                "Բաց",
+    lblStgDisplayColors:                    "Գույներ",
+    btnStgDisplayColorReset:                "Վերակայել",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Ստեղծում է ակորդային հաջորդականություններ որպես աուդիո + MIDI սերմեր, որոնք սահմանափակում են AI երաժշտական գեներատորները, ինչպիսին է Suno-ն։",
-    lblDlgSettingsAboutCredits:             "Գործիքի հեղինակներ",
-    msgDlgSettingsAboutCreditsIntro:        "Նմուշառված գործիքները ստացվել են ազատ լիցենզավորված ձայնագրման սեսիաներից, կողմից՝",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Ստեղծում է ակորդային հաջորդականություններ որպես աուդիո + MIDI սերմեր, որոնք սահմանափակում են AI երաժշտական գեներատորները, ինչպիսին է Suno-ն։",
+    lblStgAboutCredits:                     "Գործիքի հեղինակներ",
+    msgStgAboutCreditsIntro:                "Նմուշառված գործիքները ստացվել են ազատ լիցենզավորված ձայնագրման սեսիաներից, կողմից՝",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -5703,23 +5736,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Отвори настройки",
     tipHdrHelp:                             "Помощ",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Настройки",
-    tabDlgSettingsDisplay:                  "Показване",
-    tabDlgSettingsAbout:                    "Относно",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Настройки",
+    tipStgBack:                             "Назад",
+    tabStgDisplay:                          "Показване",
+    tabStgAbout:                            "Относно",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Език",
-    lblDlgSettingsDisplayTheme:             "Тема",
-    btnDlgSettingsDisplayThemeDark:         "Тъмен",
-    btnDlgSettingsDisplayThemeLight:        "Светъл",
-    lblDlgSettingsDisplayColors:            "Цветове",
-    btnDlgSettingsDisplayColorReset:        "Нулиране",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Език",
+    lblStgDisplayTheme:                     "Тема",
+    btnStgDisplayThemeDark:                 "Тъмен",
+    btnStgDisplayThemeLight:                "Светъл",
+    lblStgDisplayColors:                    "Цветове",
+    btnStgDisplayColorReset:                "Нулиране",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Генерира акордови прогресии като аудио + MIDI семена, които ограничават AI музикални генератори като Suno.",
-    lblDlgSettingsAboutCredits:             "Автори на инструменти",
-    msgDlgSettingsAboutCreditsIntro:        "Семплираните инструменти идват от свободно лицензирани звукозаписни сесии, от:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Генерира акордови прогресии като аудио + MIDI семена, които ограничават AI музикални генератори като Suno.",
+    lblStgAboutCredits:                     "Автори на инструменти",
+    msgStgAboutCreditsIntro:                "Семплираните инструменти идват от свободно лицензирани звукозаписни сесии, от:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -5875,23 +5909,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Abrir configuración",
     tipHdrHelp:                             "Axuda",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Configuración",
-    tabDlgSettingsDisplay:                  "Visualización",
-    tabDlgSettingsAbout:                    "Acerca de",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Configuración",
+    tipStgBack:                             "Atrás",
+    tabStgDisplay:                          "Visualización",
+    tabStgAbout:                            "Acerca de",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Idioma",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Escuro",
-    btnDlgSettingsDisplayThemeLight:        "Claro",
-    lblDlgSettingsDisplayColors:            "Cores",
-    btnDlgSettingsDisplayColorReset:        "Restablecer",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Idioma",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Escuro",
+    btnStgDisplayThemeLight:                "Claro",
+    lblStgDisplayColors:                    "Cores",
+    btnStgDisplayColorReset:                "Restablecer",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Xera progresións de acordes a sementes de audio + MIDI que restrinxen xeradores de música IA como Suno.",
-    lblDlgSettingsAboutCredits:             "Créditos do instrumento",
-    msgDlgSettingsAboutCreditsIntro:        "Os instrumentos mostreados proveñen de sesións de gravación con licenza libre, por:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Xera progresións de acordes a sementes de audio + MIDI que restrinxen xeradores de música IA como Suno.",
+    lblStgAboutCredits:                     "Créditos do instrumento",
+    msgStgAboutCreditsIntro:                "Os instrumentos mostreados proveñen de sesións de gravación con licenza libre, por:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -6047,23 +6082,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Beállítások megnyitása",
     tipHdrHelp:                             "Súgó",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Beállítások",
-    tabDlgSettingsDisplay:                  "Megjelenítés",
-    tabDlgSettingsAbout:                    "Névjegy",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Beállítások",
+    tipStgBack:                             "Vissza",
+    tabStgDisplay:                          "Megjelenítés",
+    tabStgAbout:                            "Névjegy",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Nyelv",
-    lblDlgSettingsDisplayTheme:             "Téma",
-    btnDlgSettingsDisplayThemeDark:         "Sötét",
-    btnDlgSettingsDisplayThemeLight:        "Világos",
-    lblDlgSettingsDisplayColors:            "Színek",
-    btnDlgSettingsDisplayColorReset:        "Visszaállítás",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Nyelv",
+    lblStgDisplayTheme:                     "Téma",
+    btnStgDisplayThemeDark:                 "Sötét",
+    btnStgDisplayThemeLight:                "Világos",
+    lblStgDisplayColors:                    "Színek",
+    btnStgDisplayColorReset:                "Visszaállítás",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Akkordmeneteket generál audio + MIDI magokká, amelyek korlátozzák az AI zenei generátorokat, mint a Suno.",
-    lblDlgSettingsAboutCredits:             "Hangszerkreditek",
-    msgDlgSettingsAboutCreditsIntro:        "A mintavételezett hangszerek szabadon licencelt felvételi alkalmakról származnak, készítette:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Akkordmeneteket generál audio + MIDI magokká, amelyek korlátozzák az AI zenei generátorokat, mint a Suno.",
+    lblStgAboutCredits:                     "Hangszerkreditek",
+    msgStgAboutCreditsIntro:                "A mintavételezett hangszerek szabadon licencelt felvételi alkalmakról származnak, készítette:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -6219,23 +6255,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Atidaryti nustatymus",
     tipHdrHelp:                             "Pagalba",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Nustatymai",
-    tabDlgSettingsDisplay:                  "Rodymas",
-    tabDlgSettingsAbout:                    "Apie",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Nustatymai",
+    tipStgBack:                             "Atgal",
+    tabStgDisplay:                          "Rodymas",
+    tabStgAbout:                            "Apie",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Kalba",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Tamsus",
-    btnDlgSettingsDisplayThemeLight:        "Šviesus",
-    lblDlgSettingsDisplayColors:            "Spalvos",
-    btnDlgSettingsDisplayColorReset:        "Atkurti",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Kalba",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Tamsus",
+    btnStgDisplayThemeLight:                "Šviesus",
+    lblStgDisplayColors:                    "Spalvos",
+    btnStgDisplayColorReset:                "Atkurti",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Generuoja akordų progresijas kaip garso + MIDI sėklas, kurios apriboja AI muzikos generatorius, tokius kaip Suno.",
-    lblDlgSettingsAboutCredits:             "Instrumentų autoriai",
-    msgDlgSettingsAboutCreditsIntro:        "Paimti instrumentai yra iš laisvai licencijuotų įrašų sesijų, autorius:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Generuoja akordų progresijas kaip garso + MIDI sėklas, kurios apriboja AI muzikos generatorius, tokius kaip Suno.",
+    lblStgAboutCredits:                     "Instrumentų autoriai",
+    msgStgAboutCreditsIntro:                "Paimti instrumentai yra iš laisvai licencijuotų įrašų sesijų, autorius:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -6391,23 +6428,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Отвори поставки",
     tipHdrHelp:                             "Помош",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Поставки",
-    tabDlgSettingsDisplay:                  "Приказ",
-    tabDlgSettingsAbout:                    "За програмата",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Поставки",
+    tipStgBack:                             "Назад",
+    tabStgDisplay:                          "Приказ",
+    tabStgAbout:                            "За програмата",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Јазик",
-    lblDlgSettingsDisplayTheme:             "Тема",
-    btnDlgSettingsDisplayThemeDark:         "Темно",
-    btnDlgSettingsDisplayThemeLight:        "Светло",
-    lblDlgSettingsDisplayColors:            "Бои",
-    btnDlgSettingsDisplayColorReset:        "Ресетирај",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Јазик",
+    lblStgDisplayTheme:                     "Тема",
+    btnStgDisplayThemeDark:                 "Темно",
+    btnStgDisplayThemeLight:                "Светло",
+    lblStgDisplayColors:                    "Бои",
+    btnStgDisplayColorReset:                "Ресетирај",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Генерира акордни прогресии како аудио + MIDI семиња кои ги ограничуваат AI музичките генератори како Suno.",
-    lblDlgSettingsAboutCredits:             "Кредити за инструменти",
-    msgDlgSettingsAboutCreditsIntro:        "Семплираните инструменти потекнуваат од слободно лиценцирани сесии за снимање, од:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Генерира акордни прогресии како аудио + MIDI семиња кои ги ограничуваат AI музичките генератори како Suno.",
+    lblStgAboutCredits:                     "Кредити за инструменти",
+    msgStgAboutCreditsIntro:                "Семплираните инструменти потекнуваат од слободно лиценцирани сесии за снимање, од:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -6563,23 +6601,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Отвори подешавања",
     tipHdrHelp:                             "Помоћ",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Подешавања",
-    tabDlgSettingsDisplay:                  "Приказ",
-    tabDlgSettingsAbout:                    "О програму",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Подешавања",
+    tipStgBack:                             "Назад",
+    tabStgDisplay:                          "Приказ",
+    tabStgAbout:                            "О програму",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Језик",
-    lblDlgSettingsDisplayTheme:             "Тема",
-    btnDlgSettingsDisplayThemeDark:         "Тамно",
-    btnDlgSettingsDisplayThemeLight:        "Светло",
-    lblDlgSettingsDisplayColors:            "Боје",
-    btnDlgSettingsDisplayColorReset:        "Ресетуј",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Језик",
+    lblStgDisplayTheme:                     "Тема",
+    btnStgDisplayThemeDark:                 "Тамно",
+    btnStgDisplayThemeLight:                "Светло",
+    lblStgDisplayColors:                    "Боје",
+    btnStgDisplayColorReset:                "Ресетуј",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Генерише акордне прогресије као аудио + MIDI семена која ограничавају АИ музичке генераторе попут Suno.",
-    lblDlgSettingsAboutCredits:             "Заслуге за инструменте",
-    msgDlgSettingsAboutCreditsIntro:        "Семпловани инструменти потичу из слободно лиценцираних сесија снимања, од:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Генерише акордне прогресије као аудио + MIDI семена која ограничавају АИ музичке генераторе попут Suno.",
+    lblStgAboutCredits:                     "Заслуге за инструменте",
+    msgStgAboutCreditsIntro:                "Семпловани инструменти потичу из слободно лиценцираних сесија снимања, од:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -6735,23 +6774,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Otvoriť nastavenia",
     tipHdrHelp:                             "Pomoc",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Nastavenia",
-    tabDlgSettingsDisplay:                  "Zobrazenie",
-    tabDlgSettingsAbout:                    "O aplikácii",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Nastavenia",
+    tipStgBack:                             "Späť",
+    tabStgDisplay:                          "Zobrazenie",
+    tabStgAbout:                            "O aplikácii",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Jazyk",
-    lblDlgSettingsDisplayTheme:             "Téma",
-    btnDlgSettingsDisplayThemeDark:         "Tmavý",
-    btnDlgSettingsDisplayThemeLight:        "Svetlý",
-    lblDlgSettingsDisplayColors:            "Farby",
-    btnDlgSettingsDisplayColorReset:        "Obnoviť",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Jazyk",
+    lblStgDisplayTheme:                     "Téma",
+    btnStgDisplayThemeDark:                 "Tmavý",
+    btnStgDisplayThemeLight:                "Svetlý",
+    lblStgDisplayColors:                    "Farby",
+    btnStgDisplayColorReset:                "Obnoviť",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Generuje akordové progrese ako audio + MIDI semená, ktoré obmedzujú generátory hudby AI, ako je Suno.",
-    lblDlgSettingsAboutCredits:             "Zásluhy nástrojov",
-    msgDlgSettingsAboutCreditsIntro:        "Vzorkované nástroje pochádzajú z voľne licencovaných nahrávacích relácií, od:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Generuje akordové progrese ako audio + MIDI semená, ktoré obmedzujú generátory hudby AI, ako je Suno.",
+    lblStgAboutCredits:                     "Zásluhy nástrojov",
+    msgStgAboutCreditsIntro:                "Vzorkované nástroje pochádzajú z voľne licencovaných nahrávacích relácií, od:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -6907,23 +6947,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Odpri nastavitve",
     tipHdrHelp:                             "Pomoč",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Nastavitve",
-    tabDlgSettingsDisplay:                  "Prikaz",
-    tabDlgSettingsAbout:                    "O programu",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Nastavitve",
+    tipStgBack:                             "Nazaj",
+    tabStgDisplay:                          "Prikaz",
+    tabStgAbout:                            "O programu",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Jezik",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Temno",
-    btnDlgSettingsDisplayThemeLight:        "Svetlo",
-    lblDlgSettingsDisplayColors:            "Barve",
-    btnDlgSettingsDisplayColorReset:        "Ponastavi",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Jezik",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Temno",
+    btnStgDisplayThemeLight:                "Svetlo",
+    lblStgDisplayColors:                    "Barve",
+    btnStgDisplayColorReset:                "Ponastavi",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Ustvarja akordne progresije kot avdio + MIDI semena, ki omejujejo AI generatorje glasbe, kot je Suno.",
-    lblDlgSettingsAboutCredits:             "Zasluge za instrumente",
-    msgDlgSettingsAboutCreditsIntro:        "Vzorčeni instrumenti izvirajo iz prosto licenciranih snemalnih sej, avtor:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Ustvarja akordne progresije kot avdio + MIDI semena, ki omejujejo AI generatorje glasbe, kot je Suno.",
+    lblStgAboutCredits:                     "Zasluge za instrumente",
+    msgStgAboutCreditsIntro:                "Vzorčeni instrumenti izvirajo iz prosto licenciranih snemalnih sej, avtor:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -7079,23 +7120,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "அமைப்புகளைத் திற",
     tipHdrHelp:                             "உதவி",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "அமைப்புகள்",
-    tabDlgSettingsDisplay:                  "காட்சி",
-    tabDlgSettingsAbout:                    "பற்றி",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "அமைப்புகள்",
+    tipStgBack:                             "பின்செல்",
+    tabStgDisplay:                          "காட்சி",
+    tabStgAbout:                            "பற்றி",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "மொழி",
-    lblDlgSettingsDisplayTheme:             "தீம்",
-    btnDlgSettingsDisplayThemeDark:         "இருண்ட",
-    btnDlgSettingsDisplayThemeLight:        "வெளிச்சம்",
-    lblDlgSettingsDisplayColors:            "வண்ணங்கள்",
-    btnDlgSettingsDisplayColorReset:        "மீட்டமை",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "மொழி",
+    lblStgDisplayTheme:                     "தீம்",
+    btnStgDisplayThemeDark:                 "இருண்ட",
+    btnStgDisplayThemeLight:                "வெளிச்சம்",
+    lblStgDisplayColors:                    "வண்ணங்கள்",
+    btnStgDisplayColorReset:                "மீட்டமை",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "சரம் முன்னேற்றங்களை ஆடியோ மற்றும் MIDI விதைகளாக உருவாக்குகிறது, இது Suno போன்ற AI இசை ஜெனரேட்டர்களைக் கட்டுப்படுத்துகிறது.",
-    lblDlgSettingsAboutCredits:             "கருவி வரவுகள்",
-    msgDlgSettingsAboutCreditsIntro:        "மாதிரியாக எடுக்கப்பட்ட இசைக்கருவிகள் இலவச உரிமம் பெற்ற பதிவு அமர்வுகளிலிருந்து பெறப்பட்டவை, வழங்கியவர்:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "சரம் முன்னேற்றங்களை ஆடியோ மற்றும் MIDI விதைகளாக உருவாக்குகிறது, இது Suno போன்ற AI இசை ஜெனரேட்டர்களைக் கட்டுப்படுத்துகிறது.",
+    lblStgAboutCredits:                     "கருவி வரவுகள்",
+    msgStgAboutCreditsIntro:                "மாதிரியாக எடுக்கப்பட்ட இசைக்கருவிகள் இலவச உரிமம் பெற்ற பதிவு அமர்வுகளிலிருந்து பெறப்பட்டவை, வழங்கியவர்:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -7251,23 +7293,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "सेटिंग्स खोलें",
     tipHdrHelp:                             "सहायता",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "सेटिंग्स",
-    tabDlgSettingsDisplay:                  "प्रदर्शन",
-    tabDlgSettingsAbout:                    "के बारे में",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "सेटिंग्स",
+    tipStgBack:                             "वापस",
+    tabStgDisplay:                          "प्रदर्शन",
+    tabStgAbout:                            "के बारे में",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "भाषा",
-    lblDlgSettingsDisplayTheme:             "थीम",
-    btnDlgSettingsDisplayThemeDark:         "गहरा",
-    btnDlgSettingsDisplayThemeLight:        "हल्का",
-    lblDlgSettingsDisplayColors:            "रंग",
-    btnDlgSettingsDisplayColorReset:        "रीसेट करें",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "भाषा",
+    lblStgDisplayTheme:                     "थीम",
+    btnStgDisplayThemeDark:                 "गहरा",
+    btnStgDisplayThemeLight:                "हल्का",
+    lblStgDisplayColors:                    "रंग",
+    btnStgDisplayColorReset:                "रीसेट करें",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "कॉर्ड प्रोग्रेशन को ऑडियो और MIDI सीड्स के रूप में उत्पन्न करता है जो Suno जैसे AI संगीत जनरेटर को नियंत्रित करते हैं।",
-    lblDlgSettingsAboutCredits:             "वाद्य यंत्र क्रेडिट",
-    msgDlgSettingsAboutCreditsIntro:        "नमूनाकृत वाद्ययंत्र स्वतंत्र रूप से लाइसेंस प्राप्त रिकॉर्डिंग सत्रों से आते हैं, द्वारा:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "कॉर्ड प्रोग्रेशन को ऑडियो और MIDI सीड्स के रूप में उत्पन्न करता है जो Suno जैसे AI संगीत जनरेटर को नियंत्रित करते हैं।",
+    lblStgAboutCredits:                     "वाद्य यंत्र क्रेडिट",
+    msgStgAboutCreditsIntro:                "नमूनाकृत वाद्ययंत्र स्वतंत्र रूप से लाइसेंस प्राप्त रिकॉर्डिंग सत्रों से आते हैं, द्वारा:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -7423,23 +7466,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "সেটিংস খুলুন",
     tipHdrHelp:                             "সাহায্য",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "সেটিংস",
-    tabDlgSettingsDisplay:                  "প্রদর্শন",
-    tabDlgSettingsAbout:                    "সম্পর্কে",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "সেটিংস",
+    tipStgBack:                             "ফিরে যান",
+    tabStgDisplay:                          "প্রদর্শন",
+    tabStgAbout:                            "সম্পর্কে",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "ভাষা",
-    lblDlgSettingsDisplayTheme:             "থিম",
-    btnDlgSettingsDisplayThemeDark:         "গাঢ়",
-    btnDlgSettingsDisplayThemeLight:        "হালকা",
-    lblDlgSettingsDisplayColors:            "রঙ",
-    btnDlgSettingsDisplayColorReset:        "রিসেট করুন",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "ভাষা",
+    lblStgDisplayTheme:                     "থিম",
+    btnStgDisplayThemeDark:                 "গাঢ়",
+    btnStgDisplayThemeLight:                "হালকা",
+    lblStgDisplayColors:                    "রঙ",
+    btnStgDisplayColorReset:                "রিসেট করুন",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "কর্ড প্রগ্রেশনকে অডিও এবং MIDI বীজ হিসেবে তৈরি করে যা Suno-এর মতো AI সঙ্গীত জেনারেটরকে সীমাবদ্ধ করে।",
-    lblDlgSettingsAboutCredits:             "যন্ত্রের ক্রেডিট",
-    msgDlgSettingsAboutCreditsIntro:        "স্যাম্পল করা যন্ত্রগুলি বিনামূল্যে লাইসেন্সপ্রাপ্ত রেকর্ডিং সেশন থেকে এসেছে, দ্বারা:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "কর্ড প্রগ্রেশনকে অডিও এবং MIDI বীজ হিসেবে তৈরি করে যা Suno-এর মতো AI সঙ্গীত জেনারেটরকে সীমাবদ্ধ করে।",
+    lblStgAboutCredits:                     "যন্ত্রের ক্রেডিট",
+    msgStgAboutCreditsIntro:                "স্যাম্পল করা যন্ত্রগুলি বিনামূল্যে লাইসেন্সপ্রাপ্ত রেকর্ডিং সেশন থেকে এসেছে, দ্বারা:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -7595,23 +7639,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "ترتیبات کھولیں",
     tipHdrHelp:                             "مدد",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "ترتیبات",
-    tabDlgSettingsDisplay:                  "ڈسپلے",
-    tabDlgSettingsAbout:                    "کے بارے میں",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "ترتیبات",
+    tipStgBack:                             "واپس",
+    tabStgDisplay:                          "ڈسپلے",
+    tabStgAbout:                            "کے بارے میں",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "زبان",
-    lblDlgSettingsDisplayTheme:             "تھیم",
-    btnDlgSettingsDisplayThemeDark:         "گہرا",
-    btnDlgSettingsDisplayThemeLight:        "ہلکا",
-    lblDlgSettingsDisplayColors:            "رنگ",
-    btnDlgSettingsDisplayColorReset:        "ری سیٹ کریں",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "زبان",
+    lblStgDisplayTheme:                     "تھیم",
+    btnStgDisplayThemeDark:                 "گہرا",
+    btnStgDisplayThemeLight:                "ہلکا",
+    lblStgDisplayColors:                    "رنگ",
+    btnStgDisplayColorReset:                "ری سیٹ کریں",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "کورد پروگریشنز کو آڈیو اور MIDI سیڈز کے طور پر تیار کرتا ہے جو Suno جیسے AI میوزک جنریٹرز کو محدود کرتے ہیں۔",
-    lblDlgSettingsAboutCredits:             "آلے کے کریڈٹس",
-    msgDlgSettingsAboutCreditsIntro:        "نمونہ شدہ آلات آزادانہ طور پر لائسنس یافتہ ریکارڈنگ سیشنز سے آتے ہیں، از:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "کورد پروگریشنز کو آڈیو اور MIDI سیڈز کے طور پر تیار کرتا ہے جو Suno جیسے AI میوزک جنریٹرز کو محدود کرتے ہیں۔",
+    lblStgAboutCredits:                     "آلے کے کریڈٹس",
+    msgStgAboutCreditsIntro:                "نمونہ شدہ آلات آزادانہ طور پر لائسنس یافتہ ریکارڈنگ سیشنز سے آتے ہیں، از:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -7767,23 +7812,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Fungua mipangilio",
     tipHdrHelp:                             "Msaada",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Mipangilio",
-    tabDlgSettingsDisplay:                  "Onyesho",
-    tabDlgSettingsAbout:                    "Kuhusu",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Mipangilio",
+    tipStgBack:                             "Rudi",
+    tabStgDisplay:                          "Onyesho",
+    tabStgAbout:                            "Kuhusu",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Lugha",
-    lblDlgSettingsDisplayTheme:             "Mandhari",
-    btnDlgSettingsDisplayThemeDark:         "Giza",
-    btnDlgSettingsDisplayThemeLight:        "Nuru",
-    lblDlgSettingsDisplayColors:            "Rangi",
-    btnDlgSettingsDisplayColorReset:        "Rudisha",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Lugha",
+    lblStgDisplayTheme:                     "Mandhari",
+    btnStgDisplayThemeDark:                 "Giza",
+    btnStgDisplayThemeLight:                "Nuru",
+    lblStgDisplayColors:                    "Rangi",
+    btnStgDisplayColorReset:                "Rudisha",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Hutengeneza maendeleo ya nyimbo kama mbegu za sauti + MIDI zinazoweka mipaka kwa jenereta za muziki za AI kama Suno.",
-    lblDlgSettingsAboutCredits:             "Mikopo ya ala",
-    msgDlgSettingsAboutCreditsIntro:        "Vyombo vilivyochukuliwa sampuli vinatokana na vipindi vya kurekodi vilivyo na leseni huru, na:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Hutengeneza maendeleo ya nyimbo kama mbegu za sauti + MIDI zinazoweka mipaka kwa jenereta za muziki za AI kama Suno.",
+    lblStgAboutCredits:                     "Mikopo ya ala",
+    msgStgAboutCreditsIntro:                "Vyombo vilivyochukuliwa sampuli vinatokana na vipindi vya kurekodi vilivyo na leseni huru, na:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -7939,23 +7985,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ",
     tipHdrHelp:                             "ਮਦਦ",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "ਸੈਟਿੰਗਾਂ",
-    tabDlgSettingsDisplay:                  "ਪ੍ਰਦਰਸ਼ਨ",
-    tabDlgSettingsAbout:                    "ਬਾਰੇ",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "ਸੈਟਿੰਗਾਂ",
+    tipStgBack:                             "ਵਾਪਸ",
+    tabStgDisplay:                          "ਪ੍ਰਦਰਸ਼ਨ",
+    tabStgAbout:                            "ਬਾਰੇ",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "ਭਾਸ਼ਾ",
-    lblDlgSettingsDisplayTheme:             "ਥੀਮ",
-    btnDlgSettingsDisplayThemeDark:         "ਗੂੜ੍ਹਾ",
-    btnDlgSettingsDisplayThemeLight:        "ਹਲਕਾ",
-    lblDlgSettingsDisplayColors:            "ਰੰਗ",
-    btnDlgSettingsDisplayColorReset:        "ਰੀਸੈਟ ਕਰੋ",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "ਭਾਸ਼ਾ",
+    lblStgDisplayTheme:                     "ਥੀਮ",
+    btnStgDisplayThemeDark:                 "ਗੂੜ੍ਹਾ",
+    btnStgDisplayThemeLight:                "ਹਲਕਾ",
+    lblStgDisplayColors:                    "ਰੰਗ",
+    btnStgDisplayColorReset:                "ਰੀਸੈਟ ਕਰੋ",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "ਕੋਰਡ ਪ੍ਰੋਗਰੈਸ਼ਨਾਂ ਨੂੰ ਆਡੀਓ ਅਤੇ MIDI ਬੀਜਾਂ ਵਜੋਂ ਤਿਆਰ ਕਰਦਾ ਹੈ ਜੋ Suno ਵਰਗੇ AI ਸੰਗੀਤ ਜਨਰੇਟਰਾਂ ਨੂੰ ਸੀਮਤ ਕਰਦੇ ਹਨ।",
-    lblDlgSettingsAboutCredits:             "ਸਾਜ਼ ਕ੍ਰੈਡਿਟ",
-    msgDlgSettingsAboutCreditsIntro:        "ਨਮੂਨੇ ਵਾਲੇ ਸਾਜ਼ ਮੁਫ਼ਤ ਲਾਇਸੰਸਸ਼ੁਦਾ ਰਿਕਾਰਡਿੰਗ ਸੈਸ਼ਨਾਂ ਤੋਂ ਆਉਂਦੇ ਹਨ, ਦੁਆਰਾ:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "ਕੋਰਡ ਪ੍ਰੋਗਰੈਸ਼ਨਾਂ ਨੂੰ ਆਡੀਓ ਅਤੇ MIDI ਬੀਜਾਂ ਵਜੋਂ ਤਿਆਰ ਕਰਦਾ ਹੈ ਜੋ Suno ਵਰਗੇ AI ਸੰਗੀਤ ਜਨਰੇਟਰਾਂ ਨੂੰ ਸੀਮਤ ਕਰਦੇ ਹਨ।",
+    lblStgAboutCredits:                     "ਸਾਜ਼ ਕ੍ਰੈਡਿਟ",
+    msgStgAboutCreditsIntro:                "ਨਮੂਨੇ ਵਾਲੇ ਸਾਜ਼ ਮੁਫ਼ਤ ਲਾਇਸੰਸਸ਼ੁਦਾ ਰਿਕਾਰਡਿੰਗ ਸੈਸ਼ਨਾਂ ਤੋਂ ਆਉਂਦੇ ਹਨ, ਦੁਆਰਾ:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -8111,23 +8158,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Bude saituna",
     tipHdrHelp:                             "Taimako",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Saituna",
-    tabDlgSettingsDisplay:                  "Nuni",
-    tabDlgSettingsAbout:                    "Game da",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Saituna",
+    tipStgBack:                             "Baya",
+    tabStgDisplay:                          "Nuni",
+    tabStgAbout:                            "Game da",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Harshe",
-    lblDlgSettingsDisplayTheme:             "Jigo",
-    btnDlgSettingsDisplayThemeDark:         "Duhu",
-    btnDlgSettingsDisplayThemeLight:        "Haske",
-    lblDlgSettingsDisplayColors:            "Launuka",
-    btnDlgSettingsDisplayColorReset:        "Sake saita",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Harshe",
+    lblStgDisplayTheme:                     "Jigo",
+    btnStgDisplayThemeDark:                 "Duhu",
+    btnStgDisplayThemeLight:                "Haske",
+    lblStgDisplayColors:                    "Launuka",
+    btnStgDisplayColorReset:                "Sake saita",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Yana samar da ci gaban kida zuwa tsaba na sauti da MIDI waɗanda ke takura masu samar da kiɗa na AI kamar Suno.",
-    lblDlgSettingsAboutCredits:             "Kayan aiki credits",
-    msgDlgSettingsAboutCreditsIntro:        "Kayan kida da aka yi samfuri sun fito ne daga zaman rikodin da aka ba da lasisi kyauta, ta:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Yana samar da ci gaban kida zuwa tsaba na sauti da MIDI waɗanda ke takura masu samar da kiɗa na AI kamar Suno.",
+    lblStgAboutCredits:                     "Kayan aiki credits",
+    msgStgAboutCreditsIntro:                "Kayan kida da aka yi samfuri sun fito ne daga zaman rikodin da aka ba da lasisi kyauta, ta:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -8283,23 +8331,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Ṣi eto",
     tipHdrHelp:                             "Iranlọwọ",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Eto",
-    tabDlgSettingsDisplay:                  "Ifihan",
-    tabDlgSettingsAbout:                    "Nipa",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Eto",
+    tipStgBack:                             "Pada",
+    tabStgDisplay:                          "Ifihan",
+    tabStgAbout:                            "Nipa",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Èdè",
-    lblDlgSettingsDisplayTheme:             "Àtùpà",
-    btnDlgSettingsDisplayThemeDark:         "Dudu",
-    btnDlgSettingsDisplayThemeLight:        "Fẹ́lẹ́fẹ́lẹ́",
-    lblDlgSettingsDisplayColors:            "Awọn awọ",
-    btnDlgSettingsDisplayColorReset:        "Tun pada",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Èdè",
+    lblStgDisplayTheme:                     "Àtùpà",
+    btnStgDisplayThemeDark:                 "Dudu",
+    btnStgDisplayThemeLight:                "Fẹ́lẹ́fẹ́lẹ́",
+    lblStgDisplayColors:                    "Awọn awọ",
+    btnStgDisplayColorReset:                "Tun pada",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "N ṣe ipilẹṣẹ ilọsiwaju akọọlẹ bi awọn irugbin ohun + MIDI ti o fi ipa mu awọn olupilẹṣẹ orin AI bi Suno.",
-    lblDlgSettingsAboutCredits:             "Awọn kirẹditi ohun èlò",
-    msgDlgSettingsAboutCreditsIntro:        "Awọn ohun elo ti a ṣe ayẹwo wa lati awọn igba gbigbasilẹ ti o ni iwe-aṣẹ ọfẹ, nipasẹ:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "N ṣe ipilẹṣẹ ilọsiwaju akọọlẹ bi awọn irugbin ohun + MIDI ti o fi ipa mu awọn olupilẹṣẹ orin AI bi Suno.",
+    lblStgAboutCredits:                     "Awọn kirẹditi ohun èlò",
+    msgStgAboutCreditsIntro:                "Awọn ohun elo ti a ṣe ayẹwo wa lati awọn igba gbigbasilẹ ti o ni iwe-aṣẹ ọfẹ, nipasẹ:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -8455,23 +8504,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "సెట్టింగ్‌లను తెరవండి",
     tipHdrHelp:                             "సహాయం",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "సెట్టింగ్‌లు",
-    tabDlgSettingsDisplay:                  "ప్రదర్శన",
-    tabDlgSettingsAbout:                    "గురించి",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "సెట్టింగ్‌లు",
+    tipStgBack:                             "వెనుకకు",
+    tabStgDisplay:                          "ప్రదర్శన",
+    tabStgAbout:                            "గురించి",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "భాష",
-    lblDlgSettingsDisplayTheme:             "థీమ్",
-    btnDlgSettingsDisplayThemeDark:         "ముదురు",
-    btnDlgSettingsDisplayThemeLight:        "లేత",
-    lblDlgSettingsDisplayColors:            "రంగులు",
-    btnDlgSettingsDisplayColorReset:        "రీసెట్ చేయండి",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "భాష",
+    lblStgDisplayTheme:                     "థీమ్",
+    btnStgDisplayThemeDark:                 "ముదురు",
+    btnStgDisplayThemeLight:                "లేత",
+    lblStgDisplayColors:                    "రంగులు",
+    btnStgDisplayColorReset:                "రీసెట్ చేయండి",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "కార్డ్ ప్రోగ్రెషన్‌లను ఆడియో మరియు MIDI విత్తనాలుగా ఉత్పత్తి చేస్తుంది, ఇవి Suno వంటి AI సంగీత జనరేటర్‌లను పరిమితం చేస్తాయి.",
-    lblDlgSettingsAboutCredits:             "వాయిద్య క్రెడిట్‌లు",
-    msgDlgSettingsAboutCreditsIntro:        "నమూనా చేయబడిన వాయిద్యాలు ఉచిత లైసెన్స్ పొందిన రికార్డింగ్ సెషన్‌ల నుండి వచ్చాయి, ద్వారా:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "కార్డ్ ప్రోగ్రెషన్‌లను ఆడియో మరియు MIDI విత్తనాలుగా ఉత్పత్తి చేస్తుంది, ఇవి Suno వంటి AI సంగీత జనరేటర్‌లను పరిమితం చేస్తాయి.",
+    lblStgAboutCredits:                     "వాయిద్య క్రెడిట్‌లు",
+    msgStgAboutCreditsIntro:                "నమూనా చేయబడిన వాయిద్యాలు ఉచిత లైసెన్స్ పొందిన రికార్డింగ్ సెషన్‌ల నుండి వచ్చాయి, ద్వారా:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -8627,23 +8677,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "सेटिंग्ज उघडा",
     tipHdrHelp:                             "मदत",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "सेटिंग्ज",
-    tabDlgSettingsDisplay:                  "प्रदर्शन",
-    tabDlgSettingsAbout:                    "बद्दल",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "सेटिंग्ज",
+    tipStgBack:                             "मागे",
+    tabStgDisplay:                          "प्रदर्शन",
+    tabStgAbout:                            "बद्दल",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "भाषा",
-    lblDlgSettingsDisplayTheme:             "थीम",
-    btnDlgSettingsDisplayThemeDark:         "गडद",
-    btnDlgSettingsDisplayThemeLight:        "हलका",
-    lblDlgSettingsDisplayColors:            "रंग",
-    btnDlgSettingsDisplayColorReset:        "रीसेट करा",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "भाषा",
+    lblStgDisplayTheme:                     "थीम",
+    btnStgDisplayThemeDark:                 "गडद",
+    btnStgDisplayThemeLight:                "हलका",
+    lblStgDisplayColors:                    "रंग",
+    btnStgDisplayColorReset:                "रीसेट करा",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "कॉर्ड प्रोग्रेशन्सना ऑडिओ आणि MIDI सीड्स म्हणून तयार करते जे Suno सारख्या AI संगीत जनरेटरना मर्यादित करतात.",
-    lblDlgSettingsAboutCredits:             "इन्स्ट्रुमेंट क्रेडिट्स",
-    msgDlgSettingsAboutCreditsIntro:        "नमुना घेतलेली वाद्ये मुक्त-परवानाधारक रेकॉर्डिंग सत्रातून येतात, द्वारे:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "कॉर्ड प्रोग्रेशन्सना ऑडिओ आणि MIDI सीड्स म्हणून तयार करते जे Suno सारख्या AI संगीत जनरेटरना मर्यादित करतात.",
+    lblStgAboutCredits:                     "इन्स्ट्रुमेंट क्रेडिट्स",
+    msgStgAboutCreditsIntro:                "नमुना घेतलेली वाद्ये मुक्त-परवानाधारक रेकॉर्डिंग सत्रातून येतात, द्वारे:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",
@@ -8799,23 +8850,24 @@ const TRANSLATIONS = {
     tipHdrSettings:                         "Buksan ang mga setting",
     tipHdrHelp:                             "Tulong",
 
-    // Prefix:DlgSettings - Scope:settings dialog
-    ttlDlgSettings:                         "Mga Setting",
-    tabDlgSettingsDisplay:                  "Display",
-    tabDlgSettingsAbout:                    "Tungkol sa",
+    // Prefix:Stg - Scope:settings view
+    ttlStg:                                 "Mga Setting",
+    tipStgBack:                             "Bumalik",
+    tabStgDisplay:                          "Display",
+    tabStgAbout:                            "Tungkol sa",
 
-    // Prefix:DlgSettingsDisplay - Scope:settings dialog (Display tab)
-    lblDlgSettingsDisplayLang:              "Wika",
-    lblDlgSettingsDisplayTheme:             "Tema",
-    btnDlgSettingsDisplayThemeDark:         "Madilim",
-    btnDlgSettingsDisplayThemeLight:        "Maliwanag",
-    lblDlgSettingsDisplayColors:            "Mga Kulay",
-    btnDlgSettingsDisplayColorReset:        "I-reset",
+    // Prefix:StgDisplay - Scope:settings view (Display tab)
+    lblStgDisplayLang:                      "Wika",
+    lblStgDisplayTheme:                     "Tema",
+    btnStgDisplayThemeDark:                 "Madilim",
+    btnStgDisplayThemeLight:                "Maliwanag",
+    lblStgDisplayColors:                    "Mga Kulay",
+    btnStgDisplayColorReset:                "I-reset",
 
-    // Prefix:DlgSettingsAbout - Scope:settings dialog (About tab)
-    msgDlgSettingsAboutDesc:                "Gumagawa ng mga chord progression bilang audio + MIDI seeds na naglilimita sa mga AI music generator tulad ng Suno.",
-    lblDlgSettingsAboutCredits:             "Mga kredito ng instrumento",
-    msgDlgSettingsAboutCreditsIntro:        "Ang mga instrumentong sinampulan ay nagmula sa mga sesyon ng pagre-record na may libreng lisensya, ni:",
+    // Prefix:StgAbout - Scope:settings view (About tab)
+    msgStgAboutDesc:                        "Gumagawa ng mga chord progression bilang audio + MIDI seeds na naglilimita sa mga AI music generator tulad ng Suno.",
+    lblStgAboutCredits:                     "Mga kredito ng instrumento",
+    msgStgAboutCreditsIntro:                "Ang mga instrumentong sinampulan ay nagmula sa mga sesyon ng pagre-record na may libreng lisensya, ni:",
 
     // Prefix:Seed - Scope:main seed generator panel
     plhSeedProgression:                     "C Csus4 F/C G/D | C | Am Csus4 G C/G",

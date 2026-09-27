@@ -5,7 +5,7 @@
 //   language via the i18n key workflow. Full procedure: see CLAUDE-i18n.md.
 //   Never paste translations by hand. The scripts ARE the work.
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Settings, HelpCircle, Sun, Moon, X, ScrollText, FolderOpen, Music, AudioWaveform, Save, SavePlus, FilePlus, Play, Square, Volume2, VolumeX, ArrowLeftRight, ArrowRightToLine, ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Eraser, Pencil, PenLine, SlidersHorizontal, Plus, Minus } from 'lucide-react';
+import { Settings, HelpCircle, X, FolderOpen, Music, AudioWaveform, Save, SavePlus, FilePlus, Play, Square, Volume2, VolumeX, ArrowLeftRight, ArrowRightToLine, ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Eraser, Pencil, PenLine, SlidersHorizontal, Plus, Minus } from 'lucide-react';
 import pkg from '../package.json';
 import { useT, LANGUAGES } from './i18n-gen';
 import { checkForUpdate, getUrl } from './lib/update-check';
@@ -38,7 +38,7 @@ import { INSTRUMENTS, parseSoundFont, loadPreset, presetIndexForProgram } from '
 import { loadPack } from './lib/sample-pack';
 import { ROOM_KEYS } from './lib/reverb';
 import { startSeed, playOnce } from './lib/seed-player';
-import yaiolLogo from './assets/yaiol-logo.svg';
+import { SettingsView } from './lib/ui-settings';
 // Storage namespace - single source: package.json `storagePrefix`. Never hardcode a prefix.
 const STORAGE_PREFIX = pkg.storagePrefix;
 
@@ -950,19 +950,21 @@ export default function App() {
             <HelpCircle />
           </button>
           <button
-            className="btn icon"
-            onClick={() => setSettingsOpen(true)}
+            className={`btn icon stg-toggle ${settingsOpen ? 'active' : ''}`}
+            onClick={() => setSettingsOpen(o => !o)}
             title={t('tipHdrSettings')}
             aria-label={t('tipHdrSettings')}
+            aria-pressed={settingsOpen}
           >
             <Settings />
           </button>
         </div>
       </AppHeader>
 
-      {/* ── Seed tab strip — one tab per open .yams (markzen-style multi-document). Sits
+      {/* ── Seed tab strip (part of the view — hidden while the settings page covers it) — one tab per open .yams (markzen-style multi-document). Sits
           below the identity separator; the active tab's surface matches the content
           area (.workspace = --dlg-bgd). Horizontal-scrolls, never wraps. ── */}
+      {!settingsOpen && (
       <div style={{
         display: 'flex', alignItems: 'stretch', flexShrink: 0,
         background: 'var(--bar-bgd)', borderBottom: '1px solid var(--border)',
@@ -995,21 +997,21 @@ export default function App() {
           );
         })}
       </div>
-
-      {settingsOpen && (
-        <SettingsDialog
-          t={t}
-          lang={lang} setLang={setLang}
-          theme={theme} setTheme={setTheme}
-          blockColors={blockColors} setBlockColors={setBlockColors}
-          packs={packs}
-          onClose={() => setSettingsOpen(false)}
-        />
       )}
 
       {/* .app-main content region = also the file-drop zone; the overlay is scoped
           here so the blur covers only this area, not the header bar above it. */}
       <div className="app-main" {...dropProps}>
+        {settingsOpen && (
+          <SettingsPage
+            t={t}
+            lang={lang} setLang={setLang}
+            theme={theme} setTheme={setTheme}
+            blockColors={blockColors} setBlockColors={setBlockColors}
+            packs={packs}
+            onClose={() => setSettingsOpen(false)}
+          />
+        )}
         <div className="app-scroll app-scroll-y workspace">
           {active && (
             <SeedPanel
@@ -2255,7 +2257,9 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
   );
 }
 
-function SettingsDialog({ t, lang, setLang, theme, setTheme, blockColors, setBlockColors, packs, onClose }) {
+// The settings page: the shared SettingsView plus this app's block colours (below Language +
+// Theme) and the instrument credits (below About).
+function SettingsPage({ t, lang, setLang, theme, setTheme, blockColors, setBlockColors, packs, onClose }) {
   // The swatch shows the colour the block is painted with right now: the picked
   // one, or the stylesheet's resolved default (the treble's follows the theme).
   const blockColorShown = (key) => blockColors[key]
@@ -2278,118 +2282,43 @@ function SettingsDialog({ t, lang, setLang, theme, setTheme, blockColors, setBlo
           .map(([inst, lic]) => inst + (lic && lic !== 'CC0' ? ` (${lic})` : '')).join(', ') }))
       .sort((a, b) => b.instruments.length - a.instruments.length);
   }, [packs]);
-  const [activeTab, setActiveTab] = useState('display');
 
-  useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
-
-  // Family convention: each tab carries its own lucide icon. For the empty
-  // template we only ship Display; downstream apps add Time / Meta / About
-  // following the same { key, label, icon } shape.
-  const TABS = [
-    { key: 'display', label: t('tabDlgSettingsDisplay'), icon: Sun },
-    { key: 'about',   label: t('tabDlgSettingsAbout'),   icon: ScrollText },
-  ];
-
-  return (
-    <div className="dl-backdrop" onMouseDown={e => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="dlg" onClick={e => e.stopPropagation()}>
-        {/* Header */}
-        <div className="dlg-head">
-          <span className="dlg-title"><Settings />{t('ttlDlgSettings')}</span>
-          <button className="dl-close" onClick={onClose} title={t('btnGlobalCancel')} aria-label={t('btnGlobalCancel')}>
-            <X />
+  // Block colours — the colour-card rows of ampl's Settings: the name in
+  // its colour, the shared ColorPicker swatch, Reset to the default.
+  const displayExtra = (
+    <div className="dlg-field divider">
+      <label className="dlg-field-label">{t('lblStgDisplayColors')}</label>
+      {BLOCK_COLORS.map(({ key, nameKey }) => (
+        <div key={key} className="seed-colors-row">
+          <span className={`seed-colors-name ${key}`}>{t(nameKey)}</span>
+          <ColorPicker color={blockColorShown(key)}
+            onChange={(c) => setBlockColors(prev => ({ ...prev, [key]: c }))}
+            cancelLabel={t('btnGlobalCancel')} applyLabel={t('btnGlobalApply')} pickTitle={t('tipGlobalPickFromScreen')} />
+          <button className="btn subtle seed-colors-reset" disabled={!blockColors[key]}
+            onClick={() => setBlockColors(prev => ({ ...prev, [key]: null }))}>
+            {t('btnStgDisplayColorReset')}
           </button>
         </div>
-
-        {/* Tab bar */}
-        <div className="tabs">
-          {TABS.map(({ key, label, icon: TabIcon }) => (
-            <button
-              key={key}
-              className={`tab ${activeTab === key ? 'active' : ''}`}
-              onClick={() => setActiveTab(key)}
-            >
-              <TabIcon />{label}
-            </button>
-          ))}
-        </div>
-
-        {/* Body */}
-        {/* All tab panels stacked in one grid cell → dialog sizes to the tallest (Display), no yoyo on tab switch. Rule DLG-8. */}
-        <div className="dlg-body" style={{ display: 'grid' }}>
-          <div style={{ gridArea: '1/1', visibility: activeTab === 'display' ? 'visible' : 'hidden', zIndex: activeTab === 'display' ? 1 : 0, background: 'var(--dlg-bgd)' }}>
-              {/* Language */}
-              <div className="dlg-field">
-                <label className="dlg-field-label">{t('lblDlgSettingsDisplayLang')}</label>
-                <select className="select" value={lang} onChange={e => setLang(e.target.value)}>
-                  {LANGUAGES.map(l => <option key={l.key} value={l.key}>{l.label}</option>)}
-                </select>
-              </div>
-              {/* Theme */}
-              <div className="dlg-field divider">
-                <label className="dlg-field-label">{t('lblDlgSettingsDisplayTheme')}</label>
-                <div className="opt-btns">
-                  {[
-                    { key: 'dark',  Icon: Moon, label: t('btnDlgSettingsDisplayThemeDark') },
-                    { key: 'light', Icon: Sun,  label: t('btnDlgSettingsDisplayThemeLight') },
-                  ].map(({ key, Icon, label }) => {
-                    const active = theme === key;
-                    return (
-                      <button
-                        key={key}
-                        className={`opt-btn ${active ? 'active' : ''}`}
-                        onClick={() => setTheme(key)}
-                      >
-                        <Icon />
-                        <span>{label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-              {/* Block colours — the colour-card rows of ampl's Settings: the name in
-                  its colour, the shared ColorPicker swatch, Reset to the default. */}
-              <div className="dlg-field divider">
-                <label className="dlg-field-label">{t('lblDlgSettingsDisplayColors')}</label>
-                {BLOCK_COLORS.map(({ key, nameKey }) => (
-                  <div key={key} className="seed-colors-row">
-                    <span className={`seed-colors-name ${key}`}>{t(nameKey)}</span>
-                    <ColorPicker color={blockColorShown(key)}
-                      onChange={(c) => setBlockColors(prev => ({ ...prev, [key]: c }))}
-                      cancelLabel={t('btnGlobalCancel')} applyLabel={t('btnGlobalApply')} pickTitle={t('tipGlobalPickFromScreen')} />
-                    <button className="btn subtle seed-colors-reset" disabled={!blockColors[key]}
-                      onClick={() => setBlockColors(prev => ({ ...prev, [key]: null }))}>
-                      {t('btnDlgSettingsDisplayColorReset')}
-                    </button>
-                  </div>
-                ))}
-              </div>
-          </div>
-
-          <div style={{ gridArea: '1/1', visibility: activeTab === 'about' ? 'visible' : 'hidden', zIndex: activeTab === 'about' ? 1 : 0, background: 'var(--dlg-bgd)' }}>
-            <div className="dlg-about">
-              <img src={yaiolLogo} alt="Yaiol" style={{ width: 120, height: 'auto', flexShrink: 0 }} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
-                <div className="dlg-about-id">{APP_NAME} <b>v{APP_VERSION}</b> by yaiol</div>
-                <div className="dlg-about-desc">{t('msgDlgSettingsAboutDesc')}</div>
-              </div>
-            </div>
-            {credits.length > 0 && (
-              <div className="seed-credits">
-                <div className="dlg-about-id">{t('lblDlgSettingsAboutCredits')}</div>
-                <div className="dlg-hint">{t('msgDlgSettingsAboutCreditsIntro')}</div>
-                {credits.map(c => (
-                  <div key={c.author} className="seed-credits-row"><b>{c.author}</b> — {c.instruments}</div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
+  );
+
+  const aboutExtra = credits.length > 0 && (
+    <div className="seed-credits">
+      <div className="dlg-about-id">{t('lblStgAboutCredits')}</div>
+      <div className="dlg-hint">{t('msgStgAboutCreditsIntro')}</div>
+      {credits.map(c => (
+        <div key={c.author} className="seed-credits-row"><b>{c.author}</b> — {c.instruments}</div>
+      ))}
+    </div>
+  );
+
+  return (
+    <SettingsView
+      t={t} appName={APP_NAME} appVersion={APP_VERSION} languages={LANGUAGES}
+      lang={lang} setLang={setLang} theme={theme} setTheme={setTheme}
+      displayExtra={displayExtra} aboutExtra={aboutExtra}
+      onClose={onClose}
+    />
   );
 }
