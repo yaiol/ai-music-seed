@@ -8,6 +8,7 @@ import express from "express";
 import { fileURLToPath } from "node:url";
 import pkg from "../package.json" with { type: "json" };
 import { mark, dumpStartupTiming } from "./startup-timing.mjs";
+import { registerNewsRoutes } from "./news.mjs";
 import { lastDir, rememberDir } from "./dialog-memory.mjs";
 mark("electron boot + module imports");
 
@@ -197,6 +198,8 @@ function startServer(callback) {
     if (p) shell.showItemInFolder(p);
     res.json({ ok: true });
   });
+
+  registerNewsRoutes(api, { appId: pkg.name, appVersion: pkg.version });
 
   findFreePort(4000, (port) => {
     api.listen(port, () => {

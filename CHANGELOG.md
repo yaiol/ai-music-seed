@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.2 — 2026-10-23
+
+- A newer version now appears as a card in a news dialog instead of a banner strip: the card lists the release notes newer than the running version, links to the download page, and Don't show again hides it until a still newer version is out
+- Occasional yaiol announcements appear in the same dialog; Settings > General has a new Show news from yaiol switch that turns them off completely (the new-version card is not governed by it)
+- The Settings Display tab is renamed General
+- Number fields show the corrected value at once: a value typed outside the allowed range snaps to the nearest allowed number immediately instead of keeping the typed text
+
 ## 2.1.1 — 2026-09-27
 
 - Settings is now a full-window page instead of a dialog: a rail of tabs on the left, the page covering everything below the top bar while the seed stays open underneath; the gear button toggles it, and the back arrow or Esc leaves it. The rest of the top bar is inactive while it is open

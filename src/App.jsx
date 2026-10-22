@@ -8,8 +8,9 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Settings, HelpCircle, X, FolderOpen, Music, AudioWaveform, Save, SavePlus, FilePlus, Play, Square, Volume2, VolumeX, ArrowLeftRight, ArrowRightToLine, ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Eraser, Pencil, PenLine, SlidersHorizontal, Plus, Minus } from 'lucide-react';
 import pkg from '../package.json';
 import { useT, LANGUAGES } from './i18n-gen';
-import { checkForUpdate, getUrl } from './lib/update-check';
-import { UpdateBanner } from './lib/ui-update-banner';
+import { getUrl } from './lib/site-url';
+import { NewsLoader } from './lib/ui-news-loader';
+import { NewsSetting } from './lib/ui-news-setting';
 import { AppHeader } from './lib/ui-header';
 import { NumberField } from './lib/ui-ctl-numberfield';
 import { Knob } from './lib/ui-ctl-knob';
@@ -439,7 +440,6 @@ export default function App() {
   const [lang,         setLang]         = useState(() => localStorage.getItem(LS_LANG)  || DEFAULT_LANG);
   const [theme,        setTheme]        = useState(() => localStorage.getItem(LS_THEME) || DEFAULT_THEME);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [updateInfo,   setUpdateInfo]   = useState(null);
   const [blockColors,  setBlockColors]  = useState(() =>
     Object.fromEntries(BLOCK_COLORS.map(({ key }) => [key, localStorage.getItem(blockColorStorageKey(key))])));
 
@@ -485,11 +485,6 @@ export default function App() {
     }
   }, [blockColors]);
 
-  // Check for a new version once on launch (silent if up to date / offline / skipped)
-  useEffect(() => {
-    checkForUpdate({ appId: pkg.name, alias: STORAGE_PREFIX, currentVersion: APP_VERSION })
-      .then(u => { if (u) setUpdateInfo(u); });
-  }, []);
 
   // ── Seed-doc mutation + tab lifecycle ──
   // Patch one doc's fields. Any user field edit marks the doc unsaved; programmatic
@@ -891,8 +886,8 @@ export default function App() {
 
   return (
     <div className="app-root">
-      {/* ── Update banner - notify-only, dismissible. See ../CLAUDE.md → "Update feed". ── */}
-      <UpdateBanner info={updateInfo} appId={pkg.name} lang={lang} storagePrefix={STORAGE_PREFIX} t={t} onClose={() => setUpdateInfo(null)} />
+      {/* ── A new version (first) and the yaiol news, in one dialog ── */}
+      <NewsLoader api={API} lang={lang} t={t} />
       <AppHeader appName={APP_NAME} appVersion={APP_VERSION}>
         {/* File actions (.yams): New · Load · Save · Save As — welded group, detached from
             the standard source·help·settings group per the header-group rule (CLAUDE-ui-standards). */}
@@ -2260,6 +2255,15 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
 // The settings page: the shared SettingsView plus this app's block colours (below Language +
 // Theme) and the instrument credits (below About).
 function SettingsPage({ t, lang, setLang, theme, setTheme, blockColors, setBlockColors, packs, onClose }) {
+  const [newsEnabled, setNewsEnabled] = useState(true);
+  useEffect(() => {
+    fetch(`${API}/news-settings`).then(r => r.json()).then(s => setNewsEnabled(s.enabled)).catch(() => {});
+  }, []);
+  function toggleNews(enabled) {
+    setNewsEnabled(enabled);
+    fetch(`${API}/news-settings`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ enabled }) }).catch(() => {});
+  }
+
   // The swatch shows the colour the block is painted with right now: the picked
   // one, or the stylesheet's resolved default (the treble's follows the theme).
   const blockColorShown = (key) => blockColors[key]
@@ -2285,22 +2289,25 @@ function SettingsPage({ t, lang, setLang, theme, setTheme, blockColors, setBlock
 
   // Block colours — the colour-card rows of ampl's Settings: the name in
   // its colour, the shared ColorPicker swatch, Reset to the default.
-  const displayExtra = (
-    <div className="dlg-field divider">
-      <label className="dlg-field-label">{t('lblStgDisplayColors')}</label>
-      {BLOCK_COLORS.map(({ key, nameKey }) => (
-        <div key={key} className="seed-colors-row">
-          <span className={`seed-colors-name ${key}`}>{t(nameKey)}</span>
-          <ColorPicker color={blockColorShown(key)}
-            onChange={(c) => setBlockColors(prev => ({ ...prev, [key]: c }))}
-            cancelLabel={t('btnGlobalCancel')} applyLabel={t('btnGlobalApply')} pickTitle={t('tipGlobalPickFromScreen')} />
-          <button className="btn subtle seed-colors-reset" disabled={!blockColors[key]}
-            onClick={() => setBlockColors(prev => ({ ...prev, [key]: null }))}>
-            {t('btnStgDisplayColorReset')}
-          </button>
-        </div>
-      ))}
-    </div>
+  const generalExtra = (
+    <>
+      <div className="dlg-field divider">
+        <label className="dlg-field-label">{t('lblStgGeneralColors')}</label>
+        {BLOCK_COLORS.map(({ key, nameKey }) => (
+          <div key={key} className="seed-colors-row">
+            <span className={`seed-colors-name ${key}`}>{t(nameKey)}</span>
+            <ColorPicker color={blockColorShown(key)}
+              onChange={(c) => setBlockColors(prev => ({ ...prev, [key]: c }))}
+              cancelLabel={t('btnGlobalCancel')} applyLabel={t('btnGlobalApply')} pickTitle={t('tipGlobalPickFromScreen')} />
+            <button className="btn subtle seed-colors-reset" disabled={!blockColors[key]}
+              onClick={() => setBlockColors(prev => ({ ...prev, [key]: null }))}>
+              {t('btnStgGeneralColorReset')}
+            </button>
+          </div>
+        ))}
+      </div>
+      <NewsSetting enabled={newsEnabled} onChange={toggleNews} label={t('lblStgGeneralNews')} />
+    </>
   );
 
   const aboutExtra = credits.length > 0 && (
@@ -2317,7 +2324,7 @@ function SettingsPage({ t, lang, setLang, theme, setTheme, blockColors, setBlock
     <SettingsView
       t={t} appName={APP_NAME} appVersion={APP_VERSION} languages={LANGUAGES}
       lang={lang} setLang={setLang} theme={theme} setTheme={setTheme}
-      displayExtra={displayExtra} aboutExtra={aboutExtra}
+      generalExtra={generalExtra} aboutExtra={aboutExtra}
       onClose={onClose}
     />
   );

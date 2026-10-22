@@ -17,10 +17,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "New version available:",
-    lnkUpdateWhatsNew:                      "What's new",
     btnUpdateDownload:                      "Download",
-    lnkUpdateSkip:                          "Skip this version",
-    tipUpdateDismiss:                       "Dismiss",
+    lblNewsHideForever:                     "Don't show again",
+    btnNewsOpenLink:                        "Learn more",
+    tipNewsDismiss:                         "Close",
+    lblStgGeneralNews:                      "Show news from yaiol",
+    btnNewsClose:                           "Close",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Open settings",
@@ -29,16 +31,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Settings",
     tipStgBack:                             "Back",
-    tabStgDisplay:                          "Display",
     tabStgAbout:                            "About",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Language",
-    lblStgDisplayTheme:                     "Theme",
-    btnStgDisplayThemeDark:                 "Dark",
-    btnStgDisplayThemeLight:                "Light",
-    lblStgDisplayColors:                    "Colors",
-    btnStgDisplayColorReset:                "Reset",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "General",
+    lblStgGeneralLang:                      "Language",
+    lblStgGeneralTheme:                     "Theme",
+    btnStgGeneralThemeDark:                 "Dark",
+    btnStgGeneralThemeLight:                "Light",
+    lblStgGeneralColors:                    "Colors",
+    btnStgGeneralColorReset:                "Reset",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "renders chord progressions to audio + MIDI seeds that constrain AI music generators like Suno.",
@@ -191,10 +193,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nouvelle version disponible :",
-    lnkUpdateWhatsNew:                      "Nouveautés",
     btnUpdateDownload:                      "Télécharger",
-    lnkUpdateSkip:                          "Ignorer cette version",
-    tipUpdateDismiss:                       "Ignorer",
+    lblNewsHideForever:                     "Ne plus afficher",
+    btnNewsOpenLink:                        "En savoir plus",
+    tipNewsDismiss:                         "Fermer",
+    lblStgGeneralNews:                      "Afficher les actualités de yaiol",
+    btnNewsClose:                           "Fermer",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Ouvrir les paramètres",
@@ -203,16 +207,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Paramètres",
     tipStgBack:                             "Retour",
-    tabStgDisplay:                          "Affichage",
     tabStgAbout:                            "À propos",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Langue",
-    lblStgDisplayTheme:                     "Thème",
-    btnStgDisplayThemeDark:                 "Sombre",
-    btnStgDisplayThemeLight:                "Clair",
-    lblStgDisplayColors:                    "Couleurs",
-    btnStgDisplayColorReset:                "Réinitialiser",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Général",
+    lblStgGeneralLang:                      "Langue",
+    lblStgGeneralTheme:                     "Thème",
+    btnStgGeneralThemeDark:                 "Sombre",
+    btnStgGeneralThemeLight:                "Clair",
+    lblStgGeneralColors:                    "Couleurs",
+    btnStgGeneralColorReset:                "Réinitialiser",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Génère des progressions d'accords en graines audio + MIDI qui contraignent les générateurs de musique IA comme Suno.",
@@ -364,10 +368,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Neue Version verfügbar:",
-    lnkUpdateWhatsNew:                      "Was ist neu",
     btnUpdateDownload:                      "Herunterladen",
-    lnkUpdateSkip:                          "Diese Version überspringen",
-    tipUpdateDismiss:                       "Schließen",
+    lblNewsHideForever:                     "Nicht mehr anzeigen",
+    btnNewsOpenLink:                        "Mehr erfahren",
+    tipNewsDismiss:                         "Schließen",
+    lblStgGeneralNews:                      "Nachrichten von yaiol anzeigen",
+    btnNewsClose:                           "Schließen",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Einstellungen öffnen",
@@ -376,16 +382,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Einstellungen",
     tipStgBack:                             "Zurück",
-    tabStgDisplay:                          "Anzeige",
     tabStgAbout:                            "Über",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Sprache",
-    lblStgDisplayTheme:                     "Design",
-    btnStgDisplayThemeDark:                 "Dunkel",
-    btnStgDisplayThemeLight:                "Hell",
-    lblStgDisplayColors:                    "Farben",
-    btnStgDisplayColorReset:                "Zurücksetzen",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Allgemein",
+    lblStgGeneralLang:                      "Sprache",
+    lblStgGeneralTheme:                     "Design",
+    btnStgGeneralThemeDark:                 "Dunkel",
+    btnStgGeneralThemeLight:                "Hell",
+    lblStgGeneralColors:                    "Farben",
+    btnStgGeneralColorReset:                "Zurücksetzen",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Erzeugt Akkordfolgen als Audio- und MIDI-Seeds, die KI-Musikgeneratoren wie Suno einschränken.",
@@ -537,10 +543,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nueva versión disponible:",
-    lnkUpdateWhatsNew:                      "Novedades",
     btnUpdateDownload:                      "Descargar",
-    lnkUpdateSkip:                          "Omitir esta versión",
-    tipUpdateDismiss:                       "Descartar",
+    lblNewsHideForever:                     "No volver a mostrar",
+    btnNewsOpenLink:                        "Más información",
+    tipNewsDismiss:                         "Cerrar",
+    lblStgGeneralNews:                      "Mostrar noticias de yaiol",
+    btnNewsClose:                           "Cerrar",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Abrir configuración",
@@ -549,16 +557,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Configuración",
     tipStgBack:                             "Atrás",
-    tabStgDisplay:                          "Pantalla",
     tabStgAbout:                            "Acerca de",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Idioma",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Oscuro",
-    btnStgDisplayThemeLight:                "Claro",
-    lblStgDisplayColors:                    "Colores",
-    btnStgDisplayColorReset:                "Restablecer",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "General",
+    lblStgGeneralLang:                      "Idioma",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Oscuro",
+    btnStgGeneralThemeLight:                "Claro",
+    lblStgGeneralColors:                    "Colores",
+    btnStgGeneralColorReset:                "Restablecer",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Genera progresiones de acordes a semillas de audio + MIDI que restringen generadores de música IA como Suno.",
@@ -710,10 +718,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova versão disponível:",
-    lnkUpdateWhatsNew:                      "Novidades",
     btnUpdateDownload:                      "Baixar",
-    lnkUpdateSkip:                          "Pular esta versão",
-    tipUpdateDismiss:                       "Dispensar",
+    lblNewsHideForever:                     "Não mostrar novamente",
+    btnNewsOpenLink:                        "Saiba mais",
+    tipNewsDismiss:                         "Fechar",
+    lblStgGeneralNews:                      "Mostrar notícias de yaiol",
+    btnNewsClose:                           "Fechar",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Abrir configurações",
@@ -722,16 +732,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Configurações",
     tipStgBack:                             "Voltar",
-    tabStgDisplay:                          "Exibição",
     tabStgAbout:                            "Sobre",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Idioma",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Escuro",
-    btnStgDisplayThemeLight:                "Claro",
-    lblStgDisplayColors:                    "Cores",
-    btnStgDisplayColorReset:                "Redefinir",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Geral",
+    lblStgGeneralLang:                      "Idioma",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Escuro",
+    btnStgGeneralThemeLight:                "Claro",
+    lblStgGeneralColors:                    "Cores",
+    btnStgGeneralColorReset:                "Redefinir",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
@@ -883,10 +893,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova versão disponível:",
-    lnkUpdateWhatsNew:                      "Novidades",
     btnUpdateDownload:                      "Transferir",
-    lnkUpdateSkip:                          "Ignorar esta versão",
-    tipUpdateDismiss:                       "Dispensar",
+    lblNewsHideForever:                     "Não mostrar novamente",
+    btnNewsOpenLink:                        "Saber mais",
+    tipNewsDismiss:                         "Fechar",
+    lblStgGeneralNews:                      "Mostrar notícias de yaiol",
+    btnNewsClose:                           "Fechar",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Abrir definições",
@@ -895,16 +907,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Definições",
     tipStgBack:                             "Voltar",
-    tabStgDisplay:                          "Visualização",
     tabStgAbout:                            "Acerca de",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Idioma",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Escuro",
-    btnStgDisplayThemeLight:                "Claro",
-    lblStgDisplayColors:                    "Cores",
-    btnStgDisplayColorReset:                "Repor",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Geral",
+    lblStgGeneralLang:                      "Idioma",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Escuro",
+    btnStgGeneralThemeLight:                "Claro",
+    lblStgGeneralColors:                    "Cores",
+    btnStgGeneralColorReset:                "Repor",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
@@ -1056,10 +1068,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nuova versione disponibile:",
-    lnkUpdateWhatsNew:                      "Novità",
     btnUpdateDownload:                      "Scarica",
-    lnkUpdateSkip:                          "Salta questa versione",
-    tipUpdateDismiss:                       "Ignora",
+    lblNewsHideForever:                     "Non mostrare più",
+    btnNewsOpenLink:                        "Scopri di più",
+    tipNewsDismiss:                         "Chiudi",
+    lblStgGeneralNews:                      "Mostra notizie da yaiol",
+    btnNewsClose:                           "Chiudi",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Apri impostazioni",
@@ -1068,16 +1082,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Impostazioni",
     tipStgBack:                             "Indietro",
-    tabStgDisplay:                          "Schermo",
     tabStgAbout:                            "Informazioni",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Lingua",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Scuro",
-    btnStgDisplayThemeLight:                "Chiaro",
-    lblStgDisplayColors:                    "Colori",
-    btnStgDisplayColorReset:                "Reimposta",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Generale",
+    lblStgGeneralLang:                      "Lingua",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Scuro",
+    btnStgGeneralThemeLight:                "Chiaro",
+    lblStgGeneralColors:                    "Colori",
+    btnStgGeneralColorReset:                "Reimposta",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Genera progressioni di accordi in semi audio + MIDI che vincolano generatori di musica AI come Suno.",
@@ -1229,10 +1243,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nieuwe versie beschikbaar:",
-    lnkUpdateWhatsNew:                      "Wat is nieuw",
     btnUpdateDownload:                      "Downloaden",
-    lnkUpdateSkip:                          "Deze versie overslaan",
-    tipUpdateDismiss:                       "Sluiten",
+    lblNewsHideForever:                     "Niet meer tonen",
+    btnNewsOpenLink:                        "Meer informatie",
+    tipNewsDismiss:                         "Sluiten",
+    lblStgGeneralNews:                      "Nieuws van yaiol tonen",
+    btnNewsClose:                           "Sluiten",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Instellingen openen",
@@ -1241,16 +1257,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Instellingen",
     tipStgBack:                             "Terug",
-    tabStgDisplay:                          "Weergave",
     tabStgAbout:                            "Over",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Taal",
-    lblStgDisplayTheme:                     "Thema",
-    btnStgDisplayThemeDark:                 "Donker",
-    btnStgDisplayThemeLight:                "Licht",
-    lblStgDisplayColors:                    "Kleuren",
-    btnStgDisplayColorReset:                "Herstellen",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Algemeen",
+    lblStgGeneralLang:                      "Taal",
+    lblStgGeneralTheme:                     "Thema",
+    btnStgGeneralThemeDark:                 "Donker",
+    btnStgGeneralThemeLight:                "Licht",
+    lblStgGeneralColors:                    "Kleuren",
+    btnStgGeneralColorReset:                "Herstellen",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Genereert akkoordprogressies als audio- en MIDI-seeds die AI-muziekgeneratoren zoals Suno beperken.",
@@ -1402,10 +1418,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Доступна новая версия:",
-    lnkUpdateWhatsNew:                      "Что нового",
     btnUpdateDownload:                      "Скачать",
-    lnkUpdateSkip:                          "Пропустить эту версию",
-    tipUpdateDismiss:                       "Закрыть",
+    lblNewsHideForever:                     "Больше не показывать",
+    btnNewsOpenLink:                        "Узнать больше",
+    tipNewsDismiss:                         "Закрыть",
+    lblStgGeneralNews:                      "Показывать новости от yaiol",
+    btnNewsClose:                           "Закрыть",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Открыть настройки",
@@ -1414,16 +1432,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Настройки",
     tipStgBack:                             "Назад",
-    tabStgDisplay:                          "Отображение",
     tabStgAbout:                            "О программе",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Язык",
-    lblStgDisplayTheme:                     "Тема",
-    btnStgDisplayThemeDark:                 "Тёмный",
-    btnStgDisplayThemeLight:                "Светлый",
-    lblStgDisplayColors:                    "Цвета",
-    btnStgDisplayColorReset:                "Сбросить",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Общие",
+    lblStgGeneralLang:                      "Язык",
+    lblStgGeneralTheme:                     "Тема",
+    btnStgGeneralThemeDark:                 "Тёмный",
+    btnStgGeneralThemeLight:                "Светлый",
+    lblStgGeneralColors:                    "Цвета",
+    btnStgGeneralColorReset:                "Сбросить",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Создает аккордовые прогрессии в виде аудио- и MIDI-заготовок, ограничивающих ИИ-генераторы музыки, такие как Suno.",
@@ -1575,10 +1593,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Доступна нова версія:",
-    lnkUpdateWhatsNew:                      "Що нового",
     btnUpdateDownload:                      "Завантажити",
-    lnkUpdateSkip:                          "Пропустити цю версію",
-    tipUpdateDismiss:                       "Закрити",
+    lblNewsHideForever:                     "Більше не показувати",
+    btnNewsOpenLink:                        "Дізнатися більше",
+    tipNewsDismiss:                         "Закрити",
+    lblStgGeneralNews:                      "Показувати новини від yaiol",
+    btnNewsClose:                           "Закрити",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Відкрити налаштування",
@@ -1587,16 +1607,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Налаштування",
     tipStgBack:                             "Назад",
-    tabStgDisplay:                          "Відображення",
     tabStgAbout:                            "Про програму",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Мова",
-    lblStgDisplayTheme:                     "Тема",
-    btnStgDisplayThemeDark:                 "Темний",
-    btnStgDisplayThemeLight:                "Світлий",
-    lblStgDisplayColors:                    "Кольори",
-    btnStgDisplayColorReset:                "Скинути",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Загальні",
+    lblStgGeneralLang:                      "Мова",
+    lblStgGeneralTheme:                     "Тема",
+    btnStgGeneralThemeDark:                 "Темний",
+    btnStgGeneralThemeLight:                "Світлий",
+    lblStgGeneralColors:                    "Кольори",
+    btnStgGeneralColorReset:                "Скинути",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Створює акордові прогресії як аудіо- та MIDI-заготовки, що обмежують ШІ-генератори музики, наприклад Suno.",
@@ -1748,10 +1768,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Dostępna nowa wersja:",
-    lnkUpdateWhatsNew:                      "Co nowego",
     btnUpdateDownload:                      "Pobierz",
-    lnkUpdateSkip:                          "Pomiń tę wersję",
-    tipUpdateDismiss:                       "Zamknij",
+    lblNewsHideForever:                     "Nie pokazuj ponownie",
+    btnNewsOpenLink:                        "Dowiedz się więcej",
+    tipNewsDismiss:                         "Zamknij",
+    lblStgGeneralNews:                      "Pokaż wiadomości z yaiol",
+    btnNewsClose:                           "Zamknij",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Otwórz ustawienia",
@@ -1760,16 +1782,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Ustawienia",
     tipStgBack:                             "Wstecz",
-    tabStgDisplay:                          "Wyświetlanie",
     tabStgAbout:                            "O programie",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Język",
-    lblStgDisplayTheme:                     "Motyw",
-    btnStgDisplayThemeDark:                 "Ciemny",
-    btnStgDisplayThemeLight:                "Jasny",
-    lblStgDisplayColors:                    "Kolory",
-    btnStgDisplayColorReset:                "Resetuj",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Ogólne",
+    lblStgGeneralLang:                      "Język",
+    lblStgGeneralTheme:                     "Motyw",
+    btnStgGeneralThemeDark:                 "Ciemny",
+    btnStgGeneralThemeLight:                "Jasny",
+    lblStgGeneralColors:                    "Kolory",
+    btnStgGeneralColorReset:                "Resetuj",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Generuje progresje akordów jako nasiona audio + MIDI, które ograniczają generatory muzyki AI, takie jak Suno.",
@@ -1921,10 +1943,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Versiune nouă disponibilă:",
-    lnkUpdateWhatsNew:                      "Ce e nou",
     btnUpdateDownload:                      "Descarcă",
-    lnkUpdateSkip:                          "Omite această versiune",
-    tipUpdateDismiss:                       "Ignoră",
+    lblNewsHideForever:                     "Nu mai afișa",
+    btnNewsOpenLink:                        "Află mai multe",
+    tipNewsDismiss:                         "Închide",
+    lblStgGeneralNews:                      "Afișează știri de la yaiol",
+    btnNewsClose:                           "Închide",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Deschide setările",
@@ -1933,16 +1957,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Setări",
     tipStgBack:                             "Înapoi",
-    tabStgDisplay:                          "Afișaj",
     tabStgAbout:                            "Despre",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Limbă",
-    lblStgDisplayTheme:                     "Temă",
-    btnStgDisplayThemeDark:                 "Întunecat",
-    btnStgDisplayThemeLight:                "Luminos",
-    lblStgDisplayColors:                    "Culori",
-    btnStgDisplayColorReset:                "Resetează",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "General",
+    lblStgGeneralLang:                      "Limbă",
+    lblStgGeneralTheme:                     "Temă",
+    btnStgGeneralThemeDark:                 "Întunecat",
+    btnStgGeneralThemeLight:                "Luminos",
+    lblStgGeneralColors:                    "Culori",
+    btnStgGeneralColorReset:                "Resetează",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Generează progresii de acorduri în semințe audio + MIDI care constrâng generatoarele de muzică AI precum Suno.",
@@ -2094,10 +2118,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Ny version tillgänglig:",
-    lnkUpdateWhatsNew:                      "Vad är nytt",
     btnUpdateDownload:                      "Ladda ner",
-    lnkUpdateSkip:                          "Hoppa över den här versionen",
-    tipUpdateDismiss:                       "Avfärda",
+    lblNewsHideForever:                     "Visa inte igen",
+    btnNewsOpenLink:                        "Läs mer",
+    tipNewsDismiss:                         "Stäng",
+    lblStgGeneralNews:                      "Visa nyheter från yaiol",
+    btnNewsClose:                           "Stäng",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Öppna inställningar",
@@ -2106,16 +2132,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Inställningar",
     tipStgBack:                             "Tillbaka",
-    tabStgDisplay:                          "Visning",
     tabStgAbout:                            "Om",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Språk",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Mörk",
-    btnStgDisplayThemeLight:                "Ljus",
-    lblStgDisplayColors:                    "Färger",
-    btnStgDisplayColorReset:                "Återställ",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Allmänt",
+    lblStgGeneralLang:                      "Språk",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Mörk",
+    btnStgGeneralThemeLight:                "Ljus",
+    lblStgGeneralColors:                    "Färger",
+    btnStgGeneralColorReset:                "Återställ",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Genererar ackordföljder som ljud- och MIDI-frön som begränsar AI-musikgeneratorer som Suno.",
@@ -2267,10 +2293,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Ny versjon tilgjengelig:",
-    lnkUpdateWhatsNew:                      "Hva er nytt",
     btnUpdateDownload:                      "Last ned",
-    lnkUpdateSkip:                          "Hopp over denne versjonen",
-    tipUpdateDismiss:                       "Avvis",
+    lblNewsHideForever:                     "Ikke vis igjen",
+    btnNewsOpenLink:                        "Les mer",
+    tipNewsDismiss:                         "Lukk",
+    lblStgGeneralNews:                      "Vis nyheter fra yaiol",
+    btnNewsClose:                           "Lukk",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Åpne innstillinger",
@@ -2279,16 +2307,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Innstillinger",
     tipStgBack:                             "Tilbake",
-    tabStgDisplay:                          "Skjerm",
     tabStgAbout:                            "Om",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Språk",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Mørk",
-    btnStgDisplayThemeLight:                "Lys",
-    lblStgDisplayColors:                    "Farger",
-    btnStgDisplayColorReset:                "Tilbakestill",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Generelt",
+    lblStgGeneralLang:                      "Språk",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Mørk",
+    btnStgGeneralThemeLight:                "Lys",
+    lblStgGeneralColors:                    "Farger",
+    btnStgGeneralColorReset:                "Tilbakestill",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Genererer akkordprogresjoner som lyd- og MIDI-frø som begrenser AI-musikgeneratorer som Suno.",
@@ -2440,10 +2468,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Yeni sürüm mevcut:",
-    lnkUpdateWhatsNew:                      "Yenilikler",
     btnUpdateDownload:                      "İndir",
-    lnkUpdateSkip:                          "Bu sürümü atla",
-    tipUpdateDismiss:                       "Kapat",
+    lblNewsHideForever:                     "Bir daha gösterme",
+    btnNewsOpenLink:                        "Daha fazla bilgi edin",
+    tipNewsDismiss:                         "Kapat",
+    lblStgGeneralNews:                      "yaiol'dan haberleri göster",
+    btnNewsClose:                           "Kapat",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Ayarları aç",
@@ -2452,16 +2482,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Ayarlar",
     tipStgBack:                             "Geri",
-    tabStgDisplay:                          "Görüntü",
     tabStgAbout:                            "Hakkında",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Dil",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Koyu",
-    btnStgDisplayThemeLight:                "Açık",
-    lblStgDisplayColors:                    "Renkler",
-    btnStgDisplayColorReset:                "Sıfırla",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Genel",
+    lblStgGeneralLang:                      "Dil",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Koyu",
+    btnStgGeneralThemeLight:                "Açık",
+    lblStgGeneralColors:                    "Renkler",
+    btnStgGeneralColorReset:                "Sıfırla",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Akor ilerlemelerini, Suno gibi yapay zeka müzik jeneratörlerini kısıtlayan ses + MIDI tohumlarına dönüştürür.",
@@ -2613,10 +2643,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova verzija dostupna:",
-    lnkUpdateWhatsNew:                      "Što je novo",
     btnUpdateDownload:                      "Preuzmi",
-    lnkUpdateSkip:                          "Preskoči ovu verziju",
-    tipUpdateDismiss:                       "Odbaci",
+    lblNewsHideForever:                     "Ne prikazuj ponovno",
+    btnNewsOpenLink:                        "Saznajte više",
+    tipNewsDismiss:                         "Zatvori",
+    lblStgGeneralNews:                      "Prikaži vijesti iz yaiol",
+    btnNewsClose:                           "Zatvori",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Otvori postavke",
@@ -2625,16 +2657,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Postavke",
     tipStgBack:                             "Natrag",
-    tabStgDisplay:                          "Prikaz",
     tabStgAbout:                            "O programu",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Jezik",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Tamno",
-    btnStgDisplayThemeLight:                "Svijetlo",
-    lblStgDisplayColors:                    "Boje",
-    btnStgDisplayColorReset:                "Poništi",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Općenito",
+    lblStgGeneralLang:                      "Jezik",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Tamno",
+    btnStgGeneralThemeLight:                "Svijetlo",
+    lblStgGeneralColors:                    "Boje",
+    btnStgGeneralColorReset:                "Poništi",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Generira akordne progresije kao audio + MIDI sjemenke koje ograničavaju AI generatore glazbe poput Suno.",
@@ -2786,10 +2818,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Νέα έκδοση διαθέσιμη:",
-    lnkUpdateWhatsNew:                      "Τι νέο υπάρχει",
     btnUpdateDownload:                      "Λήψη",
-    lnkUpdateSkip:                          "Παράλειψη αυτής της έκδοσης",
-    tipUpdateDismiss:                       "Απόρριψη",
+    lblNewsHideForever:                     "Να μην εμφανιστεί ξανά",
+    btnNewsOpenLink:                        "Μάθετε περισσότερα",
+    tipNewsDismiss:                         "Κλείσιμο",
+    lblStgGeneralNews:                      "Εμφάνιση ειδήσεων από το yaiol",
+    btnNewsClose:                           "Κλείσιμο",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Άνοιγμα ρυθμίσεων",
@@ -2798,16 +2832,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Ρυθμίσεις",
     tipStgBack:                             "Πίσω",
-    tabStgDisplay:                          "Οθόνη",
     tabStgAbout:                            "Σχετικά",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Γλώσσα",
-    lblStgDisplayTheme:                     "Θέμα",
-    btnStgDisplayThemeDark:                 "Σκοτεινό",
-    btnStgDisplayThemeLight:                "Φωτεινό",
-    lblStgDisplayColors:                    "Χρώματα",
-    btnStgDisplayColorReset:                "Επαναφορά",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Γενικά",
+    lblStgGeneralLang:                      "Γλώσσα",
+    lblStgGeneralTheme:                     "Θέμα",
+    btnStgGeneralThemeDark:                 "Σκοτεινό",
+    btnStgGeneralThemeLight:                "Φωτεινό",
+    lblStgGeneralColors:                    "Χρώματα",
+    btnStgGeneralColorReset:                "Επαναφορά",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Δημιουργεί συγχορδιακές προόδους ως ηχητικούς + MIDI σπόρους που περιορίζουν γεννήτριες μουσικής AI όπως το Suno.",
@@ -2959,10 +2993,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "גרסה חדשה זמינה:",
-    lnkUpdateWhatsNew:                      "מה חדש",
     btnUpdateDownload:                      "הורדה",
-    lnkUpdateSkip:                          "דלג על גרסה זו",
-    tipUpdateDismiss:                       "בטל",
+    lblNewsHideForever:                     "אל תציג שוב",
+    btnNewsOpenLink:                        "למידע נוסף",
+    tipNewsDismiss:                         "סגור",
+    lblStgGeneralNews:                      "הצג חדשות מ-yaiol",
+    btnNewsClose:                           "סגור",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "פתח הגדרות",
@@ -2971,16 +3007,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "הגדרות",
     tipStgBack:                             "חזור",
-    tabStgDisplay:                          "תצוגה",
     tabStgAbout:                            "אודות",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "שפה",
-    lblStgDisplayTheme:                     "ערכת נושא",
-    btnStgDisplayThemeDark:                 "כהה",
-    btnStgDisplayThemeLight:                "בהיר",
-    lblStgDisplayColors:                    "צבעים",
-    btnStgDisplayColorReset:                "איפוס",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "כללי",
+    lblStgGeneralLang:                      "שפה",
+    lblStgGeneralTheme:                     "ערכת נושא",
+    btnStgGeneralThemeDark:                 "כהה",
+    btnStgGeneralThemeLight:                "בהיר",
+    lblStgGeneralColors:                    "צבעים",
+    btnStgGeneralColorReset:                "איפוס",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "מפיק התקדמויות אקורדים לזרעי אודיו + MIDI המגבילים מחוללי מוזיקת AI כגון Suno.",
@@ -3132,10 +3168,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "إصدار جديد متوفر:",
-    lnkUpdateWhatsNew:                      "ما الجديد",
     btnUpdateDownload:                      "تنزيل",
-    lnkUpdateSkip:                          "تخطي هذا الإصدار",
-    tipUpdateDismiss:                       "تجاهل",
+    lblNewsHideForever:                     "عدم الإظهار مرة أخرى",
+    btnNewsOpenLink:                        "تعرّف على المزيد",
+    tipNewsDismiss:                         "إغلاق",
+    lblStgGeneralNews:                      "إظهار الأخبار من yaiol",
+    btnNewsClose:                           "إغلاق",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "فتح الإعدادات",
@@ -3144,16 +3182,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "الإعدادات",
     tipStgBack:                             "رجوع",
-    tabStgDisplay:                          "عرض",
     tabStgAbout:                            "حول",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "اللغة",
-    lblStgDisplayTheme:                     "المظهر",
-    btnStgDisplayThemeDark:                 "داكن",
-    btnStgDisplayThemeLight:                "فاتح",
-    lblStgDisplayColors:                    "الألوان",
-    btnStgDisplayColorReset:                "إعادة تعيين",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "عام",
+    lblStgGeneralLang:                      "اللغة",
+    lblStgGeneralTheme:                     "المظهر",
+    btnStgGeneralThemeDark:                 "داكن",
+    btnStgGeneralThemeLight:                "فاتح",
+    lblStgGeneralColors:                    "الألوان",
+    btnStgGeneralColorReset:                "إعادة تعيين",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "يحول تتابعات الأوتار إلى بذور صوتية وMIDI تقيد مولدات الموسيقى بالذكاء الاصطناعي مثل Suno.",
@@ -3305,10 +3343,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "نسخه جدید موجود است:",
-    lnkUpdateWhatsNew:                      "چه خبر",
     btnUpdateDownload:                      "دانلود",
-    lnkUpdateSkip:                          "رد کردن این نسخه",
-    tipUpdateDismiss:                       "رد کردن",
+    lblNewsHideForever:                     "دیگر نمایش نده",
+    btnNewsOpenLink:                        "بیشتر بدانید",
+    tipNewsDismiss:                         "بستن",
+    lblStgGeneralNews:                      "نمایش اخبار از yaiol",
+    btnNewsClose:                           "بستن",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "باز کردن تنظیمات",
@@ -3317,16 +3357,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "تنظیمات",
     tipStgBack:                             "بازگشت",
-    tabStgDisplay:                          "نمایش",
     tabStgAbout:                            "درباره",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "زبان",
-    lblStgDisplayTheme:                     "پوسته",
-    btnStgDisplayThemeDark:                 "تیره",
-    btnStgDisplayThemeLight:                "روشن",
-    lblStgDisplayColors:                    "رنگ‌ها",
-    btnStgDisplayColorReset:                "بازنشانی",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "عمومی",
+    lblStgGeneralLang:                      "زبان",
+    lblStgGeneralTheme:                     "پوسته",
+    btnStgGeneralThemeDark:                 "تیره",
+    btnStgGeneralThemeLight:                "روشن",
+    lblStgGeneralColors:                    "رنگ‌ها",
+    btnStgGeneralColorReset:                "بازنشانی",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "تبدیل توالی آکوردها به بذرهای صوتی و MIDI که ژنراتورهای موسیقی هوش مصنوعی مانند Suno را محدود می‌کنند.",
@@ -3478,10 +3518,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "新版本可用:",
-    lnkUpdateWhatsNew:                      "新功能",
     btnUpdateDownload:                      "下载",
-    lnkUpdateSkip:                          "跳过此版本",
-    tipUpdateDismiss:                       "忽略",
+    lblNewsHideForever:                     "不再显示",
+    btnNewsOpenLink:                        "了解更多",
+    tipNewsDismiss:                         "关闭",
+    lblStgGeneralNews:                      "显示来自 yaiol 的新闻",
+    btnNewsClose:                           "关闭",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "打开设置",
@@ -3490,16 +3532,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "设置",
     tipStgBack:                             "返回",
-    tabStgDisplay:                          "显示",
     tabStgAbout:                            "关于",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "语言",
-    lblStgDisplayTheme:                     "主题",
-    btnStgDisplayThemeDark:                 "深色",
-    btnStgDisplayThemeLight:                "浅色",
-    lblStgDisplayColors:                    "颜色",
-    btnStgDisplayColorReset:                "重置",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "常规",
+    lblStgGeneralLang:                      "语言",
+    lblStgGeneralTheme:                     "主题",
+    btnStgGeneralThemeDark:                 "深色",
+    btnStgGeneralThemeLight:                "浅色",
+    lblStgGeneralColors:                    "颜色",
+    btnStgGeneralColorReset:                "重置",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "将和弦进行渲染为音频和 MIDI 种子，用于约束 Suno 等 AI 音乐生成器。",
@@ -3651,10 +3693,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "新版本可用:",
-    lnkUpdateWhatsNew:                      "新功能",
     btnUpdateDownload:                      "下載",
-    lnkUpdateSkip:                          "跳過此版本",
-    tipUpdateDismiss:                       "忽略",
+    lblNewsHideForever:                     "不再顯示",
+    btnNewsOpenLink:                        "了解更多",
+    tipNewsDismiss:                         "關閉",
+    lblStgGeneralNews:                      "顯示來自 yaiol 的新聞",
+    btnNewsClose:                           "關閉",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "打開設定",
@@ -3663,16 +3707,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "設定",
     tipStgBack:                             "返回",
-    tabStgDisplay:                          "顯示",
     tabStgAbout:                            "關於",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "語言",
-    lblStgDisplayTheme:                     "佈景主題",
-    btnStgDisplayThemeDark:                 "深色",
-    btnStgDisplayThemeLight:                "淺色",
-    lblStgDisplayColors:                    "顏色",
-    btnStgDisplayColorReset:                "重設",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "一般",
+    lblStgGeneralLang:                      "語言",
+    lblStgGeneralTheme:                     "佈景主題",
+    btnStgGeneralThemeDark:                 "深色",
+    btnStgGeneralThemeLight:                "淺色",
+    lblStgGeneralColors:                    "顏色",
+    btnStgGeneralColorReset:                "重設",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "將和弦進行渲染為音訊和 MIDI 種子，用於約束 Suno 等 AI 音樂生成器。",
@@ -3824,10 +3868,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "新しいバージョンが利用可能です:",
-    lnkUpdateWhatsNew:                      "新機能",
     btnUpdateDownload:                      "ダウンロード",
-    lnkUpdateSkip:                          "このバージョンをスキップ",
-    tipUpdateDismiss:                       "閉じる",
+    lblNewsHideForever:                     "今後表示しない",
+    btnNewsOpenLink:                        "詳細を見る",
+    tipNewsDismiss:                         "閉じる",
+    lblStgGeneralNews:                      "yaiol からのニュースを表示",
+    btnNewsClose:                           "閉じる",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "設定を開く",
@@ -3836,16 +3882,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "設定",
     tipStgBack:                             "戻る",
-    tabStgDisplay:                          "表示",
     tabStgAbout:                            "概要",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "言語",
-    lblStgDisplayTheme:                     "テーマ",
-    btnStgDisplayThemeDark:                 "ダーク",
-    btnStgDisplayThemeLight:                "ライト",
-    lblStgDisplayColors:                    "色",
-    btnStgDisplayColorReset:                "リセット",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "一般",
+    lblStgGeneralLang:                      "言語",
+    lblStgGeneralTheme:                     "テーマ",
+    btnStgGeneralThemeDark:                 "ダーク",
+    btnStgGeneralThemeLight:                "ライト",
+    lblStgGeneralColors:                    "色",
+    btnStgGeneralColorReset:                "リセット",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "コード進行をオーディオとMIDIシードとして生成し、SunoのようなAI音楽ジェネレーターを制約します。",
@@ -3997,10 +4043,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "새 버전 사용 가능:",
-    lnkUpdateWhatsNew:                      "새로운 기능",
     btnUpdateDownload:                      "다운로드",
-    lnkUpdateSkip:                          "이 버전 건너뛰기",
-    tipUpdateDismiss:                       "닫기",
+    lblNewsHideForever:                     "다시 표시 안 함",
+    btnNewsOpenLink:                        "자세히 알아보기",
+    tipNewsDismiss:                         "닫기",
+    lblStgGeneralNews:                      "yaiol 뉴스 표시",
+    btnNewsClose:                           "닫기",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "설정 열기",
@@ -4009,16 +4057,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "설정",
     tipStgBack:                             "뒤로",
-    tabStgDisplay:                          "디스플레이",
     tabStgAbout:                            "정보",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "언어",
-    lblStgDisplayTheme:                     "테마",
-    btnStgDisplayThemeDark:                 "어둡게",
-    btnStgDisplayThemeLight:                "밝게",
-    lblStgDisplayColors:                    "색상",
-    btnStgDisplayColorReset:                "재설정",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "일반",
+    lblStgGeneralLang:                      "언어",
+    lblStgGeneralTheme:                     "테마",
+    btnStgGeneralThemeDark:                 "어둡게",
+    btnStgGeneralThemeLight:                "밝게",
+    lblStgGeneralColors:                    "색상",
+    btnStgGeneralColorReset:                "재설정",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "코드 진행을 Suno와 같은 AI 음악 생성기를 제약하는 오디오 및 MIDI 시드로 생성합니다.",
@@ -4170,10 +4218,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Phiên bản mới có sẵn:",
-    lnkUpdateWhatsNew:                      "Có gì mới",
     btnUpdateDownload:                      "Tải xuống",
-    lnkUpdateSkip:                          "Bỏ qua phiên bản này",
-    tipUpdateDismiss:                       "Bỏ qua",
+    lblNewsHideForever:                     "Không hiển thị lại",
+    btnNewsOpenLink:                        "Tìm hiểu thêm",
+    tipNewsDismiss:                         "Đóng",
+    lblStgGeneralNews:                      "Hiển thị tin tức từ yaiol",
+    btnNewsClose:                           "Đóng",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Mở cài đặt",
@@ -4182,16 +4232,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Cài đặt",
     tipStgBack:                             "Quay lại",
-    tabStgDisplay:                          "Hiển thị",
     tabStgAbout:                            "Giới thiệu",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Ngôn ngữ",
-    lblStgDisplayTheme:                     "Chủ đề",
-    btnStgDisplayThemeDark:                 "Tối",
-    btnStgDisplayThemeLight:                "Sáng",
-    lblStgDisplayColors:                    "Màu sắc",
-    btnStgDisplayColorReset:                "Đặt lại",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Chung",
+    lblStgGeneralLang:                      "Ngôn ngữ",
+    lblStgGeneralTheme:                     "Chủ đề",
+    btnStgGeneralThemeDark:                 "Tối",
+    btnStgGeneralThemeLight:                "Sáng",
+    lblStgGeneralColors:                    "Màu sắc",
+    btnStgGeneralColorReset:                "Đặt lại",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Tạo ra các chuỗi hợp âm thành hạt giống âm thanh + MIDI để hạn chế các trình tạo nhạc AI như Suno.",
@@ -4343,10 +4393,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "มีเวอร์ชันใหม่:",
-    lnkUpdateWhatsNew:                      "มีอะไรใหม่",
     btnUpdateDownload:                      "ดาวน์โหลด",
-    lnkUpdateSkip:                          "ข้ามเวอร์ชันนี้",
-    tipUpdateDismiss:                       "ปิด",
+    lblNewsHideForever:                     "ไม่ต้องแสดงอีก",
+    btnNewsOpenLink:                        "เรียนรู้เพิ่มเติม",
+    tipNewsDismiss:                         "ปิด",
+    lblStgGeneralNews:                      "แสดงข่าวสารจาก yaiol",
+    btnNewsClose:                           "ปิด",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "เปิดการตั้งค่า",
@@ -4355,16 +4407,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "การตั้งค่า",
     tipStgBack:                             "ย้อนกลับ",
-    tabStgDisplay:                          "การแสดงผล",
     tabStgAbout:                            "เกี่ยวกับ",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "ภาษา",
-    lblStgDisplayTheme:                     "ธีม",
-    btnStgDisplayThemeDark:                 "มืด",
-    btnStgDisplayThemeLight:                "สว่าง",
-    lblStgDisplayColors:                    "สี",
-    btnStgDisplayColorReset:                "รีเซ็ต",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "ทั่วไป",
+    lblStgGeneralLang:                      "ภาษา",
+    lblStgGeneralTheme:                     "ธีม",
+    btnStgGeneralThemeDark:                 "มืด",
+    btnStgGeneralThemeLight:                "สว่าง",
+    lblStgGeneralColors:                    "สี",
+    btnStgGeneralColorReset:                "รีเซ็ต",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "สร้างคอร์ดโปรเกรสชันเป็นเมล็ดเสียง + MIDI ที่จำกัดเครื่องสร้างเพลง AI เช่น Suno",
@@ -4516,10 +4568,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Versi baru tersedia:",
-    lnkUpdateWhatsNew:                      "Apa yang baru",
     btnUpdateDownload:                      "Unduh",
-    lnkUpdateSkip:                          "Lewati versi ini",
-    tipUpdateDismiss:                       "Abaikan",
+    lblNewsHideForever:                     "Jangan tampilkan lagi",
+    btnNewsOpenLink:                        "Pelajari lebih lanjut",
+    tipNewsDismiss:                         "Tutup",
+    lblStgGeneralNews:                      "Tampilkan berita dari yaiol",
+    btnNewsClose:                           "Tutup",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Buka pengaturan",
@@ -4528,16 +4582,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Pengaturan",
     tipStgBack:                             "Kembali",
-    tabStgDisplay:                          "Tampilan",
     tabStgAbout:                            "Tentang",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Bahasa",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Gelap",
-    btnStgDisplayThemeLight:                "Terang",
-    lblStgDisplayColors:                    "Warna",
-    btnStgDisplayColorReset:                "Atur ulang",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Umum",
+    lblStgGeneralLang:                      "Bahasa",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Gelap",
+    btnStgGeneralThemeLight:                "Terang",
+    lblStgGeneralColors:                    "Warna",
+    btnStgGeneralColorReset:                "Atur ulang",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Menghasilkan progresi akor menjadi benih audio + MIDI yang membatasi generator musik AI seperti Suno.",
@@ -4689,10 +4743,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova versió disponible:",
-    lnkUpdateWhatsNew:                      "Novetats",
     btnUpdateDownload:                      "Baixa",
-    lnkUpdateSkip:                          "Omet aquesta versió",
-    tipUpdateDismiss:                       "Descarta",
+    lblNewsHideForever:                     "No tornar a mostrar",
+    btnNewsOpenLink:                        "Més informació",
+    tipNewsDismiss:                         "Tancar",
+    lblStgGeneralNews:                      "Mostrar notícies de yaiol",
+    btnNewsClose:                           "Tancar",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Obre la configuració",
@@ -4701,16 +4757,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Configuració",
     tipStgBack:                             "Enrere",
-    tabStgDisplay:                          "Visualització",
     tabStgAbout:                            "Quant a",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Idioma",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Fosc",
-    btnStgDisplayThemeLight:                "Clar",
-    lblStgDisplayColors:                    "Colors",
-    btnStgDisplayColorReset:                "Restableix",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "General",
+    lblStgGeneralLang:                      "Idioma",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Fosc",
+    btnStgGeneralThemeLight:                "Clar",
+    lblStgGeneralColors:                    "Colors",
+    btnStgGeneralColorReset:                "Restableix",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Genera progressions d'acords a llavors d'àudio + MIDI que restringeixen generadors de música IA com Suno.",
@@ -4862,10 +4918,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nová verze je k dispozici:",
-    lnkUpdateWhatsNew:                      "Co je nového",
     btnUpdateDownload:                      "Stáhnout",
-    lnkUpdateSkip:                          "Přeskočit tuto verzi",
-    tipUpdateDismiss:                       "Zavřít",
+    lblNewsHideForever:                     "Nezobrazovat znovu",
+    btnNewsOpenLink:                        "Další informace",
+    tipNewsDismiss:                         "Zavřít",
+    lblStgGeneralNews:                      "Zobrazovat zprávy z yaiol",
+    btnNewsClose:                           "Zavřít",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Otevřít nastavení",
@@ -4874,16 +4932,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Nastavení",
     tipStgBack:                             "Zpět",
-    tabStgDisplay:                          "Zobrazení",
     tabStgAbout:                            "O aplikaci",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Jazyk",
-    lblStgDisplayTheme:                     "Motiv",
-    btnStgDisplayThemeDark:                 "Tmavý",
-    btnStgDisplayThemeLight:                "Světlý",
-    lblStgDisplayColors:                    "Barvy",
-    btnStgDisplayColorReset:                "Obnovit",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Obecné",
+    lblStgGeneralLang:                      "Jazyk",
+    lblStgGeneralTheme:                     "Motiv",
+    btnStgGeneralThemeDark:                 "Tmavý",
+    btnStgGeneralThemeLight:                "Světlý",
+    lblStgGeneralColors:                    "Barvy",
+    btnStgGeneralColorReset:                "Obnovit",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Generuje akordové progrese jako audio + MIDI semena, která omezují generátory hudby AI, jako je Suno.",
@@ -5035,10 +5093,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Ny version tilgængelig:",
-    lnkUpdateWhatsNew:                      "Hvad er nyt",
     btnUpdateDownload:                      "Download",
-    lnkUpdateSkip:                          "Spring denne version over",
-    tipUpdateDismiss:                       "Afvis",
+    lblNewsHideForever:                     "Vis ikke igen",
+    btnNewsOpenLink:                        "Læs mere",
+    tipNewsDismiss:                         "Luk",
+    lblStgGeneralNews:                      "Vis nyheder fra yaiol",
+    btnNewsClose:                           "Luk",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Åbn indstillinger",
@@ -5047,16 +5107,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Indstillinger",
     tipStgBack:                             "Tilbage",
-    tabStgDisplay:                          "Skærm",
     tabStgAbout:                            "Om",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Sprog",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Mørk",
-    btnStgDisplayThemeLight:                "Lys",
-    lblStgDisplayColors:                    "Farver",
-    btnStgDisplayColorReset:                "Nulstil",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Generelt",
+    lblStgGeneralLang:                      "Sprog",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Mørk",
+    btnStgGeneralThemeLight:                "Lys",
+    lblStgGeneralColors:                    "Farver",
+    btnStgGeneralColorReset:                "Nulstil",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Genererer akkordprogressioner som lyd- og MIDI-frø, der begrænser AI-musikgeneratorer som Suno.",
@@ -5208,10 +5268,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Uusi versio saatavilla:",
-    lnkUpdateWhatsNew:                      "Mitä uutta",
     btnUpdateDownload:                      "Lataa",
-    lnkUpdateSkip:                          "Ohita tämä versio",
-    tipUpdateDismiss:                       "Hylkää",
+    lblNewsHideForever:                     "Älä näytä uudelleen",
+    btnNewsOpenLink:                        "Lue lisää",
+    tipNewsDismiss:                         "Sulje",
+    lblStgGeneralNews:                      "Näytä uutiset yaiolista",
+    btnNewsClose:                           "Sulje",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Avaa asetukset",
@@ -5220,16 +5282,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Asetukset",
     tipStgBack:                             "Takaisin",
-    tabStgDisplay:                          "Näyttö",
     tabStgAbout:                            "Tietoja",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Kieli",
-    lblStgDisplayTheme:                     "Teema",
-    btnStgDisplayThemeDark:                 "Tumma",
-    btnStgDisplayThemeLight:                "Vaalea",
-    lblStgDisplayColors:                    "Värit",
-    btnStgDisplayColorReset:                "Palauta",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Yleiset",
+    lblStgGeneralLang:                      "Kieli",
+    lblStgGeneralTheme:                     "Teema",
+    btnStgGeneralThemeDark:                 "Tumma",
+    btnStgGeneralThemeLight:                "Vaalea",
+    lblStgGeneralColors:                    "Värit",
+    btnStgGeneralColorReset:                "Palauta",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Luo sointukulkuja ääni- ja MIDI-siemeniksi, jotka rajoittavat tekoälymusiikkigeneraattoreita kuten Sunoa.",
@@ -5381,10 +5443,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Versi baharu tersedia:",
-    lnkUpdateWhatsNew:                      "Apa yang baharu",
     btnUpdateDownload:                      "Muat turun",
-    lnkUpdateSkip:                          "Langkau versi ini",
-    tipUpdateDismiss:                       "Abaikan",
+    lblNewsHideForever:                     "Jangan tunjuk lagi",
+    btnNewsOpenLink:                        "Ketahui lebih lanjut",
+    tipNewsDismiss:                         "Tutup",
+    lblStgGeneralNews:                      "Tunjukkan berita dari yaiol",
+    btnNewsClose:                           "Tutup",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Buka tetapan",
@@ -5393,16 +5457,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Tetapan",
     tipStgBack:                             "Kembali",
-    tabStgDisplay:                          "Paparan",
     tabStgAbout:                            "Mengenai",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Bahasa",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Gelap",
-    btnStgDisplayThemeLight:                "Cerah",
-    lblStgDisplayColors:                    "Warna",
-    btnStgDisplayColorReset:                "Tetapkan semula",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Umum",
+    lblStgGeneralLang:                      "Bahasa",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Gelap",
+    btnStgGeneralThemeLight:                "Cerah",
+    lblStgGeneralColors:                    "Warna",
+    btnStgGeneralColorReset:                "Tetapkan semula",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Menghasilkan progresi kord kepada benih audio + MIDI yang mengekang penjana muzik AI seperti Suno.",
@@ -5554,10 +5618,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Նոր տարբերակ հասանելի է:",
-    lnkUpdateWhatsNew:                      "Ինչ նորություն կա",
     btnUpdateDownload:                      "Ներբեռնել",
-    lnkUpdateSkip:                          "Բաց թողնել այս տարբերակը",
-    tipUpdateDismiss:                       "Մերժել",
+    lblNewsHideForever:                     "Այլևս չցուցադրել",
+    btnNewsOpenLink:                        "Իմանալ ավելին",
+    tipNewsDismiss:                         "Փակել",
+    lblStgGeneralNews:                      "Ցուցադրել նորություններ yaiol-ից",
+    btnNewsClose:                           "Փակել",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Բացել կարգավորումները",
@@ -5566,16 +5632,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Կարգավորումներ",
     tipStgBack:                             "Հետ",
-    tabStgDisplay:                          "Ցուցադրում",
     tabStgAbout:                            "Ծրագրի մասին",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Լեզու",
-    lblStgDisplayTheme:                     "Թեմա",
-    btnStgDisplayThemeDark:                 "Մուգ",
-    btnStgDisplayThemeLight:                "Բաց",
-    lblStgDisplayColors:                    "Գույներ",
-    btnStgDisplayColorReset:                "Վերակայել",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Ընդհանուր",
+    lblStgGeneralLang:                      "Լեզու",
+    lblStgGeneralTheme:                     "Թեմա",
+    btnStgGeneralThemeDark:                 "Մուգ",
+    btnStgGeneralThemeLight:                "Բաց",
+    lblStgGeneralColors:                    "Գույներ",
+    btnStgGeneralColorReset:                "Վերակայել",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Ստեղծում է ակորդային հաջորդականություններ որպես աուդիո + MIDI սերմեր, որոնք սահմանափակում են AI երաժշտական գեներատորները, ինչպիսին է Suno-ն։",
@@ -5727,10 +5793,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Налична е нова версия:",
-    lnkUpdateWhatsNew:                      "Какво ново",
     btnUpdateDownload:                      "Изтегли",
-    lnkUpdateSkip:                          "Пропусни тази версия",
-    tipUpdateDismiss:                       "Отхвърли",
+    lblNewsHideForever:                     "Не показвай отново",
+    btnNewsOpenLink:                        "Научете повече",
+    tipNewsDismiss:                         "Затвори",
+    lblStgGeneralNews:                      "Показвай новини от yaiol",
+    btnNewsClose:                           "Затвори",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Отвори настройки",
@@ -5739,16 +5807,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Настройки",
     tipStgBack:                             "Назад",
-    tabStgDisplay:                          "Показване",
     tabStgAbout:                            "Относно",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Език",
-    lblStgDisplayTheme:                     "Тема",
-    btnStgDisplayThemeDark:                 "Тъмен",
-    btnStgDisplayThemeLight:                "Светъл",
-    lblStgDisplayColors:                    "Цветове",
-    btnStgDisplayColorReset:                "Нулиране",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Общи",
+    lblStgGeneralLang:                      "Език",
+    lblStgGeneralTheme:                     "Тема",
+    btnStgGeneralThemeDark:                 "Тъмен",
+    btnStgGeneralThemeLight:                "Светъл",
+    lblStgGeneralColors:                    "Цветове",
+    btnStgGeneralColorReset:                "Нулиране",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Генерира акордови прогресии като аудио + MIDI семена, които ограничават AI музикални генератори като Suno.",
@@ -5900,10 +5968,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Nova versión dispoñible:",
-    lnkUpdateWhatsNew:                      "Novidades",
     btnUpdateDownload:                      "Descargar",
-    lnkUpdateSkip:                          "Omitir esta versión",
-    tipUpdateDismiss:                       "Descartar",
+    lblNewsHideForever:                     "Non mostrar de novo",
+    btnNewsOpenLink:                        "Máis información",
+    tipNewsDismiss:                         "Pechar",
+    lblStgGeneralNews:                      "Mostrar noticias de yaiol",
+    btnNewsClose:                           "Pechar",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Abrir configuración",
@@ -5912,16 +5982,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Configuración",
     tipStgBack:                             "Atrás",
-    tabStgDisplay:                          "Visualización",
     tabStgAbout:                            "Acerca de",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Idioma",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Escuro",
-    btnStgDisplayThemeLight:                "Claro",
-    lblStgDisplayColors:                    "Cores",
-    btnStgDisplayColorReset:                "Restablecer",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Xeral",
+    lblStgGeneralLang:                      "Idioma",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Escuro",
+    btnStgGeneralThemeLight:                "Claro",
+    lblStgGeneralColors:                    "Cores",
+    btnStgGeneralColorReset:                "Restablecer",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Xera progresións de acordes a sementes de audio + MIDI que restrinxen xeradores de música IA como Suno.",
@@ -6073,10 +6143,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Új verzió elérhető:",
-    lnkUpdateWhatsNew:                      "Újdonságok",
     btnUpdateDownload:                      "Letöltés",
-    lnkUpdateSkip:                          "Verzió kihagyása",
-    tipUpdateDismiss:                       "Elvetés",
+    lblNewsHideForever:                     "Ne mutasd újra",
+    btnNewsOpenLink:                        "Tudjon meg többet",
+    tipNewsDismiss:                         "Bezárás",
+    lblStgGeneralNews:                      "Hírek megjelenítése a yaiol-tól",
+    btnNewsClose:                           "Bezárás",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Beállítások megnyitása",
@@ -6085,16 +6157,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Beállítások",
     tipStgBack:                             "Vissza",
-    tabStgDisplay:                          "Megjelenítés",
     tabStgAbout:                            "Névjegy",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Nyelv",
-    lblStgDisplayTheme:                     "Téma",
-    btnStgDisplayThemeDark:                 "Sötét",
-    btnStgDisplayThemeLight:                "Világos",
-    lblStgDisplayColors:                    "Színek",
-    btnStgDisplayColorReset:                "Visszaállítás",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Általános",
+    lblStgGeneralLang:                      "Nyelv",
+    lblStgGeneralTheme:                     "Téma",
+    btnStgGeneralThemeDark:                 "Sötét",
+    btnStgGeneralThemeLight:                "Világos",
+    lblStgGeneralColors:                    "Színek",
+    btnStgGeneralColorReset:                "Visszaállítás",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Akkordmeneteket generál audio + MIDI magokká, amelyek korlátozzák az AI zenei generátorokat, mint a Suno.",
@@ -6246,10 +6318,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Yra nauja versija:",
-    lnkUpdateWhatsNew:                      "Kas naujo",
     btnUpdateDownload:                      "Atsisiųsti",
-    lnkUpdateSkip:                          "Praleisti šią versiją",
-    tipUpdateDismiss:                       "Atmesti",
+    lblNewsHideForever:                     "Daugiau nerodyti",
+    btnNewsOpenLink:                        "Sužinoti daugiau",
+    tipNewsDismiss:                         "Uždaryti",
+    lblStgGeneralNews:                      "Rodyti naujienas iš yaiol",
+    btnNewsClose:                           "Uždaryti",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Atidaryti nustatymus",
@@ -6258,16 +6332,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Nustatymai",
     tipStgBack:                             "Atgal",
-    tabStgDisplay:                          "Rodymas",
     tabStgAbout:                            "Apie",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Kalba",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Tamsus",
-    btnStgDisplayThemeLight:                "Šviesus",
-    lblStgDisplayColors:                    "Spalvos",
-    btnStgDisplayColorReset:                "Atkurti",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Bendra",
+    lblStgGeneralLang:                      "Kalba",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Tamsus",
+    btnStgGeneralThemeLight:                "Šviesus",
+    lblStgGeneralColors:                    "Spalvos",
+    btnStgGeneralColorReset:                "Atkurti",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Generuoja akordų progresijas kaip garso + MIDI sėklas, kurios apriboja AI muzikos generatorius, tokius kaip Suno.",
@@ -6419,10 +6493,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Достапна е нова верзија:",
-    lnkUpdateWhatsNew:                      "Што е ново",
     btnUpdateDownload:                      "Преземи",
-    lnkUpdateSkip:                          "Прескокни ја оваа верзија",
-    tipUpdateDismiss:                       "Отфрли",
+    lblNewsHideForever:                     "Не прикажувај повторно",
+    btnNewsOpenLink:                        "Дознајте повеќе",
+    tipNewsDismiss:                         "Затвори",
+    lblStgGeneralNews:                      "Прикажи вести од yaiol",
+    btnNewsClose:                           "Затвори",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Отвори поставки",
@@ -6431,16 +6507,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Поставки",
     tipStgBack:                             "Назад",
-    tabStgDisplay:                          "Приказ",
     tabStgAbout:                            "За програмата",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Јазик",
-    lblStgDisplayTheme:                     "Тема",
-    btnStgDisplayThemeDark:                 "Темно",
-    btnStgDisplayThemeLight:                "Светло",
-    lblStgDisplayColors:                    "Бои",
-    btnStgDisplayColorReset:                "Ресетирај",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Општо",
+    lblStgGeneralLang:                      "Јазик",
+    lblStgGeneralTheme:                     "Тема",
+    btnStgGeneralThemeDark:                 "Темно",
+    btnStgGeneralThemeLight:                "Светло",
+    lblStgGeneralColors:                    "Бои",
+    btnStgGeneralColorReset:                "Ресетирај",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Генерира акордни прогресии како аудио + MIDI семиња кои ги ограничуваат AI музичките генератори како Suno.",
@@ -6592,10 +6668,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Доступна је нова верзија:",
-    lnkUpdateWhatsNew:                      "Шта је ново",
     btnUpdateDownload:                      "Преузми",
-    lnkUpdateSkip:                          "Прескочи ову верзију",
-    tipUpdateDismiss:                       "Одбаци",
+    lblNewsHideForever:                     "Не приказуј поново",
+    btnNewsOpenLink:                        "Сазнајте више",
+    tipNewsDismiss:                         "Затвори",
+    lblStgGeneralNews:                      "Прикажи вести из yaiol",
+    btnNewsClose:                           "Затвори",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Отвори подешавања",
@@ -6604,16 +6682,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Подешавања",
     tipStgBack:                             "Назад",
-    tabStgDisplay:                          "Приказ",
     tabStgAbout:                            "О програму",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Језик",
-    lblStgDisplayTheme:                     "Тема",
-    btnStgDisplayThemeDark:                 "Тамно",
-    btnStgDisplayThemeLight:                "Светло",
-    lblStgDisplayColors:                    "Боје",
-    btnStgDisplayColorReset:                "Ресетуј",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Опште",
+    lblStgGeneralLang:                      "Језик",
+    lblStgGeneralTheme:                     "Тема",
+    btnStgGeneralThemeDark:                 "Тамно",
+    btnStgGeneralThemeLight:                "Светло",
+    lblStgGeneralColors:                    "Боје",
+    btnStgGeneralColorReset:                "Ресетуј",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Генерише акордне прогресије као аудио + MIDI семена која ограничавају АИ музичке генераторе попут Suno.",
@@ -6765,10 +6843,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "K dispozícii je nová verzia:",
-    lnkUpdateWhatsNew:                      "Čo je nové",
     btnUpdateDownload:                      "Stiahnuť",
-    lnkUpdateSkip:                          "Preskočiť túto verziu",
-    tipUpdateDismiss:                       "Zavrieť",
+    lblNewsHideForever:                     "Nezobrazovať znova",
+    btnNewsOpenLink:                        "Zistiť viac",
+    tipNewsDismiss:                         "Zavrieť",
+    lblStgGeneralNews:                      "Zobrazovať správy z yaiol",
+    btnNewsClose:                           "Zavrieť",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Otvoriť nastavenia",
@@ -6777,16 +6857,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Nastavenia",
     tipStgBack:                             "Späť",
-    tabStgDisplay:                          "Zobrazenie",
     tabStgAbout:                            "O aplikácii",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Jazyk",
-    lblStgDisplayTheme:                     "Téma",
-    btnStgDisplayThemeDark:                 "Tmavý",
-    btnStgDisplayThemeLight:                "Svetlý",
-    lblStgDisplayColors:                    "Farby",
-    btnStgDisplayColorReset:                "Obnoviť",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Všeobecné",
+    lblStgGeneralLang:                      "Jazyk",
+    lblStgGeneralTheme:                     "Téma",
+    btnStgGeneralThemeDark:                 "Tmavý",
+    btnStgGeneralThemeLight:                "Svetlý",
+    lblStgGeneralColors:                    "Farby",
+    btnStgGeneralColorReset:                "Obnoviť",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Generuje akordové progrese ako audio + MIDI semená, ktoré obmedzujú generátory hudby AI, ako je Suno.",
@@ -6938,10 +7018,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Na voljo je nova različica:",
-    lnkUpdateWhatsNew:                      "Kaj je novega",
     btnUpdateDownload:                      "Prenesi",
-    lnkUpdateSkip:                          "Preskoči to različico",
-    tipUpdateDismiss:                       "Zavrni",
+    lblNewsHideForever:                     "Ne prikazuj več",
+    btnNewsOpenLink:                        "Več o tem",
+    tipNewsDismiss:                         "Zapri",
+    lblStgGeneralNews:                      "Prikaži novice iz yaiol",
+    btnNewsClose:                           "Zapri",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Odpri nastavitve",
@@ -6950,16 +7032,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Nastavitve",
     tipStgBack:                             "Nazaj",
-    tabStgDisplay:                          "Prikaz",
     tabStgAbout:                            "O programu",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Jezik",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Temno",
-    btnStgDisplayThemeLight:                "Svetlo",
-    lblStgDisplayColors:                    "Barve",
-    btnStgDisplayColorReset:                "Ponastavi",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Splošno",
+    lblStgGeneralLang:                      "Jezik",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Temno",
+    btnStgGeneralThemeLight:                "Svetlo",
+    lblStgGeneralColors:                    "Barve",
+    btnStgGeneralColorReset:                "Ponastavi",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Ustvarja akordne progresije kot avdio + MIDI semena, ki omejujejo AI generatorje glasbe, kot je Suno.",
@@ -7111,10 +7193,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "புதிய பதிப்பு உள்ளது:",
-    lnkUpdateWhatsNew:                      "புதியது என்ன",
     btnUpdateDownload:                      "பதிவிறக்கு",
-    lnkUpdateSkip:                          "இந்த பதிப்பைத் தவிர்க்கவும்",
-    tipUpdateDismiss:                       "நிராகரி",
+    lblNewsHideForever:                     "மீண்டும் காட்டாதே",
+    btnNewsOpenLink:                        "மேலும் அறிக",
+    tipNewsDismiss:                         "மூடு",
+    lblStgGeneralNews:                      "yaiol இலிருந்து செய்திகளைக் காட்டு",
+    btnNewsClose:                           "மூடு",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "அமைப்புகளைத் திற",
@@ -7123,16 +7207,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "அமைப்புகள்",
     tipStgBack:                             "பின்செல்",
-    tabStgDisplay:                          "காட்சி",
     tabStgAbout:                            "பற்றி",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "மொழி",
-    lblStgDisplayTheme:                     "தீம்",
-    btnStgDisplayThemeDark:                 "இருண்ட",
-    btnStgDisplayThemeLight:                "வெளிச்சம்",
-    lblStgDisplayColors:                    "வண்ணங்கள்",
-    btnStgDisplayColorReset:                "மீட்டமை",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "பொது",
+    lblStgGeneralLang:                      "மொழி",
+    lblStgGeneralTheme:                     "தீம்",
+    btnStgGeneralThemeDark:                 "இருண்ட",
+    btnStgGeneralThemeLight:                "வெளிச்சம்",
+    lblStgGeneralColors:                    "வண்ணங்கள்",
+    btnStgGeneralColorReset:                "மீட்டமை",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "சரம் முன்னேற்றங்களை ஆடியோ மற்றும் MIDI விதைகளாக உருவாக்குகிறது, இது Suno போன்ற AI இசை ஜெனரேட்டர்களைக் கட்டுப்படுத்துகிறது.",
@@ -7284,10 +7368,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "नया संस्करण उपलब्ध है:",
-    lnkUpdateWhatsNew:                      "नया क्या है",
     btnUpdateDownload:                      "डाउनलोड करें",
-    lnkUpdateSkip:                          "इस संस्करण को छोड़ें",
-    tipUpdateDismiss:                       "खारिज करें",
+    lblNewsHideForever:                     "दोबारा न दिखाएँ",
+    btnNewsOpenLink:                        "और जानें",
+    tipNewsDismiss:                         "बंद करें",
+    lblStgGeneralNews:                      "yaiol से समाचार दिखाएँ",
+    btnNewsClose:                           "बंद करें",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "सेटिंग्स खोलें",
@@ -7296,16 +7382,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "सेटिंग्स",
     tipStgBack:                             "वापस",
-    tabStgDisplay:                          "प्रदर्शन",
     tabStgAbout:                            "के बारे में",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "भाषा",
-    lblStgDisplayTheme:                     "थीम",
-    btnStgDisplayThemeDark:                 "गहरा",
-    btnStgDisplayThemeLight:                "हल्का",
-    lblStgDisplayColors:                    "रंग",
-    btnStgDisplayColorReset:                "रीसेट करें",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "सामान्य",
+    lblStgGeneralLang:                      "भाषा",
+    lblStgGeneralTheme:                     "थीम",
+    btnStgGeneralThemeDark:                 "गहरा",
+    btnStgGeneralThemeLight:                "हल्का",
+    lblStgGeneralColors:                    "रंग",
+    btnStgGeneralColorReset:                "रीसेट करें",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "कॉर्ड प्रोग्रेशन को ऑडियो और MIDI सीड्स के रूप में उत्पन्न करता है जो Suno जैसे AI संगीत जनरेटर को नियंत्रित करते हैं।",
@@ -7457,10 +7543,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "নতুন সংস্করণ উপলব্ধ:",
-    lnkUpdateWhatsNew:                      "নতুন কি আছে",
     btnUpdateDownload:                      "ডাউনলোড করুন",
-    lnkUpdateSkip:                          "এই সংস্করণটি এড়িয়ে যান",
-    tipUpdateDismiss:                       "খারিজ করুন",
+    lblNewsHideForever:                     "আবার দেখাবেন না",
+    btnNewsOpenLink:                        "আরও জানুন",
+    tipNewsDismiss:                         "বন্ধ করুন",
+    lblStgGeneralNews:                      "yaiol থেকে খবর দেখান",
+    btnNewsClose:                           "বন্ধ করুন",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "সেটিংস খুলুন",
@@ -7469,16 +7557,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "সেটিংস",
     tipStgBack:                             "ফিরে যান",
-    tabStgDisplay:                          "প্রদর্শন",
     tabStgAbout:                            "সম্পর্কে",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "ভাষা",
-    lblStgDisplayTheme:                     "থিম",
-    btnStgDisplayThemeDark:                 "গাঢ়",
-    btnStgDisplayThemeLight:                "হালকা",
-    lblStgDisplayColors:                    "রঙ",
-    btnStgDisplayColorReset:                "রিসেট করুন",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "সাধারণ",
+    lblStgGeneralLang:                      "ভাষা",
+    lblStgGeneralTheme:                     "থিম",
+    btnStgGeneralThemeDark:                 "গাঢ়",
+    btnStgGeneralThemeLight:                "হালকা",
+    lblStgGeneralColors:                    "রঙ",
+    btnStgGeneralColorReset:                "রিসেট করুন",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "কর্ড প্রগ্রেশনকে অডিও এবং MIDI বীজ হিসেবে তৈরি করে যা Suno-এর মতো AI সঙ্গীত জেনারেটরকে সীমাবদ্ধ করে।",
@@ -7630,10 +7718,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "نیا ورژن دستیاب ہے:",
-    lnkUpdateWhatsNew:                      "نیا کیا ہے",
     btnUpdateDownload:                      "ڈاؤن لوڈ کریں",
-    lnkUpdateSkip:                          "اس ورژن کو چھوڑ دیں",
-    tipUpdateDismiss:                       "مسترد کریں",
+    lblNewsHideForever:                     "دوبارہ نہ دکھائیں",
+    btnNewsOpenLink:                        "مزید جانیں",
+    tipNewsDismiss:                         "بند کریں",
+    lblStgGeneralNews:                      "yaiol سے خبریں دکھائیں",
+    btnNewsClose:                           "بند کریں",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "ترتیبات کھولیں",
@@ -7642,16 +7732,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "ترتیبات",
     tipStgBack:                             "واپس",
-    tabStgDisplay:                          "ڈسپلے",
     tabStgAbout:                            "کے بارے میں",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "زبان",
-    lblStgDisplayTheme:                     "تھیم",
-    btnStgDisplayThemeDark:                 "گہرا",
-    btnStgDisplayThemeLight:                "ہلکا",
-    lblStgDisplayColors:                    "رنگ",
-    btnStgDisplayColorReset:                "ری سیٹ کریں",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "عمومی",
+    lblStgGeneralLang:                      "زبان",
+    lblStgGeneralTheme:                     "تھیم",
+    btnStgGeneralThemeDark:                 "گہرا",
+    btnStgGeneralThemeLight:                "ہلکا",
+    lblStgGeneralColors:                    "رنگ",
+    btnStgGeneralColorReset:                "ری سیٹ کریں",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "کورد پروگریشنز کو آڈیو اور MIDI سیڈز کے طور پر تیار کرتا ہے جو Suno جیسے AI میوزک جنریٹرز کو محدود کرتے ہیں۔",
@@ -7803,10 +7893,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Toleo jipya linapatikana:",
-    lnkUpdateWhatsNew:                      "Nini kipya",
     btnUpdateDownload:                      "Pakua",
-    lnkUpdateSkip:                          "Ruka toleo hili",
-    tipUpdateDismiss:                       "Futa",
+    lblNewsHideForever:                     "Usionyeshe tena",
+    btnNewsOpenLink:                        "Jifunze zaidi",
+    tipNewsDismiss:                         "Funga",
+    lblStgGeneralNews:                      "Onyesha habari kutoka yaiol",
+    btnNewsClose:                           "Funga",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Fungua mipangilio",
@@ -7815,16 +7907,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Mipangilio",
     tipStgBack:                             "Rudi",
-    tabStgDisplay:                          "Onyesho",
     tabStgAbout:                            "Kuhusu",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Lugha",
-    lblStgDisplayTheme:                     "Mandhari",
-    btnStgDisplayThemeDark:                 "Giza",
-    btnStgDisplayThemeLight:                "Nuru",
-    lblStgDisplayColors:                    "Rangi",
-    btnStgDisplayColorReset:                "Rudisha",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Jumla",
+    lblStgGeneralLang:                      "Lugha",
+    lblStgGeneralTheme:                     "Mandhari",
+    btnStgGeneralThemeDark:                 "Giza",
+    btnStgGeneralThemeLight:                "Nuru",
+    lblStgGeneralColors:                    "Rangi",
+    btnStgGeneralColorReset:                "Rudisha",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Hutengeneza maendeleo ya nyimbo kama mbegu za sauti + MIDI zinazoweka mipaka kwa jenereta za muziki za AI kama Suno.",
@@ -7976,10 +8068,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "ਨਵਾਂ ਸੰਸਕਰਨ ਉਪਲਬਧ ਹੈ:",
-    lnkUpdateWhatsNew:                      "ਨਵਾਂ ਕੀ ਹੈ",
     btnUpdateDownload:                      "ਡਾਊਨਲੋਡ ਕਰੋ",
-    lnkUpdateSkip:                          "ਇਸ ਸੰਸਕਰਨ ਨੂੰ ਛੱਡੋ",
-    tipUpdateDismiss:                       "ਖਾਰਜ ਕਰੋ",
+    lblNewsHideForever:                     "ਦੁਬਾਰਾ ਨਾ ਦਿਖਾਓ",
+    btnNewsOpenLink:                        "ਹੋਰ ਜਾਣੋ",
+    tipNewsDismiss:                         "ਬੰਦ ਕਰੋ",
+    lblStgGeneralNews:                      "yaiol ਤੋਂ ਖ਼ਬਰਾਂ ਦਿਖਾਓ",
+    btnNewsClose:                           "ਬੰਦ ਕਰੋ",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ",
@@ -7988,16 +8082,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "ਸੈਟਿੰਗਾਂ",
     tipStgBack:                             "ਵਾਪਸ",
-    tabStgDisplay:                          "ਪ੍ਰਦਰਸ਼ਨ",
     tabStgAbout:                            "ਬਾਰੇ",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "ਭਾਸ਼ਾ",
-    lblStgDisplayTheme:                     "ਥੀਮ",
-    btnStgDisplayThemeDark:                 "ਗੂੜ੍ਹਾ",
-    btnStgDisplayThemeLight:                "ਹਲਕਾ",
-    lblStgDisplayColors:                    "ਰੰਗ",
-    btnStgDisplayColorReset:                "ਰੀਸੈਟ ਕਰੋ",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "ਆਮ",
+    lblStgGeneralLang:                      "ਭਾਸ਼ਾ",
+    lblStgGeneralTheme:                     "ਥੀਮ",
+    btnStgGeneralThemeDark:                 "ਗੂੜ੍ਹਾ",
+    btnStgGeneralThemeLight:                "ਹਲਕਾ",
+    lblStgGeneralColors:                    "ਰੰਗ",
+    btnStgGeneralColorReset:                "ਰੀਸੈਟ ਕਰੋ",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "ਕੋਰਡ ਪ੍ਰੋਗਰੈਸ਼ਨਾਂ ਨੂੰ ਆਡੀਓ ਅਤੇ MIDI ਬੀਜਾਂ ਵਜੋਂ ਤਿਆਰ ਕਰਦਾ ਹੈ ਜੋ Suno ਵਰਗੇ AI ਸੰਗੀਤ ਜਨਰੇਟਰਾਂ ਨੂੰ ਸੀਮਤ ਕਰਦੇ ਹਨ।",
@@ -8149,10 +8243,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Sabon sigar yana nan:",
-    lnkUpdateWhatsNew:                      "Menene sabo",
     btnUpdateDownload:                      "Zazzage",
-    lnkUpdateSkip:                          "Tsallake wannan sigar",
-    tipUpdateDismiss:                       "Watsar",
+    lblNewsHideForever:                     "Kada a sake nunawa",
+    btnNewsOpenLink:                        "Koyi game da shi",
+    tipNewsDismiss:                         "Rufe",
+    lblStgGeneralNews:                      "Nuna labarai daga yaiol",
+    btnNewsClose:                           "Rufe",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Bude saituna",
@@ -8161,16 +8257,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Saituna",
     tipStgBack:                             "Baya",
-    tabStgDisplay:                          "Nuni",
     tabStgAbout:                            "Game da",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Harshe",
-    lblStgDisplayTheme:                     "Jigo",
-    btnStgDisplayThemeDark:                 "Duhu",
-    btnStgDisplayThemeLight:                "Haske",
-    lblStgDisplayColors:                    "Launuka",
-    btnStgDisplayColorReset:                "Sake saita",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Gabaɗaya",
+    lblStgGeneralLang:                      "Harshe",
+    lblStgGeneralTheme:                     "Jigo",
+    btnStgGeneralThemeDark:                 "Duhu",
+    btnStgGeneralThemeLight:                "Haske",
+    lblStgGeneralColors:                    "Launuka",
+    btnStgGeneralColorReset:                "Sake saita",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Yana samar da ci gaban kida zuwa tsaba na sauti da MIDI waɗanda ke takura masu samar da kiɗa na AI kamar Suno.",
@@ -8322,10 +8418,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "Ẹya tuntun wa:",
-    lnkUpdateWhatsNew:                      "Kí ni titun",
     btnUpdateDownload:                      "Ṣe igbasilẹ",
-    lnkUpdateSkip:                          "Fo ẹya yii",
-    tipUpdateDismiss:                       "Foju pa",
+    lblNewsHideForever:                     "Maṣe fi han mọ",
+    btnNewsOpenLink:                        "Kọ́ ẹ̀kọ́ síwájú",
+    tipNewsDismiss:                         "Pa",
+    lblStgGeneralNews:                      "Fi iroyin lati yaiol han",
+    btnNewsClose:                           "Pade",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Ṣi eto",
@@ -8334,16 +8432,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Eto",
     tipStgBack:                             "Pada",
-    tabStgDisplay:                          "Ifihan",
     tabStgAbout:                            "Nipa",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Èdè",
-    lblStgDisplayTheme:                     "Àtùpà",
-    btnStgDisplayThemeDark:                 "Dudu",
-    btnStgDisplayThemeLight:                "Fẹ́lẹ́fẹ́lẹ́",
-    lblStgDisplayColors:                    "Awọn awọ",
-    btnStgDisplayColorReset:                "Tun pada",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Gbogbogbo",
+    lblStgGeneralLang:                      "Èdè",
+    lblStgGeneralTheme:                     "Àtùpà",
+    btnStgGeneralThemeDark:                 "Dudu",
+    btnStgGeneralThemeLight:                "Fẹ́lẹ́fẹ́lẹ́",
+    lblStgGeneralColors:                    "Awọn awọ",
+    btnStgGeneralColorReset:                "Tun pada",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "N ṣe ipilẹṣẹ ilọsiwaju akọọlẹ bi awọn irugbin ohun + MIDI ti o fi ipa mu awọn olupilẹṣẹ orin AI bi Suno.",
@@ -8495,10 +8593,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "కొత్త వెర్షన్ అందుబాటులో ఉంది:",
-    lnkUpdateWhatsNew:                      "కొత్తవి ఏమిటి",
     btnUpdateDownload:                      "డౌన్‌లోడ్ చేయండి",
-    lnkUpdateSkip:                          "ఈ వెర్షన్‌ను దాటవేయి",
-    tipUpdateDismiss:                       "తిరస్కరించు",
+    lblNewsHideForever:                     "మళ్ళీ చూపవద్దు",
+    btnNewsOpenLink:                        "మరింత తెలుసుకోండి",
+    tipNewsDismiss:                         "మూసివేయండి",
+    lblStgGeneralNews:                      "yaiol నుండి వార్తలను చూపించు",
+    btnNewsClose:                           "మూసివేయి",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "సెట్టింగ్‌లను తెరవండి",
@@ -8507,16 +8607,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "సెట్టింగ్‌లు",
     tipStgBack:                             "వెనుకకు",
-    tabStgDisplay:                          "ప్రదర్శన",
     tabStgAbout:                            "గురించి",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "భాష",
-    lblStgDisplayTheme:                     "థీమ్",
-    btnStgDisplayThemeDark:                 "ముదురు",
-    btnStgDisplayThemeLight:                "లేత",
-    lblStgDisplayColors:                    "రంగులు",
-    btnStgDisplayColorReset:                "రీసెట్ చేయండి",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "సాధారణ",
+    lblStgGeneralLang:                      "భాష",
+    lblStgGeneralTheme:                     "థీమ్",
+    btnStgGeneralThemeDark:                 "ముదురు",
+    btnStgGeneralThemeLight:                "లేత",
+    lblStgGeneralColors:                    "రంగులు",
+    btnStgGeneralColorReset:                "రీసెట్ చేయండి",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "కార్డ్ ప్రోగ్రెషన్‌లను ఆడియో మరియు MIDI విత్తనాలుగా ఉత్పత్తి చేస్తుంది, ఇవి Suno వంటి AI సంగీత జనరేటర్‌లను పరిమితం చేస్తాయి.",
@@ -8668,10 +8768,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "नवीन आवृत्ती उपलब्ध आहे:",
-    lnkUpdateWhatsNew:                      "नवीन काय आहे",
     btnUpdateDownload:                      "डाउनलोड करा",
-    lnkUpdateSkip:                          "ही आवृत्ती वगळा",
-    tipUpdateDismiss:                       "डिसमिस करा",
+    lblNewsHideForever:                     "पुन्हा दाखवू नका",
+    btnNewsOpenLink:                        "अधिक जाणून घ्या",
+    tipNewsDismiss:                         "बंद करा",
+    lblStgGeneralNews:                      "yaiol कडून बातम्या दाखवा",
+    btnNewsClose:                           "बंद करा",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "सेटिंग्ज उघडा",
@@ -8680,16 +8782,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "सेटिंग्ज",
     tipStgBack:                             "मागे",
-    tabStgDisplay:                          "प्रदर्शन",
     tabStgAbout:                            "बद्दल",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "भाषा",
-    lblStgDisplayTheme:                     "थीम",
-    btnStgDisplayThemeDark:                 "गडद",
-    btnStgDisplayThemeLight:                "हलका",
-    lblStgDisplayColors:                    "रंग",
-    btnStgDisplayColorReset:                "रीसेट करा",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "सामान्य",
+    lblStgGeneralLang:                      "भाषा",
+    lblStgGeneralTheme:                     "थीम",
+    btnStgGeneralThemeDark:                 "गडद",
+    btnStgGeneralThemeLight:                "हलका",
+    lblStgGeneralColors:                    "रंग",
+    btnStgGeneralColorReset:                "रीसेट करा",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "कॉर्ड प्रोग्रेशन्सना ऑडिओ आणि MIDI सीड्स म्हणून तयार करते जे Suno सारख्या AI संगीत जनरेटरना मर्यादित करतात.",
@@ -8841,10 +8943,12 @@ const TRANSLATIONS = {
 
     // Prefix:Update - Scope:in-app update notification banner
     lblUpdateAvailable:                     "May bagong bersyon:",
-    lnkUpdateWhatsNew:                      "Ano ang bago",
     btnUpdateDownload:                      "I-download",
-    lnkUpdateSkip:                          "Laktawan ang bersyon na ito",
-    tipUpdateDismiss:                       "Balewalain",
+    lblNewsHideForever:                     "Huwag nang ipakita muli",
+    btnNewsOpenLink:                        "Matuto pa",
+    tipNewsDismiss:                         "Isara",
+    lblStgGeneralNews:                      "Ipakita ang balita mula sa yaiol",
+    btnNewsClose:                           "Isara",
 
     // Prefix:Hdr - Scope:top toolbar
     tipHdrSettings:                         "Buksan ang mga setting",
@@ -8853,16 +8957,16 @@ const TRANSLATIONS = {
     // Prefix:Stg - Scope:settings view
     ttlStg:                                 "Mga Setting",
     tipStgBack:                             "Bumalik",
-    tabStgDisplay:                          "Display",
     tabStgAbout:                            "Tungkol sa",
 
-    // Prefix:StgDisplay - Scope:settings view (Display tab)
-    lblStgDisplayLang:                      "Wika",
-    lblStgDisplayTheme:                     "Tema",
-    btnStgDisplayThemeDark:                 "Madilim",
-    btnStgDisplayThemeLight:                "Maliwanag",
-    lblStgDisplayColors:                    "Mga Kulay",
-    btnStgDisplayColorReset:                "I-reset",
+    // Prefix:StgGeneral - Scope:settings view (General tab)
+    tabStgGeneral:                          "Pangkalahatan",
+    lblStgGeneralLang:                      "Wika",
+    lblStgGeneralTheme:                     "Tema",
+    btnStgGeneralThemeDark:                 "Madilim",
+    btnStgGeneralThemeLight:                "Maliwanag",
+    lblStgGeneralColors:                    "Mga Kulay",
+    btnStgGeneralColorReset:                "I-reset",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
     msgStgAboutDesc:                        "Gumagawa ng mga chord progression bilang audio + MIDI seeds na naglilimita sa mga AI music generator tulad ng Suno.",

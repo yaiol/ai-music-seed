@@ -170,7 +170,6 @@ body {
 /* every grid hides its own bar — the stack has ONE, below, and three stacked
    bars for one axis is three ways to ask the same question */
 .seed-gridscroll { scrollbar-width: none; }
-.seed-gridscroll::-webkit-scrollbar { display: none; }
 /* ⚠ The bar is its OWN element, never one of the grids': a grid shows a bar
    only when IT overflows, and they do not overflow alike (the chords block is
    four blocks wide where a lane is 64 steps), so electing one leaves the stack

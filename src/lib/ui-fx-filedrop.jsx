@@ -18,22 +18,22 @@
 //   const { dropProps, overlay } = useFileDrop({
 //     accept: ['.yams'],                       // extensions to accept (case-insensitive)
 //     onFile: (file) => loadFromFile(file),    // called with the first matching File
+//     onFiles: (files) => addAll(files),       // optional: every matching File (a multi-file consumer)
 //     label:  t('msgSeedDropHere'),            // overlay text (already localized)
 //   });
 //   return <div className="app-root" {...dropProps}> … {overlay} </div>;
 //
 // Only the file's `File` object is handed back — reading it (FileReader for JSON/text,
 // or webUtils.getPathForFile for a path to save back) is the caller's job, exactly as
-// with the app's Open button. Non-matching files are ignored. Single file by design
-// (the common "open a document" case); a caller needing every dropped file can read
-// them itself in onFile via the shared filter — extend here when a real consumer needs it.
+// with the app's Open button. Non-matching files are ignored. `onFile` gets the first
+// matching file (the common "open a document" case); `onFiles` gets every matching one.
 //
 // Distributed into each app's src/lib/ui-fx-filedrop.jsx by sync-shared — ⚠ SYNCED
 // FILE, never edit the per-app copy; edit this canonical source and re-sync.
 // Import: `import { useFileDrop } from './lib/ui-fx-filedrop';`
 import React, { useState } from 'react';
 
-export function useFileDrop({ accept = [], onFile, label }) {
+export function useFileDrop({ accept = [], onFile, onFiles, label }) {
   const [dragOver, setDragOver] = useState(false);
   const exts = accept.map((e) => e.toLowerCase());
   const matches = (f) => exts.length === 0 || exts.some((x) => f.name.toLowerCase().endsWith(x));
@@ -46,8 +46,8 @@ export function useFileDrop({ accept = [], onFile, label }) {
     onDrop: (e) => {
       e.preventDefault(); e.stopPropagation();
       setDragOver(false);
-      const file = Array.from(e.dataTransfer.files).find(matches);
-      if (file) onFile?.(file);
+      const files = Array.from(e.dataTransfer.files).filter(matches);
+      if (files.length) { onFiles?.(files); onFile?.(files[0]); }
     },
   };
 
