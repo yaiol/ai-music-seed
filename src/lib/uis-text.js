@@ -1,10 +1,10 @@
-// ui-text.js — text helpers shared by every yaiol electron app.
+// uis-text.js — text helpers shared by every yaiol electron app.
 //
 // ⚠ Do not edit an app's copy — this file is distributed by sync-shared.js;
 // edit the canonical source and re-sync.
 
 // Scripts where a leading-letters abbreviation IS the convention. Everything
-// else is returned whole — see shortLabels.
+// else is returned whole — see LbsLblShortSet.
 const ABBREVIABLE = /^[\p{Script=Latin}\p{Script=Cyrillic}\p{Script=Greek}\p{Script=Armenian}\p{M}\p{P}\p{Zs}\d]+$/u;
 
 // Cut by GRAPHEME, never by code unit: an accented letter written as letter +
@@ -16,7 +16,7 @@ const graphemes = (s) => (typeof Intl !== 'undefined' && Intl.Segmenter
 const cut = (s, n) => { const g = graphemes(s); return g.length <= n ? s : g.slice(0, n).join(''); };
 const len = (s) => graphemes(s).length;
 
-// shortLabels(texts, max) — a SET of captions shortened for controls that have
+// LbsLblShortSet(texts, max) — a SET of captions shortened for controls that have
 // no room for the whole word: ["velocity","length","volume"] → ["vel","len","vol"].
 // The caller keeps the whole word as each control's `title`.
 //
@@ -25,9 +25,9 @@ const len = (s) => graphemes(s).length;
 //
 // 1. It collides. Hungarian "hangerő" (volume) and "hangolás" (tune) both cut
 //    to "han"; Malay "kelajuan" and "kelantangan" both to "kel". Two knobs in
-//    one row wearing the same caption, and nothing anywhere says so. So the cut
+//    one line wearing the same caption, and nothing anywhere says so. So the cut
 //    length GROWS until every caption in the set is distinct — one length for
-//    the whole set, so the row stays visually even.
+//    the whole set, so the captions stay visually even.
 //
 // 2. It cuts UTF-16 code units, which ships a rendering bug in every language
 //    nobody on the team reads:
@@ -45,7 +45,7 @@ const len = (s) => graphemes(s).length;
 // A word at, or one character over, the limit is returned whole — shortening
 // "tune" to "tun" buys a pixel column and costs the word — unless keeping it
 // whole would re-introduce a collision.
-export function shortLabels(texts, max = 3) {
+export function LbsLblShortSet(texts, max = 3) {
   const list = texts.map((t) => String(t ?? ''));
   const abbreviable = list.map((s) => s && ABBREVIABLE.test(s));
   const longest = Math.max(1, ...list.map(len));
@@ -62,6 +62,6 @@ export function shortLabels(texts, max = 3) {
 }
 
 // One caption on its own — the same rules, with no set to disambiguate against.
-export function shortLabel(text, max = 3) {
-  return shortLabels([text], max)[0];
+export function LbsLblShort(text, max = 3) {
+  return LbsLblShortSet([text], max)[0];
 }

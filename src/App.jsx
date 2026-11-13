@@ -9,27 +9,27 @@ import { Settings, HelpCircle, X, FolderOpen, Music, AudioWaveform, Save, SavePl
 import pkg from '../package.json';
 import { useT, LANGUAGES } from './i18n-gen';
 import { getUrl } from './lib/site-url';
-import { NewsLoader } from './lib/ui-news-loader';
-import { NewsSetting } from './lib/ui-news-setting';
-import { AppHeader } from './lib/ui-header';
-import { NumberField } from './lib/ui-ctl-numberfield';
-import { Knob } from './lib/ui-ctl-knob';
-import { shortLabels } from './lib/ui-text';
-import { Popover } from './lib/ui-ctl-popover';
-import { ColorPicker } from './lib/ui-ctl-colorpicker';
+import { UisNewsLoader, UisBtnUpdate, UisBtnNews } from './lib/uis-news-loader';
+import { UisAppHeader } from './lib/uis-header';
+import { UisBarWindow, LbsHokWindow } from './lib/uis-bar-window';
+import { UisNum } from './lib/uis-num';
+import { UisKnob } from './lib/uis-ctl-knob';
+import { UisPiano } from './lib/uis-ctl-piano';
+import { LbsLblShortSet } from './lib/uis-text';
+import { UisPkrColor } from './lib/uis-pkr-color';
 // Family icons (user-picked, SVG Repo) — real .svg files via ?react so they
 // follow the button's colour. Keyed by the exact family names below.
-import IconFamilyKeys from './assets/icon-yaiol-family-keys.svg?react';
-import IconFamilyPercTuned from './assets/icon-yaiol-family-percussion-tuned.svg?react';
-import IconFamilyStrPlucked from './assets/icon-yaiol-family-strings-plucked.svg?react';
-import IconFamilyStrBowed from './assets/icon-yaiol-family-strings-bowed.svg?react';
-import IconFamilySynth from './assets/icon-yaiol-family-synth.svg?react';
-import IconFamilyVoices from './assets/icon-yaiol-family-voices.svg?react';
-import IconFamilyWindsBrass from './assets/icon-yaiol-family-winds-brass.svg?react';
-import IconFamilyWindsWood from './assets/icon-yaiol-family-winds-wood.svg?react';
-import { Combobox } from './lib/ui-ctl-combobox';
-import { useFileDrop } from './lib/ui-fx-filedrop';
-import { GithubIcon } from './lib/ui-icons';
+import IcoFamilyKeys from './assets/icon-yaiol-family-keys.svg?react';
+import IcoFamilyPercTuned from './assets/icon-yaiol-family-percussion-tuned.svg?react';
+import IcoFamilyStrPlucked from './assets/icon-yaiol-family-strings-plucked.svg?react';
+import IcoFamilyStrBowed from './assets/icon-yaiol-family-strings-bowed.svg?react';
+import IcoFamilySynth from './assets/icon-yaiol-family-synth.svg?react';
+import IcoFamilyVoices from './assets/icon-yaiol-family-voices.svg?react';
+import IcoFamilyWindsBrass from './assets/icon-yaiol-family-winds-brass.svg?react';
+import IcoFamilyWindsWood from './assets/icon-yaiol-family-winds-wood.svg?react';
+import { UisCboFilter } from './lib/uis-cbo-filter';
+import { LbsHokFileDrop } from './lib/uis-fx-filedrop';
+import { UisIcoGithub } from './lib/uis-icons';
 import { generateSeed, analyzeSeed, defaultName, STYLES, STYLE_GROUPS, MP3_BITRATES,
          parseSlots, serializeSlots, resolveStyleSpec, LANE_DEFAULTS, GRID_ROWS,
          BEAT_DIVISIONS, SWINGS, SIGNATURES, parseLines, chordToken, sanitizePattern,
@@ -39,7 +39,7 @@ import { INSTRUMENTS, parseSoundFont, loadPreset, presetIndexForProgram } from '
 import { loadPack } from './lib/sample-pack';
 import { ROOM_KEYS } from './lib/reverb';
 import { startSeed, playOnce } from './lib/seed-player';
-import { SettingsView } from './lib/ui-settings';
+import { UisStgView } from './lib/uis-stg-view';
 // Storage namespace - single source: package.json `storagePrefix`. Never hardcode a prefix.
 const STORAGE_PREFIX = pkg.storagePrefix;
 
@@ -440,6 +440,8 @@ export default function App() {
   const [lang,         setLang]         = useState(() => localStorage.getItem(LS_LANG)  || DEFAULT_LANG);
   const [theme,        setTheme]        = useState(() => localStorage.getItem(LS_THEME) || DEFAULT_THEME);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  // The window bar: its three buttons act through the main process, which also says when the window is maximized.
+  const windowBar = LbsHokWindow(API);
   const [blockColors,  setBlockColors]  = useState(() =>
     Object.fromEntries(BLOCK_COLORS.map(({ key }) => [key, localStorage.getItem(blockColorStorageKey(key))])));
 
@@ -604,7 +606,7 @@ export default function App() {
       const evs = litEvents.current;
       for (let i = evs.length - 1; i >= 0; i--) if (evs[i].off <= now) evs.splice(i, 1);
       const map = {};
-      for (const e of evs) if (e.on <= now) map[e.midi] = e.lane;
+      for (const e of evs) if (e.on <= now) map[e.midi] = e.lane === 'bass' ? 'b' : 'a';
       const sig = Object.keys(map).sort().map((k) => k + map[k]).join('|');
       if (sig !== litSig.current) { litSig.current = sig; setLitKeys(map); }
       const pcs = playChords.current;
@@ -877,23 +879,56 @@ export default function App() {
   }).catch(() => {});
 
   // Drag a .yams file onto the content area to load it (same result as the header
-  // Load button — opens a new tab). Shared behaviour + overlay via useFileDrop.
-  const { dropProps, overlay: dropOverlay } = useFileDrop({
+  // Load button — opens a new tab). Shared behaviour + overlay via LbsHokFileDrop.
+  const { dropProps, overlay: dropOverlay } = LbsHokFileDrop({
     accept: ['.yams'],
     onFile: (file) => loadFromFile(file),
     label: t('msgSeedDropHere'),
   });
 
   return (
-    <div className="app-root">
+    <div className="uis-app-root">
       {/* ── A new version (first) and the yaiol news, in one dialog ── */}
-      <NewsLoader api={API} lang={lang} t={t} />
-      <AppHeader appName={APP_NAME} appVersion={APP_VERSION}>
+      <UisNewsLoader api={API} lang={lang} t={t} />
+      {/* ── Window bar ── the app's own title bar: the window has no system frame. */}
+      <UisBarWindow appName={APP_NAME} appVersion={APP_VERSION} iconSrc="./app.png" maximized={windowBar.maximized}
+        tipMinimize={t('tipWinMinimize')} tipMaximize={t('tipWinMaximize')} tipRestore={t('tipWinRestore')} tipClose={t('tipWinClose')}
+        onMinimize={windowBar.minimize} onMaximize={windowBar.maximize} onClose={windowBar.close}>
+        <button
+          className={`uis-barh-window-btn uis-stg-toggle ${settingsOpen ? 'active' : ''}`}
+          onClick={() => setSettingsOpen(o => !o)}
+          title={t('tipHdrSettings')}
+          aria-label={t('tipHdrSettings')}
+          aria-pressed={settingsOpen}
+        >
+          <Settings />
+        </button>
+        <button
+          className="uis-barh-window-btn"
+          onClick={() => window.open(getUrl(pkg.name, lang.replace(/_/g, '-'), 'help'), '_blank')}
+          title={t('tipHdrHelp')}
+          aria-label={t('tipHdrHelp')}
+        >
+          <HelpCircle />
+        </button>
+        <button
+          className="uis-barh-window-btn"
+          onClick={() => window.open(GITHUB_URL, '_blank')}
+          title="GitHub"
+          aria-label="GitHub"
+        >
+          <UisIcoGithub />
+        </button>
+        <UisBtnUpdate t={t} />
+        <UisBtnNews t={t} />
+      </UisBarWindow>
+      {/* The name and the version are in the window bar, so the header holds the work buttons only. */}
+      <UisAppHeader appName={APP_NAME} appVersion={APP_VERSION} bare>
         {/* File actions (.yams): New · Load · Save · Save As — welded group, detached from
-            the standard source·help·settings group per the header-group rule (CLAUDE-ui-standards). */}
-        <div className="barh-grp">
+            the standard source·help·settings group per the header-group rule (CLAUDE-ui-shared). */}
+        <div className="uis-barh-grp">
           <button
-            className="btn icon"
+            className="uis-btn ico"
             onClick={newSeed}
             title={t('tipSeedNew')}
             aria-label={t('tipSeedNew')}
@@ -901,7 +936,7 @@ export default function App() {
             <FilePlus />
           </button>
           <button
-            className="btn icon"
+            className="uis-btn ico"
             onClick={load}
             title={t('tipSeedLoad')}
             aria-label={t('tipSeedLoad')}
@@ -909,7 +944,7 @@ export default function App() {
             <FolderOpen />
           </button>
           <button
-            className="btn icon"
+            className="uis-btn ico"
             onClick={save}
             title={t('tipSeedSave')}
             aria-label={t('tipSeedSave')}
@@ -917,7 +952,7 @@ export default function App() {
             <Save />
           </button>
           <button
-            className="btn icon"
+            className="uis-btn ico"
             onClick={saveAs}
             title={t('tipSeedSaveAs')}
             aria-label={t('tipSeedSaveAs')}
@@ -925,44 +960,15 @@ export default function App() {
             <SavePlus />
           </button>
         </div>
-        <span className="bar-spacer" />
-        {/* Standard header group — source · help · settings; never joined by any other icon. */}
-        <div className="barh-grp">
-          <button
-            className="btn icon"
-            onClick={() => window.open(GITHUB_URL, '_blank')}
-            title="GitHub"
-            aria-label="GitHub"
-          >
-            <GithubIcon />
-          </button>
-          <button
-            className="btn icon"
-            onClick={() => window.open(getUrl(pkg.name, lang.replace(/_/g, '-'), 'help'), '_blank')}
-            title={t('tipHdrHelp')}
-            aria-label={t('tipHdrHelp')}
-          >
-            <HelpCircle />
-          </button>
-          <button
-            className={`btn icon stg-toggle ${settingsOpen ? 'active' : ''}`}
-            onClick={() => setSettingsOpen(o => !o)}
-            title={t('tipHdrSettings')}
-            aria-label={t('tipHdrSettings')}
-            aria-pressed={settingsOpen}
-          >
-            <Settings />
-          </button>
-        </div>
-      </AppHeader>
+      </UisAppHeader>
 
       {/* ── Seed tab strip (part of the view — hidden while the settings page covers it) — one tab per open .yams (markzen-style multi-document). Sits
           below the identity separator; the active tab's surface matches the content
-          area (.workspace = --dlg-bgd). Horizontal-scrolls, never wraps. ── */}
+          area (.workspace = --uis-dlg-bgd). Horizontal-scrolls, never wraps. ── */}
       {!settingsOpen && (
       <div style={{
         display: 'flex', alignItems: 'stretch', flexShrink: 0,
-        background: 'var(--bar-bgd)', borderBottom: '1px solid var(--border)',
+        background: 'var(--uis-bar-bgd)', borderBottom: '1px solid var(--uis-border)',
         overflowX: 'auto', overflowY: 'hidden',
       }}>
         {seeds.map(s => {
@@ -971,22 +977,22 @@ export default function App() {
             <div key={s.id} onClick={() => setActiveId(s.id)} title={s.filePath || undefined} style={{
               display: 'flex', alignItems: 'center', flexShrink: 0, gap: 6,
               height: 30, padding: '0 6px 0 12px', cursor: 'pointer',
-              background: isActive ? 'var(--dlg-bgd)' : 'transparent',
-              borderRight: '1px solid var(--border)',
-              borderBottom: isActive ? '2px solid var(--accent)' : '2px solid transparent',
-              color: isActive ? 'var(--text)' : 'var(--text-mute)',
+              background: isActive ? 'var(--uis-dlg-bgd)' : 'transparent',
+              borderRight: '1px solid var(--uis-border)',
+              borderBottom: isActive ? '2px solid var(--uis-accent)' : '2px solid transparent',
+              color: isActive ? 'var(--uis-text)' : 'var(--uis-text-mute)',
               fontSize: 13, minWidth: 90, maxWidth: 200,
             }}>
-              {s.unsaved && <span style={{ color: 'var(--accent)', fontSize: 10, lineHeight: 1, flexShrink: 0 }}>●</span>}
+              {s.unsaved && <span style={{ color: 'var(--uis-accent)', fontSize: 10, lineHeight: 1, flexShrink: 0 }}>●</span>}
               <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {s.fileName || t('lblSeedUntitled')}
               </span>
               <button
-                className="btn icon small subtle"
+                className="uis-btn ico small subtle"
                 onClick={e => { e.stopPropagation(); closeSeed(s.id); }}
                 title={t('tipSeedTabClose')} aria-label={t('tipSeedTabClose')}
               >
-                <X className="icon-inline" />
+                <X className="uis-ico-inline" />
               </button>
             </div>
           );
@@ -994,9 +1000,9 @@ export default function App() {
       </div>
       )}
 
-      {/* .app-main content region = also the file-drop zone; the overlay is scoped
+      {/* .uis-app-main content region = also the file-drop zone; the overlay is scoped
           here so the blur covers only this area, not the header bar above it. */}
-      <div className="app-main" {...dropProps}>
+      <div className="uis-app-main" {...dropProps}>
         {settingsOpen && (
           <SettingsPage
             t={t}
@@ -1007,7 +1013,7 @@ export default function App() {
             onClose={() => setSettingsOpen(false)}
           />
         )}
-        <div className="app-scroll app-scroll-y workspace">
+        <div className="uis-app-scroll uis-app-scroll-y workspace">
           {active && (
             <SeedPanel
               t={t}
@@ -1059,11 +1065,11 @@ const fmtSize = (bytes) => {
 // One component because two selects use it — the chord instrument and the bass
 // instrument. A second hand-written copy is a list that silently goes stale the
 // next time a source is added.
-// The instrument list as DATA — one flat array both Combobox pickers share.
+// The instrument list as DATA — one flat array both UisCboStandard pickers share.
 // Each entry carries two orthogonal facts about the instrument:
 //   family — the MUSICAL grouping (Keys / Guitars / …): what sections the list
 //   group  — the SOURCE (Yaiol / GM / VSCO): rides each row as a muted trailing
-//            tag (`.pop-dim`), the way ampl's language picker carries the code —
+//            tag (`.uis-pop-dim`), the way ampl's language picker carries the code —
 //            it is what tells the GM Harp from the VSCO Harp during the
 //            audition pass.
 // A VSCO pack's family starts from its name's first segment (the library's own
@@ -1088,7 +1094,7 @@ const packFamily = (name) => {
 };
 
 // Fixed section order — musical convention (score order-ish), not alphabetical.
-const FAMILY_ORDER = ['Keys', 'Strings (Plucked)', 'Strings (Bowed)', 'Winds (Wood)', 'Winds (Brass)',
+const INSTRUMENT_CATEGORIES_ORDER = ['Keys', 'Strings (Plucked)', 'Strings (Bowed)', 'Winds (Wood)', 'Winds (Brass)',
                       'Percussion (Tuned)', 'Percussion (Untuned)', 'Voices', 'Synth', 'Misc'];
 
 // The articulation SHORT NAMES (user-authored, 2026-09-04) — what the pills in
@@ -1168,7 +1174,7 @@ const instrumentItems = (options, search) => {
                           o.family.toLowerCase().includes(q))
     : options;
   const rows = [];
-  for (const family of FAMILY_ORDER) {
+  for (const family of INSTRUMENT_CATEGORIES_ORDER) {
     const inFamily = kept.filter(o => o.family === family)
       .sort((a, b) => a.label.localeCompare(b.label));
     if (!inFamily.length) continue;
@@ -1178,82 +1184,22 @@ const instrumentItems = (options, search) => {
   return rows;
 };
 
-// ─── Family picker — one ICON when closed, icon + name rows when open ────────
-// Screen space: the closed control is a single .btn.icon showing the selected
-// family's icon (blank for All — no icon by design), which leaves the row's
-// width to the instrument name. Composition of catalog pieces (.btn.icon +
-// Popover + .pop-item), the Combobox's own dropdown idiom.
-const FAMILY_ICONS = {
-  'Keys': IconFamilyKeys,
-  'Percussion (Tuned)': IconFamilyPercTuned,
-  'Strings (Plucked)': IconFamilyStrPlucked,
-  'Strings (Bowed)': IconFamilyStrBowed,
-  'Synth': IconFamilySynth,
-  'Voices': IconFamilyVoices,
-  'Winds (Brass)': IconFamilyWindsBrass,
-  'Winds (Wood)': IconFamilyWindsWood,
+// ─── Family categories for the instrument UisCboFilter ──────────────────────────
+// Each family is a category with its own icon (blank for All — no icon by design).
+const INSTRUMENT_CATEGORIES_ICONS = {
+  'Keys': IcoFamilyKeys,
+  'Percussion (Tuned)': IcoFamilyPercTuned,
+  'Strings (Plucked)': IcoFamilyStrPlucked,
+  'Strings (Bowed)': IcoFamilyStrBowed,
+  'Synth': IcoFamilySynth,
+  'Voices': IcoFamilyVoices,
+  'Winds (Brass)': IcoFamilyWindsBrass,
+  'Winds (Wood)': IcoFamilyWindsWood,
 };
-function FamilyPicker({ t, value, families, onChange }) {
-  const [open, setOpen] = useState(false);
-  const btnRef = useRef(null);
-  const Icon = FAMILY_ICONS[value];
-  const pick = (f) => { onChange(f); setOpen(false); };
-  return (
-    <>
-      <button type="button" ref={btnRef} className="btn icon"
-              title={value || t('optSeedInstrumentFamilyAll')}
-              onClick={() => setOpen((o) => !o)}>
-        {Icon ? <Icon /> : null}
-      </button>
-      <Popover anchorRef={btnRef} open={open} onClose={() => setOpen(false)}>
-        <button type="button" className={`pop-item${!value ? ' active' : ''}`}
-                onMouseDown={(e) => { e.preventDefault(); pick(''); }}>
-          {t('optSeedInstrumentFamilyAll')}
-        </button>
-        {families.map((f) => {
-          const FIcon = FAMILY_ICONS[f];
-          return (
-            <button key={f} type="button" className={`pop-item${value === f ? ' active' : ''}`}
-                    onMouseDown={(e) => { e.preventDefault(); pick(f); }}>
-              {FIcon ? <FIcon /> : null}{f}
-            </button>
-          );
-        })}
-      </Popover>
-    </>
-  );
-}
-
-// ─── The keyboard — Chord Player's piano strip ───────────────────────────────
-// A display + audition control: keys light while the seed plays (treble and
-// bass in their own colours, via the player's onNote tap) and clicking a key
-// hears it with the current treble instrument. C1..C7; white keys share the
-// row's width, black keys ride the boundaries (their left offsets are computed
-// layout data, not styling).
-const KBD_LO = 24, KBD_HI = 96;                       // C1 .. C7
-const BLACK_PC = new Set([1, 3, 6, 8, 10]);
-function Keyboard({ lit, onPlay }) {
-  const whites = [], blacks = [];
-  let wIdx = 0;
-  for (let m = KBD_LO; m <= KBD_HI; m++) {
-    if (BLACK_PC.has(m % 12)) blacks.push({ m, at: wIdx });
-    else { whites.push({ m }); wIdx++; }
-  }
-  const cls = (m, base) => `kbd-key ${base}${lit[m] ? ` on-${lit[m]}` : ''}`;
-  return (
-    <div className="kbd">
-      {whites.map((k) => (
-        <button key={k.m} type="button" className={cls(k.m, 'white')}
-                onPointerDown={() => onPlay?.(k.m)} />
-      ))}
-      {blacks.map((k) => (
-        <button key={k.m} type="button" className={cls(k.m, 'black')}
-                style={{ left: `${(k.at / whites.length) * 100}%` }}
-                onPointerDown={() => onPlay?.(k.m)} />
-      ))}
-    </div>
-  );
-}
+const instrumentCategories = (families) => families.map((f) => {
+  const FIcon = INSTRUMENT_CATEGORIES_ICONS[f];
+  return { id: f, title: f, icon: FIcon ? <FIcon /> : null };
+});
 
 // ─── The style editor's grid ─────────────────────────────────────────────
 // Rows are DEGREES (GRID_ROWS), never pitches: `1` is the root of whatever
@@ -1390,12 +1336,12 @@ function StepGrid({ t, lane, slots, cfg, meter, geom, sel, showRuler, playCol = 
     return { s: mirror ? slots.length - 1 - i : i, first: Math.abs(t - i * slotQ) < 1e-6 };
   };
   return (
-    <div className="stepgrid" style={{ '--stepgrid-cols': cols }}>
+    <div className="uis-grd-sequencer" style={{ '--uis-grd-sequencer-cols': cols }}>
       {showRuler && <>
         <div />
         {Array.from({ length: cols }, (_, c) => {
           const beat = c % cpb === 0;
-          return <div key={c} className={`stepgrid-ruler${colClass(c)}`}>{beat ? ((c / cpb) % numer) + 1 : (sub[c % cpb] ?? '·')}</div>;
+          return <div key={c} className={`uis-grd-sequencer-ruler${colClass(c)}`}>{beat ? ((c / cpb) % numer) + 1 : (sub[c % cpb] ?? '·')}</div>;
         })}
       </>}
       {(() => {
@@ -1407,7 +1353,7 @@ function StepGrid({ t, lane, slots, cfg, meter, geom, sel, showRuler, playCol = 
         const rowLine = (i) => (showRuler ? 1 : 0) + 1 + i;   // grid line of GRID_ROWS[i]
         return GRID_ROWS.map((row, ri) => (
           <React.Fragment key={row}>
-            <div className="stepgrid-rowlabel" title={t(row === 'r' ? 'tipSeedRowAll' : row === 'f' ? 'tipSeedRowFifth' : 'tipSeedRowDegree')}>{row}</div>
+            <div className="uis-grd-sequencer-rowlabel" title={t(row === 'r' ? 'tipSeedRowAll' : row === 'f' ? 'tipSeedRowFifth' : 'tipSeedRowDegree')}>{row}</div>
             {Array.from({ length: cols }, (_, c) => {
               if (covered.has(`${ri}:${c}`)) return null;
               const { s, first } = at(c);
@@ -1421,22 +1367,22 @@ function StepGrid({ t, lane, slots, cfg, meter, geom, sel, showRuler, playCol = 
               return (
                 <React.Fragment key={c}>
                   <button type="button"
-                    className={`stepgrid-cell${colClass(c)}${nt && !isR ? ' hit' : ''}${isR ? ' mark' : ''}${isSel && !isR ? ' selected' : ''}${s < 0 ? ' off' : ''}`}
+                    className={`uis-grd-sequencer-cell${colClass(c)}${nt && !isR ? ' hit' : ''}${isR ? ' mark' : ''}${isSel && !isR ? ' selected' : ''}${s < 0 ? ' off' : ''}`}
                     disabled={s < 0}
                     onContextMenu={(e) => { e.preventDefault(); if (first) onCell(lane, s, row, idx, null, true); }}
                     onClick={(e) => first ? onCell(lane, s, row, idx, null, e.ctrlKey || e.metaKey)
                       // between two slots: refine the lane to this column's
                       // resolution (time kept) and place the note on the column
                       : onCell(lane, s, row, -1, { step: geom.cpb * geom.denom, slot: c, mirror })}>
-                    {nt && !isR && <span className="stepgrid-flags">{noteFlags(nt, cell.early)}</span>}
+                    {nt && !isR && <span className="uis-grd-sequencer-flags">{noteFlags(nt, cell.early)}</span>}
                   </button>
                   {isR && (
                     // the block: placed explicitly (auto-flow fills around it); a
                     // click on one of its rows makes the block start there. The
                     // selection ring is the block's alone — the dot is a handle
                     <button type="button"
-                      className={`stepgrid-cell hit${colClass(c)}${isSel ? ' selected' : ''}`}
-                      style={{ '--rows': blockRows, gridColumn: c + 2, gridRow: `${rowLine(1)} / span ${blockRows}` }}
+                      className={`uis-grd-sequencer-cell hit${colClass(c)}${isSel ? ' selected' : ''}`}
+                      style={{ '--uis-rows': blockRows, gridColumn: c + 2, gridRow: `${rowLine(1)} / span ${blockRows}` }}
                       onContextMenu={(e) => { e.preventDefault(); onCell(lane, s, 'r', idx, null, true); }}
                       onClick={(e) => {
                         // Ctrl+click selects the block for the flags; a plain
@@ -1445,7 +1391,7 @@ function StepGrid({ t, lane, slots, cfg, meter, geom, sel, showRuler, playCol = 
                         const k = 1 + Math.min(blockRows - 1, Math.floor((e.nativeEvent.offsetY / e.currentTarget.offsetHeight) * blockRows));
                         onCell(lane, s, GRID_ROWS[k], -1);
                       }}>
-                      <span className="stepgrid-flags">{noteFlags(nt, cell.early)}</span>
+                      <span className="uis-grd-sequencer-flags">{noteFlags(nt, cell.early)}</span>
                     </button>
                   )}
                 </React.Fragment>
@@ -1505,12 +1451,12 @@ function ChordStrip({ progression, transpose = 0, geom, playQ = null }) {
   const pc = playQ == null ? -1 : Math.floor((((playQ / colQ) % reachC) + reachC) % reachC);
   const pRow = Math.floor(pc / cols), pCol = pc - pRow * cols;
   return (
-    <div className="stepgrid" style={{ '--stepgrid-cols': cols }}>
+    <div className="uis-grd-sequencer" style={{ '--uis-grd-sequencer-cols': cols }}>
       {Array.from({ length: rows }, (_, r) => (
-        <div key={`l${r}`} className="stepgrid-rowlabel" style={{ gridRow: r + 1, gridColumn: 1 }}>{labels.has(r) ? `[${labels.get(r)}]` : ''}</div>
+        <div key={`l${r}`} className="uis-grd-sequencer-rowlabel" style={{ gridRow: r + 1, gridColumn: 1 }}>{labels.has(r) ? `[${labels.get(r)}]` : ''}</div>
       ))}
       {items.map(i => (
-        <div key={i.key} className={`stepgrid-span${pc >= 0 && i.row === pRow && pCol >= i.c0 && pCol < i.c0 + i.span ? ' active' : ''}`}
+        <div key={i.key} className={`uis-grd-sequencer-span${pc >= 0 && i.row === pRow && pCol >= i.c0 && pCol < i.c0 + i.span ? ' active' : ''}`}
              style={{ gridRow: i.row + 1, gridColumn: `${2 + i.c0} / span ${i.span}` }}>{i.sym}</div>
       ))}
     </div>
@@ -1524,7 +1470,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
           highpass, lowpass, reverb, trebleReverb, bassReverb,
           format, mp3Bitrate, name, output, filePath, error, result } = seed;
 
-  // Combobox view state — pure view, never written to the .yams. Each picker
+  // UisCboStandard view state — pure view, never written to the .yams. Each picker
   // shows the SELECTED label while closed and the search text while open (the
   // ampl language-picker pattern), so it needs its own search + open pair.
   // Which of the two form tabs is showing — Music (what plays) vs Render (how
@@ -1539,7 +1485,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
   // (the library-audit review system lived here 2026-08-30..31 — removed once
   // the audit tooling had done its job; the collected verdicts remain in
   // local/instrument-review.json)
-  const renderInstrumentRow = (o) => <>{o.label} <span className="pop-dim">{o.group}</span></>;
+  const renderInstrumentRow = (o) => <>{o.label} <span className="uis-pop-dim">{o.group}</span></>;
   const renderBassRow = renderInstrumentRow;
   // The lane monitor as two MUTE buttons (one per lane) — a view over the same
   // `lanes` monitor field the old Hear select set: both/bass/treble/none.
@@ -1561,7 +1507,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
   // The family pre-filter feeding each picker's left-hand select — only
   // families that actually hold instruments, in the fixed musical order.
   const families = useMemo(
-    () => FAMILY_ORDER.filter(f => options.some(o => o.family === f)), [options]);
+    () => INSTRUMENT_CATEGORIES_ORDER.filter(f => options.some(o => o.family === f)), [options]);
   const byFamily = (family) => family ? options.filter(o => o.family === family) : options;
   // Picking a FAMILY also picks that family's first instrument for the lane —
   // the icon is a real selector, not just a list filter: the sound follows the
@@ -1630,7 +1576,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
   });
   // The band captions: i18n holds the WHOLE word, translated normally; the band
   // has room for about three characters, so the screen gets the short form and
-  // the tooltip keeps the word. Shortened as a SET (shortLabels, ui-text.js):
+  // the tooltip keeps the word. Shortened as a SET (LbsLblShortSet, uis-text.js):
   // the cut grows until no two captions in the row read the same — Hungarian
   // "hangerő" and "hangolás" are both "han" at three — and scripts where a
   // prefix is not an abbreviation come back whole. `npm run check:labels`.
@@ -1639,7 +1585,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
                     'lblSeedKnobTranspose'];
   const caps = useMemo(() => {
     const full = CAPTIONS.map((k) => t(k));
-    const short = shortLabels(full);
+    const short = LbsLblShortSet(full);
     return Object.fromEntries(CAPTIONS.map((k, i) => [k, { label: short[i], title: full[i] }]));
   }, [t]);   // eslint-disable-line react-hooks/exhaustive-deps
   // ⚠ NOT `cap` — that is the module-level key-capitaliser (`cap('pad')` →
@@ -1828,29 +1774,36 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
                 figure here drops any grid edit and turns the style Custom. The
                 bass has no "same as treble" — a bass line is not a chord
                 figure, so there was nothing for it to mean. */}
-            <select className="select seed-figure" value={(pattern || !figKey) ? CUSTOM_FIGURE : figKey}
+            <select className="uis-ddn-std seed-figure" value={(pattern || !figKey) ? CUSTOM_FIGURE : figKey}
                     onChange={e => onField({ [isT ? 'chordFigure' : 'bassFigure']: e.target.value, pattern: null })}>
               {(pattern || !figKey) && <option value={CUSTOM_FIGURE}>{t('optSeedStyleCustom')}</option>}
               {Object.entries(figures).map(([k, f]) => <option key={k} value={k}>{f.name}</option>)}
             </select>
-            <Knob inline arc {...knobCap('lblSeedKnobVel')} min={0} max={100} step={5} unit="%"
+            <UisKnob inline arc {...knobCap('lblSeedKnobVel')} min={0} max={100} step={5} unit="%"
                   value={laneVelocityPercent(cfg)} onChange={v => setLaneCfg(lane, { vel: v / 100 })} />
-            <Knob inline arc {...knobCap('lblSeedKnobLen')} min={1} max={16} step={1}
+            <UisKnob inline arc {...knobCap('lblSeedKnobLen')} min={1} max={16} step={1}
                   value={cfg.len} onChange={v => setLaneCfg(lane, { len: v })} />
-            <button type="button" className={`btn icon${cfg.hold ? ' active' : ''}`} title={t('btnSeedHold')}
+            <button type="button" className={`uis-btn ico${cfg.hold ? ' active' : ''}`} title={t('btnSeedHold')}
                     onClick={() => setLaneCfg(lane, { hold: !cfg.hold })}><ArrowRightToLine /></button>
             {/* SOUND — the lane's instrument and its mix. */}
-            <button type="button" className="btn icon"
+            <button type="button" className="uis-btn ico"
                     title={t(muted ? 'tipSeedUnmute' : 'tipSeedMute')}
                     onClick={() => isT ? setMutes(!trebleMuted, bassMuted) : setMutes(trebleMuted, !bassMuted)}>
               {muted ? <VolumeX /> : <Volume2 />}
             </button>
-            <div className="barh-grp seed-picker-weld">
-            <FamilyPicker t={t} value={isT ? instFamily : bassFamily} families={families}
-              onChange={f => { (isT ? setInstFamily : setBassFamily)(f);
-                               pickFamily(f, field, instrument, isT ? (o => o.role !== 'bass') : undefined); }} />
-            <div className="seed-combo">
-            <Combobox
+            <UisCboFilter weld className="seed-picker-weld"
+              allLabel={t('optSeedInstrumentFamilyAll')}
+              categories={instrumentCategories(families)}
+              category={isT ? instFamily : bassFamily}
+              onCategory={f => { (isT ? setInstFamily : setBassFamily)(f);
+                                 pickFamily(f, field, instrument, isT ? (o => o.role !== 'bass') : undefined); }}
+              after={<>
+                <button type="button" className="uis-btn ico" title={t('tipSeedInstrumentPrev')}
+                        disabled={instAt <= 0} onClick={() => stepInstrument(-1)}><ChevronUp /></button>
+                <button type="button" className="uis-btn ico" title={t('tipSeedInstrumentNext')}
+                        disabled={instAt < 0 || instAt >= instList.length - 1}
+                        onClick={() => stepInstrument(1)}><ChevronDown /></button>
+              </>}
               placeholder={t('plhSeedInstrumentFilter')}
               value={(isT ? instOpen : bassOpen) ? (isT ? instSearch : bassSearch)
                      : (instrument ? labelOf(instrument) : t('optSeedBassInstrumentSame'))}
@@ -1864,26 +1817,19 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
               renderItem={renderInstrumentRow}
               onPick={o => { onField({ [field]: pickValue(o, instrument) }); setSearch(''); }}
               renderHeader={isT ? undefined : ({ close }) => (
-                <button type="button" className={`pop-item${bassInstrument === '' ? ' active' : ''}`}
+                <button type="button" className={`uis-pop-item${bassInstrument === '' ? ' active' : ''}`}
                   onMouseDown={(e) => { e.preventDefault(); onField({ bassInstrument: '' }); setBassSearch(''); close(); }}>
                   {t('optSeedBassInstrumentSame')}
                 </button>
               )}
             />
-            </div>
-            <button type="button" className="btn icon" title={t('tipSeedInstrumentPrev')}
-                    disabled={instAt <= 0} onClick={() => stepInstrument(-1)}><ChevronUp /></button>
-            <button type="button" className="btn icon" title={t('tipSeedInstrumentNext')}
-                    disabled={instAt < 0 || instAt >= instList.length - 1}
-                    onClick={() => stepInstrument(1)}><ChevronDown /></button>
-            </div>
             {/* The instrument's articulations, inline — exactly one active, all
                 of them on screen (no list to open, nothing hidden). The zone
                 is always here so the mix knobs beside it never move. */}
             <div className="seed-artics">
               {instrument && variantsOf(instrument).length > 1 && variantsOf(instrument).map(v => (
                 <button key={v.value} type="button" title={v.label}
-                  className={`btn small opt-btn${v.value === instrument ? ' active' : ''}`}
+                  className={`uis-btn small uis-opt${v.value === instrument ? ' active' : ''}`}
                   onClick={() => onField({ [field]: v.value })}>{v.abbr}</button>
               ))}
             </div>
@@ -1891,14 +1837,14 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
                 saved; the found value gets stamped in the library. Treble only —
                 so it goes FIRST, and the knobs both lanes share (oct · rev · vol)
                 line up across the two bands instead of being shifted by it. */}
-            {isT && <Knob inline {...knobCap('lblSeedKnobTune')} min={-50} max={50} step={1} unit="¢"
+            {isT && <UisKnob inline {...knobCap('lblSeedKnobTune')} min={-50} max={50} step={1} unit="¢"
                           value={tuneTrim} onChange={onTuneTrim} />}
-            <Knob inline {...knobCap('lblSeedKnobOctave')} min={-1} max={1} step={1}
+            <UisKnob inline {...knobCap('lblSeedKnobOctave')} min={-1} max={1} step={1}
                   value={isT ? trebleOctave : bassOctave} onChange={v => onField(isT ? { trebleOctave: v } : { bassOctave: v })} />
-            <Knob inline arc {...knobCap('lblSeedKnobReverb')} min={0} max={100} step={5} unit="%"
+            <UisKnob inline arc {...knobCap('lblSeedKnobReverb')} min={0} max={100} step={5} unit="%"
                   disabled={reverb === 'none'}
                   value={isT ? trebleReverb : bassReverb} onChange={v => onField(isT ? { trebleReverb: v } : { bassReverb: v })} />
-            <Knob inline arc {...knobCap('lblSeedKnobVolume')} min={0} max={100} step={5} unit="%"
+            <UisKnob inline arc {...knobCap('lblSeedKnobVolume')} min={0} max={100} step={5} unit="%"
                   value={isT ? trebleVolume : bassVolume} onChange={v => onField(isT ? { trebleVolume: v } : { bassVolume: v })} />
             {/* the lane's NAME sits at the RIGHT edge — the left column is
                 being cleared for the note flags, which belong beside the
@@ -1916,14 +1862,14 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
                 pair, with the step count as a label spanning right under it. */}
             <div className="seed-strip">
               <button type="button" title={t('tipSeedLaneMirror')}
-                      className={`btn icon small${(isT ? trebleMirror : bassMirror) ? ' active' : ''}`}
+                      className={`uis-btn ico small${(isT ? trebleMirror : bassMirror) ? ' active' : ''}`}
                       onClick={() => onField({ [isT ? 'trebleMirror' : 'bassMirror']: !(isT ? trebleMirror : bassMirror) })}>
                 <ArrowLeftRight /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneClear')} onClick={() => laneAction(lane, 'clear')}><Eraser /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneShiftLeft')} onClick={() => laneAction(lane, 'left')}><ChevronLeft /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneShiftRight')} onClick={() => laneAction(lane, 'right')}><ChevronRight /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneAddStep')} onClick={() => laneAction(lane, 'add')}><Plus /></button>
-              <button type="button" className="btn icon small" title={t('tipSeedLaneRemoveStep')} disabled={laneSlots(lane).length <= 1} onClick={() => laneAction(lane, 'remove')}><Minus /></button>
+              <button type="button" className="uis-btn ico small" title={t('tipSeedLaneClear')} onClick={() => laneAction(lane, 'clear')}><Eraser /></button>
+              <button type="button" className="uis-btn ico small" title={t('tipSeedLaneShiftLeft')} onClick={() => laneAction(lane, 'left')}><ChevronLeft /></button>
+              <button type="button" className="uis-btn ico small" title={t('tipSeedLaneShiftRight')} onClick={() => laneAction(lane, 'right')}><ChevronRight /></button>
+              <button type="button" className="uis-btn ico small" title={t('tipSeedLaneAddStep')} onClick={() => laneAction(lane, 'add')}><Plus /></button>
+              <button type="button" className="uis-btn ico small" title={t('tipSeedLaneRemoveStep')} disabled={laneSlots(lane).length <= 1} onClick={() => laneAction(lane, 'remove')}><Minus /></button>
               <span className="seed-count seed-count-span mono" title={t('tipSeedSlots')}>{laneSlots(lane).length}</span>
             </div>
           </div>
@@ -1932,33 +1878,33 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
     );
   };
 
-  // dlg-form: this body panel is a dialog-style form, so its .numfield + .btn
-  // follow the same dialog field rules as the sibling .input/.select.
+  // dlg-form: this body panel is a dialog-style form, so its .uis-num + .uis-btn
+  // follow the same dialog field rules as the sibling .uis-txt/.uis-ddn-std.
   // Two-column split: chord progression on the left, everything else on the right.
   return (
-    <div className="seed-panel dlg-form">
-      {/* Two tabs on a VERTICAL rail (the catalog .tabs.vertical) — the
+    <div className="seed-panel uis-dlg-form">
+      {/* Two tabs on a VERTICAL rail (the catalog .uis-tab-set.vertical) — the
           panel's left edge, so the tab row costs no height on a screen
           where height is the scarce resource (the 1080 gate):
           MUSIC = what plays (both live and in the file); RENDER = how the file
           is produced (loops, format, bitrate, output name). */}
-      <div className="tabs vertical">
-        <button type="button" className={`tab ${panelTab === 'music' ? 'active' : ''}`}
+      <div className="uis-tab-set vertical">
+        <button type="button" className={`uis-tab ${panelTab === 'music' ? 'active' : ''}`}
                 onClick={() => setPanelTab('music')}>{t('tabSeedMusic')}</button>
-        <button type="button" className={`tab ${panelTab === 'render' ? 'active' : ''}`}
+        <button type="button" className={`uis-tab ${panelTab === 'render' ? 'active' : ''}`}
                 onClick={() => setPanelTab('render')}>{t('tabSeedRender')}</button>
       </div>
       <div className="seed-col seed-col-rest">
       {panelTab === 'music' && <div className="seed-music">
       {/* The keyboard on TOP — a PITCH axis, kept out of the time-aligned stack
           below so the grids and the progression stay contiguous. */}
-      <Keyboard lit={litKeys} onPlay={onAudition} />
+      <UisPiano lit={litKeys} onPlay={onAudition} />
 
       {/* ONE seed row: tempo · meter · swing | the output chain · Play | the name. */}
       <div className="seed-toprow">
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedBpm')}</label>
-          <NumberField min={20} max={300} step={1} width="76px"
+          <label className="uis-fld-labelled-label">{t('lblSeedBpm')}</label>
+          <UisNum min={20} max={300} step={1} width="76px"
                  value={bpm} onChange={v => onField({ bpm: v })} />
         </div>
         {/* STYLE sits SECOND so it lines up with each lane's FIGURE select in the
@@ -1969,8 +1915,8 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
             or edit the grid, and it reads "Custom": the pair is no longer the
             preset's. Picking one here resets both lanes to it. */}
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedStyle')}</label>
-          <select className="select" style={{ width: '150px' }}
+          <label className="uis-fld-labelled-label">{t('lblSeedStyle')}</label>
+          <select className="uis-ddn-std" style={{ width: '150px' }}
                   value={(pattern || chordFigure || bassFigure) ? CUSTOM_FIGURE : style}
                   onChange={e => onField({ style: e.target.value, chordFigure: '', bassFigure: '', pattern: null })}>
             {(pattern || chordFigure || bassFigure) && <option value={CUSTOM_FIGURE}>{t('optSeedStyleCustom')}</option>}
@@ -1985,8 +1931,8 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
             is closed — `4/7` is meaningless, not exotic. A value from an older
             file that is not in the list is still shown, never silently changed. */}
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedSig')}</label>
-          <select className="select" value={sig} onChange={e => onField({ sig: e.target.value })}>
+          <label className="uis-fld-labelled-label">{t('lblSeedSig')}</label>
+          <select className="uis-ddn-std" value={sig} onChange={e => onField({ sig: e.target.value })}>
             {!SIGNATURES.some(g => g.sigs.includes(sig)) && <option value={sig}>{sig}</option>}
             {SIGNATURES.map(g => (
               <optgroup key={g.group} label={t('lblSeedSigGroup' + cap(g.group))}>
@@ -1999,8 +1945,8 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
             whole seed (both lanes share the columns). Changing it keeps the
             slots and re-times the figure, as Chord Player does. */}
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedBeatDiv')}</label>
-          <select className="select" value={geom.cpb} title={t('tipSeedBeatDiv')}
+          <label className="uis-fld-labelled-label">{t('lblSeedBeatDiv')}</label>
+          <select className="uis-ddn-std" value={geom.cpb} title={t('tipSeedBeatDiv')}
                   onChange={e => setDivision(Number(e.target.value))}>
             {!BEAT_DIVISIONS.includes(geom.cpb) && <option value={geom.cpb}>B/{geom.cpb}</option>}
             {BEAT_DIVISIONS.map(d => <option key={d} value={d}>B/{d}</option>)}
@@ -2008,19 +1954,19 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
         </div>
         {/* Four named landmarks, never a number on screen. */}
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedSwing')}</label>
-          <select className="select" value={swingKey(swing)}
+          <label className="uis-fld-labelled-label">{t('lblSeedSwing')}</label>
+          <select className="uis-ddn-std" value={swingKey(swing)}
                   onChange={e => onField({ swing: SWINGS.find(x => x.key === e.target.value)?.value ?? 0 })}>
             {swingKey(swing) === 'custom' && <option value="custom">{Number(swing).toFixed(2)}</option>}
             {SWINGS.map(x => <option key={x.key} value={x.key}>{t('optSeedSwing' + cap(x.key))}</option>)}
           </select>
         </div>
-        <div className="barh-sep" />
+        <div className="uis-barh-sep" />
         {/* The room. ONE room for the whole seed; each lane's SEND into it is
             the reverb knob on its own band (the aux model). */}
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedReverb')}</label>
-          <select className="select" style={{ width: '140px' }} value={reverb}
+          <label className="uis-fld-labelled-label">{t('lblSeedReverb')}</label>
+          <select className="uis-ddn-std" style={{ width: '140px' }} value={reverb}
                   onChange={e => onField({ reverb: e.target.value })}>
             {ROOM_KEYS.map(k => (
               <option key={k} value={k}>{t('optSeedReverb' + k.charAt(0).toUpperCase() + k.slice(1))}</option>
@@ -2029,19 +1975,19 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
         </div>
         {/* The master filters — the last thing the whole mix passes through. 0 turns one off. */}
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedHighpass')}</label>
-          <NumberField min={0} max={2000} step={10} width="96px"
+          <label className="uis-fld-labelled-label">{t('lblSeedHighpass')}</label>
+          <UisNum min={0} max={2000} step={10} width="96px"
                  value={highpass} onChange={v => onField({ highpass: v })} />
         </div>
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedLowpass')}</label>
+          <label className="uis-fld-labelled-label">{t('lblSeedLowpass')}</label>
           {/* Max 20000: "off" (0) parks the live filter at 20 kHz, so a settable
               value ABOVE the park point would filter less than off does. */}
-          <NumberField min={0} max={20000} step={500} width="96px"
+          <UisNum min={0} max={20000} step={500} width="96px"
                  value={lowpass} onChange={v => onField({ lowpass: v })} />
         </div>
         {/* Play lives with the sound controls. Preview needs no saved file. */}
-        <button className="btn" onClick={onPlay}
+        <button className="uis-btn" onClick={onPlay}
                 disabled={busy || summary.count === 0 || summary.sigBad || summary.invalid.length > 0}>
           {playing ? <Square /> : <Play />}{playing ? t('btnSeedStop') : t('btnSeedPlay')}
         </button>
@@ -2060,9 +2006,9 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
           <div className="seed-flaggroup">
             <span className="seed-flaglabel">{t('lblSeedMode')}</span>
             <div className="seed-flagrow">
-              <button type="button" className={`btn icon small${noteMode === 'edit' ? ' active' : ''}`}
+              <button type="button" className={`uis-btn ico small${noteMode === 'edit' ? ' active' : ''}`}
                       title={t('tipSeedModeEdit')} onClick={() => setNoteMode('edit')}><PenLine /></button>
-              <button type="button" className={`btn icon small${noteMode === 'settings' ? ' active' : ''}`}
+              <button type="button" className={`uis-btn ico small${noteMode === 'settings' ? ' active' : ''}`}
                       title={t('tipSeedModeSettings')} onClick={() => setNoteMode('settings')}><SlidersHorizontal /></button>
             </div>
           </div>
@@ -2072,7 +2018,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
               <div className="seed-flagrow">
                 {g.flags.map(f => (
                   <button key={f.key} type="button"
-                          className={`btn icon small${selNote && flagOn(f.key, selNote.nt, selNote.cell) ? ' active' : ''}`}
+                          className={`uis-btn ico small${selNote && flagOn(f.key, selNote.nt, selNote.cell) ? ' active' : ''}`}
                           disabled={!selNote} title={t('tipSeedFlag' + f.key)}
                           onClick={() => applyFlag(f.key)}>{f.glyph}</button>
                 ))}
@@ -2094,14 +2040,14 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
                   the HARMONY from the left edge, the block's name at the right.
                   Transpose is a position either side of a centre, so no arc (like oct). */}
               <div className="seed-band">
-                <Knob inline {...knobCap('lblSeedKnobTranspose')} title={t('tipSeedTranspose')}
+                <UisKnob inline {...knobCap('lblSeedKnobTranspose')} title={t('tipSeedTranspose')}
                       min={TRANSPOSE_MIN} max={TRANSPOSE_MAX} step={1}
                       value={Number(transpose) || 0} onChange={v => onField({ transpose: v })} />
                 <span className="seed-lane-name">{t('lblSeedChords')}</span>
               </div>
               <div className="seed-gridwrap">
                 {chordsAsText ? (
-                  <textarea className="textarea mono seed-chordtext" autoFocus
+                  <textarea className="uis-txt-area mono seed-chordtext" autoFocus
                     value={progression} placeholder={t('plhSeedProgression')}
                     onChange={e => onField({ progression: e.target.value })}
                     onKeyDown={e => {
@@ -2124,13 +2070,13 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
                     the music, this describes how the text is READ, so it is a
                     property of the chords and belongs on them. */}
                 <div className="seed-strip">
-                  <button type="button" className={`btn icon small seed-strip-edit${chordsAsText ? ' active' : ''}`}
+                  <button type="button" className={`uis-btn ico small seed-strip-edit${chordsAsText ? ' active' : ''}`}
                           title={t('tipSeedChordsEdit')} onClick={() => setChordsAsText(v => !v)}>
                     <Pencil />
                   </button>
-                  <button type="button" className="btn icon small seed-strip-add" title={t('tipSeedBarsAdd')}
+                  <button type="button" className="uis-btn ico small seed-strip-add" title={t('tipSeedBarsAdd')}
                           onClick={() => onField({ bars: bars + 0.25 })}><Plus /></button>
-                  <button type="button" className="btn icon small seed-strip-sub" title={t('tipSeedBarsRemove')}
+                  <button type="button" className="uis-btn ico small seed-strip-sub" title={t('tipSeedBarsRemove')}
                           disabled={bars <= 0.25} onClick={() => onField({ bars: bars - 0.25 })}><Minus /></button>
                   <span className="seed-count seed-count-span mono" title={t('lblSeedBars')}>{bars}</span>
                 </div>
@@ -2159,25 +2105,25 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
             with the RENDER controls because that is what it feeds; the Music
             row is for what you hear. */}
         <div className="seed-field seed-field-name">
-          <label className="dlg-field-label">{t('lblSeedName')}</label>
-          <input className="input" type="text"
+          <label className="uis-fld-labelled-label">{t('lblSeedName')}</label>
+          <input className="uis-txt" type="text"
                  value={name} onChange={e => onField({ name: e.target.value })} />
         </div>
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedLoops')}</label>
-          <NumberField min={1} max={32} step={1} width="76px"
+          <label className="uis-fld-labelled-label">{t('lblSeedLoops')}</label>
+          <UisNum min={1} max={32} step={1} width="76px"
                  value={loops} onChange={v => onField({ loops: v })} />
         </div>
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedFormat')}</label>
-          <select className="select" style={{ width: '120px' }} value={format} onChange={e => onField({ format: e.target.value })}>
+          <label className="uis-fld-labelled-label">{t('lblSeedFormat')}</label>
+          <select className="uis-ddn-std" style={{ width: '120px' }} value={format} onChange={e => onField({ format: e.target.value })}>
             <option value="mp3">{t('optSeedFormatMp3')}</option>
             <option value="wav">{t('optSeedFormatWav')}</option>
           </select>
         </div>
         <div className="seed-field">
-          <label className="dlg-field-label">{t('lblSeedMp3Bitrate')}</label>
-          <select className="select" value={mp3Bitrate} disabled={format !== 'mp3'}
+          <label className="uis-fld-labelled-label">{t('lblSeedMp3Bitrate')}</label>
+          <select className="uis-ddn-std" value={mp3Bitrate} disabled={format !== 'mp3'}
                   onChange={e => onField({ mp3Bitrate: Number(e.target.value) })}>
             {MP3_BITRATES.map(b => <option key={b} value={b}>{b} kbps</option>)}
           </select>
@@ -2188,13 +2134,13 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
           list and its order live in OUTPUT_TOKENS) are replaced with the current form
           values at render time. Emptied by hand → the DEFAULT_OUTPUT template. */}
       <div className="seed-field">
-        <label className="dlg-field-label">{t('lblSeedOutput')}</label>
-        <input className="input" type="text"
+        <label className="uis-fld-labelled-label">{t('lblSeedOutput')}</label>
+        <input className="uis-txt" type="text"
                value={output} onChange={e => onField({ output: e.target.value })} />
         {/* the token list comes from OUTPUT_TOKENS itself, never from i18n: the
             names are the same in every language, and a second copy of the list
             in the text would drift from the table the resolver uses */}
-        <span className="hint">{t('hntSeedOutput')} {OUTPUT_TOKENS.map(([key]) => `{${key}}`).join(', ')}</span>
+        <span className="uis-hnt">{t('hntSeedOutput')} {OUTPUT_TOKENS.map(([key]) => `{${key}}`).join(', ')}</span>
       </div>
       </>}
 
@@ -2224,12 +2170,12 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
           output location). */}
       <div className="seed-actions">
         {panelTab === 'render' && (
-          <button className="btn primary" onClick={onRender} disabled={busy || !saved || summary.count === 0 || summary.sigBad || summary.invalid.length > 0}>
+          <button className="uis-btn primary" onClick={onRender} disabled={busy || !saved || summary.count === 0 || summary.sigBad || summary.invalid.length > 0}>
             <AudioWaveform />{busy ? (busyMsg || t('msgSeedBusy')) : t('btnSeedRender')}
           </button>
         )}
         {/* Play lives on the Music tab's seed row, with the sound controls. */}
-        {panelTab === 'render' && !saved && <span className="hint">{t('hntSeedRenderNeedsSave')}</span>}
+        {panelTab === 'render' && !saved && <span className="uis-hnt">{t('hntSeedRenderNeedsSave')}</span>}
         {error && <span className="seed-error">{error}</span>}
       </div>
 
@@ -2239,12 +2185,12 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
         <div className="seed-result">
           <div className="seed-result-head">{t('lblSeedResult')}</div>
           <button className="seed-result-file" onClick={() => onReveal(result.audioPath)}>
-            <Music className="icon-inline" /><span className="mono">{result.audioPath}</span>
+            <Music className="uis-ico-inline" /><span className="mono">{result.audioPath}</span>
           </button>
           <button className="seed-result-file" onClick={() => onReveal(result.midiPath)}>
-            <Music className="icon-inline" /><span className="mono">{result.midiPath}</span>
+            <Music className="uis-ico-inline" /><span className="mono">{result.midiPath}</span>
           </button>
-          <span className="hint">{t('hntSeedResult')}</span>
+          <span className="uis-hnt">{t('hntSeedResult')}</span>
         </div>
       )}
       </div>{/* /seed-col-rest */}
@@ -2252,7 +2198,7 @@ function SeedPanel({ t, seed, busy, busyMsg, playing, packs, litKeys, playPos, o
   );
 }
 
-// The settings page: the shared SettingsView plus this app's block colours (below Language +
+// The settings page: the shared UisStgView plus this app's block colours (below Language +
 // Theme) and the instrument credits (below About).
 function SettingsPage({ t, lang, setLang, theme, setTheme, blockColors, setBlockColors, packs, onClose }) {
   const [newsEnabled, setNewsEnabled] = useState(true);
@@ -2288,31 +2234,31 @@ function SettingsPage({ t, lang, setLang, theme, setTheme, blockColors, setBlock
   }, [packs]);
 
   // Block colours — the colour-card rows of ampl's Settings: the name in
-  // its colour, the shared ColorPicker swatch, Reset to the default.
+  // its colour, the shared UisPkrColor swatch, Reset to the default.
   const generalExtra = (
     <>
-      <div className="dlg-field divider">
-        <label className="dlg-field-label">{t('lblStgGeneralColors')}</label>
+      <div className="uis-fld-labelled divider">
+        <label className="uis-fld-labelled-label">{t('lblStgGeneralColors')}</label>
         {BLOCK_COLORS.map(({ key, nameKey }) => (
           <div key={key} className="seed-colors-row">
             <span className={`seed-colors-name ${key}`}>{t(nameKey)}</span>
-            <ColorPicker color={blockColorShown(key)}
+            <UisPkrColor color={blockColorShown(key)}
               onChange={(c) => setBlockColors(prev => ({ ...prev, [key]: c }))}
               cancelLabel={t('btnGlobalCancel')} applyLabel={t('btnGlobalApply')} pickTitle={t('tipGlobalPickFromScreen')} />
-            <button className="btn subtle seed-colors-reset" disabled={!blockColors[key]}
+            <button className="uis-btn subtle seed-colors-reset" disabled={!blockColors[key]}
               onClick={() => setBlockColors(prev => ({ ...prev, [key]: null }))}>
               {t('btnStgGeneralColorReset')}
             </button>
           </div>
         ))}
       </div>
-      <NewsSetting enabled={newsEnabled} onChange={toggleNews} label={t('lblStgGeneralNews')} />
+      <div className="uis-fld-labelled divider"><label className="uis-chk-lbl"><input type="checkbox" className="uis-chk-box" checked={newsEnabled} onChange={e => toggleNews(e.target.checked)} />{t('lblStgGeneralNews')}</label></div>
     </>
   );
 
   const aboutExtra = credits.length > 0 && (
     <div className="seed-credits">
-      <div className="dlg-about-id">{t('lblStgAboutCredits')}</div>
+      <div className="uis-dlg-about-id">{t('lblStgAboutCredits')}</div>
       <div className="dlg-hint">{t('msgStgAboutCreditsIntro')}</div>
       {credits.map(c => (
         <div key={c.author} className="seed-credits-row"><b>{c.author}</b> — {c.instruments}</div>
@@ -2321,7 +2267,7 @@ function SettingsPage({ t, lang, setLang, theme, setTheme, blockColors, setBlock
   );
 
   return (
-    <SettingsView
+    <UisStgView
       t={t} appName={APP_NAME} appVersion={APP_VERSION} languages={LANGUAGES}
       lang={lang} setLang={setLang} theme={theme} setTheme={setTheme}
       generalExtra={generalExtra} aboutExtra={aboutExtra}

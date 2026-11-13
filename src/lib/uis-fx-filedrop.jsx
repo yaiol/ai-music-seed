@@ -1,11 +1,11 @@
-// ui-fx-filedrop.jsx — the ONE canonical "drag a file onto the window to open it"
+// uis-fx-filedrop.jsx — the ONE canonical "drag a file onto the window to open it"
 // behaviour for every yaiol electron app. Reference look: ai-music-seed (drop a
 // .yams), markzen (drop a .md). Whenever an app can open/load a file, it should
 // ALSO accept that file by drag-and-drop through this hook — same feature, one
 // implementation, so no app hand-rolls its own drop wiring.
 //
-// The look (the dashed accent, blurred overlay) is the shared `.drop-overlay` /
-// `.drop-overlay-label` CSS in ui-app.css; the behaviour (the dragover/dragleave/
+// The look (the dashed accent, blurred overlay) is the shared `.uis-ovl-drop` /
+// `.uis-ovl-drop-label` CSS in uis-app.css; the behaviour (the dragover/dragleave/
 // drop handlers + the flicker-proof leave guard + extension filter) is here.
 //
 // The overlay is position:absolute, so it covers its nearest POSITIONED ancestor.
@@ -15,25 +15,25 @@
 //
 // Usage — spread `dropProps` on the region that accepts drops and render `overlay`
 // inside it (that region must be position:relative):
-//   const { dropProps, overlay } = useFileDrop({
+//   const { dropProps, overlay } = LbsHokFileDrop({
 //     accept: ['.yams'],                       // extensions to accept (case-insensitive)
 //     onFile: (file) => loadFromFile(file),    // called with the first matching File
 //     onFiles: (files) => addAll(files),       // optional: every matching File (a multi-file consumer)
 //     label:  t('msgSeedDropHere'),            // overlay text (already localized)
 //   });
-//   return <div className="app-root" {...dropProps}> … {overlay} </div>;
+//   return <div className="uis-app-root" {...dropProps}> … {overlay} </div>;
 //
 // Only the file's `File` object is handed back — reading it (FileReader for JSON/text,
 // or webUtils.getPathForFile for a path to save back) is the caller's job, exactly as
 // with the app's Open button. Non-matching files are ignored. `onFile` gets the first
 // matching file (the common "open a document" case); `onFiles` gets every matching one.
 //
-// Distributed into each app's src/lib/ui-fx-filedrop.jsx by sync-shared — ⚠ SYNCED
+// Distributed into each app's src/lib/uis-fx-filedrop.jsx by sync-shared — ⚠ SYNCED
 // FILE, never edit the per-app copy; edit this canonical source and re-sync.
-// Import: `import { useFileDrop } from './lib/ui-fx-filedrop';`
+// Import: `import { LbsHokFileDrop } from './lib/uis-fx-filedrop';`
 import React, { useState } from 'react';
 
-export function useFileDrop({ accept = [], onFile, onFiles, label }) {
+export function LbsHokFileDrop({ accept = [], onFile, onFiles, label }) {
   const [dragOver, setDragOver] = useState(false);
   const exts = accept.map((e) => e.toLowerCase());
   const matches = (f) => exts.length === 0 || exts.some((x) => f.name.toLowerCase().endsWith(x));
@@ -51,11 +51,11 @@ export function useFileDrop({ accept = [], onFile, onFiles, label }) {
     },
   };
 
-  // pointer-events:none (in the .drop-overlay CSS) lets the drop fall through to the
+  // pointer-events:none (in the .uis-ovl-drop CSS) lets the drop fall through to the
   // element carrying dropProps, so the overlay is purely visual.
   const overlay = dragOver ? (
-    <div className="drop-overlay">
-      <span className="drop-overlay-label">{label}</span>
+    <div className="uis-ovl-drop">
+      <span className="uis-ovl-drop-label">{label}</span>
     </div>
   ) : null;
 

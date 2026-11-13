@@ -1,0 +1,33 @@
+/* uis-ctl-piano.css — the Piano control (lib/uis-ctl-piano.jsx)
+   ═══════════════════════════════════════════════════════════════════════════
+   An OPTIONAL control's skin, so it is its own file: the sync copies a catalog
+   CSS into an app only when that app uses it. It rides with the component: the
+   sync keys usage by STEM, so `uis-ctl-piano.css` travels wherever
+   `uis-ctl-piano.jsx` does, and the jsx side-effect-imports it.
+
+   ⚠ Do not edit an app's copy — this file is distributed by sync-shared.js;
+   edit the canonical source and re-sync.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Piano — a strip of keys (uis-ctl-piano.jsx). A piano's white/black is intrinsic
+   (theme-invariant, like a fretboard's wood); the lit states are the two tokens
+   below, which an app points at its own two colours (default: the accent and a
+   pink) so a mixed chord reads. */
+.uis-pno {
+  --uis-pno-white: #fbfbfb; --uis-pno-white-line: #d5d7dc; --uis-pno-white-hover: #eceef2;
+  --uis-pno-black: #23252b; --uis-pno-black-hover: #3a3d46;
+  position: relative; display: flex; height: 64px;
+  border: 1px solid var(--uis-border); border-radius: 6px; overflow: hidden;
+}
+.uis-pno-key { padding: 0; outline: none; border: none; cursor: pointer; }
+.uis-pno-key.white { flex: 1; background: var(--uis-pno-white); border-left: 1px solid var(--uis-pno-white-line); }
+.uis-pno-key.white:first-child { border-left: none; }
+.uis-pno-key.white:hover { background: var(--uis-pno-white-hover); }
+.uis-pno-key.black {
+  position: absolute; top: 0; width: 1.6%; height: 60%;
+  background: var(--uis-pno-black); border-radius: 0 0 3px 3px;
+  transform: translateX(-50%); z-index: 1;
+}
+.uis-pno-key.black:hover { background: var(--uis-pno-black-hover); }
+.uis-pno-key.on-a { background: var(--uis-pno-lit-a, var(--uis-accent)); }
+.uis-pno-key.on-b { background: var(--uis-pno-lit-b, #ff6eb4); }

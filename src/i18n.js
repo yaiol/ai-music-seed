@@ -21,11 +21,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Don't show again",
     btnNewsOpenLink:                        "Learn more",
     tipNewsDismiss:                         "Close",
+    tipNewsShow:                            "News",
     lblStgGeneralNews:                      "Show news from yaiol",
     btnNewsClose:                           "Close",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Open settings",
+    tipHdrSettings:                         "Settings",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimize",
+    tipWinMaximize:                         "Maximize",
+    tipWinRestore:                          "Restore",
+    tipWinClose:                            "Close",
+
     tipHdrHelp:                             "Help",
 
     // Prefix:Stg - Scope:settings view
@@ -43,7 +51,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Reset",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "renders chord progressions to audio + MIDI seeds that constrain AI music generators like Suno.",
+    msgStgAboutDesc:                        "Turn a chord progression into audio your AI music generator will actually follow.",
     lblStgAboutCredits:                     "Instrument credits",
     msgStgAboutCreditsIntro:                "The sampled instruments come from freely-licensed recording sessions, by:",
 
@@ -197,11 +205,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Ne plus afficher",
     btnNewsOpenLink:                        "En savoir plus",
     tipNewsDismiss:                         "Fermer",
+    tipNewsShow:                            "Actualités",
     lblStgGeneralNews:                      "Afficher les actualités de yaiol",
     btnNewsClose:                           "Fermer",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Ouvrir les paramètres",
+    tipHdrSettings:                         "Paramètres",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimiser",
+    tipWinMaximize:                         "Agrandir",
+    tipWinRestore:                          "Restaurer",
+    tipWinClose:                            "Fermer",
+
     tipHdrHelp:                             "Aide",
 
     // Prefix:Stg - Scope:settings view
@@ -219,7 +235,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Réinitialiser",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Génère des progressions d'accords en graines audio + MIDI qui contraignent les générateurs de musique IA comme Suno.",
+    msgStgAboutDesc:                        "Transformez une progression d'accords en audio que votre générateur de musique IA suivra.",
     lblStgAboutCredits:                     "Crédits instrument",
     msgStgAboutCreditsIntro:                "Les instruments échantillonnés proviennent de sessions d'enregistrement sous licence libre, par :",
 
@@ -372,11 +388,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Nicht mehr anzeigen",
     btnNewsOpenLink:                        "Mehr erfahren",
     tipNewsDismiss:                         "Schließen",
+    tipNewsShow:                            "Nachrichten",
     lblStgGeneralNews:                      "Nachrichten von yaiol anzeigen",
     btnNewsClose:                           "Schließen",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Einstellungen öffnen",
+    tipHdrSettings:                         "Einstellungen",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimieren",
+    tipWinMaximize:                         "Maximieren",
+    tipWinRestore:                          "Wiederherstellen",
+    tipWinClose:                            "Schließen",
+
     tipHdrHelp:                             "Hilfe",
 
     // Prefix:Stg - Scope:settings view
@@ -394,7 +418,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Zurücksetzen",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Erzeugt Akkordfolgen als Audio- und MIDI-Seeds, die KI-Musikgeneratoren wie Suno einschränken.",
+    msgStgAboutDesc:                        "Verwandeln Sie eine Akkordfolge in Audio, dem Ihr KI-Musikgenerator folgt.",
     lblStgAboutCredits:                     "Instrumenten-Credits",
     msgStgAboutCreditsIntro:                "Die gesampelten Instrumente stammen aus frei lizenzierten Aufnahmesitzungen, von:",
 
@@ -547,11 +571,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "No volver a mostrar",
     btnNewsOpenLink:                        "Más información",
     tipNewsDismiss:                         "Cerrar",
+    tipNewsShow:                            "Noticias",
     lblStgGeneralNews:                      "Mostrar noticias de yaiol",
     btnNewsClose:                           "Cerrar",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Abrir configuración",
+    tipHdrSettings:                         "Ajustes",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimizar",
+    tipWinMaximize:                         "Maximizar",
+    tipWinRestore:                          "Restaurar",
+    tipWinClose:                            "Cerrar",
+
     tipHdrHelp:                             "Ayuda",
 
     // Prefix:Stg - Scope:settings view
@@ -569,7 +601,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Restablecer",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Genera progresiones de acordes a semillas de audio + MIDI que restringen generadores de música IA como Suno.",
+    msgStgAboutDesc:                        "Convierte una progresión de acordes en audio que tu generador de música IA seguirá.",
     lblStgAboutCredits:                     "Créditos de instrumento",
     msgStgAboutCreditsIntro:                "Los instrumentos muestreados provienen de sesiones de grabación con licencia libre, por:",
 
@@ -722,11 +754,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Não mostrar novamente",
     btnNewsOpenLink:                        "Saiba mais",
     tipNewsDismiss:                         "Fechar",
+    tipNewsShow:                            "Notícias",
     lblStgGeneralNews:                      "Mostrar notícias de yaiol",
     btnNewsClose:                           "Fechar",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Abrir configurações",
+    tipHdrSettings:                         "Configurações",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimizar",
+    tipWinMaximize:                         "Maximizar",
+    tipWinRestore:                          "Restaurar",
+    tipWinClose:                            "Fechar",
+
     tipHdrHelp:                             "Ajuda",
 
     // Prefix:Stg - Scope:settings view
@@ -744,7 +784,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Redefinir",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
+    msgStgAboutDesc:                        "Converta uma progressão de acordes em áudio que seu gerador de música de IA seguirá.",
     lblStgAboutCredits:                     "Créditos do instrumento",
     msgStgAboutCreditsIntro:                "Os instrumentos sampleados vêm de sessões de gravação com licença livre, por:",
 
@@ -897,11 +937,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Não mostrar novamente",
     btnNewsOpenLink:                        "Saber mais",
     tipNewsDismiss:                         "Fechar",
+    tipNewsShow:                            "Notícias",
     lblStgGeneralNews:                      "Mostrar notícias de yaiol",
     btnNewsClose:                           "Fechar",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Abrir definições",
+    tipHdrSettings:                         "Definições",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimizar",
+    tipWinMaximize:                         "Maximizar",
+    tipWinRestore:                          "Restaurar",
+    tipWinClose:                            "Fechar",
+
     tipHdrHelp:                             "Ajuda",
 
     // Prefix:Stg - Scope:settings view
@@ -919,7 +967,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Repor",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Gera progressões de acordes em sementes de áudio + MIDI que restringem geradores de música de IA como Suno.",
+    msgStgAboutDesc:                        "Converta uma progressão de acordes em áudio que o seu gerador de música de IA seguirá.",
     lblStgAboutCredits:                     "Créditos do instrumento",
     msgStgAboutCreditsIntro:                "Os instrumentos amostrados provêm de sessões de gravação com licença livre, por:",
 
@@ -1072,11 +1120,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Non mostrare più",
     btnNewsOpenLink:                        "Scopri di più",
     tipNewsDismiss:                         "Chiudi",
+    tipNewsShow:                            "Notizie",
     lblStgGeneralNews:                      "Mostra notizie da yaiol",
     btnNewsClose:                           "Chiudi",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Apri impostazioni",
+    tipHdrSettings:                         "Impostazioni",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Riduci a icona",
+    tipWinMaximize:                         "Ingrandisci",
+    tipWinRestore:                          "Ripristina",
+    tipWinClose:                            "Chiudi",
+
     tipHdrHelp:                             "Aiuto",
 
     // Prefix:Stg - Scope:settings view
@@ -1094,7 +1150,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Reimposta",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Genera progressioni di accordi in semi audio + MIDI che vincolano generatori di musica AI come Suno.",
+    msgStgAboutDesc:                        "Converti una progressione di accordi in audio che il tuo generatore di musica AI seguirà.",
     lblStgAboutCredits:                     "Crediti strumento",
     msgStgAboutCreditsIntro:                "Gli strumenti campionati provengono da sessioni di registrazione con licenza libera, di:",
 
@@ -1247,11 +1303,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Niet meer tonen",
     btnNewsOpenLink:                        "Meer informatie",
     tipNewsDismiss:                         "Sluiten",
+    tipNewsShow:                            "Nieuws",
     lblStgGeneralNews:                      "Nieuws van yaiol tonen",
     btnNewsClose:                           "Sluiten",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Instellingen openen",
+    tipHdrSettings:                         "Instellingen",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimaliseren",
+    tipWinMaximize:                         "Maximaliseren",
+    tipWinRestore:                          "Herstellen",
+    tipWinClose:                            "Sluiten",
+
     tipHdrHelp:                             "Hulp",
 
     // Prefix:Stg - Scope:settings view
@@ -1269,7 +1333,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Herstellen",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Genereert akkoordprogressies als audio- en MIDI-seeds die AI-muziekgeneratoren zoals Suno beperken.",
+    msgStgAboutDesc:                        "Zet een akkoordprogressie om in audio die je AI-muziekgenerator volgt.",
     lblStgAboutCredits:                     "Instrumentcredits",
     msgStgAboutCreditsIntro:                "De gesamplede instrumenten komen van vrij gelicentieerde opnamesessies, door:",
 
@@ -1422,11 +1486,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Больше не показывать",
     btnNewsOpenLink:                        "Узнать больше",
     tipNewsDismiss:                         "Закрыть",
+    tipNewsShow:                            "Новости",
     lblStgGeneralNews:                      "Показывать новости от yaiol",
     btnNewsClose:                           "Закрыть",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Открыть настройки",
+    tipHdrSettings:                         "Настройки",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Свернуть",
+    tipWinMaximize:                         "Развернуть",
+    tipWinRestore:                          "Восстановить",
+    tipWinClose:                            "Закрыть",
+
     tipHdrHelp:                             "Справка",
 
     // Prefix:Stg - Scope:settings view
@@ -1444,7 +1516,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Сбросить",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Создает аккордовые прогрессии в виде аудио- и MIDI-заготовок, ограничивающих ИИ-генераторы музыки, такие как Suno.",
+    msgStgAboutDesc:                        "Превратите последовательность аккордов в аудио, которому ваш ИИ-генератор музыки будет следовать.",
     lblStgAboutCredits:                     "Авторы инструментов",
     msgStgAboutCreditsIntro:                "Сэмплированные инструменты получены из свободно лицензированных сессий записи, от:",
 
@@ -1597,11 +1669,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Більше не показувати",
     btnNewsOpenLink:                        "Дізнатися більше",
     tipNewsDismiss:                         "Закрити",
+    tipNewsShow:                            "Новини",
     lblStgGeneralNews:                      "Показувати новини від yaiol",
     btnNewsClose:                           "Закрити",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Відкрити налаштування",
+    tipHdrSettings:                         "Налаштування",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Згорнути",
+    tipWinMaximize:                         "Розгорнути",
+    tipWinRestore:                          "Відновити",
+    tipWinClose:                            "Закрити",
+
     tipHdrHelp:                             "Довідка",
 
     // Prefix:Stg - Scope:settings view
@@ -1619,7 +1699,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Скинути",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Створює акордові прогресії як аудіо- та MIDI-заготовки, що обмежують ШІ-генератори музики, наприклад Suno.",
+    msgStgAboutDesc:                        "Перетворіть послідовність акордів на аудіо, якому ваш ШІ-генератор музики буде слідувати.",
     lblStgAboutCredits:                     "Автори інструментів",
     msgStgAboutCreditsIntro:                "Семпловані інструменти походять з вільно ліцензованих сесій запису, від:",
 
@@ -1772,11 +1852,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Nie pokazuj ponownie",
     btnNewsOpenLink:                        "Dowiedz się więcej",
     tipNewsDismiss:                         "Zamknij",
+    tipNewsShow:                            "Wiadomości",
     lblStgGeneralNews:                      "Pokaż wiadomości z yaiol",
     btnNewsClose:                           "Zamknij",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Otwórz ustawienia",
+    tipHdrSettings:                         "Ustawienia",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimalizuj",
+    tipWinMaximize:                         "Maksymalizuj",
+    tipWinRestore:                          "Przywróć",
+    tipWinClose:                            "Zamknij",
+
     tipHdrHelp:                             "Pomoc",
 
     // Prefix:Stg - Scope:settings view
@@ -1794,7 +1882,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Resetuj",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Generuje progresje akordów jako nasiona audio + MIDI, które ograniczają generatory muzyki AI, takie jak Suno.",
+    msgStgAboutDesc:                        "Przekształć progresję akordów w dźwięk, który Twój generator muzyki AI będzie śledzić.",
     lblStgAboutCredits:                     "Twórcy instrumentów",
     msgStgAboutCreditsIntro:                "Próbkowane instrumenty pochodzą z sesji nagraniowych na wolnej licencji, autorstwa:",
 
@@ -1947,11 +2035,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Nu mai afișa",
     btnNewsOpenLink:                        "Află mai multe",
     tipNewsDismiss:                         "Închide",
+    tipNewsShow:                            "Știri",
     lblStgGeneralNews:                      "Afișează știri de la yaiol",
     btnNewsClose:                           "Închide",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Deschide setările",
+    tipHdrSettings:                         "Setări",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimizare",
+    tipWinMaximize:                         "Maximizare",
+    tipWinRestore:                          "Restaurare",
+    tipWinClose:                            "Închidere",
+
     tipHdrHelp:                             "Ajutor",
 
     // Prefix:Stg - Scope:settings view
@@ -1969,7 +2065,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Resetează",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Generează progresii de acorduri în semințe audio + MIDI care constrâng generatoarele de muzică AI precum Suno.",
+    msgStgAboutDesc:                        "Transformă o progresie de acorduri în audio pe care generatorul tău de muzică AI o va urma.",
     lblStgAboutCredits:                     "Credite instrumente",
     msgStgAboutCreditsIntro:                "Instrumentele eșantionate provin din sesiuni de înregistrare cu licență liberă, de la:",
 
@@ -2122,11 +2218,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Visa inte igen",
     btnNewsOpenLink:                        "Läs mer",
     tipNewsDismiss:                         "Stäng",
+    tipNewsShow:                            "Nyheter",
     lblStgGeneralNews:                      "Visa nyheter från yaiol",
     btnNewsClose:                           "Stäng",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Öppna inställningar",
+    tipHdrSettings:                         "Inställningar",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimera",
+    tipWinMaximize:                         "Maximera",
+    tipWinRestore:                          "Återställ",
+    tipWinClose:                            "Stäng",
+
     tipHdrHelp:                             "Hjälp",
 
     // Prefix:Stg - Scope:settings view
@@ -2144,7 +2248,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Återställ",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Genererar ackordföljder som ljud- och MIDI-frön som begränsar AI-musikgeneratorer som Suno.",
+    msgStgAboutDesc:                        "Förvandla en ackordföljd till ljud som din AI-musikgenerator följer.",
     lblStgAboutCredits:                     "Instrumentkrediter",
     msgStgAboutCreditsIntro:                "De samplade instrumenten kommer från fritt licensierade inspelningssessioner, av:",
 
@@ -2297,11 +2401,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Ikke vis igjen",
     btnNewsOpenLink:                        "Les mer",
     tipNewsDismiss:                         "Lukk",
+    tipNewsShow:                            "Nyheter",
     lblStgGeneralNews:                      "Vis nyheter fra yaiol",
     btnNewsClose:                           "Lukk",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Åpne innstillinger",
+    tipHdrSettings:                         "Innstillinger",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimer",
+    tipWinMaximize:                         "Maksimer",
+    tipWinRestore:                          "Gjenopprett",
+    tipWinClose:                            "Lukk",
+
     tipHdrHelp:                             "Hjelp",
 
     // Prefix:Stg - Scope:settings view
@@ -2319,7 +2431,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Tilbakestill",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Genererer akkordprogresjoner som lyd- og MIDI-frø som begrenser AI-musikgeneratorer som Suno.",
+    msgStgAboutDesc:                        "Gjør en akkordprogresjon om til lyd som din AI-musikgenerator følger.",
     lblStgAboutCredits:                     "Instrumentkrediteringer",
     msgStgAboutCreditsIntro:                "De samplede instrumentene kommer fra fritt lisensierte innspillingsøkter, av:",
 
@@ -2472,11 +2584,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Bir daha gösterme",
     btnNewsOpenLink:                        "Daha fazla bilgi edin",
     tipNewsDismiss:                         "Kapat",
+    tipNewsShow:                            "Haberler",
     lblStgGeneralNews:                      "yaiol'dan haberleri göster",
     btnNewsClose:                           "Kapat",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Ayarları aç",
+    tipHdrSettings:                         "Ayarlar",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Küçült",
+    tipWinMaximize:                         "Ekranı kapla",
+    tipWinRestore:                          "Geri yükle",
+    tipWinClose:                            "Kapat",
+
     tipHdrHelp:                             "Yardım",
 
     // Prefix:Stg - Scope:settings view
@@ -2494,7 +2614,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Sıfırla",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Akor ilerlemelerini, Suno gibi yapay zeka müzik jeneratörlerini kısıtlayan ses + MIDI tohumlarına dönüştürür.",
+    msgStgAboutDesc:                        "Bir akor ilerlemesini, yapay zeka müzik oluşturucunuzun takip edeceği sese dönüştürün.",
     lblStgAboutCredits:                     "Enstrüman kredileri",
     msgStgAboutCreditsIntro:                "Örneklenmiş enstrümanlar, serbest lisanslı kayıt oturumlarından gelmektedir, hazırlayan:",
 
@@ -2647,11 +2767,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Ne prikazuj ponovno",
     btnNewsOpenLink:                        "Saznajte više",
     tipNewsDismiss:                         "Zatvori",
+    tipNewsShow:                            "Vijesti",
     lblStgGeneralNews:                      "Prikaži vijesti iz yaiol",
     btnNewsClose:                           "Zatvori",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Otvori postavke",
+    tipHdrSettings:                         "Postavke",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimiziraj",
+    tipWinMaximize:                         "Maksimiziraj",
+    tipWinRestore:                          "Vrati",
+    tipWinClose:                            "Zatvori",
+
     tipHdrHelp:                             "Pomoć",
 
     // Prefix:Stg - Scope:settings view
@@ -2669,7 +2797,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Poništi",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Generira akordne progresije kao audio + MIDI sjemenke koje ograničavaju AI generatore glazbe poput Suno.",
+    msgStgAboutDesc:                        "Pretvorite akordnu progresiju u zvuk koji će vaš AI generator glazbe slijediti.",
     lblStgAboutCredits:                     "Zasluge za instrumente",
     msgStgAboutCreditsIntro:                "Uzorčani instrumenti potječu iz slobodno licenciranih snimanja, od:",
 
@@ -2822,11 +2950,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Να μην εμφανιστεί ξανά",
     btnNewsOpenLink:                        "Μάθετε περισσότερα",
     tipNewsDismiss:                         "Κλείσιμο",
+    tipNewsShow:                            "Ειδήσεις",
     lblStgGeneralNews:                      "Εμφάνιση ειδήσεων από το yaiol",
     btnNewsClose:                           "Κλείσιμο",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Άνοιγμα ρυθμίσεων",
+    tipHdrSettings:                         "Ρυθμίσεις",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Ελαχιστοποίηση",
+    tipWinMaximize:                         "Μεγιστοποίηση",
+    tipWinRestore:                          "Επαναφορά",
+    tipWinClose:                            "Κλείσιμο",
+
     tipHdrHelp:                             "Βοήθεια",
 
     // Prefix:Stg - Scope:settings view
@@ -2844,7 +2980,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Επαναφορά",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Δημιουργεί συγχορδιακές προόδους ως ηχητικούς + MIDI σπόρους που περιορίζουν γεννήτριες μουσικής AI όπως το Suno.",
+    msgStgAboutDesc:                        "Μετατρέψτε μια ακολουθία συγχορδιών σε ήχο που ο γεννήτορας μουσικής AI σας θα ακολουθήσει.",
     lblStgAboutCredits:                     "Συντελεστές οργάνων",
     msgStgAboutCreditsIntro:                "Τα δειγματοληπτικά όργανα προέρχονται από συνεδρίες ηχογράφησης με ελεύθερη άδεια, από:",
 
@@ -2997,11 +3133,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "אל תציג שוב",
     btnNewsOpenLink:                        "למידע נוסף",
     tipNewsDismiss:                         "סגור",
+    tipNewsShow:                            "חדשות",
     lblStgGeneralNews:                      "הצג חדשות מ-yaiol",
     btnNewsClose:                           "סגור",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "פתח הגדרות",
+    tipHdrSettings:                         "הגדרות",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "מזער",
+    tipWinMaximize:                         "הגדל",
+    tipWinRestore:                          "שחזר",
+    tipWinClose:                            "סגור",
+
     tipHdrHelp:                             "עזרה",
 
     // Prefix:Stg - Scope:settings view
@@ -3019,7 +3163,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "איפוס",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "מפיק התקדמויות אקורדים לזרעי אודיו + MIDI המגבילים מחוללי מוזיקת AI כגון Suno.",
+    msgStgAboutDesc:                        "הפוך רצף אקורדים לאודיו שמחולל המוזיקה שלך ב-AI יעקוב אחריו.",
     lblStgAboutCredits:                     "קרדיטים לכלי נגינה",
     msgStgAboutCreditsIntro:                "הכלים שנדגמו מגיעים מהקלטות ברישיון חופשי, מאת:",
 
@@ -3172,11 +3316,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "عدم الإظهار مرة أخرى",
     btnNewsOpenLink:                        "تعرّف على المزيد",
     tipNewsDismiss:                         "إغلاق",
+    tipNewsShow:                            "الأخبار",
     lblStgGeneralNews:                      "إظهار الأخبار من yaiol",
     btnNewsClose:                           "إغلاق",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "فتح الإعدادات",
+    tipHdrSettings:                         "الإعدادات",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "تصغير",
+    tipWinMaximize:                         "تكبير",
+    tipWinRestore:                          "استعادة",
+    tipWinClose:                            "إغلاق",
+
     tipHdrHelp:                             "مساعدة",
 
     // Prefix:Stg - Scope:settings view
@@ -3194,7 +3346,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "إعادة تعيين",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "يحول تتابعات الأوتار إلى بذور صوتية وMIDI تقيد مولدات الموسيقى بالذكاء الاصطناعي مثل Suno.",
+    msgStgAboutDesc:                        "حوّل تسلسل الأوتار إلى صوت يتبعه مولد الموسيقى بالذكاء الاصطناعي الخاص بك.",
     lblStgAboutCredits:                     "اعتمادات الآلة",
     msgStgAboutCreditsIntro:                "الآلات المعاينة مأخوذة من جلسات تسجيل مرخصة مجانًا، بواسطة:",
 
@@ -3347,11 +3499,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "دیگر نمایش نده",
     btnNewsOpenLink:                        "بیشتر بدانید",
     tipNewsDismiss:                         "بستن",
+    tipNewsShow:                            "اخبار",
     lblStgGeneralNews:                      "نمایش اخبار از yaiol",
     btnNewsClose:                           "بستن",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "باز کردن تنظیمات",
+    tipHdrSettings:                         "تنظیمات",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "کوچک‌نمایی",
+    tipWinMaximize:                         "بزرگ‌نمایی",
+    tipWinRestore:                          "بازیابی",
+    tipWinClose:                            "بستن",
+
     tipHdrHelp:                             "راهنما",
 
     // Prefix:Stg - Scope:settings view
@@ -3369,7 +3529,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "بازنشانی",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "تبدیل توالی آکوردها به بذرهای صوتی و MIDI که ژنراتورهای موسیقی هوش مصنوعی مانند Suno را محدود می‌کنند.",
+    msgStgAboutDesc:                        "یک توالی آکورد را به صوتی تبدیل کنید که مولد موسیقی هوش مصنوعی شما از آن پیروی کند.",
     lblStgAboutCredits:                     "اعتبارات ساز",
     msgStgAboutCreditsIntro:                "سازهای نمونه‌برداری شده از جلسات ضبط با مجوز آزاد تهیه شده‌اند، توسط:",
 
@@ -3522,11 +3682,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "不再显示",
     btnNewsOpenLink:                        "了解更多",
     tipNewsDismiss:                         "关闭",
+    tipNewsShow:                            "新闻",
     lblStgGeneralNews:                      "显示来自 yaiol 的新闻",
     btnNewsClose:                           "关闭",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "打开设置",
+    tipHdrSettings:                         "设置",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "最小化",
+    tipWinMaximize:                         "最大化",
+    tipWinRestore:                          "还原",
+    tipWinClose:                            "关闭",
+
     tipHdrHelp:                             "帮助",
 
     // Prefix:Stg - Scope:settings view
@@ -3544,7 +3712,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "重置",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "将和弦进行渲染为音频和 MIDI 种子，用于约束 Suno 等 AI 音乐生成器。",
+    msgStgAboutDesc:                        "将和弦进行转换为AI音乐生成器能真正遵循的音频。",
     lblStgAboutCredits:                     "乐器鸣谢",
     msgStgAboutCreditsIntro:                "采样乐器来自以下自由许可的录音会话：",
 
@@ -3697,11 +3865,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "不再顯示",
     btnNewsOpenLink:                        "了解更多",
     tipNewsDismiss:                         "關閉",
+    tipNewsShow:                            "新聞",
     lblStgGeneralNews:                      "顯示來自 yaiol 的新聞",
     btnNewsClose:                           "關閉",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "打開設定",
+    tipHdrSettings:                         "設定",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "最小化",
+    tipWinMaximize:                         "最大化",
+    tipWinRestore:                          "還原",
+    tipWinClose:                            "關閉",
+
     tipHdrHelp:                             "說明",
 
     // Prefix:Stg - Scope:settings view
@@ -3719,7 +3895,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "重設",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "將和弦進行渲染為音訊和 MIDI 種子，用於約束 Suno 等 AI 音樂生成器。",
+    msgStgAboutDesc:                        "將和弦進行轉換為AI音樂生成器能真正遵循的音訊。",
     lblStgAboutCredits:                     "樂器鳴謝",
     msgStgAboutCreditsIntro:                "取樣樂器來自以下自由授權的錄音會話：",
 
@@ -3872,11 +4048,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "今後表示しない",
     btnNewsOpenLink:                        "詳細を見る",
     tipNewsDismiss:                         "閉じる",
+    tipNewsShow:                            "ニュース",
     lblStgGeneralNews:                      "yaiol からのニュースを表示",
     btnNewsClose:                           "閉じる",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "設定を開く",
+    tipHdrSettings:                         "設定",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "最小化",
+    tipWinMaximize:                         "最大化",
+    tipWinRestore:                          "元に戻す",
+    tipWinClose:                            "閉じる",
+
     tipHdrHelp:                             "ヘルプ",
 
     // Prefix:Stg - Scope:settings view
@@ -3894,7 +4078,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "リセット",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "コード進行をオーディオとMIDIシードとして生成し、SunoのようなAI音楽ジェネレーターを制約します。",
+    msgStgAboutDesc:                        "コード進行を、AI音楽ジェネレーターが実際に従うオーディオに変換します。",
     lblStgAboutCredits:                     "楽器のクレジット",
     msgStgAboutCreditsIntro:                "サンプリングされた楽器は、以下の自由ライセンスのレコーディングセッションに由来します：",
 
@@ -4047,11 +4231,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "다시 표시 안 함",
     btnNewsOpenLink:                        "자세히 알아보기",
     tipNewsDismiss:                         "닫기",
+    tipNewsShow:                            "뉴스",
     lblStgGeneralNews:                      "yaiol 뉴스 표시",
     btnNewsClose:                           "닫기",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "설정 열기",
+    tipHdrSettings:                         "설정",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "최소화",
+    tipWinMaximize:                         "최대화",
+    tipWinRestore:                          "이전 크기로",
+    tipWinClose:                            "닫기",
+
     tipHdrHelp:                             "도움말",
 
     // Prefix:Stg - Scope:settings view
@@ -4069,7 +4261,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "재설정",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "코드 진행을 Suno와 같은 AI 음악 생성기를 제약하는 오디오 및 MIDI 시드로 생성합니다.",
+    msgStgAboutDesc:                        "코드 진행을 AI 음악 생성기가 따를 오디오로 변환합니다.",
     lblStgAboutCredits:                     "악기 크레딧",
     msgStgAboutCreditsIntro:                "샘플링된 악기는 다음의 자유 라이선스 녹음 세션에서 가져왔습니다:",
 
@@ -4222,11 +4414,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Không hiển thị lại",
     btnNewsOpenLink:                        "Tìm hiểu thêm",
     tipNewsDismiss:                         "Đóng",
+    tipNewsShow:                            "Tin tức",
     lblStgGeneralNews:                      "Hiển thị tin tức từ yaiol",
     btnNewsClose:                           "Đóng",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Mở cài đặt",
+    tipHdrSettings:                         "Cài đặt",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Thu nhỏ",
+    tipWinMaximize:                         "Phóng to",
+    tipWinRestore:                          "Khôi phục",
+    tipWinClose:                            "Đóng",
+
     tipHdrHelp:                             "Trợ giúp",
 
     // Prefix:Stg - Scope:settings view
@@ -4244,7 +4444,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Đặt lại",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Tạo ra các chuỗi hợp âm thành hạt giống âm thanh + MIDI để hạn chế các trình tạo nhạc AI như Suno.",
+    msgStgAboutDesc:                        "Biến chuỗi hợp âm thành âm thanh mà trình tạo nhạc AI của bạn sẽ tuân theo.",
     lblStgAboutCredits:                     "Tín dụng nhạc cụ",
     msgStgAboutCreditsIntro:                "Các nhạc cụ được lấy mẫu đến từ các buổi ghi âm có giấy phép tự do, bởi:",
 
@@ -4397,11 +4597,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "ไม่ต้องแสดงอีก",
     btnNewsOpenLink:                        "เรียนรู้เพิ่มเติม",
     tipNewsDismiss:                         "ปิด",
+    tipNewsShow:                            "ข่าว",
     lblStgGeneralNews:                      "แสดงข่าวสารจาก yaiol",
     btnNewsClose:                           "ปิด",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "เปิดการตั้งค่า",
+    tipHdrSettings:                         "การตั้งค่า",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "ย่อ",
+    tipWinMaximize:                         "ขยาย",
+    tipWinRestore:                          "คืนค่า",
+    tipWinClose:                            "ปิด",
+
     tipHdrHelp:                             "วิธีใช้",
 
     // Prefix:Stg - Scope:settings view
@@ -4419,7 +4627,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "รีเซ็ต",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "สร้างคอร์ดโปรเกรสชันเป็นเมล็ดเสียง + MIDI ที่จำกัดเครื่องสร้างเพลง AI เช่น Suno",
+    msgStgAboutDesc:                        "เปลี่ยนคอร์ดโปรเกรสชันให้เป็นเสียงที่ AI สร้างเพลงของคุณจะทำตาม",
     lblStgAboutCredits:                     "เครดิตเครื่องดนตรี",
     msgStgAboutCreditsIntro:                "เครื่องดนตรีที่สุ่มตัวอย่างมาจากเซสชันการบันทึกที่ได้รับอนุญาตอย่างอิสระ โดย:",
 
@@ -4572,11 +4780,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Jangan tampilkan lagi",
     btnNewsOpenLink:                        "Pelajari lebih lanjut",
     tipNewsDismiss:                         "Tutup",
+    tipNewsShow:                            "Berita",
     lblStgGeneralNews:                      "Tampilkan berita dari yaiol",
     btnNewsClose:                           "Tutup",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Buka pengaturan",
+    tipHdrSettings:                         "Pengaturan",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimalkan",
+    tipWinMaximize:                         "Maksimalkan",
+    tipWinRestore:                          "Pulihkan",
+    tipWinClose:                            "Tutup",
+
     tipHdrHelp:                             "Bantuan",
 
     // Prefix:Stg - Scope:settings view
@@ -4594,7 +4810,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Atur ulang",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Menghasilkan progresi akor menjadi benih audio + MIDI yang membatasi generator musik AI seperti Suno.",
+    msgStgAboutDesc:                        "Ubah progresi akor menjadi audio yang akan diikuti generator musik AI Anda.",
     lblStgAboutCredits:                     "Kredit instrumen",
     msgStgAboutCreditsIntro:                "Instrumen yang disampel berasal dari sesi rekaman berlisensi bebas, oleh:",
 
@@ -4747,11 +4963,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "No tornar a mostrar",
     btnNewsOpenLink:                        "Més informació",
     tipNewsDismiss:                         "Tancar",
+    tipNewsShow:                            "Notícies",
     lblStgGeneralNews:                      "Mostrar notícies de yaiol",
     btnNewsClose:                           "Tancar",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Obre la configuració",
+    tipHdrSettings:                         "Configuració",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimitzar",
+    tipWinMaximize:                         "Maximitzar",
+    tipWinRestore:                          "Restaurar",
+    tipWinClose:                            "Tancar",
+
     tipHdrHelp:                             "Ajuda",
 
     // Prefix:Stg - Scope:settings view
@@ -4769,7 +4993,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Restableix",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Genera progressions d'acords a llavors d'àudio + MIDI que restringeixen generadors de música IA com Suno.",
+    msgStgAboutDesc:                        "Converteix una progressió d'acords en àudio que el teu generador de música IA seguirà.",
     lblStgAboutCredits:                     "Crèdits d'instruments",
     msgStgAboutCreditsIntro:                "Els instruments mostrejats provenen de sessions d'enregistrament amb llicència lliure, per:",
 
@@ -4922,11 +5146,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Nezobrazovat znovu",
     btnNewsOpenLink:                        "Další informace",
     tipNewsDismiss:                         "Zavřít",
+    tipNewsShow:                            "Zprávy",
     lblStgGeneralNews:                      "Zobrazovat zprávy z yaiol",
     btnNewsClose:                           "Zavřít",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Otevřít nastavení",
+    tipHdrSettings:                         "Nastavení",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimalizovat",
+    tipWinMaximize:                         "Maximalizovat",
+    tipWinRestore:                          "Obnovit",
+    tipWinClose:                            "Zavřít",
+
     tipHdrHelp:                             "Nápověda",
 
     // Prefix:Stg - Scope:settings view
@@ -4944,7 +5176,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Obnovit",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Generuje akordové progrese jako audio + MIDI semena, která omezují generátory hudby AI, jako je Suno.",
+    msgStgAboutDesc:                        "Převeďte akordovou progresi na zvuk, který váš generátor hudby AI bude následovat.",
     lblStgAboutCredits:                     "Zásluhy nástrojů",
     msgStgAboutCreditsIntro:                "Vzorkované nástroje pocházejí z volně licencovaných nahrávacích relací, od:",
 
@@ -5097,11 +5329,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Vis ikke igen",
     btnNewsOpenLink:                        "Læs mere",
     tipNewsDismiss:                         "Luk",
+    tipNewsShow:                            "Nyheder",
     lblStgGeneralNews:                      "Vis nyheder fra yaiol",
     btnNewsClose:                           "Luk",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Åbn indstillinger",
+    tipHdrSettings:                         "Indstillinger",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimer",
+    tipWinMaximize:                         "Maksimer",
+    tipWinRestore:                          "Gendan",
+    tipWinClose:                            "Luk",
+
     tipHdrHelp:                             "Hjælp",
 
     // Prefix:Stg - Scope:settings view
@@ -5119,7 +5359,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Nulstil",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Genererer akkordprogressioner som lyd- og MIDI-frø, der begrænser AI-musikgeneratorer som Suno.",
+    msgStgAboutDesc:                        "Gør en akkordprogression til lyd, som din AI-musikgenerator følger.",
     lblStgAboutCredits:                     "Instrumentkreditter",
     msgStgAboutCreditsIntro:                "De samplede instrumenter kommer fra frit licenserede optagelsessessioner, af:",
 
@@ -5272,11 +5512,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Älä näytä uudelleen",
     btnNewsOpenLink:                        "Lue lisää",
     tipNewsDismiss:                         "Sulje",
+    tipNewsShow:                            "Uutiset",
     lblStgGeneralNews:                      "Näytä uutiset yaiolista",
     btnNewsClose:                           "Sulje",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Avaa asetukset",
+    tipHdrSettings:                         "Asetukset",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Pienennä",
+    tipWinMaximize:                         "Suurenna",
+    tipWinRestore:                          "Palauta",
+    tipWinClose:                            "Sulje",
+
     tipHdrHelp:                             "Ohje",
 
     // Prefix:Stg - Scope:settings view
@@ -5294,7 +5542,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Palauta",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Luo sointukulkuja ääni- ja MIDI-siemeniksi, jotka rajoittavat tekoälymusiikkigeneraattoreita kuten Sunoa.",
+    msgStgAboutDesc:                        "Muunna sointukulku ääneksi, jota tekoälymusiikkigeneraattorisi noudattaa.",
     lblStgAboutCredits:                     "Instrumenttien tekijätiedot",
     msgStgAboutCreditsIntro:                "Näytteistetyt instrumentit ovat peräisin vapaasti lisensoiduista äänityssessioista, tekijä:",
 
@@ -5447,11 +5695,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Jangan tunjuk lagi",
     btnNewsOpenLink:                        "Ketahui lebih lanjut",
     tipNewsDismiss:                         "Tutup",
+    tipNewsShow:                            "Berita",
     lblStgGeneralNews:                      "Tunjukkan berita dari yaiol",
     btnNewsClose:                           "Tutup",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Buka tetapan",
+    tipHdrSettings:                         "Tetapan",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimumkan",
+    tipWinMaximize:                         "Maksimumkan",
+    tipWinRestore:                          "Pulihkan",
+    tipWinClose:                            "Tutup",
+
     tipHdrHelp:                             "Bantuan",
 
     // Prefix:Stg - Scope:settings view
@@ -5469,7 +5725,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Tetapkan semula",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Menghasilkan progresi kord kepada benih audio + MIDI yang mengekang penjana muzik AI seperti Suno.",
+    msgStgAboutDesc:                        "Tukar progresi kord menjadi audio yang akan diikuti penjana muzik AI anda.",
     lblStgAboutCredits:                     "Kredit instrumen",
     msgStgAboutCreditsIntro:                "Instrumen yang disampel berasal daripada sesi rakaman berlesen bebas, oleh:",
 
@@ -5622,11 +5878,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Այլևս չցուցադրել",
     btnNewsOpenLink:                        "Իմանալ ավելին",
     tipNewsDismiss:                         "Փակել",
+    tipNewsShow:                            "Նորություններ",
     lblStgGeneralNews:                      "Ցուցադրել նորություններ yaiol-ից",
     btnNewsClose:                           "Փակել",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Բացել կարգավորումները",
+    tipHdrSettings:                         "Կարգավորումներ",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Նվազեցնել",
+    tipWinMaximize:                         "Առավելագույնի հասցնել",
+    tipWinRestore:                          "Վերականգնել",
+    tipWinClose:                            "Փակել",
+
     tipHdrHelp:                             "Օգնություն",
 
     // Prefix:Stg - Scope:settings view
@@ -5644,7 +5908,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Վերակայել",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Ստեղծում է ակորդային հաջորդականություններ որպես աուդիո + MIDI սերմեր, որոնք սահմանափակում են AI երաժշտական գեներատորները, ինչպիսին է Suno-ն։",
+    msgStgAboutDesc:                        "Ակորդների հաջորդականությունը վերածեք ձայնի, որին ձեր AI երաժշտական գեներատորը կհետևի:",
     lblStgAboutCredits:                     "Գործիքի հեղինակներ",
     msgStgAboutCreditsIntro:                "Նմուշառված գործիքները ստացվել են ազատ լիցենզավորված ձայնագրման սեսիաներից, կողմից՝",
 
@@ -5797,11 +6061,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Не показвай отново",
     btnNewsOpenLink:                        "Научете повече",
     tipNewsDismiss:                         "Затвори",
+    tipNewsShow:                            "Новини",
     lblStgGeneralNews:                      "Показвай новини от yaiol",
     btnNewsClose:                           "Затвори",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Отвори настройки",
+    tipHdrSettings:                         "Настройки",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Минимизиране",
+    tipWinMaximize:                         "Максимизиране",
+    tipWinRestore:                          "Възстановяване",
+    tipWinClose:                            "Затваряне",
+
     tipHdrHelp:                             "Помощ",
 
     // Prefix:Stg - Scope:settings view
@@ -5819,7 +6091,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Нулиране",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Генерира акордови прогресии като аудио + MIDI семена, които ограничават AI музикални генератори като Suno.",
+    msgStgAboutDesc:                        "Преобразувайте акордова прогресия в аудио, което вашият AI музикален генератор ще следва.",
     lblStgAboutCredits:                     "Автори на инструменти",
     msgStgAboutCreditsIntro:                "Семплираните инструменти идват от свободно лицензирани звукозаписни сесии, от:",
 
@@ -5972,11 +6244,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Non mostrar de novo",
     btnNewsOpenLink:                        "Máis información",
     tipNewsDismiss:                         "Pechar",
+    tipNewsShow:                            "Novas",
     lblStgGeneralNews:                      "Mostrar noticias de yaiol",
     btnNewsClose:                           "Pechar",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Abrir configuración",
+    tipHdrSettings:                         "Configuración",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimizar",
+    tipWinMaximize:                         "Maximizar",
+    tipWinRestore:                          "Restaurar",
+    tipWinClose:                            "Pechar",
+
     tipHdrHelp:                             "Axuda",
 
     // Prefix:Stg - Scope:settings view
@@ -5994,7 +6274,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Restablecer",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Xera progresións de acordes a sementes de audio + MIDI que restrinxen xeradores de música IA como Suno.",
+    msgStgAboutDesc:                        "Converte unha progresión de acordes en audio que o teu xerador de música IA seguirá.",
     lblStgAboutCredits:                     "Créditos do instrumento",
     msgStgAboutCreditsIntro:                "Os instrumentos mostreados proveñen de sesións de gravación con licenza libre, por:",
 
@@ -6147,11 +6427,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Ne mutasd újra",
     btnNewsOpenLink:                        "Tudjon meg többet",
     tipNewsDismiss:                         "Bezárás",
+    tipNewsShow:                            "Hírek",
     lblStgGeneralNews:                      "Hírek megjelenítése a yaiol-tól",
     btnNewsClose:                           "Bezárás",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Beállítások megnyitása",
+    tipHdrSettings:                         "Beállítások",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Kis méretre",
+    tipWinMaximize:                         "Teljes méretre",
+    tipWinRestore:                          "Visszaállítás",
+    tipWinClose:                            "Bezárás",
+
     tipHdrHelp:                             "Súgó",
 
     // Prefix:Stg - Scope:settings view
@@ -6169,7 +6457,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Visszaállítás",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Akkordmeneteket generál audio + MIDI magokká, amelyek korlátozzák az AI zenei generátorokat, mint a Suno.",
+    msgStgAboutDesc:                        "Alakítson át egy akkordmenetet olyan hanganyaggá, amelyet az AI zene generátora követni fog.",
     lblStgAboutCredits:                     "Hangszerkreditek",
     msgStgAboutCreditsIntro:                "A mintavételezett hangszerek szabadon licencelt felvételi alkalmakról származnak, készítette:",
 
@@ -6322,11 +6610,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Daugiau nerodyti",
     btnNewsOpenLink:                        "Sužinoti daugiau",
     tipNewsDismiss:                         "Uždaryti",
+    tipNewsShow:                            "Naujienos",
     lblStgGeneralNews:                      "Rodyti naujienas iš yaiol",
     btnNewsClose:                           "Uždaryti",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Atidaryti nustatymus",
+    tipHdrSettings:                         "Nustatymai",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Mažinti",
+    tipWinMaximize:                         "Didinti",
+    tipWinRestore:                          "Atkurti",
+    tipWinClose:                            "Uždaryti",
+
     tipHdrHelp:                             "Pagalba",
 
     // Prefix:Stg - Scope:settings view
@@ -6344,7 +6640,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Atkurti",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Generuoja akordų progresijas kaip garso + MIDI sėklas, kurios apriboja AI muzikos generatorius, tokius kaip Suno.",
+    msgStgAboutDesc:                        "Paverskite akordų progresiją garsu, kurio jūsų AI muzikos generatorius laikysis.",
     lblStgAboutCredits:                     "Instrumentų autoriai",
     msgStgAboutCreditsIntro:                "Paimti instrumentai yra iš laisvai licencijuotų įrašų sesijų, autorius:",
 
@@ -6497,11 +6793,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Не прикажувај повторно",
     btnNewsOpenLink:                        "Дознајте повеќе",
     tipNewsDismiss:                         "Затвори",
+    tipNewsShow:                            "Вести",
     lblStgGeneralNews:                      "Прикажи вести од yaiol",
     btnNewsClose:                           "Затвори",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Отвори поставки",
+    tipHdrSettings:                         "Поставки",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Минимизирај",
+    tipWinMaximize:                         "Максимизирај",
+    tipWinRestore:                          "Врати",
+    tipWinClose:                            "Затвори",
+
     tipHdrHelp:                             "Помош",
 
     // Prefix:Stg - Scope:settings view
@@ -6519,7 +6823,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Ресетирај",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Генерира акордни прогресии како аудио + MIDI семиња кои ги ограничуваат AI музичките генератори како Suno.",
+    msgStgAboutDesc:                        "Претворете ја акордската прогресија во аудио што вашиот AI музички генератор ќе го следи.",
     lblStgAboutCredits:                     "Кредити за инструменти",
     msgStgAboutCreditsIntro:                "Семплираните инструменти потекнуваат од слободно лиценцирани сесии за снимање, од:",
 
@@ -6672,11 +6976,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Не приказуј поново",
     btnNewsOpenLink:                        "Сазнајте више",
     tipNewsDismiss:                         "Затвори",
+    tipNewsShow:                            "Вести",
     lblStgGeneralNews:                      "Прикажи вести из yaiol",
     btnNewsClose:                           "Затвори",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Отвори подешавања",
+    tipHdrSettings:                         "Подешавања",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Минимизуј",
+    tipWinMaximize:                         "Максимизуј",
+    tipWinRestore:                          "Врати",
+    tipWinClose:                            "Затвори",
+
     tipHdrHelp:                             "Помоћ",
 
     // Prefix:Stg - Scope:settings view
@@ -6694,7 +7006,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Ресетуј",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Генерише акордне прогресије као аудио + MIDI семена која ограничавају АИ музичке генераторе попут Suno.",
+    msgStgAboutDesc:                        "Претворите акордну прогресију у аудио који ће ваш АИ генератор музике пратити.",
     lblStgAboutCredits:                     "Заслуге за инструменте",
     msgStgAboutCreditsIntro:                "Семпловани инструменти потичу из слободно лиценцираних сесија снимања, од:",
 
@@ -6847,11 +7159,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Nezobrazovať znova",
     btnNewsOpenLink:                        "Zistiť viac",
     tipNewsDismiss:                         "Zavrieť",
+    tipNewsShow:                            "Správy",
     lblStgGeneralNews:                      "Zobrazovať správy z yaiol",
     btnNewsClose:                           "Zavrieť",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Otvoriť nastavenia",
+    tipHdrSettings:                         "Nastavenia",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Minimalizovať",
+    tipWinMaximize:                         "Maximalizovať",
+    tipWinRestore:                          "Obnoviť",
+    tipWinClose:                            "Zavrieť",
+
     tipHdrHelp:                             "Pomoc",
 
     // Prefix:Stg - Scope:settings view
@@ -6869,7 +7189,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Obnoviť",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Generuje akordové progrese ako audio + MIDI semená, ktoré obmedzujú generátory hudby AI, ako je Suno.",
+    msgStgAboutDesc:                        "Premeňte akordovú progresiu na zvuk, ktorý váš generátor hudby AI bude nasledovať.",
     lblStgAboutCredits:                     "Zásluhy nástrojov",
     msgStgAboutCreditsIntro:                "Vzorkované nástroje pochádzajú z voľne licencovaných nahrávacích relácií, od:",
 
@@ -7022,11 +7342,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Ne prikazuj več",
     btnNewsOpenLink:                        "Več o tem",
     tipNewsDismiss:                         "Zapri",
+    tipNewsShow:                            "Novice",
     lblStgGeneralNews:                      "Prikaži novice iz yaiol",
     btnNewsClose:                           "Zapri",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Odpri nastavitve",
+    tipHdrSettings:                         "Nastavitve",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Pomanjšaj",
+    tipWinMaximize:                         "Povečaj",
+    tipWinRestore:                          "Obnovi",
+    tipWinClose:                            "Zapri",
+
     tipHdrHelp:                             "Pomoč",
 
     // Prefix:Stg - Scope:settings view
@@ -7044,7 +7372,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Ponastavi",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Ustvarja akordne progresije kot avdio + MIDI semena, ki omejujejo AI generatorje glasbe, kot je Suno.",
+    msgStgAboutDesc:                        "Pretvorite akordno progresijo v zvok, ki mu bo vaš AI generator glasbe sledil.",
     lblStgAboutCredits:                     "Zasluge za instrumente",
     msgStgAboutCreditsIntro:                "Vzorčeni instrumenti izvirajo iz prosto licenciranih snemalnih sej, avtor:",
 
@@ -7197,11 +7525,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "மீண்டும் காட்டாதே",
     btnNewsOpenLink:                        "மேலும் அறிக",
     tipNewsDismiss:                         "மூடு",
+    tipNewsShow:                            "செய்திகள்",
     lblStgGeneralNews:                      "yaiol இலிருந்து செய்திகளைக் காட்டு",
     btnNewsClose:                           "மூடு",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "அமைப்புகளைத் திற",
+    tipHdrSettings:                         "அமைப்புகள்",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "சுருக்கு",
+    tipWinMaximize:                         "பெரிதாக்கு",
+    tipWinRestore:                          "மீட்டமை",
+    tipWinClose:                            "மூடு",
+
     tipHdrHelp:                             "உதவி",
 
     // Prefix:Stg - Scope:settings view
@@ -7219,7 +7555,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "மீட்டமை",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "சரம் முன்னேற்றங்களை ஆடியோ மற்றும் MIDI விதைகளாக உருவாக்குகிறது, இது Suno போன்ற AI இசை ஜெனரேட்டர்களைக் கட்டுப்படுத்துகிறது.",
+    msgStgAboutDesc:                        "உங்கள் AI இசை ஜெனரேட்டர் பின்பற்றும் ஆடியோவாக ஒரு நாண் முன்னேற்றத்தை மாற்றவும்.",
     lblStgAboutCredits:                     "கருவி வரவுகள்",
     msgStgAboutCreditsIntro:                "மாதிரியாக எடுக்கப்பட்ட இசைக்கருவிகள் இலவச உரிமம் பெற்ற பதிவு அமர்வுகளிலிருந்து பெறப்பட்டவை, வழங்கியவர்:",
 
@@ -7372,11 +7708,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "दोबारा न दिखाएँ",
     btnNewsOpenLink:                        "और जानें",
     tipNewsDismiss:                         "बंद करें",
+    tipNewsShow:                            "समाचार",
     lblStgGeneralNews:                      "yaiol से समाचार दिखाएँ",
     btnNewsClose:                           "बंद करें",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "सेटिंग्स खोलें",
+    tipHdrSettings:                         "सेटिंग्स",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "छोटा करें",
+    tipWinMaximize:                         "बड़ा करें",
+    tipWinRestore:                          "पुनर्स्थापित करें",
+    tipWinClose:                            "बंद करें",
+
     tipHdrHelp:                             "सहायता",
 
     // Prefix:Stg - Scope:settings view
@@ -7394,7 +7738,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "रीसेट करें",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "कॉर्ड प्रोग्रेशन को ऑडियो और MIDI सीड्स के रूप में उत्पन्न करता है जो Suno जैसे AI संगीत जनरेटर को नियंत्रित करते हैं।",
+    msgStgAboutDesc:                        "एक कॉर्ड प्रोग्रेशन को ऐसे ऑडियो में बदलें जिसका आपका AI संगीत जनरेटर पालन करेगा।",
     lblStgAboutCredits:                     "वाद्य यंत्र क्रेडिट",
     msgStgAboutCreditsIntro:                "नमूनाकृत वाद्ययंत्र स्वतंत्र रूप से लाइसेंस प्राप्त रिकॉर्डिंग सत्रों से आते हैं, द्वारा:",
 
@@ -7547,11 +7891,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "আবার দেখাবেন না",
     btnNewsOpenLink:                        "আরও জানুন",
     tipNewsDismiss:                         "বন্ধ করুন",
+    tipNewsShow:                            "খবর",
     lblStgGeneralNews:                      "yaiol থেকে খবর দেখান",
     btnNewsClose:                           "বন্ধ করুন",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "সেটিংস খুলুন",
+    tipHdrSettings:                         "সেটিংস",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "ছোট করুন",
+    tipWinMaximize:                         "বড় করুন",
+    tipWinRestore:                          "পুনরুদ্ধার করুন",
+    tipWinClose:                            "বন্ধ করুন",
+
     tipHdrHelp:                             "সাহায্য",
 
     // Prefix:Stg - Scope:settings view
@@ -7569,7 +7921,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "রিসেট করুন",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "কর্ড প্রগ্রেশনকে অডিও এবং MIDI বীজ হিসেবে তৈরি করে যা Suno-এর মতো AI সঙ্গীত জেনারেটরকে সীমাবদ্ধ করে।",
+    msgStgAboutDesc:                        "একটি কর্ড প্রগ্রেশনকে এমন অডিওতে পরিণত করুন যা আপনার এআই মিউজিক জেনারেটর অনুসরণ করবে।",
     lblStgAboutCredits:                     "যন্ত্রের ক্রেডিট",
     msgStgAboutCreditsIntro:                "স্যাম্পল করা যন্ত্রগুলি বিনামূল্যে লাইসেন্সপ্রাপ্ত রেকর্ডিং সেশন থেকে এসেছে, দ্বারা:",
 
@@ -7722,11 +8074,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "دوبارہ نہ دکھائیں",
     btnNewsOpenLink:                        "مزید جانیں",
     tipNewsDismiss:                         "بند کریں",
+    tipNewsShow:                            "خبریں",
     lblStgGeneralNews:                      "yaiol سے خبریں دکھائیں",
     btnNewsClose:                           "بند کریں",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "ترتیبات کھولیں",
+    tipHdrSettings:                         "ترتیبات",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "چھوٹا کریں",
+    tipWinMaximize:                         "بڑا کریں",
+    tipWinRestore:                          "بحال کریں",
+    tipWinClose:                            "بند کریں",
+
     tipHdrHelp:                             "مدد",
 
     // Prefix:Stg - Scope:settings view
@@ -7744,7 +8104,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "ری سیٹ کریں",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "کورد پروگریشنز کو آڈیو اور MIDI سیڈز کے طور پر تیار کرتا ہے جو Suno جیسے AI میوزک جنریٹرز کو محدود کرتے ہیں۔",
+    msgStgAboutDesc:                        "ایک راگ کی ترتیب کو ایسی آڈیو میں تبدیل کریں جس کی آپ کا AI میوزک جنریٹر پیروی کرے گا۔",
     lblStgAboutCredits:                     "آلے کے کریڈٹس",
     msgStgAboutCreditsIntro:                "نمونہ شدہ آلات آزادانہ طور پر لائسنس یافتہ ریکارڈنگ سیشنز سے آتے ہیں، از:",
 
@@ -7897,11 +8257,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Usionyeshe tena",
     btnNewsOpenLink:                        "Jifunze zaidi",
     tipNewsDismiss:                         "Funga",
+    tipNewsShow:                            "Habari",
     lblStgGeneralNews:                      "Onyesha habari kutoka yaiol",
     btnNewsClose:                           "Funga",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Fungua mipangilio",
+    tipHdrSettings:                         "Mipangilio",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Punguza",
+    tipWinMaximize:                         "Ongeza",
+    tipWinRestore:                          "Rejesha",
+    tipWinClose:                            "Funga",
+
     tipHdrHelp:                             "Msaada",
 
     // Prefix:Stg - Scope:settings view
@@ -7919,7 +8287,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Rudisha",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Hutengeneza maendeleo ya nyimbo kama mbegu za sauti + MIDI zinazoweka mipaka kwa jenereta za muziki za AI kama Suno.",
+    msgStgAboutDesc:                        "Badilisha mfuatano wa akodi kuwa sauti ambayo jenereta yako ya muziki ya AI itafuata.",
     lblStgAboutCredits:                     "Mikopo ya ala",
     msgStgAboutCreditsIntro:                "Vyombo vilivyochukuliwa sampuli vinatokana na vipindi vya kurekodi vilivyo na leseni huru, na:",
 
@@ -8072,11 +8440,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "ਦੁਬਾਰਾ ਨਾ ਦਿਖਾਓ",
     btnNewsOpenLink:                        "ਹੋਰ ਜਾਣੋ",
     tipNewsDismiss:                         "ਬੰਦ ਕਰੋ",
+    tipNewsShow:                            "ਖ਼ਬਰਾਂ",
     lblStgGeneralNews:                      "yaiol ਤੋਂ ਖ਼ਬਰਾਂ ਦਿਖਾਓ",
     btnNewsClose:                           "ਬੰਦ ਕਰੋ",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ",
+    tipHdrSettings:                         "ਸੈਟਿੰਗਾਂ",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "ਛੋਟਾ ਕਰੋ",
+    tipWinMaximize:                         "ਵੱਡਾ ਕਰੋ",
+    tipWinRestore:                          "ਮੁੜ-ਬਹਾਲ ਕਰੋ",
+    tipWinClose:                            "ਬੰਦ ਕਰੋ",
+
     tipHdrHelp:                             "ਮਦਦ",
 
     // Prefix:Stg - Scope:settings view
@@ -8094,7 +8470,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "ਰੀਸੈਟ ਕਰੋ",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "ਕੋਰਡ ਪ੍ਰੋਗਰੈਸ਼ਨਾਂ ਨੂੰ ਆਡੀਓ ਅਤੇ MIDI ਬੀਜਾਂ ਵਜੋਂ ਤਿਆਰ ਕਰਦਾ ਹੈ ਜੋ Suno ਵਰਗੇ AI ਸੰਗੀਤ ਜਨਰੇਟਰਾਂ ਨੂੰ ਸੀਮਤ ਕਰਦੇ ਹਨ।",
+    msgStgAboutDesc:                        "ਇੱਕ ਕੋਰਡ ਪ੍ਰੋਗਰੈਸ਼ਨ ਨੂੰ ਆਡੀਓ ਵਿੱਚ ਬਦਲੋ ਜਿਸਨੂੰ ਤੁਹਾਡਾ AI ਸੰਗੀਤ ਜਨਰੇਟਰ ਪਾਲਣਾ ਕਰੇਗਾ।",
     lblStgAboutCredits:                     "ਸਾਜ਼ ਕ੍ਰੈਡਿਟ",
     msgStgAboutCreditsIntro:                "ਨਮੂਨੇ ਵਾਲੇ ਸਾਜ਼ ਮੁਫ਼ਤ ਲਾਇਸੰਸਸ਼ੁਦਾ ਰਿਕਾਰਡਿੰਗ ਸੈਸ਼ਨਾਂ ਤੋਂ ਆਉਂਦੇ ਹਨ, ਦੁਆਰਾ:",
 
@@ -8247,11 +8623,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Kada a sake nunawa",
     btnNewsOpenLink:                        "Koyi game da shi",
     tipNewsDismiss:                         "Rufe",
+    tipNewsShow:                            "Labarai",
     lblStgGeneralNews:                      "Nuna labarai daga yaiol",
     btnNewsClose:                           "Rufe",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Bude saituna",
+    tipHdrSettings:                         "Saituna",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Rage girma",
+    tipWinMaximize:                         "Ƙara girma",
+    tipWinRestore:                          "Mayar",
+    tipWinClose:                            "Rufe",
+
     tipHdrHelp:                             "Taimako",
 
     // Prefix:Stg - Scope:settings view
@@ -8269,7 +8653,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Sake saita",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Yana samar da ci gaban kida zuwa tsaba na sauti da MIDI waɗanda ke takura masu samar da kiɗa na AI kamar Suno.",
+    msgStgAboutDesc:                        "Mayar da ci gaban kirtani zuwa sauti wanda mai samar da kiɗan AI ɗinka zai bi.",
     lblStgAboutCredits:                     "Kayan aiki credits",
     msgStgAboutCreditsIntro:                "Kayan kida da aka yi samfuri sun fito ne daga zaman rikodin da aka ba da lasisi kyauta, ta:",
 
@@ -8422,11 +8806,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Maṣe fi han mọ",
     btnNewsOpenLink:                        "Kọ́ ẹ̀kọ́ síwájú",
     tipNewsDismiss:                         "Pa",
+    tipNewsShow:                            "Ìròyìn",
     lblStgGeneralNews:                      "Fi iroyin lati yaiol han",
     btnNewsClose:                           "Pade",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Ṣi eto",
+    tipHdrSettings:                         "Ètò",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Din-kekere",
+    tipWinMaximize:                         "Din-nla",
+    tipWinRestore:                          "Mu pada",
+    tipWinClose:                            "Pa",
+
     tipHdrHelp:                             "Iranlọwọ",
 
     // Prefix:Stg - Scope:settings view
@@ -8444,7 +8836,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "Tun pada",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "N ṣe ipilẹṣẹ ilọsiwaju akọọlẹ bi awọn irugbin ohun + MIDI ti o fi ipa mu awọn olupilẹṣẹ orin AI bi Suno.",
+    msgStgAboutDesc:                        "Yipada ilọsiwaju akọọlẹ si ohun ti ẹrọ orin AI rẹ yoo tẹle.",
     lblStgAboutCredits:                     "Awọn kirẹditi ohun èlò",
     msgStgAboutCreditsIntro:                "Awọn ohun elo ti a ṣe ayẹwo wa lati awọn igba gbigbasilẹ ti o ni iwe-aṣẹ ọfẹ, nipasẹ:",
 
@@ -8597,11 +8989,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "మళ్ళీ చూపవద్దు",
     btnNewsOpenLink:                        "మరింత తెలుసుకోండి",
     tipNewsDismiss:                         "మూసివేయండి",
+    tipNewsShow:                            "వార్తలు",
     lblStgGeneralNews:                      "yaiol నుండి వార్తలను చూపించు",
     btnNewsClose:                           "మూసివేయి",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "సెట్టింగ్‌లను తెరవండి",
+    tipHdrSettings:                         "సెట్టింగ్‌లు",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "చిన్నది చేయి",
+    tipWinMaximize:                         "పెద్దది చేయి",
+    tipWinRestore:                          "పునరుద్ధరించు",
+    tipWinClose:                            "మూసివేయి",
+
     tipHdrHelp:                             "సహాయం",
 
     // Prefix:Stg - Scope:settings view
@@ -8619,7 +9019,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "రీసెట్ చేయండి",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "కార్డ్ ప్రోగ్రెషన్‌లను ఆడియో మరియు MIDI విత్తనాలుగా ఉత్పత్తి చేస్తుంది, ఇవి Suno వంటి AI సంగీత జనరేటర్‌లను పరిమితం చేస్తాయి.",
+    msgStgAboutDesc:                        "మీ AI మ్యూజిక్ జనరేటర్ అనుసరించే ఆడియోగా ఒక తీగ పురోగతిని మార్చండి.",
     lblStgAboutCredits:                     "వాయిద్య క్రెడిట్‌లు",
     msgStgAboutCreditsIntro:                "నమూనా చేయబడిన వాయిద్యాలు ఉచిత లైసెన్స్ పొందిన రికార్డింగ్ సెషన్‌ల నుండి వచ్చాయి, ద్వారా:",
 
@@ -8772,11 +9172,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "पुन्हा दाखवू नका",
     btnNewsOpenLink:                        "अधिक जाणून घ्या",
     tipNewsDismiss:                         "बंद करा",
+    tipNewsShow:                            "बातम्या",
     lblStgGeneralNews:                      "yaiol कडून बातम्या दाखवा",
     btnNewsClose:                           "बंद करा",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "सेटिंग्ज उघडा",
+    tipHdrSettings:                         "सेटिंग्ज",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "लहान करा",
+    tipWinMaximize:                         "मोठे करा",
+    tipWinRestore:                          "पुनर्संचयित करा",
+    tipWinClose:                            "बंद करा",
+
     tipHdrHelp:                             "मदत",
 
     // Prefix:Stg - Scope:settings view
@@ -8794,7 +9202,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "रीसेट करा",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "कॉर्ड प्रोग्रेशन्सना ऑडिओ आणि MIDI सीड्स म्हणून तयार करते जे Suno सारख्या AI संगीत जनरेटरना मर्यादित करतात.",
+    msgStgAboutDesc:                        "तुमचा AI संगीत जनरेटर पाळेल अशा ऑडिओमध्ये कॉर्ड प्रोग्रेशन बदला.",
     lblStgAboutCredits:                     "इन्स्ट्रुमेंट क्रेडिट्स",
     msgStgAboutCreditsIntro:                "नमुना घेतलेली वाद्ये मुक्त-परवानाधारक रेकॉर्डिंग सत्रातून येतात, द्वारे:",
 
@@ -8947,11 +9355,19 @@ const TRANSLATIONS = {
     lblNewsHideForever:                     "Huwag nang ipakita muli",
     btnNewsOpenLink:                        "Matuto pa",
     tipNewsDismiss:                         "Isara",
+    tipNewsShow:                            "Balita",
     lblStgGeneralNews:                      "Ipakita ang balita mula sa yaiol",
     btnNewsClose:                           "Isara",
 
     // Prefix:Hdr - Scope:top toolbar
-    tipHdrSettings:                         "Buksan ang mga setting",
+    tipHdrSettings:                         "Mga Setting",
+
+    // Prefix:Win - Scope:window bar (the app's own title bar)
+    tipWinMinimize:                         "Paliitin",
+    tipWinMaximize:                         "Palakihin",
+    tipWinRestore:                          "Ibalik",
+    tipWinClose:                            "Isara",
+
     tipHdrHelp:                             "Tulong",
 
     // Prefix:Stg - Scope:settings view
@@ -8969,7 +9385,7 @@ const TRANSLATIONS = {
     btnStgGeneralColorReset:                "I-reset",
 
     // Prefix:StgAbout - Scope:settings view (About tab)
-    msgStgAboutDesc:                        "Gumagawa ng mga chord progression bilang audio + MIDI seeds na naglilimita sa mga AI music generator tulad ng Suno.",
+    msgStgAboutDesc:                        "Gawing audio ang isang chord progression na susundin ng iyong AI music generator.",
     lblStgAboutCredits:                     "Mga kredito ng instrumento",
     msgStgAboutCreditsIntro:                "Ang mga instrumentong sinampulan ay nagmula sa mga sesyon ng pagre-record na may libreng lisensya, ni:",
 

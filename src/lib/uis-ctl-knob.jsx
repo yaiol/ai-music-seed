@@ -1,4 +1,4 @@
-// ui-ctl-knob.jsx — the ONE compact instrument-style value control for every
+// uis-ctl-knob.jsx — the ONE compact instrument-style value control for every
 // yaiol electron app: a label on top, a round drag body in the middle, and a
 // directly-editable value underneath (the hardware-knob idiom of music tools).
 //
@@ -7,15 +7,15 @@
 // The value line is a real input: click it, type a number, Enter/blur commits
 // (clamped + quantised), Escape reverts. `unit` is display-only ("%", "st").
 //
-// Geometry lives in the catalog (.knob* in the PAIRED ui-ctl-knob.css, which
+// Geometry lives in the catalog (.uis-knb* in the PAIRED uis-ctl-knob.css, which
 // this file side-effect-imports so the skin travels with the control); colour
 // flows from the container's surface tokens, per the UI colour-set model.
 //
-//   <Knob label="Volume" value={v} min={0} max={100} step={5} unit="%"
+//   <UisKnob label="Volume" value={v} min={0} max={100} step={5} unit="%"
 //         onChange={setV} />
 //
 // `title` is the control's tooltip — where the caption is SHORTENED to fit
-// (shortLabel in ui-text.js), this is where the whole word stays readable.
+// (LbsLblShort in uis-text.js), this is where the whole word stays readable.
 //
 // `arc` fills the travelled sweep, min → value, as a ring around the body —
 // for a knob whose value is an AMOUNT measured from its minimum (a volume, a
@@ -27,15 +27,15 @@
 // `inline` is the ONE-CONTROL-HEIGHT tier: the same knob laid out across —
 // body at the left, label over value beside it — 30px tall instead of three
 // stacked lines, for a band whose height is a fixed row multiple. Body, tick,
-// drag travel and fonts are unchanged; only the axis (.knob.inline).
+// drag travel and fonts are unchanged; only the axis (.uis-knb.inline).
 //
 // ⚠ Do not edit an app's copy — this file is distributed by sync-shared.js;
 // edit the canonical source and re-sync.
 
 import React, { useRef, useState } from 'react';
-import '../assets/ui-ctl-knob.css';
+import '../assets/uis-ctl-knob.css';
 
-export function Knob({ label, value, min = 0, max = 100, step = 1, unit = '', disabled = false, inline = false, arc = false, title = '', onChange }) {
+export function UisKnob({ label, value, min = 0, max = 100, step = 1, unit = '', disabled = false, inline = false, arc = false, title = '', onChange }) {
   const [editing, setEditing] = useState(null);   // null = showing; string = the draft being typed
   const drag = useRef(null);                      // { startY, startValue } while the body is held
 
@@ -72,15 +72,15 @@ export function Knob({ label, value, min = 0, max = 100, step = 1, unit = '', di
   const angle = -135 + 270 * frac;
 
   return (
-    <div className={`knob${inline ? ' inline' : ''}${disabled ? ' disabled' : ''}`} title={title || undefined}>
-      <span className="knob-label">{label}</span>
-      <button type="button" className="knob-body" aria-label={label} disabled={disabled}
+    <div className={`uis-knb${inline ? ' inline' : ''}${disabled ? ' disabled' : ''}`} title={title || undefined}>
+      <span className="uis-knb-label">{label}</span>
+      <button type="button" className="uis-knb-body" aria-label={label} disabled={disabled}
         onPointerDown={onPointerDown} onPointerMove={onPointerMove}
         onPointerUp={onPointerUp} onPointerCancel={onPointerUp}>
         {/* `pathLength` re-scales the circle to 360 units so the dash IS the
             swept angle; the rotate puts unit 0 at the knob's minimum (−135°),
             which an SVG circle would otherwise place at 3 o'clock. */}
-        {arc && <svg className="knob-arc" viewBox="0 0 30 30" aria-hidden="true">
+        {arc && <svg className="uis-knb-arc" viewBox="0 0 30 30" aria-hidden="true">
           <circle cx="15" cy="15" r="9" pathLength="360"
                   strokeDasharray={`${270 * frac} 360`} transform="rotate(135 15 15)" />
         </svg>}
@@ -88,9 +88,9 @@ export function Knob({ label, value, min = 0, max = 100, step = 1, unit = '', di
             value, so a tick there is the same statement drawn twice — and it
             reads as an overshoot wherever the two edges do not land on the
             same pixel. An empty ring is the minimum. */}
-        {!arc && <span className="knob-tick" style={{ transform: `rotate(${angle}deg)` }} />}
+        {!arc && <span className="uis-knb-tick" style={{ transform: `rotate(${angle}deg)` }} />}
       </button>
-      <input className="knob-value" disabled={disabled}
+      <input className="uis-knb-value" disabled={disabled}
         value={editing !== null ? editing : `${value}${unit ? ' ' + unit : ''}`}
         onFocus={(e) => {
           setEditing(String(value));

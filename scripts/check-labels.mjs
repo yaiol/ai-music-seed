@@ -1,6 +1,6 @@
 // check:labels — the band captions, in every language.
 //
-// i18n holds the WHOLE word ("velocity"); the band shows what `shortLabel`
+// i18n holds the WHOLE word ("velocity"); the band shows what `LbsLblShort`
 // makes of it ("vel"). Two things can go wrong silently, in a language nobody
 // on the team reads:
 //
@@ -15,7 +15,7 @@ import { createServer } from 'vite';
 
 const CAPTIONS = ['lblSeedKnobVel', 'lblSeedKnobLen', 'lblSeedKnobVolume',
                   'lblSeedKnobOctave', 'lblSeedKnobTune', 'lblSeedKnobReverb', 'lblSeedKnobTranspose'];
-// scripts where a leading-letters abbreviation is NOT the convention: shortLabel
+// scripts where a leading-letters abbreviation is NOT the convention: LbsLblShort
 // must hand these back whole, whatever their length
 const WHOLE_SCRIPT = /[\p{Script=Arabic}\p{Script=Hebrew}\p{Script=Thai}\p{Script=Devanagari}\p{Script=Bengali}\p{Script=Tamil}\p{Script=Telugu}\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u;
 
@@ -25,7 +25,7 @@ const fail = (msg) => { console.log(`FAIL ${msg}`); failed++; };
 const server = await createServer({ root: process.cwd(), server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });
 try {
   const { getT, LANGUAGES } = await server.ssrLoadModule('/src/i18n.js');
-  const { shortLabels } = await server.ssrLoadModule('/src/lib/ui-text.js');
+  const { LbsLblShortSet } = await server.ssrLoadModule('/src/lib/uis-text.js');
 
   let widest = { chars: 0 };
   for (const lang of LANGUAGES) {
@@ -33,7 +33,7 @@ try {
     const t = getT(key);
     const seen = new Map();
     const fulls = CAPTIONS.map((c) => t(c));
-    const shorts = shortLabels(fulls);   // the SHIPPED shortener, on the whole row at once
+    const shorts = LbsLblShortSet(fulls);   // the SHIPPED shortener, on the whole row at once
     for (const [i, cap] of CAPTIONS.entries()) {
       const full = fulls[i], short = shorts[i];
       if (!full || !short) { fail(`${key} ${cap}: empty caption`); continue; }

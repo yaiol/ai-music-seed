@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.3 — 2026-11-13
+
+- The window now has its own title bar: Settings, Help and GitHub sit at its left beside the app icon, the name and version are in the middle, and it follows the Windows title-bar colour
+- New reminder button in the title bar when a newer version is out: it stays after the new-version card is closed or hidden with Don't show again, and a click reopens the card with the release notes and the download link
+- New News button in the title bar while yaiol has an announcement for the app: a click reopens the announcements, including the ones hidden with Don't show again. It does not appear when Show news from yaiol is off
+- Don't show again can be undone: reopen a card from its title-bar button and untick the box, and it shows again at the next launch
+- The About page and the package now carry a one-line description of the app, and the Settings button's tooltip reads "Settings" instead of "Open settings"
+
 ## 2.1.2 — 2026-10-23
 
 - A newer version now appears as a card in a news dialog instead of a banner strip: the card lists the release notes newer than the running version, links to the download page, and Don't show again hides it until a still newer version is out

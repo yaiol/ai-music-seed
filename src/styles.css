@@ -8,28 +8,28 @@
 html, body, #root { height: 100%; margin: 0; }
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--uis-bg);
+  color: var(--uis-text);
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
 }
 .mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
-/* .app-root (root frame) + .app-scroll (scroll region) come from the shared chrome.css. */
+/* .uis-app-root (root frame) + .uis-app-scroll (scroll region) come from the shared chrome.css. */
 
 /* Header bar + button chrome is provided by the shared ./lib/chrome.css (imported in index.jsx). */
 
 /* ─── Workspace ───────────────────────────────────────────────────────── */
 /* amsd is a "dialog app" — its whole main view is a dialog-style form, so the
-   main surface is the dialog background (not the generic --bg body surface).
-   Pairs with .dlg-form on .seed-panel (field styling). See the workspace-wide
-   "kill --bg" goal: every main view resolves to a named semantic surface. */
+   main surface is the dialog background (not the generic --uis-bg body surface).
+   Pairs with .uis-dlg-form on .seed-panel (field styling). See the workspace-wide
+   "kill --uis-bg" goal: every main view resolves to a named semantic surface. */
 .workspace {
   padding: 16px 20px;
-  background: var(--dlg-bgd);
+  background: var(--uis-dlg-bgd);
 }
 
 /* ─── Seed generator panel ────────────────────────────────────────────── */
-/* The tab RAIL on the left (the catalog .tabs.vertical), ONE content column
+/* The tab RAIL on the left (the catalog .uis-tab-set.vertical), ONE content column
    beside it (since the style editor, 2026-09-03): the chord text is a block
    in the time-aligned stack (Chords, bottom), not a side column, and the
    tabs cost width, not height (the 1080 gate).
@@ -44,13 +44,15 @@ body {
    a colour picked in Settings overrides the token inline on <html> (App.jsx).
    ⚠ Never declare them on a descendant again (they sat on .seed-panel): a
    declaration below <html> beats the inherited override and Settings does nothing. */
-:root { --seed-treble: var(--accent); --seed-bass: #ff6eb4; --seed-chords: #4dc8c8; }
+:root { --seed-treble: var(--uis-accent); --seed-bass: #ff6eb4; --seed-chords: #4dc8c8; }
+/* The piano lights its two colours: the treble lane's and the bass lane's. */
+:root { --uis-pno-lit-a: var(--seed-treble); --uis-pno-lit-b: var(--seed-bass); }
 .seed-col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .seed-col-rest { flex: 1; }
 .seed-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-/* Field hints use the shared .dlg-hint (ui-app.css §9). */
-/* Chord textarea + all form fields use the shared .textarea / .input /
-   .select (./lib/dialog.css); only the chord textarea keeps a mono font inline. */
+/* Field hints use the shared .dlg-hint (uis-app.css §9). */
+/* Chord textarea + all form fields use the shared .uis-txt-area / .uis-txt /
+   .uis-ddn-std (./lib/dialog.css); only the chord textarea keeps a mono font inline. */
 /* The Render tab's fields: four CONTENT-SIZED columns + a flexible filler, so
    ordinary fields stay compact on the left instead of stretching across the
    full-width panel. */
@@ -65,7 +67,7 @@ body {
    edge, beside the notes, so the buttons align to their lane by construction.
 
    ⚠ Every height here is a whole multiple of the catalog's row unit
-   (--stepgrid-u): the band is 2u — so EVERY control in it is one control
+   (--uis-grd-sequencer-u): the band is 2u — so EVERY control in it is one control
    height (30px): bare selects, knobs on the catalog's `inline` tier, icon
    buttons, never a stacked field — a note row is 1u, a button is the box
    inside a row. ⚠ WIDTH is now the scarce resource in the band: it carries no
@@ -74,7 +76,7 @@ body {
    between stacked blocks — it is off-unit and pushes everything below it. */
 .seed-music { display: flex; flex-direction: column; gap: 8px; }
 .seed-toprow { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
-.seed-toprow > .btn { align-self: flex-end; }
+.seed-toprow > .uis-btn { align-self: flex-end; }
 .seed-field-name { flex: 1 1 180px; min-width: 130px; }
 .seed-stackrow { display: flex; align-items: flex-start; gap: 8px;
   --seed-gutter: 62px; --seed-gap: 8px; --seed-strip: 42px; }   /* strip = two 20px columns + gap */
@@ -82,13 +84,13 @@ body {
    grid wider than the view scrolls INSIDE its own `.seed-gridscroll` (below),
    it does not shrink the cells and it does not drag the block's tools with it */
 .seed-stack { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.seed-lane-block, .seed-prog { display: flex; align-items: stretch; border: 1px solid var(--border); }
-.seed-lane-block.treble { --accent: var(--seed-treble); border-left: 3px solid var(--accent); border-radius: 7px 7px 0 0; }
-.seed-lane-block.bass { --accent: var(--seed-bass); border-left: 3px solid var(--accent); margin-top: -1px; }
+.seed-lane-block, .seed-prog { display: flex; align-items: stretch; border: 1px solid var(--uis-border); }
+.seed-lane-block.treble { --uis-accent: var(--seed-treble); border-left: 3px solid var(--uis-accent); border-radius: 7px 7px 0 0; }
+.seed-lane-block.bass { --uis-accent: var(--seed-bass); border-left: 3px solid var(--uis-accent); margin-top: -1px; }
 /* the chords block carries its colour exactly like a lane: the accent its
    controls, spans and name read, and the same 3px left edge (which also lines
    its grid up with the lanes' — at 1px it started 2px further left) */
-.seed-prog { --accent: var(--seed-chords); border-left: 3px solid var(--accent); margin-top: -1px; border-radius: 0 0 7px 7px; }
+.seed-prog { --uis-accent: var(--seed-chords); border-left: 3px solid var(--uis-accent); margin-top: -1px; border-radius: 0 0 7px 7px; }
 .seed-block { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 /* the band runs the FULL width of its lane block — it used to stop where the
    grid stopped, back when the grid stretched to fill the row; now the grid is
@@ -96,14 +98,14 @@ body {
    parked an empty strip to the right of the knobs */
 .seed-band {
   display: flex; align-items: center; flex-wrap: nowrap; gap: 4px; min-width: 0;
-  height: calc(var(--stepgrid-u) * 2); padding: 0 10px;
-  border-bottom: 1px solid var(--border);
+  height: calc(var(--uis-grd-sequencer-u) * 2); padding: 0 10px;
+  border-bottom: 1px solid var(--uis-border);
 }
 /* ⚠ CLAUDE: the band's selects are sized by FLEX-BASIS on their own app
-   class, never by `width` — the dialog rule `.dlg-form .select { width: 100% }`
+   class, never by `width` — the dialog rule `.uis-dlg-form .uis-ddn-std { width: 100% }`
    wins any width fight on load order and the select swallows the band, but a
    flex item's basis beats its width on the main axis regardless. (Also the
-   only way to size them without a local rule on the catalog's `.select`.) */
+   only way to size them without a local rule on the catalog's `.uis-ddn-std`.) */
 .seed-band .seed-figure { flex: 0 0 150px; }
 /* The NAME is a FIXED field — wide enough for the longest instrument
    ("Bass Rickenbacker") and not a pixel more; letting it absorb the band's
@@ -117,7 +119,7 @@ body {
    the notes they act on, and these labels were the only thing occupying it. */
 .seed-lane-name {
   flex: 0 0 var(--seed-gutter); text-align: right; font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--uis-accent);
 }
 .seed-gridwrap { display: flex; align-items: stretch; gap: var(--seed-gap); padding: 0 10px; }
 /* The name ends every band at its right edge. A lane band's articulation zone
@@ -125,18 +127,18 @@ body {
    absorbs the free space in front of the name (and is 0 wherever there is none). */
 .seed-band > .seed-lane-name { margin-left: auto; }
 /* the strip: TWO columns of row boxes on the grid's row unit (auto-rows 1u,
-   the 20px box inside — the .stepgrid rule). A lane strip PAIRS BY FUNCTION,
+   the 20px box inside — the .uis-grd-sequencer rule). A lane strip PAIRS BY FUNCTION,
    one action per row: mirror / clear, shift left / right, add / remove step —
    the two halves of a thing sit side by side, where the eye expects them. */
 .seed-strip {
   flex: 0 0 var(--seed-strip); display: grid; grid-template-columns: 20px 20px;
-  grid-auto-rows: var(--stepgrid-u); column-gap: var(--stepgrid-gap); row-gap: 0; align-items: start;
+  grid-auto-rows: var(--uis-grd-sequencer-u); column-gap: var(--uis-grd-sequencer-gap); row-gap: 0; align-items: start;
 }
 /* the lane's step count — a LABEL, under the + / − that change it, on the
    strip's row unit like every box beside the grid */
 .seed-count {
   height: 20px; line-height: 20px; text-align: center;
-  font-size: 10px; font-weight: 600; color: var(--text-dim); letter-spacing: -.02em;
+  font-size: 10px; font-weight: 600; color: var(--uis-text-dim); letter-spacing: -.02em;
 }
 /* the lane's count sits under BOTH halves of the + / − pair it labels, so it
    spans the strip rather than parking under one of them */
@@ -150,7 +152,7 @@ body {
 .seed-strip-edit { grid-row: 1; grid-column: 1; }
 .seed-strip-add  { grid-row: 2; grid-column: 1; }
 .seed-strip-sub  { grid-row: 2; grid-column: 2; }
-.seed-lane-block.treble .seed-strip { padding-top: var(--stepgrid-u); }   /* clear the ruler row */
+.seed-lane-block.treble .seed-strip { padding-top: var(--uis-grd-sequencer-u); }   /* clear the ruler row */
 /* ⚠ CLAUDE: THE SCROLL IS THE GRID'S, NOT THE BLOCK'S (user ruling 2026-09-09:
    "the slider should be within the notes block, independent from the tools
    block"). Only the notes scroll: `.seed-gridscroll` wraps the StepGrid alone,
@@ -181,108 +183,81 @@ body {
 .seed-scrollrow::after { content: ''; flex: 0 0 var(--seed-strip); }
 .seed-scrollbar { flex: 1 1 auto; min-width: 0; overflow-x: scroll; overflow-y: hidden; }
 .seed-scrollspacer { height: 1px; }
-.seed-chordtext { flex: 1; min-height: calc(var(--stepgrid-u) * 5); resize: vertical; }
+.seed-chordtext { flex: 1; min-height: calc(var(--uis-grd-sequencer-u) * 5); resize: vertical; }
 /* the flags: start level with the first note row (band 2u + ruler 1u); a
    label row and a button row per type, each one row unit tall */
 .seed-flagcol {
-  flex: 0 0 auto; border: 1px solid var(--border); border-radius: 7px;
-  padding: 0 8px 6px 7px; margin-top: calc(var(--stepgrid-u) * 3);
+  flex: 0 0 auto; border: 1px solid var(--uis-border); border-radius: 7px;
+  padding: 0 8px 6px 7px; margin-top: calc(var(--uis-grd-sequencer-u) * 3);
 }
-.seed-flaggroup { display: grid; grid-template-rows: var(--stepgrid-u) var(--stepgrid-u); align-items: center; }
+.seed-flaggroup { display: grid; grid-template-rows: var(--uis-grd-sequencer-u) var(--uis-grd-sequencer-u); align-items: center; }
 .seed-flaglabel {
   font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 9px; letter-spacing: .05em;
-  text-transform: uppercase; color: var(--text-mute); white-space: nowrap; line-height: var(--stepgrid-u);
+  text-transform: uppercase; color: var(--uis-text-mute); white-space: nowrap; line-height: var(--uis-grd-sequencer-u);
 }
 .seed-flagrow { display: flex; gap: 3px; }
-/* The Combobox rides inside its OWN flex cell (.seed-combo) rather than being
-   a flex item itself: the catalog's `.input { width: 100% }` is then exactly
-   right (100% of the cell), instead of poisoning the row's flex basis — which
-   is what collapsed the picker to zero width. */
-.seed-combo { flex: 1 1 0; min-width: 60px; display: flex; }
-.seed-combo .input { width: 100%; min-width: 0; }
-/* Family icon + instrument picker WELDED as one control — the catalog's
-   .barh-grp (header-bar weld: the group carries the frame, children lose
-   theirs). The combobox input sits one level deeper (inside its flex cell,
-   .seed-combo), so the weld's border-strip is extended to it here. */
-.seed-picker-weld .seed-combo { min-width: 0; }
-.seed-picker-weld .seed-combo .input { border: none; border-radius: 0; height: 100%; }
 /* The selected instrument's articulation buttons — a compact opt-btn row under
-   the picker (catalog .btn.small.opt-btn; only the row's LAYOUT differs from
+   the picker (catalog .uis-btn.small.uis-opt; only the row's LAYOUT differs from
    the standard opt-btns: compact, right-aligned under the control, no
    stretch-to-fill). */
 /* The articulation zone owns the band's slack, so the mix knobs sit at the
    same place on every lane and never jump when the instrument changes. The
-   pills keep their natural width (`--opt-btn-flex`, the catalog's token). */
+   pills keep their natural width (`--uis-opt-flex`, the catalog's token). */
 .seed-artics {
   flex: 1 1 0; min-width: 0; display: flex; gap: 6px; flex-wrap: nowrap;
   overflow-x: auto;
   /* the pills carry the SHORT name (ARTIC_ABBR) — three characters, so the widest
      set on screen (five, on Double Bass and Trumpet) fits at the catalog's own
      button width; mono because they read as codes, not words */
-  --opt-btn-flex: 0 0 auto; --opt-btn-font: 'JetBrains Mono', 'Fira Code', monospace;
+  --uis-opt-flex: 0 0 auto; --uis-opt-font: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
 
-/* The keyboard — Chord Player's piano strip. A piano's white/black is intrinsic
-   (theme-invariant, like a fretboard's wood); the lit states are the lane
-   colours: each lane's own (--seed-treble / --seed-bass) so a mixed chord reads. */
-.kbd { position: relative; display: flex; height: 64px; margin-top: 0;
-       border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
-.kbd-key { padding: 0; outline: none; border: none; cursor: pointer; }
-.kbd-key.white { flex: 1; background: #fbfbfb; border-left: 1px solid #d5d7dc; }
-.kbd-key.white:first-child { border-left: none; }
-.kbd-key.white:hover { background: #eceef2; }
-.kbd-key.black { position: absolute; top: 0; width: 1.6%; height: 60%;
-                 background: #23252b; border-radius: 0 0 3px 3px;
-                 transform: translateX(-50%); z-index: 1; }
-.kbd-key.black:hover { background: #3a3d46; }
-.kbd-key.white.on-treble, .kbd-key.black.on-treble { background: var(--seed-treble); }
-.kbd-key.white.on-bass, .kbd-key.black.on-bass { background: var(--seed-bass); }
 /* Live projection of the seed about to be rendered */
 .seed-summary {
   display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px;
-  background: var(--bg-row); border: 1px solid var(--border);
+  background: var(--uis-bg-row); border: 1px solid var(--uis-border);
   border-radius: 8px; padding: 10px 14px;
 }
 .seed-summary-stat { display: flex; align-items: baseline; gap: 8px; }
 .seed-summary-label {
   font-size: 11px; letter-spacing: .5px; text-transform: uppercase;
-  font-weight: 600; color: var(--text-mute);
+  font-weight: 600; color: var(--uis-text-mute);
 }
-.seed-summary-value { font-size: 14px; font-weight: 600; color: var(--text); }
-.seed-summary-warn { color: var(--warn); font-size: 12px; }
+.seed-summary-value { font-size: 14px; font-weight: 600; color: var(--uis-text); }
+.seed-summary-warn { color: var(--uis-warn); font-size: 12px; }
 
 .seed-actions { display: flex; align-items: center; gap: 14px; }
-.seed-error { color: var(--danger); font-size: 13px; }
+.seed-error { color: var(--uis-danger); font-size: 13px; }
 .seed-result {
   display: flex; flex-direction: column; gap: 8px;
-  background: var(--bg-elev); border: 1px solid var(--border);
+  background: var(--uis-bg-elev); border: 1px solid var(--uis-border);
   border-radius: 10px; padding: 16px;
 }
 .seed-result-head {
   font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
-  font-weight: 700; color: var(--ok);
+  font-weight: 700; color: var(--uis-ok);
 }
 .seed-result-file {
   display: flex; align-items: center; gap: 8px;
-  background: var(--bg-row); border: 1px solid var(--border);
+  background: var(--uis-bg-row); border: 1px solid var(--uis-border);
   border-radius: 6px; padding: 8px 10px;
-  color: var(--text); cursor: pointer; text-align: left;
+  color: var(--uis-text); cursor: pointer; text-align: left;
   font-size: 12px; transition: background .12s, border-color .12s;
 }
-.seed-result-file:hover { background: var(--bg-hov); border-color: var(--border-strong); }
+.seed-result-file:hover { background: var(--uis-bg-hov); border-color: var(--uis-border-strong); }
 .seed-result-file span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-/* The file-drop overlay (.drop-overlay) is the shared catalog look in ui-app.css,
-   rendered by the shared useFileDrop hook (./lib/ui-fx-filedrop). */
+/* The file-drop overlay (.uis-ovl-drop) is the shared catalog look in uis-app.css,
+   rendered by the shared LbsHokFileDrop hook (./lib/uis-fx-filedrop). */
 
 /* Instrument credits in the About tab — a quiet list under the identity row,
    rendered from packs.json's shipped attribution (grouped per author). */
 .seed-credits { margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
-.seed-credits-row { font-size: 12px; color: var(--text-mute); line-height: 1.6; }
-.seed-credits-row b { color: var(--text); font-weight: 600; }
+.seed-credits-row { font-size: 12px; color: var(--uis-text-mute); line-height: 1.6; }
+.seed-credits-row b { color: var(--uis-text); font-weight: 600; }
 /* Settings → lane colours: one row per lane — name (in the lane's colour),
-   the catalog .swatch launcher, Reset parked at the right edge. */
+   the catalog .uis-swt launcher, Reset parked at the right edge. */
 .seed-colors-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
 .seed-colors-name { flex: 0 0 120px; font-size: 13px; font-weight: 600; }
 .seed-colors-name.treble { color: var(--seed-treble); }

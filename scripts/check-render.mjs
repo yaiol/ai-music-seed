@@ -21,7 +21,7 @@ try {
   const mod = await server.ssrLoadModule('/src/App.jsx');
   const App = mod.default;
   const html = renderToString(React.createElement(App));
-  const missing = ['stepgrid', 'seed-band', 'seed-flagcol', 'seed-prog'].filter((c) => !html.includes(c));
+  const missing = ['grd-sequencer', 'seed-band', 'seed-flagcol', 'seed-prog'].filter((c) => !html.includes(c));
   if (missing.length) { console.log('check:render FAILED — markup missing:', missing.join(', ')); process.exitCode = 1; }
 
   // ⚠ A RAW i18n KEY ON SCREEN. `t()` returns the key itself when it cannot
