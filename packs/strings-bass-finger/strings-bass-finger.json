@@ -1,0 +1,104 @@
+{
+  "name": "strings-bass-finger",
+  "label": "Bass (Finger)",
+  "format": 1,
+  "layer": "single",
+  "zones": [
+    {
+      "file": "28.ogg",
+      "root": 28,
+      "lokey": 0,
+      "hikey": 28,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "29.ogg",
+      "root": 29,
+      "lokey": 29,
+      "hikey": 29,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "30.ogg",
+      "root": 30,
+      "lokey": 30,
+      "hikey": 30,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "31.ogg",
+      "root": 31,
+      "lokey": 31,
+      "hikey": 31,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "32.ogg",
+      "root": 32,
+      "lokey": 32,
+      "hikey": 32,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "33.ogg",
+      "root": 33,
+      "lokey": 33,
+      "hikey": 33,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "34.ogg",
+      "root": 34,
+      "lokey": 34,
+      "hikey": 34,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "35.ogg",
+      "root": 35,
+      "lokey": 35,
+      "hikey": 35,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "36.ogg",
+      "root": 36,
+      "lokey": 36,
+      "hikey": 36,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "37.ogg",
+      "root": 37,
+      "lokey": 37,
+      "hikey": 37,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "38.ogg",
+      "root": 38,
+      "lokey": 38,
+      "hikey": 38,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "39.ogg",
+      "root": 39,
+      "lokey": 39,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "name": "strings-violinsection-spic",
+  "label": "Violins (Spiccato)",
+  "format": 1,
+  "layer": "v1",
+  "zones": [
+    {
+      "file": "54.ogg",
+      "root": 54,
+      "lokey": 0,
+      "hikey": 55,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "57.ogg",
+      "root": 57,
+      "lokey": 56,
+      "hikey": 58,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "59.ogg",
+      "root": 59,
+      "lokey": 59,
+      "hikey": 60,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "62.ogg",
+      "root": 62,
+      "lokey": 61,
+      "hikey": 64,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "66.ogg",
+      "root": 66,
+      "lokey": 65,
+      "hikey": 67,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "69.ogg",
+      "root": 69,
+      "lokey": 68,
+      "hikey": 70,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 71,
+      "hikey": 74,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "76.ogg",
+      "root": 76,
+      "lokey": 75,
+      "hikey": 77,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "78.ogg",
+      "root": 78,
+      "lokey": 78,
+      "hikey": 80,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "83.ogg",
+      "root": 83,
+      "lokey": 81,
+      "hikey": 84,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "86.ogg",
+      "root": 86,
+      "lokey": 85,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

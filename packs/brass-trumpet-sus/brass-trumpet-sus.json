@@ -1,0 +1,88 @@
+{
+  "name": "brass-trumpet-sus",
+  "label": "Trumpet (Sustained)",
+  "format": 1,
+  "layer": "v1",
+  "zones": [
+    {
+      "file": "53.ogg",
+      "root": 53,
+      "lokey": 0,
+      "hikey": 55,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "57.ogg",
+      "root": 57,
+      "lokey": 56,
+      "hikey": 58,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 59,
+      "hikey": 61,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "63.ogg",
+      "root": 63,
+      "lokey": 62,
+      "hikey": 65,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "67.ogg",
+      "root": 67,
+      "lokey": 66,
+      "hikey": 68,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "70.ogg",
+      "root": 70,
+      "lokey": 69,
+      "hikey": 72,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "74.ogg",
+      "root": 74,
+      "lokey": 73,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "77.ogg",
+      "root": 77,
+      "lokey": 76,
+      "hikey": 79,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "81.ogg",
+      "root": 81,
+      "lokey": 80,
+      "hikey": 82,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "84.ogg",
+      "root": 84,
+      "lokey": 83,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

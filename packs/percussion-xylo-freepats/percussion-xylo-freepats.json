@@ -1,0 +1,80 @@
+{
+  "name": "percussion-xylo-freepats",
+  "label": "Xylophone",
+  "format": 1,
+  "layer": "pp",
+  "zones": [
+    {
+      "file": "48.ogg",
+      "root": 48,
+      "lokey": 0,
+      "hikey": 51,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "55.ogg",
+      "root": 55,
+      "lokey": 52,
+      "hikey": 57,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 58,
+      "hikey": 63,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "67.ogg",
+      "root": 67,
+      "lokey": 64,
+      "hikey": 69,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 70,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "79.ogg",
+      "root": 79,
+      "lokey": 76,
+      "hikey": 81,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "84.ogg",
+      "root": 84,
+      "lokey": 82,
+      "hikey": 87,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "91.ogg",
+      "root": 91,
+      "lokey": 88,
+      "hikey": 93,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "96.ogg",
+      "root": 96,
+      "lokey": 94,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

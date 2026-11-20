@@ -1,0 +1,88 @@
+{
+  "name": "woodwinds-flute-susvib",
+  "label": "Flute (Sustained Vibrato)",
+  "format": 1,
+  "layer": "v1",
+  "zones": [
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 0,
+      "hikey": 62,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "64.ogg",
+      "root": 64,
+      "lokey": 63,
+      "hikey": 66,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "69.ogg",
+      "root": 69,
+      "lokey": 67,
+      "hikey": 70,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 71,
+      "hikey": 74,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "76.ogg",
+      "root": 76,
+      "lokey": 75,
+      "hikey": 78,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "81.ogg",
+      "root": 81,
+      "lokey": 79,
+      "hikey": 82,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "84.ogg",
+      "root": 84,
+      "lokey": 83,
+      "hikey": 86,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "88.ogg",
+      "root": 88,
+      "lokey": 87,
+      "hikey": 90,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "93.ogg",
+      "root": 93,
+      "lokey": 91,
+      "hikey": 94,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "96.ogg",
+      "root": 96,
+      "lokey": 95,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

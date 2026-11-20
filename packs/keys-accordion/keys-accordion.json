@@ -1,0 +1,145 @@
+{
+  "name": "keys-accordion",
+  "label": "Accordion",
+  "format": 1,
+  "layer": "single",
+  "tuneCents": -26,
+  "zones": [
+    {
+      "file": "47.ogg",
+      "root": 47,
+      "lokey": 0,
+      "hikey": 48,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "50.ogg",
+      "root": 50,
+      "lokey": 49,
+      "hikey": 52,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "54.ogg",
+      "root": 54,
+      "lokey": 53,
+      "hikey": 54,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "55.ogg",
+      "root": 55,
+      "lokey": 55,
+      "hikey": 56,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "57.ogg",
+      "root": 57,
+      "lokey": 57,
+      "hikey": 58,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "59.ogg",
+      "root": 59,
+      "lokey": 59,
+      "hikey": 59,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 60,
+      "hikey": 61,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "62.ogg",
+      "root": 62,
+      "lokey": 62,
+      "hikey": 63,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "64.ogg",
+      "root": 64,
+      "lokey": 64,
+      "hikey": 65,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "66.ogg",
+      "root": 66,
+      "lokey": 66,
+      "hikey": 66,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "67.ogg",
+      "root": 67,
+      "lokey": 67,
+      "hikey": 68,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "69.ogg",
+      "root": 69,
+      "lokey": 69,
+      "hikey": 70,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "71.ogg",
+      "root": 71,
+      "lokey": 71,
+      "hikey": 71,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 72,
+      "hikey": 73,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "74.ogg",
+      "root": 74,
+      "lokey": 74,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "76.ogg",
+      "root": 76,
+      "lokey": 76,
+      "hikey": 77,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "79.ogg",
+      "root": 79,
+      "lokey": 78,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "woodwinds-piccolo-sus",
+  "label": "Piccolo (Sustained)",
+  "format": 1,
+  "layer": "single",
+  "zones": [
+    {
+      "file": "66.ogg",
+      "root": 66,
+      "lokey": 0,
+      "hikey": 69,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 70,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "78.ogg",
+      "root": 78,
+      "lokey": 76,
+      "hikey": 81,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "84.ogg",
+      "root": 84,
+      "lokey": 82,
+      "hikey": 87,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "90.ogg",
+      "root": 90,
+      "lokey": 88,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}

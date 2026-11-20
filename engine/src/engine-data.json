@@ -1,0 +1,795 @@
+{
+ "chordTable": [
+  [
+   [
+    "maj13",
+    "major13"
+   ],
+   [
+    0,
+    4,
+    7,
+    11,
+    14,
+    21
+   ]
+  ],
+  [
+   [
+    "maj11",
+    "major11"
+   ],
+   [
+    0,
+    4,
+    7,
+    11,
+    14,
+    17
+   ]
+  ],
+  [
+   [
+    "maj9",
+    "major9"
+   ],
+   [
+    0,
+    4,
+    7,
+    11,
+    14
+   ]
+  ],
+  [
+   [
+    "maj7",
+    "major7",
+    "maj",
+    "major"
+   ],
+   [
+    0,
+    4,
+    7,
+    11
+   ]
+  ],
+  [
+   [
+    "m7b5",
+    "min7b5",
+    "m7-5"
+   ],
+   [
+    0,
+    3,
+    6,
+    10
+   ]
+  ],
+  [
+   [
+    "mmaj7",
+    "minmaj7"
+   ],
+   [
+    0,
+    3,
+    7,
+    11
+   ]
+  ],
+  [
+   [
+    "madd9"
+   ],
+   [
+    0,
+    3,
+    7,
+    14
+   ]
+  ],
+  [
+   [
+    "m13",
+    "min13"
+   ],
+   [
+    0,
+    3,
+    7,
+    10,
+    14,
+    21
+   ]
+  ],
+  [
+   [
+    "m11",
+    "min11"
+   ],
+   [
+    0,
+    3,
+    7,
+    10,
+    14,
+    17
+   ]
+  ],
+  [
+   [
+    "m9",
+    "min9"
+   ],
+   [
+    0,
+    3,
+    7,
+    10,
+    14
+   ]
+  ],
+  [
+   [
+    "m7",
+    "min7"
+   ],
+   [
+    0,
+    3,
+    7,
+    10
+   ]
+  ],
+  [
+   [
+    "m6",
+    "min6"
+   ],
+   [
+    0,
+    3,
+    7,
+    9
+   ]
+  ],
+  [
+   [
+    "m",
+    "min",
+    "-"
+   ],
+   [
+    0,
+    3,
+    7
+   ]
+  ],
+  [
+   [
+    "add9"
+   ],
+   [
+    0,
+    4,
+    7,
+    14
+   ]
+  ],
+  [
+   [
+    "7sus4",
+    "7sus"
+   ],
+   [
+    0,
+    5,
+    7,
+    10
+   ]
+  ],
+  [
+   [
+    "7sus2"
+   ],
+   [
+    0,
+    2,
+    7,
+    10
+   ]
+  ],
+  [
+   [
+    "sus2"
+   ],
+   [
+    0,
+    2,
+    7
+   ]
+  ],
+  [
+   [
+    "sus4",
+    "sus"
+   ],
+   [
+    0,
+    5,
+    7
+   ]
+  ],
+  [
+   [
+    "dim7"
+   ],
+   [
+    0,
+    3,
+    6,
+    9
+   ]
+  ],
+  [
+   [
+    "dim",
+    "o"
+   ],
+   [
+    0,
+    3,
+    6
+   ]
+  ],
+  [
+   [
+    "aug",
+    "+"
+   ],
+   [
+    0,
+    4,
+    8
+   ]
+  ],
+  [
+   [
+    "13"
+   ],
+   [
+    0,
+    4,
+    7,
+    10,
+    14,
+    21
+   ]
+  ],
+  [
+   [
+    "11"
+   ],
+   [
+    0,
+    4,
+    7,
+    10,
+    14,
+    17
+   ]
+  ],
+  [
+   [
+    "9"
+   ],
+   [
+    0,
+    4,
+    7,
+    10,
+    14
+   ]
+  ],
+  [
+   [
+    "6"
+   ],
+   [
+    0,
+    4,
+    7,
+    9
+   ]
+  ],
+  [
+   [
+    "7",
+    "dom"
+   ],
+   [
+    0,
+    4,
+    7,
+    10
+   ]
+  ]
+ ],
+ "chordFigures": [
+  [
+   "chord",
+   {
+    "name": "Chord",
+    "step": 1,
+    "steps": "rs"
+   }
+  ],
+  [
+   "stab",
+   {
+    "name": "Stab",
+    "step": 1,
+    "steps": "r'"
+   }
+  ],
+  [
+   "up3",
+   {
+    "name": "1-2-3",
+    "step": 8,
+    "steps": "1 2 3 1 2 3 1 2"
+   }
+  ],
+  [
+   "down3",
+   {
+    "name": "3-2-1",
+    "step": 8,
+    "steps": "3 2 1 3 2 1 3 2"
+   }
+  ],
+  [
+   "up4",
+   {
+    "name": "1-2-3-4",
+    "step": 8,
+    "steps": "1 2 3 4 1 2 3 4"
+   }
+  ],
+  [
+   "down4",
+   {
+    "name": "4-3-2-1",
+    "step": 8,
+    "steps": "4 3 2 1 4 3 2 1"
+   }
+  ],
+  [
+   "updown",
+   {
+    "name": "1-2-3-2",
+    "step": 8,
+    "steps": "1 2 3 2 1 2 3 2"
+   }
+  ],
+  [
+   "a132",
+   {
+    "name": "1-3-2",
+    "step": 8,
+    "steps": "1 3 2 1 3 2 1 3"
+   }
+  ],
+  [
+   "a1243",
+   {
+    "name": "1-2-4-3",
+    "step": 8,
+    "steps": "1 2 4 3 1 2 4 3"
+   }
+  ],
+  [
+   "a1323",
+   {
+    "name": "1-3-2-3",
+    "step": 8,
+    "steps": "1 3 2 3 1 3 2 3"
+   }
+  ],
+  [
+   "a1324",
+   {
+    "name": "1-3-2-4",
+    "step": 8,
+    "steps": "1 3 2 4 1 3 2 4"
+   }
+  ],
+  [
+   "a1432",
+   {
+    "name": "1-4-3-2",
+    "step": 8,
+    "steps": "1 4 3 2 1 4 3 2"
+   }
+  ],
+  [
+   "a2123",
+   {
+    "name": "2-1-2-3",
+    "step": 8,
+    "steps": "2 1 2 3 2 1 2 3"
+   }
+  ]
+ ],
+ "bassFigures": [
+  [
+   "root",
+   {
+    "name": "Root",
+    "step": 1,
+    "steps": "1s"
+   }
+  ],
+  [
+   "rootOct",
+   {
+    "name": "Root + 8",
+    "step": 1,
+    "steps": "1s1-s"
+   }
+  ],
+  [
+   "stab",
+   {
+    "name": "Stab",
+    "step": 1,
+    "steps": "1'"
+   }
+  ],
+  [
+   "fifth",
+   {
+    "name": "Root · 5th",
+    "step": 8,
+    "steps": "1s . . . f . . ."
+   }
+  ],
+  [
+   "twice",
+   {
+    "name": "Root · root",
+    "step": 8,
+    "steps": "1s . . . 1 . . ."
+   }
+  ]
+ ],
+ "styleDefs": [
+  [
+   "pad",
+   {
+    "group": "pads",
+    "chord": "chord",
+    "bass": "root",
+    "trebleLane": {
+     "vel": 0.57,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.57,
+     "hold": false
+    }
+   }
+  ],
+  [
+   "drone",
+   {
+    "group": "pads",
+    "chord": "chord",
+    "bass": "rootOct",
+    "trebleLane": {
+     "vel": 0.5,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.5,
+     "hold": false
+    }
+   }
+  ],
+  [
+   "marker",
+   {
+    "group": "pads",
+    "chord": "stab",
+    "bass": "stab",
+    "trebleLane": {
+     "vel": 0.88,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.88,
+     "hold": false
+    }
+   }
+  ],
+  [
+   "arpeggio1",
+   {
+    "group": "arps",
+    "bass": "root",
+    "chord": {
+     "name": "Arpeggio 1",
+     "step": 8,
+     "steps": ". 1 2 3 4 4 3 2"
+    },
+    "trebleLane": {
+     "vel": 0.79,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.55,
+     "hold": false
+    }
+   }
+  ],
+  [
+   "arpeggio2",
+   {
+    "group": "arps",
+    "bass": "root",
+    "chord": {
+     "name": "Arpeggio 2",
+     "step": 8,
+     "steps": "23 1 2 1 3 1 2 14"
+    },
+    "trebleLane": {
+     "vel": 0.7,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.7,
+     "hold": false,
+     "octave": 2
+    }
+   }
+  ],
+  [
+   "arpeggio3",
+   {
+    "group": "arps",
+    "bass": "fifth",
+    "chord": {
+     "name": "Arpeggio 3",
+     "step": 8,
+     "steps": "1 2 3 2 3 2 3 4"
+    },
+    "trebleLane": {
+     "vel": 0.7,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.7,
+     "hold": false,
+     "octave": 2
+    }
+   }
+  ],
+  [
+   "arpeggio4",
+   {
+    "group": "arps",
+    "bass": "fifth",
+    "chord": {
+     "name": "Arpeggio 4",
+     "step": 8,
+     "steps": "1 3 2 3 2 3 2 3 1 2 1 2 1 2 1 2"
+    },
+    "trebleLane": {
+     "vel": 0.7,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.7,
+     "hold": false,
+     "octave": 2
+    }
+   }
+  ],
+  [
+   "arpeggio5",
+   {
+    "group": "arps",
+    "bass": "twice",
+    "chord": {
+     "name": "Arpeggio 5",
+     "step": 8,
+     "steps": "1 2 3 2 1 4"
+    },
+    "trebleLane": {
+     "vel": 0.7,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.7,
+     "hold": false,
+     "octave": 2
+    }
+   }
+  ],
+  [
+   "arpeggio6",
+   {
+    "group": "arps",
+    "chord": {
+     "name": "Arpeggio 6",
+     "step": 16,
+     "steps": ". . 1 2 . 3 2 1 432 . . . 3 . 2 . . . 1 2 . 3 2 1 432 . . . . . . ."
+    },
+    "bass": {
+     "name": "Arpeggio 6",
+     "step": 8,
+     "steps": "11+ . . . . . . . 11+ . . . . . 2 3"
+    },
+    "trebleLane": {
+     "vel": 0.7
+    },
+    "bassLane": {
+     "vel": 0.7
+    }
+   }
+  ],
+  [
+   "groove1",
+   {
+    "group": "grooves",
+    "chord": {
+     "name": "Groove 1",
+     "step": 16,
+     "steps": ". . . . rs . . . . . . . rs . . ."
+    },
+    "bass": {
+     "name": "Groove 1",
+     "step": 16,
+     "steps": "1' . . . 1' . . . 1 . 2' . f' . @1v'L2'l . 1' . . . 1' . . . 1 . 1^' . 1' . 1v' . 1' . . . 1' . . . 1 . 2' . f' . 2' . 1' . . . 1' . . . 1 . 1+' . 1v . 1+v' ."
+    },
+    "trebleLane": {
+     "vel": 0.7,
+     "hold": false
+    },
+    "bassLane": {
+     "vel": 0.7,
+     "hold": false
+    }
+   }
+  ]
+ ],
+ "laneDefaults": {
+  "bass": {
+   "step": 8,
+   "octave": 1,
+   "vel": 0.85,
+   "len": 4,
+   "hold": true
+  },
+  "treble": {
+   "step": 16,
+   "octave": 3,
+   "vel": 0.7,
+   "len": 4,
+   "hold": false
+  }
+ },
+ "signatures": [
+  {
+   "group": "simple",
+   "sigs": [
+    "2/2",
+    "4/2",
+    "2/4",
+    "3/4",
+    "4/4",
+    "3/8"
+   ]
+  },
+  {
+   "group": "complex",
+   "sigs": [
+    "5/4",
+    "7/4",
+    "5/8",
+    "7/8"
+   ]
+  }
+ ],
+ "swings": [
+  {
+   "key": "none",
+   "value": 0
+  },
+  {
+   "key": "light",
+   "value": 0.2
+  },
+  {
+   "key": "shuffle",
+   "value": 0.3333333333333333
+  },
+  {
+   "key": "hard",
+   "value": 0.5
+  }
+ ],
+ "beatDivisions": [
+  1,
+  2,
+  3,
+  4,
+  6,
+  8
+ ],
+ "mp3Bitrates": [
+  128,
+  192,
+  256,
+  320
+ ],
+ "gridRows": [
+  "r",
+  4,
+  3,
+  2,
+  1,
+  "f"
+ ],
+ "transposeMin": -6,
+ "transposeMax": 6,
+ "styleGroups": [
+  {
+   "key": "pads",
+   "styles": [
+    "pad",
+    "drone",
+    "marker"
+   ]
+  },
+  {
+   "key": "arps",
+   "styles": [
+    "arpeggio1",
+    "arpeggio2",
+    "arpeggio3",
+    "arpeggio4",
+    "arpeggio5",
+    "arpeggio6"
+   ]
+  },
+  {
+   "key": "grooves",
+   "styles": [
+    "groove1"
+   ]
+  }
+ ],
+ "styles": [
+  "pad",
+  "drone",
+  "marker",
+  "arpeggio1",
+  "arpeggio2",
+  "arpeggio3",
+  "arpeggio4",
+  "arpeggio5",
+  "arpeggio6",
+  "groove1"
+ ],
+ "roomKeys": [
+  "none",
+  "room",
+  "chamber",
+  "hall",
+  "church"
+ ]
+}

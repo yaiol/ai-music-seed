@@ -1,0 +1,104 @@
+{
+  "name": "voices-synthpadchoir",
+  "label": "Synth Pad Choir",
+  "format": 1,
+  "layer": "single",
+  "zones": [
+    {
+      "file": "36.ogg",
+      "root": 36,
+      "lokey": 0,
+      "hikey": 39,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "42.ogg",
+      "root": 42,
+      "lokey": 40,
+      "hikey": 45,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "48.ogg",
+      "root": 48,
+      "lokey": 46,
+      "hikey": 51,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "54.ogg",
+      "root": 54,
+      "lokey": 52,
+      "hikey": 57,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "60.ogg",
+      "root": 60,
+      "lokey": 58,
+      "hikey": 63,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "66.ogg",
+      "root": 66,
+      "lokey": 64,
+      "hikey": 69,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "72.ogg",
+      "root": 72,
+      "lokey": 70,
+      "hikey": 75,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "78.ogg",
+      "root": 78,
+      "lokey": 76,
+      "hikey": 81,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "84.ogg",
+      "root": 84,
+      "lokey": 82,
+      "hikey": 87,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "90.ogg",
+      "root": 90,
+      "lokey": 88,
+      "hikey": 93,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "96.ogg",
+      "root": 96,
+      "lokey": 94,
+      "hikey": 99,
+      "lovel": 0,
+      "hivel": 127
+    },
+    {
+      "file": "102.ogg",
+      "root": 102,
+      "lokey": 100,
+      "hikey": 127,
+      "lovel": 0,
+      "hivel": 127
+    }
+  ]
+}
