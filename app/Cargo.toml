@@ -1,6 +1,6 @@
 [package]
 name = "ai-music-seed"
-version = "3.0.0"
+version = "3.0.1"
 edition = "2024"
 description = "Turn a chord progression into audio your AI music generator will actually follow."
 

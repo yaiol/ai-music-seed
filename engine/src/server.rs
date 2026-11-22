@@ -186,7 +186,7 @@ mod tests {
 
     #[test]
     fn packs_and_render() {
-        let dir = std::env::temp_dir().join(format!("amsr-server-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("amsd-server-{}", std::process::id()));
         fs::create_dir_all(dir.join("keys-x")).unwrap();
         fs::write(dir.join("packs.json"), r#"{"format":1,"packs":[]}"#).unwrap();
         fs::write(dir.join("keys-x").join("manifest.json"), "{}").unwrap();

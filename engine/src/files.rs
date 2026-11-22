@@ -91,7 +91,7 @@ mod tests {
 
     #[test]
     fn yams_is_written_like_json_stringify() {
-        let dir = std::env::temp_dir().join(format!("amsr-test-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("amsd-test-{}", std::process::id()));
         fs::create_dir_all(&dir).unwrap();
         let p = dir.join("a.yams");
         let v: Value = serde_json::from_str(r#"{"version":3,"chords":"Am C\nG","bpm":80,"list":[],"o":{}}"#).unwrap();
@@ -104,7 +104,7 @@ mod tests {
 
     #[test]
     fn render_files_land_beside_the_seed() {
-        let dir = std::env::temp_dir().join(format!("amsr-test-r-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("amsd-test-r-{}", std::process::id()));
         let (a, m) = save_render(dir.to_str().unwrap(), "x", b"RIFF", "wav", b"MThd").unwrap();
         assert!(a.ends_with("x.wav") && m.ends_with("x.mid"));
         assert_eq!(fs::read(&a).unwrap(), b"RIFF");

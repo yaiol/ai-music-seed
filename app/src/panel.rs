@@ -517,7 +517,7 @@ pub fn SeedPanel(
         let vel_pct = lane_velocity_percent(&cfg);
         let mirror = if is_t { seed.treble_mirror } else { seed.bass_mirror };
         let play_col = play_col_for(&cfg, n_slots);
-        let cls_block = format!("amsr-seed-lane-block amsr-{lane}");
+        let cls_block = format!("amsd-seed-lane-block amsd-{lane}");
         let lane_name = if is_t { t("lblSeedInstrument") } else { t("lblSeedBassInstrument") };
         let figure_value = if seed.pattern.is_some() || fig_key.is_empty() { CUSTOM_FIGURE.to_owned() } else { fig_key.clone() };
         let show_custom = seed.pattern.is_some() || fig_key.is_empty();
@@ -534,10 +534,10 @@ pub fn SeedPanel(
         let slot_count = lane_len;
         rsx! {
             div { class: "{cls_block}",
-                div { class: "amsr-seed-block",
-                    div { class: "amsr-seed-band",
+                div { class: "amsd-seed-block",
+                    div { class: "amsd-seed-band",
                         select {
-                            class: "uis-ddn-std amsr-seed-figure",
+                            class: "uis-ddn-std amsd-seed-figure",
                             onchange: move |e| {
                                 let v = e.value();
                                 edit(Box::new(move |s: &mut Seed| {
@@ -595,8 +595,8 @@ pub fn SeedPanel(
                         }
                         UisCboFilter {
                             weld: true,
-                            class: "amsr-seed-picker-weld",
-                            id: if is_t { "amsr-family-treble" } else { "amsr-family-bass" },
+                            class: "amsd-seed-picker-weld",
+                            id: if is_t { "amsd-family-treble" } else { "amsd-family-bass" },
                             all_label: t("optSeedInstrumentFamilyAll"),
                             categories,
                             category: family.clone(),
@@ -674,7 +674,7 @@ pub fn SeedPanel(
                                 }))
                             },
                         }
-                        div { class: "amsr-seed-artics",
+                        div { class: "amsd-seed-artics",
                             if !instrument.is_empty() && variants.len() > 1 {
                                 for (value , label , abbr) in variants.iter().cloned() {
                                     button {
@@ -739,10 +739,10 @@ pub fn SeedPanel(
                             value: vol_v,
                             on_change: move |v: f64| edit(Box::new(move |s: &mut Seed| if is_t { s.treble_volume = v } else { s.bass_volume = v })),
                         }
-                        span { class: "amsr-seed-lane-name", "{lane_name}" }
+                        span { class: "amsd-seed-lane-name", "{lane_name}" }
                     }
-                    div { class: "amsr-seed-gridwrap",
-                        div { class: "amsr-seed-gridscroll", "data-gs": if is_t { "0" } else { "1" },
+                    div { class: "amsd-seed-gridwrap",
+                        div { class: "amsd-seed-gridscroll", "data-gs": if is_t { "0" } else { "1" },
                             StepGrid {
                                 lang: lang.clone(),
                                 lane,
@@ -757,7 +757,7 @@ pub fn SeedPanel(
                                 on_cell: EventHandler::new(on_cell.clone()),
                             }
                         }
-                        div { class: "amsr-seed-strip",
+                        div { class: "amsd-seed-strip",
                             button {
                                 r#type: "button",
                                 title: t("tipSeedLaneMirror"),
@@ -801,7 +801,7 @@ pub fn SeedPanel(
                                 onclick: move |_| lane_action(lane, "remove"),
                                 Icon { width: 14, height: 14, icon: LdMinus }
                             }
-                            span { class: "amsr-seed-count amsr-seed-count-span mono", title: t("tipSeedSlots"), "{slot_count}" }
+                            span { class: "amsd-seed-count amsd-seed-count-span mono", title: t("tipSeedSlots"), "{slot_count}" }
                         }
                     }
                 }
@@ -831,7 +831,7 @@ pub fn SeedPanel(
     let output_hint = format!("{} {}", t("hntSeedOutput"), OUTPUT_TOKEN_NAMES.iter().map(|k| format!("{{{k}}}")).collect::<Vec<_>>().join(", "));
 
     rsx! {
-        div { class: "amsr-seed-panel uis-dlg-form",
+        div { class: "amsd-seed-panel uis-dlg-form",
             div { class: "uis-tab-set vertical",
                 button {
                     r#type: "button",
@@ -846,12 +846,12 @@ pub fn SeedPanel(
                     {t("tabSeedRender")}
                 }
             }
-            div { class: "amsr-seed-col amsr-seed-col-rest",
+            div { class: "amsd-seed-col amsd-seed-col-rest",
                 if tab == "music" {
-                    div { class: "amsr-seed-music",
+                    div { class: "amsd-seed-music",
                         UisPiano { lit: lit_keys.clone(), on_play: move |m: u32| on_audition.call(m) }
-                        div { class: "amsr-seed-toprow",
-                            div { class: "amsr-seed-field",
+                        div { class: "amsd-seed-toprow",
+                            div { class: "amsd-seed-field",
                                 label { class: "uis-fld-labelled-label", {t("lblSeedBpm")} }
                                 UisNum {
                                     min: 20.0,
@@ -862,7 +862,7 @@ pub fn SeedPanel(
                                     on_change: move |v: Option<f64>| if let Some(v) = v { edit(Box::new(move |s: &mut Seed| s.bpm = v)) },
                                 }
                             }
-                            div { class: "amsr-seed-field",
+                            div { class: "amsd-seed-field",
                                 label { class: "uis-fld-labelled-label", {t("lblSeedStyle")} }
                                 select {
                                     class: "uis-ddn-std",
@@ -888,7 +888,7 @@ pub fn SeedPanel(
                                     }
                                 }
                             }
-                            div { class: "amsr-seed-field",
+                            div { class: "amsd-seed-field",
                                 label { class: "uis-fld-labelled-label", {t("lblSeedSig")} }
                                 select {
                                     class: "uis-ddn-std",
@@ -908,7 +908,7 @@ pub fn SeedPanel(
                                     }
                                 }
                             }
-                            div { class: "amsr-seed-field",
+                            div { class: "amsd-seed-field",
                                 label { class: "uis-fld-labelled-label", {t("lblSeedBeatDiv")} }
                                 select {
                                     class: "uis-ddn-std",
@@ -926,7 +926,7 @@ pub fn SeedPanel(
                                     }
                                 }
                             }
-                            div { class: "amsr-seed-field",
+                            div { class: "amsd-seed-field",
                                 label { class: "uis-fld-labelled-label", {t("lblSeedSwing")} }
                                 select {
                                     class: "uis-ddn-std",
@@ -944,7 +944,7 @@ pub fn SeedPanel(
                                 }
                             }
                             div { class: "uis-barh-sep" }
-                            div { class: "amsr-seed-field",
+                            div { class: "amsd-seed-field",
                                 label { class: "uis-fld-labelled-label", {t("lblSeedReverb")} }
                                 select {
                                     class: "uis-ddn-std",
@@ -958,7 +958,7 @@ pub fn SeedPanel(
                                     }
                                 }
                             }
-                            div { class: "amsr-seed-field",
+                            div { class: "amsd-seed-field",
                                 label { class: "uis-fld-labelled-label", {t("lblSeedHighpass")} }
                                 UisNum {
                                     min: 0.0,
@@ -969,7 +969,7 @@ pub fn SeedPanel(
                                     on_change: move |v: Option<f64>| if let Some(v) = v { edit(Box::new(move |s: &mut Seed| s.highpass = v)) },
                                 }
                             }
-                            div { class: "amsr-seed-field",
+                            div { class: "amsd-seed-field",
                                 label { class: "uis-fld-labelled-label", {t("lblSeedLowpass")} }
                                 UisNum {
                                     min: 0.0,
@@ -989,11 +989,11 @@ pub fn SeedPanel(
                                 {if playing { t("btnSeedStop") } else { t("btnSeedPlay") }}
                             }
                         }
-                        div { class: "amsr-seed-stackrow",
-                            div { class: "amsr-seed-flagcol",
-                                div { class: "amsr-seed-flaggroup",
-                                    span { class: "amsr-seed-flaglabel", {t("lblSeedMode")} }
-                                    div { class: "amsr-seed-flagrow",
+                        div { class: "amsd-seed-stackrow",
+                            div { class: "amsd-seed-flagcol",
+                                div { class: "amsd-seed-flaggroup",
+                                    span { class: "amsd-seed-flaglabel", {t("lblSeedMode")} }
+                                    div { class: "amsd-seed-flagrow",
                                         button {
                                             r#type: "button",
                                             class: if note_mode() == "edit" { "uis-btn ico small active" } else { "uis-btn ico small" },
@@ -1011,9 +1011,9 @@ pub fn SeedPanel(
                                     }
                                 }
                                 for (gk , flags) in FLAG_GROUPS {
-                                    div { key: "{gk}", class: "amsr-seed-flaggroup",
-                                        span { class: "amsr-seed-flaglabel", {labels::flag_group(t_ref, gk)} }
-                                        div { class: "amsr-seed-flagrow",
+                                    div { key: "{gk}", class: "amsd-seed-flaggroup",
+                                        span { class: "amsd-seed-flaglabel", {labels::flag_group(t_ref, gk)} }
+                                        div { class: "amsd-seed-flagrow",
                                             for (fk , glyph) in flags.iter().copied() {
                                                 button {
                                                     key: "{fk}",
@@ -1029,12 +1029,12 @@ pub fn SeedPanel(
                                     }
                                 }
                             }
-                            div { class: "amsr-seed-stack",
+                            div { class: "amsd-seed-stack",
                                 {render_lane(Which::Treble)}
                                 {render_lane(Which::Bass)}
-                                div { class: "amsr-seed-prog",
-                                    div { class: "amsr-seed-block",
-                                        div { class: "amsr-seed-band",
+                                div { class: "amsd-seed-prog",
+                                    div { class: "amsd-seed-block",
+                                        div { class: "amsd-seed-band",
                                             UisKnob {
                                                 inline: true,
                                                 label: cap_transpose_l.clone(),
@@ -1045,12 +1045,12 @@ pub fn SeedPanel(
                                                 value: f64::from(transpose),
                                                 on_change: move |v: f64| edit(Box::new(move |s: &mut Seed| s.transpose = v)),
                                             }
-                                            span { class: "amsr-seed-lane-name", {t("lblSeedChords")} }
+                                            span { class: "amsd-seed-lane-name", {t("lblSeedChords")} }
                                         }
-                                        div { class: "amsr-seed-gridwrap",
+                                        div { class: "amsd-seed-gridwrap",
                                             if chords_as_text() {
                                                 textarea {
-                                                    class: "uis-txt-area mono amsr-seed-chordtext",
+                                                    class: "uis-txt-area mono amsd-seed-chordtext",
                                                     autofocus: true,
                                                     value: "{progression}",
                                                     placeholder: t("plhSeedProgression"),
@@ -1067,41 +1067,41 @@ pub fn SeedPanel(
                                                     },
                                                 }
                                             } else {
-                                                div { class: "amsr-seed-gridscroll", "data-gs": "2",
+                                                div { class: "amsd-seed-gridscroll", "data-gs": "2",
                                                     ChordStrip { progression: progression.clone(), transpose, geom, play_q }
                                                 }
                                             }
-                                            div { class: "amsr-seed-strip",
+                                            div { class: "amsd-seed-strip",
                                                 button {
                                                     r#type: "button",
-                                                    class: if chords_as_text() { "uis-btn ico small amsr-seed-strip-edit active" } else { "uis-btn ico small amsr-seed-strip-edit" },
+                                                    class: if chords_as_text() { "uis-btn ico small amsd-seed-strip-edit active" } else { "uis-btn ico small amsd-seed-strip-edit" },
                                                     title: t("tipSeedChordsEdit"),
                                                     onclick: move |_| chords_as_text.toggle(),
                                                     Icon { width: 14, height: 14, icon: LdPencil }
                                                 }
                                                 button {
                                                     r#type: "button",
-                                                    class: "uis-btn ico small amsr-seed-strip-add",
+                                                    class: "uis-btn ico small amsd-seed-strip-add",
                                                     title: t("tipSeedBarsAdd"),
                                                     onclick: move |_| edit(Box::new(|s: &mut Seed| s.bars += 0.25)),
                                                     Icon { width: 14, height: 14, icon: LdPlus }
                                                 }
                                                 button {
                                                     r#type: "button",
-                                                    class: "uis-btn ico small amsr-seed-strip-sub",
+                                                    class: "uis-btn ico small amsd-seed-strip-sub",
                                                     title: t("tipSeedBarsRemove"),
                                                     disabled: seed.bars <= 0.25,
                                                     onclick: move |_| edit(Box::new(|s: &mut Seed| s.bars -= 0.25)),
                                                     Icon { width: 14, height: 14, icon: LdMinus }
                                                 }
-                                                span { class: "amsr-seed-count amsr-seed-count-span mono", title: t("lblSeedBars"), "{engine::seed::js_str(seed.bars)}" }
+                                                span { class: "amsd-seed-count amsd-seed-count-span mono", title: t("lblSeedBars"), "{engine::seed::js_str(seed.bars)}" }
                                             }
                                         }
                                     }
                                 }
-                                div { class: "amsr-seed-scrollrow",
-                                    div { class: "amsr-seed-scrollbar", "data-gs": "3",
-                                        div { class: "amsr-seed-scrollspacer", style: "width: 0px" }
+                                div { class: "amsd-seed-scrollrow",
+                                    div { class: "amsd-seed-scrollbar", "data-gs": "3",
+                                        div { class: "amsd-seed-scrollspacer", style: "width: 0px" }
                                     }
                                 }
                             }
@@ -1109,8 +1109,8 @@ pub fn SeedPanel(
                     }
                 }
                 if tab == "render" {
-                    div { class: "amsr-seed-grid",
-                        div { class: "amsr-seed-field amsr-seed-field-name",
+                    div { class: "amsd-seed-grid",
+                        div { class: "amsd-seed-field amsd-seed-field-name",
                             label { class: "uis-fld-labelled-label", {t("lblSeedName")} }
                             input {
                                 class: "uis-txt",
@@ -1122,7 +1122,7 @@ pub fn SeedPanel(
                                 },
                             }
                         }
-                        div { class: "amsr-seed-field",
+                        div { class: "amsd-seed-field",
                             label { class: "uis-fld-labelled-label", {t("lblSeedLoops")} }
                             UisNum {
                                 min: 1.0,
@@ -1133,7 +1133,7 @@ pub fn SeedPanel(
                                 on_change: move |v: Option<f64>| if let Some(v) = v { edit(Box::new(move |s: &mut Seed| s.loops = v)) },
                             }
                         }
-                        div { class: "amsr-seed-field",
+                        div { class: "amsd-seed-field",
                             label { class: "uis-fld-labelled-label", {t("lblSeedFormat")} }
                             select {
                                 class: "uis-ddn-std",
@@ -1146,7 +1146,7 @@ pub fn SeedPanel(
                                 option { value: "wav", selected: seed.format == "wav", {t("optSeedFormatWav")} }
                             }
                         }
-                        div { class: "amsr-seed-field",
+                        div { class: "amsd-seed-field",
                             label { class: "uis-fld-labelled-label", {t("lblSeedMp3Bitrate")} }
                             select {
                                 class: "uis-ddn-std",
@@ -1162,7 +1162,7 @@ pub fn SeedPanel(
                             }
                         }
                     }
-                    div { class: "amsr-seed-field",
+                    div { class: "amsd-seed-field",
                         label { class: "uis-fld-labelled-label", {t("lblSeedOutput")} }
                         input {
                             class: "uis-txt",
@@ -1175,24 +1175,24 @@ pub fn SeedPanel(
                         }
                         span { class: "uis-hnt", "{output_hint}" }
                     }
-                    div { class: "amsr-seed-summary",
-                        span { class: "amsr-seed-summary-stat",
-                            span { class: "amsr-seed-summary-label", {t("lblSeedSummaryChords")} }
-                            span { class: "amsr-seed-summary-value mono", "{summary.count}" }
+                    div { class: "amsd-seed-summary",
+                        span { class: "amsd-seed-summary-stat",
+                            span { class: "amsd-seed-summary-label", {t("lblSeedSummaryChords")} }
+                            span { class: "amsd-seed-summary-value mono", "{summary.count}" }
                         }
-                        span { class: "amsr-seed-summary-stat",
-                            span { class: "amsr-seed-summary-label", {t("lblSeedSummaryDuration")} }
-                            span { class: "amsr-seed-summary-value mono", {if summary.sig_bad { "-".to_owned() } else { fmt_duration(summary.seconds) }} }
+                        span { class: "amsd-seed-summary-stat",
+                            span { class: "amsd-seed-summary-label", {t("lblSeedSummaryDuration")} }
+                            span { class: "amsd-seed-summary-value mono", {if summary.sig_bad { "-".to_owned() } else { fmt_duration(summary.seconds) }} }
                         }
-                        span { class: "amsr-seed-summary-stat",
-                            span { class: "amsr-seed-summary-label", {t("lblSeedSummarySize")} }
-                            span { class: "amsr-seed-summary-value mono", {if summary.sig_bad { "-".to_owned() } else { fmt_size(summary.audio_bytes) }} }
+                        span { class: "amsd-seed-summary-stat",
+                            span { class: "amsd-seed-summary-label", {t("lblSeedSummarySize")} }
+                            span { class: "amsd-seed-summary-value mono", {if summary.sig_bad { "-".to_owned() } else { fmt_size(summary.audio_bytes) }} }
                         }
                         if summary.sig_bad {
-                            span { class: "amsr-seed-summary-warn", {t("msgSeedSummarySigBad")} }
+                            span { class: "amsd-seed-summary-warn", {t("msgSeedSummarySigBad")} }
                         }
                         if !summary.invalid.is_empty() {
-                            span { class: "amsr-seed-summary-warn",
+                            span { class: "amsd-seed-summary-warn",
                                 {t("msgSeedSummaryInvalid")}
                                 " "
                                 span { class: "mono", "{invalid_text}" }
@@ -1200,7 +1200,7 @@ pub fn SeedPanel(
                         }
                     }
                 }
-                div { class: "amsr-seed-actions",
+                div { class: "amsd-seed-actions",
                     if tab == "render" {
                         button { class: "uis-btn primary", disabled: render_blocked, onclick: move |_| on_render.call(()),
                             Icon { width: 14, height: 14, icon: LdAudioWaveform }
@@ -1211,14 +1211,14 @@ pub fn SeedPanel(
                         span { class: "uis-hnt", {t("hntSeedRenderNeedsSave")} }
                     }
                     if !seed.error.is_empty() {
-                        span { class: "amsr-seed-error", "{seed.error}" }
+                        span { class: "amsd-seed-error", "{seed.error}" }
                     }
                 }
                 if let (Some((audio, midi)), true) = (seed.result.clone(), tab == "render") {
-                    div { class: "amsr-seed-result",
-                        div { class: "amsr-seed-result-head", {t("lblSeedResult")} }
+                    div { class: "amsd-seed-result",
+                        div { class: "amsd-seed-result-head", {t("lblSeedResult")} }
                         button {
-                            class: "amsr-seed-result-file",
+                            class: "amsd-seed-result-file",
                             onclick: {
                                 let audio = audio.clone();
                                 move |_| on_reveal.call(audio.clone())
@@ -1227,7 +1227,7 @@ pub fn SeedPanel(
                             span { class: "mono", "{audio}" }
                         }
                         button {
-                            class: "amsr-seed-result-file",
+                            class: "amsd-seed-result-file",
                             onclick: {
                                 let midi = midi.clone();
                                 move |_| on_reveal.call(midi.clone())
@@ -1275,7 +1275,7 @@ if (!window.__amsrScroll) {
     syncing = false;
   }, true);
   setInterval(() => {
-    const sp = document.querySelector('.amsr-seed-scrollspacer');
+    const sp = document.querySelector('.amsd-seed-scrollspacer');
     if (!sp) return;
     let w = 0;
     document.querySelectorAll('[data-gs="0"],[data-gs="1"],[data-gs="2"]').forEach((g) => { w = Math.max(w, g.scrollWidth); });

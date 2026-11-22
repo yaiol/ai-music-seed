@@ -180,7 +180,7 @@ pub fn StepGrid(
                 let block_cls = format!("uis-grd-sequencer-cell hit{}{}", col_class(c, cpb, play_col), if is_sel { " selected" } else { "" });
                 let style = format!("--uis-rows: {block_rows}; grid-column: {}; grid-row: {} / span {block_rows};", c + 2, row_line(1));
                 let flags = nt.as_ref().map(|n| note_flags(n, early)).unwrap_or_default();
-                let bid = format!("amsr-rb-{lane}-{c}");
+                let bid = format!("amsd-rb-{lane}-{c}");
                 let bid2 = bid.clone();
                 out.push(rsx! {
                     button {

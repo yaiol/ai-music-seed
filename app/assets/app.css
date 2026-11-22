@@ -16,7 +16,7 @@ body {
 /* ─── Workspace ───────────────────────────────────────────────────────── */
 /* amsd is a "dialog app" — its whole main view is a dialog-style form, so the
    main surface is the dialog background (not the generic --uis-bg body surface).
-   Pairs with .uis-dlg-form on .amsr-seed-panel (field styling). See the workspace-wide
+   Pairs with .uis-dlg-form on .amsd-seed-panel (field styling). See the workspace-wide
    "kill --uis-bg" goal: every main view resolves to a named semantic surface. */
 .workspace {
   padding: 16px 20px;
@@ -30,28 +30,28 @@ body {
    tabs cost width, not height (the 1080 gate).
    No max-width: the panel is a compact-instrument surface and uses the whole
    window — screen space is the scarce resource (2026-08-30). */
-.amsr-seed-panel {
+.amsd-seed-panel {
   min-height: 100%;
   display: flex; flex-direction: row; align-items: stretch; gap: 14px;
 }
 /* The two LANE colours — each lane block, and the keyboard keys it lights, are
    painted with its own. Defaults here, on :root so the theme's accent resolves;
    a colour picked in Settings overrides the token inline on <html> (App.jsx).
-   ⚠ Never declare them on a descendant again (they sat on .amsr-seed-panel): a
+   ⚠ Never declare them on a descendant again (they sat on .amsd-seed-panel): a
    declaration below <html> beats the inherited override and Settings does nothing. */
 :root { --seed-treble: var(--uis-accent); --seed-bass: #ff6eb4; --seed-chords: #4dc8c8; }
 /* The piano lights its two colours: the treble lane's and the bass lane's. */
 :root { --uis-pno-lit-a: var(--seed-treble); --uis-pno-lit-b: var(--seed-bass); }
-.amsr-seed-col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-.amsr-seed-col-rest { flex: 1; }
-.amsr-seed-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.amsd-seed-col { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.amsd-seed-col-rest { flex: 1; }
+.amsd-seed-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 /* Field hints use the shared .dlg-hint (uis-app.css §9). */
 /* Chord textarea + all form fields use the shared .uis-txt-area / .uis-txt /
    .uis-ddn-std (./lib/dialog.css); only the chord textarea keeps a mono font inline. */
 /* The Render tab's fields: four CONTENT-SIZED columns + a flexible filler, so
    ordinary fields stay compact on the left instead of stretching across the
    full-width panel. */
-.amsr-seed-grid {
+.amsd-seed-grid {
   display: grid; grid-template-columns: repeat(4, max-content) 1fr; gap: 14px;
 }
 /* ═══ The Music tab — the style editor ═══════════════════════════════════
@@ -69,28 +69,28 @@ body {
    captions at all and no separators, and the knobs'
    own captions are three-letter abbreviations. No vertical padding
    between stacked blocks — it is off-unit and pushes everything below it. */
-.amsr-seed-music { display: flex; flex-direction: column; gap: 8px; }
-.amsr-seed-toprow { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
-.amsr-seed-field-name { flex: 1 1 180px; min-width: 130px; }
-.amsr-seed-stackrow { display: flex; align-items: flex-start; gap: 8px;
+.amsd-seed-music { display: flex; flex-direction: column; gap: 8px; }
+.amsd-seed-toprow { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+.amsd-seed-field-name { flex: 1 1 180px; min-width: 130px; }
+.amsd-seed-stackrow { display: flex; align-items: flex-start; gap: 8px;
   --seed-gutter: 62px; --seed-gap: 8px; --seed-strip: 42px; }   /* strip = two 20px columns + gap */
 /* the grids are as wide as their columns (square cells, never stretched); a
-   grid wider than the view scrolls INSIDE its own `.amsr-seed-gridscroll` (below),
+   grid wider than the view scrolls INSIDE its own `.amsd-seed-gridscroll` (below),
    it does not shrink the cells and it does not drag the block's tools with it */
-.amsr-seed-stack { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.amsr-seed-lane-block, .amsr-seed-prog { display: flex; align-items: stretch; border: 1px solid var(--uis-border); }
-.amsr-seed-lane-block.amsr-treble { --uis-accent: var(--seed-treble); border-left: 3px solid var(--uis-accent); border-radius: 7px 7px 0 0; }
-.amsr-seed-lane-block.amsr-bass { --uis-accent: var(--seed-bass); border-left: 3px solid var(--uis-accent); margin-top: -1px; }
+.amsd-seed-stack { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.amsd-seed-lane-block, .amsd-seed-prog { display: flex; align-items: stretch; border: 1px solid var(--uis-border); }
+.amsd-seed-lane-block.amsd-treble { --uis-accent: var(--seed-treble); border-left: 3px solid var(--uis-accent); border-radius: 7px 7px 0 0; }
+.amsd-seed-lane-block.amsd-bass { --uis-accent: var(--seed-bass); border-left: 3px solid var(--uis-accent); margin-top: -1px; }
 /* the chords block carries its colour exactly like a lane: the accent its
    controls, spans and name read, and the same 3px left edge (which also lines
    its grid up with the lanes' — at 1px it started 2px further left) */
-.amsr-seed-prog { --uis-accent: var(--seed-chords); border-left: 3px solid var(--uis-accent); margin-top: -1px; border-radius: 0 0 7px 7px; }
-.amsr-seed-block { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.amsd-seed-prog { --uis-accent: var(--seed-chords); border-left: 3px solid var(--uis-accent); margin-top: -1px; border-radius: 0 0 7px 7px; }
+.amsd-seed-block { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 /* the band runs the FULL width of its lane block — it used to stop where the
    grid stopped, back when the grid stretched to fill the row; now the grid is
    fixed-width squares and ends far to the left, so that reservation only
    parked an empty strip to the right of the knobs */
-.amsr-seed-band {
+.amsd-seed-band {
   display: flex; align-items: center; flex-wrap: nowrap; gap: 4px; min-width: 0;
   height: calc(var(--uis-grd-sequencer-u) * 2); padding: 0 10px;
   border-bottom: 1px solid var(--uis-border);
@@ -100,61 +100,61 @@ body {
    wins any width fight on load order and the select swallows the band, but a
    flex item's basis beats its width on the main axis regardless. (Also the
    only way to size them without a local rule on the catalog's `.uis-ddn-std`.) */
-.amsr-seed-band .amsr-seed-figure { flex: 0 0 150px; }
+.amsd-seed-band .amsd-seed-figure { flex: 0 0 150px; }
 /* The NAME is a FIXED field — wide enough for the longest instrument
    ("Bass Rickenbacker") and not a pixel more; letting it absorb the band's
    slack stretched it across the whole lane, which is not what a name needs. */
 /* 230 for the name field itself + 60 for the two step chevrons welded after
    it — the chevrons are added to the weld's WIDTH, never taken out of the
    name's, or the longest instrument stops fitting. */
-.amsr-seed-band .amsr-seed-picker-weld { flex: 0 0 290px; }
+.amsd-seed-band .amsd-seed-picker-weld { flex: 0 0 290px; }
 /* The lane / chords NAME sits at the RIGHT edge of its row (2026-09-05) — the
    left column is being cleared for the note-editing flags, which belong beside
    the notes they act on, and these labels were the only thing occupying it. */
-.amsr-seed-lane-name {
+.amsd-seed-lane-name {
   flex: 0 0 var(--seed-gutter); text-align: right; font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--uis-accent);
 }
-.amsr-seed-gridwrap { display: flex; align-items: stretch; gap: var(--seed-gap); padding: 0 10px; }
+.amsd-seed-gridwrap { display: flex; align-items: stretch; gap: var(--seed-gap); padding: 0 10px; }
 /* The name ends every band at its right edge. A lane band's articulation zone
    already takes the slack; the CHORDS band has nothing to, so the auto margin
    absorbs the free space in front of the name (and is 0 wherever there is none). */
-.amsr-seed-band > .amsr-seed-lane-name { margin-left: auto; }
+.amsd-seed-band > .amsd-seed-lane-name { margin-left: auto; }
 /* the strip: TWO columns of row boxes on the grid's row unit (auto-rows 1u,
    the 20px box inside — the .uis-grd-sequencer rule). A lane strip PAIRS BY FUNCTION,
    one action per row: mirror / clear, shift left / right, add / remove step —
    the two halves of a thing sit side by side, where the eye expects them. */
-.amsr-seed-strip {
+.amsd-seed-strip {
   flex: 0 0 var(--seed-strip); display: grid; grid-template-columns: 20px 20px;
   grid-auto-rows: var(--uis-grd-sequencer-u); column-gap: var(--uis-grd-sequencer-gap); row-gap: 0; align-items: start;
 }
 /* the lane's step count — a LABEL, under the + / − that change it, on the
    strip's row unit like every box beside the grid */
-.amsr-seed-count {
+.amsd-seed-count {
   height: 20px; line-height: 20px; text-align: center;
   font-size: 10px; font-weight: 600; color: var(--uis-text-dim); letter-spacing: -.02em;
 }
 /* the lane's count sits under BOTH halves of the + / − pair it labels, so it
    spans the strip rather than parking under one of them */
-.amsr-seed-count-span { grid-column: 1 / -1; }
+.amsd-seed-count-span { grid-column: 1 / -1; }
 /* The chords strip is the odd one: its first row holds only the ✎, so the pair
    below has to be PLACED rather than flowed — row-major flow would put + beside
    the ✎ and − alone on the next row. The lane strips need no such rule: both
    their columns are full, so the flow interleaves them on its own. The + / −
    sit side by side like every lane's pair, and the count spans under them
-   (`.amsr-seed-count-span`, which auto-places onto the first free row = 3). */
-.amsr-seed-strip-edit { grid-row: 1; grid-column: 1; }
-.amsr-seed-strip-add  { grid-row: 2; grid-column: 1; }
-.amsr-seed-strip-sub  { grid-row: 2; grid-column: 2; }
-.amsr-seed-lane-block.amsr-treble .amsr-seed-strip { padding-top: var(--uis-grd-sequencer-u); }   /* clear the ruler row */
+   (`.amsd-seed-count-span`, which auto-places onto the first free row = 3). */
+.amsd-seed-strip-edit { grid-row: 1; grid-column: 1; }
+.amsd-seed-strip-add  { grid-row: 2; grid-column: 1; }
+.amsd-seed-strip-sub  { grid-row: 2; grid-column: 2; }
+.amsd-seed-lane-block.amsd-treble .amsd-seed-strip { padding-top: var(--uis-grd-sequencer-u); }   /* clear the ruler row */
 /* ⚠ THE SCROLL IS THE GRID'S, NOT THE BLOCK'S (user ruling 2026-09-09:
    "the slider should be within the notes block, independent from the tools
-   block"). Only the notes scroll: `.amsr-seed-gridscroll` wraps the StepGrid alone,
+   block"). Only the notes scroll: `.amsd-seed-gridscroll` wraps the StepGrid alone,
    so the strip and the lane / chord name are its SIBLINGS and never move — a
    64-step lane is several screens wide, and when the whole block scrolled, a
    lane's own + / − sat off the right edge (to lengthen a lane you first had to
    travel to its end).
-   ⚠ Do NOT go back to `overflow-x` on `.amsr-seed-stack` with the strips made
+   ⚠ Do NOT go back to `overflow-x` on `.amsd-seed-stack` with the strips made
    `position: sticky`: sticky binds to the SCROLLPORT, and with the block itself
    scrolling the strips pinned mid-grid instead of at the window edge, floating
    over the cells. The scroller has to be the grid.
@@ -162,10 +162,10 @@ body {
    (they share a column count from `stackGeom`, so the ranges are identical),
    which is what holds a chord over the beats it owns. Only the CHORDS block
    shows a scrollbar; it is the bottom one, where the old single bar was. */
-.amsr-seed-gridscroll { flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden; }
+.amsd-seed-gridscroll { flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden; }
 /* every grid hides its own bar — the stack has ONE, below, and three stacked
    bars for one axis is three ways to ask the same question */
-.amsr-seed-gridscroll { scrollbar-width: none; }
+.amsd-seed-gridscroll { scrollbar-width: none; }
 /* ⚠ The bar is its OWN element, never one of the grids': a grid shows a bar
    only when IT overflows, and they do not overflow alike (the chords block is
    four blocks wide where a lane is 64 steps), so electing one leaves the stack
@@ -173,23 +173,23 @@ body {
    always there; the spacer is measured from the widest grid. The ::after clears
    the strip, so the bar spans exactly the scrolling zone — every block's name
    lives in its band now, so no grid row carries a name gutter to clear. */
-.amsr-seed-scrollrow { display: flex; gap: var(--seed-gap); padding: 2px 10px 0; }
-.amsr-seed-scrollrow::after { content: ''; flex: 0 0 var(--seed-strip); }
-.amsr-seed-scrollbar { flex: 1 1 auto; min-width: 0; overflow-x: scroll; overflow-y: hidden; }
-.amsr-seed-scrollspacer { height: 1px; }
-.amsr-seed-chordtext { flex: 1; min-height: calc(var(--uis-grd-sequencer-u) * 5); resize: vertical; }
+.amsd-seed-scrollrow { display: flex; gap: var(--seed-gap); padding: 2px 10px 0; }
+.amsd-seed-scrollrow::after { content: ''; flex: 0 0 var(--seed-strip); }
+.amsd-seed-scrollbar { flex: 1 1 auto; min-width: 0; overflow-x: scroll; overflow-y: hidden; }
+.amsd-seed-scrollspacer { height: 1px; }
+.amsd-seed-chordtext { flex: 1; min-height: calc(var(--uis-grd-sequencer-u) * 5); resize: vertical; }
 /* the flags: start level with the first note row (band 2u + ruler 1u); a
    label row and a button row per type, each one row unit tall */
-.amsr-seed-flagcol {
+.amsd-seed-flagcol {
   flex: 0 0 auto; border: 1px solid var(--uis-border); border-radius: 7px;
   padding: 0 8px 6px 7px; margin-top: calc(var(--uis-grd-sequencer-u) * 3);
 }
-.amsr-seed-flaggroup { display: grid; grid-template-rows: var(--uis-grd-sequencer-u) var(--uis-grd-sequencer-u); align-items: center; }
-.amsr-seed-flaglabel {
+.amsd-seed-flaggroup { display: grid; grid-template-rows: var(--uis-grd-sequencer-u) var(--uis-grd-sequencer-u); align-items: center; }
+.amsd-seed-flaglabel {
   font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 9px; letter-spacing: .05em;
   text-transform: uppercase; color: var(--uis-text-mute); white-space: nowrap; line-height: var(--uis-grd-sequencer-u);
 }
-.amsr-seed-flagrow { display: flex; gap: 3px; }
+.amsd-seed-flagrow { display: flex; gap: 3px; }
 /* The selected instrument's articulation buttons — a compact opt-btn row under
    the picker (catalog .uis-btn.small.uis-opt; only the row's LAYOUT differs from
    the standard opt-btns: compact, right-aligned under the control, no
@@ -197,7 +197,7 @@ body {
 /* The articulation zone owns the band's slack, so the mix knobs sit at the
    same place on every lane and never jump when the instrument changes. The
    pills keep their natural width (`--uis-opt-flex`, the catalog's token). */
-.amsr-seed-artics {
+.amsd-seed-artics {
   flex: 1 1 0; min-width: 0; display: flex; gap: 6px; flex-wrap: nowrap;
   overflow-x: auto;
   /* the pills carry the SHORT name (ARTIC_ABBR) — three characters, so the widest
@@ -208,56 +208,56 @@ body {
 
 
 /* Live projection of the seed about to be rendered */
-.amsr-seed-summary {
+.amsd-seed-summary {
   display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px;
   background: var(--uis-bg-row); border: 1px solid var(--uis-border);
   border-radius: 8px; padding: 10px 14px;
 }
-.amsr-seed-summary-stat { display: flex; align-items: baseline; gap: 8px; }
-.amsr-seed-summary-label {
+.amsd-seed-summary-stat { display: flex; align-items: baseline; gap: 8px; }
+.amsd-seed-summary-label {
   font-size: 11px; letter-spacing: .5px; text-transform: uppercase;
   font-weight: 600; color: var(--uis-text-mute);
 }
-.amsr-seed-summary-value { font-size: 14px; font-weight: 600; color: var(--uis-text); }
-.amsr-seed-summary-warn { color: var(--uis-warn); font-size: 12px; }
+.amsd-seed-summary-value { font-size: 14px; font-weight: 600; color: var(--uis-text); }
+.amsd-seed-summary-warn { color: var(--uis-warn); font-size: 12px; }
 
-.amsr-seed-actions { display: flex; align-items: center; gap: 14px; }
-.amsr-seed-error { color: var(--uis-danger); font-size: 13px; }
-.amsr-seed-result {
+.amsd-seed-actions { display: flex; align-items: center; gap: 14px; }
+.amsd-seed-error { color: var(--uis-danger); font-size: 13px; }
+.amsd-seed-result {
   display: flex; flex-direction: column; gap: 8px;
   background: var(--uis-bg-elev); border: 1px solid var(--uis-border);
   border-radius: 10px; padding: 16px;
 }
-.amsr-seed-result-head {
+.amsd-seed-result-head {
   font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
   font-weight: 700; color: var(--uis-ok);
 }
-.amsr-seed-result-file {
+.amsd-seed-result-file {
   display: flex; align-items: center; gap: 8px;
   background: var(--uis-bg-row); border: 1px solid var(--uis-border);
   border-radius: 6px; padding: 8px 10px;
   color: var(--uis-text); cursor: pointer; text-align: left;
   font-size: 12px; transition: background .12s, border-color .12s;
 }
-.amsr-seed-result-file:hover { background: var(--uis-bg-hov); border-color: var(--uis-border-strong); }
-.amsr-seed-result-file span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.amsd-seed-result-file:hover { background: var(--uis-bg-hov); border-color: var(--uis-border-strong); }
+.amsd-seed-result-file span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* The file-drop overlay (.uis-ovl-drop) is the shared catalog look in uis-app.css,
    rendered by the shared LbsHokFileDrop hook (./lib/uis-fx-filedrop). */
 
 /* Instrument credits in the About tab — a quiet list under the identity row,
    rendered from packs.json's shipped attribution (grouped per author). */
-.amsr-seed-credits { margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
-.amsr-seed-credits-row { font-size: 12px; color: var(--uis-text-mute); line-height: 1.6; }
-.amsr-seed-credits-row b { color: var(--uis-text); font-weight: 600; }
+.amsd-seed-credits { margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
+.amsd-seed-credits-row { font-size: 12px; color: var(--uis-text-mute); line-height: 1.6; }
+.amsd-seed-credits-row b { color: var(--uis-text); font-weight: 600; }
 /* Settings → lane colours: one row per lane — name (in the lane's colour),
    the catalog .uis-swt launcher, Reset parked at the right edge. */
-.amsr-seed-colors-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
-.amsr-seed-colors-name { flex: 0 0 120px; font-size: 13px; font-weight: 600; }
-.amsr-seed-colors-name.amsr-treble { color: var(--seed-treble); }
-.amsr-seed-colors-name.amsr-bass { color: var(--seed-bass); }
-.amsr-seed-colors-name.amsr-chords { color: var(--seed-chords); }
-.amsr-seed-colors-reset { margin-left: auto; }
+.amsd-seed-colors-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+.amsd-seed-colors-name { flex: 0 0 120px; font-size: 13px; font-weight: 600; }
+.amsd-seed-colors-name.amsd-treble { color: var(--seed-treble); }
+.amsd-seed-colors-name.amsd-bass { color: var(--seed-bass); }
+.amsd-seed-colors-name.amsd-chords { color: var(--seed-chords); }
+.amsd-seed-colors-reset { margin-left: auto; }
 
 /* Dialog (modal) chrome is provided by the shared ./lib/dialog.css (imported in index.jsx). */
 

@@ -19,7 +19,7 @@ dependencies = [
 
 [[package]]
 name = "ai-music-seed"
-version = "3.0.0"
+version = "3.0.1"
 dependencies = [
  "ai-music-seed-engine",
  "base64 0.23.1",

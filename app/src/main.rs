@@ -750,8 +750,8 @@ fn App() -> Element {
                             div { class: "uis-fld-labelled divider",
                                 label { class: "uis-fld-labelled-label", "{lbl_colors}" }
                                 for (i, key) in BLOCK_KEYS.iter().enumerate() {
-                                    div { class: "amsr-seed-colors-row",
-                                        span { class: "amsr-seed-colors-name amsr-{key}", "{block_names[i]}" }
+                                    div { class: "amsd-seed-colors-row",
+                                        span { class: "amsd-seed-colors-name amsd-{key}", "{block_names[i]}" }
                                         UisPkrColor {
                                             color: colors()[i].clone().unwrap_or_else(|| defaults()[i].clone()),
                                             on_change: move |c: String| colors.write()[i] = Some(c),
@@ -760,7 +760,7 @@ fn App() -> Element {
                                             pick_title: lbl_pick.clone(),
                                         }
                                         button {
-                                            class: "uis-btn subtle amsr-seed-colors-reset",
+                                            class: "uis-btn subtle amsd-seed-colors-reset",
                                             disabled: colors()[i].is_none(),
                                             onclick: move |_| colors.write()[i] = None,
                                             "{lbl_reset}"
@@ -787,11 +787,11 @@ fn App() -> Element {
                             None
                         } else {
                             Some(rsx! {
-                                div { class: "amsr-seed-credits",
+                                div { class: "amsd-seed-credits",
                                     div { class: "uis-dlg-about-id", "{lbl_credits}" }
                                     div { class: "dlg-hint", "{lbl_credits_intro}" }
                                     for (author, instruments) in credits.iter() {
-                                        div { class: "amsr-seed-credits-row",
+                                        div { class: "amsd-seed-credits-row",
                                             b { "{author}" }
                                             " — {instruments}"
                                         }
